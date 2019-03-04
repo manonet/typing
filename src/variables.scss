@@ -1,0 +1,46 @@
+
+// colors
+$white: #fff !default;
+$black: #000 !default;
+$red: #d9534f !default;
+$orange: #f0ad4e !default;
+$yellow: #ffd500 !default;
+$green: #5cb85c !default;
+$blue: #0275d8 !default;
+$teal: #5bc0de !default;
+$pink: #ff5b77 !default;
+$purple: #613d7c !default;
+
+// Create grayscale
+$grayDark: #292b2c !default;
+$gray: #464a4c !default;
+$grayLight: #636c72 !default;
+$grayLighter: #eceeef !default;
+$grayLightest: #f7f7f9 !default;
+
+// Derivative colors
+$colorPrimary: $blue !default;
+$colorSecondary: $teal !default;
+$colorSuccess: $green !default;
+$colorInfo: $teal !default;
+$colorWarning: $orange !default;
+$colorDanger: $red !default;
+$colorInverse: $grayDark !default;
+$colorLink: $blue !default;
+
+$keyWidth: 100 !default;
+$keyHeight: 100 !default;
+$keyboardWidth: 15 * $keyWidth !default;
+$keyboardHeight: 5 * $keyHeight !default;
+$keyPaddingX: 10 !default;
+$keyPaddingY: 10 !default;
+$keyBgWidth: $keyWidth - $keyPaddingX * 2 !default;
+$keyBgHeight: $keyHeight - $keyPaddingY * 2 !default;
+$dRowShift: 50 !default;
+$cRowShift: 80 !default;
+$bRowShift: 130 !default;
+$aRowShift: 130 !default;
+$rX: 10 !default;
+$rY: 10 !default;
+$keyLabelX: 50 !default;
+$keyLabelY: 50 !default;
