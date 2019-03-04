@@ -6,7 +6,17 @@ cache:
   paths:
     - node_modules/
 
+stages:
+  - test
+  - pages
+
+test:
+  stage: test
+  script:
+    - npm run lint
+
 pages:
+  stage: pages
   script:
     - npm install
     - ./node_modules/.bin/gatsby build --prefix-paths
