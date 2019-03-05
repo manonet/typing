@@ -448,66 +448,64 @@ function LabelTransform(props) {
   return null
 }
 
+function KeyboardKey(props) {
+  const { keyObj } = props
+  const { keyEvent } = props
+  const checkKeyEvents = (Object.keys(keyEvent).length !== 0)
 
-export default class KeyboardKey extends React.Component {
-  render() {
-    const {keyObj} = this.props;
-    const {keyEvent} = this.props;
-    const checkKeyEvents = (Object.keys(keyEvent).length !== 0);
+  const x = keyObj.x || 0
+  const y = keyObj.y || 0
 
-    const x = keyObj.x || 0
-    let y = keyObj.y || 0
+  let keyClass = `key key--${keyObj.iso.substring(0, 1)} ${keyObj.iso} ${keyObj.state}`
 
-    let keyClass = 'key key--' + keyObj.iso.substring(0, 1) + ' ' + keyObj.iso + ' ' + keyObj.state
-
-    // When letters on a case pair are associated with a key, only the capital character need to be shown on the keytop for the primary group, while the lowercase character only is shown for the secondary group.
-    if (keyObj.labels.to.toString().toUpperCase() === keyObj.labels.shift) {
-      keyClass += ' alpha';
-    }
-
-    if (keyObj.iso === 'E14') {
-      return <FunctionKeyBackspace keyObj={keyObj} />
-    } if (keyObj.iso === 'C00') {
-      return <FunctionKeyCapsLock keyObj={keyObj} />
-    } if (keyObj.name === 'enter') {
-      return <KeyEnter keyObj={keyObj} />
-    } if (keyObj.iso === 'D00') {
-      return <FunctionKeyTab keyObj={keyObj} />
-    } if (keyObj.iso === 'B99') {
-      return <FunctionKeyLeftShift keyObj={keyObj} />
-    } if (keyObj.iso === 'B13') {
-      return <FunctionKeyRightShift keyObj={keyObj} />
-    } if (keyObj.iso === 'A99') {
-      return <FunctionKeyLeftCtrl keyObj={keyObj} />
-    } if (keyObj.iso === 'A00') {
-      return <FunctionKeyFn keyObj={keyObj} />
-    } if (keyObj.iso === 'A01') {
-      return <FunctionKeyLeftCommand keyObj={keyObj} />
-    } if (keyObj.iso === 'A02') {
-      return <FunctionKeyAlt keyObj={keyObj} />
-    } else if (keyObj.iso === 'A08') {
-      return <FunctionKeyAltGr keyObj={keyObj} />
-    } else if (keyObj.iso === 'A09') {
-      return <FunctionKeyRightCommand keyObj={keyObj} />
-    } else if (keyObj.iso === 'A11') {
-      return <FunctionKeyMenu keyObj={keyObj} />
-    } else if (keyObj.iso === 'A12') {
-      return <FunctionKeyRightCtrl keyObj={keyObj} />
-    } else if (keyObj.iso === 'A03') {
-      // Space (A03 to A07)
-      return (
-        <g className={keyClass}>
-          <KeyBackground width={vars.keyWidth * 5 - vars.keyPaddingX * 2} x={x} y={y} />
-        </g>
-      )
-    } else {
-      return (
-        <g className={keyClass} textAnchor="middle">
-          <KeyBackground x={x} y={y} />
-          <Labels keyObj={keyObj} checkKeyEvents={checkKeyEvents} keyEvent={keyEvent} displayedLevel={this.props.displayedLevel} />
-          <LabelTransform transform={keyObj.transform} />
-        </g>
-      )
-    }
+  // When letters on a case pair are associated with a key, only the capital character need to be shown on the keytop for the primary group, while the lowercase character only is shown for the secondary group.
+  if (keyObj.labels.to.toString().toUpperCase() === keyObj.labels.shift) {
+    keyClass += ' alpha'
   }
+
+  if (keyObj.iso === 'E14') {
+    return <FunctionKeyBackspace keyObj={keyObj} />
+  } if (keyObj.iso === 'C00') {
+    return <FunctionKeyCapsLock keyObj={keyObj} />
+  } if (keyObj.name === 'enter') {
+    return <KeyEnter keyObj={keyObj} />
+  } if (keyObj.iso === 'D00') {
+    return <FunctionKeyTab keyObj={keyObj} />
+  } if (keyObj.iso === 'B99') {
+    return <FunctionKeyLeftShift keyObj={keyObj} />
+  } if (keyObj.iso === 'B13') {
+    return <FunctionKeyRightShift keyObj={keyObj} />
+  } if (keyObj.iso === 'A99') {
+    return <FunctionKeyLeftCtrl keyObj={keyObj} />
+  } if (keyObj.iso === 'A00') {
+    return <FunctionKeyFn keyObj={keyObj} />
+  } if (keyObj.iso === 'A01') {
+    return <FunctionKeyLeftCommand keyObj={keyObj} />
+  } if (keyObj.iso === 'A02') {
+    return <FunctionKeyAlt keyObj={keyObj} />
+  } if (keyObj.iso === 'A08') {
+    return <FunctionKeyAltGr keyObj={keyObj} />
+  } if (keyObj.iso === 'A09') {
+    return <FunctionKeyRightCommand keyObj={keyObj} />
+  } if (keyObj.iso === 'A11') {
+    return <FunctionKeyMenu keyObj={keyObj} />
+  } if (keyObj.iso === 'A12') {
+    return <FunctionKeyRightCtrl keyObj={keyObj} />
+  } if (keyObj.iso === 'A03') {
+    // Space (A03 to A07)
+    return (
+      <g className={keyClass}>
+        <KeyBackground width={vars.keyWidth * 5 - vars.keyPaddingX * 2} x={x} y={y} />
+      </g>
+    )
+  }
+  return (
+    <g className={keyClass} textAnchor="middle">
+      <KeyBackground x={x} y={y} />
+      <Labels keyObj={keyObj} checkKeyEvents={checkKeyEvents} keyEvent={keyEvent} displayedLevel={props.displayedLevel} />
+      <LabelTransform transform={keyObj.transform} />
+    </g>
+  )
 }
+
+export default KeyboardKey

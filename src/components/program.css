@@ -1,0 +1,56 @@
+
+.typewriterApp {
+  position: relative;
+  background: var(--grayLighter);
+}
+
+.userText {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: none;
+  opacity: .01;
+}
+
+.char {
+	display: inline;
+  font-style: normal;
+}
+
+.char.done {
+	color: var(--grayDark);
+}
+
+.char.toWrite {
+	color: var(--black);
+}
+
+.char.error {
+	color: var(--red);
+	background: var(--grayLightest);
+}
+
+.sample__wrapper {
+  position: relative;
+}
+
+.sampleBoard {
+  display: block;
+  background: var(--white);
+  border:  2px solid var(--grayLighter);
+  padding: 10px;
+	color: var(--grayLighter);
+	font-family: 'Inconsolata', monospace;
+	font-size: 18px;
+
+  &.focus {
+    border:  2px solid var(--blue);
+  }
+}
+
+.sampleBoardHint {
+  margin: 0;
+}
