@@ -15,24 +15,6 @@
   opacity: .01;
 }
 
-.char {
-	display: inline;
-  font-style: normal;
-}
-
-.char.done {
-	color: var(--grayDark);
-}
-
-.char.toWrite {
-	color: var(--black);
-}
-
-.char.error {
-	color: var(--red);
-	background: var(--grayLightest);
-}
-
 .sample__wrapper {
   position: relative;
 }
