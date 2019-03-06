@@ -1,66 +1,107 @@
 import React from 'react'
+import classNames from 'classnames'
+import { withStyles } from '@material-ui/core/styles'
 import SampleBoardChar from './SampleBoardChar'
 
-export default class SampleBoard extends React.Component {
-  constructor() {
-    super()
-    this.renderHint = this.renderHint.bind(this)
-  }
+export const SAMPLE_BOARD_ID = 'userText'
 
-  renderHint({ signToWrite, writtenSign }) {
-    return (
-      <p className="sampleBoardHint">
+const styles = theme => ({
+  sample: {
+    position: 'relative',
+    backgroundColor: theme.palette.grey[700],
+  },
+  wrapper: {
+    position: 'relative',
+  },
+  sampleBoard: {
+    display: 'block',
+    background: theme.palette.common.white,
+    border: `2px solid ${theme.palette.grey[300]}`,
+    padding: 10,
+    color: theme.palette.grey[500],
+    fontFamily: 'Inconsolata',
+    fontSize: 18,
+  },
+  sampleBoardFocus: {
+    border: `2px solid ${theme.palette.primary.main}`,
+  },
+  sampleBoardHint: {
+    margin: 0,
+  },
+  userText: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: '100%',
+    maxWidth: 'none',
+    opacity: 0.01,
+  },
+})
+
+function SampleBoard(props) {
+  const {
+    classes,
+    className,
+    cursorAt,
+    sampleText,
+    signToWrite,
+    writtenSign,
+    userText,
+    writing,
+    onChange,
+    onFocus,
+    onBlur,
+  } = props
+
+  const sampleArray = sampleText.split('')
+
+  return (
+    <div className={
+      classNames(
+        classes.sample,
+        className,
+      )
+    }
+    >
+      <p className={classes.sampleBoardHint}>
         Requested: {signToWrite}, written: {writtenSign}
       </p>
-    )
-  }
 
-  render() {
-    const {
-      cursorAt,
-      sampleText,
-      signToWrite,
-      writtenSign,
-      userText,
-      writing,
-      onChange,
-      onFocus,
-      onBlur,
-    } = this.props
+      <div className={classes.wrapper}>
+        <kbd className={
+          classNames(
+            classes.sampleBoard,
+            {
+              [classes.sampleBoardFocus]: writing,
+            },
+          )
+        }
+        >
+          {sampleArray.map((char, index) => (
+            <SampleBoardChar
+              key={index}
+              index={index}
+              cursorAt={cursorAt}
+              writtenSign={writtenSign}
+              userText={userText}
+              char={char}
+            />
+          ))}
+        </kbd>
 
-    const sampleArray = sampleText.split('')
-    const focus = writing ? 'focus' : ''
-
-    return (
-      <div className="sample">
-        {this.renderHint({
-          signToWrite,
-          writtenSign,
-        })}
-
-        <div className="sample__wrapper">
-          <kbd className={`sampleBoard ${focus}`}>
-            {sampleArray.map((char, index) => (
-              <SampleBoardChar
-                key={index}
-                index={index}
-                cursorAt={cursorAt}
-                writtenSign={writtenSign}
-                userText={userText}
-                char={char}
-              />
-            ))}
-          </kbd>
-
-          <textarea
-            className="userText"
-            value={userText}
-            onChange={onChange}
-            onFocus={onFocus}
-            onBlur={onBlur}
-          />
-        </div>
+        <textarea
+          className={classes.userText}
+          id={SAMPLE_BOARD_ID}
+          value={userText}
+          onChange={onChange}
+          onFocus={onFocus}
+          onBlur={onBlur}
+        />
       </div>
-    )
-  }
+    </div>
+  )
 }
+
+export default withStyles(styles)(SampleBoard)
