@@ -120,6 +120,7 @@ export default class ProgramPage extends React.Component {
     mapObject(functionKeys, (key, value) => {
       // reset function keys
       functionKeys[key].state = 'def'
+      functionKeys[key].priority = 'def'
     })
 
     for (let i = 0; i < levels.length; i++) {
@@ -215,9 +216,12 @@ export default class ProgramPage extends React.Component {
                   if (level !== 'to') {
                     // key combination, using of function key necessary
                     console.log(item.labels[level])
+                    // TODO item.priority = 'secondary'
                     state.markFunctionKey(level, 'toWrite secondary')
+
                   }
-                  item.state = 'toWrite secondary'
+                  item.state = 'toWrite'
+                  item.priority = 'secondary'
                   combo2Found = true
                   console.log('combo2Found ', combo2)
                 }
@@ -245,7 +249,8 @@ export default class ProgramPage extends React.Component {
               if (item.labels[level] === combo2) {
                 item.state = 'error'
                 if (signToWrite === writtenSign) {
-                  item.state = 'correct secondary'
+                  item.state = 'correct'
+                  item.priority = 'secondary'
                 }
               }
             })
@@ -269,7 +274,8 @@ export default class ProgramPage extends React.Component {
               }
               if (item.labels[level] === combo2) {
                 if (signToWrite !== writtenSign) {
-                  item.state = 'missed secondary'
+                  item.state = 'missed'
+                  item.priority = 'secondary'
                 }
               }
             })
@@ -419,7 +425,7 @@ export default class ProgramPage extends React.Component {
           displayedLevel={this.state.displayedLevel}
           keyEvent={this.state.keyEvent}
         />
-        <Keyboard
+        {/* <Keyboard
           keyboardUrl={withPrefix('/keyboards/windows/es-t-k0-windows.xml')}
           onKeyboardLoaded={function () {}}
           showTitle
@@ -430,7 +436,7 @@ export default class ProgramPage extends React.Component {
           onKeyboardLoaded={function () {}}
           showTitle
           showDeadKeys
-        />
+        /> */}
       </Layout>
     )
   }
