@@ -34,6 +34,12 @@ const styles = theme => ({
   toWrite: {
     fill: theme.palette.primary.main,
   },
+  toPressFirst: {
+    fill: theme.palette.primary.dark,
+  },
+  toPressSecond: {
+    fill: theme.palette.primary.light,
+  },
   secondary: {
     fill: cyan[500],
   },
@@ -53,20 +59,19 @@ function mapObject(object, callback) {
 }
 
 function KeyboardKey(props) {
+  // console.log(props)
   const {
     classes,
-    keyObj,
-    keyEvent,
-    displayedLevel,
-  } = props
-
-  const {
-    labels,
+    to,
+    shift,
     iso,
     state,
     priority,
     transform,
-  } = keyObj
+    displayedLevel,
+    x,
+    y,
+  } = props
 
   const {
     keyWidth,
@@ -83,36 +88,19 @@ function KeyboardKey(props) {
     keyLabelY,
   } = vars
 
-  const x = keyObj.x || 0
-  const y = keyObj.y || 0
-
-
   // When letters on a case pair are associated with a key, only the capital character need to be shown on the keytop for the primary group, while the lowercase character only is shown for the secondary group.
   let alphabet
-  if (labels.to.toString().toUpperCase() === labels.shift) {
+  if (to.toString().toUpperCase() === shift) {
     alphabet = true
   }
   const toWrite = state === 'toWrite'
+  const toPressFirst = state === 'toPressFirst'
+  const toPressSecond = state === 'toPressSecond'
 
   let width = keyWidth - keyPaddingX * 2
   const height = keyHeight - keyPaddingY * 2
 
   let translate = 'none'
-
-  let visibleLabel = 'to'
-  if (keyEvent.shiftKey && keyEvent.CapsLock) {
-    // console.log("shift");
-    visibleLabel = 'caps+shift'
-  } else if (keyEvent.CapsLock && !(keyEvent.altKey && keyEvent.ctrlKey)) {
-    // console.log("caps");
-    visibleLabel = 'caps'
-  } else if (keyEvent.shiftKey) {
-    // console.log("shift");
-    visibleLabel = 'shift'
-  } else if (keyEvent.altKey && keyEvent.ctrlKey) {
-    // console.log("AltGr");
-    visibleLabel = 'altR+caps? ctrl+alt+caps?'
-  }
 
   const keyClass = classNames(
     'key',
@@ -128,6 +116,8 @@ function KeyboardKey(props) {
       [classes.secondary]: priority === 'secondary',
       [classes.alphabet]: alphabet,
       [classes.toWrite]: toWrite,
+      [classes.toPressFirst]: toPressFirst,
+      [classes.toPressSecond]: toPressSecond,
     },
   )
   const labelClass = classNames(
@@ -138,63 +128,63 @@ function KeyboardKey(props) {
   )
 
   switch (iso) {
-  case 'E14': // Backspace
+  case 'E13': // Backspace
     width = keyWidth * 2 - keyPaddingX * 2
-    translate = keyObj.translate || `translate(${keyWidth * 13}, 0)`
+    translate = props.translate || `translate(${keyWidth * 13}, 0)`
     break
 
   case 'C00': // CapsLock
     width = keyWidth + cRowShift - keyPaddingX * 2
-    translate = keyObj.translate || `translate(0, ${keyHeight * 2})`
+    translate = props.translate || `translate(0, ${keyHeight * 2})`
     break
 
   case 'D00': // Tab
     width = keyWidth + dRowShift - keyPaddingX * 2
-    translate = keyObj.translate || `translate(0, ${keyHeight})`
+    translate = props.translate || `translate(0, ${keyHeight})`
     break
 
   case 'B99': // Left Shift
     width = bRowShift - keyPaddingX * 2
-    translate = keyObj.translate || `translate(0, ${keyHeight * 3})`
+    translate = props.translate || `translate(0, ${keyHeight * 3})`
     break
 
   case 'B13': // Right Shift
     width = (keyWidth * 3 - bRowShift) - keyPaddingX * 2
-    translate = keyObj.translate || `translate(${bRowShift + keyWidth * 12}, ${keyHeight * 3})`
+    translate = props.translate || `translate(${bRowShift + keyWidth * 12}, ${keyHeight * 3})`
     break
 
   case 'A99': // Left Ctrl
     width = bRowShift - keyPaddingX * 2
-    translate = keyObj.translate || `translate(0, ${keyHeight * 4})`
+    translate = props.translate || `translate(0, ${keyHeight * 4})`
     break
 
   case 'A00': // fn
-    translate = keyObj.translate || `translate(${aRowShift}, ${keyHeight * 4})`
+    translate = props.translate || `translate(${aRowShift}, ${keyHeight * 4})`
     break
 
   case 'A01': // left Command
-    translate = keyObj.translate || `translate(${aRowShift + keyWidth}, ${keyHeight * 4})`
+    translate = props.translate || `translate(${aRowShift + keyWidth}, ${keyHeight * 4})`
     break
 
   case 'A02': // Alt
-    translate = keyObj.translate || `translate(${aRowShift + keyWidth * 2}, ${keyHeight * 4})`
+    translate = props.translate || `translate(${aRowShift + keyWidth * 2}, ${keyHeight * 4})`
     break
 
   case 'A08': // AltGr
-    translate = keyObj.translate || `translate(${aRowShift + keyWidth * 8}, ${keyHeight * 4})`
+    translate = props.translate || `translate(${aRowShift + keyWidth * 8}, ${keyHeight * 4})`
     break
 
   case 'A09': // right Command
-    translate = keyObj.translate || `translate(${aRowShift + keyWidth * 9}, ${keyHeight * 4})`
+    translate = props.translate || `translate(${aRowShift + keyWidth * 9}, ${keyHeight * 4})`
     break
 
   case 'A11': // Menu
-    translate = keyObj.translate || `translate(${aRowShift + keyWidth * 11}, ${keyHeight * 4})`
+    translate = props.translate || `translate(${aRowShift + keyWidth * 11}, ${keyHeight * 4})`
     break
 
   case 'A12': // Right Ctrl
     width = (keyWidth * 3 - bRowShift) - keyPaddingX * 2
-    translate = keyObj.translate || `translate(${bRowShift + keyWidth * 12}, ${keyHeight * 4})`
+    translate = props.translate || `translate(${bRowShift + keyWidth * 12}, ${keyHeight * 4})`
     break
 
   case 'A03': // Space (A03 to A07)
@@ -215,13 +205,13 @@ function KeyboardKey(props) {
     break
   }
 
-  if (keyObj.name === 'enter') {
+  if (props.name === 'enter') {
     // for Enter
     const leftD = dRowShift
     let leftC = cRowShift
     const right = keyWidth * 2
     const bottom = keyHeight * 2
-    translate = keyObj.translate || `translate(${keyWidth * 13}, ${keyHeight})`
+    translate = props.translate || `translate(${keyWidth * 13}, ${keyHeight})`
 
     const enterPath = `M${leftD + keyPaddingX} ${rY + keyPaddingY}\
               A ${rX} ${rY}, 0, 0, 1, ${leftD + rX + keyPaddingX} ${keyPaddingY}\
@@ -252,7 +242,7 @@ function KeyboardKey(props) {
               A ${rX} ${rY}, 0, 0, 0, ${leftD + keyPaddingX} ${keyHeight - rY + keyPaddingY}\
               L ${leftD + keyPaddingX} ${rY + keyPaddingY} Z`
 
-    switch (keyObj.variant) {
+    switch (props.variant) {
     case 1:
       /* shape:
           xx
@@ -262,7 +252,7 @@ function KeyboardKey(props) {
         <g className={keyClass} transform={translate}>
           <path className={keyBgClass} d={enterPath} />
           <g className={classes.labels}>
-            <text className={labelClass} x="160" y="140">{keyObj.labels.to}</text>
+            <text className={labelClass} x="160" y="140">{to}</text>
           </g>
         </g>
       )
@@ -284,7 +274,7 @@ function KeyboardKey(props) {
             ry={rY}
           />
           <g className={classes.labels}>
-            <text className={labelClass} x="30" y="80">{keyObj.labels.to}</text>
+            <text className={labelClass} x="30" y="80">{to}</text>
           </g>
         </g>
       )
@@ -306,7 +296,7 @@ function KeyboardKey(props) {
             ry={rY}
           />
           <g className={classes.labels}>
-            <text className={labelClass} x="30" y="80">{keyObj.labels.to}</text>
+            <text className={labelClass} x="30" y="80">{to}</text>
           </g>
         </g>
       )
@@ -320,7 +310,7 @@ function KeyboardKey(props) {
         <g className={keyClass} transform={translate}>
           <path className={keyBgClass} d={enterPath2} />
           <g className={classes.labels}>
-            <text className={labelClass} x="120" y="140">{keyObj.labels.to}</text>
+            <text className={labelClass} x="120" y="140">{to}</text>
           </g>
         </g>
       )
@@ -343,21 +333,15 @@ function KeyboardKey(props) {
         ry={rY}
       />
       {
-        Object.keys(labels).length !== 0
+        to
         && (
           <g className={classes.labels}>
-            {
-              mapObject(labels, (key, value) => (
-                <text
-                  key={key}
-                  className={labelClass}
-                  dangerouslySetInnerHTML={{ __html: value }}
-                  x={x + keyLabelX}
-                  y={y + keyLabelY + 10}
-                  display={visibleLabel === key ? 'block' : 'none'}
-                />
-              ))
-            }
+            <text
+              className={labelClass}
+              dangerouslySetInnerHTML={{ __html: to }}
+              x={x + keyLabelX}
+              y={y + keyLabelY + 10}
+            />
           </g>
         )
       }
