@@ -1,0 +1,2000 @@
+{
+  "name": "Swiss German",
+  "keys": {
+    "E00": {
+      "to": "<",
+      "shift caps+shiftR+shiftL?": ">",
+      "caps+cmd?": "<",
+      "caps+shiftL": ">",
+      "opt+caps? cmd+optR+caps+optL?": "≤",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "≥",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "`",
+      "cmd+optL+shiftL": "Ÿ",
+      "cmd+optL+caps": "`",
+      "cmd+opt": "`"
+    },
+    "E01": {
+      "to": "1",
+      "shift caps+shiftR+shiftL?": "+",
+      "caps+cmd?": "1",
+      "caps+shiftL": "+",
+      "opt+caps? cmd+optR+caps+optL?": "±",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "∞",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "1",
+      "cmd+optL+shiftL": "⁄",
+      "cmd+optL+caps": "¡",
+      "cmd+opt": "¡"
+    },
+    "E02": {
+      "to": "2",
+      "shift caps+shiftR+shiftL?": "\\u{22}",
+      "caps+cmd?": "2",
+      "caps+shiftL": "\\u{22}",
+      "opt+caps? cmd+optR+caps+optL?": "“",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "”",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "2",
+      "cmd+optL+shiftL": "€",
+      "cmd+optL+caps": "™",
+      "cmd+opt": "™"
+    },
+    "E03": {
+      "to": "3",
+      "shift caps+shiftR+shiftL?": "*",
+      "caps+cmd?": "3",
+      "caps+shiftL": "*",
+      "opt+caps? cmd+optR+caps+optL?": "#",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "‹",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "3",
+      "cmd+optL+shiftL": "‹",
+      "cmd+optL+caps": "£",
+      "cmd+opt": "£"
+    },
+    "E04": {
+      "to": "4",
+      "shift caps+shiftR+shiftL?": "ç",
+      "caps+cmd?": "4",
+      "caps+shiftL": "ç",
+      "opt+caps? cmd+optR+caps+optL?": "Ç",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "⁄",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "4",
+      "cmd+optL+shiftL": "›",
+      "cmd+optL+caps": "¢",
+      "cmd+opt": "¢"
+    },
+    "E05": {
+      "to": "5",
+      "shift caps+shiftR+shiftL?": "%",
+      "caps+cmd?": "5",
+      "caps+shiftL": "%",
+      "opt+caps? cmd+optR+caps+optL?": "[",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "[",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "5",
+      "cmd+optL+shiftL": "ﬁ",
+      "cmd+optL+caps": "∞",
+      "cmd+opt": "∞"
+    },
+    "E06": {
+      "to": "6",
+      "shift caps+shiftR+shiftL?": "&",
+      "caps+cmd?": "6",
+      "caps+shiftL": "&",
+      "opt+caps? cmd+optR+caps+optL?": "]",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "]",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "6",
+      "cmd+optL+shiftL": "ﬂ",
+      "cmd+optL+caps": "§",
+      "cmd+opt": "§"
+    },
+    "E07": {
+      "to": "7",
+      "shift caps+shiftR+shiftL?": "/",
+      "caps+cmd?": "7",
+      "caps+shiftL": "/",
+      "opt+caps? cmd+optR+caps+optL?": "|",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "\\",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "7",
+      "cmd+optL+shiftL": "‡",
+      "cmd+optL+caps": "¶",
+      "cmd+opt": "¶"
+    },
+    "E08": {
+      "to": "8",
+      "shift caps+shiftR+shiftL?": "(",
+      "caps+cmd?": "8",
+      "caps+shiftL": "(",
+      "opt+caps? cmd+optR+caps+optL?": "{",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "Ò",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "8",
+      "cmd+optL+shiftL": "°",
+      "cmd+optL+caps": "•",
+      "cmd+opt": "•"
+    },
+    "E09": {
+      "to": "9",
+      "shift caps+shiftR+shiftL?": ")",
+      "caps+cmd?": "9",
+      "caps+shiftL": ")",
+      "opt+caps? cmd+optR+caps+optL?": "}",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "Ô",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "9",
+      "cmd+optL+shiftL": "·",
+      "cmd+optL+caps": "ª",
+      "cmd+opt": "ª"
+    },
+    "E10": {
+      "to": "0",
+      "shift caps+shiftR+shiftL?": "=",
+      "caps+cmd?": "0",
+      "caps+shiftL": "=",
+      "opt+caps? cmd+optR+caps+optL?": "≠",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "Ú",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "0",
+      "cmd+optL+shiftL": "‚",
+      "cmd+optL+caps": "º",
+      "cmd+opt": "º"
+    },
+    "E11": {
+      "to": "'",
+      "shift caps+shiftR+shiftL?": "?",
+      "caps+cmd?": "'",
+      "caps+shiftL": "?",
+      "opt+caps? cmd+optR+caps+optL?": "¿",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "\\u{F8FF}",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{1F}",
+      "cmd+optL+shiftL": "—",
+      "cmd+optL+caps": "–",
+      "cmd+opt": "–"
+    },
+    "E12": {
+      "to": "^",
+      "shift caps+shiftR+shiftL?": "`",
+      "caps+cmd?": "^",
+      "caps+shiftL": "`",
+      "opt+caps? cmd+optR+caps+optL?": "´",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "^",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "=",
+      "cmd+optL+shiftL": "±",
+      "cmd+optL+caps": "≠",
+      "cmd+opt": "≠"
+    },
+    "D01": {
+      "to": "q",
+      "shift caps+shiftR+shiftL?": "Q",
+      "caps+cmd?": "Q",
+      "caps+shiftL": "Q",
+      "opt+caps? cmd+optR+caps+optL?": "œ",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "Œ",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{11}",
+      "cmd+optL+shiftL": "Œ",
+      "cmd+optL+caps": "Œ",
+      "cmd+opt": "œ"
+    },
+    "D02": {
+      "to": "w",
+      "shift caps+shiftR+shiftL?": "W",
+      "caps+cmd?": "W",
+      "caps+shiftL": "W",
+      "opt+caps? cmd+optR+caps+optL?": "∑",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "Á",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{17}",
+      "cmd+optL+shiftL": "„",
+      "cmd+optL+caps": "„",
+      "cmd+opt": "∑"
+    },
+    "D03": {
+      "to": "e",
+      "shift caps+shiftR+shiftL?": "E",
+      "caps+cmd?": "E",
+      "caps+shiftL": "E",
+      "opt+caps? cmd+optR+caps+optL?": "€",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "Ë",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{5}",
+      "cmd+optL+shiftL": "‰",
+      "cmd+optL+caps": "‰",
+      "cmd+opt": "´"
+    },
+    "D04": {
+      "to": "r",
+      "shift caps+shiftR+shiftL?": "R",
+      "caps+cmd?": "R",
+      "caps+shiftL": "R",
+      "opt+caps? cmd+optR+caps+optL?": "®",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "È",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{12}",
+      "cmd+optL+shiftL": "Â",
+      "cmd+optL+caps": "Â",
+      "cmd+opt": "®"
+    },
+    "D05": {
+      "to": "t",
+      "shift caps+shiftR+shiftL?": "T",
+      "caps+cmd?": "T",
+      "caps+shiftL": "T",
+      "opt+caps? cmd+optR+caps+optL?": "†",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "Î",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{14}",
+      "cmd+optL+shiftL": "Ê",
+      "cmd+optL+caps": "Ê",
+      "cmd+opt": "†"
+    },
+    "D06": {
+      "to": "z",
+      "shift caps+shiftR+shiftL?": "Z",
+      "caps+cmd?": "Z",
+      "caps+shiftL": "Z",
+      "opt+caps? cmd+optR+caps+optL?": "Ω",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "Í",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{1A}",
+      "cmd+optL+shiftL": "Á",
+      "cmd+optL+caps": "Á",
+      "cmd+opt": "¥"
+    },
+    "D07": {
+      "to": "u",
+      "shift caps+shiftR+shiftL?": "U",
+      "caps+cmd?": "U",
+      "caps+shiftL": "U",
+      "opt+caps? cmd+optR+caps+optL?": "°",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "Ù",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{15}",
+      "cmd+optL+shiftL": "Ë",
+      "cmd+optL+caps": "Ë",
+      "cmd+opt": "¨"
+    },
+    "D08": {
+      "to": "i",
+      "shift caps+shiftR+shiftL?": "I",
+      "caps+cmd?": "I",
+      "caps+shiftL": "I",
+      "opt+caps? cmd+optR+caps+optL?": "¡",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "ı",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{9}",
+      "cmd+optL+shiftL": "È",
+      "cmd+optL+caps": "È",
+      "cmd+opt": "^"
+    },
+    "D09": {
+      "to": "o",
+      "shift caps+shiftR+shiftL?": "O",
+      "caps+cmd?": "O",
+      "caps+shiftL": "O",
+      "opt+caps? cmd+optR+caps+optL?": "ø",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "Ø",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{F}",
+      "cmd+optL+shiftL": "Ø",
+      "cmd+optL+caps": "Ø",
+      "cmd+opt": "ø"
+    },
+    "D10": {
+      "to": "p",
+      "shift caps+shiftR+shiftL?": "P",
+      "caps+cmd?": "P",
+      "caps+shiftL": "P",
+      "opt+caps? cmd+optR+caps+optL?": "π",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "∏",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{10}",
+      "cmd+optL+shiftL": "∏",
+      "cmd+optL+caps": "∏",
+      "cmd+opt": "π"
+    },
+    "D11": {
+      "to": "ü",
+      "shift caps+shiftR+shiftL?": "è",
+      "caps+cmd?": "Ü",
+      "caps+shiftL": "È",
+      "opt+caps? cmd+optR+caps+optL?": "§",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "ÿ",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{1B}",
+      "cmd+optL+shiftL": "”",
+      "cmd+optL+caps": "“",
+      "cmd+opt": "“"
+    },
+    "D12": {
+      "to": "¨",
+      "shift caps+shiftR+shiftL?": "!",
+      "caps+cmd?": "¨",
+      "caps+shiftL": "!",
+      "opt+caps? cmd+optR+caps+optL?": "‘",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "’",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{1D}",
+      "cmd+optL+shiftL": "’",
+      "cmd+optL+caps": "‘",
+      "cmd+opt": "‘"
+    },
+    "D13": {
+      "to": "$",
+      "shift caps+shiftR+shiftL?": "£",
+      "caps+cmd?": "$",
+      "caps+shiftL": "£",
+      "opt+caps? cmd+optR+caps+optL?": "¶",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "•",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{1C}",
+      "cmd+optL+shiftL": "»",
+      "cmd+optL+caps": "«",
+      "cmd+opt": "«"
+    },
+    "C01": {
+      "to": "a",
+      "shift caps+shiftR+shiftL?": "A",
+      "caps+cmd?": "A",
+      "caps+shiftL": "A",
+      "opt+caps? cmd+optR+caps+optL?": "å",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "Å",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{1}",
+      "cmd+optL+shiftL": "Å",
+      "cmd+optL+caps": "Å",
+      "cmd+opt": "å"
+    },
+    "C02": {
+      "to": "s",
+      "shift caps+shiftR+shiftL?": "S",
+      "caps+cmd?": "S",
+      "caps+shiftL": "S",
+      "opt+caps? cmd+optR+caps+optL?": "ß",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "ﬁ",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{13}",
+      "cmd+optL+shiftL": "Í",
+      "cmd+optL+caps": "Í",
+      "cmd+opt": "ß"
+    },
+    "C03": {
+      "to": "d",
+      "shift caps+shiftR+shiftL?": "D",
+      "caps+cmd?": "D",
+      "caps+shiftL": "D",
+      "opt+caps? cmd+optR+caps+optL?": "∂",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "ﬂ",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{4}",
+      "cmd+optL+shiftL": "Î",
+      "cmd+optL+caps": "Î",
+      "cmd+opt": "∂"
+    },
+    "C04": {
+      "to": "f",
+      "shift caps+shiftR+shiftL?": "F",
+      "caps+cmd?": "F",
+      "caps+shiftL": "F",
+      "opt+caps? cmd+optR+caps+optL?": "ƒ",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "‡",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{6}",
+      "cmd+optL+shiftL": "Ï",
+      "cmd+optL+caps": "Ï",
+      "cmd+opt": "ƒ"
+    },
+    "C05": {
+      "to": "g",
+      "shift caps+shiftR+shiftL?": "G",
+      "caps+cmd?": "G",
+      "caps+shiftL": "G",
+      "opt+caps? cmd+optR+caps+optL?": "@",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "‚",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{7}",
+      "cmd+optL+shiftL": "Ì",
+      "cmd+optL+caps": "Ì",
+      "cmd+opt": "©"
+    },
+    "C06": {
+      "to": "h",
+      "shift caps+shiftR+shiftL?": "H",
+      "caps+cmd?": "H",
+      "caps+shiftL": "H",
+      "opt+caps? cmd+optR+caps+optL?": "ª",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "·",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{8}",
+      "cmd+optL+shiftL": "Ó",
+      "cmd+optL+caps": "Ó",
+      "cmd+opt": "˙"
+    },
+    "C07": {
+      "to": "j",
+      "shift caps+shiftR+shiftL?": "J",
+      "caps+cmd?": "J",
+      "caps+shiftL": "J",
+      "opt+caps? cmd+optR+caps+optL?": "º",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "˜",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{A}",
+      "cmd+optL+shiftL": "Ô",
+      "cmd+optL+caps": "Ô",
+      "cmd+opt": "∆"
+    },
+    "C08": {
+      "to": "k",
+      "shift caps+shiftR+shiftL?": "K",
+      "caps+cmd?": "K",
+      "caps+shiftL": "K",
+      "opt+caps? cmd+optR+caps+optL?": "∆",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "¯",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{B}",
+      "cmd+optL+shiftL": "\\u{F8FF}",
+      "cmd+optL+caps": "\\u{F8FF}",
+      "cmd+opt": "˚"
+    },
+    "C09": {
+      "to": "l",
+      "shift caps+shiftR+shiftL?": "L",
+      "caps+cmd?": "L",
+      "caps+shiftL": "L",
+      "opt+caps? cmd+optR+caps+optL?": "¬",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "ˆ",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{C}",
+      "cmd+optL+shiftL": "Ò",
+      "cmd+optL+caps": "Ò",
+      "cmd+opt": "¬"
+    },
+    "C10": {
+      "to": "ö",
+      "shift caps+shiftR+shiftL?": "é",
+      "caps+cmd?": "Ö",
+      "caps+shiftL": "É",
+      "opt+caps? cmd+optR+caps+optL?": "¢",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "˘",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": ":",
+      "cmd+optL+shiftL": "Ú",
+      "cmd+optL+caps": "…",
+      "cmd+opt": "…"
+    },
+    "C11": {
+      "to": "ä",
+      "shift caps+shiftR+shiftL?": "à",
+      "caps+cmd?": "Ä",
+      "caps+shiftL": "À",
+      "opt+caps? cmd+optR+caps+optL?": "æ",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "Æ",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{22}",
+      "cmd+optL+shiftL": "Æ",
+      "cmd+optL+caps": "Æ",
+      "cmd+opt": "æ"
+    },
+    "B00": {
+      "to": "§",
+      "shift caps+shiftR+shiftL?": "°",
+      "caps+cmd?": "§",
+      "caps+shiftL": "°",
+      "opt+caps? cmd+optR+caps+optL?": "ﬁ",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "‰",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "`",
+      "cmd+optL+shiftL": "Ÿ",
+      "cmd+opt": "`"
+    },
+    "B01": {
+      "to": "y",
+      "shift caps+shiftR+shiftL?": "Y",
+      "caps+cmd?": "Y",
+      "caps+shiftL": "Y",
+      "opt+caps? cmd+optR+caps+optL?": "¥",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "Ÿ",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{19}",
+      "cmd+optL+shiftL": "Û",
+      "cmd+optL+caps": "Û",
+      "cmd+opt": "Ω"
+    },
+    "B02": {
+      "to": "x",
+      "shift caps+shiftR+shiftL?": "X",
+      "caps+cmd?": "X",
+      "caps+shiftL": "X",
+      "opt+caps? cmd+optR+caps+optL?": "≈",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "™",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{18}",
+      "cmd+optL+shiftL": "Ù",
+      "cmd+optL+caps": "Ù",
+      "cmd+opt": "≈"
+    },
+    "B03": {
+      "to": "c",
+      "shift caps+shiftR+shiftL?": "C",
+      "caps+cmd?": "C",
+      "caps+shiftL": "C",
+      "opt+caps? cmd+optR+caps+optL?": "©",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "\\u{13}",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{3}",
+      "cmd+optL+shiftL": "Ç",
+      "cmd+optL+caps": "Ç",
+      "cmd+opt": "ç"
+    },
+    "B04": {
+      "to": "v",
+      "shift caps+shiftR+shiftL?": "V",
+      "caps+cmd?": "V",
+      "caps+shiftL": "V",
+      "opt+caps? cmd+optR+caps+optL?": "√",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "◊",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{16}",
+      "cmd+optL+shiftL": "◊",
+      "cmd+optL+caps": "◊",
+      "cmd+opt": "√"
+    },
+    "B05": {
+      "to": "b",
+      "shift caps+shiftR+shiftL?": "B",
+      "caps+cmd?": "B",
+      "caps+shiftL": "B",
+      "opt+caps? cmd+optR+caps+optL?": "∫",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "\\u{14}",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{2}",
+      "cmd+optL+shiftL": "ı",
+      "cmd+optL+caps": "ı",
+      "cmd+opt": "∫"
+    },
+    "B06": {
+      "to": "n",
+      "shift caps+shiftR+shiftL?": "N",
+      "caps+cmd?": "N",
+      "caps+shiftL": "N",
+      "opt+caps? cmd+optR+caps+optL?": "~",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "˙",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{E}",
+      "cmd+optL+shiftL": "ˆ",
+      "cmd+optL+caps": "ˆ",
+      "cmd+opt": "~"
+    },
+    "B07": {
+      "to": "m",
+      "shift caps+shiftR+shiftL?": "M",
+      "caps+cmd?": "M",
+      "caps+shiftL": "M",
+      "opt+caps? cmd+optR+caps+optL?": "µ",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "˚",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "\\u{D}",
+      "cmd+optL+shiftL": "˜",
+      "cmd+optL+caps": "˜",
+      "cmd+opt": "µ"
+    },
+    "B08": {
+      "to": ",",
+      "shift caps+shiftR+shiftL?": ";",
+      "caps+cmd?": ",",
+      "caps+shiftL": ";",
+      "opt+caps? cmd+optR+caps+optL?": "«",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "»",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": ",",
+      "cmd+optL+shiftL": "¯",
+      "cmd+optL+caps": "≤",
+      "cmd+opt": "≤"
+    },
+    "B09": {
+      "to": ".",
+      "shift caps+shiftR+shiftL?": ":",
+      "caps+cmd?": ".",
+      "caps+shiftL": ":",
+      "opt+caps? cmd+optR+caps+optL?": "…",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "÷",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": ".",
+      "cmd+optL+shiftL": "˘",
+      "cmd+optL+caps": "≥",
+      "cmd+opt": "≥"
+    },
+    "B10": {
+      "to": "-",
+      "shift caps+shiftR+shiftL?": "_",
+      "caps+cmd?": "-",
+      "caps+shiftL": "_",
+      "opt+caps? cmd+optR+caps+optL?": "–",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "—",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": "/",
+      "cmd+optL+shiftL": "¿",
+      "cmd+optL+caps": "÷",
+      "cmd+opt": "÷"
+    },
+    "A03": {
+      "to": " ",
+      "shift caps+shiftR+shiftL?": " ",
+      "caps+cmd?": " ",
+      "caps+shiftL": " ",
+      "opt+caps? cmd+optR+caps+optL?": "\\u{A0}",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?": "\\u{A0}",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?": " ",
+      "cmd+optL+shiftL": "\\u{A0}",
+      "cmd+optL+caps": "\\u{A0}",
+      "cmd+opt": "\\u{A0}"
+    }
+  },
+  "levels": [
+    "to",
+    "shift caps+shiftR+shiftL?",
+    "caps+cmd?",
+    "caps+shiftL",
+    "opt+caps? cmd+optR+caps+optL?",
+    "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?",
+    "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?",
+    "cmd+optL+shiftL",
+    "cmd+optL+caps",
+    "cmd+opt"
+  ],
+  "charMap": {
+    "0": [
+      "E10",
+      "to"
+    ],
+    "1": [
+      "E01",
+      "to"
+    ],
+    "2": [
+      "E02",
+      "to"
+    ],
+    "3": [
+      "E03",
+      "to"
+    ],
+    "4": [
+      "E04",
+      "to"
+    ],
+    "5": [
+      "E05",
+      "to"
+    ],
+    "6": [
+      "E06",
+      "to"
+    ],
+    "7": [
+      "E07",
+      "to"
+    ],
+    "8": [
+      "E08",
+      "to"
+    ],
+    "9": [
+      "E09",
+      "to"
+    ],
+    "<": [
+      "E00",
+      "to"
+    ],
+    "'": [
+      "E11",
+      "to"
+    ],
+    "^": [
+      "E12",
+      "to"
+    ],
+    "q": [
+      "D01",
+      "to"
+    ],
+    "w": [
+      "D02",
+      "to"
+    ],
+    "e": [
+      "D03",
+      "to"
+    ],
+    "r": [
+      "D04",
+      "to"
+    ],
+    "t": [
+      "D05",
+      "to"
+    ],
+    "z": [
+      "D06",
+      "to"
+    ],
+    "u": [
+      "D07",
+      "to"
+    ],
+    "i": [
+      "D08",
+      "to"
+    ],
+    "o": [
+      "D09",
+      "to"
+    ],
+    "p": [
+      "D10",
+      "to"
+    ],
+    "ü": [
+      "D11",
+      "to"
+    ],
+    "¨": [
+      "D12",
+      "to"
+    ],
+    "$": [
+      "D13",
+      "to"
+    ],
+    "a": [
+      "C01",
+      "to"
+    ],
+    "s": [
+      "C02",
+      "to"
+    ],
+    "d": [
+      "C03",
+      "to"
+    ],
+    "f": [
+      "C04",
+      "to"
+    ],
+    "g": [
+      "C05",
+      "to"
+    ],
+    "h": [
+      "C06",
+      "to"
+    ],
+    "j": [
+      "C07",
+      "to"
+    ],
+    "k": [
+      "C08",
+      "to"
+    ],
+    "l": [
+      "C09",
+      "to"
+    ],
+    "ö": [
+      "C10",
+      "to"
+    ],
+    "ä": [
+      "C11",
+      "to"
+    ],
+    "§": [
+      "B00",
+      "to"
+    ],
+    "y": [
+      "B01",
+      "to"
+    ],
+    "x": [
+      "B02",
+      "to"
+    ],
+    "c": [
+      "B03",
+      "to"
+    ],
+    "v": [
+      "B04",
+      "to"
+    ],
+    "b": [
+      "B05",
+      "to"
+    ],
+    "n": [
+      "B06",
+      "to"
+    ],
+    "m": [
+      "B07",
+      "to"
+    ],
+    ",": [
+      "B08",
+      "to"
+    ],
+    ".": [
+      "B09",
+      "to"
+    ],
+    "-": [
+      "B10",
+      "to"
+    ],
+    " ": [
+      "A03",
+      "to"
+    ],
+    ">": [
+      "E00",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "+": [
+      "E01",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "\\u{22}": [
+      "E02",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "*": [
+      "E03",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "ç": [
+      "E04",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "%": [
+      "E05",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "&": [
+      "E06",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "/": [
+      "E07",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "(": [
+      "E08",
+      "shift caps+shiftR+shiftL?"
+    ],
+    ")": [
+      "E09",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "=": [
+      "E10",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "?": [
+      "E11",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "`": [
+      "E12",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "Q": [
+      "D01",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "W": [
+      "D02",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "E": [
+      "D03",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "R": [
+      "D04",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "T": [
+      "D05",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "Z": [
+      "D06",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "U": [
+      "D07",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "I": [
+      "D08",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "O": [
+      "D09",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "P": [
+      "D10",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "è": [
+      "D11",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "!": [
+      "D12",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "£": [
+      "D13",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "A": [
+      "C01",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "S": [
+      "C02",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "D": [
+      "C03",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "F": [
+      "C04",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "G": [
+      "C05",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "H": [
+      "C06",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "J": [
+      "C07",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "K": [
+      "C08",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "L": [
+      "C09",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "é": [
+      "C10",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "à": [
+      "C11",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "°": [
+      "B00",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "Y": [
+      "B01",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "X": [
+      "B02",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "C": [
+      "B03",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "V": [
+      "B04",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "B": [
+      "B05",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "N": [
+      "B06",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "M": [
+      "B07",
+      "shift caps+shiftR+shiftL?"
+    ],
+    ";": [
+      "B08",
+      "shift caps+shiftR+shiftL?"
+    ],
+    ":": [
+      "B09",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "_": [
+      "B10",
+      "shift caps+shiftR+shiftL?"
+    ],
+    "Ü": [
+      "D11",
+      "caps+cmd?"
+    ],
+    "Ö": [
+      "C10",
+      "caps+cmd?"
+    ],
+    "Ä": [
+      "C11",
+      "caps+cmd?"
+    ],
+    "È": [
+      "D11",
+      "caps+shiftL"
+    ],
+    "É": [
+      "C10",
+      "caps+shiftL"
+    ],
+    "À": [
+      "C11",
+      "caps+shiftL"
+    ],
+    "≤": [
+      "E00",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "±": [
+      "E01",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "“": [
+      "E02",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "#": [
+      "E03",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "Ç": [
+      "E04",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "[": [
+      "E05",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "]": [
+      "E06",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "|": [
+      "E07",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "{": [
+      "E08",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "}": [
+      "E09",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "≠": [
+      "E10",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "¿": [
+      "E11",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "´": [
+      "E12",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "œ": [
+      "D01",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "∑": [
+      "D02",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "€": [
+      "D03",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "®": [
+      "D04",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "†": [
+      "D05",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "Ω": [
+      "D06",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "¡": [
+      "D08",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "ø": [
+      "D09",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "π": [
+      "D10",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "‘": [
+      "D12",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "¶": [
+      "D13",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "å": [
+      "C01",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "ß": [
+      "C02",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "∂": [
+      "C03",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "ƒ": [
+      "C04",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "@": [
+      "C05",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "ª": [
+      "C06",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "º": [
+      "C07",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "∆": [
+      "C08",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "¬": [
+      "C09",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "¢": [
+      "C10",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "æ": [
+      "C11",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "ﬁ": [
+      "B00",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "¥": [
+      "B01",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "≈": [
+      "B02",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "©": [
+      "B03",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "√": [
+      "B04",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "∫": [
+      "B05",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "~": [
+      "B06",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "µ": [
+      "B07",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "«": [
+      "B08",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "…": [
+      "B09",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "–": [
+      "B10",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "\\u{A0}": [
+      "A03",
+      "opt+caps? cmd+optR+caps+optL?"
+    ],
+    "≥": [
+      "E00",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "∞": [
+      "E01",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "”": [
+      "E02",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "‹": [
+      "E03",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "⁄": [
+      "E04",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "\\": [
+      "E07",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "Ò": [
+      "E08",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "Ô": [
+      "E09",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "Ú": [
+      "E10",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "\\u{F8FF}": [
+      "E11",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "Œ": [
+      "D01",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "Á": [
+      "D02",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "Ë": [
+      "D03",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "Î": [
+      "D05",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "Í": [
+      "D06",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "Ù": [
+      "D07",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "ı": [
+      "D08",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "Ø": [
+      "D09",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "∏": [
+      "D10",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "ÿ": [
+      "D11",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "’": [
+      "D12",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "•": [
+      "D13",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "Å": [
+      "C01",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "ﬂ": [
+      "C03",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "‡": [
+      "C04",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "‚": [
+      "C05",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "·": [
+      "C06",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "˜": [
+      "C07",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "¯": [
+      "C08",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "ˆ": [
+      "C09",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "˘": [
+      "C10",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "Æ": [
+      "C11",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "‰": [
+      "B00",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "Ÿ": [
+      "B01",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "™": [
+      "B02",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "\\u{13}": [
+      "B03",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "◊": [
+      "B04",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "\\u{14}": [
+      "B05",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "˙": [
+      "B06",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "˚": [
+      "B07",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "»": [
+      "B08",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "÷": [
+      "B09",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "—": [
+      "B10",
+      "opt+shift+caps? opt+caps+shift+cmd? cmd+optR+shift+optL? cmd+opt+shiftR+shiftL?"
+    ],
+    "\\u{1F}": [
+      "E11",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{11}": [
+      "D01",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{17}": [
+      "D02",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{5}": [
+      "D03",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{12}": [
+      "D04",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{1A}": [
+      "D06",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{15}": [
+      "D07",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{9}": [
+      "D08",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{F}": [
+      "D09",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{10}": [
+      "D10",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{1B}": [
+      "D11",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{1D}": [
+      "D12",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{1C}": [
+      "D13",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{1}": [
+      "C01",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{4}": [
+      "C03",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{6}": [
+      "C04",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{7}": [
+      "C05",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{8}": [
+      "C06",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{A}": [
+      "C07",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{B}": [
+      "C08",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{C}": [
+      "C09",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{19}": [
+      "B01",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{18}": [
+      "B02",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{3}": [
+      "B03",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{16}": [
+      "B04",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{2}": [
+      "B05",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{E}": [
+      "B06",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "\\u{D}": [
+      "B07",
+      "ctrl+opt?+caps?+shift? ctrl+cmd?+opt?+shift? ctrl+cmd?+opt?+caps? cmd+ctrlR+opt+caps+shift cmd+ctrlL+opt+caps+shift cmd+ctrl+caps+shift+optR? cmd+ctrl+caps+shift+optL? cmd+ctrl+opt+caps+shiftR? cmd+ctrl+opt+caps+shiftL?"
+    ],
+    "›": [
+      "E04",
+      "cmd+optL+shiftL"
+    ],
+    "„": [
+      "D02",
+      "cmd+optL+shiftL"
+    ],
+    "Â": [
+      "D04",
+      "cmd+optL+shiftL"
+    ],
+    "Ê": [
+      "D05",
+      "cmd+optL+shiftL"
+    ],
+    "Ï": [
+      "C04",
+      "cmd+optL+shiftL"
+    ],
+    "Ì": [
+      "C05",
+      "cmd+optL+shiftL"
+    ],
+    "Ó": [
+      "C06",
+      "cmd+optL+shiftL"
+    ],
+    "Û": [
+      "B01",
+      "cmd+optL+shiftL"
+    ]
+  },
+  "allChars": [
+    "<",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "0",
+    "'",
+    "^",
+    "q",
+    "w",
+    "e",
+    "r",
+    "t",
+    "z",
+    "u",
+    "i",
+    "o",
+    "p",
+    "ü",
+    "¨",
+    "$",
+    "a",
+    "s",
+    "d",
+    "f",
+    "g",
+    "h",
+    "j",
+    "k",
+    "l",
+    "ö",
+    "ä",
+    "§",
+    "y",
+    "x",
+    "c",
+    "v",
+    "b",
+    "n",
+    "m",
+    ",",
+    ".",
+    "-",
+    " ",
+    ">",
+    "+",
+    "\\u{22}",
+    "*",
+    "ç",
+    "%",
+    "&",
+    "/",
+    "(",
+    ")",
+    "=",
+    "?",
+    "`",
+    "Q",
+    "W",
+    "E",
+    "R",
+    "T",
+    "Z",
+    "U",
+    "I",
+    "O",
+    "P",
+    "è",
+    "!",
+    "£",
+    "A",
+    "S",
+    "D",
+    "F",
+    "G",
+    "H",
+    "J",
+    "K",
+    "L",
+    "é",
+    "à",
+    "°",
+    "Y",
+    "X",
+    "C",
+    "V",
+    "B",
+    "N",
+    "M",
+    ";",
+    ":",
+    "_",
+    "Ü",
+    "Ö",
+    "Ä",
+    "È",
+    "É",
+    "À",
+    "≤",
+    "±",
+    "“",
+    "#",
+    "Ç",
+    "[",
+    "]",
+    "|",
+    "{",
+    "}",
+    "≠",
+    "¿",
+    "´",
+    "œ",
+    "∑",
+    "€",
+    "®",
+    "†",
+    "Ω",
+    "¡",
+    "ø",
+    "π",
+    "‘",
+    "¶",
+    "å",
+    "ß",
+    "∂",
+    "ƒ",
+    "@",
+    "ª",
+    "º",
+    "∆",
+    "¬",
+    "¢",
+    "æ",
+    "ﬁ",
+    "¥",
+    "≈",
+    "©",
+    "√",
+    "∫",
+    "~",
+    "µ",
+    "«",
+    "…",
+    "–",
+    "\\u{A0}",
+    "≥",
+    "∞",
+    "”",
+    "‹",
+    "⁄",
+    "\\",
+    "Ò",
+    "Ô",
+    "Ú",
+    "\\u{F8FF}",
+    "Œ",
+    "Á",
+    "Ë",
+    "Î",
+    "Í",
+    "Ù",
+    "ı",
+    "Ø",
+    "∏",
+    "ÿ",
+    "’",
+    "•",
+    "Å",
+    "ﬂ",
+    "‡",
+    "‚",
+    "·",
+    "˜",
+    "¯",
+    "ˆ",
+    "˘",
+    "Æ",
+    "‰",
+    "Ÿ",
+    "™",
+    "\\u{13}",
+    "◊",
+    "\\u{14}",
+    "˙",
+    "˚",
+    "»",
+    "÷",
+    "—",
+    "\\u{1F}",
+    "\\u{11}",
+    "\\u{17}",
+    "\\u{5}",
+    "\\u{12}",
+    "\\u{1A}",
+    "\\u{15}",
+    "\\u{9}",
+    "\\u{F}",
+    "\\u{10}",
+    "\\u{1B}",
+    "\\u{1D}",
+    "\\u{1C}",
+    "\\u{1}",
+    "\\u{4}",
+    "\\u{6}",
+    "\\u{7}",
+    "\\u{8}",
+    "\\u{A}",
+    "\\u{B}",
+    "\\u{C}",
+    "\\u{19}",
+    "\\u{18}",
+    "\\u{3}",
+    "\\u{16}",
+    "\\u{2}",
+    "\\u{E}",
+    "\\u{D}",
+    "›",
+    "„",
+    "Â",
+    "Ê",
+    "Ï",
+    "Ì",
+    "Ó",
+    "Û",
+    "`",
+    "à",
+    "À",
+    "è",
+    "È",
+    "ì",
+    "Ì",
+    "ò",
+    "Ò",
+    "ù",
+    "Ù",
+    "´",
+    "á",
+    "é",
+    "É",
+    "í",
+    "ó",
+    "ú",
+    "^",
+    "â",
+    "Â",
+    "ê",
+    "Ê",
+    "î",
+    "Î",
+    "ô",
+    "Ô",
+    "û",
+    "Û",
+    "¨",
+    "ä",
+    "Ä",
+    "ë",
+    "Ë",
+    "ï",
+    "Ï",
+    "ö",
+    "Ö",
+    "ü",
+    "Ü",
+    "ÿ",
+    "Ÿ",
+    "~",
+    "ã",
+    "Ã",
+    "ñ",
+    "Ñ",
+    "õ",
+    "Õ"
+  ],
+  "deadKeys": {
+    "`": [
+      "`",
+      " "
+    ],
+    "à": [
+      "`",
+      "a"
+    ],
+    "À": [
+      "`",
+      "A"
+    ],
+    "è": [
+      "`",
+      "e"
+    ],
+    "È": [
+      "`",
+      "E"
+    ],
+    "ì": [
+      "`",
+      "i"
+    ],
+    "Ì": [
+      "`",
+      "I"
+    ],
+    "ò": [
+      "`",
+      "o"
+    ],
+    "Ò": [
+      "`",
+      "O"
+    ],
+    "ù": [
+      "`",
+      "u"
+    ],
+    "Ù": [
+      "`",
+      "U"
+    ],
+    "´": [
+      "´",
+      " "
+    ],
+    "á": [
+      "´",
+      "a"
+    ],
+    "é": [
+      "´",
+      "e"
+    ],
+    "É": [
+      "´",
+      "E"
+    ],
+    "í": [
+      "´",
+      "i"
+    ],
+    "ó": [
+      "´",
+      "o"
+    ],
+    "ú": [
+      "´",
+      "u"
+    ],
+    "^": [
+      "^",
+      " "
+    ],
+    "â": [
+      "^",
+      "a"
+    ],
+    "Â": [
+      "^",
+      "A"
+    ],
+    "ê": [
+      "^",
+      "e"
+    ],
+    "Ê": [
+      "^",
+      "E"
+    ],
+    "î": [
+      "^",
+      "i"
+    ],
+    "Î": [
+      "^",
+      "I"
+    ],
+    "ô": [
+      "^",
+      "o"
+    ],
+    "Ô": [
+      "^",
+      "O"
+    ],
+    "û": [
+      "^",
+      "u"
+    ],
+    "Û": [
+      "^",
+      "U"
+    ],
+    "¨": [
+      "¨",
+      " "
+    ],
+    "ä": [
+      "¨",
+      "a"
+    ],
+    "Ä": [
+      "¨",
+      "A"
+    ],
+    "ë": [
+      "¨",
+      "e"
+    ],
+    "Ë": [
+      "¨",
+      "E"
+    ],
+    "ï": [
+      "¨",
+      "i"
+    ],
+    "Ï": [
+      "¨",
+      "I"
+    ],
+    "ö": [
+      "¨",
+      "o"
+    ],
+    "Ö": [
+      "¨",
+      "O"
+    ],
+    "ü": [
+      "¨",
+      "u"
+    ],
+    "Ü": [
+      "¨",
+      "U"
+    ],
+    "ÿ": [
+      "¨",
+      "y"
+    ],
+    "Ÿ": [
+      "¨",
+      "Y"
+    ],
+    "~": [
+      "~",
+      " "
+    ],
+    "ã": [
+      "~",
+      "a"
+    ],
+    "Ã": [
+      "~",
+      "A"
+    ],
+    "ñ": [
+      "~",
+      "n"
+    ],
+    "Ñ": [
+      "~",
+      "N"
+    ],
+    "õ": [
+      "~",
+      "o"
+    ],
+    "Õ": [
+      "~",
+      "O"
+    ]
+  }
+}

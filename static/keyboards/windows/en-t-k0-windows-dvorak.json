@@ -1,0 +1,808 @@
+{
+  "name": "United States-Dvorak",
+  "keys": {
+    "E00": {
+      "to": "`",
+      "shift": "~",
+      "caps": "`",
+      "caps+shift": "~"
+    },
+    "E01": {
+      "to": "1",
+      "shift": "!",
+      "caps": "1",
+      "caps+shift": "!"
+    },
+    "E02": {
+      "to": "2",
+      "shift": "@",
+      "caps": "2",
+      "caps+shift": "@"
+    },
+    "E03": {
+      "to": "3",
+      "shift": "#",
+      "caps": "3",
+      "caps+shift": "#"
+    },
+    "E04": {
+      "to": "4",
+      "shift": "$",
+      "caps": "4",
+      "caps+shift": "$"
+    },
+    "E05": {
+      "to": "5",
+      "shift": "%",
+      "caps": "5",
+      "caps+shift": "%"
+    },
+    "E06": {
+      "to": "6",
+      "shift": "^",
+      "caps": "6",
+      "caps+shift": "^"
+    },
+    "E07": {
+      "to": "7",
+      "shift": "&",
+      "caps": "7",
+      "caps+shift": "&"
+    },
+    "E08": {
+      "to": "8",
+      "shift": "*",
+      "caps": "8",
+      "caps+shift": "*"
+    },
+    "E09": {
+      "to": "9",
+      "shift": "(",
+      "caps": "9",
+      "caps+shift": "("
+    },
+    "E10": {
+      "to": "0",
+      "shift": ")",
+      "caps": "0",
+      "caps+shift": ")"
+    },
+    "E11": {
+      "to": "[",
+      "shift": "{",
+      "caps": "[",
+      "caps+shift": "{",
+      "ctrl+caps?": "\\u{1B}"
+    },
+    "E12": {
+      "to": "]",
+      "shift": "}",
+      "caps": "]",
+      "caps+shift": "}",
+      "ctrl+caps?": "\\u{1D}"
+    },
+    "D01": {
+      "to": "'",
+      "shift": "\\u{22}",
+      "caps": "'",
+      "caps+shift": "\\u{22}"
+    },
+    "D02": {
+      "to": ",",
+      "shift": "<",
+      "caps": ",",
+      "caps+shift": "<"
+    },
+    "D03": {
+      "to": ".",
+      "shift": ">",
+      "caps": ".",
+      "caps+shift": ">"
+    },
+    "D04": {
+      "to": "p",
+      "shift": "P",
+      "caps": "P",
+      "caps+shift": "p"
+    },
+    "D05": {
+      "to": "y",
+      "shift": "Y",
+      "caps": "Y",
+      "caps+shift": "y"
+    },
+    "D06": {
+      "to": "f",
+      "shift": "F",
+      "caps": "F",
+      "caps+shift": "f"
+    },
+    "D07": {
+      "to": "g",
+      "shift": "G",
+      "caps": "G",
+      "caps+shift": "g"
+    },
+    "D08": {
+      "to": "c",
+      "shift": "C",
+      "caps": "C",
+      "caps+shift": "c"
+    },
+    "D09": {
+      "to": "r",
+      "shift": "R",
+      "caps": "R",
+      "caps+shift": "r"
+    },
+    "D10": {
+      "to": "l",
+      "shift": "L",
+      "caps": "L",
+      "caps+shift": "l"
+    },
+    "D11": {
+      "to": "/",
+      "shift": "?",
+      "caps": "/",
+      "caps+shift": "?"
+    },
+    "D12": {
+      "to": "=",
+      "shift": "+",
+      "caps": "=",
+      "caps+shift": "+"
+    },
+    "C01": {
+      "to": "a",
+      "shift": "A",
+      "caps": "A",
+      "caps+shift": "a"
+    },
+    "C02": {
+      "to": "o",
+      "shift": "O",
+      "caps": "O",
+      "caps+shift": "o"
+    },
+    "C03": {
+      "to": "e",
+      "shift": "E",
+      "caps": "E",
+      "caps+shift": "e"
+    },
+    "C04": {
+      "to": "u",
+      "shift": "U",
+      "caps": "U",
+      "caps+shift": "u"
+    },
+    "C05": {
+      "to": "i",
+      "shift": "I",
+      "caps": "I",
+      "caps+shift": "i"
+    },
+    "C06": {
+      "to": "d",
+      "shift": "D",
+      "caps": "D",
+      "caps+shift": "d"
+    },
+    "C07": {
+      "to": "h",
+      "shift": "H",
+      "caps": "H",
+      "caps+shift": "h"
+    },
+    "C08": {
+      "to": "t",
+      "shift": "T",
+      "caps": "T",
+      "caps+shift": "t"
+    },
+    "C09": {
+      "to": "n",
+      "shift": "N",
+      "caps": "N",
+      "caps+shift": "n"
+    },
+    "C10": {
+      "to": "s",
+      "shift": "S",
+      "caps": "S",
+      "caps+shift": "s"
+    },
+    "C11": {
+      "to": "-",
+      "shift": "_",
+      "caps": "-",
+      "caps+shift": "_"
+    },
+    "C12": {
+      "to": "\\",
+      "shift": "|",
+      "caps": "\\",
+      "caps+shift": "|",
+      "ctrl+caps?": "\\u{1C}"
+    },
+    "B00": {
+      "to": "\\",
+      "shift": "|",
+      "caps": "\\",
+      "caps+shift": "|",
+      "ctrl+caps?": "\\u{1C}"
+    },
+    "B01": {
+      "to": ";",
+      "shift": ":",
+      "caps": ";",
+      "caps+shift": ":"
+    },
+    "B02": {
+      "to": "q",
+      "shift": "Q",
+      "caps": "Q",
+      "caps+shift": "q"
+    },
+    "B03": {
+      "to": "j",
+      "shift": "J",
+      "caps": "J",
+      "caps+shift": "j"
+    },
+    "B04": {
+      "to": "k",
+      "shift": "K",
+      "caps": "K",
+      "caps+shift": "k"
+    },
+    "B05": {
+      "to": "x",
+      "shift": "X",
+      "caps": "X",
+      "caps+shift": "x"
+    },
+    "B06": {
+      "to": "b",
+      "shift": "B",
+      "caps": "B",
+      "caps+shift": "b"
+    },
+    "B07": {
+      "to": "m",
+      "shift": "M",
+      "caps": "M",
+      "caps+shift": "m"
+    },
+    "B08": {
+      "to": "w",
+      "shift": "W",
+      "caps": "W",
+      "caps+shift": "w"
+    },
+    "B09": {
+      "to": "v",
+      "shift": "V",
+      "caps": "V",
+      "caps+shift": "v"
+    },
+    "B10": {
+      "to": "z",
+      "shift": "Z",
+      "caps": "Z",
+      "caps+shift": "z"
+    },
+    "A03": {
+      "to": " ",
+      "shift": " ",
+      "caps": " ",
+      "caps+shift": " ",
+      "ctrl+caps?": " "
+    }
+  },
+  "levels": [
+    "to",
+    "shift",
+    "caps",
+    "caps+shift",
+    "ctrl+caps?"
+  ],
+  "charMap": {
+    "0": [
+      "E10",
+      "to"
+    ],
+    "1": [
+      "E01",
+      "to"
+    ],
+    "2": [
+      "E02",
+      "to"
+    ],
+    "3": [
+      "E03",
+      "to"
+    ],
+    "4": [
+      "E04",
+      "to"
+    ],
+    "5": [
+      "E05",
+      "to"
+    ],
+    "6": [
+      "E06",
+      "to"
+    ],
+    "7": [
+      "E07",
+      "to"
+    ],
+    "8": [
+      "E08",
+      "to"
+    ],
+    "9": [
+      "E09",
+      "to"
+    ],
+    "`": [
+      "E00",
+      "to"
+    ],
+    "[": [
+      "E11",
+      "to"
+    ],
+    "]": [
+      "E12",
+      "to"
+    ],
+    "'": [
+      "D01",
+      "to"
+    ],
+    ",": [
+      "D02",
+      "to"
+    ],
+    ".": [
+      "D03",
+      "to"
+    ],
+    "p": [
+      "D04",
+      "to"
+    ],
+    "y": [
+      "D05",
+      "to"
+    ],
+    "f": [
+      "D06",
+      "to"
+    ],
+    "g": [
+      "D07",
+      "to"
+    ],
+    "c": [
+      "D08",
+      "to"
+    ],
+    "r": [
+      "D09",
+      "to"
+    ],
+    "l": [
+      "D10",
+      "to"
+    ],
+    "/": [
+      "D11",
+      "to"
+    ],
+    "=": [
+      "D12",
+      "to"
+    ],
+    "a": [
+      "C01",
+      "to"
+    ],
+    "o": [
+      "C02",
+      "to"
+    ],
+    "e": [
+      "C03",
+      "to"
+    ],
+    "u": [
+      "C04",
+      "to"
+    ],
+    "i": [
+      "C05",
+      "to"
+    ],
+    "d": [
+      "C06",
+      "to"
+    ],
+    "h": [
+      "C07",
+      "to"
+    ],
+    "t": [
+      "C08",
+      "to"
+    ],
+    "n": [
+      "C09",
+      "to"
+    ],
+    "s": [
+      "C10",
+      "to"
+    ],
+    "-": [
+      "C11",
+      "to"
+    ],
+    "\\": [
+      "C12",
+      "to"
+    ],
+    ";": [
+      "B01",
+      "to"
+    ],
+    "q": [
+      "B02",
+      "to"
+    ],
+    "j": [
+      "B03",
+      "to"
+    ],
+    "k": [
+      "B04",
+      "to"
+    ],
+    "x": [
+      "B05",
+      "to"
+    ],
+    "b": [
+      "B06",
+      "to"
+    ],
+    "m": [
+      "B07",
+      "to"
+    ],
+    "w": [
+      "B08",
+      "to"
+    ],
+    "v": [
+      "B09",
+      "to"
+    ],
+    "z": [
+      "B10",
+      "to"
+    ],
+    " ": [
+      "A03",
+      "to"
+    ],
+    "~": [
+      "E00",
+      "shift"
+    ],
+    "!": [
+      "E01",
+      "shift"
+    ],
+    "@": [
+      "E02",
+      "shift"
+    ],
+    "#": [
+      "E03",
+      "shift"
+    ],
+    "$": [
+      "E04",
+      "shift"
+    ],
+    "%": [
+      "E05",
+      "shift"
+    ],
+    "^": [
+      "E06",
+      "shift"
+    ],
+    "&": [
+      "E07",
+      "shift"
+    ],
+    "*": [
+      "E08",
+      "shift"
+    ],
+    "(": [
+      "E09",
+      "shift"
+    ],
+    ")": [
+      "E10",
+      "shift"
+    ],
+    "{": [
+      "E11",
+      "shift"
+    ],
+    "}": [
+      "E12",
+      "shift"
+    ],
+    "\\u{22}": [
+      "D01",
+      "shift"
+    ],
+    "<": [
+      "D02",
+      "shift"
+    ],
+    ">": [
+      "D03",
+      "shift"
+    ],
+    "P": [
+      "D04",
+      "shift"
+    ],
+    "Y": [
+      "D05",
+      "shift"
+    ],
+    "F": [
+      "D06",
+      "shift"
+    ],
+    "G": [
+      "D07",
+      "shift"
+    ],
+    "C": [
+      "D08",
+      "shift"
+    ],
+    "R": [
+      "D09",
+      "shift"
+    ],
+    "L": [
+      "D10",
+      "shift"
+    ],
+    "?": [
+      "D11",
+      "shift"
+    ],
+    "+": [
+      "D12",
+      "shift"
+    ],
+    "A": [
+      "C01",
+      "shift"
+    ],
+    "O": [
+      "C02",
+      "shift"
+    ],
+    "E": [
+      "C03",
+      "shift"
+    ],
+    "U": [
+      "C04",
+      "shift"
+    ],
+    "I": [
+      "C05",
+      "shift"
+    ],
+    "D": [
+      "C06",
+      "shift"
+    ],
+    "H": [
+      "C07",
+      "shift"
+    ],
+    "T": [
+      "C08",
+      "shift"
+    ],
+    "N": [
+      "C09",
+      "shift"
+    ],
+    "S": [
+      "C10",
+      "shift"
+    ],
+    "_": [
+      "C11",
+      "shift"
+    ],
+    "|": [
+      "C12",
+      "shift"
+    ],
+    ":": [
+      "B01",
+      "shift"
+    ],
+    "Q": [
+      "B02",
+      "shift"
+    ],
+    "J": [
+      "B03",
+      "shift"
+    ],
+    "K": [
+      "B04",
+      "shift"
+    ],
+    "X": [
+      "B05",
+      "shift"
+    ],
+    "B": [
+      "B06",
+      "shift"
+    ],
+    "M": [
+      "B07",
+      "shift"
+    ],
+    "W": [
+      "B08",
+      "shift"
+    ],
+    "V": [
+      "B09",
+      "shift"
+    ],
+    "Z": [
+      "B10",
+      "shift"
+    ],
+    "\\u{1B}": [
+      "E11",
+      "ctrl+caps?"
+    ],
+    "\\u{1D}": [
+      "E12",
+      "ctrl+caps?"
+    ],
+    "\\u{1C}": [
+      "C12",
+      "ctrl+caps?"
+    ]
+  },
+  "allChars": [
+    "`",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "0",
+    "[",
+    "]",
+    "'",
+    ",",
+    ".",
+    "p",
+    "y",
+    "f",
+    "g",
+    "c",
+    "r",
+    "l",
+    "/",
+    "=",
+    "a",
+    "o",
+    "e",
+    "u",
+    "i",
+    "d",
+    "h",
+    "t",
+    "n",
+    "s",
+    "-",
+    "\\",
+    ";",
+    "q",
+    "j",
+    "k",
+    "x",
+    "b",
+    "m",
+    "w",
+    "v",
+    "z",
+    " ",
+    "~",
+    "!",
+    "@",
+    "#",
+    "$",
+    "%",
+    "^",
+    "&",
+    "*",
+    "(",
+    ")",
+    "{",
+    "}",
+    "\\u{22}",
+    "<",
+    ">",
+    "P",
+    "Y",
+    "F",
+    "G",
+    "C",
+    "R",
+    "L",
+    "?",
+    "+",
+    "A",
+    "O",
+    "E",
+    "U",
+    "I",
+    "D",
+    "H",
+    "T",
+    "N",
+    "S",
+    "_",
+    "|",
+    ":",
+    "Q",
+    "J",
+    "K",
+    "X",
+    "B",
+    "M",
+    "W",
+    "V",
+    "Z",
+    "\\u{1B}",
+    "\\u{1D}",
+    "\\u{1C}"
+  ],
+  "settings": {
+    "fallback": "omit"
+  }
+}

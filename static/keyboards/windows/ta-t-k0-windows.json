@@ -1,0 +1,712 @@
+{
+  "name": "Tamil",
+  "keys": {
+    "E00": {
+      "to": "\\u{BCA}",
+      "shift": "ஒ",
+      "caps+shift": "ஒ"
+    },
+    "E01": {
+      "to": "1",
+      "altR+caps? ctrl+alt+caps?": "௧",
+      "ctrl+shift+caps?": "\\u{200D}"
+    },
+    "E02": {
+      "to": "2",
+      "altR+caps? ctrl+alt+caps?": "௨",
+      "ctrl+shift+caps?": "\\u{200C}"
+    },
+    "E03": {
+      "to": "3",
+      "altR+caps? ctrl+alt+caps?": "௩"
+    },
+    "E04": {
+      "to": "4",
+      "altR+caps? ctrl+alt+caps?": "௪",
+      "ctrl+shift+caps?": "₹"
+    },
+    "E05": {
+      "to": "5",
+      "altR+caps? ctrl+alt+caps?": "௫"
+    },
+    "E06": {
+      "to": "6",
+      "shift": "த\\u{BCD}ர",
+      "altR+caps? ctrl+alt+caps?": "௬"
+    },
+    "E07": {
+      "to": "7",
+      "shift": "க\\u{BCD}ஷ",
+      "altR+caps? ctrl+alt+caps?": "௭"
+    },
+    "E08": {
+      "to": "8",
+      "shift": "ஷ\\u{BCD}ர",
+      "altR+caps? ctrl+alt+caps?": "௮"
+    },
+    "E09": {
+      "to": "9",
+      "altR+caps? ctrl+alt+caps?": "௯"
+    },
+    "E10": {
+      "to": "0",
+      "shift": "௰",
+      "caps+shift": "௰",
+      "altR+caps? ctrl+alt+caps?": "௦"
+    },
+    "E11": {
+      "to": "-",
+      "shift": "ஃ",
+      "caps+shift": "ஃ",
+      "altR+caps? ctrl+alt+caps?": "௱"
+    },
+    "D01": {
+      "to": "\\u{BCC}",
+      "shift": "ஔ",
+      "caps+shift": "ஔ"
+    },
+    "D02": {
+      "to": "\\u{BC8}",
+      "shift": "ஐ",
+      "caps+shift": "ஐ"
+    },
+    "D03": {
+      "to": "\\u{BBE}",
+      "shift": "ஆ",
+      "caps+shift": "ஆ"
+    },
+    "D04": {
+      "to": "\\u{BC0}",
+      "shift": "ஈ",
+      "caps+shift": "ஈ"
+    },
+    "D05": {
+      "to": "\\u{BC2}",
+      "shift": "ஊ",
+      "caps+shift": "ஊ"
+    },
+    "D06": {
+      "to": "ப",
+      "shift": "ப",
+      "caps+shift": "ப",
+      "altR+caps? ctrl+alt+caps?": "௷"
+    },
+    "D07": {
+      "to": "ஹ",
+      "shift": "ங",
+      "caps+shift": "ங"
+    },
+    "D08": {
+      "to": "க",
+      "shift": "க",
+      "caps+shift": "க"
+    },
+    "D09": {
+      "to": "த",
+      "shift": "த",
+      "caps+shift": "த"
+    },
+    "D10": {
+      "to": "ஜ",
+      "shift": "ச",
+      "caps+shift": "ச"
+    },
+    "D11": {
+      "to": "ட",
+      "shift": "ட",
+      "caps+shift": "ட"
+    },
+    "D12": {
+      "to": "ஞ",
+      "shift": "ஞ",
+      "caps+shift": "ஞ"
+    },
+    "C01": {
+      "to": "\\u{BCB}",
+      "shift": "ஓ",
+      "caps+shift": "ஓ"
+    },
+    "C02": {
+      "to": "\\u{BC7}",
+      "shift": "ஏ",
+      "caps+shift": "ஏ"
+    },
+    "C03": {
+      "to": "\\u{BCD}",
+      "shift": "அ",
+      "caps+shift": "அ"
+    },
+    "C04": {
+      "to": "\\u{BBF}",
+      "shift": "இ",
+      "caps+shift": "இ"
+    },
+    "C05": {
+      "to": "\\u{BC1}",
+      "shift": "உ",
+      "caps+shift": "உ"
+    },
+    "C06": {
+      "to": "ப",
+      "shift": "ப",
+      "caps+shift": "ப",
+      "altR+caps? ctrl+alt+caps?": "௶"
+    },
+    "C07": {
+      "to": "ர",
+      "shift": "ற",
+      "caps+shift": "ற"
+    },
+    "C08": {
+      "to": "க",
+      "shift": "க",
+      "caps+shift": "க"
+    },
+    "C09": {
+      "to": "த",
+      "shift": "த",
+      "caps+shift": "த"
+    },
+    "C10": {
+      "to": "ச",
+      "shift": "ச",
+      "caps+shift": "ச"
+    },
+    "C11": {
+      "to": "ட",
+      "shift": "ட",
+      "caps+shift": "ட"
+    },
+    "B01": {
+      "to": "\\u{BC6}",
+      "shift": "எ",
+      "caps+shift": "எ",
+      "altR+caps? ctrl+alt+caps?": "௹"
+    },
+    "B03": {
+      "to": "ம",
+      "shift": "ண",
+      "caps+shift": "ண",
+      "altR+caps? ctrl+alt+caps?": "௴"
+    },
+    "B04": {
+      "to": "ந",
+      "shift": "ன",
+      "caps+shift": "ன",
+      "altR+caps? ctrl+alt+caps?": "௳"
+    },
+    "B05": {
+      "to": "வ",
+      "shift": "ழ",
+      "caps+shift": "ழ",
+      "altR+caps? ctrl+alt+caps?": "௵"
+    },
+    "B06": {
+      "to": "ல",
+      "shift": "ள",
+      "caps+shift": "ள",
+      "altR+caps? ctrl+alt+caps?": "௸"
+    },
+    "B07": {
+      "to": "ஸ",
+      "shift": "ஶ",
+      "caps+shift": "ஶ"
+    },
+    "B08": {
+      "to": ",",
+      "shift": "ஷ",
+      "caps+shift": "ஷ"
+    },
+    "B09": {
+      "to": ".",
+      "shift": "ஸ\\u{BCD}ர\\u{BC0}"
+    },
+    "B10": {
+      "to": "ய",
+      "shift": "ய",
+      "caps+shift": "ய"
+    },
+    "A03": {
+      "to": " ",
+      "shift": " ",
+      "caps+shift": " "
+    },
+    "B02": {
+      "shift": "ௐ",
+      "caps+shift": "ௐ",
+      "altR+caps? ctrl+alt+caps?": "௺"
+    },
+    "E12": {
+      "altR+caps? ctrl+alt+caps?": "௲"
+    }
+  },
+  "levels": [
+    "to",
+    "shift",
+    "caps+shift",
+    "altR+caps? ctrl+alt+caps?",
+    "ctrl+shift+caps?"
+  ],
+  "charMap": {
+    "0": [
+      "E10",
+      "to"
+    ],
+    "1": [
+      "E01",
+      "to"
+    ],
+    "2": [
+      "E02",
+      "to"
+    ],
+    "3": [
+      "E03",
+      "to"
+    ],
+    "4": [
+      "E04",
+      "to"
+    ],
+    "5": [
+      "E05",
+      "to"
+    ],
+    "6": [
+      "E06",
+      "to"
+    ],
+    "7": [
+      "E07",
+      "to"
+    ],
+    "8": [
+      "E08",
+      "to"
+    ],
+    "9": [
+      "E09",
+      "to"
+    ],
+    "\\u{BCA}": [
+      "E00",
+      "to"
+    ],
+    "-": [
+      "E11",
+      "to"
+    ],
+    "\\u{BCC}": [
+      "D01",
+      "to"
+    ],
+    "\\u{BC8}": [
+      "D02",
+      "to"
+    ],
+    "\\u{BBE}": [
+      "D03",
+      "to"
+    ],
+    "\\u{BC0}": [
+      "D04",
+      "to"
+    ],
+    "\\u{BC2}": [
+      "D05",
+      "to"
+    ],
+    "ப": [
+      "D06",
+      "to"
+    ],
+    "ஹ": [
+      "D07",
+      "to"
+    ],
+    "க": [
+      "D08",
+      "to"
+    ],
+    "த": [
+      "D09",
+      "to"
+    ],
+    "ஜ": [
+      "D10",
+      "to"
+    ],
+    "ட": [
+      "D11",
+      "to"
+    ],
+    "ஞ": [
+      "D12",
+      "to"
+    ],
+    "\\u{BCB}": [
+      "C01",
+      "to"
+    ],
+    "\\u{BC7}": [
+      "C02",
+      "to"
+    ],
+    "\\u{BCD}": [
+      "C03",
+      "to"
+    ],
+    "\\u{BBF}": [
+      "C04",
+      "to"
+    ],
+    "\\u{BC1}": [
+      "C05",
+      "to"
+    ],
+    "ர": [
+      "C07",
+      "to"
+    ],
+    "ச": [
+      "C10",
+      "to"
+    ],
+    "\\u{BC6}": [
+      "B01",
+      "to"
+    ],
+    "ம": [
+      "B03",
+      "to"
+    ],
+    "ந": [
+      "B04",
+      "to"
+    ],
+    "வ": [
+      "B05",
+      "to"
+    ],
+    "ல": [
+      "B06",
+      "to"
+    ],
+    "ஸ": [
+      "B07",
+      "to"
+    ],
+    ",": [
+      "B08",
+      "to"
+    ],
+    ".": [
+      "B09",
+      "to"
+    ],
+    "ய": [
+      "B10",
+      "to"
+    ],
+    " ": [
+      "A03",
+      "to"
+    ],
+    "ஒ": [
+      "E00",
+      "shift"
+    ],
+    "த\\u{BCD}ர": [
+      "E06",
+      "shift"
+    ],
+    "க\\u{BCD}ஷ": [
+      "E07",
+      "shift"
+    ],
+    "ஷ\\u{BCD}ர": [
+      "E08",
+      "shift"
+    ],
+    "௰": [
+      "E10",
+      "shift"
+    ],
+    "ஃ": [
+      "E11",
+      "shift"
+    ],
+    "ஔ": [
+      "D01",
+      "shift"
+    ],
+    "ஐ": [
+      "D02",
+      "shift"
+    ],
+    "ஆ": [
+      "D03",
+      "shift"
+    ],
+    "ஈ": [
+      "D04",
+      "shift"
+    ],
+    "ஊ": [
+      "D05",
+      "shift"
+    ],
+    "ங": [
+      "D07",
+      "shift"
+    ],
+    "ஓ": [
+      "C01",
+      "shift"
+    ],
+    "ஏ": [
+      "C02",
+      "shift"
+    ],
+    "அ": [
+      "C03",
+      "shift"
+    ],
+    "இ": [
+      "C04",
+      "shift"
+    ],
+    "உ": [
+      "C05",
+      "shift"
+    ],
+    "ற": [
+      "C07",
+      "shift"
+    ],
+    "எ": [
+      "B01",
+      "shift"
+    ],
+    "ௐ": [
+      "B02",
+      "shift"
+    ],
+    "ண": [
+      "B03",
+      "shift"
+    ],
+    "ன": [
+      "B04",
+      "shift"
+    ],
+    "ழ": [
+      "B05",
+      "shift"
+    ],
+    "ள": [
+      "B06",
+      "shift"
+    ],
+    "ஶ": [
+      "B07",
+      "shift"
+    ],
+    "ஷ": [
+      "B08",
+      "shift"
+    ],
+    "ஸ\\u{BCD}ர\\u{BC0}": [
+      "B09",
+      "shift"
+    ],
+    "௧": [
+      "E01",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௨": [
+      "E02",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௩": [
+      "E03",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௪": [
+      "E04",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௫": [
+      "E05",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௬": [
+      "E06",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௭": [
+      "E07",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௮": [
+      "E08",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௯": [
+      "E09",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௦": [
+      "E10",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௱": [
+      "E11",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௲": [
+      "E12",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௷": [
+      "D06",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௶": [
+      "C06",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௹": [
+      "B01",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௺": [
+      "B02",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௴": [
+      "B03",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௳": [
+      "B04",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௵": [
+      "B05",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "௸": [
+      "B06",
+      "altR+caps? ctrl+alt+caps?"
+    ],
+    "\\u{200D}": [
+      "E01",
+      "ctrl+shift+caps?"
+    ],
+    "\\u{200C}": [
+      "E02",
+      "ctrl+shift+caps?"
+    ],
+    "₹": [
+      "E04",
+      "ctrl+shift+caps?"
+    ]
+  },
+  "allChars": [
+    "\\u{BCA}",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "0",
+    "-",
+    "\\u{BCC}",
+    "\\u{BC8}",
+    "\\u{BBE}",
+    "\\u{BC0}",
+    "\\u{BC2}",
+    "ப",
+    "ஹ",
+    "க",
+    "த",
+    "ஜ",
+    "ட",
+    "ஞ",
+    "\\u{BCB}",
+    "\\u{BC7}",
+    "\\u{BCD}",
+    "\\u{BBF}",
+    "\\u{BC1}",
+    "ர",
+    "ச",
+    "\\u{BC6}",
+    "ம",
+    "ந",
+    "வ",
+    "ல",
+    "ஸ",
+    ",",
+    ".",
+    "ய",
+    " ",
+    "ஒ",
+    "த\\u{BCD}ர",
+    "க\\u{BCD}ஷ",
+    "ஷ\\u{BCD}ர",
+    "௰",
+    "ஃ",
+    "ஔ",
+    "ஐ",
+    "ஆ",
+    "ஈ",
+    "ஊ",
+    "ங",
+    "ஓ",
+    "ஏ",
+    "அ",
+    "இ",
+    "உ",
+    "ற",
+    "எ",
+    "ௐ",
+    "ண",
+    "ன",
+    "ழ",
+    "ள",
+    "ஶ",
+    "ஷ",
+    "ஸ\\u{BCD}ர\\u{BC0}",
+    "௧",
+    "௨",
+    "௩",
+    "௪",
+    "௫",
+    "௬",
+    "௭",
+    "௮",
+    "௯",
+    "௦",
+    "௱",
+    "௲",
+    "௷",
+    "௶",
+    "௹",
+    "௺",
+    "௴",
+    "௳",
+    "௵",
+    "௸",
+    "\\u{200D}",
+    "\\u{200C}",
+    "₹"
+  ],
+  "settings": {
+    "fallback": "omit"
+  }
+}

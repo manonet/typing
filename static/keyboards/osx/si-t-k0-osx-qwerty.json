@@ -1,0 +1,1649 @@
+{
+  "name": "Sinhala-QWERTY",
+  "keys": {
+    "E00": {
+      "to": "\\u{DD1}",
+      "shift": "ඈ",
+      "caps cmd+opt?+caps?": "`",
+      "caps+shift cmd+shift+opt?+caps?": "~",
+      "opt+caps?": "`",
+      "opt+shift+caps?": "~",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "`"
+    },
+    "E01": {
+      "to": "1",
+      "shift": "!",
+      "caps cmd+opt?+caps?": "1",
+      "caps+shift cmd+shift+opt?+caps?": "!",
+      "opt+caps?": "1",
+      "opt+shift+caps?": "…",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "1"
+    },
+    "E02": {
+      "to": "2",
+      "shift": "@",
+      "caps cmd+opt?+caps?": "2",
+      "caps+shift cmd+shift+opt?+caps?": "@",
+      "opt+caps?": "2",
+      "opt+shift+caps?": "©",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "2"
+    },
+    "E03": {
+      "to": "3",
+      "shift": "#",
+      "caps cmd+opt?+caps?": "3",
+      "caps+shift cmd+shift+opt?+caps?": "#",
+      "opt+caps?": "3",
+      "opt+shift+caps?": "®",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "3"
+    },
+    "E04": {
+      "to": "4",
+      "shift": "$",
+      "caps cmd+opt?+caps?": "4",
+      "caps+shift cmd+shift+opt?+caps?": "$",
+      "opt+caps?": "4",
+      "opt+shift+caps?": "™",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "4"
+    },
+    "E05": {
+      "to": "5",
+      "shift": "%",
+      "caps cmd+opt?+caps?": "5",
+      "caps+shift cmd+shift+opt?+caps?": "%",
+      "opt+caps?": "5",
+      "opt+shift+caps?": "’",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "5"
+    },
+    "E06": {
+      "to": "6",
+      "shift": "^",
+      "caps cmd+opt?+caps?": "6",
+      "caps+shift cmd+shift+opt?+caps?": "^",
+      "opt+caps?": "6",
+      "opt+shift+caps?": "‘",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "6"
+    },
+    "E07": {
+      "to": "7",
+      "shift": "&",
+      "caps cmd+opt?+caps?": "7",
+      "caps+shift cmd+shift+opt?+caps?": "&",
+      "opt+caps?": "7",
+      "opt+shift+caps?": "–",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "7"
+    },
+    "E08": {
+      "to": "8",
+      "shift": "*",
+      "caps cmd+opt?+caps?": "8",
+      "caps+shift cmd+shift+opt?+caps?": "*",
+      "opt+caps?": "8",
+      "opt+shift+caps?": "•",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "8"
+    },
+    "E09": {
+      "to": "9",
+      "shift": "(",
+      "caps cmd+opt?+caps?": "9",
+      "caps+shift cmd+shift+opt?+caps?": "(",
+      "opt+caps?": "9",
+      "opt+shift+caps?": "—",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "9"
+    },
+    "E10": {
+      "to": "0",
+      "shift": ")",
+      "caps cmd+opt?+caps?": "0",
+      "caps+shift cmd+shift+opt?+caps?": ")",
+      "opt+caps?": "0",
+      "opt+shift+caps?": "×",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "0"
+    },
+    "E11": {
+      "to": "-",
+      "shift": "_",
+      "caps cmd+opt?+caps?": "-",
+      "caps+shift cmd+shift+opt?+caps?": "_",
+      "opt+caps?": "_",
+      "opt+shift+caps?": "−",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{1F}"
+    },
+    "E12": {
+      "to": "=",
+      "shift": "+",
+      "caps cmd+opt?+caps?": "=",
+      "caps+shift cmd+shift+opt?+caps?": "+",
+      "opt+caps?": "=",
+      "opt+shift+caps?": "+",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "="
+    },
+    "D01": {
+      "to": "\\u{DD0}",
+      "shift": "ඇ",
+      "caps cmd+opt?+caps?": "q",
+      "caps+shift cmd+shift+opt?+caps?": "Q",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{11}"
+    },
+    "D02": {
+      "to": "අ",
+      "shift": "ආ",
+      "caps cmd+opt?+caps?": "w",
+      "caps+shift cmd+shift+opt?+caps?": "W",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{17}"
+    },
+    "D03": {
+      "to": "\\u{DD9}",
+      "shift": "එ",
+      "caps cmd+opt?+caps?": "e",
+      "caps+shift cmd+shift+opt?+caps?": "E",
+      "opt+caps?": "\\u{DDB}",
+      "opt+shift+caps?": "ඓ",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{5}"
+    },
+    "D04": {
+      "to": "ර",
+      "shift": "\\u{DCA}\\u{200D}ර",
+      "caps cmd+opt?+caps?": "r",
+      "caps+shift cmd+shift+opt?+caps?": "R",
+      "opt+caps?": "ර\\u{DCA}\\u{200D}",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{12}"
+    },
+    "D05": {
+      "to": "ත",
+      "shift": "ථ",
+      "caps cmd+opt?+caps?": "t",
+      "caps+shift cmd+shift+opt?+caps?": "T",
+      "opt+caps?": "ට",
+      "opt+shift+caps?": "ඨ",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{14}"
+    },
+    "D06": {
+      "to": "ය",
+      "shift": "\\u{DCA}\\u{200D}ය",
+      "caps cmd+opt?+caps?": "y",
+      "caps+shift cmd+shift+opt?+caps?": "Y",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{19}"
+    },
+    "D07": {
+      "to": "\\u{DD4}",
+      "shift": "\\u{DD6}",
+      "caps cmd+opt?+caps?": "u",
+      "caps+shift cmd+shift+opt?+caps?": "U",
+      "opt+caps?": "උ",
+      "opt+shift+caps?": "ඌ",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{15}"
+    },
+    "D08": {
+      "to": "\\u{DD2}",
+      "shift": "\\u{DD3}",
+      "caps cmd+opt?+caps?": "i",
+      "caps+shift cmd+shift+opt?+caps?": "I",
+      "opt+caps?": "ඉ",
+      "opt+shift+caps?": "ඊ",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{9}"
+    },
+    "D09": {
+      "to": "\\u{DDC}",
+      "shift": "ඔ",
+      "caps cmd+opt?+caps?": "o",
+      "caps+shift cmd+shift+opt?+caps?": "O",
+      "opt+caps?": "\\u{DDE}",
+      "opt+shift+caps?": "ඖ",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{F}"
+    },
+    "D10": {
+      "to": "ප",
+      "shift": "ඵ",
+      "caps cmd+opt?+caps?": "p",
+      "caps+shift cmd+shift+opt?+caps?": "P",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{10}"
+    },
+    "D11": {
+      "to": "\\u{DDD}",
+      "shift": "ඕ",
+      "caps cmd+opt?+caps?": "[",
+      "caps+shift cmd+shift+opt?+caps?": "{",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{1B}"
+    },
+    "D12": {
+      "to": "\\u{DD8}",
+      "shift": "ඍ",
+      "caps cmd+opt?+caps?": "]",
+      "caps+shift cmd+shift+opt?+caps?": "}",
+      "opt+caps?": "\\u{DF2}",
+      "opt+shift+caps?": "ඎ",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{1D}"
+    },
+    "D13": {
+      "to": "\\u{DDF}",
+      "shift": "\\u{DF3}",
+      "caps cmd+opt?+caps?": "\\",
+      "caps+shift cmd+shift+opt?+caps?": "|",
+      "opt+caps?": "ඏ",
+      "opt+shift+caps?": "ඐ",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{1C}"
+    },
+    "C01": {
+      "to": "\\u{DCF}",
+      "shift": "අ",
+      "caps cmd+opt?+caps?": "a",
+      "caps+shift cmd+shift+opt?+caps?": "A",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{1}"
+    },
+    "C02": {
+      "to": "ස",
+      "shift": "ශ",
+      "caps cmd+opt?+caps?": "s",
+      "caps+shift cmd+shift+opt?+caps?": "S",
+      "opt+caps?": "ෂ",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{13}"
+    },
+    "C03": {
+      "to": "ද",
+      "shift": "ධ",
+      "caps cmd+opt?+caps?": "d",
+      "caps+shift cmd+shift+opt?+caps?": "D",
+      "opt+caps?": "ඦ",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{4}"
+    },
+    "C04": {
+      "to": "ෆ",
+      "caps cmd+opt?+caps?": "f",
+      "caps+shift cmd+shift+opt?+caps?": "F",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{6}"
+    },
+    "C05": {
+      "to": "ග",
+      "shift": "ඝ",
+      "caps cmd+opt?+caps?": "g",
+      "caps+shift cmd+shift+opt?+caps?": "G",
+      "opt+caps?": "ඟ",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{7}"
+    },
+    "C06": {
+      "to": "හ",
+      "shift": "\\u{D83}",
+      "caps cmd+opt?+caps?": "h",
+      "caps+shift cmd+shift+opt?+caps?": "H",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{8}"
+    },
+    "C07": {
+      "to": "ජ",
+      "shift": "ඣ",
+      "caps cmd+opt?+caps?": "j",
+      "caps+shift cmd+shift+opt?+caps?": "J",
+      "opt+caps?": "ඦ",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{A}"
+    },
+    "C08": {
+      "to": "ක",
+      "shift": "ඛ",
+      "caps cmd+opt?+caps?": "k",
+      "caps+shift cmd+shift+opt?+caps?": "K",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{B}"
+    },
+    "C09": {
+      "to": "ල",
+      "shift": "ළ",
+      "caps cmd+opt?+caps?": "l",
+      "caps+shift cmd+shift+opt?+caps?": "L",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{C}"
+    },
+    "C10": {
+      "to": "ඩ",
+      "shift": "ඪ",
+      "caps cmd+opt?+caps?": ";",
+      "caps+shift cmd+shift+opt?+caps?": ":",
+      "opt+caps?": "ඬ",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": ";"
+    },
+    "C11": {
+      "to": "ට",
+      "shift": "ඨ",
+      "caps cmd+opt?+caps?": "'",
+      "caps+shift cmd+shift+opt?+caps?": "\\u{22}",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "'"
+    },
+    "B01": {
+      "to": "\\u{DCA}",
+      "shift": "\\u{DCA}\\u{200D}",
+      "caps cmd+opt?+caps?": "z",
+      "caps+shift cmd+shift+opt?+caps?": "Z",
+      "opt+caps?": "\\u{200D}\\u{DCA}",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{1A}"
+    },
+    "B02": {
+      "to": "\\u{DDA}",
+      "shift": "ඒ",
+      "caps cmd+opt?+caps?": "x",
+      "caps+shift cmd+shift+opt?+caps?": "X",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{18}"
+    },
+    "B03": {
+      "to": "ච",
+      "shift": "ඡ",
+      "caps cmd+opt?+caps?": "c",
+      "caps+shift cmd+shift+opt?+caps?": "C",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{3}"
+    },
+    "B04": {
+      "to": "ව",
+      "caps cmd+opt?+caps?": "v",
+      "caps+shift cmd+shift+opt?+caps?": "V",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{16}"
+    },
+    "B05": {
+      "to": "බ",
+      "shift": "භ",
+      "caps cmd+opt?+caps?": "b",
+      "caps+shift cmd+shift+opt?+caps?": "B",
+      "opt+caps?": "ඹ",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{2}"
+    },
+    "B06": {
+      "to": "න",
+      "shift": "ණ",
+      "caps cmd+opt?+caps?": "n",
+      "caps+shift cmd+shift+opt?+caps?": "N",
+      "opt+caps?": "ඤ",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{E}"
+    },
+    "B07": {
+      "to": "ම",
+      "shift": "\\u{D82}",
+      "caps cmd+opt?+caps?": "m",
+      "caps+shift cmd+shift+opt?+caps?": "M",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "\\u{D}"
+    },
+    "B08": {
+      "to": "ඞ",
+      "caps cmd+opt?+caps?": ",",
+      "caps+shift cmd+shift+opt?+caps?": "<",
+      "opt+caps?": ",",
+      "opt+shift+caps?": "<",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": ","
+    },
+    "B09": {
+      "to": "ඤ",
+      "shift": "ඥ",
+      "caps cmd+opt?+caps?": ".",
+      "caps+shift cmd+shift+opt?+caps?": ">",
+      "opt+caps?": ".",
+      "opt+shift+caps?": ">",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "."
+    },
+    "B10": {
+      "to": ".",
+      "shift": ",",
+      "caps cmd+opt?+caps?": "/",
+      "caps+shift cmd+shift+opt?+caps?": "?",
+      "opt+caps?": "/",
+      "opt+shift+caps?": "?",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "/"
+    },
+    "A03": {
+      "to": " ",
+      "shift": " ",
+      "caps cmd+opt?+caps?": " ",
+      "caps+shift cmd+shift+opt?+caps?": " ",
+      "opt+caps?": " ",
+      "opt+shift+caps?": " ",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": " "
+    },
+    "B00": {
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "0"
+    }
+  },
+  "levels": [
+    "to",
+    "shift",
+    "caps cmd+opt?+caps?",
+    "caps+shift cmd+shift+opt?+caps?",
+    "opt+caps?",
+    "opt+shift+caps?",
+    "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+  ],
+  "charMap": {
+    "0": [
+      "E10",
+      "to"
+    ],
+    "1": [
+      "E01",
+      "to"
+    ],
+    "2": [
+      "E02",
+      "to"
+    ],
+    "3": [
+      "E03",
+      "to"
+    ],
+    "4": [
+      "E04",
+      "to"
+    ],
+    "5": [
+      "E05",
+      "to"
+    ],
+    "6": [
+      "E06",
+      "to"
+    ],
+    "7": [
+      "E07",
+      "to"
+    ],
+    "8": [
+      "E08",
+      "to"
+    ],
+    "9": [
+      "E09",
+      "to"
+    ],
+    "\\u{DD1}": [
+      "E00",
+      "to"
+    ],
+    "-": [
+      "E11",
+      "to"
+    ],
+    "=": [
+      "E12",
+      "to"
+    ],
+    "\\u{DD0}": [
+      "D01",
+      "to"
+    ],
+    "අ": [
+      "D02",
+      "to"
+    ],
+    "\\u{DD9}": [
+      "D03",
+      "to"
+    ],
+    "ර": [
+      "D04",
+      "to"
+    ],
+    "ත": [
+      "D05",
+      "to"
+    ],
+    "ය": [
+      "D06",
+      "to"
+    ],
+    "\\u{DD4}": [
+      "D07",
+      "to"
+    ],
+    "\\u{DD2}": [
+      "D08",
+      "to"
+    ],
+    "\\u{DDC}": [
+      "D09",
+      "to"
+    ],
+    "ප": [
+      "D10",
+      "to"
+    ],
+    "\\u{DDD}": [
+      "D11",
+      "to"
+    ],
+    "\\u{DD8}": [
+      "D12",
+      "to"
+    ],
+    "\\u{DDF}": [
+      "D13",
+      "to"
+    ],
+    "\\u{DCF}": [
+      "C01",
+      "to"
+    ],
+    "ස": [
+      "C02",
+      "to"
+    ],
+    "ද": [
+      "C03",
+      "to"
+    ],
+    "ෆ": [
+      "C04",
+      "to"
+    ],
+    "ග": [
+      "C05",
+      "to"
+    ],
+    "හ": [
+      "C06",
+      "to"
+    ],
+    "ජ": [
+      "C07",
+      "to"
+    ],
+    "ක": [
+      "C08",
+      "to"
+    ],
+    "ල": [
+      "C09",
+      "to"
+    ],
+    "ඩ": [
+      "C10",
+      "to"
+    ],
+    "ට": [
+      "C11",
+      "to"
+    ],
+    "\\u{DCA}": [
+      "B01",
+      "to"
+    ],
+    "\\u{DDA}": [
+      "B02",
+      "to"
+    ],
+    "ච": [
+      "B03",
+      "to"
+    ],
+    "ව": [
+      "B04",
+      "to"
+    ],
+    "බ": [
+      "B05",
+      "to"
+    ],
+    "න": [
+      "B06",
+      "to"
+    ],
+    "ම": [
+      "B07",
+      "to"
+    ],
+    "ඞ": [
+      "B08",
+      "to"
+    ],
+    "ඤ": [
+      "B09",
+      "to"
+    ],
+    ".": [
+      "B10",
+      "to"
+    ],
+    " ": [
+      "A03",
+      "to"
+    ],
+    "ඈ": [
+      "E00",
+      "shift"
+    ],
+    "!": [
+      "E01",
+      "shift"
+    ],
+    "@": [
+      "E02",
+      "shift"
+    ],
+    "#": [
+      "E03",
+      "shift"
+    ],
+    "$": [
+      "E04",
+      "shift"
+    ],
+    "%": [
+      "E05",
+      "shift"
+    ],
+    "^": [
+      "E06",
+      "shift"
+    ],
+    "&": [
+      "E07",
+      "shift"
+    ],
+    "*": [
+      "E08",
+      "shift"
+    ],
+    "(": [
+      "E09",
+      "shift"
+    ],
+    ")": [
+      "E10",
+      "shift"
+    ],
+    "_": [
+      "E11",
+      "shift"
+    ],
+    "+": [
+      "E12",
+      "shift"
+    ],
+    "ඇ": [
+      "D01",
+      "shift"
+    ],
+    "ආ": [
+      "D02",
+      "shift"
+    ],
+    "එ": [
+      "D03",
+      "shift"
+    ],
+    "\\u{DCA}\\u{200D}ර": [
+      "D04",
+      "shift"
+    ],
+    "ථ": [
+      "D05",
+      "shift"
+    ],
+    "\\u{DCA}\\u{200D}ය": [
+      "D06",
+      "shift"
+    ],
+    "\\u{DD6}": [
+      "D07",
+      "shift"
+    ],
+    "\\u{DD3}": [
+      "D08",
+      "shift"
+    ],
+    "ඔ": [
+      "D09",
+      "shift"
+    ],
+    "ඵ": [
+      "D10",
+      "shift"
+    ],
+    "ඕ": [
+      "D11",
+      "shift"
+    ],
+    "ඍ": [
+      "D12",
+      "shift"
+    ],
+    "\\u{DF3}": [
+      "D13",
+      "shift"
+    ],
+    "ශ": [
+      "C02",
+      "shift"
+    ],
+    "ධ": [
+      "C03",
+      "shift"
+    ],
+    "ඝ": [
+      "C05",
+      "shift"
+    ],
+    "\\u{D83}": [
+      "C06",
+      "shift"
+    ],
+    "ඣ": [
+      "C07",
+      "shift"
+    ],
+    "ඛ": [
+      "C08",
+      "shift"
+    ],
+    "ළ": [
+      "C09",
+      "shift"
+    ],
+    "ඪ": [
+      "C10",
+      "shift"
+    ],
+    "ඨ": [
+      "C11",
+      "shift"
+    ],
+    "\\u{DCA}\\u{200D}": [
+      "B01",
+      "shift"
+    ],
+    "ඒ": [
+      "B02",
+      "shift"
+    ],
+    "ඡ": [
+      "B03",
+      "shift"
+    ],
+    "භ": [
+      "B05",
+      "shift"
+    ],
+    "ණ": [
+      "B06",
+      "shift"
+    ],
+    "\\u{D82}": [
+      "B07",
+      "shift"
+    ],
+    "ඥ": [
+      "B09",
+      "shift"
+    ],
+    ",": [
+      "B10",
+      "shift"
+    ],
+    "`": [
+      "E00",
+      "caps cmd+opt?+caps?"
+    ],
+    "q": [
+      "D01",
+      "caps cmd+opt?+caps?"
+    ],
+    "w": [
+      "D02",
+      "caps cmd+opt?+caps?"
+    ],
+    "e": [
+      "D03",
+      "caps cmd+opt?+caps?"
+    ],
+    "r": [
+      "D04",
+      "caps cmd+opt?+caps?"
+    ],
+    "t": [
+      "D05",
+      "caps cmd+opt?+caps?"
+    ],
+    "y": [
+      "D06",
+      "caps cmd+opt?+caps?"
+    ],
+    "u": [
+      "D07",
+      "caps cmd+opt?+caps?"
+    ],
+    "i": [
+      "D08",
+      "caps cmd+opt?+caps?"
+    ],
+    "o": [
+      "D09",
+      "caps cmd+opt?+caps?"
+    ],
+    "p": [
+      "D10",
+      "caps cmd+opt?+caps?"
+    ],
+    "[": [
+      "D11",
+      "caps cmd+opt?+caps?"
+    ],
+    "]": [
+      "D12",
+      "caps cmd+opt?+caps?"
+    ],
+    "\\": [
+      "D13",
+      "caps cmd+opt?+caps?"
+    ],
+    "a": [
+      "C01",
+      "caps cmd+opt?+caps?"
+    ],
+    "s": [
+      "C02",
+      "caps cmd+opt?+caps?"
+    ],
+    "d": [
+      "C03",
+      "caps cmd+opt?+caps?"
+    ],
+    "f": [
+      "C04",
+      "caps cmd+opt?+caps?"
+    ],
+    "g": [
+      "C05",
+      "caps cmd+opt?+caps?"
+    ],
+    "h": [
+      "C06",
+      "caps cmd+opt?+caps?"
+    ],
+    "j": [
+      "C07",
+      "caps cmd+opt?+caps?"
+    ],
+    "k": [
+      "C08",
+      "caps cmd+opt?+caps?"
+    ],
+    "l": [
+      "C09",
+      "caps cmd+opt?+caps?"
+    ],
+    ";": [
+      "C10",
+      "caps cmd+opt?+caps?"
+    ],
+    "'": [
+      "C11",
+      "caps cmd+opt?+caps?"
+    ],
+    "z": [
+      "B01",
+      "caps cmd+opt?+caps?"
+    ],
+    "x": [
+      "B02",
+      "caps cmd+opt?+caps?"
+    ],
+    "c": [
+      "B03",
+      "caps cmd+opt?+caps?"
+    ],
+    "v": [
+      "B04",
+      "caps cmd+opt?+caps?"
+    ],
+    "b": [
+      "B05",
+      "caps cmd+opt?+caps?"
+    ],
+    "n": [
+      "B06",
+      "caps cmd+opt?+caps?"
+    ],
+    "m": [
+      "B07",
+      "caps cmd+opt?+caps?"
+    ],
+    "/": [
+      "B10",
+      "caps cmd+opt?+caps?"
+    ],
+    "~": [
+      "E00",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "Q": [
+      "D01",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "W": [
+      "D02",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "E": [
+      "D03",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "R": [
+      "D04",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "T": [
+      "D05",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "Y": [
+      "D06",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "U": [
+      "D07",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "I": [
+      "D08",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "O": [
+      "D09",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "P": [
+      "D10",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "{": [
+      "D11",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "}": [
+      "D12",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "|": [
+      "D13",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "A": [
+      "C01",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "S": [
+      "C02",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "D": [
+      "C03",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "F": [
+      "C04",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "G": [
+      "C05",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "H": [
+      "C06",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "J": [
+      "C07",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "K": [
+      "C08",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "L": [
+      "C09",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    ":": [
+      "C10",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "\\u{22}": [
+      "C11",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "Z": [
+      "B01",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "X": [
+      "B02",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "C": [
+      "B03",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "V": [
+      "B04",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "B": [
+      "B05",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "N": [
+      "B06",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "M": [
+      "B07",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "<": [
+      "B08",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    ">": [
+      "B09",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "?": [
+      "B10",
+      "caps+shift cmd+shift+opt?+caps?"
+    ],
+    "\\u{DDB}": [
+      "D03",
+      "opt+caps?"
+    ],
+    "ර\\u{DCA}\\u{200D}": [
+      "D04",
+      "opt+caps?"
+    ],
+    "උ": [
+      "D07",
+      "opt+caps?"
+    ],
+    "ඉ": [
+      "D08",
+      "opt+caps?"
+    ],
+    "\\u{DDE}": [
+      "D09",
+      "opt+caps?"
+    ],
+    "\\u{DF2}": [
+      "D12",
+      "opt+caps?"
+    ],
+    "ඏ": [
+      "D13",
+      "opt+caps?"
+    ],
+    "ෂ": [
+      "C02",
+      "opt+caps?"
+    ],
+    "ඦ": [
+      "C03",
+      "opt+caps?"
+    ],
+    "ඟ": [
+      "C05",
+      "opt+caps?"
+    ],
+    "ඬ": [
+      "C10",
+      "opt+caps?"
+    ],
+    "\\u{200D}\\u{DCA}": [
+      "B01",
+      "opt+caps?"
+    ],
+    "ඹ": [
+      "B05",
+      "opt+caps?"
+    ],
+    "…": [
+      "E01",
+      "opt+shift+caps?"
+    ],
+    "©": [
+      "E02",
+      "opt+shift+caps?"
+    ],
+    "®": [
+      "E03",
+      "opt+shift+caps?"
+    ],
+    "™": [
+      "E04",
+      "opt+shift+caps?"
+    ],
+    "’": [
+      "E05",
+      "opt+shift+caps?"
+    ],
+    "‘": [
+      "E06",
+      "opt+shift+caps?"
+    ],
+    "–": [
+      "E07",
+      "opt+shift+caps?"
+    ],
+    "•": [
+      "E08",
+      "opt+shift+caps?"
+    ],
+    "—": [
+      "E09",
+      "opt+shift+caps?"
+    ],
+    "×": [
+      "E10",
+      "opt+shift+caps?"
+    ],
+    "−": [
+      "E11",
+      "opt+shift+caps?"
+    ],
+    "ඓ": [
+      "D03",
+      "opt+shift+caps?"
+    ],
+    "ඌ": [
+      "D07",
+      "opt+shift+caps?"
+    ],
+    "ඊ": [
+      "D08",
+      "opt+shift+caps?"
+    ],
+    "ඖ": [
+      "D09",
+      "opt+shift+caps?"
+    ],
+    "ඎ": [
+      "D12",
+      "opt+shift+caps?"
+    ],
+    "ඐ": [
+      "D13",
+      "opt+shift+caps?"
+    ],
+    "\\u{1F}": [
+      "E11",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{11}": [
+      "D01",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{17}": [
+      "D02",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{5}": [
+      "D03",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{12}": [
+      "D04",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{14}": [
+      "D05",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{19}": [
+      "D06",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{15}": [
+      "D07",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{9}": [
+      "D08",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{F}": [
+      "D09",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{10}": [
+      "D10",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{1B}": [
+      "D11",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{1D}": [
+      "D12",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{1C}": [
+      "D13",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{1}": [
+      "C01",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{13}": [
+      "C02",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{4}": [
+      "C03",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{6}": [
+      "C04",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{7}": [
+      "C05",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{8}": [
+      "C06",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{A}": [
+      "C07",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{B}": [
+      "C08",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{C}": [
+      "C09",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{1A}": [
+      "B01",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{18}": [
+      "B02",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{3}": [
+      "B03",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{16}": [
+      "B04",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{2}": [
+      "B05",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{E}": [
+      "B06",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ],
+    "\\u{D}": [
+      "B07",
+      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?"
+    ]
+  },
+  "allChars": [
+    "\\u{DD1}",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "0",
+    "-",
+    "=",
+    "\\u{DD0}",
+    "අ",
+    "\\u{DD9}",
+    "ර",
+    "ත",
+    "ය",
+    "\\u{DD4}",
+    "\\u{DD2}",
+    "\\u{DDC}",
+    "ප",
+    "\\u{DDD}",
+    "\\u{DD8}",
+    "\\u{DDF}",
+    "\\u{DCF}",
+    "ස",
+    "ද",
+    "ෆ",
+    "ග",
+    "හ",
+    "ජ",
+    "ක",
+    "ල",
+    "ඩ",
+    "ට",
+    "\\u{DCA}",
+    "\\u{DDA}",
+    "ච",
+    "ව",
+    "බ",
+    "න",
+    "ම",
+    "ඞ",
+    "ඤ",
+    ".",
+    " ",
+    "ඈ",
+    "!",
+    "@",
+    "#",
+    "$",
+    "%",
+    "^",
+    "&",
+    "*",
+    "(",
+    ")",
+    "_",
+    "+",
+    "ඇ",
+    "ආ",
+    "එ",
+    "\\u{DCA}\\u{200D}ර",
+    "ථ",
+    "\\u{DCA}\\u{200D}ය",
+    "\\u{DD6}",
+    "\\u{DD3}",
+    "ඔ",
+    "ඵ",
+    "ඕ",
+    "ඍ",
+    "\\u{DF3}",
+    "ශ",
+    "ධ",
+    "ඝ",
+    "\\u{D83}",
+    "ඣ",
+    "ඛ",
+    "ළ",
+    "ඪ",
+    "ඨ",
+    "\\u{DCA}\\u{200D}",
+    "ඒ",
+    "ඡ",
+    "භ",
+    "ණ",
+    "\\u{D82}",
+    "ඥ",
+    ",",
+    "`",
+    "q",
+    "w",
+    "e",
+    "r",
+    "t",
+    "y",
+    "u",
+    "i",
+    "o",
+    "p",
+    "[",
+    "]",
+    "\\",
+    "a",
+    "s",
+    "d",
+    "f",
+    "g",
+    "h",
+    "j",
+    "k",
+    "l",
+    ";",
+    "'",
+    "z",
+    "x",
+    "c",
+    "v",
+    "b",
+    "n",
+    "m",
+    "/",
+    "~",
+    "Q",
+    "W",
+    "E",
+    "R",
+    "T",
+    "Y",
+    "U",
+    "I",
+    "O",
+    "P",
+    "{",
+    "}",
+    "|",
+    "A",
+    "S",
+    "D",
+    "F",
+    "G",
+    "H",
+    "J",
+    "K",
+    "L",
+    ":",
+    "\\u{22}",
+    "Z",
+    "X",
+    "C",
+    "V",
+    "B",
+    "N",
+    "M",
+    "<",
+    ">",
+    "?",
+    "\\u{DDB}",
+    "ර\\u{DCA}\\u{200D}",
+    "උ",
+    "ඉ",
+    "\\u{DDE}",
+    "\\u{DF2}",
+    "ඏ",
+    "ෂ",
+    "ඦ",
+    "ඟ",
+    "ඬ",
+    "\\u{200D}\\u{DCA}",
+    "ඹ",
+    "…",
+    "©",
+    "®",
+    "™",
+    "’",
+    "‘",
+    "–",
+    "•",
+    "—",
+    "×",
+    "−",
+    "ඓ",
+    "ඌ",
+    "ඊ",
+    "ඖ",
+    "ඎ",
+    "ඐ",
+    "\\u{1F}",
+    "\\u{11}",
+    "\\u{17}",
+    "\\u{5}",
+    "\\u{12}",
+    "\\u{14}",
+    "\\u{19}",
+    "\\u{15}",
+    "\\u{9}",
+    "\\u{F}",
+    "\\u{10}",
+    "\\u{1B}",
+    "\\u{1D}",
+    "\\u{1C}",
+    "\\u{1}",
+    "\\u{13}",
+    "\\u{4}",
+    "\\u{6}",
+    "\\u{7}",
+    "\\u{8}",
+    "\\u{A}",
+    "\\u{B}",
+    "\\u{C}",
+    "\\u{1A}",
+    "\\u{18}",
+    "\\u{3}",
+    "\\u{16}",
+    "\\u{2}",
+    "\\u{E}",
+    "\\u{D}",
+    "ආ",
+    "ඇ",
+    "ඎ",
+    "ඒ",
+    "ඕ",
+    "\\u{DF2}",
+    "ඓ",
+    "\\u{DDB}",
+    "\\u{DDD}",
+    "\\u{DDA}"
+  ],
+  "deadKeys": {
+    "ආ": [
+      "අ",
+      "\\",
+      "u",
+      "{",
+      "D",
+      "C",
+      "F",
+      "}"
+    ],
+    "ඇ": [
+      "අ",
+      "\\",
+      "u",
+      "{",
+      "D",
+      "D",
+      "0",
+      "}"
+    ],
+    "ඎ": [
+      "ඍ",
+      "\\",
+      "u",
+      "{",
+      "D",
+      "D",
+      "8",
+      "}"
+    ],
+    "ඒ": [
+      "එ",
+      "\\",
+      "u",
+      "{",
+      "D",
+      "C",
+      "A",
+      "}"
+    ],
+    "ඕ": [
+      "ඔ",
+      "\\",
+      "u",
+      "{",
+      "D",
+      "C",
+      "A",
+      "}"
+    ],
+    "\\u{DF2}": [
+      "\\",
+      "u",
+      "{",
+      "D",
+      "D",
+      "8",
+      "}",
+      "\\",
+      "u",
+      "{",
+      "D",
+      "D",
+      "8",
+      "}"
+    ],
+    "ඓ": [
+      "\\",
+      "u",
+      "{",
+      "D",
+      "D",
+      "9",
+      "}",
+      "එ"
+    ],
+    "\\u{DDB}": [
+      "\\",
+      "u",
+      "{",
+      "D",
+      "D",
+      "9",
+      "}",
+      "\\",
+      "u",
+      "{",
+      "D",
+      "D",
+      "9",
+      "}"
+    ],
+    "\\u{DDD}": [
+      "\\",
+      "u",
+      "{",
+      "D",
+      "D",
+      "9",
+      "}",
+      "\\",
+      "u",
+      "{",
+      "D",
+      "D",
+      "C",
+      "}",
+      "\\",
+      "u",
+      "{",
+      "D",
+      "C",
+      "A",
+      "}"
+    ],
+    "\\u{DDA}": [
+      "\\",
+      "u",
+      "{",
+      "D",
+      "D",
+      "9",
+      "}",
+      "\\",
+      "u",
+      "{",
+      "D",
+      "C",
+      "A",
+      "}"
+    ]
+  }
+}
