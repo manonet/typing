@@ -49,7 +49,7 @@ function SampleBoard(props) {
     signToWrite,
     writtenSign,
     userText,
-    writing,
+    isUserInputFocused,
     onChange,
     onFocus,
     onBlur,
@@ -74,7 +74,7 @@ function SampleBoard(props) {
           classNames(
             classes.sampleBoard,
             {
-              [classes.sampleBoardFocus]: writing,
+              [classes.sampleBoardFocus]: isUserInputFocused,
             },
           )
         }
