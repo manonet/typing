@@ -1,0 +1,196 @@
+{
+  "keys": {
+    "A99": {
+      "code": "WakeUp"
+    },
+    "A00": {
+      "code": "ControlLeft"
+    },
+    "A01": {
+      "code": "OSLeft"
+    },
+    "A02": {
+      "code": "AltLeft"
+    },
+    "A03": {
+      "code": "Space"
+    },
+    "A09": {
+      "code": "AltRight"
+    },
+    "A10": {
+      "code": "OSRight"
+    },
+    "A11": {
+      "code": "ContextMenu"
+    },
+    "A12": {
+      "code": "ControlRight"
+    },
+    "B99": {
+      "code": "ShiftLeft"
+    },
+    "B00": {
+      "code": "IntlBackslash"
+    },
+    "B01": {
+      "code": "KeyZ"
+    },
+    "B02": {
+      "code": "KeyX"
+    },
+    "B03": {
+      "code": "KeyC"
+    },
+    "B04": {
+      "code": "KeyV"
+    },
+    "B05": {
+      "code": "KeyB"
+    },
+    "B06": {
+      "code": "KeyN"
+    },
+    "B07": {
+      "code": "KeyM"
+    },
+    "B08": {
+      "code": "Comma"
+    },
+    "B09": {
+      "code": "Period"
+    },
+    "B10": {
+      "code": "Slash"
+    },
+    "B11": {
+      "code": "iso"
+    },
+    "B12": {
+      "code": "ShiftRight"
+    },
+    "C00": {
+      "code": "CapsLock"
+    },
+    "C01": {
+      "code": "KeyA"
+    },
+    "C02": {
+      "code": "KeyS"
+    },
+    "C03": {
+      "code": "KeyD"
+    },
+    "C04": {
+      "code": "KeyF"
+    },
+    "C05": {
+      "code": "KeyG"
+    },
+    "C06": {
+      "code": "KeyH"
+    },
+    "C07": {
+      "code": "KeyJ"
+    },
+    "C08": {
+      "code": "KeyK"
+    },
+    "C09": {
+      "code": "KeyL"
+    },
+    "C10": {
+      "code": "Semicolon"
+    },
+    "C11": {
+      "code": "Quote"
+    },
+    "C12": {
+      "code": "Backslash"
+    },
+    "D00": {
+      "code": "Tab"
+    },
+    "D01": {
+      "code": "KeyQ"
+    },
+    "D02": {
+      "code": "KeyW"
+    },
+    "D03": {
+      "code": "KeyE"
+    },
+    "D04": {
+      "code": "KeyR"
+    },
+    "D05": {
+      "code": "KeyT"
+    },
+    "D06": {
+      "code": "KeyY"
+    },
+    "D07": {
+      "code": "KeyU"
+    },
+    "D08": {
+      "code": "KeyI"
+    },
+    "D09": {
+      "code": "KeyO"
+    },
+    "D10": {
+      "code": "KeyP"
+    },
+    "D11": {
+      "code": "BracketLeft"
+    },
+    "D12": {
+      "code": "BracketRight"
+    },
+    "D13": {
+      "code": "Backslash"
+    },
+    "E00": {
+      "code": "Backquote"
+    },
+    "E01": {
+      "code": "Digit1"
+    },
+    "E02": {
+      "code": "Digit2"
+    },
+    "E03": {
+      "code": "Digit3"
+    },
+    "E04": {
+      "code": "Digit4"
+    },
+    "E05": {
+      "code": "Digit5"
+    },
+    "E06": {
+      "code": "Digit6"
+    },
+    "E07": {
+      "code": "Digit7"
+    },
+    "E08": {
+      "code": "Digit8"
+    },
+    "E09": {
+      "code": "Digit9"
+    },
+    "E10": {
+      "code": "Digit0"
+    },
+    "E11": {
+      "code": "Minus"
+    },
+    "E12": {
+      "code": "Equal"
+    },
+    "E13": {
+      "code": "Backspace"
+    }
+  }
+}
