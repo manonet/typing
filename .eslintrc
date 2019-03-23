@@ -27,6 +27,7 @@
     "object-curly-spacing": ["error", "always"],
     "semi": ["error", "never"],
     "function-paren-newline": 0,
+    "func-names": ["warn", "as-needed"],
     "global-require": 0,
     "jsx-quotes": [2, "prefer-double"],
     "max-len": ["warn", {
