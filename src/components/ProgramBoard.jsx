@@ -1,7 +1,6 @@
 
 import React from 'react'
 import classNames from 'classnames'
-import { withPrefix } from 'gatsby-link'
 import { withStyles } from '@material-ui/core/styles'
 
 import SampleBoard, { SAMPLE_BOARD_ID } from './SampleBoard'
@@ -14,7 +13,7 @@ const styles = theme => ({
   },
 })
 
-class Program extends React.Component {
+class ProgramBoard extends React.Component {
   constructor() {
     super()
 
@@ -26,24 +25,23 @@ class Program extends React.Component {
   componentDidMount() {
     // set focus on input
     const userText = document.querySelector(`#${SAMPLE_BOARD_ID}`)
-    console.log(userText)
+    // console.log(userText)
     userText.focus()
   }
 
   onFocus(e) {
-    const { onWriting } = this.props
-    onWriting(true)
+    const { setUserInputFocus } = this.props
+    setUserInputFocus(true)
   }
 
   onBlur(e) {
-    const { onWriting } = this.props
-    onWriting(false)
+    const { setUserInputFocus } = this.props
+    setUserInputFocus(false)
   }
 
   handleChange(e) {
-    const { userWrite } = this.props
-    const userText = e.target.value
-    userWrite(userText)
+    const { userInputText } = this.props
+    userInputText(e.target.value)
   }
 
   render() {
@@ -55,11 +53,13 @@ class Program extends React.Component {
       cursorAt,
       signToWrite,
       writtenSign,
-      writing,
-      onKeyboardLoaded,
+      isUserInputFocused,
       displayedLevel,
-      keyEvent,
+      keyboard,
+      keyboardKeys,
+      functionKeys,
     } = this.props
+
     return (
       <div className={
         classNames(
@@ -74,21 +74,21 @@ class Program extends React.Component {
           cursorAt={cursorAt}
           signToWrite={signToWrite}
           writtenSign={writtenSign}
-          writing={writing}
+          isUserInputFocused={isUserInputFocused}
           onChange={this.handleChange}
           onFocus={this.onFocus}
           onBlur={this.onBlur}
           className={SAMPLE_BOARD_ID}
         />
         <Keyboard
-          keyboardUrl={withPrefix('/keyboards/windows/hu-t-k0-windows.xml')}
-          onKeyboardLoaded={onKeyboardLoaded}
+          keyboard={keyboard}
+          functionKeys={functionKeys}
+          keyboardKeys={keyboardKeys}
           displayedLevel={displayedLevel}
-          keyEvent={keyEvent}
         />
       </div>
     )
   }
 }
 
-export default withStyles(styles)(Program)
+export default withStyles(styles)(ProgramBoard)
