@@ -1,94 +1,141 @@
 import React from 'react'
 
 import vars from '../../variables'
-import KeyboardLoadXML from './KeyboardLoadXML'
 import KeyboardKey from './KeyboardKey'
 
 export default class Keyboard extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      keyboard: {
-        /*
-        alphanumeric section
-          alphanumeric zone
-          function zones
-        numeric section
-          numeric zone
-          function zone
-        editing and function section (in fact covering all parts of the keyboard which do not belong to the alphanumeric or numeric section)
-          cursor key zone
-          editing function zone
-        */
-        name: '',
-        keys: [],
-        keyLevels: [],
-        allChars: [],
-        deadKeys: [],
-        functionKeys: {},
-      },
-
-      onKeyboardLoaded: this.onKeyboardLoaded.bind(this),
-    }
-  }
-
   componentDidMount() {
-    KeyboardLoadXML(this.props, this.state.onKeyboardLoaded)
-  }
-
-  onKeyboardLoaded(data) {
-    this.setState(data)
-    this.props.onKeyboardLoaded(data)
+    //
   }
 
   KeyboardTitle() {
-    if (this.props.showTitle === true) {
+    const { showTitle, keyboard } = this.props
+    if (showTitle === true) {
       return (
-        <h3 className="keyboard__title">{this.state.keyboard.name}</h3>
+        <h3 className="keyboard__title">{keyboard.name}</h3>
       )
     }
   }
 
   KeyboardDeadKeys() {
-    if (this.props.showDeadKeys === true) {
+    const { showDeadKeys, keyboard } = this.props
+    if (showDeadKeys === true) {
       return (
-        <p dangerouslySetInnerHTML={{ __html: this.state.keyboard.allChars }} />
+        <p dangerouslySetInnerHTML={{ __html: keyboard.allChars }} />
       )
     }
   }
 
   render() {
-    const { functionKeys } = this.state.keyboard
-    const keyEvent = this.props.keyEvent || {}
-    const displayedLevel = this.props.displayedLevel || 'to'
+    const {
+      keyboard,
+      functionKeys,
+    } = this.props
+    // console.log("keyboard", keyboard)
+    // console.log("keys", keyboardKeys)
 
-    function mapObject(object, callback) {
-      return Object.keys(object).map(key => callback(key, object[key]))
+    if (!keyboard.keys) {
+      return null
     }
+
+    const {
+      keys,
+    } = keyboard
+
+    const {
+      keyboardWidth,
+      keyboardHeight,
+      keyWidth,
+      keyHeight,
+      keyPaddingX,
+      keyPaddingY,
+      aRowShift,
+      bRowShift,
+      cRowShift,
+      dRowShift,
+      rX,
+      rY,
+      keyLabelX,
+      keyLabelY,
+    } = vars
+
+    const displayedLevel = this.props.displayedLevel || 'to'
 
     return (
       <div className="keyboard" style={{ background: 'gray', borderRadius: 10 }}>
         {this.KeyboardTitle()}
         {this.KeyboardDeadKeys()}
-        <svg className="keyboard__svg" version="1.1" viewBox={`0 0 ${vars.keyboardWidth} ${vars.keyboardHeight}`} textAnchor="middle">
+        <svg className="keyboard__svg" version="1.1" viewBox={`0 0 ${keyboardWidth} ${keyboardHeight}`} textAnchor="middle">
           {
-            this.state.keyboard.keys.map(item => (
-              <KeyboardKey
-                key={item.iso}
-                keyObj={item}
-                keyEvent={keyEvent}
-                displayedLevel={displayedLevel}
-              />
-            ))
+            Object.keys(keys).map((iso) => {
+              if (!keys[iso].to) {
+                return
+              }
+
+              const rowLetter = iso.substring(0, 1)
+              const column = parseInt(iso.substring(1, 3), 10)
+
+              let translateX = vars.keyWidth * column
+              let translateY = 0
+
+              switch (rowLetter) {
+              case 'D':
+                translateX = vars.dRowShift + vars.keyWidth * column
+                translateY = vars.keyHeight
+                break
+              case 'C':
+                translateX = vars.cRowShift + vars.keyWidth * column
+                translateY = vars.keyHeight * 2
+                break
+              case 'B':
+                translateX = vars.bRowShift + vars.keyWidth * column
+                translateY = vars.keyHeight * 3
+                break
+              case 'A':
+                translateX = vars.aRowShift + vars.keyWidth * column
+                translateY = vars.keyHeight * 4
+                break
+              default:
+                break
+              }
+
+              const labels = { to: keys[iso].to }
+              return (
+                <KeyboardKey
+                  key={iso}
+                  displayedLevel={displayedLevel}
+                  iso={iso}
+                  {...keys[iso]}
+                  labels={labels}
+                  x={translateX}
+                  y={translateY}
+                  width={keyWidth}
+                  height={keyWidth}
+                  rx={rY}
+                  ry={rY}
+                />
+              )
+            })
           };
           {
-            mapObject(this.state.keyboard.functionKeys, (key, value) => (
-              <KeyboardKey
-                key={value.iso}
-                keyObj={value}
-                keyEvent={keyEvent}
-              />
-            ))
+            Object.keys(functionKeys).map((iso) => {
+              const labels = { to: functionKeys[iso].to }
+              return (
+                <KeyboardKey
+                  key={iso}
+                  displayedLevel="to"
+                  iso={iso}
+                  {...functionKeys[iso]}
+                  labels={labels}
+                  x={0}
+                  y={0}
+                  width={keyWidth}
+                  height={keyWidth}
+                  rx={rY}
+                  ry={rY}
+                />
+              )
+            })
           }
         </svg>
       </div>
