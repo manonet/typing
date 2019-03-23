@@ -1,31 +1,36 @@
 import React from 'react'
 import { withPrefix } from 'gatsby-link'
+import { merge } from 'lodash'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import findCharOnKeyboard from '../components/utils/findCharOnKeyboard'
 
-import Program from '../components/Program'
-import Keyboard from '../components/keyboard/Keyboard'
+import ProgramBoard from '../components/ProgramBoard'
 
 export default class ProgramPage extends React.Component {
   constructor() {
     super()
     this.state = {
-      sampleText: "LíćČ et's Type Something (@)...",
+      sampleText: "Lí|Ä¶ćČ et's Type Something (@)...",
       userText: '',
       cursorAt: 0,
       signToWrite: '',
       writtenSign: '',
       nextSign: '',
-      writing: false, // whenever the user types (or not)
+      isUserInputFocused: false, // whenever the user types (or not)
       keyboard: {
-        name: '',
-        keys: [],
-        levels: [],
-        allChars: [],
-        deadKeys: [],
-        functionKeys: {},
+        // name: '',
+        // keys: {},
+        // keyLevels: [],
+        // allChars: [],
+        // deadKeys: [],
       },
+      markedKeyboard: {},
+      functionKeys: {},
+      markedFunctionKeys: {},
+      keysDown: [],
+      /*
       keyEvent: {
         altKey: false,
         bubbles: true,
@@ -59,73 +64,163 @@ export default class ProgramPage extends React.Component {
 
         CapsLock: false,
       },
+      */
 
       displayedLevel: 'to',
-
-      markFunctionKey: this.markFunctionKey.bind(this),
-      handleKeydown: this.handleKeydown.bind(this),
-      handleKeypress: this.handleKeypress.bind(this),
-      handleKeyup: this.handleKeyup.bind(this),
     }
+
+    this.markFunctionKey = this.markFunctionKey.bind(this)
+    this.handleKeydown = this.handleKeydown.bind(this)
+    // this.handleKeypress = this.handleKeypress.bind(this)
+    this.handleKeyup = this.handleKeyup.bind(this)
+    this.markKeyboardKeys = this.markKeyboardKeys.bind(this)
+    this.userInputText = this.userInputText.bind(this)
+    this.setUserInputFocus = this.setUserInputFocus.bind(this)
   }
 
-  userWrite(userText) {
-    const signToWrite = (userText.length >= 1) ? this.state.sampleText.substring(userText.length - 1, userText.length) : ''
+  componentDidMount() {
+    Promise.all([
+      fetch(withPrefix('/keyboards/windows/hu-t-k0-windows.json')),
+      fetch(withPrefix('/keyboards/codeToIso.json')),
+      fetch(withPrefix('/keyboards/functionKeys.json')),
+    ])
+      .then(responses => Promise.all(responses.map(r => r.json())))
+      .then((responses) => {
+        this.setState(
+          {
+            keyboard: responses[0],
+            markedKeyboard: responses[0],
+            codeToIso: responses[1],
+            functionKeys: responses[2],
+            markedFunctionKeys: responses[2],
+          },
+          document.addEventListener('keydown', this.handleKeydown, false),
+          document.addEventListener('keyup', this.handleKeyup, false),
+        )
+      })
+  }
+
+  setUserInputFocus(isUserInputFocused) {
+    this.setState({ isUserInputFocused })
+  }
+
+  userInputText(userText) {
+    const { sampleText } = this.state
+    const signToWrite = (userText.length >= 1) ? sampleText.substring(userText.length - 1, userText.length) : ''
     const cursorAt = userText.length
     const writtenSign = (cursorAt > 0) ? userText.charAt(cursorAt - 1) : ''
-    const nextSign = this.state.sampleText.charAt(cursorAt)
+    const nextSign = sampleText.charAt(cursorAt)
 
-    this.setState({
-      userText,
-      cursorAt,
-      signToWrite,
-      writtenSign,
-      nextSign,
+    this.setState(
+      {
+        userText,
+        cursorAt,
+        signToWrite,
+        writtenSign,
+        nextSign,
+      },
+      this.markKeyboardForType(signToWrite, writtenSign, nextSign),
+    )
+  }
+
+  markKeyboardKeys(keyboard, keys) {
+    keys.map((key) => {
+      keyboard.keys[key.iso].state = key.color
     })
-
-    this.markKeyboardForType(signToWrite, writtenSign, nextSign)
+    return keyboard
   }
 
-  onWriting(writing) {
-    this.setState({ writing })
-    // this.userWrite("");
-  }
-
-  onKeyboardLoaded(data) {
-    this.setState(data)
-    // TODO handle onKeyboardLoaded and markKeyboardForType
-    // this.markKeyboardForType(this.state.signToWrite,this.state.writtenSign,this.state.nextSign);
+  markFunctionKey(functionKeys, keys) {
+    // TODO extract findFunctionKeyForChar function
+    Object.keys(functionKeys).map((functionKey) => {
+      const fnKey = functionKeys[functionKey]
+      fnKey.state = 'def'
+    })
+    keys.map((key) => {
+      const {
+        level,
+        leftOrRightSide: side,
+        color,
+      } = key
+      Object.keys(functionKeys).map((functionKey) => {
+        const fnKey = functionKeys[functionKey]
+        if (fnKey.level === level && (!fnKey.side || (fnKey.side && fnKey.side !== side))) {
+          fnKey.state = color
+        }
+      })
+    })
+    return functionKeys
   }
 
   markKeyboardForType(signToWrite, writtenSign, nextSign) {
-    // console.log("keyboard.deadKeys: " + this.state.keyboard.deadKeys);
-    // console.log("signToWrite: " + signToWrite, "writtenSign: " + writtenSign, "nextSign: " + nextSign);
-    const { state } = this
-    const { keyboard } = this.state
-    const { levels } = keyboard
-    const { keys } = keyboard
-    const { functionKeys } = keyboard
+    const {
+      keyboard: keyboardFromState,
+      functionKeys: functionKeysFromState,
+    } = this.state
+    const keyboard = JSON.parse(JSON.stringify(keyboardFromState))
+    const functionKeys = JSON.parse(JSON.stringify(functionKeysFromState))
+    const { deadKeys } = keyboard
 
-    // save the status of searching for characters for performance
-    let nextSignFound = false
-    let writtenSignFound = false
-    let signToWriteFound = false
-    let stillSearching = true
+    const succeed = signToWrite === writtenSign
+    const succeedState = succeed ? 'correct' : 'error'
 
-    // TODO - move this function to a shared place (make it global accessible)
-    function mapObject(object, callback) {
-      return Object.keys(object).map(key => callback(key, object[key]))
+    let markedKeyboard
+    let markedFunctionKeys
+
+    // mark next key(s)
+    const nextKeyInfo = findCharOnKeyboard({
+      keyboard,
+      characterToFind: nextSign,
+    })
+    if (nextKeyInfo) {
+      nextKeyInfo.color = 'toWrite'
+      markedKeyboard = this.markKeyboardKeys(keyboard, [nextKeyInfo])
+      markedFunctionKeys = this.markFunctionKey(functionKeys, [nextKeyInfo])
+    } else if (deadKeys) {
+      Object.keys(deadKeys).map((key) => {
+        if (key === nextSign) {
+          // keyToPressFound in deadKeys: deadKeys[key][0], deadKeys[key][1])
+          const nextKey0Info = findCharOnKeyboard({
+            keyboard,
+            characterToFind: deadKeys[key][0],
+          })
+          const nextKey1Info = findCharOnKeyboard({
+            keyboard,
+            characterToFind: deadKeys[key][1],
+          })
+
+          if (nextKey0Info && nextKey1Info) {
+            nextKey0Info.color = 'toPressFirst'
+            nextKey1Info.color = 'toPressSecond'
+
+            markedKeyboard = this.markKeyboardKeys(keyboard, [nextKey0Info, nextKey1Info])
+            markedFunctionKeys = this.markFunctionKey(functionKeys, [nextKey0Info, nextKey1Info])
+          }
+        }
+        return null
+      })
+    }
+    // markedKeyboard.keys.E02.state = 'correct'
+
+    markedKeyboard = this.markKeyboardKeys(keyboard, this.state.keysDown)
+
+    if (!markedKeyboard) {
+      console.log('could not find character on the keyboard')
+      markedKeyboard = keyboard
     }
 
-    mapObject(functionKeys, (key, value) => {
-      // reset function keys
-      functionKeys[key].state = 'def'
-      functionKeys[key].priority = 'def'
+    if (!markedFunctionKeys) {
+      console.log('could not find function key on the keyboard')
+      markedFunctionKeys = functionKeys
+    }
+
+    this.setState({
+      markedKeyboard,
+      markedFunctionKeys,
     })
 
+    /*
     for (let i = 0; i < levels.length; i++) {
-      // loop trough each level first, then the keys. It is necessary, because the same character can be appear multiple times on the same keyboard, e.g. "í" on hungarian, once "normal" in "to" level, once on the "j" key in "AltGr" level.
-
       const level = levels[i]
 
       if (stillSearching) {
@@ -143,7 +238,7 @@ export default class ProgramPage extends React.Component {
             if (!nextSignFound && item.labels[level] === nextSign) {
               if (level !== 'to') {
                 // key combination, using of function key necessary
-                state.markFunctionKey(level, 'toWrite')
+                this.markFunctionKey(level, 'toWrite')
               }
               item.state = 'toWrite'
               nextSignFound = true
@@ -159,7 +254,7 @@ export default class ProgramPage extends React.Component {
               if (signToWrite !== writtenSign) {
                 item.state = 'missed'
                 // TODO enable/disable backspace
-                state.markFunctionKey('backspace', 'toWrite')
+                this.markFunctionKey('backspace', 'toWrite')
               }
               signToWriteFound = true
             }
@@ -177,6 +272,8 @@ export default class ProgramPage extends React.Component {
         })
       }
     }
+    */
+    /*
     if (stillSearching) {
       // the character not appears on any key, so search for it in the keyboard.deadKeys
       // console.log("transform"); TODO don't run this function on the first time
@@ -196,7 +293,7 @@ export default class ProgramPage extends React.Component {
             // loop trough each level again
             const level = levels[i]
 
-            console.log('test', combo1Found, combo2Found)
+            // console.log('test', combo1Found, combo2Found)
             if (!(combo1Found && combo2Found)) {
               // map only if still necessary
               keys.map((item) => {
@@ -204,26 +301,25 @@ export default class ProgramPage extends React.Component {
                 if (!combo1Found && item.labels[level] === combo1) {
                   if (level !== 'to') {
                     // key combination, using of function key necessary
-                    console.log(item.labels[level])
-                    state.markFunctionKey(level, 'toWrite')
+                    // console.log(item.labels[level])
+                    this.markFunctionKey(level, 'toWrite')
                   }
                   item.state = 'toWrite'
                   nextSignFound = true // it is enough to check only one half of the sign in the same loop, because the sign is found anyway
                   combo1Found = true
-                  console.log('combo1Found ', combo1)
+                  // console.log('combo1Found ', combo1)
                 }
                 if (!combo2Found && item.labels[level] === combo2) {
                   if (level !== 'to') {
                     // key combination, using of function key necessary
-                    console.log(item.labels[level])
+                    // console.log(item.labels[level])
                     // TODO item.priority = 'secondary'
-                    state.markFunctionKey(level, 'toWrite secondary')
-
+                    this.markFunctionKey(level, 'toWrite secondary')
                   }
                   item.state = 'toWrite'
                   item.priority = 'secondary'
                   combo2Found = true
-                  console.log('combo2Found ', combo2)
+                  // console.log('combo2Found ', combo2)
                 }
               })
             }
@@ -289,38 +385,29 @@ export default class ProgramPage extends React.Component {
         }
       }
     }
+    */
   }
 
-  markFunctionKey(name, state) {
-    // reset all key status before
-    console.log(name, state)
-    if (name === 'shift') {
-      // TOTO - assign hands both way: same side or opposit size
-      name = 'leftShift'
-    } else if (name === 'altR+caps? ctrl+alt+caps?') {
-      name = 'altGr'
-    }
-    // TODO - synch all function keys
-
-    const keyboard = Object.assign({}, this.state.keyboard)
-    keyboard.functionKeys[name].state = state
-    this.setState({
-      keyboard,
-    })
-  }
-
-  componentDidMount() {
-    // Todo ?
-    // this.userWrite("");
-    // use onKeyboardLoaded instead
-    document.addEventListener('keydown', this.state.handleKeydown, false)
-    // document.addEventListener("keypress", this.state.handleKeypress, false);
-    document.addEventListener('keyup', this.state.handleKeyup, false)
-  }
 
   handleKeys(event, source) {
     const keyEvent = Object.assign({}, this.state.keyEvent)
     // console.log(source, event);
+
+    let displayedLevel = 'to'
+    if (keyEvent.shiftKey && keyEvent.CapsLock) {
+      displayedLevel = 'caps+shift'
+    } else if (keyEvent.CapsLock && !(keyEvent.altKey && keyEvent.ctrlKey)) {
+      displayedLevel = 'caps'
+    } else if (keyEvent.shiftKey) {
+      displayedLevel = 'shift'
+    } else if (keyEvent.altKey && keyEvent.ctrlKey) {
+      displayedLevel = 'altR+caps? ctrl+alt+caps?'
+    }
+
+    this.setState({
+      displayedLevel,
+    })
+
     if (event.altKey !== keyEvent.altKey) {
       // console.log("altKey");
       keyEvent.altKey = event.altKey
@@ -351,7 +438,6 @@ export default class ProgramPage extends React.Component {
       })
     }
 
-
     if (event.getModifierState) {
       // console.log(event.getModifierState("CapsLock"));
       if (event.getModifierState('CapsLock') !== keyEvent.CapsLock) {
@@ -378,7 +464,7 @@ export default class ProgramPage extends React.Component {
       } */
 
       /*
-      console.log(event.key);
+      // console.log(event.key);
       // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState
       let Alt = event.getModifierState && event.getModifierState("Alt");
       let AltGraph = event.getModifierState && event.getModifierState("AltGraph");
@@ -394,49 +480,67 @@ export default class ProgramPage extends React.Component {
   }
 
   handleKeydown(event) {
-    this.handleKeys(event, 'Keydown')
+    // console.dir(event.code, event.key, event.getModifierState('Alt'), event.location)
+    const { keysDown: keysDownFromState, codeToIso } = this.state
+    const keysDown = JSON.parse(JSON.stringify(keysDownFromState))
+
+    const downIso = codeToIso[event.code]
+    keysDown.push({ iso: downIso, color: 'error' })
+
+    this.setState({
+      keysDown,
+    })
   }
 
-  handleKeypress(event) {
-    this.handleKeys(event, 'Keypress')
-  }
+  // handleKeypress(event) {
+  //   this.handleKeys(event, 'Keypress')
+  // }
 
   handleKeyup(event) {
-    this.handleKeys(event, 'Keyup')
+    // this.handleKeys(event, 'Keyup')
+    const { keysDown: keysDownFromState, codeToIso } = this.state
+    const keysDown = JSON.parse(JSON.stringify(keysDownFromState))
+
+    const downIso = codeToIso[event.code]
+    const filteredArray = keysDown.filter(obj => obj.iso !== downIso)
+
+    // console.log(filteredArray)
+    this.setState({
+      keysDown: filteredArray,
+    })
   }
 
   render() {
+    const {
+      markedKeyboard,
+      sampleText,
+      userText,
+      cursorAt,
+      signToWrite,
+      writtenSign,
+      isUserInputFocused,
+      displayedLevel,
+      markedFunctionKeys,
+    } = this.state
+
     return (
       <Layout>
         <SEO title="Typewriting program" />
         <h1>Typewriting program</h1>
-        <Program
-          sampleText={this.state.sampleText}
-          userText={this.state.userText}
-          cursorAt={this.state.cursorAt}
-          signToWrite={this.state.signToWrite}
-          writtenSign={this.state.writtenSign}
-          userWrite={this.userWrite.bind(this)}
-          onWriting={this.onWriting.bind(this)}
-          writing={this.state.writing}
-          keyboardName={this.state.keyboard.name}
-          keyboardKeys={this.state.keyboard.keys}
-          onKeyboardLoaded={this.onKeyboardLoaded.bind(this)}
-          displayedLevel={this.state.displayedLevel}
-          keyEvent={this.state.keyEvent}
+
+        <ProgramBoard
+          sampleText={sampleText}
+          userText={userText}
+          cursorAt={cursorAt}
+          signToWrite={signToWrite}
+          writtenSign={writtenSign}
+          userInputText={this.userInputText}
+          setUserInputFocus={this.setUserInputFocus}
+          isUserInputFocused={isUserInputFocused}
+          displayedLevel={displayedLevel}
+          keyboard={markedKeyboard}
+          functionKeys={markedFunctionKeys}
         />
-        {/* <Keyboard
-          keyboardUrl={withPrefix('/keyboards/windows/es-t-k0-windows.xml')}
-          onKeyboardLoaded={function () {}}
-          showTitle
-          showDeadKeys
-        />
-        <Keyboard
-          keyboardUrl={withPrefix('/keyboards/osx/hu-t-k0-osx.xml')}
-          onKeyboardLoaded={function () {}}
-          showTitle
-          showDeadKeys
-        /> */}
       </Layout>
     )
   }

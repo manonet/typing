@@ -4,17 +4,23 @@ import vars from '../../variables'
 const { parseString } = require('xml2js')
 
 export default function KeyboardProcessXML(xml) {
-  let keyboardName; let keyboardKeys; let keyLevels; let allKeyboardChars; let deadKeys; let
-    functionKeys
+  let keyboardName
+  const keyboardKeys = []
+  const keyLevels = [] // ["to", "Shift", "altGr", ...]
+  let allKeyboardChars = [] // will contains all characters that is possible to write with actual keyboard layout
+  const deadKeys = []
+  let functionKeys
 
   parseString(xml, (err, result) => {
-    keyboardName = result.keyboard.names[0].name[0].$.value
-    keyboardKeys = []
-    keyLevels = [] // ["to", "Shift", "altGr", ...]
-    const { keyMap } = result.keyboard
-    const { transforms } = result.keyboard
-    deadKeys = []
-    allKeyboardChars = [] // will contains all characters that is possible to write with actual keyboard layout
+    if (err) {
+      return
+    }
+
+    const { keyboard } = result
+    const { keyMap } = keyboard
+    const { transforms } = keyboard
+
+    keyboardName = keyboard.names[0].name[0].$.value
 
     let d13Empty = true
     let c12Empty = true
@@ -26,7 +32,7 @@ export default function KeyboardProcessXML(xml) {
         labels: {
           to: '⟵',
         },
-        iso: 'E14',
+        iso: 'E13',
         state: 'def',
       },
 
@@ -225,6 +231,7 @@ export default function KeyboardProcessXML(xml) {
           const rowLetter = iso.substring(0, 1)
           let row = 0
           const column = parseInt(iso.substring(1, 3))
+
           let translateX = vars.keyWidth * column
           let translateY = 0
 
@@ -250,14 +257,8 @@ export default function KeyboardProcessXML(xml) {
             break
           }
 
-          myObj.translate = `translate(${translateX}, ${translateY})`
           myObj.x = translateX
           myObj.y = translateY
-
-          if (transformChars.length && transformChars !== ' ') {
-            // add transform only if not empty or not a space
-            myObj.transform = transformChars
-          }
 
           keyboardKeys.push(myObj)
         } else {
@@ -289,14 +290,14 @@ export default function KeyboardProcessXML(xml) {
   // sort TODO - lang
   allKeyboardChars.sort((a, b) => a.localeCompare(b, 'hu', { sensitivity: 'variant' }))
 
-  return {
-    keyboard: {
-      name: keyboardName,
-      keys: keyboardKeys,
-      levels: keyLevels,
-      allChars: allKeyboardChars,
-      deadKeys,
-      functionKeys,
-    },
+  const keyboard = {
+    name: keyboardName,
+    keys: keyboardKeys,
+    levels: keyLevels,
+    allChars: allKeyboardChars,
+    deadKeys,
+    functionKeys,
   }
+  // console.log(keyboard)
+  return { keyboard }
 }
