@@ -45,7 +45,7 @@
     "state": "def"
   },
   "A01": {
-    "to": "⌘",
+    "to": "Win",
     "name": "leftCommand",
     "state": "def"
   },
@@ -61,7 +61,7 @@
     "level": "altR+caps? ctrl+alt+caps?"
   },
   "A09": {
-    "to": "⌘",
+    "to": "Win",
     "name": "rightCommand",
     "state": "def"
   },

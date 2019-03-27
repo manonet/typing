@@ -2,49 +2,49 @@
   "name": "Kannada",
   "keys": {
     "E00": {
-      "to": "\\u{CCA}",
+      "to": "&#xCCA;",
       "shift": "ಒ",
       "caps+shift": "ಒ"
     },
     "E01": {
       "to": "1",
       "altR+caps? ctrl+alt+caps?": "೧",
-      "ctrl+shift+caps?": "\\u{200D}"
+      "ctrl+shift+caps?": "&#x200D;"
     },
     "E02": {
       "to": "2",
       "altR+caps? ctrl+alt+caps?": "೨",
-      "ctrl+shift+caps?": "\\u{200C}"
+      "ctrl+shift+caps?": "&#x200C;"
     },
     "E03": {
       "to": "3",
-      "shift": "\\u{CCD}ರ",
+      "shift": "&#xCCD;ರ",
       "altR+caps? ctrl+alt+caps?": "೩"
     },
     "E04": {
       "to": "4",
-      "shift": "ರ\\u{CCD}",
+      "shift": "ರ&#xCCD;",
       "altR+caps? ctrl+alt+caps?": "೪",
       "ctrl+shift+caps?": "₹"
     },
     "E05": {
       "to": "5",
-      "shift": "ಜ\\u{CCD}ಞ",
+      "shift": "ಜ&#xCCD;ಞ",
       "altR+caps? ctrl+alt+caps?": "೫"
     },
     "E06": {
       "to": "6",
-      "shift": "ತ\\u{CCD}ರ",
+      "shift": "ತ&#xCCD;ರ",
       "altR+caps? ctrl+alt+caps?": "೬"
     },
     "E07": {
       "to": "7",
-      "shift": "ಕ\\u{CCD}ಷ",
+      "shift": "ಕ&#xCCD;ಷ",
       "altR+caps? ctrl+alt+caps?": "೭"
     },
     "E08": {
       "to": "8",
-      "shift": "ಶ\\u{CCD}ರ",
+      "shift": "ಶ&#xCCD;ರ",
       "altR+caps? ctrl+alt+caps?": "೮"
     },
     "E09": {
@@ -61,40 +61,40 @@
     },
     "E11": {
       "to": "-",
-      "shift": "\\u{C83}",
-      "caps+shift": "\\u{C83}"
+      "shift": "&#xC83;",
+      "caps+shift": "&#xC83;"
     },
     "E12": {
-      "to": "\\u{CC3}",
+      "to": "&#xCC3;",
       "shift": "ಋ",
       "caps+shift": "ಋ",
-      "altR+caps? ctrl+alt+caps?": "\\u{CC4}",
+      "altR+caps? ctrl+alt+caps?": "&#xCC4;",
       "altR+shift+caps? ctrl+alt+shift+caps?": "ೠ"
     },
     "D01": {
-      "to": "\\u{CCC}",
+      "to": "&#xCCC;",
       "shift": "ಔ",
       "caps+shift": "ಔ"
     },
     "D02": {
-      "to": "\\u{CC8}",
+      "to": "&#xCC8;",
       "shift": "ಐ",
       "caps+shift": "ಐ",
-      "altR+caps? ctrl+alt+caps?": "\\u{CD6}"
+      "altR+caps? ctrl+alt+caps?": "&#xCD6;"
     },
     "D03": {
-      "to": "\\u{CBE}",
+      "to": "&#xCBE;",
       "shift": "ಆ",
       "caps+shift": "ಆ"
     },
     "D04": {
-      "to": "\\u{CC0}",
+      "to": "&#xCC0;",
       "shift": "ಈ",
       "caps+shift": "ಈ",
       "altR+shift+caps? ctrl+alt+shift+caps?": "ೡ"
     },
     "D05": {
-      "to": "\\u{CC2}",
+      "to": "&#xCC2;",
       "shift": "ಊ",
       "caps+shift": "ಊ"
     },
@@ -129,29 +129,29 @@
       "caps+shift": "ಢ"
     },
     "C01": {
-      "to": "\\u{CCB}",
+      "to": "&#xCCB;",
       "shift": "ಓ",
       "caps+shift": "ಓ"
     },
     "C02": {
-      "to": "\\u{CC7}",
+      "to": "&#xCC7;",
       "shift": "ಏ",
       "caps+shift": "ಏ",
-      "altR+caps? ctrl+alt+caps?": "\\u{CD5}"
+      "altR+caps? ctrl+alt+caps?": "&#xCD5;"
     },
     "C03": {
-      "to": "\\u{CCD}",
+      "to": "&#xCCD;",
       "shift": "ಅ",
       "caps+shift": "ಅ"
     },
     "C04": {
-      "to": "\\u{CBF}",
+      "to": "&#xCBF;",
       "shift": "ಇ",
       "caps+shift": "ಇ",
       "altR+shift+caps? ctrl+alt+shift+caps?": "ಌ"
     },
     "C05": {
-      "to": "\\u{CC1}",
+      "to": "&#xCC1;",
       "shift": "ಉ",
       "caps+shift": "ಉ"
     },
@@ -187,12 +187,12 @@
       "caps+shift": "ಠ"
     },
     "B01": {
-      "to": "\\u{CC6}",
+      "to": "&#xCC6;",
       "shift": "ಎ",
       "caps+shift": "ಎ"
     },
     "B02": {
-      "to": "\\u{C82}"
+      "to": "&#xC82;"
     },
     "B03": {
       "to": "ಮ",
@@ -289,7 +289,7 @@
       "E09",
       "to"
     ],
-    "\\u{CCA}": [
+    "&#xCCA;": [
       "E00",
       "to"
     ],
@@ -297,27 +297,27 @@
       "E11",
       "to"
     ],
-    "\\u{CC3}": [
+    "&#xCC3;": [
       "E12",
       "to"
     ],
-    "\\u{CCC}": [
+    "&#xCCC;": [
       "D01",
       "to"
     ],
-    "\\u{CC8}": [
+    "&#xCC8;": [
       "D02",
       "to"
     ],
-    "\\u{CBE}": [
+    "&#xCBE;": [
       "D03",
       "to"
     ],
-    "\\u{CC0}": [
+    "&#xCC0;": [
       "D04",
       "to"
     ],
-    "\\u{CC2}": [
+    "&#xCC2;": [
       "D05",
       "to"
     ],
@@ -345,23 +345,23 @@
       "D11",
       "to"
     ],
-    "\\u{CCB}": [
+    "&#xCCB;": [
       "C01",
       "to"
     ],
-    "\\u{CC7}": [
+    "&#xCC7;": [
       "C02",
       "to"
     ],
-    "\\u{CCD}": [
+    "&#xCCD;": [
       "C03",
       "to"
     ],
-    "\\u{CBF}": [
+    "&#xCBF;": [
       "C04",
       "to"
     ],
-    "\\u{CC1}": [
+    "&#xCC1;": [
       "C05",
       "to"
     ],
@@ -389,11 +389,11 @@
       "C11",
       "to"
     ],
-    "\\u{CC6}": [
+    "&#xCC6;": [
       "B01",
       "to"
     ],
-    "\\u{C82}": [
+    "&#xC82;": [
       "B02",
       "to"
     ],
@@ -437,27 +437,27 @@
       "E00",
       "shift"
     ],
-    "\\u{CCD}ರ": [
+    "&#xCCD;ರ": [
       "E03",
       "shift"
     ],
-    "ರ\\u{CCD}": [
+    "ರ&#xCCD;": [
       "E04",
       "shift"
     ],
-    "ಜ\\u{CCD}ಞ": [
+    "ಜ&#xCCD;ಞ": [
       "E05",
       "shift"
     ],
-    "ತ\\u{CCD}ರ": [
+    "ತ&#xCCD;ರ": [
       "E06",
       "shift"
     ],
-    "ಕ\\u{CCD}ಷ": [
+    "ಕ&#xCCD;ಷ": [
       "E07",
       "shift"
     ],
-    "ಶ\\u{CCD}ರ": [
+    "ಶ&#xCCD;ರ": [
       "E08",
       "shift"
     ],
@@ -469,7 +469,7 @@
       "E10",
       "shift"
     ],
-    "\\u{C83}": [
+    "&#xC83;": [
       "E11",
       "shift"
     ],
@@ -633,15 +633,15 @@
       "E10",
       "altR+caps? ctrl+alt+caps?"
     ],
-    "\\u{CC4}": [
+    "&#xCC4;": [
       "E12",
       "altR+caps? ctrl+alt+caps?"
     ],
-    "\\u{CD6}": [
+    "&#xCD6;": [
       "D02",
       "altR+caps? ctrl+alt+caps?"
     ],
-    "\\u{CD5}": [
+    "&#xCD5;": [
       "C02",
       "altR+caps? ctrl+alt+caps?"
     ],
@@ -661,11 +661,11 @@
       "C06",
       "altR+shift+caps? ctrl+alt+shift+caps?"
     ],
-    "\\u{200D}": [
+    "&#x200D;": [
       "E01",
       "ctrl+shift+caps?"
     ],
-    "\\u{200C}": [
+    "&#x200C;": [
       "E02",
       "ctrl+shift+caps?"
     ],
@@ -675,113 +675,115 @@
     ]
   },
   "allChars": [
-    "\\u{CCA}",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "0",
+    " ",
     "-",
-    "\\u{CC3}",
-    "\\u{CCC}",
-    "\\u{CC8}",
-    "\\u{CBE}",
-    "\\u{CC0}",
-    "\\u{CC2}",
-    "ಬ",
-    "ಹ",
-    "ಗ",
-    "ದ",
-    "ಜ",
-    "ಡ",
-    "\\u{CCB}",
-    "\\u{CC7}",
-    "\\u{CCD}",
-    "\\u{CBF}",
-    "\\u{CC1}",
-    "ಪ",
-    "ರ",
-    "ಕ",
-    "ತ",
-    "ಚ",
-    "ಟ",
-    "\\u{CC6}",
-    "\\u{C82}",
-    "ಮ",
-    "ನ",
-    "ವ",
-    "ಲ",
-    "ಸ",
     ",",
     ".",
-    "ಯ",
-    " ",
-    "ಒ",
-    "\\u{CCD}ರ",
-    "ರ\\u{CCD}",
-    "ಜ\\u{CCD}ಞ",
-    "ತ\\u{CCD}ರ",
-    "ಕ\\u{CCD}ಷ",
-    "ಶ\\u{CCD}ರ",
     "(",
     ")",
-    "\\u{C83}",
-    "ಋ",
-    "ಔ",
-    "ಐ",
-    "ಆ",
-    "ಈ",
-    "ಊ",
-    "ಭ",
-    "ಙ",
-    "ಘ",
-    "ಧ",
-    "ಝ",
-    "ಢ",
-    "ಞ",
-    "ಓ",
-    "ಏ",
-    "ಅ",
-    "ಇ",
-    "ಉ",
-    "ಫ",
-    "ಱ",
-    "ಖ",
-    "ಥ",
-    "ಛ",
-    "ಠ",
-    "ಎ",
-    "ಣ",
-    "ಳ",
-    "ಶ",
-    "ಷ",
+    "&#x200C;",
+    "&#x200D;",
+    "&#xC82;",
+    "&#xC83;",
+    "&#xCBE;",
+    "&#xCBF;",
+    "&#xCC0;",
+    "&#xCC1;",
+    "&#xCC2;",
+    "&#xCC3;",
+    "&#xCC4;",
+    "&#xCC6;",
+    "&#xCC7;",
+    "&#xCC8;",
+    "&#xCCA;",
+    "&#xCCB;",
+    "&#xCCC;",
+    "&#xCCD;",
+    "&#xCCD;ರ",
+    "&#xCD5;",
+    "&#xCD6;",
     "|",
+    "₹",
+    "0",
+    "೦",
+    "1",
     "೧",
     "೨",
+    "2",
     "೩",
+    "3",
     "೪",
+    "4",
+    "5",
     "೫",
     "೬",
+    "6",
+    "7",
     "೭",
     "೮",
+    "8",
+    "9",
     "೯",
-    "೦",
-    "\\u{CC4}",
-    "\\u{CD6}",
-    "\\u{CD5}",
+    "ಅ",
+    "ಆ",
+    "ಇ",
+    "ಈ",
+    "ಉ",
+    "ಊ",
+    "ಋ",
     "ೠ",
-    "ೡ",
     "ಌ",
-    "ೞ",
-    "\\u{200D}",
-    "\\u{200C}",
-    "₹"
+    "ೡ",
+    "ಎ",
+    "ಏ",
+    "ಐ",
+    "ಒ",
+    "ಓ",
+    "ಔ",
+    "ಕ",
+    "ಕ&#xCCD;ಷ",
+    "ಖ",
+    "ಗ",
+    "ಘ",
+    "ಙ",
+    "ಚ",
+    "ಛ",
+    "ಜ",
+    "ಜ&#xCCD;ಞ",
+    "ಝ",
+    "ಞ",
+    "ಟ",
+    "ಠ",
+    "ಡ",
+    "ಢ",
+    "ಣ",
+    "ತ",
+    "ತ&#xCCD;ರ",
+    "ಥ",
+    "ದ",
+    "ಧ",
+    "ನ",
+    "ಪ",
+    "ಫ",
+    "ಬ",
+    "ಭ",
+    "ಮ",
+    "ಯ",
+    "ರ",
+    "ರ&#xCCD;",
+    "ಱ",
+    "ಲ",
+    "ವ",
+    "ಶ",
+    "ಶ&#xCCD;ರ",
+    "ಷ",
+    "ಸ",
+    "ಹ",
+    "ಳ",
+    "ೞ"
   ],
+  "enterVariant": 4,
+  "enterIso": "C13",
   "settings": {
     "fallback": "omit"
   }

@@ -5,17 +5,27 @@ const { parseString } = require('xml2js')
 const keyboardFolder = '../../static/keyboards_xml'
 const outputFolder = '../../static/keyboards'
 
+const allLevels = []
 // transform XML to the desired JSON shape
 const process = (result) => {
   const { keyboard } = result
   const { keyMap } = keyboard
   const { transforms } = keyboard
   const { settings } = keyboard
+  const name = keyboard.names[0].name[0].$.value
+
+  console.info(name)
+
+  const langCode = keyboard.$.locale.substring(0, 2)
 
   const allChars = []
   const levels = []
   const keys = {}
   const charMap = {}
+
+  let d13Empty = true
+  let c12Empty = true
+  let c13Empty = true
 
   keyMap.map((mapNode) => {
     const level = mapNode.$ && mapNode.$.modifiers ? mapNode.$.modifiers : 'to'
@@ -32,12 +42,31 @@ const process = (result) => {
    */
     levels.push(level)
 
+    // collect info about possible levels
+    if (!allLevels.includes(level)) {
+      allLevels.push(level)
+    }
+
     mapNode.map.map((key) => {
       const { $ } = key
       const {
         iso,
-        to,
+        to: char,
       } = $
+
+      // unescape unicode e.g. \u{22}
+      const to = char.replace(/\\u\{([A-Z0-9]+)\}/g, '&#x$1;')
+
+      // ger Enter shape
+      switch (iso) {
+      case 'D13': d13Empty = false
+        break
+      case 'C12': c12Empty = false
+        break
+      case 'C13': c13Empty = false
+        break
+      default: break
+      }
 
       if (keys[iso]) {
       /*
@@ -66,12 +95,32 @@ const process = (result) => {
     })
   })
 
+  // determinate shape of enter key
+  // TODO
+  let enterVariant = 4
+  let enterIso = 'C13'
+  if (!d13Empty) {
+    // enter.iso = 'C14'
+    enterVariant = 2
+  } else if (!c12Empty) {
+    enterVariant = 1
+    enterIso = 'C12'
+  } else if (!c13Empty) {
+    // enter.iso = 'D14'
+    // TODO NOT FOUND
+    enterVariant = 3
+  }
+
+  allChars.sort((a, b) => a.localeCompare(b, langCode, { sensitivity: 'variant' }))
+
   const output = {
-    name: keyboard.names[0].name[0].$.value,
+    name,
     keys,
     levels,
     charMap,
     allChars,
+    enterVariant,
+    enterIso,
   }
 
   if (settings) {
@@ -105,6 +154,9 @@ const convert = (files, dirIn, dirOut) => {
           const output = process(result)
           const { name } = path.parse(file)
           fs.writeFile(`${dirOut}/${name}.json`, JSON.stringify(output, null, 2), (error) => {
+            if (error) throw error
+          })
+          fs.writeFile(`${outputFolder}/allLevels.json`, JSON.stringify(allLevels, null, 2), (error) => {
             if (error) throw error
           })
         })

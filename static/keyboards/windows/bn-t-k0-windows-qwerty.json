@@ -3,44 +3,44 @@
   "keys": {
     "E01": {
       "to": "1",
-      "shift": "অ\\u{9CD}য\\u{9BE}",
+      "shift": "অ&#x9CD;য&#x9BE;",
       "altR+caps? ctrl+alt+caps?": "১",
-      "ctrl+shift+caps?": "\\u{200D}"
+      "ctrl+shift+caps?": "&#x200D;"
     },
     "E02": {
       "to": "2",
       "altR+caps? ctrl+alt+caps?": "২",
-      "ctrl+shift+caps?": "\\u{200C}"
+      "ctrl+shift+caps?": "&#x200C;"
     },
     "E03": {
       "to": "3",
-      "shift": "\\u{9CD}র",
+      "shift": "&#x9CD;র",
       "altR+caps? ctrl+alt+caps?": "৩"
     },
     "E04": {
       "to": "4",
-      "shift": "র\\u{9CD}",
+      "shift": "র&#x9CD;",
       "altR+caps? ctrl+alt+caps?": "৪",
       "ctrl+shift+caps?": "₹"
     },
     "E05": {
       "to": "5",
-      "shift": "জ\\u{9CD}র",
+      "shift": "জ&#x9CD;র",
       "altR+caps? ctrl+alt+caps?": "৫"
     },
     "E06": {
       "to": "6",
-      "shift": "ত\\u{9CD}ষ",
+      "shift": "ত&#x9CD;ষ",
       "altR+caps? ctrl+alt+caps?": "৬"
     },
     "E07": {
       "to": "7",
-      "shift": "ক\\u{9CD}র",
+      "shift": "ক&#x9CD;র",
       "altR+caps? ctrl+alt+caps?": "৭"
     },
     "E08": {
       "to": "8",
-      "shift": "শ\\u{9CD}র",
+      "shift": "শ&#x9CD;র",
       "altR+caps? ctrl+alt+caps?": "৮"
     },
     "E09": {
@@ -57,41 +57,41 @@
     },
     "E11": {
       "to": "-",
-      "shift": "\\u{983}",
-      "caps+shift": "\\u{983}"
+      "shift": "&#x983;",
+      "caps+shift": "&#x983;"
     },
     "E12": {
-      "to": "\\u{9C3}",
+      "to": "&#x9C3;",
       "shift": "ঋ",
       "caps+shift": "ঋ",
-      "altR+caps? ctrl+alt+caps?": "\\u{9E2}",
+      "altR+caps? ctrl+alt+caps?": "&#x9E2;",
       "altR+shift+caps? ctrl+alt+shift+caps?": "ৠ"
     },
     "D01": {
-      "to": "\\u{9CC}",
+      "to": "&#x9CC;",
       "shift": "ঔ",
       "caps+shift": "ঔ",
-      "altR+caps? ctrl+alt+caps?": "\\u{9D7}"
+      "altR+caps? ctrl+alt+caps?": "&#x9D7;"
     },
     "D02": {
-      "to": "\\u{9C8}",
+      "to": "&#x9C8;",
       "shift": "ঐ",
       "caps+shift": "ঐ"
     },
     "D03": {
-      "to": "\\u{9BE}",
+      "to": "&#x9BE;",
       "shift": "আ",
       "caps+shift": "আ"
     },
     "D04": {
-      "to": "\\u{9C0}",
+      "to": "&#x9C0;",
       "shift": "ঈ",
       "caps+shift": "ঈ",
-      "altR+caps? ctrl+alt+caps?": "\\u{9E3}",
+      "altR+caps? ctrl+alt+caps?": "&#x9E3;",
       "altR+shift+caps? ctrl+alt+shift+caps?": "ৡ"
     },
     "D05": {
-      "to": "\\u{9C2}",
+      "to": "&#x9C2;",
       "shift": "ঊ",
       "caps+shift": "ঊ"
     },
@@ -129,40 +129,40 @@
       "altR+shift+caps? ctrl+alt+shift+caps?": "ঢ়"
     },
     "D12": {
-      "to": "\\u{9BC}",
+      "to": "&#x9BC;",
       "shift": "ঞ",
       "caps+shift": "ঞ"
     },
     "C01": {
-      "to": "\\u{9CB}",
+      "to": "&#x9CB;",
       "shift": "ও",
       "caps+shift": "ও",
       "altR+caps? ctrl+alt+caps?": "৴",
       "altR+shift+caps? ctrl+alt+shift+caps?": "৵"
     },
     "C02": {
-      "to": "\\u{9C7}",
+      "to": "&#x9C7;",
       "shift": "এ",
       "caps+shift": "এ",
       "altR+caps? ctrl+alt+caps?": "৶",
       "altR+shift+caps? ctrl+alt+shift+caps?": "৷"
     },
     "C03": {
-      "to": "\\u{9CD}",
+      "to": "&#x9CD;",
       "shift": "অ",
       "caps+shift": "অ",
       "altR+caps? ctrl+alt+caps?": "৸",
       "altR+shift+caps? ctrl+alt+shift+caps?": "৹"
     },
     "C04": {
-      "to": "\\u{9BF}",
+      "to": "&#x9BF;",
       "shift": "ই",
       "caps+shift": "ই",
-      "altR+caps? ctrl+alt+caps?": "\\u{9E2}",
+      "altR+caps? ctrl+alt+caps?": "&#x9E2;",
       "altR+shift+caps? ctrl+alt+shift+caps?": "ঌ"
     },
     "C05": {
-      "to": "\\u{9C1}",
+      "to": "&#x9C1;",
       "shift": "উ",
       "caps+shift": "উ"
     },
@@ -197,9 +197,9 @@
       "caps+shift": "ঠ"
     },
     "B02": {
-      "to": "\\u{982}",
-      "shift": "\\u{981}",
-      "caps+shift": "\\u{981}",
+      "to": "&#x982;",
+      "shift": "&#x981;",
+      "caps+shift": "&#x981;",
       "altR+caps? ctrl+alt+caps?": "৺"
     },
     "B03": {
@@ -295,27 +295,27 @@
       "E11",
       "to"
     ],
-    "\\u{9C3}": [
+    "&#x9C3;": [
       "E12",
       "to"
     ],
-    "\\u{9CC}": [
+    "&#x9CC;": [
       "D01",
       "to"
     ],
-    "\\u{9C8}": [
+    "&#x9C8;": [
       "D02",
       "to"
     ],
-    "\\u{9BE}": [
+    "&#x9BE;": [
       "D03",
       "to"
     ],
-    "\\u{9C0}": [
+    "&#x9C0;": [
       "D04",
       "to"
     ],
-    "\\u{9C2}": [
+    "&#x9C2;": [
       "D05",
       "to"
     ],
@@ -343,27 +343,27 @@
       "D11",
       "to"
     ],
-    "\\u{9BC}": [
+    "&#x9BC;": [
       "D12",
       "to"
     ],
-    "\\u{9CB}": [
+    "&#x9CB;": [
       "C01",
       "to"
     ],
-    "\\u{9C7}": [
+    "&#x9C7;": [
       "C02",
       "to"
     ],
-    "\\u{9CD}": [
+    "&#x9CD;": [
       "C03",
       "to"
     ],
-    "\\u{9BF}": [
+    "&#x9BF;": [
       "C04",
       "to"
     ],
-    "\\u{9C1}": [
+    "&#x9C1;": [
       "C05",
       "to"
     ],
@@ -391,7 +391,7 @@
       "C11",
       "to"
     ],
-    "\\u{982}": [
+    "&#x982;": [
       "B02",
       "to"
     ],
@@ -427,31 +427,31 @@
       "A03",
       "to"
     ],
-    "অ\\u{9CD}য\\u{9BE}": [
+    "অ&#x9CD;য&#x9BE;": [
       "E01",
       "shift"
     ],
-    "\\u{9CD}র": [
+    "&#x9CD;র": [
       "E03",
       "shift"
     ],
-    "র\\u{9CD}": [
+    "র&#x9CD;": [
       "E04",
       "shift"
     ],
-    "জ\\u{9CD}র": [
+    "জ&#x9CD;র": [
       "E05",
       "shift"
     ],
-    "ত\\u{9CD}ষ": [
+    "ত&#x9CD;ষ": [
       "E06",
       "shift"
     ],
-    "ক\\u{9CD}র": [
+    "ক&#x9CD;র": [
       "E07",
       "shift"
     ],
-    "শ\\u{9CD}র": [
+    "শ&#x9CD;র": [
       "E08",
       "shift"
     ],
@@ -463,7 +463,7 @@
       "E10",
       "shift"
     ],
-    "\\u{983}": [
+    "&#x983;": [
       "E11",
       "shift"
     ],
@@ -559,7 +559,7 @@
       "C11",
       "shift"
     ],
-    "\\u{981}": [
+    "&#x981;": [
       "B02",
       "shift"
     ],
@@ -623,15 +623,15 @@
       "E10",
       "altR+caps? ctrl+alt+caps?"
     ],
-    "\\u{9E2}": [
+    "&#x9E2;": [
       "E12",
       "altR+caps? ctrl+alt+caps?"
     ],
-    "\\u{9D7}": [
+    "&#x9D7;": [
       "D01",
       "altR+caps? ctrl+alt+caps?"
     ],
-    "\\u{9E3}": [
+    "&#x9E3;": [
       "D04",
       "altR+caps? ctrl+alt+caps?"
     ],
@@ -695,11 +695,11 @@
       "C07",
       "altR+shift+caps? ctrl+alt+shift+caps?"
     ],
-    "\\u{200D}": [
+    "&#x200D;": [
       "E01",
       "ctrl+shift+caps?"
     ],
-    "\\u{200C}": [
+    "&#x200C;": [
       "E02",
       "ctrl+shift+caps?"
     ],
@@ -709,121 +709,123 @@
     ]
   },
   "allChars": [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "0",
+    " ",
     "-",
-    "\\u{9C3}",
-    "\\u{9CC}",
-    "\\u{9C8}",
-    "\\u{9BE}",
-    "\\u{9C0}",
-    "\\u{9C2}",
-    "ব",
-    "হ",
-    "গ",
-    "দ",
-    "জ",
-    "ড",
-    "\\u{9BC}",
-    "\\u{9CB}",
-    "\\u{9C7}",
-    "\\u{9CD}",
-    "\\u{9BF}",
-    "\\u{9C1}",
-    "প",
-    "র",
-    "ক",
-    "ত",
-    "চ",
-    "ট",
-    "\\u{982}",
-    "ম",
-    "ন",
-    "ল",
-    "স",
     ",",
     ".",
-    "য",
-    " ",
-    "অ\\u{9CD}য\\u{9BE}",
-    "\\u{9CD}র",
-    "র\\u{9CD}",
-    "জ\\u{9CD}র",
-    "ত\\u{9CD}ষ",
-    "ক\\u{9CD}র",
-    "শ\\u{9CD}র",
     "(",
     ")",
-    "\\u{983}",
-    "ঋ",
-    "ঔ",
-    "ঐ",
-    "আ",
-    "ঈ",
-    "ঊ",
-    "ভ",
-    "ঙ",
-    "ঘ",
-    "ধ",
-    "ঝ",
-    "ঢ",
-    "ঞ",
-    "ও",
-    "এ",
-    "অ",
-    "ই",
-    "উ",
-    "ফ",
-    "খ",
-    "থ",
-    "ছ",
-    "ঠ",
-    "\\u{981}",
-    "ণ",
-    "শ",
-    "ষ",
     "{",
-    "য়",
+    "&#x200C;",
+    "&#x200D;",
+    "&#x981;",
+    "&#x982;",
+    "&#x983;",
+    "&#x9BC;",
+    "&#x9BE;",
+    "&#x9BF;",
+    "&#x9C0;",
+    "&#x9C1;",
+    "&#x9C2;",
+    "&#x9C3;",
+    "&#x9C7;",
+    "&#x9C8;",
+    "&#x9CB;",
+    "&#x9CC;",
+    "&#x9CD;",
+    "&#x9CD;র",
+    "&#x9D7;",
+    "&#x9E2;",
+    "&#x9E3;",
+    "৺",
+    "₹",
+    "৴",
+    "৵",
+    "৶",
+    "৷",
+    "৸",
+    "৹",
+    "0",
+    "০",
+    "1",
     "১",
     "২",
+    "2",
     "৩",
+    "3",
+    "4",
     "৪",
     "৫",
+    "5",
     "৬",
+    "6",
+    "7",
     "৭",
     "৮",
+    "8",
+    "9",
     "৯",
-    "০",
-    "\\u{9E2}",
-    "\\u{9D7}",
-    "\\u{9E3}",
-    "ৎ",
-    "ড়",
-    "৴",
-    "৶",
-    "৸",
-    "ৰ",
-    "৺",
+    "অ",
+    "অ&#x9CD;য&#x9BE;",
+    "আ",
+    "ই",
+    "ঈ",
+    "উ",
+    "ঊ",
+    "ঋ",
     "ৠ",
-    "ৡ",
-    "ঢ়",
-    "৵",
-    "৷",
-    "৹",
     "ঌ",
+    "ৡ",
+    "এ",
+    "ঐ",
+    "ও",
+    "ঔ",
+    "ক",
+    "ক&#x9CD;র",
+    "খ",
+    "গ",
+    "ঘ",
+    "ঙ",
+    "চ",
+    "ছ",
+    "জ",
+    "জ&#x9CD;র",
+    "ঝ",
+    "ঞ",
+    "ট",
+    "ঠ",
+    "ড",
+    "ড়",
+    "ঢ",
+    "ঢ়",
+    "ণ",
+    "ত",
+    "ত&#x9CD;ষ",
+    "ৎ",
+    "থ",
+    "দ",
+    "ধ",
+    "ন",
+    "প",
+    "ফ",
+    "ব",
+    "ভ",
+    "ম",
+    "য",
+    "য়",
+    "র",
+    "র&#x9CD;",
+    "ৰ",
+    "ল",
     "ৱ",
-    "\\u{200D}",
-    "\\u{200C}",
-    "₹"
+    "শ",
+    "শ&#x9CD;র",
+    "ষ",
+    "স",
+    "হ"
   ],
+  "enterVariant": 4,
+  "enterIso": "C13",
   "settings": {
     "fallback": "omit"
   }

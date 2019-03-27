@@ -8,6 +8,8 @@ import getLevelFromKeys from '../components/utils/getLevelFromKeys'
 
 import ProgramBoard from '../components/ProgramBoard'
 
+// TODO enable/disable backspace
+
 export default class ProgramPage extends React.Component {
   constructor() {
     super()
@@ -37,7 +39,6 @@ export default class ProgramPage extends React.Component {
 
     this.markFunctionKey = this.markFunctionKey.bind(this)
     this.handleKeydown = this.handleKeydown.bind(this)
-    // this.handleKeypress = this.handleKeypress.bind(this)
     this.handleKeyup = this.handleKeyup.bind(this)
     this.markKeyboardKeys = this.markKeyboardKeys.bind(this)
     this.userInputText = this.userInputText.bind(this)
@@ -52,13 +53,18 @@ export default class ProgramPage extends React.Component {
     ])
       .then(responses => Promise.all(responses.map(r => r.json())))
       .then((responses) => {
+        const keyboard = responses[0]
+        const codeToIso = responses[1]
+        const functionKeys = responses[2]
+        functionKeys.D13.variant = keyboard.enterVariant
+
         this.setState(
           {
-            keyboard: responses[0],
-            markedKeyboard: responses[0],
-            codeToIso: responses[1],
-            functionKeys: responses[2],
-            markedFunctionKeys: responses[2],
+            keyboard,
+            markedKeyboard: keyboard,
+            codeToIso,
+            functionKeys,
+            markedFunctionKeys: functionKeys,
           },
           document.addEventListener('keydown', this.handleKeydown, false),
           document.addEventListener('keyup', this.handleKeyup, false),
@@ -177,7 +183,6 @@ export default class ProgramPage extends React.Component {
         return null
       })
     }
-    // markedKeyboard.keys.E02.state = 'correct'
 
     markedKeyboard = this.markKeyboardKeys(keyboard, this.state.keysColoredDown)
 
@@ -196,174 +201,6 @@ export default class ProgramPage extends React.Component {
       markedFunctionKeys,
       nextKeyIso,
     })
-
-    /*
-    for (let i = 0; i < levels.length; i++) {
-      const level = levels[i]
-
-      if (stillSearching) {
-        // map only if the characters not found yet. Once need to be map all keys to reset the state.
-        keys.map((item) => {
-          // loop trough each keyboard key
-
-          // reset the state of each key on each input change (only once in loop)
-          if (level === 'to') {
-            item.state = 'def'
-          }
-
-          if (stillSearching) {
-            // if not all key found, check the character on the key at the specified level
-            if (!nextSignFound && item.labels[level] === nextSign) {
-              if (level !== 'to') {
-                // key combination, using of function key necessary
-                this.markFunctionKey(level, 'toWrite')
-              }
-              item.state = 'toWrite'
-              nextSignFound = true
-            }
-            if (!writtenSignFound && item.labels[level] === writtenSign) {
-              item.state = 'error'
-              if (signToWrite === writtenSign) {
-                item.state = 'correct'
-              }
-              writtenSignFound = true
-            }
-            if (!signToWriteFound && item.labels[level] === signToWrite) {
-              if (signToWrite !== writtenSign) {
-                item.state = 'missed'
-                // TODO enable/disable backspace
-                this.markFunctionKey('backspace', 'toWrite')
-              }
-              signToWriteFound = true
-            }
-
-            if (nextSignFound && writtenSignFound && signToWriteFound) {
-              // all character found, no search more necessary
-              stillSearching = false
-
-              if (level !== 'to') {
-                // all key status resetted to default, no action more necessary, so exit the loop
-
-              }
-            }
-          }
-        })
-      }
-    }
-    */
-    /*
-    if (stillSearching) {
-      // the character not appears on any key, so search for it in the keyboard.deadKeys
-      // console.log("transform"); TODO don't run this function on the first time
-
-      const { deadKeys } = keyboard
-      for (let i = 0; i < deadKeys.length; i++) {
-        const transform = deadKeys[i]
-
-        if (!nextSignFound && transform.to === nextSign) {
-          // if the character found in the transform array
-          const combo1 = transform.from.substring(0, 1)
-          const combo2 = transform.from.substring(1, 2)
-          let combo1Found = false
-          let combo2Found = false
-
-          for (let i = 0; i < levels.length; i++) {
-            // loop trough each level again
-            const level = levels[i]
-
-            // console.log('test', combo1Found, combo2Found)
-            if (!(combo1Found && combo2Found)) {
-              // map only if still necessary
-              keys.map((item) => {
-                // and map each keyboard key again
-                if (!combo1Found && item.labels[level] === combo1) {
-                  if (level !== 'to') {
-                    // key combination, using of function key necessary
-                    // console.log(item.labels[level])
-                    this.markFunctionKey(level, 'toWrite')
-                  }
-                  item.state = 'toWrite'
-                  nextSignFound = true // it is enough to check only one half of the sign in the same loop, because the sign is found anyway
-                  combo1Found = true
-                  // console.log('combo1Found ', combo1)
-                }
-                if (!combo2Found && item.labels[level] === combo2) {
-                  if (level !== 'to') {
-                    // key combination, using of function key necessary
-                    // console.log(item.labels[level])
-                    // TODO item.priority = 'secondary'
-                    this.markFunctionKey(level, 'toWrite secondary')
-                  }
-                  item.state = 'toWrite'
-                  item.priority = 'secondary'
-                  combo2Found = true
-                  // console.log('combo2Found ', combo2)
-                }
-              })
-            }
-          }
-        }
-        if (!writtenSignFound && transform.to === writtenSign) {
-          // if the character found in the transform array
-          const combo1 = transform.from.substring(0, 1)
-          const combo2 = transform.from.substring(1, 2)
-
-          for (let i = 0; i < levels.length; i++) {
-            // loop trough each level again
-            const level = levels[i]
-            keys.map((item) => {
-              // and map each keyboard key again
-              if (item.labels[level] === combo1) {
-                item.state = 'error'
-                if (signToWrite === writtenSign) {
-                  item.state = 'correct'
-                }
-                writtenSignFound = true
-              }
-              if (item.labels[level] === combo2) {
-                item.state = 'error'
-                if (signToWrite === writtenSign) {
-                  item.state = 'correct'
-                  item.priority = 'secondary'
-                }
-              }
-            })
-          }
-        }
-        if (!signToWriteFound && transform.to === signToWrite) {
-          // if the character found in the transform array
-          const combo1 = transform.from.substring(0, 1)
-          const combo2 = transform.from.substring(1, 2)
-
-          for (let i = 0; i < levels.length; i++) {
-            // loop trough each level again
-            const level = levels[i]
-            keys.map((item) => {
-              // and map each keyboard key again
-              if (item.labels[level] === combo1) {
-                if (signToWrite !== writtenSign) {
-                  item.state = 'missed'
-                }
-                signToWriteFound = true
-              }
-              if (item.labels[level] === combo2) {
-                if (signToWrite !== writtenSign) {
-                  item.state = 'missed'
-                  item.priority = 'secondary'
-                }
-              }
-            })
-          }
-        }
-
-        if (nextSignFound && writtenSignFound && signToWriteFound) {
-          // all character found, no search more necessary
-          stillSearching = false
-          return
-        }
-      }
-    }
-    */
   }
 
   /*

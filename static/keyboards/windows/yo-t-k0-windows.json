@@ -147,30 +147,30 @@
       "shift": "{",
       "caps": "[",
       "caps+shift": "{",
-      "ctrl+caps?": "\\u{1B}"
+      "ctrl+caps?": "&#x1B;"
     },
     "D12": {
       "to": "]",
       "shift": "}",
       "caps": "]",
       "caps+shift": "}",
-      "ctrl+caps?": "\\u{1D}"
+      "ctrl+caps?": "&#x1D;"
     },
     "C01": {
       "to": "a",
       "shift": "A",
       "caps": "A",
       "caps+shift": "a",
-      "altR+caps? ctrl+alt+caps?": "ọ\\u{301}",
-      "altR+shift+caps? ctrl+alt+shift+caps?": "Ọ\\u{301}"
+      "altR+caps? ctrl+alt+caps?": "ọ&#x301;",
+      "altR+shift+caps? ctrl+alt+shift+caps?": "Ọ&#x301;"
     },
     "C02": {
       "to": "s",
       "shift": "S",
       "caps": "S",
       "caps+shift": "s",
-      "altR+caps? ctrl+alt+caps?": "ọ\\u{300}",
-      "altR+shift+caps? ctrl+alt+shift+caps?": "Ọ\\u{300}"
+      "altR+caps? ctrl+alt+caps?": "ọ&#x300;",
+      "altR+shift+caps? ctrl+alt+shift+caps?": "Ọ&#x300;"
     },
     "C03": {
       "to": "d",
@@ -207,16 +207,16 @@
       "shift": "K",
       "caps": "K",
       "caps+shift": "k",
-      "altR+caps? ctrl+alt+caps?": "ẹ\\u{301}",
-      "altR+shift+caps? ctrl+alt+shift+caps?": "Ẹ\\u{301}"
+      "altR+caps? ctrl+alt+caps?": "ẹ&#x301;",
+      "altR+shift+caps? ctrl+alt+shift+caps?": "Ẹ&#x301;"
     },
     "C09": {
       "to": "l",
       "shift": "L",
       "caps": "L",
       "caps+shift": "l",
-      "altR+caps? ctrl+alt+caps?": "ẹ\\u{300}",
-      "altR+shift+caps? ctrl+alt+shift+caps?": "Ẹ\\u{300}"
+      "altR+caps? ctrl+alt+caps?": "ẹ&#x300;",
+      "altR+shift+caps? ctrl+alt+shift+caps?": "Ẹ&#x300;"
     },
     "C10": {
       "to": ";",
@@ -227,9 +227,9 @@
     },
     "C11": {
       "to": "'",
-      "shift": "\\u{22}",
+      "shift": "&#x22;",
       "caps": "'",
-      "caps+shift": "\\u{22}",
+      "caps+shift": "&#x22;",
       "altR+shift+caps? ctrl+alt+shift+caps?": "¨"
     },
     "C12": {
@@ -238,14 +238,14 @@
       "caps": "\\",
       "caps+shift": "|",
       "altR+shift+caps? ctrl+alt+shift+caps?": "¦",
-      "ctrl+caps?": "\\u{1C}"
+      "ctrl+caps?": "&#x1C;"
     },
     "B00": {
       "to": "\\",
       "shift": "|",
       "caps": "\\",
       "caps+shift": "|",
-      "ctrl+caps?": "\\u{1C}"
+      "ctrl+caps?": "&#x1C;"
     },
     "B01": {
       "to": "z",
@@ -657,7 +657,7 @@
       "C10",
       "shift"
     ],
-    "\\u{22}": [
+    "&#x22;": [
       "C11",
       "shift"
     ],
@@ -717,19 +717,19 @@
       "E10",
       "altR+caps? ctrl+alt+caps?"
     ],
-    "ọ\\u{301}": [
+    "ọ&#x301;": [
       "C01",
       "altR+caps? ctrl+alt+caps?"
     ],
-    "ọ\\u{300}": [
+    "ọ&#x300;": [
       "C02",
       "altR+caps? ctrl+alt+caps?"
     ],
-    "ẹ\\u{301}": [
+    "ẹ&#x301;": [
       "C08",
       "altR+caps? ctrl+alt+caps?"
     ],
-    "ẹ\\u{300}": [
+    "ẹ&#x300;": [
       "C09",
       "altR+caps? ctrl+alt+caps?"
     ],
@@ -737,19 +737,19 @@
       "C10",
       "altR+caps? ctrl+alt+caps?"
     ],
-    "Ọ\\u{301}": [
+    "Ọ&#x301;": [
       "C01",
       "altR+shift+caps? ctrl+alt+shift+caps?"
     ],
-    "Ọ\\u{300}": [
+    "Ọ&#x300;": [
       "C02",
       "altR+shift+caps? ctrl+alt+shift+caps?"
     ],
-    "Ẹ\\u{301}": [
+    "Ẹ&#x301;": [
       "C08",
       "altR+shift+caps? ctrl+alt+shift+caps?"
     ],
-    "Ẹ\\u{300}": [
+    "Ẹ&#x300;": [
       "C09",
       "altR+shift+caps? ctrl+alt+shift+caps?"
     ],
@@ -761,21 +761,63 @@
       "C12",
       "altR+shift+caps? ctrl+alt+shift+caps?"
     ],
-    "\\u{1B}": [
+    "&#x1B;": [
       "D11",
       "ctrl+caps?"
     ],
-    "\\u{1D}": [
+    "&#x1D;": [
       "D12",
       "ctrl+caps?"
     ],
-    "\\u{1C}": [
+    "&#x1C;": [
       "C12",
       "ctrl+caps?"
     ]
   },
   "allChars": [
+    " ",
+    "_",
+    "-",
+    ",",
+    ";",
+    ":",
+    "!",
+    "?",
+    ".",
+    "'",
+    "‘",
+    "’",
+    "(",
+    ")",
+    "[",
+    "]",
+    "{",
+    "}",
+    "¶",
+    "@",
+    "*",
+    "/",
+    "\\",
+    "&",
+    "&#x1B;",
+    "&#x1C;",
+    "&#x1D;",
+    "&#x22;",
+    "#",
+    "%",
     "`",
+    "^",
+    "¨",
+    "+",
+    "<",
+    "=",
+    ">",
+    "|",
+    "¦",
+    "~",
+    "$",
+    "€",
+    "0",
     "1",
     "2",
     "3",
@@ -785,108 +827,66 @@
     "7",
     "8",
     "9",
-    "0",
-    "-",
-    "=",
-    "q",
-    "w",
-    "e",
-    "r",
-    "t",
-    "y",
-    "u",
-    "i",
-    "o",
-    "p",
-    "[",
-    "]",
     "a",
-    "s",
-    "d",
-    "f",
-    "g",
-    "h",
-    "j",
-    "k",
-    "l",
-    ";",
-    "'",
-    "\\",
-    "z",
-    "x",
-    "c",
-    "v",
-    "b",
-    "n",
-    "m",
-    ",",
-    ".",
-    "/",
-    " ",
-    "~",
-    "!",
-    "@",
-    "#",
-    "$",
-    "%",
-    "^",
-    "&",
-    "*",
-    "(",
-    ")",
-    "_",
-    "+",
-    "Q",
-    "W",
-    "E",
-    "R",
-    "T",
-    "Y",
-    "U",
-    "I",
-    "O",
-    "P",
-    "{",
-    "}",
     "A",
-    "S",
-    "D",
-    "F",
-    "G",
-    "H",
-    "J",
-    "K",
-    "L",
-    ":",
-    "\\u{22}",
-    "|",
-    "Z",
-    "X",
-    "C",
-    "V",
+    "b",
     "B",
-    "N",
+    "c",
+    "C",
+    "d",
+    "D",
+    "e",
+    "E",
+    "ẹ&#x300;",
+    "Ẹ&#x300;",
+    "ẹ&#x301;",
+    "Ẹ&#x301;",
+    "f",
+    "F",
+    "g",
+    "G",
+    "h",
+    "H",
+    "i",
+    "I",
+    "j",
+    "J",
+    "k",
+    "K",
+    "l",
+    "L",
+    "m",
     "M",
-    "<",
-    ">",
-    "?",
-    "€",
-    "‘",
-    "’",
-    "ọ\\u{301}",
-    "ọ\\u{300}",
-    "ẹ\\u{301}",
-    "ẹ\\u{300}",
-    "¶",
-    "Ọ\\u{301}",
-    "Ọ\\u{300}",
-    "Ẹ\\u{301}",
-    "Ẹ\\u{300}",
-    "¨",
-    "¦",
-    "\\u{1B}",
-    "\\u{1D}",
-    "\\u{1C}",
+    "n",
+    "N",
+    "o",
+    "O",
+    "ọ&#x300;",
+    "Ọ&#x300;",
+    "ọ&#x301;",
+    "Ọ&#x301;",
+    "p",
+    "P",
+    "q",
+    "Q",
+    "r",
+    "R",
+    "s",
+    "S",
+    "t",
+    "T",
+    "u",
+    "U",
+    "v",
+    "V",
+    "w",
+    "W",
+    "x",
+    "X",
+    "y",
+    "Y",
+    "z",
+    "Z",
     "'",
     "á",
     "Á",
@@ -921,6 +921,8 @@
     "ṣ",
     "Ṣ"
   ],
+  "enterVariant": 1,
+  "enterIso": "C12",
   "settings": {
     "fallback": "omit",
     "transformPartial": "hide"
