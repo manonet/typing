@@ -30,6 +30,7 @@ export default class Keyboard extends React.Component {
     const {
       keyboard,
       functionKeys,
+      displayedLevel,
     } = this.props
     // console.log("keyboard", keyboard)
     // console.log("keys", keyboardKeys)
@@ -58,8 +59,6 @@ export default class Keyboard extends React.Component {
       keyLabelX,
       keyLabelY,
     } = vars
-
-    const displayedLevel = this.props.displayedLevel || 'to'
 
     return (
       <div className="keyboard" style={{ background: 'gray', borderRadius: 10 }}>
@@ -99,14 +98,12 @@ export default class Keyboard extends React.Component {
                 break
               }
 
-              const labels = { to: keys[iso].to }
               return (
                 <KeyboardKey
                   key={iso}
                   displayedLevel={displayedLevel}
                   iso={iso}
                   {...keys[iso]}
-                  labels={labels}
                   x={translateX}
                   y={translateY}
                   width={keyWidth}
@@ -119,14 +116,12 @@ export default class Keyboard extends React.Component {
           };
           {
             Object.keys(functionKeys).map((iso) => {
-              const labels = { to: functionKeys[iso].to }
               return (
                 <KeyboardKey
                   key={iso}
                   displayedLevel="to"
                   iso={iso}
                   {...functionKeys[iso]}
-                  labels={labels}
                   x={0}
                   y={0}
                   width={keyWidth}

@@ -333,12 +333,12 @@ function KeyboardKey(props) {
         ry={rY}
       />
       {
-        to
+        displayedLevel
         && (
           <g className={classes.labels}>
             <text
               className={labelClass}
-              dangerouslySetInnerHTML={{ __html: to }}
+              dangerouslySetInnerHTML={{ __html: props[displayedLevel] }}
               x={x + keyLabelX}
               y={y + keyLabelY + 10}
             />

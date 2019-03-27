@@ -1,10 +1,10 @@
 import React from 'react'
 import { withPrefix } from 'gatsby-link'
-import { merge } from 'lodash'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import findCharOnKeyboard from '../components/utils/findCharOnKeyboard'
+import getLevelFromKeys from '../components/utils/getLevelFromKeys'
 
 import ProgramBoard from '../components/ProgramBoard'
 
@@ -29,44 +29,10 @@ export default class ProgramPage extends React.Component {
       markedKeyboard: {},
       functionKeys: {},
       markedFunctionKeys: {},
+      keysColoredDown: [],
       keysDown: [],
-      /*
-      keyEvent: {
-        altKey: false,
-        bubbles: true,
-        cancelBubble: false,
-        cancelable: true,
-        charCode: 0,
-        code: '', // e.g. "F12"
-        composed: true,
-        ctrlKey: false,
-        currentTarget: null,
-        defaultPrevented: false,
-        detail: 0,
-        eventPhase: 0,
-        isComposing: false,
-        isTrusted: true,
-        key: '', // e.g. "F12"
-        keyCode: 0, // e.g. 123
-        location: 0,
-        metaKey: false,
-        path: [],
-        repeat: false,
-        returnValue: true,
-        shiftKey: false,
-        sourceCapabilities: null, // e.g. InputDeviceCapabilities
-        srcElement: null, // e.g. body
-        target: null, // e.g. body
-        timeStamp: 0, // e.g. 6372.995000000001
-        type: '', // e.g. keydown
-        view: null, // e.g. Window
-        which: 0, // e.g. 123
-
-        CapsLock: false,
-      },
-      */
-
       displayedLevel: 'to',
+      isCapsLockOn: false,
     }
 
     this.markFunctionKey = this.markFunctionKey.bind(this)
@@ -125,7 +91,10 @@ export default class ProgramPage extends React.Component {
 
   markKeyboardKeys(keyboard, keys) {
     keys.map((key) => {
-      keyboard.keys[key.iso].state = key.color
+      if (keyboard.keys[key.iso]) {
+        // TODO functionkeys
+        keyboard.keys[key.iso].state = key.color
+      }
     })
     return keyboard
   }
@@ -156,16 +125,22 @@ export default class ProgramPage extends React.Component {
     const {
       keyboard: keyboardFromState,
       functionKeys: functionKeysFromState,
+      keysDown,
     } = this.state
     const keyboard = JSON.parse(JSON.stringify(keyboardFromState))
     const functionKeys = JSON.parse(JSON.stringify(functionKeysFromState))
     const { deadKeys } = keyboard
 
-    const succeed = signToWrite === writtenSign
-    const succeedState = succeed ? 'correct' : 'error'
+    const charsSucceed = signToWrite === writtenSign
 
+    if (charsSucceed === this.state.isoSucceed) {
+      // text input is successful and key press match with keyboard layout
+    } else if (charsSucceed) {
+      console.warn('The selected keyboard layout is not matching with the actual input method')
+    }
     let markedKeyboard
     let markedFunctionKeys
+    let nextKeyIso
 
     // mark next key(s)
     const nextKeyInfo = findCharOnKeyboard({
@@ -176,6 +151,7 @@ export default class ProgramPage extends React.Component {
       nextKeyInfo.color = 'toWrite'
       markedKeyboard = this.markKeyboardKeys(keyboard, [nextKeyInfo])
       markedFunctionKeys = this.markFunctionKey(functionKeys, [nextKeyInfo])
+      nextKeyIso = nextKeyInfo.iso
     } else if (deadKeys) {
       Object.keys(deadKeys).map((key) => {
         if (key === nextSign) {
@@ -195,6 +171,7 @@ export default class ProgramPage extends React.Component {
 
             markedKeyboard = this.markKeyboardKeys(keyboard, [nextKey0Info, nextKey1Info])
             markedFunctionKeys = this.markFunctionKey(functionKeys, [nextKey0Info, nextKey1Info])
+            nextKeyIso = nextKey0Info.iso
           }
         }
         return null
@@ -202,7 +179,7 @@ export default class ProgramPage extends React.Component {
     }
     // markedKeyboard.keys.E02.state = 'correct'
 
-    markedKeyboard = this.markKeyboardKeys(keyboard, this.state.keysDown)
+    markedKeyboard = this.markKeyboardKeys(keyboard, this.state.keysColoredDown)
 
     if (!markedKeyboard) {
       console.log('could not find character on the keyboard')
@@ -217,6 +194,7 @@ export default class ProgramPage extends React.Component {
     this.setState({
       markedKeyboard,
       markedFunctionKeys,
+      nextKeyIso,
     })
 
     /*
@@ -388,125 +366,96 @@ export default class ProgramPage extends React.Component {
     */
   }
 
-
-  handleKeys(event, source) {
-    const keyEvent = Object.assign({}, this.state.keyEvent)
-    // console.log(source, event);
-
-    let displayedLevel = 'to'
-    if (keyEvent.shiftKey && keyEvent.CapsLock) {
-      displayedLevel = 'caps+shift'
-    } else if (keyEvent.CapsLock && !(keyEvent.altKey && keyEvent.ctrlKey)) {
-      displayedLevel = 'caps'
-    } else if (keyEvent.shiftKey) {
-      displayedLevel = 'shift'
-    } else if (keyEvent.altKey && keyEvent.ctrlKey) {
-      displayedLevel = 'altR+caps? ctrl+alt+caps?'
-    }
-
-    this.setState({
-      displayedLevel,
-    })
-
-    if (event.altKey !== keyEvent.altKey) {
-      // console.log("altKey");
-      keyEvent.altKey = event.altKey
-      this.setState({
-        keyEvent,
-      })
-    }
-
-    if (event.ctrlKey !== keyEvent.ctrlKey) {
-      // console.log("ctrlKey");
-      keyEvent.ctrlKey = event.ctrlKey
-      this.setState({
-        keyEvent,
-      })
-    }
-    if (event.metaKey !== keyEvent.metaKey) {
-      // console.log("metaKey");
-      keyEvent.metaKey = event.metaKey
-      this.setState({
-        keyEvent,
-      })
-    }
-    if (!event.shiftKey !== !keyEvent.shiftKey) {
-      // console.log("shiftKey");
-      keyEvent.shiftKey = event.shiftKey
-      this.setState({
-        keyEvent,
-      })
-    }
-
-    if (event.getModifierState) {
-      // console.log(event.getModifierState("CapsLock"));
-      if (event.getModifierState('CapsLock') !== keyEvent.CapsLock) {
-        // console.log("CapsLock");
-        keyEvent.CapsLock = event.getModifierState('CapsLock')
-        this.setState({
-          keyEvent,
-        })
-      }
-      /* else if (event.getModifierState("CapsLock") && event.getModifierState("shift")) {
-        if (name === "caps+shift") {
-          visibility = "visible";
-        } else if (name === "to") {
-          visibility = "hidden";
-        }
-      } else if (event.getModifierState("AltGraph")) {
-        if (name === "altR+caps? ctrl+alt+caps?") {
-          visibility = "visible";
-        } else if (name === "to") {
-          visibility = "hidden";
-        }
-      } else if (name === "to") {
-        visibility = "visible";
-      } */
-
-      /*
-      // console.log(event.key);
-      // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState
-      let Alt = event.getModifierState && event.getModifierState("Alt");
-      let AltGraph = event.getModifierState && event.getModifierState("AltGraph");
-      let CapsLock = event.getModifierState && event.getModifierState("CapsLock");
-      let Control = event.getModifierState && event.getModifierState("Control");
-      let Meta = event.getModifierState && event.getModifierState("Meta"); // ⌘ Command key
-      let NumLock = event.getModifierState && event.getModifierState("NumLock");
-      let OS = event.getModifierState && event.getModifierState("OS");
-      let ScrollLock = event.getModifierState && event.getModifierState("ScrollLock");
-      let Shift = event.getModifierState && event.getModifierState("Shift");
-      */
-    }
-  }
+  /*
+  // console.log(event.key);
+  // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState
+  let Alt = event.getModifierState && event.getModifierState("Alt");
+  let AltGraph = event.getModifierState && event.getModifierState("AltGraph");
+  let CapsLock = event.getModifierState && event.getModifierState("CapsLock");
+  let Control = event.getModifierState && event.getModifierState("Control");
+  let Meta = event.getModifierState && event.getModifierState("Meta"); // ⌘ Command key
+  let NumLock = event.getModifierState && event.getModifierState("NumLock");
+  let OS = event.getModifierState && event.getModifierState("OS");
+  let ScrollLock = event.getModifierState && event.getModifierState("ScrollLock");
+  let Shift = event.getModifierState && event.getModifierState("Shift");
+  */
 
   handleKeydown(event) {
-    // console.dir(event.code, event.key, event.getModifierState('Alt'), event.location)
-    const { keysDown: keysDownFromState, codeToIso } = this.state
+    const {
+      keysColoredDown: keysColoredDownFromState,
+      keysDown: keysDownFromState,
+      codeToIso,
+      nextKeyIso,
+      isCapsLockOn: isCapsLockOnFromState,
+    } = this.state
+
+    const keysColoredDown = JSON.parse(JSON.stringify(keysColoredDownFromState))
     const keysDown = JSON.parse(JSON.stringify(keysDownFromState))
 
     const downIso = codeToIso[event.code]
-    keysDown.push({ iso: downIso, color: 'error' })
+    const lastKeyDown = event.code
+
+    const isoSucceed = nextKeyIso === downIso
+    const succeedState = isoSucceed ? 'correct' : 'error'
+
+    keysColoredDown.push({ iso: downIso, color: succeedState })
+    keysDown.push(event.key)
+
+    const getModifierStateCapsLock = event.getModifierState('CapsLock') // always true if CapsLock pressed
+    let isCapsLockOn = isCapsLockOnFromState
+    if (lastKeyDown === 'CapsLock') {
+      isCapsLockOn = !isCapsLockOn
+    } else {
+      isCapsLockOn = getModifierStateCapsLock
+    }
+    const displayedLevel = getLevelFromKeys(keysDown, isCapsLockOn)
 
     this.setState({
+      keysColoredDown,
+      displayedLevel,
+      isoSucceed,
       keysDown,
+      lastKeyDown,
+      isCapsLockOn,
     })
   }
 
-  // handleKeypress(event) {
-  //   this.handleKeys(event, 'Keypress')
-  // }
-
   handleKeyup(event) {
-    // this.handleKeys(event, 'Keyup')
-    const { keysDown: keysDownFromState, codeToIso } = this.state
+    const {
+      keysColoredDown: keysColoredDownFromState,
+      keysDown: keysDownFromState,
+      codeToIso,
+      isCapsLockOn: isCapsLockOnFromState,
+    } = this.state
+    const keysColoredDown = JSON.parse(JSON.stringify(keysColoredDownFromState))
     const keysDown = JSON.parse(JSON.stringify(keysDownFromState))
 
-    const downIso = codeToIso[event.code]
-    const filteredArray = keysDown.filter(obj => obj.iso !== downIso)
+    const upIso = codeToIso[event.code]
+    const lastKeyUp = event.code
 
-    // console.log(filteredArray)
+
+    const filteredArray = keysColoredDown.filter(obj => obj.iso !== upIso)
+    const filteredKeysDownArray = keysDown.filter(code => code !== event.key)
+    const getModifierStateCapsLock = event.getModifierState('CapsLock')
+    let isCapsLockOn = isCapsLockOnFromState
+    if (lastKeyUp === 'CapsLock') {
+      if (!event.getModifierState('CapsLock')) {
+        isCapsLockOn = false
+      }
+    } else {
+      isCapsLockOn = getModifierStateCapsLock
+      if (keysDown.includes('CapsLock')) {
+        isCapsLockOn = false
+      }
+    }
+    const displayedLevel = getLevelFromKeys(filteredKeysDownArray, isCapsLockOn)
+
     this.setState({
-      keysDown: filteredArray,
+      keysColoredDown: filteredArray,
+      displayedLevel,
+      keysDown: filteredKeysDownArray,
+      lastKeyUp,
+      isCapsLockOn,
     })
   }
 
