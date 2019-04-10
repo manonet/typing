@@ -1,35 +1,31 @@
 import React from 'react'
 import classNames from 'classnames'
-import cyan from '@material-ui/core/colors/cyan'
-import green from '@material-ui/core/colors/green'
-import orange from '@material-ui/core/colors/orange'
-import { withStyles } from '@material-ui/core/styles'
-import vars from '../../variables'
+import { withStyles, withTheme } from '@material-ui/core/styles'
 
 const styles = theme => ({
   key: {
     cursor: 'default',
   },
   labels: { // also called keytop
-    fill: theme.palette.grey[700],
+    // fill: theme.palette.grey[700],
     fontSize: 36,
   },
   labelTransform: {
     display: 'none',
   },
   label: {
-    fill: theme.palette.grey[700],
+    fill: theme.palette.grey[500],
   },
   labelToWrite: {
     fill: theme.palette.primary.contrastText,
   },
   keyBg: {
-    stroke: theme.palette.grey[200],
+    stroke: theme.palette.grey[700],
     strokeWidth: 5,
-    fill: theme.palette.common.white,
+    fill: theme.palette.grey[800],
   },
   alphabet: {
-    fill: orange[100],
+    // fill: orange[100],
   },
   toWrite: {
     fill: theme.palette.primary.main,
@@ -41,16 +37,16 @@ const styles = theme => ({
     fill: theme.palette.primary.light,
   },
   secondary: {
-    fill: cyan[500],
+    fill: theme.palette.teal[500],
   },
   missed: {
-    stroke: orange[500],
+    stroke: theme.palette.red[800],
   },
   error: {
-    stroke: theme.palette.error.main,
+    stroke: theme.palette.orange[800],
   },
   correct: {
-    stroke: green[500],
+    stroke: theme.palette.green[800],
   },
 })
 
@@ -62,6 +58,7 @@ function KeyboardKey(props) {
   // console.log(props)
   const {
     classes,
+    theme,
     to,
     shift,
     iso,
@@ -82,11 +79,11 @@ function KeyboardKey(props) {
     bRowShift,
     cRowShift,
     dRowShift,
-    rX,
-    rY,
     keyLabelX,
     keyLabelY,
-  } = vars
+    rX,
+    rY,
+  } = theme.keyboard
 
   // When letters on a case pair are associated with a key, only the capital character need to be shown on the keytop for the primary group, while the lowercase character only is shown for the secondary group.
   let alphabet
@@ -270,7 +267,7 @@ function KeyboardKey(props) {
             y={y + keyPaddingY}
             width={(keyWidth * 3 - cRowShift) - keyPaddingX * 2}
             height={height}
-            rx={rY}
+            rx={rX}
             ry={rY}
           />
           <g className={classes.labels}>
@@ -292,7 +289,7 @@ function KeyboardKey(props) {
             y={y + keyPaddingY}
             width={(keyWidth * 3 - dRowShift) - keyPaddingX * 2}
             height={height}
-            rx={rY}
+            rx={rX}
             ry={rY}
           />
           <g className={classes.labels}>
@@ -329,7 +326,7 @@ function KeyboardKey(props) {
         y={y + keyPaddingY}
         width={width}
         height={height}
-        rx={rY}
+        rx={rX}
         ry={rY}
       />
       {
@@ -352,4 +349,4 @@ function KeyboardKey(props) {
   )
 }
 
-export default withStyles(styles)(KeyboardKey)
+export default withTheme()(withStyles(styles)(KeyboardKey))

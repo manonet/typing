@@ -12,11 +12,15 @@ import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles'
 
 import Header from './header'
+import './layout.css'
 import 'typeface-roboto'
 
-const styles = () => ({
-  root: {
-    flexGrow: 1,
+const styles = theme => ({
+  root: {},
+  content: {
+    margin: 'auto',
+    paddingLeft: theme.spacing.unit * 3,
+    paddingRight: theme.spacing.unit * 3,
   },
 })
 
@@ -38,24 +42,24 @@ function Layout(props) {
         }
       `}
       render={data => (
-        <>
+        <div className={classes.root}>
           <Header siteTitle={data.site.siteMetadata.title} />
-          <div className={classes.root}>
+          <div className={classes.content}>
             <Grid container spacing={24}>
               <Grid item xs={12}>
                 <main>{children}</main>
-                <footer>
-                  ©
-                  {' '}
-                  {new Date().getFullYear()}
-      , Built with
-                  {' '}
-                  <a href="https://www.gatsbyjs.org">Gatsby</a>
-                </footer>
               </Grid>
             </Grid>
           </div>
-        </>
+          <footer>
+            ©
+            {' '}
+            {new Date().getFullYear()}
+, Built with
+            {' '}
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </footer>
+        </div>
       )}
     />
   )

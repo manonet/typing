@@ -1,9 +1,17 @@
 import React from 'react'
+import classNames from 'classnames'
+import { withStyles, withTheme } from '@material-ui/core/styles'
 
-import vars from '../../variables'
 import KeyboardKey from './KeyboardKey'
 
-export default class Keyboard extends React.Component {
+
+const styles = theme => ({
+  keyboard: {
+    borderRadius: theme.keyboard.rX,
+  },
+})
+
+class Keyboard extends React.Component {
   componentDidMount() {
     //
   }
@@ -28,7 +36,10 @@ export default class Keyboard extends React.Component {
 
   render() {
     const {
+      theme,
+      classes,
       keyboard,
+      className,
       functionKeys,
       displayedLevel,
     } = this.props
@@ -48,20 +59,23 @@ export default class Keyboard extends React.Component {
       keyboardHeight,
       keyWidth,
       keyHeight,
-      keyPaddingX,
-      keyPaddingY,
       aRowShift,
       bRowShift,
       cRowShift,
       dRowShift,
       rX,
       rY,
-      keyLabelX,
-      keyLabelY,
-    } = vars
+    } = theme.keyboard
 
     return (
-      <div className="keyboard" style={{ background: 'gray', borderRadius: 10 }}>
+      <div
+        className={
+          classNames(
+            className,
+            classes.keyboard
+          )
+        }
+      >
         {this.KeyboardTitle()}
         {this.KeyboardDeadKeys()}
         <svg className="keyboard__svg" version="1.1" viewBox={`0 0 ${keyboardWidth} ${keyboardHeight}`} textAnchor="middle">
@@ -74,25 +88,25 @@ export default class Keyboard extends React.Component {
               const rowLetter = iso.substring(0, 1)
               const column = parseInt(iso.substring(1, 3), 10)
 
-              let translateX = vars.keyWidth * column
+              let translateX = keyWidth * column
               let translateY = 0
 
               switch (rowLetter) {
               case 'D':
-                translateX = vars.dRowShift + vars.keyWidth * column
-                translateY = vars.keyHeight
+                translateX = dRowShift + keyWidth * column
+                translateY = keyHeight
                 break
               case 'C':
-                translateX = vars.cRowShift + vars.keyWidth * column
-                translateY = vars.keyHeight * 2
+                translateX = cRowShift + keyWidth * column
+                translateY = keyHeight * 2
                 break
               case 'B':
-                translateX = vars.bRowShift + vars.keyWidth * column
-                translateY = vars.keyHeight * 3
+                translateX = bRowShift + keyWidth * column
+                translateY = keyHeight * 3
                 break
               case 'A':
-                translateX = vars.aRowShift + vars.keyWidth * column
-                translateY = vars.keyHeight * 4
+                translateX = aRowShift + keyWidth * column
+                translateY = keyHeight * 4
                 break
               default:
                 break
@@ -138,6 +152,7 @@ export default class Keyboard extends React.Component {
   }
 }
 
+export default withTheme()(withStyles(styles)(Keyboard))
 
 /*
 The harmonized 48 graphic key keyboard arrangement

@@ -15,14 +15,15 @@ const styles = theme => ({
   },
   sampleBoard: {
     display: 'block',
-    background: theme.palette.common.white,
-    border: `2px solid ${theme.palette.grey[300]}`,
+    background: theme.palette.grey[500],
+    border: `2px solid ${theme.palette.grey[600]}`,
     padding: 10,
     color: theme.palette.grey[500],
     fontFamily: 'Inconsolata',
     fontSize: 18,
   },
   sampleBoardFocus: {
+    background: theme.palette.common.white,
     border: `2px solid ${theme.palette.primary.main}`,
   },
   sampleBoardHint: {

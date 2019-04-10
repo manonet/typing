@@ -9,7 +9,12 @@ import Keyboard from './keyboard/Keyboard'
 const styles = theme => ({
   root: {
     position: 'relative',
-    backgroundColor: theme.palette.grey[700],
+  },
+  keyboard: {
+    maxHeight: 'calc(100vh - 160px)',
+    minHeight: 200,
+    display: 'flex',
+    flexDirection: 'column',
   },
 })
 
@@ -81,6 +86,7 @@ class ProgramBoard extends React.Component {
           className={SAMPLE_BOARD_ID}
         />
         <Keyboard
+          className={classes.keyboard}
           keyboard={keyboard}
           functionKeys={functionKeys}
           keyboardKeys={keyboardKeys}
