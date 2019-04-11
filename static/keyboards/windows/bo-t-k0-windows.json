@@ -244,10 +244,99 @@
     }
   },
   "levels": [
-    "to",
-    "shift caps",
-    "altR+caps? ctrl+alt?+caps?",
-    "altR+shift+caps? ctrl+alt+shift+caps?"
+    {
+      "to": []
+    },
+    {
+      "shift caps": [
+        [
+          [
+            "ShiftLeft"
+          ],
+          [
+            "ShiftRight"
+          ]
+        ],
+        [
+          [
+            "CapsLock"
+          ]
+        ]
+      ]
+    },
+    {
+      "altR+caps? ctrl+alt?+caps?": [
+        [
+          [
+            "AltRight"
+          ]
+        ],
+        [
+          [
+            "ControlLeft"
+          ],
+          [
+            "ControlRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "altR+shift+caps? ctrl+alt+shift+caps?": [
+        [
+          [
+            "ShiftLeft",
+            "AltRight"
+          ],
+          [
+            "ShiftRight",
+            "AltRight"
+          ]
+        ],
+        [
+          [
+            "ShiftLeft",
+            "AltLeft",
+            "ControlLeft"
+          ],
+          [
+            "ShiftLeft",
+            "AltLeft",
+            "ControlRight"
+          ],
+          [
+            "ShiftLeft",
+            "AltRight",
+            "ControlLeft"
+          ],
+          [
+            "ShiftLeft",
+            "AltRight",
+            "ControlRight"
+          ],
+          [
+            "ShiftRight",
+            "AltLeft",
+            "ControlLeft"
+          ],
+          [
+            "ShiftRight",
+            "AltLeft",
+            "ControlRight"
+          ],
+          [
+            "ShiftRight",
+            "AltRight",
+            "ControlLeft"
+          ],
+          [
+            "ShiftRight",
+            "AltRight",
+            "ControlRight"
+          ]
+        ]
+      ]
+    }
   ],
   "charMap": {
     "ཨ": [

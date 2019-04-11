@@ -1,0 +1,28 @@
+module.exports = {
+  keyToModifiers: {
+    ShiftLeft: ['shift', 'shiftL'],
+    ShiftRight: ['shift', 'shiftR'],
+    ControlLeft: ['ctrl', 'ctrlL'],
+    ControlRight: ['ctrl', 'ctrlR'],
+    AltLeft: ['alt', 'altL', 'opt', 'optL'],
+    AltRight: ['alt', 'altR', 'opt', 'optR'],
+    MetaLeft: ['cmd'],
+    MetaRight: ['cmd'],
+  },
+  ModifierToKey: {
+    shift: ['ShiftLeft', 'ShiftRight'],
+    shiftL: 'ShiftLeft',
+    shiftR: 'ShiftRight',
+    ctrl: ['ControlLeft', 'ControlRight'],
+    ctrlL: 'ControlLeft',
+    ctrlR: 'ControlRight',
+    alt: ['AltLeft', 'AltRight'],
+    altL: 'AltLeft',
+    altR: 'AltRight',
+    caps: 'CapsLock',
+    opt: ['AltLeft', 'AltRight'],
+    optL: 'AltLeft',
+    optR: 'AltRight',
+    cmd: ['MetaLeft', 'MetaRight'],
+  },
+}

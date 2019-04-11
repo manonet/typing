@@ -330,12 +330,83 @@
     }
   },
   "levels": [
-    "to",
-    "shift",
-    "caps",
-    "caps+shift",
-    "altR+caps? ctrl+alt+caps?",
-    "ctrl+caps?"
+    {
+      "to": []
+    },
+    {
+      "shift": [
+        [
+          [
+            "ShiftLeft"
+          ],
+          [
+            "ShiftRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "caps": [
+        [
+          [
+            "CapsLock"
+          ]
+        ]
+      ]
+    },
+    {
+      "caps+shift": [
+        [
+          [
+            "ShiftLeft",
+            "CapsLock"
+          ],
+          [
+            "ShiftRight",
+            "CapsLock"
+          ]
+        ]
+      ]
+    },
+    {
+      "altR+caps? ctrl+alt+caps?": [
+        [
+          [
+            "AltRight"
+          ]
+        ],
+        [
+          [
+            "AltLeft",
+            "ControlLeft"
+          ],
+          [
+            "AltLeft",
+            "ControlRight"
+          ],
+          [
+            "AltRight",
+            "ControlLeft"
+          ],
+          [
+            "AltRight",
+            "ControlRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "ctrl+caps?": [
+        [
+          [
+            "ControlLeft"
+          ],
+          [
+            "ControlRight"
+          ]
+        ]
+      ]
+    }
   ],
   "charMap": {
     "0": [

@@ -302,11 +302,56 @@
     }
   },
   "levels": [
-    "to",
-    "shift",
-    "caps",
-    "caps+shift",
-    "ctrl+caps?"
+    {
+      "to": []
+    },
+    {
+      "shift": [
+        [
+          [
+            "ShiftLeft"
+          ],
+          [
+            "ShiftRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "caps": [
+        [
+          [
+            "CapsLock"
+          ]
+        ]
+      ]
+    },
+    {
+      "caps+shift": [
+        [
+          [
+            "ShiftLeft",
+            "CapsLock"
+          ],
+          [
+            "ShiftRight",
+            "CapsLock"
+          ]
+        ]
+      ]
+    },
+    {
+      "ctrl+caps?": [
+        [
+          [
+            "ControlLeft"
+          ],
+          [
+            "ControlRight"
+          ]
+        ]
+      ]
+    }
   ],
   "charMap": {
     "0": [

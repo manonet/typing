@@ -204,9 +204,33 @@
     }
   },
   "levels": [
-    "to",
-    "shift+caps?",
-    "ctrl+caps?"
+    {
+      "to": []
+    },
+    {
+      "shift+caps?": [
+        [
+          [
+            "ShiftLeft"
+          ],
+          [
+            "ShiftRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "ctrl+caps?": [
+        [
+          [
+            "ControlLeft"
+          ],
+          [
+            "ControlRight"
+          ]
+        ]
+      ]
+    }
   ],
   "charMap": {
     "_": [

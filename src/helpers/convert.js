@@ -2,6 +2,8 @@ const fs = require('fs')
 const path = require('path')
 const { parseString } = require('xml2js')
 
+const getKeyArrayFromLevelString = require('./getKeyArrayFromLevelString')
+
 const keyboardFolder = '../../static/keyboards_xml'
 const outputFolder = '../../static/keyboards'
 
@@ -40,7 +42,7 @@ const process = (result) => {
       "ctrl+caps?"
    ],
    */
-    levels.push(level)
+    levels.push({ [level]: getKeyArrayFromLevelString(level) })
 
     // collect info about possible levels
     if (!allLevels.includes(level)) {
@@ -178,8 +180,8 @@ fs.readdirAsync = (dirIn, dirOut) => (
   }))
 )
 
-fs.readdirAsync(`${keyboardFolder}/android`, `${outputFolder}/android`)
-fs.readdirAsync(`${keyboardFolder}/chromeos`, `${outputFolder}/chromeos`)
+// fs.readdirAsync(`${keyboardFolder}/android`, `${outputFolder}/android`)
+// fs.readdirAsync(`${keyboardFolder}/chromeos`, `${outputFolder}/chromeos`)
 fs.readdirAsync(`${keyboardFolder}/osx`, `${outputFolder}/osx`)
-fs.readdirAsync(`${keyboardFolder}/und`, `${outputFolder}/und`)
+// fs.readdirAsync(`${keyboardFolder}/und`, `${outputFolder}/und`)
 fs.readdirAsync(`${keyboardFolder}/windows`, `${outputFolder}/windows`)

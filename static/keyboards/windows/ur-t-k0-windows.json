@@ -215,10 +215,55 @@
     }
   },
   "levels": [
-    "to",
-    "shift+caps?",
-    "ctrl+caps?",
-    "ctrl+shift+caps?"
+    {
+      "to": []
+    },
+    {
+      "shift+caps?": [
+        [
+          [
+            "ShiftLeft"
+          ],
+          [
+            "ShiftRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "ctrl+caps?": [
+        [
+          [
+            "ControlLeft"
+          ],
+          [
+            "ControlRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "ctrl+shift+caps?": [
+        [
+          [
+            "ShiftLeft",
+            "ControlLeft"
+          ],
+          [
+            "ShiftLeft",
+            "ControlRight"
+          ],
+          [
+            "ShiftRight",
+            "ControlLeft"
+          ],
+          [
+            "ShiftRight",
+            "ControlRight"
+          ]
+        ]
+      ]
+    }
   ],
   "charMap": {
     "0": [

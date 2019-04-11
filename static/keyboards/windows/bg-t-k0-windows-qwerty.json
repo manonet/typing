@@ -296,10 +296,44 @@
     }
   },
   "levels": [
-    "to",
-    "shift",
-    "caps",
-    "caps+shift"
+    {
+      "to": []
+    },
+    {
+      "shift": [
+        [
+          [
+            "ShiftLeft"
+          ],
+          [
+            "ShiftRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "caps": [
+        [
+          [
+            "CapsLock"
+          ]
+        ]
+      ]
+    },
+    {
+      "caps+shift": [
+        [
+          [
+            "ShiftLeft",
+            "CapsLock"
+          ],
+          [
+            "ShiftRight",
+            "CapsLock"
+          ]
+        ]
+      ]
+    }
   ],
   "charMap": {
     "0": [

@@ -254,11 +254,69 @@
     }
   },
   "levels": [
-    "to",
-    "shift",
-    "caps+shift",
-    "ctrl+caps?",
-    "ctrl+shift+caps?"
+    {
+      "to": []
+    },
+    {
+      "shift": [
+        [
+          [
+            "ShiftLeft"
+          ],
+          [
+            "ShiftRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "caps+shift": [
+        [
+          [
+            "ShiftLeft",
+            "CapsLock"
+          ],
+          [
+            "ShiftRight",
+            "CapsLock"
+          ]
+        ]
+      ]
+    },
+    {
+      "ctrl+caps?": [
+        [
+          [
+            "ControlLeft"
+          ],
+          [
+            "ControlRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "ctrl+shift+caps?": [
+        [
+          [
+            "ShiftLeft",
+            "ControlLeft"
+          ],
+          [
+            "ShiftLeft",
+            "ControlRight"
+          ],
+          [
+            "ShiftRight",
+            "ControlLeft"
+          ],
+          [
+            "ShiftRight",
+            "ControlRight"
+          ]
+        ]
+      ]
+    }
   ],
   "charMap": {
     "0": [

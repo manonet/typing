@@ -390,13 +390,136 @@
     }
   },
   "levels": [
-    "to",
-    "shift",
-    "cmd+caps? cmd+opt+caps?",
-    "caps+shift cmd+shift+opt?+caps?",
-    "opt",
-    "opt+shift+caps? opt+caps+shift?",
-    "ctrlL+cmd?+optL?+caps?+shift?"
+    {
+      "to": []
+    },
+    {
+      "shift": [
+        [
+          [
+            "ShiftLeft"
+          ],
+          [
+            "ShiftRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd+caps? cmd+opt+caps?": [
+        [
+          [
+            "MetaLeft"
+          ],
+          [
+            "MetaRight"
+          ]
+        ],
+        [
+          [
+            "AltLeft",
+            "MetaLeft"
+          ],
+          [
+            "AltLeft",
+            "MetaRight"
+          ],
+          [
+            "AltRight",
+            "MetaLeft"
+          ],
+          [
+            "AltRight",
+            "MetaRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "caps+shift cmd+shift+opt?+caps?": [
+        [
+          [
+            "ShiftLeft",
+            "CapsLock"
+          ],
+          [
+            "ShiftRight",
+            "CapsLock"
+          ]
+        ],
+        [
+          [
+            "ShiftLeft",
+            "MetaLeft"
+          ],
+          [
+            "ShiftLeft",
+            "MetaRight"
+          ],
+          [
+            "ShiftRight",
+            "MetaLeft"
+          ],
+          [
+            "ShiftRight",
+            "MetaRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "opt": [
+        [
+          [
+            "AltLeft"
+          ],
+          [
+            "AltRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "opt+shift+caps? opt+caps+shift?": [
+        [
+          [
+            "ShiftLeft",
+            "AltLeft"
+          ],
+          [
+            "ShiftLeft",
+            "AltRight"
+          ],
+          [
+            "ShiftRight",
+            "AltLeft"
+          ],
+          [
+            "ShiftRight",
+            "AltRight"
+          ]
+        ],
+        [
+          [
+            "AltLeft",
+            "CapsLock"
+          ],
+          [
+            "AltRight",
+            "CapsLock"
+          ]
+        ]
+      ]
+    },
+    {
+      "ctrlL+cmd?+optL?+caps?+shift?": [
+        [
+          [
+            "ControlLeft"
+          ]
+        ]
+      ]
+    }
   ],
   "charMap": {
     "0": [

@@ -418,13 +418,104 @@
     }
   },
   "levels": [
-    "to",
-    "shift+caps?",
-    "opt+caps?",
-    "opt+shift+caps?",
-    "ctrlL+cmd?+optL?+caps?+shift? ctrlL+optR+cmd?+optL?+caps?+shiftL?",
-    "cmd+opt?+caps?",
-    "cmd+shift+opt?+caps?"
+    {
+      "to": []
+    },
+    {
+      "shift+caps?": [
+        [
+          [
+            "ShiftLeft"
+          ],
+          [
+            "ShiftRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "opt+caps?": [
+        [
+          [
+            "AltLeft"
+          ],
+          [
+            "AltRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "opt+shift+caps?": [
+        [
+          [
+            "ShiftLeft",
+            "AltLeft"
+          ],
+          [
+            "ShiftLeft",
+            "AltRight"
+          ],
+          [
+            "ShiftRight",
+            "AltLeft"
+          ],
+          [
+            "ShiftRight",
+            "AltRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "ctrlL+cmd?+optL?+caps?+shift? ctrlL+optR+cmd?+optL?+caps?+shiftL?": [
+        [
+          [
+            "ControlLeft"
+          ]
+        ],
+        [
+          [
+            "ControlLeft",
+            "AltRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd+opt?+caps?": [
+        [
+          [
+            "MetaLeft"
+          ],
+          [
+            "MetaRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "cmd+shift+opt?+caps?": [
+        [
+          [
+            "ShiftLeft",
+            "MetaLeft"
+          ],
+          [
+            "ShiftLeft",
+            "MetaRight"
+          ],
+          [
+            "ShiftRight",
+            "MetaLeft"
+          ],
+          [
+            "ShiftRight",
+            "MetaRight"
+          ]
+        ]
+      ]
+    }
   ],
   "charMap": {
     "0": [

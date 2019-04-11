@@ -289,13 +289,105 @@
     }
   },
   "levels": [
-    "to",
-    "shift",
-    "caps",
-    "caps+shift",
-    "altR+caps? ctrl+alt+caps?",
-    "ctrl+caps?",
-    "ctrl+shift+caps?"
+    {
+      "to": []
+    },
+    {
+      "shift": [
+        [
+          [
+            "ShiftLeft"
+          ],
+          [
+            "ShiftRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "caps": [
+        [
+          [
+            "CapsLock"
+          ]
+        ]
+      ]
+    },
+    {
+      "caps+shift": [
+        [
+          [
+            "ShiftLeft",
+            "CapsLock"
+          ],
+          [
+            "ShiftRight",
+            "CapsLock"
+          ]
+        ]
+      ]
+    },
+    {
+      "altR+caps? ctrl+alt+caps?": [
+        [
+          [
+            "AltRight"
+          ]
+        ],
+        [
+          [
+            "AltLeft",
+            "ControlLeft"
+          ],
+          [
+            "AltLeft",
+            "ControlRight"
+          ],
+          [
+            "AltRight",
+            "ControlLeft"
+          ],
+          [
+            "AltRight",
+            "ControlRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "ctrl+caps?": [
+        [
+          [
+            "ControlLeft"
+          ],
+          [
+            "ControlRight"
+          ]
+        ]
+      ]
+    },
+    {
+      "ctrl+shift+caps?": [
+        [
+          [
+            "ShiftLeft",
+            "ControlLeft"
+          ],
+          [
+            "ShiftLeft",
+            "ControlRight"
+          ],
+          [
+            "ShiftRight",
+            "ControlLeft"
+          ],
+          [
+            "ShiftRight",
+            "ControlRight"
+          ]
+        ]
+      ]
+    }
   ],
   "charMap": {
     "0": [
