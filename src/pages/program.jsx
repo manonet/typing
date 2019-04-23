@@ -1,5 +1,6 @@
 import React from 'react'
 import { withPrefix } from 'gatsby-link'
+import mem from 'mem'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -9,6 +10,7 @@ import getKeyboardOS from '../components/utils/getKeyboardOS'
 
 import ProgramBoard from '../components/ProgramBoard'
 
+const memoizedGetLevelFromKeys = mem(getLevelFromKeys)
 // TODO enable/disable backspace
 
 export default class ProgramPage extends React.Component {
@@ -21,6 +23,7 @@ export default class ProgramPage extends React.Component {
       signToWrite: '',
       writtenSign: '',
       nextSign: '',
+      inputChanged: false,
       isUserInputFocused: false, // whenever the user types (or not)
       keyboard: {
         // name: '',
@@ -29,19 +32,15 @@ export default class ProgramPage extends React.Component {
         // allChars: [],
         // deadKeys: [],
       },
-      markedKeyboard: {},
       functionKeys: {},
-      markedFunctionKeys: {},
-      keysColoredDown: [],
       keysDown: [],
       displayedLevel: 'to',
       isCapsLockOn: false,
     }
 
-    this.markFunctionKey = this.markFunctionKey.bind(this)
+    this.markCharOnBoard = this.markCharOnBoard.bind(this)
     this.handleKeydown = this.handleKeydown.bind(this)
     this.handleKeyup = this.handleKeyup.bind(this)
-    this.markKeyboardKeys = this.markKeyboardKeys.bind(this)
     this.userInputText = this.userInputText.bind(this)
     this.setUserInputFocus = this.setUserInputFocus.bind(this)
   }
@@ -62,15 +61,13 @@ export default class ProgramPage extends React.Component {
         const keyboard = responses[0]
         const codeToIso = responses[1]
         const functionKeys = responses[2]
-        functionKeys.D13.variant = keyboard.enterVariant
+        functionKeys.Enter.variant = keyboard.enterVariant
 
         this.setState(
           {
             keyboard,
-            markedKeyboard: keyboard,
             codeToIso,
             functionKeys,
-            markedFunctionKeys: functionKeys,
           },
           document.addEventListener('keydown', this.handleKeydown, false),
           document.addEventListener('keyup', this.handleKeyup, false),
@@ -82,145 +79,108 @@ export default class ProgramPage extends React.Component {
     this.setState({ isUserInputFocused })
   }
 
-  userInputText(userText) {
-    const { sampleText } = this.state
-    const signToWrite = (userText.length >= 1) ? sampleText.substring(userText.length - 1, userText.length) : ''
-    const cursorAt = userText.length
-    const writtenSign = (cursorAt > 0) ? userText.charAt(cursorAt - 1) : ''
-    const nextSign = sampleText.charAt(cursorAt)
+  markCharOnBoard(keyboard, functionKeys, keyInfo, color) {
+    if (keyInfo) {
+      if (keyboard.keys[keyInfo.iso]) {
+        keyboard.keys[keyInfo.iso].pressure = color
+        const { level } = keyInfo
+        if (level[Object.keys(level)[0]][0]) {
+          level[Object.keys(level)[0]][0].map((l) => {
+            if (functionKeys[l[0]]) {
+              functionKeys[l[0]].pressure = color
+            }
+          })
+        }
+      }
+    }
+  }
 
-    this.setState(
-      {
+  userInputText(userText) {
+    this.setState((prevState) => {
+      const {
+        keyboard,
+        functionKeys,
+        sampleText,
+        isoSucceed,
+        previousKey0Info,
+        previousKey1Info,
+      } = { ...prevState }
+
+      const signToWrite = (userText.length >= 1) ? sampleText.substring(userText.length - 1, userText.length) : ''
+      const cursorAt = userText.length
+      const writtenSign = (cursorAt > 0) ? userText.charAt(cursorAt - 1) : ''
+      const nextSign = sampleText.charAt(cursorAt)
+      const charsSucceed = signToWrite === writtenSign
+      const { deadKeys } = keyboard
+
+      if (charsSucceed === isoSucceed) {
+        // text input is successful and key press match with keyboard layout
+      } else if (charsSucceed) {
+        console.warn('The selected keyboard layout is not matching with the actual input method')
+      }
+      // mark next key(s)
+      let nextKey0Info = findCharOnKeyboard({
+        keyboard,
+        characterToFind: nextSign,
+      })
+      let nextKey1Info
+
+      this.markCharOnBoard(keyboard, functionKeys, previousKey0Info, 'def')
+      this.markCharOnBoard(keyboard, functionKeys, previousKey1Info, 'def')
+
+      if (nextKey0Info) {
+        this.markCharOnBoard(keyboard, functionKeys, nextKey0Info, 'toPressFirst')
+      } else if (deadKeys) {
+        Object.keys(deadKeys).map((key) => {
+          if (key === nextSign) {
+            // keyToPressFound in deadKeys: deadKeys[key][0], deadKeys[key][1])
+            nextKey0Info = findCharOnKeyboard({
+              keyboard,
+              characterToFind: deadKeys[key][0],
+            })
+            nextKey1Info = findCharOnKeyboard({
+              keyboard,
+              characterToFind: deadKeys[key][1],
+            })
+
+            this.markCharOnBoard(keyboard, functionKeys, nextKey0Info, 'toPressFirst')
+            this.markCharOnBoard(keyboard, functionKeys, nextKey1Info, 'toPressSecond')
+          }
+          return null
+        })
+      }
+
+
+      if (!true) {
+        console.log('could not find character on the keyboard')
+      }
+
+      if (!true) {
+        console.log('could not find function key on the keyboard')
+      }
+
+      if (signToWrite !== writtenSign) {
+        const missedKeyInfo = findCharOnKeyboard({
+          keyboard,
+          characterToFind: signToWrite,
+        })
+        if (missedKeyInfo) {
+          //
+        }
+      }
+
+      return {
         userText,
         cursorAt,
         signToWrite,
         writtenSign,
         nextSign,
-      },
-      this.markKeyboardForType(signToWrite, writtenSign, nextSign),
-    )
-  }
-
-  markKeyboardKeys(keyboard, keys) {
-    keys.map((key) => {
-      if (keyboard.keys[key.iso]) {
-        // TODO functionkeys
-        keyboard.keys[key.iso].state = key.color
-      }
-    })
-    return keyboard
-  }
-
-  markFunctionKey(functionKeys, keys) {
-    // TODO extract findFunctionKeyForChar function
-    // TODO rename function to markRelated or similar
-    // TODO how to mark fnKeys as default, like CapsLock?
-    Object.keys(functionKeys).map((functionKey) => {
-      const fnKey = functionKeys[functionKey]
-      fnKey.state = 'def'
-    })
-    keys.map((key) => {
-      const {
-        level,
-        leftOrRightSide: side,
-        color,
-      } = key
-      Object.keys(functionKeys).map((functionKey) => {
-        const fnKey = functionKeys[functionKey]
-        if (fnKey.level === level && (!fnKey.side || (fnKey.side && fnKey.side !== side))) {
-          fnKey.state = color
-        }
-      })
-    })
-    return functionKeys
-  }
-
-  markKeyboardForType(signToWrite, writtenSign, nextSign) {
-    const {
-      keyboard: keyboardFromState,
-      functionKeys: functionKeysFromState,
-      keysColoredDown: keysColoredDownFromState,
-    } = this.state
-    const keyboard = JSON.parse(JSON.stringify(keyboardFromState))
-    const functionKeys = JSON.parse(JSON.stringify(functionKeysFromState))
-    const keysColoredDown = JSON.parse(JSON.stringify(keysColoredDownFromState))
-    const { deadKeys } = keyboard
-
-    const charsSucceed = signToWrite === writtenSign
-
-    if (charsSucceed === this.state.isoSucceed) {
-      // text input is successful and key press match with keyboard layout
-    } else if (charsSucceed) {
-      console.warn('The selected keyboard layout is not matching with the actual input method')
-    }
-    let markedKeyboard
-    let markedFunctionKeys
-    let nextKeyIso
-
-    // mark next key(s)
-    const nextKeyInfo = findCharOnKeyboard({
-      keyboard,
-      characterToFind: nextSign,
-    })
-    if (nextKeyInfo) {
-      nextKeyInfo.color = 'toWrite'
-      markedKeyboard = this.markKeyboardKeys(keyboard, [nextKeyInfo])
-      markedFunctionKeys = this.markFunctionKey(functionKeys, [nextKeyInfo])
-      nextKeyIso = nextKeyInfo.iso
-    } else if (deadKeys) {
-      Object.keys(deadKeys).map((key) => {
-        if (key === nextSign) {
-          // keyToPressFound in deadKeys: deadKeys[key][0], deadKeys[key][1])
-          const nextKey0Info = findCharOnKeyboard({
-            keyboard,
-            characterToFind: deadKeys[key][0],
-          })
-          const nextKey1Info = findCharOnKeyboard({
-            keyboard,
-            characterToFind: deadKeys[key][1],
-          })
-
-          if (nextKey0Info && nextKey1Info) {
-            nextKey0Info.color = 'toPressFirst'
-            nextKey1Info.color = 'toPressSecond'
-
-            markedKeyboard = this.markKeyboardKeys(keyboard, [nextKey0Info, nextKey1Info])
-            markedFunctionKeys = this.markFunctionKey(functionKeys, [nextKey0Info, nextKey1Info])
-            nextKeyIso = nextKey0Info.iso
-          }
-        }
-        return null
-      })
-    }
-
-
-    if (!markedKeyboard) {
-      console.log('could not find character on the keyboard')
-      markedKeyboard = keyboard
-    }
-
-    if (!markedFunctionKeys) {
-      console.log('could not find function key on the keyboard')
-      markedFunctionKeys = functionKeys
-    }
-
-    markedKeyboard = this.markKeyboardKeys(markedKeyboard || keyboard, this.state.keysColoredDown)
-
-    if (signToWrite !== writtenSign) {
-      const missedKeyInfo = findCharOnKeyboard({
+        inputChanged: true,
         keyboard,
-        characterToFind: signToWrite,
-      })
-      if (missedKeyInfo) {
-        markedKeyboard = this.markKeyboardKeys(markedKeyboard, [{ iso: missedKeyInfo.iso, color: 'missed' }])
+        functionKeys,
+        previousKey0Info: nextKey0Info,
+        previousKey1Info: nextKey1Info,
       }
-    }
-
-    this.setState({
-      markedKeyboard,
-      markedFunctionKeys,
-      nextKeyIso,
-      keysColoredDown,
     })
   }
 
@@ -239,82 +199,99 @@ export default class ProgramPage extends React.Component {
   */
 
   handleKeydown(event) {
-    const {
-      keysColoredDown: keysColoredDownFromState,
-      keysDown: keysDownFromState,
-      codeToIso,
-      nextKeyIso,
-      isCapsLockOn: isCapsLockOnFromState,
-      keyboard,
-    } = this.state
-
-    const keysColoredDown = JSON.parse(JSON.stringify(keysColoredDownFromState))
-    const keysDown = JSON.parse(JSON.stringify(keysDownFromState))
-
-    const downIso = codeToIso[event.code]
-    const lastKeyDown = event.code
-
-    const isoSucceed = nextKeyIso === downIso
-    const succeedState = isoSucceed ? 'correct' : 'error'
-
-    keysColoredDown.push({ iso: downIso, color: succeedState })
-    keysDown.push(lastKeyDown)
+    // const succeedState = isoSucceed ? 'correct' : 'error'
 
     const getModifierStateCapsLock = event.getModifierState('CapsLock') // always true if CapsLock pressed
-    let isCapsLockOn = isCapsLockOnFromState
-    if (lastKeyDown === 'CapsLock') {
-      isCapsLockOn = !isCapsLockOn
-    } else if (!keysDown.includes('CapsLock')) {
-      isCapsLockOn = getModifierStateCapsLock
-    }
-    const displayedLevel = getLevelFromKeys(keysDown, keyboard.levels, isCapsLockOn)
 
-    this.setState({
-      keysColoredDown,
-      displayedLevel,
-      isoSucceed,
-      keysDown,
-      lastKeyDown,
-      isCapsLockOn,
+    this.setState((prevState) => {
+      const {
+        keyboard,
+        functionKeys,
+        codeToIso,
+        keysDown,
+        isCapsLockOn: isCapsLockOnFromState,
+      } = { ...prevState }
+
+      const lastKeyDown = event.code
+      const downIso = codeToIso[lastKeyDown]
+      keysDown.push(lastKeyDown)
+
+      let isCapsLockOn = isCapsLockOnFromState
+
+      if (lastKeyDown === 'CapsLock') {
+        isCapsLockOn = !isCapsLockOn
+      } else if (!keysDown.includes('CapsLock')) {
+        isCapsLockOn = getModifierStateCapsLock
+      }
+
+      if (keyboard.keys[downIso]) {
+        keyboard.keys[downIso].pressure = 'pressed'
+      } else if (functionKeys[lastKeyDown]) {
+        functionKeys[lastKeyDown].pressure = 'pressed'
+      }
+
+      const displayedLevel = memoizedGetLevelFromKeys(keysDown, keyboard.levels, isCapsLockOn)
+
+      return {
+        keyboard,
+        functionKeys,
+        keysDown,
+        isCapsLockOn,
+        displayedLevel,
+      }
     })
   }
 
   handleKeyup(event) {
-    const {
-      keysColoredDown: keysColoredDownFromState,
-      keysDown: keysDownFromState,
-      codeToIso,
-      isCapsLockOn: isCapsLockOnFromState,
-      keyboard,
-    } = this.state
-    const keysColoredDown = JSON.parse(JSON.stringify(keysColoredDownFromState))
-    const keysDown = JSON.parse(JSON.stringify(keysDownFromState))
+    this.setState((prevState) => {
+      const {
+        keyboard,
+        functionKeys,
+        codeToIso,
+        keysDown,
+        isCapsLockOn,
+        inputChanged,
+      } = { ...prevState }
 
-    const upIso = codeToIso[event.code]
-    const lastKeyUp = event.code
+      const lastKeyUp = event.code
+      const upIso = codeToIso[lastKeyUp]
 
-    const filteredArray = keysColoredDown.filter(obj => obj.iso !== upIso)
-    const filteredKeysDownArray = keysDown.filter((code) => {
-      const modifiersActuallyNotDown = []
-      // e.g. Alt key changes the focus of the browser, so no key up event fired for Alt
-      if (!event.getModifierState('Alt')) {
-        modifiersActuallyNotDown.push('AltLeft')
+      const filteredKeysDownArray = keysDown.filter((code) => {
+        const modifiersActuallyNotDown = []
+        // e.g. Alt key changes the focus of the browser, so no key up event fired for Alt
+        if (!event.getModifierState('Alt')) {
+          modifiersActuallyNotDown.push('AltLeft')
+          functionKeys.AltLeft.pressure = 'none'
+        }
+        return code !== event.code && !modifiersActuallyNotDown.includes(code)
+      })
+
+      const displayedLevel = memoizedGetLevelFromKeys(filteredKeysDownArray, keyboard.levels, isCapsLockOn)
+
+      if (inputChanged) {
+        if (keyboard.keys[upIso]) {
+          keyboard.keys[upIso].pressure = 'none'
+        } else if (functionKeys[lastKeyUp]) {
+          functionKeys[lastKeyUp].pressure = 'none'
+        }
       }
-      return code !== event.code && !modifiersActuallyNotDown.includes(code)
-    })
-    const displayedLevel = getLevelFromKeys(filteredKeysDownArray, keyboard.levels, isCapsLockOnFromState)
 
-    this.setState({
-      keysColoredDown: filteredArray,
-      displayedLevel,
-      keysDown: filteredKeysDownArray,
-      lastKeyUp,
+      if (isCapsLockOn) {
+        functionKeys.CapsLock.pressure = 'locked'
+      }
+
+      return {
+        keyboard,
+        functionKeys,
+        displayedLevel,
+        keysDown: filteredKeysDownArray,
+      }
     })
   }
 
   render() {
     const {
-      markedKeyboard,
+      keyboard,
       sampleText,
       userText,
       cursorAt,
@@ -322,7 +299,7 @@ export default class ProgramPage extends React.Component {
       writtenSign,
       isUserInputFocused,
       displayedLevel,
-      markedFunctionKeys,
+      functionKeys,
     } = this.state
 
     return (
@@ -338,8 +315,8 @@ export default class ProgramPage extends React.Component {
           setUserInputFocus={this.setUserInputFocus}
           isUserInputFocused={isUserInputFocused}
           displayedLevel={displayedLevel}
-          keyboard={markedKeyboard}
-          functionKeys={markedFunctionKeys}
+          keyboard={keyboard}
+          functionKeys={functionKeys}
         />
       </Layout>
     )

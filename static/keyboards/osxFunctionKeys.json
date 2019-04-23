@@ -26,7 +26,7 @@
     "level": "shift+caps?",
     "side": "left"
   },
-  "B13": {
+  "B12": {
     "to": "⇧",
     "name": "rightShift",
     "state": "def",

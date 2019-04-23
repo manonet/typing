@@ -30,6 +30,12 @@ const styles = theme => ({
   toWrite: {
     fill: theme.palette.primary.main,
   },
+  pressed: {
+    fill: theme.palette.teal[700],
+  },
+  locked: {
+    fill: theme.palette.green[300],
+  },
   toPressFirst: {
     fill: theme.palette.primary.dark,
   },
@@ -63,6 +69,7 @@ function KeyboardKey(props) {
     shift,
     iso,
     state,
+    pressure,
     priority,
     transform,
     displayedLevel,
@@ -91,8 +98,6 @@ function KeyboardKey(props) {
     alphabet = true
   }
   const toWrite = state === 'toWrite'
-  const toPressFirst = state === 'toPressFirst'
-  const toPressSecond = state === 'toPressSecond'
 
   let width = keyWidth - keyPaddingX * 2
   const height = keyHeight - keyPaddingY * 2
@@ -113,8 +118,10 @@ function KeyboardKey(props) {
       [classes.secondary]: priority === 'secondary',
       [classes.alphabet]: alphabet,
       [classes.toWrite]: toWrite,
-      [classes.toPressFirst]: toPressFirst,
-      [classes.toPressSecond]: toPressSecond,
+      [classes.pressed]: pressure === 'pressed',
+      [classes.locked]: pressure === 'locked',
+      [classes.toPressFirst]: pressure === 'toPressFirst',
+      [classes.toPressSecond]: pressure === 'toPressSecond',
     },
   )
   const labelClass = classNames(
@@ -125,53 +132,53 @@ function KeyboardKey(props) {
   )
 
   switch (iso) {
-  case 'E13': // Backspace
+  case 'Backspace':
     width = keyWidth * 2 - keyPaddingX * 2
     translate = props.translate || `translate(${keyWidth * 13}, 0)`
     break
 
-  case 'C00': // CapsLock
+  case 'CapsLock':
     width = keyWidth + cRowShift - keyPaddingX * 2
     translate = props.translate || `translate(0, ${keyHeight * 2})`
     break
 
-  case 'D00': // Tab
+  case 'Tab':
     width = keyWidth + dRowShift - keyPaddingX * 2
     translate = props.translate || `translate(0, ${keyHeight})`
     break
 
-  case 'B99': // Left Shift
+  case 'ShiftLeft':
     width = bRowShift - keyPaddingX * 2
     translate = props.translate || `translate(0, ${keyHeight * 3})`
     break
 
-  case 'B13': // Right Shift
+  case 'ShiftRight':
     width = (keyWidth * 3 - bRowShift) - keyPaddingX * 2
     translate = props.translate || `translate(${bRowShift + keyWidth * 12}, ${keyHeight * 3})`
     break
 
-  case 'A99': // Left Ctrl
+  case 'ControlLeft':
     width = bRowShift - keyPaddingX * 2
     translate = props.translate || `translate(0, ${keyHeight * 4})`
     break
 
-  case 'A00': // fn
+  case 'WakeUp': // fn
     translate = props.translate || `translate(${aRowShift}, ${keyHeight * 4})`
     break
 
-  case 'A01': // left Command
+  case 'OSLeft':
     translate = props.translate || `translate(${aRowShift + keyWidth}, ${keyHeight * 4})`
     break
 
-  case 'A02': // Alt
+  case 'AltLeft':
     translate = props.translate || `translate(${aRowShift + keyWidth * 2}, ${keyHeight * 4})`
     break
 
-  case 'A08': // AltGr
+  case 'AltRight':
     translate = props.translate || `translate(${aRowShift + keyWidth * 8}, ${keyHeight * 4})`
     break
 
-  case 'A09': // right Command
+  case 'OSRight':
     translate = props.translate || `translate(${aRowShift + keyWidth * 9}, ${keyHeight * 4})`
     break
 
@@ -179,7 +186,7 @@ function KeyboardKey(props) {
     translate = props.translate || `translate(${aRowShift + keyWidth * 11}, ${keyHeight * 4})`
     break
 
-  case 'A12': // Right Ctrl
+  case 'ControlRight':
     width = (keyWidth * 3 - bRowShift) - keyPaddingX * 2
     translate = props.translate || `translate(${bRowShift + keyWidth * 12}, ${keyHeight * 4})`
     break
@@ -202,7 +209,7 @@ function KeyboardKey(props) {
     break
   }
 
-  if (props.name === 'enter') {
+  if (iso === 'Enter') {
     // for Enter
     const leftD = dRowShift
     let leftC = cRowShift
