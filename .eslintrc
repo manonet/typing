@@ -42,6 +42,11 @@
     "no-confusing-arrow": 0,
     "no-console": [1, { "allow": ["info", "error"] }],
     "no-plusplus": 0,
+    "prefer-destructuring": ["error", {
+      "AssignmentExpression": {
+        "array": false
+      }
+    }],
     "react/forbid-prop-types": ["warn", {"forbid": ["any"]}],
     "react/require-default-props": 0,
     "react/jsx-one-expression-per-line": 0

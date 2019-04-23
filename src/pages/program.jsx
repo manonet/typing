@@ -5,6 +5,7 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 import findCharOnKeyboard from '../components/utils/findCharOnKeyboard'
 import getLevelFromKeys from '../components/utils/getLevelFromKeys'
+import getKeyboardOS from '../components/utils/getKeyboardOS'
 
 import ProgramBoard from '../components/ProgramBoard'
 
@@ -46,10 +47,15 @@ export default class ProgramPage extends React.Component {
   }
 
   componentDidMount() {
+    const keyboardOS = getKeyboardOS()
+    const keyboardLang = navigator.language.substring(0, 2)
+    console.info('keyboardOS', keyboardOS, 'keyboardLang', keyboardLang)
     Promise.all([
+      // fetch(withPrefix(`/keyboards/${keyboardOS}/${keyboardLang}-t-k0-${keyboardOS}.json`)),
       fetch(withPrefix('/keyboards/windows/hu-t-k0-windows.json')),
       fetch(withPrefix('/keyboards/codeToIso.json')),
       fetch(withPrefix('/keyboards/functionKeys.json')),
+    // fetch(withPrefix(`/keyboards/${keyboardOS}FunctionKeys.json`)),
     ])
       .then(responses => Promise.all(responses.map(r => r.json())))
       .then((responses) => {
@@ -107,6 +113,8 @@ export default class ProgramPage extends React.Component {
 
   markFunctionKey(functionKeys, keys) {
     // TODO extract findFunctionKeyForChar function
+    // TODO rename function to markRelated or similar
+    // TODO how to mark fnKeys as default, like CapsLock?
     Object.keys(functionKeys).map((functionKey) => {
       const fnKey = functionKeys[functionKey]
       fnKey.state = 'def'
@@ -131,10 +139,11 @@ export default class ProgramPage extends React.Component {
     const {
       keyboard: keyboardFromState,
       functionKeys: functionKeysFromState,
-      keysDown,
+      keysColoredDown: keysColoredDownFromState,
     } = this.state
     const keyboard = JSON.parse(JSON.stringify(keyboardFromState))
     const functionKeys = JSON.parse(JSON.stringify(functionKeysFromState))
+    const keysColoredDown = JSON.parse(JSON.stringify(keysColoredDownFromState))
     const { deadKeys } = keyboard
 
     const charsSucceed = signToWrite === writtenSign
@@ -184,7 +193,6 @@ export default class ProgramPage extends React.Component {
       })
     }
 
-    markedKeyboard = this.markKeyboardKeys(keyboard, this.state.keysColoredDown)
 
     if (!markedKeyboard) {
       console.log('could not find character on the keyboard')
@@ -196,10 +204,23 @@ export default class ProgramPage extends React.Component {
       markedFunctionKeys = functionKeys
     }
 
+    markedKeyboard = this.markKeyboardKeys(markedKeyboard || keyboard, this.state.keysColoredDown)
+
+    if (signToWrite !== writtenSign) {
+      const missedKeyInfo = findCharOnKeyboard({
+        keyboard,
+        characterToFind: signToWrite,
+      })
+      if (missedKeyInfo) {
+        markedKeyboard = this.markKeyboardKeys(markedKeyboard, [{ iso: missedKeyInfo.iso, color: 'missed' }])
+      }
+    }
+
     this.setState({
       markedKeyboard,
       markedFunctionKeys,
       nextKeyIso,
+      keysColoredDown,
     })
   }
 
@@ -224,6 +245,7 @@ export default class ProgramPage extends React.Component {
       codeToIso,
       nextKeyIso,
       isCapsLockOn: isCapsLockOnFromState,
+      keyboard,
     } = this.state
 
     const keysColoredDown = JSON.parse(JSON.stringify(keysColoredDownFromState))
@@ -236,16 +258,16 @@ export default class ProgramPage extends React.Component {
     const succeedState = isoSucceed ? 'correct' : 'error'
 
     keysColoredDown.push({ iso: downIso, color: succeedState })
-    keysDown.push(event.key)
+    keysDown.push(lastKeyDown)
 
     const getModifierStateCapsLock = event.getModifierState('CapsLock') // always true if CapsLock pressed
     let isCapsLockOn = isCapsLockOnFromState
     if (lastKeyDown === 'CapsLock') {
       isCapsLockOn = !isCapsLockOn
-    } else {
+    } else if (!keysDown.includes('CapsLock')) {
       isCapsLockOn = getModifierStateCapsLock
     }
-    const displayedLevel = getLevelFromKeys(keysDown, isCapsLockOn)
+    const displayedLevel = getLevelFromKeys(keysDown, keyboard.levels, isCapsLockOn)
 
     this.setState({
       keysColoredDown,
@@ -263,6 +285,7 @@ export default class ProgramPage extends React.Component {
       keysDown: keysDownFromState,
       codeToIso,
       isCapsLockOn: isCapsLockOnFromState,
+      keyboard,
     } = this.state
     const keysColoredDown = JSON.parse(JSON.stringify(keysColoredDownFromState))
     const keysDown = JSON.parse(JSON.stringify(keysDownFromState))
@@ -270,29 +293,22 @@ export default class ProgramPage extends React.Component {
     const upIso = codeToIso[event.code]
     const lastKeyUp = event.code
 
-
     const filteredArray = keysColoredDown.filter(obj => obj.iso !== upIso)
-    const filteredKeysDownArray = keysDown.filter(code => code !== event.key)
-    const getModifierStateCapsLock = event.getModifierState('CapsLock')
-    let isCapsLockOn = isCapsLockOnFromState
-    if (lastKeyUp === 'CapsLock') {
-      if (!event.getModifierState('CapsLock')) {
-        isCapsLockOn = false
+    const filteredKeysDownArray = keysDown.filter((code) => {
+      const modifiersActuallyNotDown = []
+      // e.g. Alt key changes the focus of the browser, so no key up event fired for Alt
+      if (!event.getModifierState('Alt')) {
+        modifiersActuallyNotDown.push('AltLeft')
       }
-    } else {
-      isCapsLockOn = getModifierStateCapsLock
-      if (keysDown.includes('CapsLock')) {
-        isCapsLockOn = false
-      }
-    }
-    const displayedLevel = getLevelFromKeys(filteredKeysDownArray, isCapsLockOn)
+      return code !== event.code && !modifiersActuallyNotDown.includes(code)
+    })
+    const displayedLevel = getLevelFromKeys(filteredKeysDownArray, keyboard.levels, isCapsLockOnFromState)
 
     this.setState({
       keysColoredDown: filteredArray,
       displayedLevel,
       keysDown: filteredKeysDownArray,
       lastKeyUp,
-      isCapsLockOn,
     })
   }
 
@@ -312,8 +328,6 @@ export default class ProgramPage extends React.Component {
     return (
       <Layout>
         <SEO title="Typewriting program" />
-        <h1>Typewriting program</h1>
-
         <ProgramBoard
           sampleText={sampleText}
           userText={userText}
