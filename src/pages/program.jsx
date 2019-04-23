@@ -1,5 +1,6 @@
 import React from 'react'
 import { withPrefix } from 'gatsby-link'
+import mem from 'mem'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
@@ -9,6 +10,7 @@ import getKeyboardOS from '../components/utils/getKeyboardOS'
 
 import ProgramBoard from '../components/ProgramBoard'
 
+const memoizedGetLevelFromKeys = mem(getLevelFromKeys)
 // TODO enable/disable backspace
 
 export default class ProgramPage extends React.Component {
@@ -267,7 +269,7 @@ export default class ProgramPage extends React.Component {
     } else if (!keysDown.includes('CapsLock')) {
       isCapsLockOn = getModifierStateCapsLock
     }
-    const displayedLevel = getLevelFromKeys(keysDown, keyboard.levels, isCapsLockOn)
+    const displayedLevel = memoizedGetLevelFromKeys(keysDown, keyboard.levels, isCapsLockOn)
 
     this.setState({
       keysColoredDown,
@@ -302,7 +304,7 @@ export default class ProgramPage extends React.Component {
       }
       return code !== event.code && !modifiersActuallyNotDown.includes(code)
     })
-    const displayedLevel = getLevelFromKeys(filteredKeysDownArray, keyboard.levels, isCapsLockOnFromState)
+    const displayedLevel = memoizedGetLevelFromKeys(filteredKeysDownArray, keyboard.levels, isCapsLockOnFromState)
 
     this.setState({
       keysColoredDown: filteredArray,
