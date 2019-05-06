@@ -14,6 +14,7 @@ const findCharOnKeyboard = function (props) {
   let keyToPressFound = false
   let iso
   let level
+  let levelObject
   let location
 
   if (keys && levels && characterToFind) {
@@ -21,7 +22,8 @@ const findCharOnKeyboard = function (props) {
     Object.keys(levels).map((l) => {
       // levels[level] = altR+caps? ctrl+alt+caps?
       if (!keyToPressFound) {
-        level = levels[l]
+        level = Object.keys(levels[l])[0]
+        levelObject = levels[l]
         Object.keys(keys).map((key) => {
           if (keys[key][level] === characterToFind) {
             // found!
@@ -40,7 +42,7 @@ const findCharOnKeyboard = function (props) {
   if (keyToPressFound) {
     return {
       iso,
-      level,
+      level: levelObject,
       ...location,
     }
   }

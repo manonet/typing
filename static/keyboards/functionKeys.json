@@ -1,81 +1,72 @@
 {
-  "E13": {
+  "Backspace": {
     "to": "⟵",
-    "name": "Backspace",
     "state": "def"
   },
-  "D00": {
+  "Tab": {
     "to": "↹",
-    "name": "tab",
     "state": "def"
   },
-  "D13": {
+  "Enter": {
     "to": "↵",
-    "name": "enter",
     "state": "def"
   },
-  "C00": {
+  "CapsLock": {
     "to": "Caps Lock",
-    "name": "capsLock",
     "state": "def",
     "level": "caps"
   },
-  "B99": {
+  "ShiftLeft": {
     "to": "⇧",
-    "name": "leftShift",
     "state": "def",
     "level": "shiftL",
     "side": "left"
   },
-  "B13": {
+  "ShiftRight": {
     "to": "⇧",
-    "name": "rightShift",
     "state": "def",
     "level": "shiftR",
     "side": "right"
   },
-  "A99": {
+  "ControlLeft": {
     "to": "Ctrl",
-    "name": "leftCtrl",
     "state": "def",
     "level": "ctrlL",
     "side": "left"
   },
-  "A00": {
+  "WakeUp": {
     "to": "Fn",
-    "name": "fn",
     "state": "def"
   },
-  "A01": {
+  "OSLeft": {
     "to": "Win",
-    "name": "leftCommand",
-    "state": "def"
+    "state": "def",
+    "side": "left"
   },
-  "A02": {
+  "AltLeft": {
     "to": "Alt",
-    "name": "alt",
     "state": "def",
-    "level": "altL"
+    "level": "altL",
+    "side": "left"
   },
-  "A08": {
+  "AltRight": {
     "to": "Alt Gr",
-    "name": "altGr",
     "state": "def",
-    "level": "altR"
+    "level": "altR",
+    "side": "right"
   },
-  "A09": {
+  "OSRight": {
     "to": "Win",
-    "name": "rightCommand",
-    "state": "def"
+    "state": "def",
+    "side": "right"
   },
   "A11": {
     "to": "Menu",
     "name": "menu",
     "state": "def"
   },
-  "A12": {
+  "ControlRight": {
     "to": "Ctrl",
-    "name": "rightCtrl",
     "state": "def",
     "level": "ctrlR",
     "side": "right"
