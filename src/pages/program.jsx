@@ -91,9 +91,35 @@ export default class ProgramPage extends React.Component {
         keyboard.keys[keyInfo.iso][colorProp] = color
         const { level } = keyInfo
         if (level[Object.keys(level)[0]][0]) {
+          let previousFunctionKey
           level[Object.keys(level)[0]][0].map((l) => {
             if (functionKeys[l[0]]) {
+              // mark function key
               functionKeys[l[0]][colorProp] = color
+              // if the function key is in pair of both left and right
+              if (
+                previousFunctionKey
+                && previousFunctionKey.lastIndexOf('Left') !== -1
+                && previousFunctionKey.substring(0, previousFunctionKey.lastIndexOf('Left')) === l[0].substring(0, l[0].lastIndexOf('Right'))
+              ) {
+                // mark only the opposite side than the character
+                if (keyInfo.side === 'Left') {
+                  functionKeys[previousFunctionKey][colorProp] = 'def'
+                } else {
+                  functionKeys[l[0]][colorProp] = 'def'
+                }
+              } else if (
+                previousFunctionKey
+                && previousFunctionKey.lastIndexOf('Right') !== -1
+                && previousFunctionKey.substring(0, previousFunctionKey.lastIndexOf('Right')) === l[0].substring(0, l[0].lastIndexOf('Left'))
+              ) {
+                if (keyInfo.side === 'Right') {
+                  functionKeys[previousFunctionKey][colorProp] = 'def'
+                } else {
+                  functionKeys[l[0]][colorProp] = 'def'
+                }
+              }
+              previousFunctionKey = l[0]
             }
           })
         }
