@@ -63,14 +63,20 @@ export default class ProgramPage extends React.Component {
         const functionKeys = responses[2]
         functionKeys.Enter.variant = keyboard.enterVariant
 
+        const { sampleText } = this.state
+        const nextCharInfo = getKeysFromChar(keyboard, sampleText.charAt(0))
+
         this.setState(
           {
             keyboard,
             codeToIso,
             functionKeys,
+            currentKeyInfo: nextCharInfo,
           },
           document.addEventListener('keydown', this.handleKeydown, false),
           document.addEventListener('keyup', this.handleKeyup, false),
+          this.markCharOnBoard(keyboard, functionKeys, nextCharInfo[0], 'marker', 'toPressFirst'),
+          this.markCharOnBoard(keyboard, functionKeys, nextCharInfo[1], 'marker', 'toPressSecond'),
         )
       })
   }
