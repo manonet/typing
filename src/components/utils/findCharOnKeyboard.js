@@ -43,6 +43,7 @@ const findCharOnKeyboard = function (props) {
     return {
       iso,
       level: levelObject,
+      char: characterToFind,
       ...location,
     }
   }

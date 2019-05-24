@@ -14,15 +14,15 @@ const styles = theme => ({
     display: 'none',
   },
   label: {
-    fill: theme.palette.grey[500],
+    fill: theme.palette.grey[400],
   },
   labelToWrite: {
     fill: theme.palette.primary.contrastText,
   },
   keyBg: {
-    stroke: theme.palette.grey[700],
+    stroke: theme.palette.grey[500],
     strokeWidth: 5,
-    fill: theme.palette.grey[800],
+    fill: theme.palette.grey[500],
   },
   alphabet: {
     // fill: orange[100],

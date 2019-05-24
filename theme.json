@@ -30,7 +30,7 @@
   "overrides": {},
   "palette": {
     "common": {
-      "black": "#27272f",
+      "black": "#1e1e1e",
       "white": "#fff"
     },
     "type": "dark",
@@ -143,23 +143,23 @@
     "contrastThreshold": 3,
     "tonalOffset": 0.2,
     "text": {
-      "primary": "rgba(0, 0, 0, 0.87)",
-      "secondary": "rgba(0, 0, 0, 0.54)",
-      "disabled": "rgba(0, 0, 0, 0.38)",
-      "hint": "rgba(0, 0, 0, 0.38)"
+      "primary": "rgba(255, 255, 255, 0.87)",
+      "secondary": "rgba(255, 255, 255, 0.54)",
+      "disabled": "rgba(255, 255, 255, 0.38)",
+      "hint": "rgba(255, 255, 255, 0.38)"
     },
-    "divider": "rgba(0, 0, 0, 0.12)",
+    "divider": "rgba(255, 255, 255, 0.12)",
     "background": {
-      "paper": "#fff",
-      "default": "#fafafa"
+      "paper": "#1e1e1e",
+      "default": "#32333d"
     },
     "action": {
-      "active": "rgba(0, 0, 0, 0.54)",
-      "hover": "rgba(0, 0, 0, 0.08)",
+      "active": "rgba(255, 255, 255, 0.54)",
+      "hover": "rgba(255, 255, 255, 0.08)",
       "hoverOpacity": 0.08,
-      "selected": "rgba(0, 0, 0, 0.14)",
-      "disabled": "rgba(0, 0, 0, 0.26)",
-      "disabledBackground": "rgba(0, 0, 0, 0.12)"
+      "selected": "rgba(255, 255, 255, 0.14)",
+      "disabled": "rgba(255, 255, 255, 0.26)",
+      "disabledBackground": "rgba(255, 255, 255, 0.12)"
     }
   },
   "props": {},
@@ -203,7 +203,7 @@
       "letterSpacing": "-.04em",
       "lineHeight": "1.14286em",
       "marginLeft": "-.04em",
-      "color": "rgba(0, 0, 0, 0.54)"
+      "color": "rgba(255, 255, 255, 0.54)"
     },
     "display3": {
       "fontSize": "3.5rem",
@@ -212,7 +212,7 @@
       "letterSpacing": "-.02em",
       "lineHeight": "1.30357em",
       "marginLeft": "-.02em",
-      "color": "rgba(0, 0, 0, 0.54)"
+      "color": "rgba(255, 255, 255, 0.54)"
     },
     "display2": {
       "fontSize": "2.8125rem",
@@ -220,66 +220,66 @@
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "lineHeight": "1.13333em",
       "marginLeft": "-.02em",
-      "color": "rgba(0, 0, 0, 0.54)"
+      "color": "rgba(255, 255, 255, 0.54)"
     },
     "display1": {
       "fontSize": "2.125rem",
       "fontWeight": 400,
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "lineHeight": "1.20588em",
-      "color": "rgba(0, 0, 0, 0.54)"
+      "color": "rgba(255, 255, 255, 0.54)"
     },
     "headline": {
       "fontSize": "1.5rem",
       "fontWeight": 400,
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "lineHeight": "1.35417em",
-      "color": "rgba(0, 0, 0, 0.87)"
+      "color": "rgba(255, 255, 255, 0.87)"
     },
     "title": {
       "fontSize": "1.3125rem",
       "fontWeight": 500,
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "lineHeight": "1.16667em",
-      "color": "rgba(0, 0, 0, 0.87)"
+      "color": "rgba(255, 255, 255, 0.87)"
     },
     "subheading": {
       "fontSize": "1rem",
       "fontWeight": 400,
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "lineHeight": "1.5em",
-      "color": "rgba(0, 0, 0, 0.87)"
+      "color": "rgba(255, 255, 255, 0.87)"
     },
     "body2": {
       "fontSize": "0.875rem",
       "fontWeight": 500,
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "lineHeight": "1.71429em",
-      "color": "rgba(0, 0, 0, 0.87)"
+      "color": "rgba(255, 255, 255, 0.87)"
     },
     "body1": {
       "fontSize": "0.875rem",
       "fontWeight": 400,
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "lineHeight": "1.46429em",
-      "color": "rgba(0, 0, 0, 0.87)"
+      "color": "rgba(255, 255, 255, 0.87)"
     },
     "caption": {
       "fontSize": "0.75rem",
       "fontWeight": 400,
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "lineHeight": "1.375em",
-      "color": "rgba(0, 0, 0, 0.54)"
+      "color": "rgba(255, 255, 255, 0.54)"
     },
     "button": {
       "fontSize": "0.875rem",
       "textTransform": "uppercase",
       "fontWeight": 500,
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
-      "color": "rgba(0, 0, 0, 0.87)"
+      "color": "rgba(255, 255, 255, 0.87)"
     },
     "h1": {
-      "color": "rgba(0, 0, 0, 0.87)",
+      "color": "rgba(255, 255, 255, 0.87)",
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "fontWeight": 300,
       "fontSize": "6rem",
@@ -287,7 +287,7 @@
       "letterSpacing": "-0.01562em"
     },
     "h2": {
-      "color": "rgba(0, 0, 0, 0.87)",
+      "color": "rgba(255, 255, 255, 0.87)",
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "fontWeight": 300,
       "fontSize": "3.75rem",
@@ -295,7 +295,7 @@
       "letterSpacing": "-0.00833em"
     },
     "h3": {
-      "color": "rgba(0, 0, 0, 0.87)",
+      "color": "rgba(255, 255, 255, 0.87)",
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "fontWeight": 400,
       "fontSize": "3rem",
@@ -303,7 +303,7 @@
       "letterSpacing": "0em"
     },
     "h4": {
-      "color": "rgba(0, 0, 0, 0.87)",
+      "color": "rgba(255, 255, 255, 0.87)",
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "fontWeight": 400,
       "fontSize": "2.125rem",
@@ -311,7 +311,7 @@
       "letterSpacing": "0.00735em"
     },
     "h5": {
-      "color": "rgba(0, 0, 0, 0.87)",
+      "color": "rgba(255, 255, 255, 0.87)",
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "fontWeight": 400,
       "fontSize": "1.5rem",
@@ -319,7 +319,7 @@
       "letterSpacing": "0em"
     },
     "h6": {
-      "color": "rgba(0, 0, 0, 0.87)",
+      "color": "rgba(255, 255, 255, 0.87)",
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "fontWeight": 500,
       "fontSize": "1.25rem",
@@ -327,7 +327,7 @@
       "letterSpacing": "0.0075em"
     },
     "subtitle1": {
-      "color": "rgba(0, 0, 0, 0.87)",
+      "color": "rgba(255, 255, 255, 0.87)",
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "fontWeight": 400,
       "fontSize": "1rem",
@@ -335,7 +335,7 @@
       "letterSpacing": "0.00938em"
     },
     "subtitle2": {
-      "color": "rgba(0, 0, 0, 0.87)",
+      "color": "rgba(255, 255, 255, 0.87)",
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "fontWeight": 500,
       "fontSize": "0.875rem",
@@ -343,7 +343,7 @@
       "letterSpacing": "0.00714em"
     },
     "body1Next": {
-      "color": "rgba(0, 0, 0, 0.87)",
+      "color": "rgba(255, 255, 255, 0.87)",
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "fontWeight": 400,
       "fontSize": "1rem",
@@ -351,7 +351,7 @@
       "letterSpacing": "0.00938em"
     },
     "body2Next": {
-      "color": "rgba(0, 0, 0, 0.87)",
+      "color": "rgba(255, 255, 255, 0.87)",
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "fontWeight": 400,
       "fontSize": "0.875rem",
@@ -359,7 +359,7 @@
       "letterSpacing": "0.01071em"
     },
     "buttonNext": {
-      "color": "rgba(0, 0, 0, 0.87)",
+      "color": "rgba(255, 255, 255, 0.87)",
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "fontWeight": 500,
       "fontSize": "0.875rem",
@@ -368,7 +368,7 @@
       "textTransform": "uppercase"
     },
     "captionNext": {
-      "color": "rgba(0, 0, 0, 0.87)",
+      "color": "rgba(255, 255, 255, 0.87)",
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "fontWeight": 400,
       "fontSize": "0.75rem",
@@ -376,7 +376,7 @@
       "letterSpacing": "0.03333em"
     },
     "overline": {
-      "color": "rgba(0, 0, 0, 0.87)",
+      "color": "rgba(255, 255, 255, 0.87)",
       "fontFamily": "\"Roboto\", \"Helvetica\", \"Arial\", sans-serif",
       "fontWeight": 400,
       "fontSize": "0.75rem",

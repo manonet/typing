@@ -6,6 +6,7 @@
  */
 
 import React from 'react'
+import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 import Grid from '@material-ui/core/Grid'
@@ -16,7 +17,12 @@ import './layout.css'
 import 'typeface-roboto'
 
 const styles = theme => ({
-  root: {},
+  root: {
+    transition: '.2s filter ease-in-out',
+  },
+  isBlurred: {
+    filter: 'blur(6px)',
+  },
   content: {
     margin: 'auto',
     paddingLeft: theme.spacing.unit * 3,
@@ -28,7 +34,15 @@ function Layout(props) {
   const {
     children,
     classes,
+    isBlurred,
   } = props
+
+  const LayoutClasses = classNames(
+    classes.root,
+    {
+      [classes.isBlurred]: isBlurred,
+    },
+  )
 
   return (
     <StaticQuery
@@ -42,7 +56,7 @@ function Layout(props) {
         }
       `}
       render={data => (
-        <div className={classes.root}>
+        <div className={LayoutClasses}>
           <Header siteTitle={data.site.siteMetadata.title} />
           <div className={classes.content}>
             <Grid container spacing={24}>

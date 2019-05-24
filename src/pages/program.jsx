@@ -9,20 +9,22 @@ import getKeyboardOS from '../components/utils/getKeyboardOS'
 import getKeysFromChar from '../components/utils/getKeysFromChar'
 
 import ProgramBoard from '../components/ProgramBoard'
+import LessonModal from '../components/LessonModal'
 
 const memoizedGetLevelFromKeys = mem(getLevelFromKeys)
 // TODO enable/disable backspace
+// TODO differentiate same character on different levels: 'e', 'E', '€' ...
 
 export default class ProgramPage extends React.Component {
   constructor() {
     super()
     this.state = {
-      sampleText: "Lí|Ä¶ćČ et's Tyyyype Something (@)...",
+      isLessonModalOpen: false,
+      sampleText: '',
       userText: '',
       cursorAt: 0,
       signToWrite: '',
       writtenSign: '',
-      nextSign: '',
       inputChanged: false,
       isUserInputFocused: false, // whenever the user types (or not)
       keyboard: {
@@ -36,6 +38,11 @@ export default class ProgramPage extends React.Component {
       keysDown: [],
       displayedLevel: 'to',
       isCapsLockOn: false,
+      statistics: {
+        correct: [],
+        miswrite: [],
+        misspell: [],
+      },
     }
 
     this.markCharOnBoard = this.markCharOnBoard.bind(this)
@@ -43,6 +50,9 @@ export default class ProgramPage extends React.Component {
     this.handleKeyup = this.handleKeyup.bind(this)
     this.userInputText = this.userInputText.bind(this)
     this.setUserInputFocus = this.setUserInputFocus.bind(this)
+    this.startNewLesson = this.startNewLesson.bind(this)
+    this.handleLessonModalOpen = this.handleLessonModalOpen.bind(this)
+    this.handleLessonModalClose = this.handleLessonModalClose.bind(this)
   }
 
   componentDidMount() {
@@ -75,8 +85,7 @@ export default class ProgramPage extends React.Component {
           },
           document.addEventListener('keydown', this.handleKeydown, false),
           document.addEventListener('keyup', this.handleKeyup, false),
-          this.markCharOnBoard(keyboard, functionKeys, nextCharInfo[0], 'marker', 'toPressFirst'),
-          this.markCharOnBoard(keyboard, functionKeys, nextCharInfo[1], 'marker', 'toPressSecond'),
+          this.startNewLesson("Lí|Ä¶ćČ et's Tyyyype Something (@)..."),
         )
       })
   }
@@ -128,15 +137,21 @@ export default class ProgramPage extends React.Component {
   }
 
   userInputText(userText) {
+    const { sampleText } = this.state
+    if (userText.length === sampleText.length) {
+      this.handleLessonModalOpen()
+      return
+    }
+
     this.setState((prevState) => {
       const {
         keyboard,
         functionKeys,
-        sampleText,
         isoSucceed,
         currentKeyInfo,
         previousKeyInfo,
         previousPressedKeyInfo,
+        statistics,
       } = { ...prevState }
 
       const signToWrite = (userText.length >= 1) ? sampleText.substring(userText.length - 1, userText.length) : ''
@@ -181,13 +196,16 @@ export default class ProgramPage extends React.Component {
       if (charsSucceed) {
         this.markCharOnBoard(keyboard, functionKeys, currentKeyInfo[0], 'succeedState', 'correct')
         this.markCharOnBoard(keyboard, functionKeys, currentKeyInfo[1], 'succeedState', 'correct')
+        statistics.correct.push(currentKeyInfo)
       } else if (currentKeyInfo) {
         this.markCharOnBoard(keyboard, functionKeys, currentKeyInfo[0], 'succeedState', 'error')
         this.markCharOnBoard(keyboard, functionKeys, currentKeyInfo[1], 'succeedState', 'error')
+        statistics.misspell.push(currentKeyInfo)
 
         if (pressedKeyInfo) {
           this.markCharOnBoard(keyboard, functionKeys, pressedKeyInfo[0], 'succeedState', 'missed')
           this.markCharOnBoard(keyboard, functionKeys, pressedKeyInfo[1], 'succeedState', 'missed')
+          statistics.miswrite.push(pressedKeyInfo)
         }
       }
 
@@ -196,30 +214,38 @@ export default class ProgramPage extends React.Component {
         cursorAt,
         signToWrite,
         writtenSign,
-        nextSign,
         inputChanged: true,
         keyboard,
         functionKeys,
         currentKeyInfo: nextCharInfo,
         previousKeyInfo: currentKeyInfo,
         previousPressedKeyInfo: pressedKeyInfo,
+        statistics,
       }
     })
   }
 
-  /*
-  // console.log(event.key);
-  // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState
-  let Alt = event.getModifierState && event.getModifierState("Alt");
-  let AltGraph = event.getModifierState && event.getModifierState("AltGraph");
-  let CapsLock = event.getModifierState && event.getModifierState("CapsLock");
-  let Control = event.getModifierState && event.getModifierState("Control");
-  let Meta = event.getModifierState && event.getModifierState("Meta"); // ⌘ Command key
-  let NumLock = event.getModifierState && event.getModifierState("NumLock");
-  let OS = event.getModifierState && event.getModifierState("OS");
-  let ScrollLock = event.getModifierState && event.getModifierState("ScrollLock");
-  let Shift = event.getModifierState && event.getModifierState("Shift");
-  */
+  startNewLesson(sampleText) {
+    const {
+      keyboard,
+      functionKeys,
+    } = this.state
+
+    const nextCharInfo = getKeysFromChar(keyboard, sampleText.charAt(0))
+
+    this.markCharOnBoard(keyboard, functionKeys, nextCharInfo[0], 'marker', 'toPressFirst')
+    this.markCharOnBoard(keyboard, functionKeys, nextCharInfo[1], 'marker', 'toPressSecond')
+
+    this.setState(() => ({
+      sampleText,
+      userText: '',
+      cursorAt: 0,
+      signToWrite: '',
+      writtenSign: '',
+      inputChanged: false,
+      currentKeyInfo: nextCharInfo,
+    }))
+  }
 
   handleKeydown(event) {
     // const succeedState = isoSucceed ? 'correct' : 'error'
@@ -312,6 +338,17 @@ export default class ProgramPage extends React.Component {
     })
   }
 
+  handleLessonModalOpen() {
+    this.setState({
+      isLessonModalOpen: true,
+    })
+  }
+
+  handleLessonModalClose() {
+    this.setState({ isLessonModalOpen: false })
+    this.startNewLesson('New lesson')
+  }
+
   render() {
     const {
       keyboard,
@@ -323,10 +360,11 @@ export default class ProgramPage extends React.Component {
       isUserInputFocused,
       displayedLevel,
       functionKeys,
+      isLessonModalOpen,
     } = this.state
 
     return (
-      <Layout>
+      <Layout isBlurred={isLessonModalOpen}>
         <SEO title="Typewriting program" />
         <ProgramBoard
           sampleText={sampleText}
@@ -340,6 +378,11 @@ export default class ProgramPage extends React.Component {
           displayedLevel={displayedLevel}
           keyboard={keyboard}
           functionKeys={functionKeys}
+        />
+        <LessonModal
+          open={isLessonModalOpen}
+          onClose={this.handleLessonModalClose}
+          content="content"
         />
       </Layout>
     )
