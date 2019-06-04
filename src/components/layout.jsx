@@ -8,6 +8,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { StaticQuery, graphql } from 'gatsby'
 import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles'
@@ -17,6 +18,29 @@ import muiTheme from '../theme'
 import Header from './header'
 import './layout.css'
 import 'typeface-roboto'
+import { incrementNumber } from '../actions'
+
+
+const Counter = ({ count, increment }) => (
+  <div>
+    <p>Count: {count}</p>
+    <button onClick={increment}>Increment</button>
+  </div>
+)
+
+Counter.propTypes = {
+  count: PropTypes.number.isRequired,
+  increment: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = ({ count }) => ({ count })
+
+const mapDispatchToProps = dispatch => ({ increment: () => dispatch(incrementNumber(2)) })
+
+const ConnectedCounter = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Counter)
 
 const styles = theme => ({
   root: {
@@ -70,6 +94,7 @@ function Layout(props) {
                 </Grid>
               </Grid>
             </div>
+            <ConnectedCounter />
             <footer>
               {data.site.siteMetadata.name} - {data.site.siteMetadata.title} version: {data.site.siteMetadata.version}
             </footer>
