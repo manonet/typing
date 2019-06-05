@@ -1,6 +1,3 @@
-const theme = require('./theme.json')
-const variables = require('./variables.js')
-
 module.exports = {
   pathPrefix: '/typing',
   siteMetadata: {
@@ -34,11 +31,5 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // 'gatsby-plugin-offline',
-    {
-      resolve: 'gatsby-plugin-material-ui',
-      options: {
-        theme: Object.assign({}, theme, variables),
-      },
-    },
   ],
 }

@@ -11,6 +11,8 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles'
+import { ThemeProvider } from '@material-ui/styles'
+import muiTheme from '../theme'
 
 import Header from './header'
 import './layout.css'
@@ -25,8 +27,8 @@ const styles = theme => ({
   },
   content: {
     margin: 'auto',
-    paddingLeft: theme.spacing.unit * 3,
-    paddingRight: theme.spacing.unit * 3,
+    paddingLeft: theme.spacing(3),
+    paddingRight: theme.spacing(3),
   },
 })
 
@@ -56,24 +58,26 @@ function Layout(props) {
         }
       `}
       render={data => (
-        <div className={LayoutClasses}>
-          <Header siteTitle={data.site.siteMetadata.title} />
-          <div className={classes.content}>
-            <Grid container spacing={24}>
-              <Grid item xs={12}>
-                <main>{children}</main>
+        <ThemeProvider theme={muiTheme}>
+          <div className={LayoutClasses}>
+            <Header siteTitle={data.site.siteMetadata.title} />
+            <div className={classes.content}>
+              <Grid container spacing={10}>
+                <Grid item xs={12}>
+                  <main>{children}</main>
+                </Grid>
               </Grid>
-            </Grid>
-          </div>
-          <footer>
+            </div>
+            <footer>
             ©
-            {' '}
-            {new Date().getFullYear()}
+              {' '}
+              {new Date().getFullYear()}
 , Built with
-            {' '}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
-        </div>
+              {' '}
+              <a href="https://www.gatsbyjs.org">Gatsby</a>
+            </footer>
+          </div>
+        </ThemeProvider>
       )}
     />
   )

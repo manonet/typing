@@ -354,4 +354,4 @@ function KeyboardKey(props) {
   )
 }
 
-export default withTheme()(withStyles(styles)(KeyboardKey))
+export default withTheme(withStyles(styles)(KeyboardKey))

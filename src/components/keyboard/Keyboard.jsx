@@ -72,7 +72,7 @@ class Keyboard extends React.Component {
         className={
           classNames(
             className,
-            classes.keyboard
+            classes.keyboard,
           )
         }
       >
@@ -129,22 +129,20 @@ class Keyboard extends React.Component {
             })
           };
           {
-            Object.keys(functionKeys).map((iso) => {
-              return (
-                <KeyboardKey
-                  key={iso}
-                  displayedLevel="to"
-                  iso={iso}
-                  {...functionKeys[iso]}
-                  x={0}
-                  y={0}
-                  width={keyWidth}
-                  height={keyWidth}
-                  rx={rY}
-                  ry={rY}
-                />
-              )
-            })
+            Object.keys(functionKeys).map(iso => (
+              <KeyboardKey
+                key={iso}
+                displayedLevel="to"
+                iso={iso}
+                {...functionKeys[iso]}
+                x={0}
+                y={0}
+                width={keyWidth}
+                height={keyWidth}
+                rx={rY}
+                ry={rY}
+              />
+            ))
           }
         </svg>
       </div>
@@ -152,7 +150,7 @@ class Keyboard extends React.Component {
   }
 }
 
-export default withTheme()(withStyles(styles)(Keyboard))
+export default withTheme(withStyles(styles)(Keyboard))
 
 /*
 The harmonized 48 graphic key keyboard arrangement
