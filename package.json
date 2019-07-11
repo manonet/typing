@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "Manonet",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "description": "Free Typewriter Program",
+  "version": "0.0.0",
+  "author": "Szilágyi Balázs <zyxneo@gmail.com>",
   "dependencies": {
     "@material-ui/core": "^4.0.2",
     "@material-ui/icons": "^3.0.2",
@@ -34,7 +34,7 @@
     "prettier": "^1.16.4"
   },
   "keywords": [
-    "gatsby"
+    "manonet", "free", "typewriting"
   ],
   "license": "MIT",
   "scripts": {
@@ -49,9 +49,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/manonet/typing"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/manonet/typing/issues"
   }
 }

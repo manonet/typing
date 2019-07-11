@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { withStyles, withTheme } from '@material-ui/core/styles'
 
 import KeyboardKey from './KeyboardKey'
+import './Keyboard.css'
 
 
 const styles = theme => ({

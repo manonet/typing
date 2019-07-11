@@ -52,7 +52,9 @@ function Layout(props) {
         query SiteTitleQuery {
           site {
             siteMetadata {
-              title
+              name,
+              title,
+              version
             }
           }
         }
@@ -69,12 +71,7 @@ function Layout(props) {
               </Grid>
             </div>
             <footer>
-            ©
-              {' '}
-              {new Date().getFullYear()}
-, Built with
-              {' '}
-              <a href="https://www.gatsbyjs.org">Gatsby</a>
+              {data.site.siteMetadata.name} - {data.site.siteMetadata.title} version: {data.site.siteMetadata.version}
             </footer>
           </div>
         </ThemeProvider>

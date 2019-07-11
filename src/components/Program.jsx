@@ -12,6 +12,10 @@ import LessonModal from './LessonModal'
 const memoizedGetLevelFromKeys = mem(getLevelFromKeys)
 // TODO enable/disable backspace
 // TODO differentiate same character on different levels: 'e', 'E', '€' ...
+// TODO add event listeners only if input is focused
+// TODO fix stucked last hint on new lesson
+// TODO initial hint on the very first lesson
+// TODO fix multiple space collapse while writing
 
 export default class ProgramPage extends React.Component {
   constructor() {

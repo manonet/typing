@@ -1,9 +1,13 @@
+const packageJson = require('./package.json')
+
 module.exports = {
   pathPrefix: '/typing',
   siteMetadata: {
+    name: packageJson.name,
     title: 'Typewriting program',
-    description: '',
-    author: 'Szilágyi Balázs <zyxneo@gmail.com>',
+    description: packageJson.description,
+    author: packageJson.author,
+    version: packageJson.version,
   },
   plugins: [
     'gatsby-plugin-react-helmet',

@@ -15,9 +15,6 @@ const IndexPage = () => (
     <p>
       You can find more info in <a href="https://github.com/manonet/typing/">Github repository</a>
     </p>
-    <Button variant="contained" color="primary">
-      Hello World
-    </Button>
     <Link to="/program/">Go to the Program</Link>
   </Layout>
 )
