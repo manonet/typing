@@ -8,26 +8,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import { injectIntl } from 'gatsby-plugin-intl'
 import { useStaticQuery, graphql } from 'gatsby'
 
 function SEO({
-  description, lang, meta, keywords, title,
+  description, lang, meta, keywords, title, intl,
 }) {
   const { site } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
-            title
-            description
-            author
+            name
           }
         }
       }
     `,
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription = description || intl.formatMessage({ id: 'site.description' })
 
   return (
     <Helmet
@@ -35,7 +34,7 @@ function SEO({
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${site.siteMetadata.name} - ${intl.formatMessage({ id: 'site.title' })}`}
       meta={[
         {
           name: 'description',
@@ -59,7 +58,7 @@ function SEO({
         },
         {
           name: 'twitter:creator',
-          content: site.siteMetadata.author,
+          content: intl.formatMessage({ id: 'site.author' }),
         },
         {
           name: 'twitter:title',
@@ -71,10 +70,10 @@ function SEO({
         },
       ]
         .concat(
-          keywords.length > 0
+          typeof keywords !== 'undefined'
             ? {
               name: 'keywords',
-              content: keywords.join(', '),
+              content: keywords,
             }
             : [],
         )
@@ -86,15 +85,15 @@ function SEO({
 SEO.defaultProps = {
   lang: 'en',
   meta: [],
-  keywords: [],
+  keywords: '',
 }
 
 SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.array,
-  keywords: PropTypes.arrayOf(PropTypes.string),
+  keywords: PropTypes.string,
   title: PropTypes.string.isRequired,
 }
 
-export default SEO
+export default injectIntl(SEO)

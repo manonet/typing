@@ -6,6 +6,7 @@
  */
 
 import React from 'react'
+import { injectIntl } from 'gatsby-plugin-intl'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
@@ -61,6 +62,7 @@ function Layout(props) {
     children,
     classes,
     isBlurred,
+    intl,
   } = props
 
   const LayoutClasses = classNames(
@@ -77,7 +79,6 @@ function Layout(props) {
           site {
             siteMetadata {
               name,
-              title,
               version
             }
           }
@@ -86,7 +87,7 @@ function Layout(props) {
       render={data => (
         <ThemeProvider theme={muiTheme}>
           <div className={LayoutClasses}>
-            <Header siteTitle={data.site.siteMetadata.title} />
+            <Header siteTitle={intl.formatMessage({ id: 'site.title' })} />
             <div className={classes.content}>
               <Grid container spacing={10}>
                 <Grid item xs={12}>
@@ -96,7 +97,7 @@ function Layout(props) {
             </div>
             <ConnectedCounter />
             <footer>
-              {data.site.siteMetadata.name} - {data.site.siteMetadata.title} version: {data.site.siteMetadata.version}
+              {data.site.siteMetadata.name} - version: {data.site.siteMetadata.version}
             </footer>
           </div>
         </ThemeProvider>
@@ -110,4 +111,4 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default withStyles(styles)(Layout)
+export default injectIntl(withStyles(styles)(Layout))

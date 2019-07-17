@@ -1,10 +1,11 @@
 import React from 'react'
+import { injectIntl } from 'gatsby-plugin-intl'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import Program from '../components/Program'
 
-export default class ProgramPage extends React.Component {
+class ProgramPage extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -27,10 +28,15 @@ export default class ProgramPage extends React.Component {
 
   render() {
     const { isModalOpen } = this.state
+    const { intl } = this.props
 
     return (
       <Layout isBlurred={isModalOpen}>
-        <SEO title="Typewriting program" />
+        <SEO
+          lang={intl.locale}
+          title={intl.formatMessage({ id: 'program.page.title' })}
+          keywords={intl.formatMessage({ id: 'site.keywords' })}
+        />
         <Program
           isModalOpen={isModalOpen}
           handleModalOpen={this.handleModalOpen}
@@ -40,3 +46,5 @@ export default class ProgramPage extends React.Component {
     )
   }
 }
+
+export default injectIntl(ProgramPage)

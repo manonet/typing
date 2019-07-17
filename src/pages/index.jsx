@@ -1,13 +1,16 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { injectIntl, Link } from 'gatsby-plugin-intl'
 
 import Button from '@material-ui/core/Button'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 
-const IndexPage = () => (
+const IndexPage = ({ intl }) => (
   <Layout>
-    <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
+    <SEO
+      lang={intl.locale}
+      title="Manonet"
+    />
     <h1>HomePage</h1>
 
     <h3>Under development</h3>
@@ -19,4 +22,4 @@ const IndexPage = () => (
   </Layout>
 )
 
-export default IndexPage
+export default injectIntl(IndexPage)
