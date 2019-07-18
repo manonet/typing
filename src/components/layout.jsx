@@ -20,6 +20,7 @@ import Header from './header'
 import './layout.css'
 import 'typeface-roboto'
 import { incrementNumber } from '../actions'
+import LanguageSwitcher from './LanguageSwitcher'
 
 
 const Counter = ({ count, increment }) => (
@@ -97,6 +98,7 @@ function Layout(props) {
             </div>
             <ConnectedCounter />
             <footer>
+              <LanguageSwitcher />
               {data.site.siteMetadata.name} - version: {data.site.siteMetadata.version}
             </footer>
           </div>

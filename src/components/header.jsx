@@ -7,8 +7,6 @@ import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 
-import LanguageSwitcher from './LanguageSwitcher'
-
 const styles = theme => ({
   root: {
     backgroundColor: theme.palette.grey[900],
@@ -32,7 +30,6 @@ function Header(props) {
           { siteTitle }
         </Typography>
       </Toolbar>
-      <LanguageSwitcher />
     </AppBar>
   )
 }
