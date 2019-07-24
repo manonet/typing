@@ -39,6 +39,16 @@ const findCharOnKeyboard = function (props) {
       return null
     })
   }
+
+  // Hardcode values for Enter key on lewline character
+  // Enter is not part of keyboard object but the functionkexs
+  if (characterToFind === '\n') {
+    keyToPressFound = true
+    iso = 'Enter'
+    level = 'to'
+    location = { side: "Left" }
+  }
+
   if (keyToPressFound) {
     return {
       iso,

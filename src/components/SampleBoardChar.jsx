@@ -4,9 +4,13 @@ import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
   root: {
-    display: 'inline',
-    fontStyle: 'normal',
+    display: 'inline-block',
+    width: 10,
     color: theme.palette.grey[700],
+    fontStyle: 'normal',
+    fontFamily: 'monospace, monospace',
+    textAlign: 'center',
+    whiteSpace: 'pre-wrap',
   },
   done: {
     color: theme.palette.grey[400],
@@ -19,6 +23,12 @@ const styles = theme => ({
     color: theme.palette.error.main,
     backgroundColor: theme.palette.error.contrastText,
   },
+  space: {
+    opacity: '0.5',
+  },
+  lineFeed: {
+    opacity: '0.5',
+  }
 })
 
 function SampleBoardChar(props) {
@@ -36,23 +46,38 @@ function SampleBoardChar(props) {
   const active = (cursorAt === index)
   const error = (done && char !== userText.substring(index, index + 1))
 
-  const letterToDisplay = (error) ? userText.substring(index, index + 1) : char
+  let letterToDisplay = (error) ? userText.substring(index, index + 1) : char
+
+  // exchange invisible space to U+2E31 WORD SEPARATOR MIDDLE DOT in user input for clearity
+  // see https://codepoints.net/U+2E31 for more details
+  if (letterToDisplay === ' ') {
+    letterToDisplay = '⸱'
+  }
+
+  if (letterToDisplay === '\n') {
+    letterToDisplay = '↵'
+  }
 
   return (
-    <i className={
-      classNames(
-        classes.root,
-        {
-          [classes.done]: done,
-          [classes.active]: active,
-          [classes.error]: error,
-        },
-        className,
-      )
-    }
-    >
-      {letterToDisplay}
-    </i>
+    <>
+      <i className={
+        classNames(
+          classes.root,
+          {
+            [classes.done]: done,
+            [classes.active]: active,
+            [classes.error]: error,
+            [classes.space]: letterToDisplay === '⸱',
+            [classes.lineFeed]: letterToDisplay === '↵',
+          },
+          className,
+        )
+      }
+      >
+        {letterToDisplay}
+      </i>
+      {letterToDisplay === '↵' ? <br /> : null}
+    </>
   )
 }
 

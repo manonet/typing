@@ -38,6 +38,8 @@ const styles = theme => ({
     width: '100%',
     maxWidth: 'none',
     opacity: 0.01,
+    height: '100%',
+    maxHeight: 'none',
   },
 })
 

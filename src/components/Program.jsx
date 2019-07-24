@@ -15,7 +15,8 @@ const memoizedGetLevelFromKeys = mem(getLevelFromKeys)
 // TODO add event listeners only if input is focused
 // TODO fix stucked last hint on new lesson
 // TODO initial hint on the very first lesson
-// TODO fix multiple space collapse while writing
+// TODO fix movable caret in input, disable arrow keys
+// TODO fix focus and blur styles on user input
 
 export default class ProgramPage extends React.Component {
   constructor() {
@@ -85,7 +86,7 @@ export default class ProgramPage extends React.Component {
           },
           document.addEventListener('keydown', this.handleKeydown, false),
           document.addEventListener('keyup', this.handleKeyup, false),
-          this.startNewLesson("Lí|Ä¶ćČ et's Tyyyype Something (@)..."),
+          this.startNewLesson("Lí|Ä¶ćČ et's\nTyyyype Something (@)..."),
         )
       })
   }
@@ -132,6 +133,9 @@ export default class ProgramPage extends React.Component {
             }
           })
         }
+      } else if (keyInfo.iso === 'Enter') {
+        // Enter is not part of keyboard object but the functionkexs
+        functionKeys.Enter[colorProp] = color
       }
     }
   }
