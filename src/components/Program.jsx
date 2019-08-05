@@ -12,7 +12,6 @@ import LessonModal from './LessonModal'
 const memoizedGetLevelFromKeys = mem(getLevelFromKeys)
 // TODO enable/disable backspace
 // TODO differentiate same character on different levels: 'e', 'E', '€' ...
-// TODO add event listeners only if input is focused
 // TODO fix stucked last hint on new lesson
 // TODO initial hint on the very first lesson
 // TODO fix movable caret in input, disable arrow keys
@@ -84,15 +83,22 @@ export default class ProgramPage extends React.Component {
             functionKeys,
             currentKeyInfo: nextCharInfo,
           },
-          document.addEventListener('keydown', this.handleKeydown, false),
-          document.addEventListener('keyup', this.handleKeyup, false),
           this.startNewLesson("Lí|Ä¶ćČ et's\nTyyyype Something (@)..."),
         )
       })
   }
 
   setUserInputFocus(isUserInputFocused) {
-    this.setState({ isUserInputFocused })
+    this.setState(
+      { isUserInputFocused }
+    )
+    if (isUserInputFocused) {
+      document.addEventListener('keydown', this.handleKeydown, false)
+      document.addEventListener('keyup', this.handleKeyup, false)
+    } else {
+      document.removeEventListener('keydown', this.handleKeydown, false)
+      document.removeEventListener('keyup', this.handleKeyup, false)
+    }
   }
 
   markCharOnBoard(keyboard, functionKeys, keyInfo, colorProp, color) {
