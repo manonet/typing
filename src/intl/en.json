@@ -7,5 +7,10 @@
   "program.page.title": "Typewriter Program",
 
   "404.page.title": "Not found",
-  "404.page.desc": "The page you are looking for could not be found"
+  "404.page.desc": "The page you are looking for could not be found",
+
+  "error.title": "Error",
+  "error.not.found.character.on.keyboard": "Could not find character on the keyboard",
+
+  "modal.ok": "Mkay"
 }

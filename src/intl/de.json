@@ -7,5 +7,10 @@
   "program.page.title": "Schreiblehrer Program",
 
   "404.page.title": "Nicht gefunden",
-  "404.page.desc": "Die von Ihnen gesuchte Seite wurde nicht gefunden"
+  "404.page.desc": "Die von Ihnen gesuchte Seite wurde nicht gefunden",
+
+  "error.title": "Fehler",
+  "error.not.found.character.on.keyboard": "Diese Karakter kann nicht gefunden",
+
+  "modal.ok": "Okay"
 }

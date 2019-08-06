@@ -7,5 +7,10 @@
   "program.page.title": "Gépíró program",
 
   "404.page.title": "Elvitte a cica",
-  "404.page.desc": "A keresett oldal nem található"
+  "404.page.desc": "A keresett oldal nem található",
+
+  "error.title": "Hiba",
+  "error.not.found.character.on.keyboard": "Ez a karakter nem található a kiválasztott billentyűzeten.\nKérlek, válassz a lecke szövegének megfelelő billentyűzetet",
+
+  "modal.ok": "Értem"
 }

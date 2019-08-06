@@ -1,5 +1,6 @@
 import React from 'react'
 import { withPrefix } from 'gatsby-link'
+import { injectIntl, Link } from 'gatsby-plugin-intl'
 import mem from 'mem'
 
 import getLevelFromKeys from './utils/getLevelFromKeys'
@@ -8,16 +9,19 @@ import getKeysFromChar from './utils/getKeysFromChar'
 
 import ProgramBoard from './ProgramBoard'
 import LessonModal from './LessonModal'
+import ErrorModal from './ErrorModal'
 
 const memoizedGetLevelFromKeys = mem(getLevelFromKeys)
+// TODO lift ErrorModal, make it reusable
 // TODO enable/disable backspace
 // TODO differentiate same character on different levels: 'e', 'E', '€' ...
 // TODO fix stucked last hint on new lesson
 // TODO initial hint on the very first lesson
 // TODO fix movable caret in input, disable arrow keys
 // TODO fix focus and blur styles on user input
+// TODO disable tab jump on writing
 
-export default class ProgramPage extends React.Component {
+class Program extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -44,6 +48,7 @@ export default class ProgramPage extends React.Component {
         miswrite: [],
         misspell: [],
       },
+      characterNotFound: false,
     }
 
     this.markCharOnBoard = this.markCharOnBoard.bind(this)
@@ -53,6 +58,8 @@ export default class ProgramPage extends React.Component {
     this.setUserInputFocus = this.setUserInputFocus.bind(this)
     this.startNewLesson = this.startNewLesson.bind(this)
     this.handleModalClose = this.handleModalClose.bind(this)
+    this.handleError = this.handleError.bind(this)
+    this.handleErrorClose = this.handleErrorClose.bind(this)
   }
 
   componentDidMount() {
@@ -195,12 +202,8 @@ export default class ProgramPage extends React.Component {
       this.markCharOnBoard(keyboard, functionKeys, nextCharInfo[0], 'marker', 'toPressFirst')
       this.markCharOnBoard(keyboard, functionKeys, nextCharInfo[1], 'marker', 'toPressSecond')
 
-      if (!true) {
-        console.log('could not find character on the keyboard')
-      }
-
-      if (!true) {
-        console.log('could not find function key on the keyboard')
+      if (!nextCharInfo[0]) {
+        this.handleError()
       }
 
       if (charsSucceed) {
@@ -360,6 +363,18 @@ export default class ProgramPage extends React.Component {
     this.startNewLesson('New lesson')
   }
 
+  handleError() {
+    this.setState(
+      {characterNotFound: true}
+    )
+  }
+
+  handleErrorClose() {
+    this.setState(
+      {characterNotFound: false}
+    )
+  }
+
   render() {
     const {
       keyboard,
@@ -371,9 +386,11 @@ export default class ProgramPage extends React.Component {
       isUserInputFocused,
       displayedLevel,
       functionKeys,
+      characterNotFound,
     } = this.state
 
     const {
+      intl,
       isModalOpen,
     } = this.props
 
@@ -397,7 +414,14 @@ export default class ProgramPage extends React.Component {
           onClose={this.handleModalClose}
           content="content"
         />
+        <ErrorModal
+          open={characterNotFound}
+          handleClose={this.handleErrorClose}
+          content={intl.formatMessage({ id: 'error.not.found.character.on.keyboard' })}
+        />
       </>
     )
   }
 }
+
+export default injectIntl(Program)
