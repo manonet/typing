@@ -1,13 +1,13 @@
-import findCharOnKeyboard from './findCharOnKeyboard'
+import findCharOnKeyboard from './findCharOnKeyboard';
 
-const getKeysFromChar = function (keyboard, characterToFind) {
-  const { deadKeys } = keyboard
+const getKeysFromChar = function(keyboard, characterToFind) {
+  const { deadKeys } = keyboard;
 
   let key0Info = findCharOnKeyboard({
     keyboard,
     characterToFind,
-  })
-  let key1Info
+  });
+  let key1Info;
 
   if (!key0Info && deadKeys) {
     Object.keys(deadKeys).map((key) => {
@@ -16,17 +16,17 @@ const getKeysFromChar = function (keyboard, characterToFind) {
         key0Info = findCharOnKeyboard({
           keyboard,
           characterToFind: deadKeys[key][0],
-        })
+        });
         key1Info = findCharOnKeyboard({
           keyboard,
           characterToFind: deadKeys[key][1],
-        })
+        });
       }
-      return null
-    })
+      return null;
+    });
   }
 
-  return [key0Info, key1Info]
-}
+  return [key0Info, key1Info];
+};
 
-export default getKeysFromChar
+export default getKeysFromChar;

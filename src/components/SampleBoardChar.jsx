@@ -1,8 +1,8 @@
-import React from 'react'
-import classNames from 'classnames'
-import { withStyles } from '@material-ui/core/styles'
+import React from 'react';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     display: 'inline-block',
     width: 10,
@@ -28,40 +28,33 @@ const styles = theme => ({
   },
   lineFeed: {
     opacity: '0.5',
-  }
-})
+  },
+});
 
 function SampleBoardChar(props) {
-  const {
-    classes,
-    className,
-    cursorAt,
-    index,
-    char,
-    userText,
-  } = props
+  const { classes, className, cursorAt, index, char, userText } = props;
 
   // classes
-  const done = (cursorAt > index)
-  const active = (cursorAt === index)
-  const error = (done && char !== userText.substring(index, index + 1))
+  const done = cursorAt > index;
+  const active = cursorAt === index;
+  const error = done && char !== userText.substring(index, index + 1);
 
-  let letterToDisplay = (error) ? userText.substring(index, index + 1) : char
+  let letterToDisplay = error ? userText.substring(index, index + 1) : char;
 
   // exchange invisible space to U+2E31 WORD SEPARATOR MIDDLE DOT in user input for clearity
   // see https://codepoints.net/U+2E31 for more details
   if (letterToDisplay === ' ') {
-    letterToDisplay = '⸱'
+    letterToDisplay = '⸱';
   }
 
   if (letterToDisplay === '\n') {
-    letterToDisplay = '↵'
+    letterToDisplay = '↵';
   }
 
   return (
     <>
-      <i className={
-        classNames(
+      <i
+        className={classNames(
           classes.root,
           {
             [classes.done]: done,
@@ -70,15 +63,14 @@ function SampleBoardChar(props) {
             [classes.space]: letterToDisplay === '⸱',
             [classes.lineFeed]: letterToDisplay === '↵',
           },
-          className,
-        )
-      }
+          className
+        )}
       >
         {letterToDisplay}
       </i>
       {letterToDisplay === '↵' ? <br /> : null}
     </>
-  )
+  );
 }
 
-export default withStyles(styles)(SampleBoardChar)
+export default withStyles(styles)(SampleBoardChar);

@@ -1,36 +1,36 @@
-const fs = require('fs')
-const path = require('path')
-const { parseString } = require('xml2js')
+const fs = require('fs');
+const path = require('path');
+const { parseString } = require('xml2js');
 
-const getKeyArrayFromLevelString = require('./getKeyArrayFromLevelString')
+const getKeyArrayFromLevelString = require('./getKeyArrayFromLevelString');
 
-const keyboardFolder = '../../static/keyboards_xml'
-const outputFolder = '../../static/keyboards'
+const keyboardFolder = '../../static/keyboards_xml';
+const outputFolder = '../../static/keyboards';
 
-const allLevels = []
+const allLevels = [];
 // transform XML to the desired JSON shape
 const process = (result) => {
-  const { keyboard } = result
-  const { keyMap } = keyboard
-  const { transforms } = keyboard
-  const { settings } = keyboard
-  const name = keyboard.names[0].name[0].$.value
+  const { keyboard } = result;
+  const { keyMap } = keyboard;
+  const { transforms } = keyboard;
+  const { settings } = keyboard;
+  const name = keyboard.names[0].name[0].$.value;
 
-  console.info(name)
+  console.info(name);
 
-  const langCode = keyboard.$.locale.substring(0, 2)
+  const langCode = keyboard.$.locale.substring(0, 2);
 
-  const allChars = []
-  const levels = []
-  const keys = {}
-  const charMap = {}
+  const allChars = [];
+  const levels = [];
+  const keys = {};
+  const charMap = {};
 
-  let d13Empty = true
-  let c12Empty = true
-  let c13Empty = true
+  let d13Empty = true;
+  let c12Empty = true;
+  let c13Empty = true;
 
   keyMap.map((mapNode) => {
-    const level = mapNode.$ && mapNode.$.modifiers ? mapNode.$.modifiers : 'to'
+    const level = mapNode.$ && mapNode.$.modifiers ? mapNode.$.modifiers : 'to';
 
     /*
     "levels": [
@@ -42,36 +42,37 @@ const process = (result) => {
       "ctrl+caps?"
    ],
    */
-    levels.push({ [level]: getKeyArrayFromLevelString(level) })
+    levels.push({ [level]: getKeyArrayFromLevelString(level) });
 
     // collect info about possible levels
     if (!allLevels.includes(level)) {
-      allLevels.push(level)
+      allLevels.push(level);
     }
 
     mapNode.map.map((key) => {
-      const { $ } = key
-      const {
-        iso,
-        to: char,
-      } = $
+      const { $ } = key;
+      const { iso, to: char } = $;
 
       // unescape unicode e.g. \u{22}
-      const to = char.replace(/\\u\{([A-Z0-9]+)\}/g, '&#x$1;')
+      const to = char.replace(/\\u\{([A-Z0-9]+)\}/g, '&#x$1;');
 
       // ger Enter shape
       switch (iso) {
-      case 'D13': d13Empty = false
-        break
-      case 'C12': c12Empty = false
-        break
-      case 'C13': c13Empty = false
-        break
-      default: break
+      case 'D13':
+        d13Empty = false;
+        break;
+      case 'C12':
+        c12Empty = false;
+        break;
+      case 'C13':
+        c13Empty = false;
+        break;
+      default:
+        break;
       }
 
       if (keys[iso]) {
-      /*
+        /*
         if key already exist, add new levels to it, example:
         "E00": {
           "to": "0",
@@ -80,40 +81,42 @@ const process = (result) => {
           "caps+shift": "§"
         },
       */
-        keys[iso][level] = to
+        keys[iso][level] = to;
       } else {
         // create the key entry like "E00": { "to": "0" }
-        keys[iso] = { [level]: to }
+        keys[iso] = { [level]: to };
       }
 
       if (!allChars.includes(to)) {
-        allChars.push(to)
+        allChars.push(to);
       }
 
       if (!charMap[to]) {
         // only put not existing keys
-        charMap[to] = [iso, level]
+        charMap[to] = [iso, level];
       }
-    })
-  })
+    });
+  });
 
   // determinate shape of enter key
   // TODO
-  let enterVariant = 4
-  let enterIso = 'C13'
+  let enterVariant = 4;
+  let enterIso = 'C13';
   if (!d13Empty) {
     // enter.iso = 'C14'
-    enterVariant = 2
+    enterVariant = 2;
   } else if (!c12Empty) {
-    enterVariant = 1
-    enterIso = 'C12'
+    enterVariant = 1;
+    enterIso = 'C12';
   } else if (!c13Empty) {
     // enter.iso = 'D14'
     // TODO NOT FOUND
-    enterVariant = 3
+    enterVariant = 3;
   }
 
-  allChars.sort((a, b) => a.localeCompare(b, langCode, { sensitivity: 'variant' }))
+  allChars.sort((a, b) =>
+    a.localeCompare(b, langCode, { sensitivity: 'variant' })
+  );
 
   const output = {
     name,
@@ -123,22 +126,22 @@ const process = (result) => {
     allChars,
     enterVariant,
     enterIso,
-  }
+  };
 
   if (settings) {
-    output.settings = settings[0].$
+    output.settings = settings[0].$;
   }
 
   if (transforms && transforms[0] && transforms[0].transform) {
-    output.deadKeys = {}
+    output.deadKeys = {};
     transforms[0].transform.map((transform) => {
-      output.deadKeys[transform.$.to] = transform.$.from.split('')
-      output.allChars.push(transform.$.to)
-    })
+      output.deadKeys[transform.$.to] = transform.$.from.split('');
+      output.allChars.push(transform.$.to);
+    });
   }
 
-  return output
-}
+  return output;
+};
 
 const convert = (files, dirIn, dirOut) => {
   files.map((file) => {
@@ -146,42 +149,49 @@ const convert = (files, dirIn, dirOut) => {
     if (file !== '_platform.xml') {
       fs.readFile(`${dirIn}/${file}`, 'utf8', (readFileError, data) => {
         if (readFileError) {
-          return console.log(readFileError)
+          return console.log(readFileError);
         }
         parseString(data, (parseStringError, result) => {
           if (parseStringError) {
             // console.log(parseStringError)
-            return
+            return;
           }
-          const output = process(result)
-          const { name } = path.parse(file)
-          fs.writeFile(`${dirOut}/${name}.json`, JSON.stringify(output, null, 2), (error) => {
-            if (error) throw error
-          })
-          fs.writeFile(`${outputFolder}/allLevels.json`, JSON.stringify(allLevels, null, 2), (error) => {
-            if (error) throw error
-          })
-        })
-      })
+          const output = process(result);
+          const { name } = path.parse(file);
+          fs.writeFile(
+            `${dirOut}/${name}.json`,
+            JSON.stringify(output, null, 2),
+            (error) => {
+              if (error) throw error;
+            }
+          );
+          fs.writeFile(
+            `${outputFolder}/allLevels.json`,
+            JSON.stringify(allLevels, null, 2),
+            (error) => {
+              if (error) throw error;
+            }
+          );
+        });
+      });
     }
-  })
-}
+  });
+};
 
-fs.readdirAsync = (dirIn, dirOut) => (
-  new Promise(((resolve, reject) => {
+fs.readdirAsync = (dirIn, dirOut) =>
+  new Promise((resolve, reject) => {
     fs.readdir(dirIn, (err, filenames) => {
       if (err) {
-        reject(err)
+        reject(err);
       } else {
-        convert(filenames, dirIn, dirOut)
-        resolve(filenames)
+        convert(filenames, dirIn, dirOut);
+        resolve(filenames);
       }
-    })
-  }))
-)
+    });
+  });
 
 // fs.readdirAsync(`${keyboardFolder}/android`, `${outputFolder}/android`)
 // fs.readdirAsync(`${keyboardFolder}/chromeos`, `${outputFolder}/chromeos`)
-fs.readdirAsync(`${keyboardFolder}/osx`, `${outputFolder}/osx`)
+fs.readdirAsync(`${keyboardFolder}/osx`, `${outputFolder}/osx`);
 // fs.readdirAsync(`${keyboardFolder}/und`, `${outputFolder}/und`)
-fs.readdirAsync(`${keyboardFolder}/windows`, `${outputFolder}/windows`)
+fs.readdirAsync(`${keyboardFolder}/windows`, `${outputFolder}/windows`);

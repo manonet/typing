@@ -1,16 +1,15 @@
-import React from 'react'
-import classNames from 'classnames'
-import { withStyles, withTheme } from '@material-ui/core/styles'
+import React from 'react';
+import classNames from 'classnames';
+import { withStyles, withTheme } from '@material-ui/core/styles';
 
-import KeyboardKey from './KeyboardKey'
-import './Keyboard.css'
+import KeyboardKey from './KeyboardKey';
+import './Keyboard.css';
 
-
-const styles = theme => ({
+const styles = (theme) => ({
   keyboard: {
     borderRadius: theme.keyboard.rX,
   },
-})
+});
 
 class Keyboard extends React.Component {
   componentDidMount() {
@@ -18,20 +17,16 @@ class Keyboard extends React.Component {
   }
 
   KeyboardTitle() {
-    const { showTitle, keyboard } = this.props
+    const { showTitle, keyboard } = this.props;
     if (showTitle === true) {
-      return (
-        <h3 className="keyboard__title">{keyboard.name}</h3>
-      )
+      return <h3 className="keyboard__title">{keyboard.name}</h3>;
     }
   }
 
   KeyboardDeadKeys() {
-    const { showDeadKeys, keyboard } = this.props
+    const { showDeadKeys, keyboard } = this.props;
     if (showDeadKeys === true) {
-      return (
-        <p dangerouslySetInnerHTML={{ __html: keyboard.allChars }} />
-      )
+      return <p dangerouslySetInnerHTML={{ __html: keyboard.allChars }} />;
     }
   }
 
@@ -43,17 +38,15 @@ class Keyboard extends React.Component {
       className,
       functionKeys,
       displayedLevel,
-    } = this.props
+    } = this.props;
     // console.log("keyboard", keyboard)
     // console.log("keys", keyboardKeys)
 
     if (!keyboard.keys) {
-      return null
+      return null;
     }
 
-    const {
-      keys,
-    } = keyboard
+    const { keys } = keyboard;
 
     const {
       keyboardWidth,
@@ -66,92 +59,87 @@ class Keyboard extends React.Component {
       dRowShift,
       rX,
       rY,
-    } = theme.keyboard
+    } = theme.keyboard;
 
     return (
-      <div
-        className={
-          classNames(
-            className,
-            classes.keyboard,
-          )
-        }
-      >
+      <div className={classNames(className, classes.keyboard)}>
         {this.KeyboardTitle()}
         {this.KeyboardDeadKeys()}
-        <svg className="keyboard__svg" version="1.1" viewBox={`0 0 ${keyboardWidth} ${keyboardHeight}`} textAnchor="middle">
-          {
-            Object.keys(keys).map((iso) => {
-              if (!keys[iso].to) {
-                return
-              }
+        <svg
+          className="keyboard__svg"
+          version="1.1"
+          viewBox={`0 0 ${keyboardWidth} ${keyboardHeight}`}
+          textAnchor="middle"
+        >
+          {Object.keys(keys).map((iso) => {
+            if (!keys[iso].to) {
+              return;
+            }
 
-              const rowLetter = iso.substring(0, 1)
-              const column = parseInt(iso.substring(1, 3), 10)
+            const rowLetter = iso.substring(0, 1);
+            const column = parseInt(iso.substring(1, 3), 10);
 
-              let translateX = keyWidth * column
-              let translateY = 0
+            let translateX = keyWidth * column;
+            let translateY = 0;
 
-              switch (rowLetter) {
-              case 'D':
-                translateX = dRowShift + keyWidth * column
-                translateY = keyHeight
-                break
-              case 'C':
-                translateX = cRowShift + keyWidth * column
-                translateY = keyHeight * 2
-                break
-              case 'B':
-                translateX = bRowShift + keyWidth * column
-                translateY = keyHeight * 3
-                break
-              case 'A':
-                translateX = aRowShift + keyWidth * column
-                translateY = keyHeight * 4
-                break
-              default:
-                break
-              }
+            switch (rowLetter) {
+            case 'D':
+              translateX = dRowShift + keyWidth * column;
+              translateY = keyHeight;
+              break;
+            case 'C':
+              translateX = cRowShift + keyWidth * column;
+              translateY = keyHeight * 2;
+              break;
+            case 'B':
+              translateX = bRowShift + keyWidth * column;
+              translateY = keyHeight * 3;
+              break;
+            case 'A':
+              translateX = aRowShift + keyWidth * column;
+              translateY = keyHeight * 4;
+              break;
+            default:
+              break;
+            }
 
-              return (
-                <KeyboardKey
-                  key={iso}
-                  displayedLevel={displayedLevel}
-                  iso={iso}
-                  {...keys[iso]}
-                  x={translateX}
-                  y={translateY}
-                  width={keyWidth}
-                  height={keyWidth}
-                  rx={rY}
-                  ry={rY}
-                />
-              )
-            })
-          };
-          {
-            Object.keys(functionKeys).map(iso => (
+            return (
               <KeyboardKey
                 key={iso}
-                displayedLevel="to"
+                displayedLevel={displayedLevel}
                 iso={iso}
-                {...functionKeys[iso]}
-                x={0}
-                y={0}
+                {...keys[iso]}
+                x={translateX}
+                y={translateY}
                 width={keyWidth}
                 height={keyWidth}
                 rx={rY}
                 ry={rY}
               />
-            ))
-          }
+            );
+          })}
+          ;
+          {Object.keys(functionKeys).map((iso) => (
+            <KeyboardKey
+              key={iso}
+              displayedLevel="to"
+              iso={iso}
+              {...functionKeys[iso]}
+              x={0}
+              y={0}
+              width={keyWidth}
+              height={keyWidth}
+              rx={rY}
+              ry={rY}
+            />
+          ))}
         </svg>
       </div>
-    )
+    );
   }
 }
 
-export default withTheme(withStyles(styles)(Keyboard))
+export default withTheme(withStyles(styles)(Keyboard));
 
 /*
 The harmonized 48 graphic key keyboard arrangement

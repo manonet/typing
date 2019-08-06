@@ -5,15 +5,13 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import { injectIntl } from 'gatsby-plugin-intl'
-import { useStaticQuery, graphql } from 'gatsby'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
+import { injectIntl } from 'gatsby-plugin-intl';
+import { useStaticQuery, graphql } from 'gatsby';
 
-function SEO({
-  description, lang, meta, keywords, title, intl,
-}) {
+function SEO({ description, lang, meta, keywords, title, intl }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -23,10 +21,11 @@ function SEO({
           }
         }
       }
-    `,
-  )
+    `
+  );
 
-  const metaDescription = description || intl.formatMessage({ id: 'site.description' })
+  const metaDescription =
+    description || intl.formatMessage({ id: 'site.description' });
 
   return (
     <Helmet
@@ -34,7 +33,9 @@ function SEO({
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.name} - ${intl.formatMessage({ id: 'site.title' })}`}
+      titleTemplate={`%s | ${site.siteMetadata.name} - ${intl.formatMessage({
+        id: 'site.title',
+      })}`}
       meta={[
         {
           name: 'description',
@@ -75,18 +76,18 @@ function SEO({
               name: 'keywords',
               content: keywords,
             }
-            : [],
+            : []
         )
         .concat(meta)}
     />
-  )
+  );
 }
 
 SEO.defaultProps = {
   lang: 'en',
   meta: [],
   keywords: '',
-}
+};
 
 SEO.propTypes = {
   description: PropTypes.string,
@@ -94,6 +95,6 @@ SEO.propTypes = {
   meta: PropTypes.array,
   keywords: PropTypes.string,
   title: PropTypes.string.isRequired,
-}
+};
 
-export default injectIntl(SEO)
+export default injectIntl(SEO);

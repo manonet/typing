@@ -1,8 +1,8 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createMuiTheme } from '@material-ui/core/styles';
 
-const themeJson = require('../theme/theme.json')
-const keyboardVariables = require('../theme/variables.js')
+const themeJson = require('../theme/theme.json');
+const keyboardVariables = require('../theme/variables.js');
 
-const theme = createMuiTheme(Object.assign({}, themeJson, keyboardVariables))
+const theme = createMuiTheme(Object.assign({}, themeJson, keyboardVariables));
 
-export default theme
+export default theme;

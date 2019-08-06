@@ -1,8 +1,8 @@
-import React from 'react'
-import { injectIntl, FormattedMessage } from 'gatsby-plugin-intl'
+import React from 'react';
+import { injectIntl, FormattedMessage } from 'gatsby-plugin-intl';
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
 const NotFoundPage = ({ intl }) => (
   <Layout>
@@ -10,9 +10,13 @@ const NotFoundPage = ({ intl }) => (
       lang={intl.locale}
       title={intl.formatMessage({ id: '404.page.title' })}
     />
-    <h1><FormattedMessage id="404.page.title" /></h1>
-    <p><FormattedMessage id="404.page.desc" /></p>
+    <h1>
+      <FormattedMessage id="404.page.title" />
+    </h1>
+    <p>
+      <FormattedMessage id="404.page.desc" />
+    </p>
   </Layout>
-)
+);
 
-export default injectIntl(NotFoundPage)
+export default injectIntl(NotFoundPage);

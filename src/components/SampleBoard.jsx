@@ -1,11 +1,11 @@
-import React from 'react'
-import classNames from 'classnames'
-import { withStyles } from '@material-ui/core/styles'
-import SampleBoardChar from './SampleBoardChar'
+import React from 'react';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import SampleBoardChar from './SampleBoardChar';
 
-export const SAMPLE_BOARD_ID = 'userText'
+export const SAMPLE_BOARD_ID = 'userText';
 
-const styles = theme => ({
+const styles = (theme) => ({
   sample: {
     position: 'relative',
     backgroundColor: theme.palette.grey[700],
@@ -41,7 +41,7 @@ const styles = theme => ({
     height: '100%',
     maxHeight: 'none',
   },
-})
+});
 
 function SampleBoard(props) {
   const {
@@ -56,31 +56,21 @@ function SampleBoard(props) {
     onChange,
     onFocus,
     onBlur,
-  } = props
+  } = props;
 
-  const sampleArray = sampleText.split('')
+  const sampleArray = sampleText.split('');
 
   return (
-    <div className={
-      classNames(
-        classes.sample,
-        className,
-      )
-    }
-    >
+    <div className={classNames(classes.sample, className)}>
       <p className={classes.sampleBoardHint}>
         Requested: {signToWrite}, written: {writtenSign}
       </p>
 
       <div className={classes.wrapper}>
-        <kbd className={
-          classNames(
-            classes.sampleBoard,
-            {
-              [classes.sampleBoardFocus]: isUserInputFocused,
-            },
-          )
-        }
+        <kbd
+          className={classNames(classes.sampleBoard, {
+            [classes.sampleBoardFocus]: isUserInputFocused,
+          })}
         >
           {sampleArray.map((char, index) => (
             <SampleBoardChar
@@ -104,7 +94,7 @@ function SampleBoard(props) {
         />
       </div>
     </div>
-  )
+  );
 }
 
-export default withStyles(styles)(SampleBoard)
+export default withStyles(styles)(SampleBoard);

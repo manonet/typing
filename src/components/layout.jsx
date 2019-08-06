@@ -5,46 +5,47 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from 'react'
-import { injectIntl } from 'gatsby-plugin-intl'
-import classNames from 'classnames'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { StaticQuery, graphql } from 'gatsby'
-import Grid from '@material-ui/core/Grid'
-import { withStyles } from '@material-ui/core/styles'
-import { ThemeProvider } from '@material-ui/styles'
-import muiTheme from '../theme'
+import React from 'react';
+import { injectIntl } from 'gatsby-plugin-intl';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { StaticQuery, graphql } from 'gatsby';
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import muiTheme from '../theme';
 
-import Header from './header'
-import './layout.css'
-import 'typeface-roboto'
-import { incrementNumber } from '../actions'
-import LanguageSwitcher from './LanguageSwitcher'
-
+import Header from './header';
+import './layout.css';
+import 'typeface-roboto';
+import { incrementNumber } from '../actions';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Counter = ({ count, increment }) => (
   <div>
     <p>Count: {count}</p>
     <button onClick={increment}>Increment</button>
   </div>
-)
+);
 
 Counter.propTypes = {
   count: PropTypes.number.isRequired,
   increment: PropTypes.func.isRequired,
-}
+};
 
-const mapStateToProps = ({ count }) => ({ count })
+const mapStateToProps = ({ count }) => ({ count });
 
-const mapDispatchToProps = dispatch => ({ increment: () => dispatch(incrementNumber(2)) })
+const mapDispatchToProps = (dispatch) => ({
+  increment: () => dispatch(incrementNumber(2)),
+});
 
 const ConnectedCounter = connect(
   mapStateToProps,
-  mapDispatchToProps,
-)(Counter)
+  mapDispatchToProps
+)(Counter);
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     transition: '.2s filter ease-in-out',
   },
@@ -56,22 +57,14 @@ const styles = theme => ({
     paddingLeft: theme.spacing(3),
     paddingRight: theme.spacing(3),
   },
-})
+});
 
 function Layout(props) {
-  const {
-    children,
-    classes,
-    isBlurred,
-    intl,
-  } = props
+  const { children, classes, isBlurred, intl } = props;
 
-  const LayoutClasses = classNames(
-    classes.root,
-    {
-      [classes.isBlurred]: isBlurred,
-    },
-  )
+  const LayoutClasses = classNames(classes.root, {
+    [classes.isBlurred]: isBlurred,
+  });
 
   return (
     <StaticQuery
@@ -79,13 +72,13 @@ function Layout(props) {
         query SiteTitleQuery {
           site {
             siteMetadata {
-              name,
+              name
               version
             }
           }
         }
       `}
-      render={data => (
+      render={(data) => (
         <ThemeProvider theme={muiTheme}>
           <div className={LayoutClasses}>
             <Header siteTitle={intl.formatMessage({ id: 'site.title' })} />
@@ -99,18 +92,19 @@ function Layout(props) {
             <ConnectedCounter />
             <footer>
               <LanguageSwitcher />
-              {data.site.siteMetadata.name} - version: {data.site.siteMetadata.version}
+              {data.site.siteMetadata.name} - version:{' '}
+              {data.site.siteMetadata.version}
             </footer>
           </div>
         </ThemeProvider>
       )}
     />
-  )
+  );
 }
 
 Layout.propTypes = {
   classes: PropTypes.object,
   children: PropTypes.node.isRequired,
-}
+};
 
-export default injectIntl(withStyles(styles)(Layout))
+export default injectIntl(withStyles(styles)(Layout));

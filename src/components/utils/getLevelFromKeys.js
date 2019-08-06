@@ -3,33 +3,33 @@
 const arrayContainsAnotherArray = (needle, haystack) => {
   for (let i = 0; i < needle.length; i++) {
     if (haystack.indexOf(needle[i]) === -1) {
-      return false
+      return false;
     }
   }
-  return true
-}
+  return true;
+};
 
-const getLevelFromKeys = function (keysArray, levels, CapsLockDown) {
+const getLevelFromKeys = function(keysArray, levels, CapsLockDown) {
   // keysArray: [ 'ShiftRight' ]
   // levels:  complex array, see keyboard.json files
 
   if (CapsLockDown) {
-    keysArray.push('CapsLock')
+    keysArray.push('CapsLock');
   }
 
-  let displayedLevel = 'to'
+  let displayedLevel = 'to';
   levels.map((level) => {
-    const levelName = Object.keys(level)
+    const levelName = Object.keys(level);
     level[levelName].map((levelArrays) => {
       levelArrays.map((levelArray) => {
         if (arrayContainsAnotherArray(levelArray, keysArray)) {
-          displayedLevel = levelName[0]
+          displayedLevel = levelName[0];
         }
-      })
-    })
-  })
+      });
+    });
+  });
 
-  return displayedLevel
-}
+  return displayedLevel;
+};
 
-export default getLevelFromKeys
+export default getLevelFromKeys;

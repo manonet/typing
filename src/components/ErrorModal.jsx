@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectIntl, FormattedMessage } from 'gatsby-plugin-intl'
+import { injectIntl, FormattedMessage } from 'gatsby-plugin-intl';
 
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -11,7 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     margin: 0,
     padding: theme.spacing(2),
@@ -24,13 +24,17 @@ const styles = theme => ({
   },
 });
 
-const DialogTitle = withStyles(styles)(props => {
+const DialogTitle = withStyles(styles)((props) => {
   const { children, classes, onClose } = props;
   return (
     <MuiDialogTitle disableTypography className={classes.root}>
       <Typography variant="h6">{children}</Typography>
       {onClose ? (
-        <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+        <IconButton
+          aria-label="close"
+          className={classes.closeButton}
+          onClick={onClose}
+        >
           <CloseIcon />
         </IconButton>
       ) : null}
@@ -38,13 +42,13 @@ const DialogTitle = withStyles(styles)(props => {
   );
 });
 
-const DialogContent = withStyles(theme => ({
+const DialogContent = withStyles((theme) => ({
   root: {
     padding: theme.spacing(2),
   },
 }))(MuiDialogContent);
 
-const DialogActions = withStyles(theme => ({
+const DialogActions = withStyles((theme) => ({
   root: {
     margin: 0,
     padding: theme.spacing(1),
@@ -52,40 +56,33 @@ const DialogActions = withStyles(theme => ({
 }))(MuiDialogActions);
 
 function ErrorModal(props) {
-  const {
-    open,
-    content,
-    footer,
-  } = props
+  const { open, content, footer } = props;
 
-  const title = props.title || <FormattedMessage id="error.title" />
+  const title = props.title || <FormattedMessage id="error.title" />;
 
   const handleClose = () => {
-    if(props.handleClose) {
-      props.handleClose()
+    if (props.handleClose) {
+      props.handleClose();
     }
   };
 
   return (
-    <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-      <DialogTitle id="customized-dialog-title">
-        {title}
-      </DialogTitle>
-      <DialogContent dividers>
-        {content}
-      </DialogContent>
+    <Dialog
+      onClose={handleClose}
+      aria-labelledby="customized-dialog-title"
+      open={open}
+    >
+      <DialogTitle id="customized-dialog-title">{title}</DialogTitle>
+      <DialogContent dividers>{content}</DialogContent>
       <DialogActions>
-      {
-        footer ? footer :
-        (
-            <Button onClick={handleClose} color="primary">
-              <FormattedMessage id="modal.ok" />
-            </Button>
-        )
-      }
+        {footer || (
+          <Button onClick={handleClose} color="primary">
+            <FormattedMessage id="modal.ok" />
+          </Button>
+        )}
       </DialogActions>
     </Dialog>
   );
 }
 
-export default injectIntl(ErrorModal)
+export default injectIntl(ErrorModal);

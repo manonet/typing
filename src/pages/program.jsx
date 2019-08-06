@@ -1,34 +1,34 @@
-import React from 'react'
-import { injectIntl } from 'gatsby-plugin-intl'
+import React from 'react';
+import { injectIntl } from 'gatsby-plugin-intl';
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import Program from '../components/Program'
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import Program from '../components/Program';
 
 class ProgramPage extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
       isModalOpen: false,
-    }
+    };
 
-    this.handleModalOpen = this.handleModalOpen.bind(this)
-    this.handleModalClose = this.handleModalClose.bind(this)
+    this.handleModalOpen = this.handleModalOpen.bind(this);
+    this.handleModalClose = this.handleModalClose.bind(this);
   }
 
   handleModalOpen() {
     this.setState({
       isModalOpen: true,
-    })
+    });
   }
 
   handleModalClose() {
-    this.setState({ isModalOpen: false })
+    this.setState({ isModalOpen: false });
   }
 
   render() {
-    const { isModalOpen } = this.state
-    const { intl } = this.props
+    const { isModalOpen } = this.state;
+    const { intl } = this.props;
 
     return (
       <Layout isBlurred={isModalOpen}>
@@ -43,8 +43,8 @@ class ProgramPage extends React.Component {
           handleModalClose={this.handleModalClose}
         />
       </Layout>
-    )
+    );
   }
 }
 
-export default injectIntl(ProgramPage)
+export default injectIntl(ProgramPage);

@@ -1,3 +1,3 @@
-const initialState = { count: 0 }
+const initialState = { count: 0 };
 
-export default initialState
+export default initialState;

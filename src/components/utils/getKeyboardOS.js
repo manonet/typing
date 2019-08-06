@@ -1,24 +1,24 @@
-import getOS from './getOS'
+import getOS from './getOS';
 
-const getKeyboardOS = function () {
-  const OS = getOS()
+const getKeyboardOS = function() {
+  const OS = getOS();
 
   switch (OS) {
   case 'Mac':
-    return 'osx'
+    return 'osx';
   case 'iOS':
-    return 'osx'
+    return 'osx';
   case 'Android':
-    return 'android'
+    return 'android';
   case 'Windows':
-    return 'windows'
+    return 'windows';
   case 'Linux':
-    return 'osx'
+    return 'osx';
   case 'UNIX':
-    return 'osx'
+    return 'osx';
   default:
-    return 'und'
+    return 'und';
   }
-}
+};
 
-export default getKeyboardOS
+export default getKeyboardOS;

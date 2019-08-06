@@ -25,4 +25,4 @@ module.exports = {
     optR: 'AltRight',
     cmd: ['MetaLeft', 'MetaRight'],
   },
-}
+};
