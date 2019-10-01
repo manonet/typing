@@ -1,4 +1,4 @@
-const packageJson = require('./package.json')
+const packageJson = require('./package.json');
 
 module.exports = {
   pathPrefix: '/typing',
@@ -47,5 +47,9 @@ module.exports = {
         redirect: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {},
+    },
   ],
-}
+};

@@ -1,13 +1,23 @@
 import React from 'react';
+// @ts-ignore
 import { injectIntl } from 'gatsby-plugin-intl';
+import { IntlShape } from 'react-intl';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Program from '../components/Program';
 
-class ProgramPage extends React.Component {
-  constructor() {
-    super();
+type Props = {
+  intl: IntlShape;
+};
+
+type State = {
+  isModalOpen: boolean;
+};
+
+class ProgramPage extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
     this.state = {
       isModalOpen: false,
     };

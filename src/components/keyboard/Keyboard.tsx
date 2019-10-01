@@ -1,21 +1,36 @@
 import React from 'react';
 import classNames from 'classnames';
-import { withStyles, withTheme } from '@material-ui/core/styles';
+import {
+  createStyles,
+  makeStyles,
+  withTheme,
+  Theme,
+} from '@material-ui/core/styles';
 
 import KeyboardKey from './KeyboardKey';
 import './Keyboard.css';
 
-const styles = (theme) => ({
-  keyboard: {
-    borderRadius: theme.keyboard.rX,
-  },
-});
+type Props = {
+  theme: Theme;
+  classes?: string;
+  showTitle?: boolean;
+  showDeadKeys?: boolean;
+  keyboard: [];
+  className?: string;
+  functionKeys: [];
+  displayedLevel: string;
+};
 
-class Keyboard extends React.Component {
-  componentDidMount() {
-    //
-  }
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    keyboard: {
+      borderRadius: theme.keyboard.rX,
+    },
+  })
+);
 
+function Keyboard(props: Props) {
+  /*
   KeyboardTitle() {
     const { showTitle, keyboard } = this.props;
     if (showTitle === true) {
@@ -29,60 +44,54 @@ class Keyboard extends React.Component {
       return <p dangerouslySetInnerHTML={{ __html: keyboard.allChars }} />;
     }
   }
+  */
 
-  render() {
-    const {
-      theme,
-      classes,
-      keyboard,
-      className,
-      functionKeys,
-      displayedLevel,
-    } = this.props;
-    // console.log("keyboard", keyboard)
-    // console.log("keys", keyboardKeys)
+  const { theme, keyboard, className, functionKeys, displayedLevel } = props;
+  // console.log("keyboard", keyboard)
+  // console.log("keys", keyboardKeys)
+  const classes = useStyles();
 
-    if (!keyboard.keys) {
-      return null;
-    }
+  if (!keyboard.keys) {
+    return null;
+  }
 
-    const { keys } = keyboard;
+  const { keys } = keyboard;
 
-    const {
-      keyboardWidth,
-      keyboardHeight,
-      keyWidth,
-      keyHeight,
-      aRowShift,
-      bRowShift,
-      cRowShift,
-      dRowShift,
-      rX,
-      rY,
-    } = theme.keyboard;
+  const {
+    keyboardWidth,
+    keyboardHeight,
+    keyWidth,
+    keyHeight,
+    aRowShift,
+    bRowShift,
+    cRowShift,
+    dRowShift,
+    rX,
+    rY,
+  } = theme.keyboard;
 
-    return (
-      <div className={classNames(className, classes.keyboard)}>
-        {this.KeyboardTitle()}
-        {this.KeyboardDeadKeys()}
-        <svg
-          className="keyboard__svg"
-          version="1.1"
-          viewBox={`0 0 ${keyboardWidth} ${keyboardHeight}`}
-          textAnchor="middle"
-        >
-          {Object.keys(keys).map((iso) => {
-            if (!keys[iso].to) {
-              return;
-            }
+  return (
+    <div className={classNames(className, classes.keyboard)}>
+      {/* {this.KeyboardTitle()}
+      {this.KeyboardDeadKeys()} */}
+      <svg
+        className="keyboard__svg"
+        version="1.1"
+        viewBox={`0 0 ${keyboardWidth} ${keyboardHeight}`}
+        textAnchor="middle"
+      >
+        {Object.keys(keys).map((iso) => {
+          if (!keys[iso].to) {
+            return;
+          }
 
-            const rowLetter = iso.substring(0, 1);
-            const column = parseInt(iso.substring(1, 3), 10);
+          const rowLetter = iso.substring(0, 1);
+          const column = parseInt(iso.substring(1, 3), 10);
 
-            let translateX = keyWidth * column;
-            let translateY = 0;
+          let translateX = keyWidth * column;
+          let translateY = 0;
 
-            switch (rowLetter) {
+          switch (rowLetter) {
             case 'D':
               translateX = dRowShift + keyWidth * column;
               translateY = keyHeight;
@@ -101,45 +110,44 @@ class Keyboard extends React.Component {
               break;
             default:
               break;
-            }
+          }
 
-            return (
-              <KeyboardKey
-                key={iso}
-                displayedLevel={displayedLevel}
-                iso={iso}
-                {...keys[iso]}
-                x={translateX}
-                y={translateY}
-                width={keyWidth}
-                height={keyWidth}
-                rx={rY}
-                ry={rY}
-              />
-            );
-          })}
-          ;
-          {Object.keys(functionKeys).map((iso) => (
+          return (
             <KeyboardKey
               key={iso}
-              displayedLevel="to"
+              displayedLevel={displayedLevel}
               iso={iso}
-              {...functionKeys[iso]}
-              x={0}
-              y={0}
+              {...keys[iso]}
+              x={translateX}
+              y={translateY}
               width={keyWidth}
               height={keyWidth}
               rx={rY}
               ry={rY}
             />
-          ))}
-        </svg>
-      </div>
-    );
-  }
+          );
+        })}
+        ;
+        {Object.keys(functionKeys).map((iso) => (
+          <KeyboardKey
+            key={iso}
+            displayedLevel="to"
+            iso={iso}
+            {...functionKeys[iso]}
+            x={0}
+            y={0}
+            width={keyWidth}
+            height={keyWidth}
+            rx={rY}
+            ry={rY}
+          />
+        ))}
+      </svg>
+    </div>
+  );
 }
 
-export default withTheme(withStyles(styles)(Keyboard));
+export default withTheme(Keyboard);
 
 /*
 The harmonized 48 graphic key keyboard arrangement

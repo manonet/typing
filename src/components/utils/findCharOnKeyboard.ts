@@ -1,13 +1,19 @@
 import getKeyLocationFromIso from './getKeyLocationFromIso';
+import { KeyboardProps } from '../Program';
 
-const findCharOnKeyboard = function(props) {
+type Props = {
+  keyboard: KeyboardProps;
+  characterToFind: string;
+};
+
+const findCharOnKeyboard = function(props: Props) {
   const { keyboard, characterToFind } = props;
 
   const { keys, levels } = keyboard;
 
   let keyToPressFound = false;
   let iso;
-  let level;
+  let level: string;
   let levelObject;
   let location;
 

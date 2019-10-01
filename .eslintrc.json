@@ -1,15 +1,18 @@
 {
+  "parser": "@typescript-eslint/parser",
   "env": {
     "browser": true,
     "es6": true
   },
   "extends": [
-    "airbnb",
-    "prettier"
+    "prettier",
+    "prettier/@typescript-eslint",
+    "prettier/react"
   ],
   "globals": {
     "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
+    "SharedArrayBuffer": "readonly",
+    "jsdom": true
   },
   "parserOptions": {
     "ecmaFeatures": {
@@ -23,72 +26,6 @@
     "react"
   ],
   "rules": {
-    "prettier/prettier": "error",
-    "indent": [
-      2,
-      2
-    ],
-    "linebreak-style": [
-      2,
-      "unix"
-    ],
-    "newline-per-chained-call": 0,
-    "class-methods-use-this": 0,
-    "consistent-return": 0,
-    "object-curly-spacing": [
-      "error",
-      "always"
-    ],
-    "function-paren-newline": 0,
-    "func-names": [
-      "warn",
-      "as-needed"
-    ],
-    "global-require": 0,
-    "jsx-quotes": [
-      2,
-      "prefer-double"
-    ],
-    "max-len": [
-      "warn",
-      {
-        "code": 200,
-        "ignoreComments": true,
-        "ignoreTrailingComments": true,
-        "ignoreUrls": true,
-        "ignoreStrings": true,
-        "ignoreTemplateLiterals": true,
-        "ignoreRegExpLiterals": true
-      }
-    ],
-    "no-confusing-arrow": 0,
-    "no-console": [
-      1,
-      {
-        "allow": [
-          "info",
-          "error"
-        ]
-      }
-    ],
-    "no-plusplus": 0,
-    "prefer-destructuring": [
-      "error",
-      {
-        "AssignmentExpression": {
-          "array": false
-        }
-      }
-    ],
-    "react/forbid-prop-types": [
-      "warn",
-      {
-        "forbid": [
-          "any"
-        ]
-      }
-    ],
-    "react/require-default-props": 0,
-    "react/jsx-one-expression-per-line": 0
+    "prettier/prettier": "error"
   }
 }

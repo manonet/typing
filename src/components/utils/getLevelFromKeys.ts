@@ -1,6 +1,8 @@
+import { CapsLockDown, Levels } from '../../types';
+
 // Levels in theory: 'shift', 'ctrl', 'alt', 'caps', 'cmd', 'opt' along with the 'L' and 'R' optional single suffixes for the first 3
 
-const arrayContainsAnotherArray = (needle, haystack) => {
+const arrayContainsAnotherArray = (needle: [], haystack: []) => {
   for (let i = 0; i < needle.length; i++) {
     if (haystack.indexOf(needle[i]) === -1) {
       return false;
@@ -9,11 +11,15 @@ const arrayContainsAnotherArray = (needle, haystack) => {
   return true;
 };
 
-const getLevelFromKeys = function(keysArray, levels, CapsLockDown) {
+const getLevelFromKeys = function(
+  keysArray,
+  levels: Levels,
+  capsLockDown: CapsLockDown
+) {
   // keysArray: [ 'ShiftRight' ]
   // levels:  complex array, see keyboard.json files
 
-  if (CapsLockDown) {
+  if (capsLockDown) {
     keysArray.push('CapsLock');
   }
 

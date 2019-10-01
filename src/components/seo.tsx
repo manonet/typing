@@ -8,10 +8,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+// @ts-ignore
 import { injectIntl } from 'gatsby-plugin-intl';
+import { IntlShape } from 'react-intl';
 import { useStaticQuery, graphql } from 'gatsby';
 
-function SEO({ description, lang, meta, keywords, title, intl }) {
+type Props = {
+  intl: IntlShape;
+  description: string | null;
+  title?: string;
+  meta: [];
+  keywords: string;
+  lang: string;
+};
+
+function SEO({ description, lang, meta, keywords, title, intl }: Props) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -73,9 +84,9 @@ function SEO({ description, lang, meta, keywords, title, intl }) {
         .concat(
           typeof keywords !== 'undefined'
             ? {
-              name: 'keywords',
-              content: keywords,
-            }
+                name: 'keywords',
+                content: keywords,
+              }
             : []
         )
         .concat(meta)}

@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
+// @ts-ignore
 import { injectIntl, FormattedMessage } from 'gatsby-plugin-intl';
+import { IntlShape } from 'react-intl';
 
-import { withStyles } from '@material-ui/core/styles';
+import {
+  withStyles,
+  createStyles,
+  Theme,
+  WithStyles,
+} from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
@@ -11,20 +18,36 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 
-const styles = (theme) => ({
-  root: {
-    margin: 0,
-    padding: theme.spacing(2),
-  },
-  closeButton: {
-    position: 'absolute',
-    right: theme.spacing(1),
-    top: theme.spacing(1),
-    color: theme.palette.grey[500],
-  },
-});
+type Props = {
+  intl: IntlShape;
+  open: boolean;
+  title: ReactNode | null;
+  content: ReactNode;
+  footer: ReactNode;
+  handleClose: () => {};
+};
 
-const DialogTitle = withStyles(styles)((props) => {
+const styles = (theme: Theme) =>
+  createStyles({
+    root: {
+      margin: 0,
+      padding: theme.spacing(2),
+    },
+    closeButton: {
+      position: 'absolute',
+      right: theme.spacing(1),
+      top: theme.spacing(1),
+      color: theme.palette.grey[500],
+    },
+  });
+
+export interface DialogTitleProps extends WithStyles<typeof styles> {
+  id: string;
+  children: React.ReactNode;
+  onClose: () => void;
+}
+
+const DialogTitle = withStyles(styles)((props: DialogTitleProps) => {
   const { children, classes, onClose } = props;
   return (
     <MuiDialogTitle disableTypography className={classes.root}>
@@ -42,20 +65,20 @@ const DialogTitle = withStyles(styles)((props) => {
   );
 });
 
-const DialogContent = withStyles((theme) => ({
+const DialogContent = withStyles((theme: Theme) => ({
   root: {
     padding: theme.spacing(2),
   },
 }))(MuiDialogContent);
 
-const DialogActions = withStyles((theme) => ({
+const DialogActions = withStyles((theme: Theme) => ({
   root: {
     margin: 0,
     padding: theme.spacing(1),
   },
 }))(MuiDialogActions);
 
-function ErrorModal(props) {
+function ErrorModal(props: Props) {
   const { open, content, footer } = props;
 
   const title = props.title || <FormattedMessage id="error.title" />;
@@ -72,7 +95,9 @@ function ErrorModal(props) {
       aria-labelledby="customized-dialog-title"
       open={open}
     >
-      <DialogTitle id="customized-dialog-title">{title}</DialogTitle>
+      <DialogTitle onClose={handleClose} id="customized-dialog-title">
+        {title}
+      </DialogTitle>
       <DialogContent dividers>{content}</DialogContent>
       <DialogActions>
         {footer || (

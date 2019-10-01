@@ -1,5 +1,6 @@
 import React from 'react';
 import { withPrefix } from 'gatsby-link';
+// @ts-ignore
 import { injectIntl, Link } from 'gatsby-plugin-intl';
 import mem from 'mem';
 
@@ -10,8 +11,11 @@ import getKeysFromChar from './utils/getKeysFromChar';
 import ProgramBoard from './ProgramBoard';
 import LessonModal from './LessonModal';
 import ErrorModal from './ErrorModal';
+import { Keyboard } from '../types';
 
 const memoizedGetLevelFromKeys = mem(getLevelFromKeys);
+// TODO rename Program to Typewriter
+// TODO add close on Enter function
 // TODO lift ErrorModal, make it reusable
 // TODO enable/disable backspace
 // TODO differentiate same character on different levels: 'e', 'E', '€' ...
@@ -21,7 +25,33 @@ const memoizedGetLevelFromKeys = mem(getLevelFromKeys);
 // TODO fix focus and blur styles on user input
 // TODO disable tab jump on writing
 
-class Program extends React.Component {
+type Props = {};
+
+type StatisticProps = {
+  correct: [];
+  miswrite: [];
+  misspell: [];
+};
+
+type State = {
+  sampleText: string;
+  userText?: string;
+  cursorAt: number;
+  signToWrite: string;
+  writtenSign?: string;
+  inputChanged: boolean;
+  isUserInputFocused: boolean;
+  keyboard: Keyboard;
+  codeToIso: {};
+  functionKeys: {};
+  keysDown: [];
+  displayedLevel: string;
+  isCapsLockOn: boolean;
+  statistics: StatisticProps;
+  characterNotFound: boolean;
+};
+
+class Program extends React.Component<Props, State> {
   constructor() {
     super();
     this.state = {
@@ -33,12 +63,13 @@ class Program extends React.Component {
       inputChanged: false,
       isUserInputFocused: false, // whenever the user types (or not)
       keyboard: {
-        // name: '',
-        // keys: {},
-        // keyLevels: [],
-        // allChars: [],
-        // deadKeys: [],
+        name: '',
+        keys: {},
+        keyLevels: [],
+        allChars: [],
+        deadKeys: [],
       },
+      codeToIso: {},
       functionKeys: {},
       keysDown: [],
       displayedLevel: 'to',
@@ -199,14 +230,14 @@ class Program extends React.Component {
           functionKeys,
           currentKeyInfo[0],
           'marker',
-          'def'
+          'none'
         );
         this.markCharOnBoard(
           keyboard,
           functionKeys,
           currentKeyInfo[1],
           'marker',
-          'def'
+          'none'
         );
       }
 

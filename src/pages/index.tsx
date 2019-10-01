@@ -1,11 +1,16 @@
 import React from 'react';
+// @ts-ignore
 import { injectIntl, Link } from 'gatsby-plugin-intl';
+import { IntlShape } from 'react-intl';
 
-import Button from '@material-ui/core/Button';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
-const IndexPage = ({ intl }) => (
+type Props = {
+  intl: IntlShape;
+};
+
+const IndexPage = ({ intl }: Props) => (
   <Layout>
     <SEO lang={intl.locale} title="Manonet" />
     <h1>HomePage</h1>

@@ -1,6 +1,10 @@
 import findCharOnKeyboard from './findCharOnKeyboard';
+import { Keyboard, Character } from '../../types';
 
-const getKeysFromChar = function(keyboard, characterToFind) {
+const getKeysFromChar = function(
+  keyboard: Keyboard,
+  characterToFind: Character
+) {
   const { deadKeys } = keyboard;
 
   let key0Info = findCharOnKeyboard({

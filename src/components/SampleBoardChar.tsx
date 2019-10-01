@@ -1,38 +1,49 @@
 import React from 'react';
 import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
-const styles = (theme) => ({
-  root: {
-    display: 'inline-block',
-    width: 10,
-    color: theme.palette.grey[700],
-    fontStyle: 'normal',
-    fontFamily: 'monospace, monospace',
-    textAlign: 'center',
-    whiteSpace: 'pre-wrap',
-  },
-  done: {
-    color: theme.palette.grey[400],
-  },
-  active: {
-    color: theme.palette.primary.contrastText,
-    backgroundColor: theme.palette.primary.main,
-  },
-  error: {
-    color: theme.palette.error.main,
-    backgroundColor: theme.palette.error.contrastText,
-  },
-  space: {
-    opacity: '0.5',
-  },
-  lineFeed: {
-    opacity: '0.5',
-  },
-});
+type Props = {
+  className?: string;
+  cursorAt: number;
+  index: number;
+  char: {};
+  userText: string;
+};
 
-function SampleBoardChar(props) {
-  const { classes, className, cursorAt, index, char, userText } = props;
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      display: 'inline-block',
+      width: 10,
+      color: theme.palette.grey[700],
+      fontStyle: 'normal',
+      fontFamily: 'monospace, monospace',
+      textAlign: 'center',
+      whiteSpace: 'pre-wrap',
+    },
+    done: {
+      color: theme.palette.grey[400],
+    },
+    active: {
+      color: theme.palette.primary.contrastText,
+      backgroundColor: theme.palette.primary.main,
+    },
+    error: {
+      color: theme.palette.error.main,
+      backgroundColor: theme.palette.error.contrastText,
+    },
+    space: {
+      opacity: 0.5,
+    },
+    lineFeed: {
+      opacity: 0.5,
+    },
+  })
+);
+
+function SampleBoardChar(props: Props) {
+  const { className, cursorAt, index, char, userText } = props;
+  const classes = useStyles();
 
   // classes
   const done = cursorAt > index;
@@ -73,4 +84,4 @@ function SampleBoardChar(props) {
   );
 }
 
-export default withStyles(styles)(SampleBoardChar);
+export default SampleBoardChar;
