@@ -5,7 +5,7 @@ import { IntlShape } from 'react-intl';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import Program from '../components/Program';
+import Typewriter from '../components/Typewriter';
 
 type Props = {
   intl: IntlShape;
@@ -15,7 +15,7 @@ type State = {
   isModalOpen: boolean;
 };
 
-class ProgramPage extends React.Component<Props, State> {
+class TypewriterPage extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -44,10 +44,10 @@ class ProgramPage extends React.Component<Props, State> {
       <Layout isBlurred={isModalOpen}>
         <SEO
           lang={intl.locale}
-          title={intl.formatMessage({ id: 'program.page.title' })}
+          title={intl.formatMessage({ id: 'typewriter.page.title' })}
           keywords={intl.formatMessage({ id: 'site.keywords' })}
         />
-        <Program
+        <Typewriter
           isModalOpen={isModalOpen}
           handleModalOpen={this.handleModalOpen}
           handleModalClose={this.handleModalClose}
@@ -57,4 +57,4 @@ class ProgramPage extends React.Component<Props, State> {
   }
 }
 
-export default injectIntl(ProgramPage);
+export default injectIntl(TypewriterPage);

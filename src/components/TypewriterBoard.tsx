@@ -34,7 +34,7 @@ const styles = (theme: Theme) => ({
   },
 });
 
-class ProgramBoard extends React.Component<Props> {
+class TypewriterBoard extends React.Component<Props> {
   handleChangeRef = this.handleChange.bind(this);
   onFocusRef = this.onFocus.bind(this);
   onBlurRef = this.onBlur.bind(this);
@@ -109,4 +109,4 @@ class ProgramBoard extends React.Component<Props> {
   }
 }
 
-export default withStyles(styles)(ProgramBoard);
+export default withStyles(styles)(TypewriterBoard);

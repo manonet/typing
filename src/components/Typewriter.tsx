@@ -8,14 +8,13 @@ import getLevelFromKeys from '../utils/getLevelFromKeys';
 import getKeyboardOS from '../utils/getKeyboardOS';
 import getKeysFromChar from '../utils/getKeysFromChar';
 
-import ProgramBoard from './ProgramBoard';
+import TypewriterBoard from './TypewriterBoard';
 import LessonModal from './LessonModal';
 import ErrorModal from './ErrorModal';
 import { Keyboard, StatisticProps } from '../types';
 
 const memoizedGetLevelFromKeys = mem(getLevelFromKeys);
 // TODO consider adding Enter key to keyboard object instead of functionKeys
-// TODO rename Program to Typewriter
 // TODO add close on Enter function
 // TODO lift ErrorModal, make it reusable
 // TODO enable/disable backspace
@@ -47,7 +46,7 @@ type State = {
   currentKeyInfo: [];
 };
 
-class Program extends React.Component<Props, State> {
+class Typewriter extends React.Component<Props, State> {
   constructor() {
     super();
     this.state = {
@@ -527,7 +526,7 @@ class Program extends React.Component<Props, State> {
 
     return (
       <>
-        <ProgramBoard
+        <TypewriterBoard
           sampleText={sampleText}
           userText={userText}
           cursorAt={cursorAt}
@@ -557,4 +556,4 @@ class Program extends React.Component<Props, State> {
   }
 }
 
-export default injectIntl(Program);
+export default injectIntl(Typewriter);

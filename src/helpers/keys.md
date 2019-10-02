@@ -61,7 +61,7 @@ event.repeat - (not on IE) https://developer.mozilla.org/en-US/docs/Web/API/Keyb
     target: <textarea id="userText" class="SampleBoard-userText-200">
     ​timeStamp: 2774
     ​type: "keydown"
-    ​view: Window http://localhost:8000/program/
+    ​view: Window http://localhost:8000/typewriter/
     ​which: 76
     ​<get isTrusted()>: function isTrusted()
     ​<prototype>: KeyboardEventPrototype { getModifierState: getModifierState(), initKeyboardEvent: initKeyboardEvent(), initKeyEvent: initKeyEvent(), … }

@@ -21,7 +21,7 @@ const IndexPage = ({ intl }: Props) => (
       You can find more info in{' '}
       <a href="https://github.com/manonet/typing/">Github repository</a>
     </p>
-    <Link to="/program/">Go to the Program</Link>
+    <Link to="/typewriter/">Go to the Typewriter</Link>
   </Layout>
 );
 
