@@ -1,4 +1,4 @@
-import { ISO } from '../../types';
+import { ISO } from '../types';
 
 const getKeyLocationFromIso = function(iso: ISO) {
   const matrixColumnNumber = parseInt(iso.substring(1, 3), 10);

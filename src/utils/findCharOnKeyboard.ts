@@ -1,8 +1,8 @@
 import getKeyLocationFromIso from './getKeyLocationFromIso';
-import { KeyboardProps } from '../Program';
+import { Keyboard } from '../types';
 
 type Props = {
-  keyboard: KeyboardProps;
+  keyboard: Keyboard;
   characterToFind: string;
 };
 
@@ -41,7 +41,7 @@ const findCharOnKeyboard = function(props: Props) {
   }
 
   // Hardcode values for Enter key on lewline character
-  // Enter is not part of keyboard object but the functionkexs
+  // Enter is not part of keyboard object but the functionKeys
   if (characterToFind === '\n') {
     keyToPressFound = true;
     iso = 'Enter';

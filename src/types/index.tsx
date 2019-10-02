@@ -1,7 +1,9 @@
-export type ISO = string;
+import { allLevels } from './allLevels';
+import { allISO } from './allISO';
 export type Character = string;
 export type CapsLockDown = boolean;
-export type Levels = [];
+
+export type ISO = typeof allISO[number];
 
 export const Modifier = {
   SHIFT: 'shift' as 'shift',
@@ -34,11 +36,38 @@ export const KeyboardEventKey = {
 export type TKeyboardEventKeyValue = typeof KeyboardEventKey[keyof typeof KeyboardEventKey];
 export type KeyboardEventKeys = TKeyboardEventKeyValue[];
 
+export type AllLevels = typeof allLevels[number];
+
+export type LevelMap = {
+  [key in AllLevels]: Character;
+};
+
+export type ISOKeys = {
+  [key in ISO]: LevelMap;
+};
+
+export type Level = {
+  [key in AllLevels]: Array<Array<KeyboardEventKeys>> | [];
+};
+export type CharMap = {
+  [key in Character]: [[ISO], [AllLevels]];
+};
+
+export type Levels = Level[] | [];
+
 export type Keyboard = {
   name: string;
-  keys: {};
-  levels: {};
-  keyLevels: [];
-  allChars: [];
-  deadKeys: [];
+  keys: ISOKeys | [];
+  levels: Levels;
+  charMap: CharMap | [];
+  allChars: string[];
+  deadKeys?: [];
+  enterVariant: 1 | 2 | 3 | 4;
+  enterIso: 'C12' | 'C13';
+};
+
+export type StatisticProps = {
+  correct: [];
+  miswrite: [];
+  misspell: [];
 };

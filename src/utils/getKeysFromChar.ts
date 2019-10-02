@@ -1,5 +1,5 @@
 import findCharOnKeyboard from './findCharOnKeyboard';
-import { Keyboard, Character } from '../../types';
+import { Keyboard, Character } from '../types';
 
 const getKeysFromChar = function(
   keyboard: Keyboard,

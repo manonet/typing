@@ -4,16 +4,17 @@ import { withPrefix } from 'gatsby-link';
 import { injectIntl, Link } from 'gatsby-plugin-intl';
 import mem from 'mem';
 
-import getLevelFromKeys from './utils/getLevelFromKeys';
-import getKeyboardOS from './utils/getKeyboardOS';
-import getKeysFromChar from './utils/getKeysFromChar';
+import getLevelFromKeys from '../utils/getLevelFromKeys';
+import getKeyboardOS from '../utils/getKeyboardOS';
+import getKeysFromChar from '../utils/getKeysFromChar';
 
 import ProgramBoard from './ProgramBoard';
 import LessonModal from './LessonModal';
 import ErrorModal from './ErrorModal';
-import { Keyboard } from '../types';
+import { Keyboard, StatisticProps } from '../types';
 
 const memoizedGetLevelFromKeys = mem(getLevelFromKeys);
+// TODO consider adding Enter key to keyboard object instead of functionKeys
 // TODO rename Program to Typewriter
 // TODO add close on Enter function
 // TODO lift ErrorModal, make it reusable
@@ -26,12 +27,6 @@ const memoizedGetLevelFromKeys = mem(getLevelFromKeys);
 // TODO disable tab jump on writing
 
 type Props = {};
-
-type StatisticProps = {
-  correct: [];
-  miswrite: [];
-  misspell: [];
-};
 
 type State = {
   sampleText: string;
@@ -49,6 +44,7 @@ type State = {
   isCapsLockOn: boolean;
   statistics: StatisticProps;
   characterNotFound: boolean;
+  currentKeyInfo: [];
 };
 
 class Program extends React.Component<Props, State> {
@@ -64,10 +60,13 @@ class Program extends React.Component<Props, State> {
       isUserInputFocused: false, // whenever the user types (or not)
       keyboard: {
         name: '',
-        keys: {},
-        keyLevels: [],
+        keys: [],
+        levels: [],
         allChars: [],
+        charMap: [],
         deadKeys: [],
+        enterVariant: 1,
+        enterIso: 'C13',
       },
       codeToIso: {},
       functionKeys: {},

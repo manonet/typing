@@ -1,4 +1,4 @@
-import { CapsLockDown, Levels } from '../../types';
+import { CapsLockDown, Levels } from '../types';
 
 // Levels in theory: 'shift', 'ctrl', 'alt', 'caps', 'cmd', 'opt' along with the 'L' and 'R' optional single suffixes for the first 3
 
