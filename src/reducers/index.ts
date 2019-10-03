@@ -1,19 +1,13 @@
-// import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
-import initialState from '../state/initialState';
+import focusUserInputReducer from './focusUserInput';
+import increment from './increment';
 
-const reducer = (state = initialState, action) => {
-  const { type, payload } = action;
-  if (type === 'INCREMENT') {
-    return Object.assign({}, state, {
-      count: state.count + payload,
-    });
-  }
-  return state;
-};
+const rootReducer = combineReducers({
+  focusUserInput: focusUserInputReducer,
+  increment,
+});
 
-// const reducers = combineReducers({
-//   reducer,
-// })
+export type State = ReturnType<typeof rootReducer>;
 
-export default reducer;
+export default rootReducer;

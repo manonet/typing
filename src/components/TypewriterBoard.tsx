@@ -13,7 +13,6 @@ type Props = {
   cursorAt: number;
   signToWrite: string;
   writtenSign: string;
-  isUserInputFocused: boolean;
   displayedLevel: string;
   keyboard: [];
   keyboardKeys: [];
@@ -76,7 +75,6 @@ class TypewriterBoard extends React.Component<Props> {
       cursorAt,
       signToWrite,
       writtenSign,
-      isUserInputFocused,
       displayedLevel,
       keyboard,
       keyboardKeys,
@@ -91,7 +89,6 @@ class TypewriterBoard extends React.Component<Props> {
           cursorAt={cursorAt}
           signToWrite={signToWrite}
           writtenSign={writtenSign}
-          isUserInputFocused={isUserInputFocused}
           onChange={this.handleChangeRef}
           onFocus={this.onFocusRef}
           onBlur={this.onBlurRef}

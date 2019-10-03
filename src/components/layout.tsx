@@ -23,7 +23,7 @@ import 'typeface-roboto';
 import { incrementNumber, incrementAction } from '../actions';
 import LanguageSwitcher from './LanguageSwitcher';
 
-import { State as ReduxState } from '../state/initialState';
+import { State as ReduxState } from '../reducers';
 
 type Props = {
   children: ReactNodeArray;
@@ -43,7 +43,9 @@ const Counter = ({
   </div>
 );
 
-const mapStateToProps = ({ count }: { count: number }) => ({ count });
+const mapStateToProps = ({ increment }: { increment: { count: number } }) => ({
+  count: increment.count,
+});
 
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<ReduxState, undefined, incrementAction>

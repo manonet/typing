@@ -1,8 +1,13 @@
 import React from 'react';
 import { withPrefix } from 'gatsby-link';
+import { connect } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
 // @ts-ignore
 import { injectIntl, Link } from 'gatsby-plugin-intl';
 import mem from 'mem';
+
+import { focusUserInput, focusUserInputAction } from '../actions';
+import { State as ReduxState } from '../reducers';
 
 import getLevelFromKeys from '../utils/getLevelFromKeys';
 import getKeyboardOS from '../utils/getKeyboardOS';
@@ -15,7 +20,7 @@ import { Keyboard, StatisticProps } from '../types';
 
 const memoizedGetLevelFromKeys = mem(getLevelFromKeys);
 // TODO consider adding Enter key to keyboard object instead of functionKeys
-// TODO add close on Enter function
+// TODO add close on Enter function to modals
 // TODO lift ErrorModal, make it reusable
 // TODO enable/disable backspace
 // TODO differentiate same character on different levels: 'e', 'E', '€' ...
@@ -34,7 +39,6 @@ type State = {
   signToWrite: string;
   writtenSign?: string;
   inputChanged: boolean;
-  isUserInputFocused: boolean;
   keyboard: Keyboard;
   codeToIso: {};
   functionKeys: {};
@@ -56,7 +60,6 @@ class Typewriter extends React.Component<Props, State> {
       signToWrite: '',
       writtenSign: '',
       inputChanged: false,
-      isUserInputFocused: false, // whenever the user types (or not)
       keyboard: {
         name: '',
         keys: [],
@@ -125,7 +128,10 @@ class Typewriter extends React.Component<Props, State> {
   }
 
   setUserInputFocus(isUserInputFocused) {
-    this.setState({ isUserInputFocused });
+    // this.setState({ isUserInputFocused });
+    const { dispatchUserInputFocused } = this.props;
+
+    dispatchUserInputFocused(isUserInputFocused);
     if (isUserInputFocused) {
       document.addEventListener('keydown', this.handleKeydown, false);
       document.addEventListener('keyup', this.handleKeyup, false);
@@ -516,7 +522,6 @@ class Typewriter extends React.Component<Props, State> {
       cursorAt,
       signToWrite,
       writtenSign,
-      isUserInputFocused,
       displayedLevel,
       functionKeys,
       characterNotFound,
@@ -534,7 +539,6 @@ class Typewriter extends React.Component<Props, State> {
           writtenSign={writtenSign}
           userInputText={this.userInputText}
           setUserInputFocus={this.setUserInputFocus}
-          isUserInputFocused={isUserInputFocused}
           displayedLevel={displayedLevel}
           keyboard={keyboard}
           functionKeys={functionKeys}
@@ -556,4 +560,14 @@ class Typewriter extends React.Component<Props, State> {
   }
 }
 
-export default injectIntl(Typewriter);
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<ReduxState, undefined, focusUserInputAction>
+) => ({
+  dispatchUserInputFocused: (isUserInputFocused: boolean) =>
+    dispatch(focusUserInput(isUserInputFocused)),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(injectIntl(Typewriter));

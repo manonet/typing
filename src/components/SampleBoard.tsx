@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { State as ReduxState } from '../reducers';
 import SampleBoardChar from './SampleBoardChar';
 
 export const SAMPLE_BOARD_ID = 'userText';
@@ -111,4 +113,12 @@ function SampleBoard(props: Props) {
   );
 }
 
-export default SampleBoard;
+const mapStateToProps = (state: ReduxState) => {
+  const { focusUserInput } = state;
+  return { isUserInputFocused: focusUserInput.isUserInputFocused };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(SampleBoard);

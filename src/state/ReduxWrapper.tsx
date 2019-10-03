@@ -6,7 +6,6 @@ import storage from 'redux-persist/lib/storage'; // defaults to localStorage for
 import { PersistGate } from 'redux-persist/integration/react';
 
 import rootReducer from '../reducers';
-import initialState from './initialState';
 
 const persistConfig = {
   key: 'root',
