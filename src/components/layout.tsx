@@ -20,7 +20,6 @@ import muiTheme from '../theme';
 import Header from './header';
 import './layout.css';
 import 'typeface-roboto';
-import { incrementNumber, incrementAction } from '../actions';
 import LanguageSwitcher from './LanguageSwitcher';
 
 import { State as ReduxState } from '../reducers';
@@ -29,34 +28,6 @@ type Props = {
   children: ReactNodeArray;
   isBlurred: boolean;
 } & InjectedIntlProps;
-
-const Counter = ({
-  count,
-  increment,
-}: {
-  count: number;
-  increment: () => {};
-}) => (
-  <div>
-    <p>Count: {count}</p>
-    <button onClick={increment}>Increment</button>
-  </div>
-);
-
-const mapStateToProps = ({ increment }: { increment: { count: number } }) => ({
-  count: increment.count,
-});
-
-const mapDispatchToProps = (
-  dispatch: ThunkDispatch<ReduxState, undefined, incrementAction>
-) => ({
-  increment: () => dispatch(incrementNumber(2)),
-});
-
-const ConnectedCounter = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Counter);
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -105,7 +76,6 @@ function Layout(props: Props) {
                 </Grid>
               </Grid>
             </div>
-            <ConnectedCounter />
             <footer>
               <LanguageSwitcher />
               {data.site.siteMetadata.name} - version:{' '}

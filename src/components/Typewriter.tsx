@@ -6,7 +6,12 @@ import { ThunkDispatch } from 'redux-thunk';
 import { injectIntl, Link } from 'gatsby-plugin-intl';
 import mem from 'mem';
 
-import { focusUserInput, focusUserInputAction } from '../actions';
+import {
+  focusUserInput,
+  FocusUserInputAction,
+  setSampleText,
+  SetSampleTextAction,
+} from '../actions';
 import { State as ReduxState } from '../reducers';
 
 import getLevelFromKeys from '../utils/getLevelFromKeys';
@@ -30,10 +35,12 @@ const memoizedGetLevelFromKeys = mem(getLevelFromKeys);
 // TODO fix focus and blur styles on user input
 // TODO disable tab jump on writing
 
-type Props = {};
+type Props = {
+  sampleText: string;
+  dispatchSetSampleText: (sampleText: string) => {};
+};
 
 type State = {
-  sampleText: string;
   userText?: string;
   cursorAt: number;
   signToWrite: string;
@@ -54,7 +61,6 @@ class Typewriter extends React.Component<Props, State> {
   constructor() {
     super();
     this.state = {
-      sampleText: '',
       userText: '',
       cursorAt: 0,
       signToWrite: '',
@@ -98,6 +104,11 @@ class Typewriter extends React.Component<Props, State> {
     const keyboardOS = getKeyboardOS();
     const keyboardLang = navigator.language.substring(0, 2);
     console.info('keyboardOS', keyboardOS, 'keyboardLang', keyboardLang);
+
+    const { dispatchSetSampleText } = this.props;
+
+    dispatchSetSampleText('');
+
     Promise.all([
       // fetch(withPrefix(`/keyboards/${keyboardOS}/${keyboardLang}-t-k0-${keyboardOS}.json`)),
       fetch(withPrefix('/keyboards/windows/hu-t-k0-windows.json')),
@@ -112,7 +123,7 @@ class Typewriter extends React.Component<Props, State> {
         const functionKeys = responses[2];
         functionKeys.Enter.variant = keyboard.enterVariant;
 
-        const { sampleText } = this.state;
+        const { sampleText } = this.props;
         const nextCharInfo = getKeysFromChar(keyboard, sampleText.charAt(0));
 
         this.setState(
@@ -193,7 +204,7 @@ class Typewriter extends React.Component<Props, State> {
   }
 
   userInputText(userText) {
-    const { sampleText } = this.state;
+    const { sampleText } = this.props;
     if (userText.length === sampleText.length) {
       this.props.handleModalOpen();
       return;
@@ -366,10 +377,14 @@ class Typewriter extends React.Component<Props, State> {
     });
   }
 
-  startNewLesson(sampleText) {
+  startNewLesson(sampleText: string) {
     const { keyboard, functionKeys } = this.state;
 
     const nextCharInfo = getKeysFromChar(keyboard, sampleText.charAt(0));
+
+    const { dispatchSetSampleText } = this.props;
+
+    dispatchSetSampleText(sampleText);
 
     this.markCharOnBoard(
       keyboard,
@@ -387,7 +402,6 @@ class Typewriter extends React.Component<Props, State> {
     );
 
     this.setState(() => ({
-      sampleText,
       userText: '',
       cursorAt: 0,
       signToWrite: '',
@@ -517,7 +531,6 @@ class Typewriter extends React.Component<Props, State> {
   render() {
     const {
       keyboard,
-      sampleText,
       userText,
       cursorAt,
       signToWrite,
@@ -528,11 +541,10 @@ class Typewriter extends React.Component<Props, State> {
     } = this.state;
 
     const { intl, isModalOpen } = this.props;
-
+    console.log(this.props);
     return (
       <>
         <TypewriterBoard
-          sampleText={sampleText}
           userText={userText}
           cursorAt={cursorAt}
           signToWrite={signToWrite}
@@ -560,14 +572,28 @@ class Typewriter extends React.Component<Props, State> {
   }
 }
 
+const mapStateToProps = (state: ReduxState) => {
+  const { setSampleText, focusUserInput } = state;
+  return {
+    sampleText: setSampleText.sampleText,
+    isUserInputFocused: focusUserInput.isUserInputFocused,
+  };
+};
+
 const mapDispatchToProps = (
-  dispatch: ThunkDispatch<ReduxState, undefined, focusUserInputAction>
+  dispatch: ThunkDispatch<
+    ReduxState,
+    undefined,
+    FocusUserInputAction | SetSampleTextAction
+  >
 ) => ({
   dispatchUserInputFocused: (isUserInputFocused: boolean) =>
     dispatch(focusUserInput(isUserInputFocused)),
+  dispatchSetSampleText: (sampleText: string) =>
+    dispatch(setSampleText(sampleText)),
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(injectIntl(Typewriter));

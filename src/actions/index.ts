@@ -1,18 +1,12 @@
-/*
- * action types
- */
-export type incrementAction = ReturnType<typeof incrementNumber>;
+export type SetSampleTextAction = ReturnType<typeof setSampleText>;
 
-export const INCREMENT = 'INCREMENT';
+export const SET_SAMPLE_TEXT = 'SET_SAMPLE_TEXT';
 
-/*
- * action creators
- */
-export function incrementNumber(amount: number) {
-  return { type: INCREMENT, payload: amount };
+export function setSampleText(sampleText: string) {
+  return { type: SET_SAMPLE_TEXT, sampleText };
 }
 
-export type focusUserInputAction = ReturnType<typeof focusUserInput>;
+export type FocusUserInputAction = ReturnType<typeof focusUserInput>;
 
 export const FOCUSUSERINPUT = 'FOCUSUSERINPUT';
 

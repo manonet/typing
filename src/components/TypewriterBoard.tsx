@@ -8,7 +8,6 @@ import Keyboard from './keyboard/Keyboard';
 type Props = {
   classes?: Record<keyof typeof styles, string>;
   className?: string;
-  sampleText: string;
   userText: string;
   cursorAt: number;
   signToWrite: string;
@@ -70,7 +69,6 @@ class TypewriterBoard extends React.Component<Props> {
     const {
       classes,
       className,
-      sampleText,
       userText,
       cursorAt,
       signToWrite,
@@ -84,7 +82,6 @@ class TypewriterBoard extends React.Component<Props> {
     return (
       <div className={classNames(classes.root, className)}>
         <SampleBoard
-          sampleText={sampleText}
           userText={userText}
           cursorAt={cursorAt}
           signToWrite={signToWrite}

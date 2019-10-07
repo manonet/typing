@@ -114,8 +114,11 @@ function SampleBoard(props: Props) {
 }
 
 const mapStateToProps = (state: ReduxState) => {
-  const { focusUserInput } = state;
-  return { isUserInputFocused: focusUserInput.isUserInputFocused };
+  const { focusUserInput, setSampleText } = state;
+  return {
+    isUserInputFocused: focusUserInput.isUserInputFocused,
+    sampleText: setSampleText.sampleText,
+  };
 };
 
 export default connect(

@@ -1,4 +1,4 @@
-import { focusUserInputAction } from '../actions/index';
+import { FocusUserInputAction } from '../actions/index';
 export type FocusUserInputState = {
   isUserInputFocused: boolean;
 };
@@ -9,7 +9,7 @@ const initialState: FocusUserInputState = {
 
 export default function focusUserInputReducer(
   state: FocusUserInputState = initialState,
-  action: focusUserInputAction
+  action: FocusUserInputAction
 ) {
   const { type, isUserInputFocused } = action;
   if (type === 'FOCUSUSERINPUT') {
