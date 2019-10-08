@@ -1,3 +1,5 @@
+// Levels in theory: 'shift', 'ctrl', 'alt', 'caps', 'cmd', 'opt' along with the 'L' and 'R' optional single suffixes for the first 3
+
 export const allLevels = [
   'to',
   'shift+caps?',

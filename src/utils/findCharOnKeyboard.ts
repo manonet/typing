@@ -1,63 +1,48 @@
 import getKeyLocationFromIso from './getKeyLocationFromIso';
-import { Keyboard } from '../types';
+import { Keyboard, Level } from '../types';
+
+// TODO - consider removing char from the output
 
 type Props = {
   keyboard: Keyboard;
   characterToFind: string;
 };
 
-const findCharOnKeyboard = function(props: Props) {
+export default function findCharOnKeyboard(props: Props) {
   const { keyboard, characterToFind } = props;
 
-  const { keys, levels } = keyboard;
+  const { charMap, levels } = keyboard;
 
-  let keyToPressFound = false;
-  let iso;
-  let level: string;
-  let levelObject;
-  let location;
+  const charMapItem = charMap[characterToFind];
+  // e.g.: "ä": ["C11", "to"]
 
-  if (keys && levels && characterToFind) {
-    // loop trough on each level first, then on the keys. It is necessary, because the same character can be appear multiple times on the same keyboard, e.g. "í" on hungarian, once "normal" in "to" level, once on the "j" key in "AltGr" level. Key "j" will found first otherwise.
-    Object.keys(levels).map((l) => {
-      // levels[level] = altR+caps? ctrl+alt+caps?
-      if (!keyToPressFound) {
-        level = Object.keys(levels[l])[0];
-        levelObject = levels[l];
-        Object.keys(keys).map((key) => {
-          if (keys[key][level] === characterToFind) {
-            // found!
-            iso = key;
-            location = getKeyLocationFromIso(key);
-            if (!keyToPressFound) {
-              keyToPressFound = true;
-            }
-          }
-          return null;
-        });
-      }
-      return null;
-    });
+  if (charMapItem) {
+    const iso = charMapItem[0];
+    // e.g.: "C11"
+    const levelID = charMapItem[1];
+    // e.g.: "to"
+    const level = levels[levelID];
+    // e.g.: [] or "shift": [[["ShiftLeft"],["ShiftRight"]]]
+    if (iso) {
+      return {
+        iso,
+        level,
+        char: characterToFind,
+        location: getKeyLocationFromIso(iso),
+      };
+    }
   }
-
   // Hardcode values for Enter key on lewline character
   // Enter is not part of keyboard object but the functionKeys
   if (characterToFind === '\n') {
-    keyToPressFound = true;
-    iso = 'Enter';
-    level = 'to';
-    location = { side: 'Left' };
-  }
-
-  if (keyToPressFound) {
     return {
-      iso,
-      level: levelObject,
+      // TODO - Enter is not a proper iso...
+      iso: 'Enter',
+      level: 'to',
       char: characterToFind,
-      ...location,
+      location: { side: 'Left' },
     };
   }
-  return null;
-};
 
-export default findCharOnKeyboard;
+  return null;
+}

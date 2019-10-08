@@ -301,103 +301,91 @@
       "caps+shift": " "
     }
   },
-  "levels": [
-    {
-      "to": []
-    },
-    {
-      "shift": [
+  "levels": {
+    "to": [],
+    "shift": [
+      [
         [
-          [
-            "ShiftLeft"
-          ],
-          [
-            "ShiftRight"
-          ]
-        ]
-      ]
-    },
-    {
-      "caps": [
-        [
-          [
-            "CapsLock"
-          ]
-        ]
-      ]
-    },
-    {
-      "caps+shift": [
-        [
-          [
-            "ShiftLeft",
-            "CapsLock"
-          ],
-          [
-            "ShiftRight",
-            "CapsLock"
-          ]
-        ]
-      ]
-    },
-    {
-      "altR+caps? ctrl+shift+caps? ctrl+alt+caps?": [
-        [
-          [
-            "AltRight"
-          ]
+          "ShiftLeft"
         ],
         [
-          [
-            "ShiftLeft",
-            "ControlLeft"
-          ],
-          [
-            "ShiftLeft",
-            "ControlRight"
-          ],
-          [
-            "ShiftRight",
-            "ControlLeft"
-          ],
-          [
-            "ShiftRight",
-            "ControlRight"
-          ]
+          "ShiftRight"
+        ]
+      ]
+    ],
+    "caps": [
+      [
+        [
+          "CapsLock"
+        ]
+      ]
+    ],
+    "caps+shift": [
+      [
+        [
+          "ShiftLeft",
+          "CapsLock"
         ],
         [
-          [
-            "AltLeft",
-            "ControlLeft"
-          ],
-          [
-            "AltLeft",
-            "ControlRight"
-          ],
-          [
-            "AltRight",
-            "ControlLeft"
-          ],
-          [
-            "AltRight",
-            "ControlRight"
-          ]
+          "ShiftRight",
+          "CapsLock"
         ]
       ]
-    },
-    {
-      "ctrl+caps?": [
+    ],
+    "altR+caps? ctrl+shift+caps? ctrl+alt+caps?": [
+      [
         [
-          [
-            "ControlLeft"
-          ],
-          [
-            "ControlRight"
-          ]
+          "AltRight"
+        ]
+      ],
+      [
+        [
+          "ShiftLeft",
+          "ControlLeft"
+        ],
+        [
+          "ShiftLeft",
+          "ControlRight"
+        ],
+        [
+          "ShiftRight",
+          "ControlLeft"
+        ],
+        [
+          "ShiftRight",
+          "ControlRight"
+        ]
+      ],
+      [
+        [
+          "AltLeft",
+          "ControlLeft"
+        ],
+        [
+          "AltLeft",
+          "ControlRight"
+        ],
+        [
+          "AltRight",
+          "ControlLeft"
+        ],
+        [
+          "AltRight",
+          "ControlRight"
         ]
       ]
-    }
-  ],
+    ],
+    "ctrl+caps?": [
+      [
+        [
+          "ControlLeft"
+        ],
+        [
+          "ControlRight"
+        ]
+      ]
+    ]
+  },
   "charMap": {
     "0": [
       "E10",

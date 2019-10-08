@@ -93,37 +93,31 @@
       "caps+shift": " "
     }
   },
-  "levels": [
-    {
-      "to": []
-    },
-    {
-      "shift": [
+  "levels": {
+    "to": [],
+    "shift": [
+      [
         [
-          [
-            "ShiftLeft"
-          ],
-          [
-            "ShiftRight"
-          ]
+          "ShiftLeft"
+        ],
+        [
+          "ShiftRight"
         ]
       ]
-    },
-    {
-      "caps+shift": [
+    ],
+    "caps+shift": [
+      [
         [
-          [
-            "ShiftLeft",
-            "CapsLock"
-          ],
-          [
-            "ShiftRight",
-            "CapsLock"
-          ]
+          "ShiftLeft",
+          "CapsLock"
+        ],
+        [
+          "ShiftRight",
+          "CapsLock"
         ]
       ]
-    }
-  ],
+    ]
+  },
   "charMap": {
     "ᚊ": [
       "D01",

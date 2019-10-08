@@ -1,9 +1,11 @@
 import { allLevels } from './allLevels';
 import { allISO } from './allISO';
+import { allEventCodes } from './allEventCodes';
 export type Character = string;
 export type CapsLockDown = boolean;
 
 export type ISO = typeof allISO[number];
+export type EventCode = typeof allEventCodes[number];
 
 export const Modifier = {
   SHIFT: 'shift' as 'shift',
@@ -32,36 +34,41 @@ export const KeyboardEventKey = {
   ALTRIGHT: 'AltRight' as 'AltRight',
   METALEFT: 'MetaLeft' as 'MetaLeft',
   METARIGHT: 'MetaRight' as 'MetaRight',
+  OSLEFT: 'OSLeft' as 'OSLeft',
+  OSRIGHT: 'OSRight' as 'OSRight',
 };
 export type TKeyboardEventKeyValue = typeof KeyboardEventKey[keyof typeof KeyboardEventKey];
 export type KeyboardEventKeys = TKeyboardEventKeyValue[];
 
-export type AllLevels = typeof allLevels[number];
+export type Level = typeof allLevels[number];
 
 export type LevelMap = {
-  [key in AllLevels]: Character;
+  [key in Level]: Character;
 };
 
 export type ISOKeys = {
   [key in ISO]: LevelMap;
 };
 
-export type Level = {
-  [key in AllLevels]: Array<Array<KeyboardEventKeys>> | [];
-};
-export type CharMap = {
-  [key in Character]: [[ISO], [AllLevels]];
+export type Levels = {
+  [key in Level]: Array<Array<KeyboardEventKeys>>;
 };
 
-export type Levels = Level[] | [];
+export type CharMap = {
+  [key in Character]: [ISO, Level];
+};
+
+export type DeadKeys = {
+  [key in Character]: [Character, Character];
+};
 
 export type Keyboard = {
   name: string;
-  keys: ISOKeys | [];
+  keys: ISOKeys;
   levels: Levels;
-  charMap: CharMap | [];
+  charMap: CharMap;
   allChars: string[];
-  deadKeys?: [];
+  deadKeys?: DeadKeys;
   enterVariant: 1 | 2 | 3 | 4;
   enterIso: 'C12' | 'C13';
 };

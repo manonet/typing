@@ -291,58 +291,48 @@
       "ctrl+caps?": " "
     }
   },
-  "levels": [
-    {
-      "to": []
-    },
-    {
-      "shift": [
+  "levels": {
+    "to": [],
+    "shift": [
+      [
         [
-          [
-            "ShiftLeft"
-          ],
-          [
-            "ShiftRight"
-          ]
+          "ShiftLeft"
+        ],
+        [
+          "ShiftRight"
         ]
       ]
-    },
-    {
-      "caps": [
+    ],
+    "caps": [
+      [
         [
-          [
-            "CapsLock"
-          ]
+          "CapsLock"
         ]
       ]
-    },
-    {
-      "caps+shift": [
+    ],
+    "caps+shift": [
+      [
         [
-          [
-            "ShiftLeft",
-            "CapsLock"
-          ],
-          [
-            "ShiftRight",
-            "CapsLock"
-          ]
+          "ShiftLeft",
+          "CapsLock"
+        ],
+        [
+          "ShiftRight",
+          "CapsLock"
         ]
       ]
-    },
-    {
-      "ctrl+caps?": [
+    ],
+    "ctrl+caps?": [
+      [
         [
-          [
-            "ControlLeft"
-          ],
-          [
-            "ControlRight"
-          ]
+          "ControlLeft"
+        ],
+        [
+          "ControlRight"
         ]
       ]
-    }
-  ],
+    ]
+  },
   "charMap": {
     "ә": [
       "E00",

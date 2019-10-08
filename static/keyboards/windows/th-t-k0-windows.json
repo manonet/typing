@@ -203,40 +203,34 @@
       "ctrl+caps?": " "
     }
   },
-  "levels": [
-    {
-      "to": []
-    },
-    {
-      "shift caps": [
+  "levels": {
+    "to": [],
+    "shift caps": [
+      [
         [
-          [
-            "ShiftLeft"
-          ],
-          [
-            "ShiftRight"
-          ]
+          "ShiftLeft"
         ],
         [
-          [
-            "CapsLock"
-          ]
+          "ShiftRight"
         ]
-      ]
-    },
-    {
-      "ctrl+caps?": [
+      ],
+      [
         [
-          [
-            "ControlLeft"
-          ],
-          [
-            "ControlRight"
-          ]
+          "CapsLock"
         ]
       ]
-    }
-  ],
+    ],
+    "ctrl+caps?": [
+      [
+        [
+          "ControlLeft"
+        ],
+        [
+          "ControlRight"
+        ]
+      ]
+    ]
+  },
   "charMap": {
     "_": [
       "E00",

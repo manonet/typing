@@ -38,6 +38,7 @@ const memoizedGetLevelFromKeys = mem(getLevelFromKeys);
 type Props = {
   sampleText: string;
   dispatchSetSampleText: (sampleText: string) => {};
+  dispatchUserInputFocused: (isUserInputFocused: boolean) => {};
 };
 
 type State = {
@@ -69,7 +70,7 @@ class Typewriter extends React.Component<Props, State> {
       keyboard: {
         name: '',
         keys: [],
-        levels: [],
+        levels: {},
         allChars: [],
         charMap: [],
         deadKeys: [],
@@ -138,8 +139,7 @@ class Typewriter extends React.Component<Props, State> {
       });
   }
 
-  setUserInputFocus(isUserInputFocused) {
-    // this.setState({ isUserInputFocused });
+  setUserInputFocus(isUserInputFocused: boolean) {
     const { dispatchUserInputFocused } = this.props;
 
     dispatchUserInputFocused(isUserInputFocused);
@@ -157,9 +157,9 @@ class Typewriter extends React.Component<Props, State> {
       if (keyboard.keys[keyInfo.iso]) {
         keyboard.keys[keyInfo.iso][colorProp] = color;
         const { level } = keyInfo;
-        if (level[Object.keys(level)[0]][0]) {
+        if (level && level.length && level[Object.keys(level)[0]][0]) {
           let previousFunctionKey;
-          level[Object.keys(level)[0]][0].map((l) => {
+          level[0].map((l) => {
             if (functionKeys[l[0]]) {
               // mark function key
               functionKeys[l[0]][colorProp] = color;
@@ -239,7 +239,7 @@ class Typewriter extends React.Component<Props, State> {
       const pressedKeyInfo = getKeysFromChar(keyboard, writtenSign);
 
       // reset previous keys
-      if (currentKeyInfo) {
+      if (currentKeyInfo && currentKeyInfo[0] && currentKeyInfo[0].iso) {
         this.markCharOnBoard(
           keyboard,
           functionKeys,
@@ -541,7 +541,7 @@ class Typewriter extends React.Component<Props, State> {
     } = this.state;
 
     const { intl, isModalOpen } = this.props;
-    console.log(this.props);
+
     return (
       <>
         <TypewriterBoard

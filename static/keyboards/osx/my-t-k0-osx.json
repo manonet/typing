@@ -397,135 +397,121 @@
       "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": "0"
     }
   },
-  "levels": [
-    {
-      "to": []
-    },
-    {
-      "shift": [
+  "levels": {
+    "to": [],
+    "shift": [
+      [
         [
-          [
-            "ShiftLeft"
-          ],
-          [
-            "ShiftRight"
-          ]
-        ]
-      ]
-    },
-    {
-      "caps cmd+opt?+caps?": [
-        [
-          [
-            "CapsLock"
-          ]
+          "ShiftLeft"
         ],
         [
-          [
-            "MetaLeft"
-          ],
-          [
-            "MetaRight"
-          ]
+          "ShiftRight"
         ]
       ]
-    },
-    {
-      "caps+shift cmd+shift+opt?+caps?": [
+    ],
+    "caps cmd+opt?+caps?": [
+      [
         [
-          [
-            "ShiftLeft",
-            "CapsLock"
-          ],
-          [
-            "ShiftRight",
-            "CapsLock"
-          ]
+          "CapsLock"
+        ]
+      ],
+      [
+        [
+          "MetaLeft"
         ],
         [
-          [
-            "ShiftLeft",
-            "MetaLeft"
-          ],
-          [
-            "ShiftLeft",
-            "MetaRight"
-          ],
-          [
-            "ShiftRight",
-            "MetaLeft"
-          ],
-          [
-            "ShiftRight",
-            "MetaRight"
-          ]
+          "MetaRight"
         ]
       ]
-    },
-    {
-      "opt+caps?": [
+    ],
+    "caps+shift cmd+shift+opt?+caps?": [
+      [
         [
-          [
-            "AltLeft"
-          ],
-          [
-            "AltRight"
-          ]
-        ]
-      ]
-    },
-    {
-      "opt+shift+caps?": [
-        [
-          [
-            "ShiftLeft",
-            "AltLeft"
-          ],
-          [
-            "ShiftLeft",
-            "AltRight"
-          ],
-          [
-            "ShiftRight",
-            "AltLeft"
-          ],
-          [
-            "ShiftRight",
-            "AltRight"
-          ]
-        ]
-      ]
-    },
-    {
-      "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": [
-        [
-          [
-            "ControlLeft"
-          ]
+          "ShiftLeft",
+          "CapsLock"
         ],
         [
-          [
-            "ShiftLeft",
-            "ControlLeft"
-          ],
-          [
-            "ShiftRight",
-            "ControlLeft"
-          ]
+          "ShiftRight",
+          "CapsLock"
+        ]
+      ],
+      [
+        [
+          "ShiftLeft",
+          "MetaLeft"
         ],
         [
-          [
-            "AltLeft",
-            "ControlLeft"
-          ],
-          [
-            "AltRight",
-            "ControlLeft"
-          ]
+          "ShiftLeft",
+          "MetaRight"
+        ],
+        [
+          "ShiftRight",
+          "MetaLeft"
+        ],
+        [
+          "ShiftRight",
+          "MetaRight"
         ]
       ]
-    }
-  ],
+    ],
+    "opt+caps?": [
+      [
+        [
+          "AltLeft"
+        ],
+        [
+          "AltRight"
+        ]
+      ]
+    ],
+    "opt+shift+caps?": [
+      [
+        [
+          "ShiftLeft",
+          "AltLeft"
+        ],
+        [
+          "ShiftLeft",
+          "AltRight"
+        ],
+        [
+          "ShiftRight",
+          "AltLeft"
+        ],
+        [
+          "ShiftRight",
+          "AltRight"
+        ]
+      ]
+    ],
+    "ctrlL+cmd?+opt?+caps? ctrlL+shift+cmd?+optL?+caps? ctrlL+opt+cmd?+caps?+shiftL?": [
+      [
+        [
+          "ControlLeft"
+        ]
+      ],
+      [
+        [
+          "ShiftLeft",
+          "ControlLeft"
+        ],
+        [
+          "ShiftRight",
+          "ControlLeft"
+        ]
+      ],
+      [
+        [
+          "AltLeft",
+          "ControlLeft"
+        ],
+        [
+          "AltRight",
+          "ControlLeft"
+        ]
+      ]
+    ]
+  },
   "charMap": {
     "0": [
       "E10",

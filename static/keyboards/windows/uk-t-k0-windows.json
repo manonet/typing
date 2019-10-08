@@ -303,141 +303,127 @@
       "ctrl+caps?": " "
     }
   },
-  "levels": [
-    {
-      "to": []
-    },
-    {
-      "shift": [
+  "levels": {
+    "to": [],
+    "shift": [
+      [
         [
-          [
-            "ShiftLeft"
-          ],
-          [
-            "ShiftRight"
-          ]
-        ]
-      ]
-    },
-    {
-      "caps": [
-        [
-          [
-            "CapsLock"
-          ]
-        ]
-      ]
-    },
-    {
-      "caps+shift": [
-        [
-          [
-            "ShiftLeft",
-            "CapsLock"
-          ],
-          [
-            "ShiftRight",
-            "CapsLock"
-          ]
-        ]
-      ]
-    },
-    {
-      "altR+caps? ctrl+alt+caps?": [
-        [
-          [
-            "AltRight"
-          ]
+          "ShiftLeft"
         ],
         [
-          [
-            "AltLeft",
-            "ControlLeft"
-          ],
-          [
-            "AltLeft",
-            "ControlRight"
-          ],
-          [
-            "AltRight",
-            "ControlLeft"
-          ],
-          [
-            "AltRight",
-            "ControlRight"
-          ]
+          "ShiftRight"
         ]
       ]
-    },
-    {
-      "altR+shift+caps? ctrl+alt+shift+caps?": [
+    ],
+    "caps": [
+      [
         [
-          [
-            "ShiftLeft",
-            "AltRight"
-          ],
-          [
-            "ShiftRight",
-            "AltRight"
-          ]
+          "CapsLock"
+        ]
+      ]
+    ],
+    "caps+shift": [
+      [
+        [
+          "ShiftLeft",
+          "CapsLock"
         ],
         [
-          [
-            "ShiftLeft",
-            "AltLeft",
-            "ControlLeft"
-          ],
-          [
-            "ShiftLeft",
-            "AltLeft",
-            "ControlRight"
-          ],
-          [
-            "ShiftLeft",
-            "AltRight",
-            "ControlLeft"
-          ],
-          [
-            "ShiftLeft",
-            "AltRight",
-            "ControlRight"
-          ],
-          [
-            "ShiftRight",
-            "AltLeft",
-            "ControlLeft"
-          ],
-          [
-            "ShiftRight",
-            "AltLeft",
-            "ControlRight"
-          ],
-          [
-            "ShiftRight",
-            "AltRight",
-            "ControlLeft"
-          ],
-          [
-            "ShiftRight",
-            "AltRight",
-            "ControlRight"
-          ]
+          "ShiftRight",
+          "CapsLock"
         ]
       ]
-    },
-    {
-      "ctrl+caps?": [
+    ],
+    "altR+caps? ctrl+alt+caps?": [
+      [
         [
-          [
-            "ControlLeft"
-          ],
-          [
-            "ControlRight"
-          ]
+          "AltRight"
+        ]
+      ],
+      [
+        [
+          "AltLeft",
+          "ControlLeft"
+        ],
+        [
+          "AltLeft",
+          "ControlRight"
+        ],
+        [
+          "AltRight",
+          "ControlLeft"
+        ],
+        [
+          "AltRight",
+          "ControlRight"
         ]
       ]
-    }
-  ],
+    ],
+    "altR+shift+caps? ctrl+alt+shift+caps?": [
+      [
+        [
+          "ShiftLeft",
+          "AltRight"
+        ],
+        [
+          "ShiftRight",
+          "AltRight"
+        ]
+      ],
+      [
+        [
+          "ShiftLeft",
+          "AltLeft",
+          "ControlLeft"
+        ],
+        [
+          "ShiftLeft",
+          "AltLeft",
+          "ControlRight"
+        ],
+        [
+          "ShiftLeft",
+          "AltRight",
+          "ControlLeft"
+        ],
+        [
+          "ShiftLeft",
+          "AltRight",
+          "ControlRight"
+        ],
+        [
+          "ShiftRight",
+          "AltLeft",
+          "ControlLeft"
+        ],
+        [
+          "ShiftRight",
+          "AltLeft",
+          "ControlRight"
+        ],
+        [
+          "ShiftRight",
+          "AltRight",
+          "ControlLeft"
+        ],
+        [
+          "ShiftRight",
+          "AltRight",
+          "ControlRight"
+        ]
+      ]
+    ],
+    "ctrl+caps?": [
+      [
+        [
+          "ControlLeft"
+        ],
+        [
+          "ControlRight"
+        ]
+      ]
+    ]
+  },
   "charMap": {
     "0": [
       "E10",

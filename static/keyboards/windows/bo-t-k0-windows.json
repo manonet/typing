@@ -243,101 +243,93 @@
       "altR+shift+caps? ctrl+alt+shift+caps?": " "
     }
   },
-  "levels": [
-    {
-      "to": []
-    },
-    {
-      "shift caps": [
+  "levels": {
+    "to": [],
+    "shift caps": [
+      [
         [
-          [
-            "ShiftLeft"
-          ],
-          [
-            "ShiftRight"
-          ]
+          "ShiftLeft"
         ],
         [
-          [
-            "CapsLock"
-          ]
+          "ShiftRight"
+        ]
+      ],
+      [
+        [
+          "CapsLock"
         ]
       ]
-    },
-    {
-      "altR+caps? ctrl+alt?+caps?": [
+    ],
+    "altR+caps? ctrl+alt?+caps?": [
+      [
         [
-          [
-            "AltRight"
-          ]
+          "AltRight"
+        ]
+      ],
+      [
+        [
+          "ControlLeft"
         ],
         [
-          [
-            "ControlLeft"
-          ],
-          [
-            "ControlRight"
-          ]
+          "ControlRight"
         ]
       ]
-    },
-    {
-      "altR+shift+caps? ctrl+alt+shift+caps?": [
+    ],
+    "altR+shift+caps? ctrl+alt+shift+caps?": [
+      [
         [
-          [
-            "ShiftLeft",
-            "AltRight"
-          ],
-          [
-            "ShiftRight",
-            "AltRight"
-          ]
+          "ShiftLeft",
+          "AltRight"
         ],
         [
-          [
-            "ShiftLeft",
-            "AltLeft",
-            "ControlLeft"
-          ],
-          [
-            "ShiftLeft",
-            "AltLeft",
-            "ControlRight"
-          ],
-          [
-            "ShiftLeft",
-            "AltRight",
-            "ControlLeft"
-          ],
-          [
-            "ShiftLeft",
-            "AltRight",
-            "ControlRight"
-          ],
-          [
-            "ShiftRight",
-            "AltLeft",
-            "ControlLeft"
-          ],
-          [
-            "ShiftRight",
-            "AltLeft",
-            "ControlRight"
-          ],
-          [
-            "ShiftRight",
-            "AltRight",
-            "ControlLeft"
-          ],
-          [
-            "ShiftRight",
-            "AltRight",
-            "ControlRight"
-          ]
+          "ShiftRight",
+          "AltRight"
+        ]
+      ],
+      [
+        [
+          "ShiftLeft",
+          "AltLeft",
+          "ControlLeft"
+        ],
+        [
+          "ShiftLeft",
+          "AltLeft",
+          "ControlRight"
+        ],
+        [
+          "ShiftLeft",
+          "AltRight",
+          "ControlLeft"
+        ],
+        [
+          "ShiftLeft",
+          "AltRight",
+          "ControlRight"
+        ],
+        [
+          "ShiftRight",
+          "AltLeft",
+          "ControlLeft"
+        ],
+        [
+          "ShiftRight",
+          "AltLeft",
+          "ControlRight"
+        ],
+        [
+          "ShiftRight",
+          "AltRight",
+          "ControlLeft"
+        ],
+        [
+          "ShiftRight",
+          "AltRight",
+          "ControlRight"
         ]
       ]
-    }
-  ],
+    ]
+  },
   "charMap": {
     "ཨ": [
       "E00",

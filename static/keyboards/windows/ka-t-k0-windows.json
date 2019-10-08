@@ -224,62 +224,54 @@
       "ctrl+caps?": " "
     }
   },
-  "levels": [
-    {
-      "to": []
-    },
-    {
-      "shift+caps?": [
+  "levels": {
+    "to": [],
+    "shift+caps?": [
+      [
         [
-          [
-            "ShiftLeft"
-          ],
-          [
-            "ShiftRight"
-          ]
-        ]
-      ]
-    },
-    {
-      "altR+caps? ctrl+alt+caps?": [
-        [
-          [
-            "AltRight"
-          ]
+          "ShiftLeft"
         ],
         [
-          [
-            "AltLeft",
-            "ControlLeft"
-          ],
-          [
-            "AltLeft",
-            "ControlRight"
-          ],
-          [
-            "AltRight",
-            "ControlLeft"
-          ],
-          [
-            "AltRight",
-            "ControlRight"
-          ]
+          "ShiftRight"
         ]
       ]
-    },
-    {
-      "ctrl+caps?": [
+    ],
+    "altR+caps? ctrl+alt+caps?": [
+      [
         [
-          [
-            "ControlLeft"
-          ],
-          [
-            "ControlRight"
-          ]
+          "AltRight"
+        ]
+      ],
+      [
+        [
+          "AltLeft",
+          "ControlLeft"
+        ],
+        [
+          "AltLeft",
+          "ControlRight"
+        ],
+        [
+          "AltRight",
+          "ControlLeft"
+        ],
+        [
+          "AltRight",
+          "ControlRight"
         ]
       ]
-    }
-  ],
+    ],
+    "ctrl+caps?": [
+      [
+        [
+          "ControlLeft"
+        ],
+        [
+          "ControlRight"
+        ]
+      ]
+    ]
+  },
   "charMap": {
     "0": [
       "E10",

@@ -1,13 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 const { parseString } = require('xml2js');
+import { Character, ISOKeys, Level, Levels } from '../types/index';
 
 const getKeyArrayFromLevelString = require('./getKeyArrayFromLevelString');
 
 const keyboardFolder = '../../static/keyboards_xml';
 const outputFolder = '../../static/keyboards';
 
-const allLevels = [];
+const allLevels: Level[] = [];
 // transform XML to the desired JSON shape
 const process = (result) => {
   const { keyboard } = result;
@@ -20,9 +21,9 @@ const process = (result) => {
 
   const langCode = keyboard.$.locale.substring(0, 2);
 
-  const allChars = [];
-  const levels = [];
-  const keys = {};
+  const allChars: Character[] = [];
+  const levels: Levels = {};
+  const keys: ISOKeys = {};
   const charMap = {};
 
   let d13Empty = true;
@@ -42,7 +43,7 @@ const process = (result) => {
       "ctrl+caps?"
    ],
    */
-    levels.push({ [level]: getKeyArrayFromLevelString(level) });
+    levels[level] = getKeyArrayFromLevelString(level);
 
     // collect info about possible levels
     if (!allLevels.includes(level)) {
@@ -58,17 +59,17 @@ const process = (result) => {
 
       // ger Enter shape
       switch (iso) {
-      case 'D13':
-        d13Empty = false;
-        break;
-      case 'C12':
-        c12Empty = false;
-        break;
-      case 'C13':
-        c13Empty = false;
-        break;
-      default:
-        break;
+        case 'D13':
+          d13Empty = false;
+          break;
+        case 'C12':
+          c12Empty = false;
+          break;
+        case 'C13':
+          c13Empty = false;
+          break;
+        default:
+          break;
       }
 
       if (keys[iso]) {

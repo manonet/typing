@@ -8,6 +8,8 @@ module.exports = {
     AltRight: ['alt', 'altR', 'opt', 'optR'],
     MetaLeft: ['cmd'],
     MetaRight: ['cmd'],
+    OSLeft: ['cmd'],
+    OSRight: ['cmd'],
   },
   ModifierToKey: {
     shift: ['ShiftLeft', 'ShiftRight'],
@@ -23,6 +25,6 @@ module.exports = {
     opt: ['AltLeft', 'AltRight'],
     optL: 'AltLeft',
     optR: 'AltRight',
-    cmd: ['MetaLeft', 'MetaRight'],
+    cmd: ['MetaLeft', 'MetaRight', 'OSLeft', 'OSRight'],
   },
 };

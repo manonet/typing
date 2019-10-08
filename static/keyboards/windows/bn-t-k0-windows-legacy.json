@@ -213,59 +213,51 @@
       "caps+shift": " "
     }
   },
-  "levels": [
-    {
-      "to": []
-    },
-    {
-      "shift": [
+  "levels": {
+    "to": [],
+    "shift": [
+      [
         [
-          [
-            "ShiftLeft"
-          ],
-          [
-            "ShiftRight"
-          ]
+          "ShiftLeft"
+        ],
+        [
+          "ShiftRight"
         ]
       ]
-    },
-    {
-      "caps+shift": [
+    ],
+    "caps+shift": [
+      [
         [
-          [
-            "ShiftLeft",
-            "CapsLock"
-          ],
-          [
-            "ShiftRight",
-            "CapsLock"
-          ]
+          "ShiftLeft",
+          "CapsLock"
+        ],
+        [
+          "ShiftRight",
+          "CapsLock"
         ]
       ]
-    },
-    {
-      "ctrl+shift+caps?": [
+    ],
+    "ctrl+shift+caps?": [
+      [
         [
-          [
-            "ShiftLeft",
-            "ControlLeft"
-          ],
-          [
-            "ShiftLeft",
-            "ControlRight"
-          ],
-          [
-            "ShiftRight",
-            "ControlLeft"
-          ],
-          [
-            "ShiftRight",
-            "ControlRight"
-          ]
+          "ShiftLeft",
+          "ControlLeft"
+        ],
+        [
+          "ShiftLeft",
+          "ControlRight"
+        ],
+        [
+          "ShiftRight",
+          "ControlLeft"
+        ],
+        [
+          "ShiftRight",
+          "ControlRight"
         ]
       ]
-    }
-  ],
+    ]
+  },
   "charMap": {
     "১": [
       "E01",

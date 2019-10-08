@@ -237,50 +237,44 @@
       "altR+caps? ctrl+alt+caps?": "&#xA0;"
     }
   },
-  "levels": [
-    {
-      "to": []
-    },
-    {
-      "shift+caps?": [
+  "levels": {
+    "to": [],
+    "shift+caps?": [
+      [
         [
-          [
-            "ShiftLeft"
-          ],
-          [
-            "ShiftRight"
-          ]
-        ]
-      ]
-    },
-    {
-      "altR+caps? ctrl+alt+caps?": [
-        [
-          [
-            "AltRight"
-          ]
+          "ShiftLeft"
         ],
         [
-          [
-            "AltLeft",
-            "ControlLeft"
-          ],
-          [
-            "AltLeft",
-            "ControlRight"
-          ],
-          [
-            "AltRight",
-            "ControlLeft"
-          ],
-          [
-            "AltRight",
-            "ControlRight"
-          ]
+          "ShiftRight"
         ]
       ]
-    }
-  ],
+    ],
+    "altR+caps? ctrl+alt+caps?": [
+      [
+        [
+          "AltRight"
+        ]
+      ],
+      [
+        [
+          "AltLeft",
+          "ControlLeft"
+        ],
+        [
+          "AltLeft",
+          "ControlRight"
+        ],
+        [
+          "AltRight",
+          "ControlLeft"
+        ],
+        [
+          "AltRight",
+          "ControlRight"
+        ]
+      ]
+    ]
+  },
   "charMap": {
     "&#x200D;": [
       "E00",
