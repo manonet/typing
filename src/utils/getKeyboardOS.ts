@@ -1,10 +1,10 @@
-import getOS from './getOS';
+import Bowser from 'bowser';
 
 const getKeyboardOS = function() {
-  const OS = getOS();
+  const browser = Bowser.parse(window.navigator.userAgent);
 
-  switch (OS) {
-    case 'Mac':
+  switch (browser.os.name) {
+    case 'MacOS':
       return 'osx';
     case 'iOS':
       return 'osx';
