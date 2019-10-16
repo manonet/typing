@@ -36,7 +36,6 @@ const getLevelFromKeys = function(
     });
   });
 
-  console.log('levels', levels);
   return displayedLevel;
 };
 

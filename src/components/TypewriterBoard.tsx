@@ -16,7 +16,6 @@ type Props = {
   keyboard: [];
   keyboardKeys: [];
   functionKeys: [];
-  setUserInputFocus: (focus: boolean) => {};
   userInputText: (value: string) => {};
 };
 
@@ -34,8 +33,6 @@ const styles = (theme: Theme) => ({
 
 class TypewriterBoard extends React.Component<Props> {
   handleChangeRef = this.handleChange.bind(this);
-  onFocusRef = this.onFocus.bind(this);
-  onBlurRef = this.onBlur.bind(this);
 
   componentDidMount() {
     // set focus on input
@@ -48,16 +45,6 @@ class TypewriterBoard extends React.Component<Props> {
       // @ts-ignore
       userText.focus();
     }
-  }
-
-  onFocus(e: React.ChangeEvent<HTMLTextAreaElement>) {
-    const { setUserInputFocus } = this.props;
-    setUserInputFocus(true);
-  }
-
-  onBlur(e: React.ChangeEvent<HTMLTextAreaElement>) {
-    const { setUserInputFocus } = this.props;
-    setUserInputFocus(false);
   }
 
   handleChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
@@ -87,8 +74,6 @@ class TypewriterBoard extends React.Component<Props> {
           signToWrite={signToWrite}
           writtenSign={writtenSign}
           onChange={this.handleChangeRef}
-          onFocus={this.onFocusRef}
-          onBlur={this.onBlurRef}
           className={SAMPLE_BOARD_ID}
         />
         <Keyboard

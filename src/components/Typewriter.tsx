@@ -6,12 +6,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { injectIntl, Link } from 'gatsby-plugin-intl';
 import mem from 'mem';
 
-import {
-  focusUserInput,
-  FocusUserInputAction,
-  setSampleText,
-  SetSampleTextAction,
-} from '../actions';
+import { setSampleText, SetSampleTextAction } from '../actions';
 import { State as ReduxState } from '../reducers';
 
 import getLevelFromKeys from '../utils/getLevelFromKeys';
@@ -38,7 +33,6 @@ const memoizedGetLevelFromKeys = mem(getLevelFromKeys);
 type Props = {
   sampleText: string;
   dispatchSetSampleText: (sampleText: string) => {};
-  dispatchUserInputFocused: (isUserInputFocused: boolean) => {};
 };
 
 type State = {
@@ -94,7 +88,6 @@ class Typewriter extends React.Component<Props, State> {
     this.handleKeydown = this.handleKeydown.bind(this);
     this.handleKeyup = this.handleKeyup.bind(this);
     this.userInputText = this.userInputText.bind(this);
-    this.setUserInputFocus = this.setUserInputFocus.bind(this);
     this.startNewLesson = this.startNewLesson.bind(this);
     this.handleModalClose = this.handleModalClose.bind(this);
     this.handleError = this.handleError.bind(this);
@@ -137,19 +130,6 @@ class Typewriter extends React.Component<Props, State> {
           this.startNewLesson("Lí|Ä¶ćČ et's\nTyyyype Something (@)...")
         );
       });
-  }
-
-  setUserInputFocus(isUserInputFocused: boolean) {
-    const { dispatchUserInputFocused } = this.props;
-
-    dispatchUserInputFocused(isUserInputFocused);
-    if (isUserInputFocused) {
-      document.addEventListener('keydown', this.handleKeydown, false);
-      document.addEventListener('keyup', this.handleKeyup, false);
-    } else {
-      document.removeEventListener('keydown', this.handleKeydown, false);
-      document.removeEventListener('keyup', this.handleKeyup, false);
-    }
   }
 
   markCharOnBoard(keyboard, functionKeys, keyInfo, colorProp, color) {
@@ -540,7 +520,16 @@ class Typewriter extends React.Component<Props, State> {
       characterNotFound,
     } = this.state;
 
-    const { intl, isModalOpen } = this.props;
+    const { intl, isModalOpen, isUserInputFocused } = this.props;
+
+    // TODO - this check shall only happen on focus change!
+    if (isUserInputFocused) {
+      document.addEventListener('keydown', this.handleKeydown, false);
+      document.addEventListener('keyup', this.handleKeyup, false);
+    } else {
+      document.removeEventListener('keydown', this.handleKeydown, false);
+      document.removeEventListener('keyup', this.handleKeyup, false);
+    }
 
     return (
       <>
@@ -550,7 +539,6 @@ class Typewriter extends React.Component<Props, State> {
           signToWrite={signToWrite}
           writtenSign={writtenSign}
           userInputText={this.userInputText}
-          setUserInputFocus={this.setUserInputFocus}
           displayedLevel={displayedLevel}
           keyboard={keyboard}
           functionKeys={functionKeys}
@@ -581,14 +569,8 @@ const mapStateToProps = (state: ReduxState) => {
 };
 
 const mapDispatchToProps = (
-  dispatch: ThunkDispatch<
-    ReduxState,
-    undefined,
-    FocusUserInputAction | SetSampleTextAction
-  >
+  dispatch: ThunkDispatch<ReduxState, undefined, SetSampleTextAction>
 ) => ({
-  dispatchUserInputFocused: (isUserInputFocused: boolean) =>
-    dispatch(focusUserInput(isUserInputFocused)),
   dispatchSetSampleText: (sampleText: string) =>
     dispatch(setSampleText(sampleText)),
 });

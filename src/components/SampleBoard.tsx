@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import { ThunkDispatch } from 'redux-thunk';
+import { focusUserInput, FocusUserInputAction } from '../actions';
 import { State as ReduxState } from '../reducers';
 import SampleBoardChar from './SampleBoardChar';
 
@@ -16,8 +18,7 @@ type Props = {
   userText: string;
   isUserInputFocused: boolean;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  onFocus: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  onBlur: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  dispatchUserInputFocused: (isUserInputFocused: boolean) => {};
 };
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -70,8 +71,7 @@ function SampleBoard(props: Props) {
     userText,
     isUserInputFocused,
     onChange,
-    onFocus,
-    onBlur,
+    dispatchUserInputFocused,
   } = props;
   const classes = useStyles();
 
@@ -105,13 +105,19 @@ function SampleBoard(props: Props) {
           id={SAMPLE_BOARD_ID}
           value={userText}
           onChange={onChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
+          onFocus={() => dispatchUserInputFocused(true)}
+          onBlur={() => dispatchUserInputFocused(false)}
         />
       </div>
     </div>
   );
 }
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<ReduxState, undefined, FocusUserInputAction>
+) => ({
+  dispatchUserInputFocused: (isUserInputFocused: boolean) =>
+    dispatch(focusUserInput(isUserInputFocused)),
+});
 
 const mapStateToProps = (state: ReduxState) => {
   const { focusUserInput, setSampleText } = state;
@@ -123,5 +129,5 @@ const mapStateToProps = (state: ReduxState) => {
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(SampleBoard);
