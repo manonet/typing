@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import { withStyles, Theme } from '@material-ui/core/styles';
 
-import SampleBoard, { SAMPLE_BOARD_ID } from './SampleBoard';
+import SampleBoard from './SampleBoard';
 import Keyboard from './keyboard/Keyboard';
 
 type Props = {
@@ -32,18 +32,18 @@ const styles = (theme: Theme) => ({
 });
 
 class TypewriterBoard extends React.Component<Props> {
+  public textAreaRef: React.RefObject<HTMLTextAreaElement>;
+
+  constructor(props: any) {
+    super(props);
+    this.textAreaRef = React.createRef();
+  }
+
   handleChangeRef = this.handleChange.bind(this);
 
   componentDidMount() {
-    // set focus on input
-    const userText = document.querySelector(`#${SAMPLE_BOARD_ID}`);
-    // console.log(userText)
-    if (userText) {
-      // TODO - change it to React.forwardRef or something
-      // https://reactjs.org/docs/forwarding-refs.html
-      // https://stackoverflow.com/questions/40080742/how-to-get-refs-from-another-component-in-react-js
-      // @ts-ignore
-      userText.focus();
+    if (this.textAreaRef.current) {
+      this.textAreaRef.current.focus();
     }
   }
 
@@ -69,12 +69,12 @@ class TypewriterBoard extends React.Component<Props> {
     return (
       <div className={classNames(classes.root, className)}>
         <SampleBoard
+          ref={this.textAreaRef}
           userText={userText}
           cursorAt={cursorAt}
           signToWrite={signToWrite}
           writtenSign={writtenSign}
           onChange={this.handleChangeRef}
-          className={SAMPLE_BOARD_ID}
         />
         <Keyboard
           className={classes.keyboard}

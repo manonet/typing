@@ -7,8 +7,6 @@ import { focusUserInput, FocusUserInputAction } from '../actions';
 import { State as ReduxState } from '../reducers';
 import SampleBoardChar from './SampleBoardChar';
 
-export const SAMPLE_BOARD_ID = 'userText';
-
 type Props = {
   className?: string;
   cursorAt: number;
@@ -46,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
     sampleBoardHint: {
       margin: 0,
     },
-    userText: {
+    userInput: {
       position: 'absolute',
       top: 0,
       left: 0,
@@ -61,57 +59,60 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-function SampleBoard(props: Props) {
-  const {
-    className,
-    cursorAt,
-    sampleText,
-    signToWrite,
-    writtenSign,
-    userText,
-    isUserInputFocused,
-    onChange,
-    dispatchUserInputFocused,
-  } = props;
-  const classes = useStyles();
+const SampleBoard = React.forwardRef(
+  (props: Props, ref?: React.Ref<HTMLTextAreaElement>) => {
+    const {
+      className,
+      cursorAt,
+      sampleText,
+      signToWrite,
+      writtenSign,
+      userText,
+      isUserInputFocused,
+      onChange,
+      dispatchUserInputFocused,
+    } = props;
+    const classes = useStyles();
 
-  const sampleArray = sampleText.split('');
+    const sampleArray = sampleText.split('');
 
-  return (
-    <div className={classNames(classes.sample, className)}>
-      <p className={classes.sampleBoardHint}>
-        Requested: {signToWrite}, written: {writtenSign}
-      </p>
+    return (
+      <div className={classNames(classes.sample, className)}>
+        <p className={classes.sampleBoardHint}>
+          Requested: {signToWrite}, written: {writtenSign}
+        </p>
 
-      <div className={classes.wrapper}>
-        <kbd
-          className={classNames(classes.sampleBoard, {
-            [classes.sampleBoardFocus]: isUserInputFocused,
-          })}
-        >
-          {sampleArray.map((char, index) => (
-            <SampleBoardChar
-              key={index}
-              index={index}
-              cursorAt={cursorAt}
-              userText={userText}
-              char={char}
-            />
-          ))}
-        </kbd>
+        <div className={classes.wrapper}>
+          <kbd
+            className={classNames(classes.sampleBoard, {
+              [classes.sampleBoardFocus]: isUserInputFocused,
+            })}
+          >
+            {sampleArray.map((char, index) => (
+              <SampleBoardChar
+                key={index}
+                index={index}
+                cursorAt={cursorAt}
+                userText={userText}
+                char={char}
+              />
+            ))}
+          </kbd>
 
-        <textarea
-          className={classes.userText}
-          id={SAMPLE_BOARD_ID}
-          value={userText}
-          onChange={onChange}
-          onFocus={() => dispatchUserInputFocused(true)}
-          onBlur={() => dispatchUserInputFocused(false)}
-        />
+          <textarea
+            ref={ref}
+            className={classes.userInput}
+            value={userText}
+            onChange={onChange}
+            onFocus={() => dispatchUserInputFocused(true)}
+            onBlur={() => dispatchUserInputFocused(false)}
+          />
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
+);
+
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<ReduxState, undefined, FocusUserInputAction>
 ) => ({
@@ -129,5 +130,7 @@ const mapStateToProps = (state: ReduxState) => {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
+  null,
+  { forwardRef: true }
 )(SampleBoard);
