@@ -484,12 +484,28 @@
           "MetaRight"
         ],
         [
+          "ShiftLeft",
+          "OSLeft"
+        ],
+        [
+          "ShiftLeft",
+          "OSRight"
+        ],
+        [
           "ShiftRight",
           "MetaLeft"
         ],
         [
           "ShiftRight",
           "MetaRight"
+        ],
+        [
+          "ShiftRight",
+          "OSLeft"
+        ],
+        [
+          "ShiftRight",
+          "OSRight"
         ]
       ]
     ],
@@ -527,6 +543,12 @@
         ],
         [
           "MetaRight"
+        ],
+        [
+          "OSLeft"
+        ],
+        [
+          "OSRight"
         ]
       ]
     ]

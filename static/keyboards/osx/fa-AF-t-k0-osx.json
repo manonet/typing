@@ -474,6 +474,12 @@
         ],
         [
           "MetaRight"
+        ],
+        [
+          "OSLeft"
+        ],
+        [
+          "OSRight"
         ]
       ],
       [
@@ -486,12 +492,28 @@
           "MetaRight"
         ],
         [
+          "AltLeft",
+          "OSLeft"
+        ],
+        [
+          "AltLeft",
+          "OSRight"
+        ],
+        [
           "AltRight",
           "MetaLeft"
         ],
         [
           "AltRight",
           "MetaRight"
+        ],
+        [
+          "AltRight",
+          "OSLeft"
+        ],
+        [
+          "AltRight",
+          "OSRight"
         ]
       ]
     ],
@@ -506,12 +528,28 @@
           "MetaRight"
         ],
         [
+          "ShiftLeft",
+          "OSLeft"
+        ],
+        [
+          "ShiftLeft",
+          "OSRight"
+        ],
+        [
           "ShiftRight",
           "MetaLeft"
         ],
         [
           "ShiftRight",
           "MetaRight"
+        ],
+        [
+          "ShiftRight",
+          "OSLeft"
+        ],
+        [
+          "ShiftRight",
+          "OSRight"
         ]
       ]
     ]

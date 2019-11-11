@@ -616,6 +616,14 @@
         [
           "MetaRight",
           "AltRight"
+        ],
+        [
+          "OSLeft",
+          "AltRight"
+        ],
+        [
+          "OSRight",
+          "AltRight"
         ]
       ]
     ],
@@ -668,6 +676,16 @@
           "AltRight"
         ],
         [
+          "ShiftLeft",
+          "OSLeft",
+          "AltRight"
+        ],
+        [
+          "ShiftLeft",
+          "OSRight",
+          "AltRight"
+        ],
+        [
           "ShiftRight",
           "MetaLeft",
           "AltRight"
@@ -675,6 +693,16 @@
         [
           "ShiftRight",
           "MetaRight",
+          "AltRight"
+        ],
+        [
+          "ShiftRight",
+          "OSLeft",
+          "AltRight"
+        ],
+        [
+          "ShiftRight",
+          "OSRight",
           "AltRight"
         ]
       ],
@@ -690,6 +718,16 @@
           "ShiftRight"
         ],
         [
+          "AltLeft",
+          "OSLeft",
+          "ShiftRight"
+        ],
+        [
+          "AltLeft",
+          "OSRight",
+          "ShiftRight"
+        ],
+        [
           "AltRight",
           "MetaLeft",
           "ShiftRight"
@@ -697,6 +735,16 @@
         [
           "AltRight",
           "MetaRight",
+          "ShiftRight"
+        ],
+        [
+          "AltRight",
+          "OSLeft",
+          "ShiftRight"
+        ],
+        [
+          "AltRight",
+          "OSRight",
           "ShiftRight"
         ]
       ]
@@ -866,6 +914,16 @@
           "ControlRight"
         ],
         [
+          "ShiftLeft",
+          "OSLeft",
+          "ControlRight"
+        ],
+        [
+          "ShiftLeft",
+          "OSRight",
+          "ControlRight"
+        ],
+        [
           "ShiftRight",
           "MetaLeft",
           "ControlRight"
@@ -873,6 +931,16 @@
         [
           "ShiftRight",
           "MetaRight",
+          "ControlRight"
+        ],
+        [
+          "ShiftRight",
+          "OSLeft",
+          "ControlRight"
+        ],
+        [
+          "ShiftRight",
+          "OSRight",
           "ControlRight"
         ]
       ],
@@ -888,6 +956,16 @@
           "ControlRight"
         ],
         [
+          "ShiftLeft",
+          "OSLeft",
+          "ControlRight"
+        ],
+        [
+          "ShiftLeft",
+          "OSRight",
+          "ControlRight"
+        ],
+        [
           "ShiftRight",
           "MetaLeft",
           "ControlRight"
@@ -895,6 +973,16 @@
         [
           "ShiftRight",
           "MetaRight",
+          "ControlRight"
+        ],
+        [
+          "ShiftRight",
+          "OSLeft",
+          "ControlRight"
+        ],
+        [
+          "ShiftRight",
+          "OSRight",
           "ControlRight"
         ]
       ],
@@ -916,6 +1004,22 @@
           "CapsLock"
         ],
         [
+          "ShiftLeft",
+          "OSLeft",
+          "ControlLeft",
+          "AltLeft",
+          "AltRight",
+          "CapsLock"
+        ],
+        [
+          "ShiftLeft",
+          "OSRight",
+          "ControlLeft",
+          "AltLeft",
+          "AltRight",
+          "CapsLock"
+        ],
+        [
           "ShiftRight",
           "MetaLeft",
           "ControlLeft",
@@ -926,6 +1030,22 @@
         [
           "ShiftRight",
           "MetaRight",
+          "ControlLeft",
+          "AltLeft",
+          "AltRight",
+          "CapsLock"
+        ],
+        [
+          "ShiftRight",
+          "OSLeft",
+          "ControlLeft",
+          "AltLeft",
+          "AltRight",
+          "CapsLock"
+        ],
+        [
+          "ShiftRight",
+          "OSRight",
           "ControlLeft",
           "AltLeft",
           "AltRight",
@@ -950,6 +1070,22 @@
           "ShiftRight"
         ],
         [
+          "AltLeft",
+          "OSLeft",
+          "ControlLeft",
+          "CapsLock",
+          "ShiftLeft",
+          "ShiftRight"
+        ],
+        [
+          "AltLeft",
+          "OSRight",
+          "ControlLeft",
+          "CapsLock",
+          "ShiftLeft",
+          "ShiftRight"
+        ],
+        [
           "AltRight",
           "MetaLeft",
           "ControlLeft",
@@ -960,6 +1096,22 @@
         [
           "AltRight",
           "MetaRight",
+          "ControlLeft",
+          "CapsLock",
+          "ShiftLeft",
+          "ShiftRight"
+        ],
+        [
+          "AltRight",
+          "OSLeft",
+          "ControlLeft",
+          "CapsLock",
+          "ShiftLeft",
+          "ShiftRight"
+        ],
+        [
+          "AltRight",
+          "OSRight",
           "ControlLeft",
           "CapsLock",
           "ShiftLeft",
@@ -982,6 +1134,20 @@
           "CapsLock"
         ],
         [
+          "ShiftLeft",
+          "OSLeft",
+          "ControlLeft",
+          "ControlRight",
+          "CapsLock"
+        ],
+        [
+          "ShiftLeft",
+          "OSRight",
+          "ControlLeft",
+          "ControlRight",
+          "CapsLock"
+        ],
+        [
           "ShiftRight",
           "MetaLeft",
           "ControlLeft",
@@ -991,6 +1157,20 @@
         [
           "ShiftRight",
           "MetaRight",
+          "ControlLeft",
+          "ControlRight",
+          "CapsLock"
+        ],
+        [
+          "ShiftRight",
+          "OSLeft",
+          "ControlLeft",
+          "ControlRight",
+          "CapsLock"
+        ],
+        [
+          "ShiftRight",
+          "OSRight",
           "ControlLeft",
           "ControlRight",
           "CapsLock"
@@ -1012,6 +1192,20 @@
           "CapsLock"
         ],
         [
+          "AltLeft",
+          "OSLeft",
+          "ControlLeft",
+          "ControlRight",
+          "CapsLock"
+        ],
+        [
+          "AltLeft",
+          "OSRight",
+          "ControlLeft",
+          "ControlRight",
+          "CapsLock"
+        ],
+        [
           "AltRight",
           "MetaLeft",
           "ControlLeft",
@@ -1021,6 +1215,20 @@
         [
           "AltRight",
           "MetaRight",
+          "ControlLeft",
+          "ControlRight",
+          "CapsLock"
+        ],
+        [
+          "AltRight",
+          "OSLeft",
+          "ControlLeft",
+          "ControlRight",
+          "CapsLock"
+        ],
+        [
+          "AltRight",
+          "OSRight",
           "ControlLeft",
           "ControlRight",
           "CapsLock"
@@ -1038,6 +1246,16 @@
           "ShiftRight"
         ],
         [
+          "ControlLeft",
+          "OSLeft",
+          "ShiftRight"
+        ],
+        [
+          "ControlLeft",
+          "OSRight",
+          "ShiftRight"
+        ],
+        [
           "ControlRight",
           "MetaLeft",
           "ShiftRight"
@@ -1045,6 +1263,16 @@
         [
           "ControlRight",
           "MetaRight",
+          "ShiftRight"
+        ],
+        [
+          "ControlRight",
+          "OSLeft",
+          "ShiftRight"
+        ],
+        [
+          "ControlRight",
+          "OSRight",
           "ShiftRight"
         ]
       ]
@@ -1062,6 +1290,12 @@
         ],
         [
           "MetaRight"
+        ],
+        [
+          "OSLeft"
+        ],
+        [
+          "OSRight"
         ]
       ],
       [
@@ -1071,6 +1305,14 @@
         ],
         [
           "MetaRight",
+          "AltLeft"
+        ],
+        [
+          "OSLeft",
+          "AltLeft"
+        ],
+        [
+          "OSRight",
           "AltLeft"
         ]
       ],
@@ -1082,6 +1324,16 @@
         ],
         [
           "MetaRight",
+          "ControlLeft",
+          "ShiftLeft"
+        ],
+        [
+          "OSLeft",
+          "ControlLeft",
+          "ShiftLeft"
+        ],
+        [
+          "OSRight",
           "ControlLeft",
           "ShiftLeft"
         ]

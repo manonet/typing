@@ -1,14 +1,19 @@
 const fs = require('fs');
 const path = require('path');
 const { parseString } = require('xml2js');
-import { Character, ISOKeys, Level, Levels } from '../types/index';
 
 const getKeyArrayFromLevelString = require('./getKeyArrayFromLevelString');
 
 const keyboardFolder = '../../static/keyboards_xml';
 const outputFolder = '../../static/keyboards';
 
-const allLevels: Level[] = [];
+const allLevels = [];
+const allCharacters = [];
+const allKeyboards = [];
+const allKeyboardNames = [];
+const allKeyboardLanguages = [];
+const allDeadKeys = [];
+
 // transform XML to the desired JSON shape
 const process = (result) => {
   const { keyboard } = result;
@@ -18,12 +23,17 @@ const process = (result) => {
   const name = keyboard.names[0].name[0].$.value;
 
   console.info(name);
+  allKeyboards.push(name);
 
   const langCode = keyboard.$.locale.substring(0, 2);
 
-  const allChars: Character[] = [];
-  const levels: Levels = {};
-  const keys: ISOKeys = {};
+  if (!allKeyboardLanguages.includes(langCode)) {
+    allKeyboardLanguages.push(langCode);
+  }
+
+  const allChars = [];
+  const levels = {};
+  const keys = {};
   const charMap = {};
 
   let d13Empty = true;
@@ -88,8 +98,13 @@ const process = (result) => {
         keys[iso] = { [level]: to };
       }
 
+      // for the keyboard
       if (!allChars.includes(to)) {
         allChars.push(to);
+      }
+      // for the appStatistics
+      if (!allCharacters.includes(to)) {
+        allCharacters.push(to);
       }
 
       if (!charMap[to]) {
@@ -136,12 +151,29 @@ const process = (result) => {
   if (transforms && transforms[0] && transforms[0].transform) {
     output.deadKeys = {};
     transforms[0].transform.map((transform) => {
-      output.deadKeys[transform.$.to] = transform.$.from.split('');
-      output.allChars.push(transform.$.to);
+      const deadKey = transform.$.to;
+      output.deadKeys[deadKey] = transform.$.from.split('');
+
+      // save appStatistics
+      if (!output.allChars.includes(deadKey)) {
+        if (!allDeadKeys.includes(deadKey)) {
+          allDeadKeys.push(deadKey);
+        }
+      }
+      output.allChars.push(deadKey);
     });
   }
 
   return output;
+};
+
+const makeStatistic = () => {
+  return {
+    allKeyboards: allKeyboards.length,
+    allKeyboardLanguages: allKeyboardLanguages.length,
+    allCharacters: allCharacters.length,
+    allDeadKeys: allDeadKeys.length,
+  };
 };
 
 const convert = (files, dirIn, dirOut) => {
@@ -169,6 +201,13 @@ const convert = (files, dirIn, dirOut) => {
           fs.writeFile(
             `${outputFolder}/allLevels.json`,
             JSON.stringify(allLevels, null, 2),
+            (error) => {
+              if (error) throw error;
+            }
+          );
+          fs.writeFile(
+            `${outputFolder}/appStatistics.json`,
+            JSON.stringify(makeStatistic(), null, 2),
             (error) => {
               if (error) throw error;
             }
