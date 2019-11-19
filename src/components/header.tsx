@@ -1,12 +1,7 @@
 import React from 'react';
-import Link from '@material-ui/core/Link';
-import { withPrefix } from 'gatsby-link';
-import {
-  injectIntl,
-  FormattedMessage,
-  InjectedIntlProps,
-  // @ts-ignore
-} from 'gatsby-plugin-intl';
+import Link from './Link';
+// @ts-ignore
+import { FormattedMessage } from 'gatsby-plugin-intl';
 import Typography from '@material-ui/core/Typography';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -18,7 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 type Props = {
   siteTitle: string;
-} & InjectedIntlProps;
+};
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,8 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 function Header(props: Props) {
-  const { siteTitle, intl } = props;
-  const { locale } = intl;
+  const { siteTitle } = props;
   const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -63,27 +57,15 @@ function Header(props: Props) {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem
-            onClick={handleClose}
-            component={Link}
-            href={withPrefix(`/${locale}/`)}
-          >
+          <MenuItem onClick={handleClose} component={Link} to="/">
             <FormattedMessage id="site.navigation.home" />
           </MenuItem>
 
-          <MenuItem
-            onClick={handleClose}
-            component={Link}
-            href={withPrefix(`/${locale}/typewriter/`)}
-          >
+          <MenuItem onClick={handleClose} component={Link} to="/typewriter/">
             <FormattedMessage id="site.navigation.program" />
           </MenuItem>
 
-          <MenuItem
-            onClick={handleClose}
-            component={Link}
-            href={withPrefix(`/${locale}/statistics`)}
-          >
+          <MenuItem onClick={handleClose} component={Link} to="/statistics/">
             <FormattedMessage id="site.navigation.statistics" />
           </MenuItem>
         </Menu>
@@ -95,4 +77,4 @@ function Header(props: Props) {
   );
 }
 
-export default injectIntl(Header);
+export default Header;

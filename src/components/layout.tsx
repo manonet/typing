@@ -9,20 +9,16 @@ import React, { ReactNodeArray } from 'react';
 import classNames from 'classnames';
 // @ts-ignore
 import { injectIntl, InjectedIntlProps } from 'gatsby-plugin-intl';
-import { connect } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
 import { StaticQuery, graphql } from 'gatsby';
 import Grid from '@material-ui/core/Grid';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import muiTheme from '../theme';
 
 import Header from './header';
-import './layout.css';
 import 'typeface-roboto';
 import LanguageSwitcher from './LanguageSwitcher';
-
-import { State as ReduxState } from '../reducers';
 
 type Props = {
   children: ReactNodeArray;
@@ -67,6 +63,7 @@ function Layout(props: Props) {
       `}
       render={(data) => (
         <ThemeProvider theme={muiTheme}>
+          <CssBaseline />
           <div className={LayoutClasses}>
             <Header siteTitle={intl.formatMessage({ id: 'site.title' })} />
             <div className={classes.content}>

@@ -1,7 +1,9 @@
 import React from 'react';
 // @ts-ignore
-import { injectIntl, Link } from 'gatsby-plugin-intl';
+import { injectIntl } from 'gatsby-plugin-intl';
 import { IntlShape } from 'react-intl';
+import Typography from '@material-ui/core/Typography';
+import Link from '../components/Link';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -13,15 +15,17 @@ type Props = {
 const IndexPage = ({ intl }: Props) => (
   <Layout>
     <SEO lang={intl.locale} title="Manonet" />
-    <h1>HomePage</h1>
+    <Typography>
+      <h1>HomePage</h1>
 
-    <h3>Under development</h3>
+      <h3>Under development</h3>
 
-    <p>
-      You can find more info in{' '}
-      <a href="https://github.com/manonet/typing/">Github repository</a>
-    </p>
-    <Link to="/typewriter/">Go to the Typewriter</Link>
+      <p>
+        You can find more info in{' '}
+        <Link href="https://github.com/manonet/typing/">Github repository</Link>
+      </p>
+      <Link to="/typewriter/">Go to the Typewriter</Link>
+    </Typography>
   </Layout>
 );
 
