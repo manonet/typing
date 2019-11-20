@@ -6,6 +6,7 @@ const getKeyArrayFromLevelString = require('./getKeyArrayFromLevelString');
 
 const keyboardFolder = '../../static/keyboards_xml';
 const outputFolder = '../../static/keyboards';
+const dataFolder = '../data';
 
 const allLevels = [];
 const allCharacters = [];
@@ -206,7 +207,7 @@ const convert = (files, dirIn, dirOut) => {
             }
           );
           fs.writeFile(
-            `${outputFolder}/appStatistics.json`,
+            `${dataFolder}/appStatistics.json`,
             JSON.stringify(makeStatistic(), null, 2),
             (error) => {
               if (error) throw error;

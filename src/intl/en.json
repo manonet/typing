@@ -11,5 +11,9 @@
   "404.page.desc": "The page you are looking for could not be found",
   "error.title": "Error",
   "error.not.found.character.on.keyboard": "Could not find character on the keyboard",
-  "modal.ok": "Mkay"
+  "modal.ok": "Mkay",
+  "appStatistics.allKeyboards": "different keyboard layouts",
+  "appStatistics.allKeyboardLanguages": "available keyboard languages",
+  "appStatistics.allCharacters": "supported characters",
+  "appStatistics.allDeadKeys": "dead, hidden keys"
 }

@@ -4,6 +4,7 @@ import { injectIntl } from 'gatsby-plugin-intl';
 import { IntlShape } from 'react-intl';
 import Typography from '@material-ui/core/Typography';
 import Link from '../components/Link';
+import AppStatiatics from '../components/AppStatiatics';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -25,6 +26,8 @@ const IndexPage = ({ intl }: Props) => (
         <Link href="https://github.com/manonet/typing/">Github repository</Link>
       </p>
       <Link to="/typewriter/">Go to the Typewriter</Link>
+
+      <AppStatiatics />
     </Typography>
   </Layout>
 );

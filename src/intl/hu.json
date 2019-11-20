@@ -11,5 +11,9 @@
   "404.page.desc": "A keresett oldal nem található",
   "error.title": "Hiba",
   "error.not.found.character.on.keyboard": "Ez a karakter nem található a kiválasztott billentyűzeten.\nKérlek, válassz a lecke szövegének megfelelő billentyűzetet",
-  "modal.ok": "Értem"
+  "modal.ok": "Értem",
+  "appStatistics.allKeyboards": "különböző billentyűzet-kiosztás",
+  "appStatistics.allKeyboardLanguages": "nyelvű elérhető billenyűzet",
+  "appStatistics.allCharacters": "támogatott, megtanulható karakter",
+  "appStatistics.allDeadKeys": "rejtett karakter"
 }
