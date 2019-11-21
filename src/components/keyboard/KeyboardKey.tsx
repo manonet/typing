@@ -138,7 +138,7 @@ function KeyboardKey(props: KeyboardKeyProps) {
   let width = keyWidth - keyPaddingX * 2;
   const height = keyHeight - keyPaddingY * 2;
 
-  let translate = 'none';
+  let translate = 'translate(0, 0)';
 
   const keyClass = classNames('key', iso, classes.key);
   const keyBgClass = classNames(classes.keyBg, {

@@ -1,12 +1,6 @@
 {
   "breakpoints": {
-    "keys": [
-      "xs",
-      "sm",
-      "md",
-      "lg",
-      "xl"
-    ],
+    "keys": ["xs", "sm", "md", "lg", "xl"],
     "values": {
       "xs": 0,
       "sm": 600,
@@ -388,9 +382,6 @@
   },
   "shape": {
     "borderRadius": 4
-  },
-  "spacing": {
-    "unit": 8
   },
   "transitions": {
     "easing": {

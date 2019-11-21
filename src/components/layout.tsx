@@ -67,11 +67,7 @@ function Layout(props: Props) {
           <div className={LayoutClasses}>
             <Header siteTitle={intl.formatMessage({ id: 'site.title' })} />
             <div className={classes.content}>
-              <Grid container spacing={10}>
-                <Grid item xs={12}>
-                  <main>{children}</main>
-                </Grid>
-              </Grid>
+              <main>{children}</main>
             </div>
             <footer>
               <LanguageSwitcher />

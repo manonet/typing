@@ -75,14 +75,14 @@ function PricingPage() {
 
   return (
     <Layout>
-      <Typography variant="h2" gutterBottom>
+      <Typography variant="h2">
         <FormattedMessage id="pricing.page.title" />
       </Typography>
       <div className={classes.pricing}>
         <div className={classes.card}>
-          <h3 className={classes.title}>
+          <div className={classes.title}>
             <FormattedMessage id="pricing.licence.mini" />
-          </h3>
+          </div>
           <div className={classes.cardPrice}>
             <FormattedMessage
               id="pricing.pricePerMonth"
@@ -119,9 +119,9 @@ function PricingPage() {
         </div>
 
         <div className={classes.card}>
-          <h3 className={classes.title}>
+          <div className={classes.title}>
             <FormattedMessage id="pricing.licence.small" />
-          </h3>
+          </div>
           <div className={classes.cardPrice}>
             <FormattedMessage
               id="pricing.pricePerMonth"
@@ -176,9 +176,9 @@ function PricingPage() {
         </div>
 
         <div className={classes.card}>
-          <h3 className={classes.title}>
+          <div className={classes.title}>
             <FormattedMessage id="pricing.licence.medium" />
-          </h3>
+          </div>
           <div className={classes.cardPrice}>
             <FormattedMessage
               id="pricing.pricePerMonth"
@@ -233,9 +233,9 @@ function PricingPage() {
         </div>
 
         <div className={classes.card}>
-          <h3 className={classes.title}>
+          <div className={classes.title}>
             <FormattedMessage id="pricing.licence.large" />
-          </h3>
+          </div>
           <div className={classes.cardPrice}>
             <FormattedMessage
               id="pricing.pricePerMonth"
