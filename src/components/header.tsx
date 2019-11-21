@@ -68,6 +68,10 @@ function Header(props: Props) {
           <MenuItem onClick={handleClose} component={Link} to="/statistics/">
             <FormattedMessage id="site.navigation.statistics" />
           </MenuItem>
+
+          <MenuItem onClick={handleClose} component={Link} to="/pricing/">
+            <FormattedMessage id="site.navigation.pricing" />
+          </MenuItem>
         </Menu>
         <Typography variant="h6" color="inherit">
           {siteTitle}
