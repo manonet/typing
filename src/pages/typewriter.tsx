@@ -3,7 +3,7 @@ import React from 'react';
 import { injectIntl } from 'gatsby-plugin-intl';
 import { IntlShape } from 'react-intl';
 
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import Typewriter from '../components/Typewriter';
 

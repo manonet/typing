@@ -1,9 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
-import { withStyles, Theme } from '@material-ui/core/styles';
 
 import SampleBoard from './SampleBoard';
 import Keyboard from './keyboard/Keyboard';
+
+import './TypewriterBoard.scss';
 
 type Props = {
   classes?: Record<keyof typeof styles, string>;
@@ -18,18 +19,6 @@ type Props = {
   functionKeys: [];
   userInputText: (value: string) => {};
 };
-
-const styles = (theme: Theme) => ({
-  root: {
-    position: 'relative',
-  },
-  keyboard: {
-    maxHeight: 'calc(100vh - 160px)',
-    minHeight: 200,
-    display: 'flex',
-    flexDirection: 'column',
-  },
-});
 
 class TypewriterBoard extends React.Component<Props> {
   public textAreaRef: React.RefObject<HTMLTextAreaElement>;
@@ -67,7 +56,7 @@ class TypewriterBoard extends React.Component<Props> {
     } = this.props;
 
     return (
-      <div className={classNames(classes.root, className)}>
+      <div className={classNames('TypewriterBoard', className)}>
         <SampleBoard
           ref={this.textAreaRef}
           userText={userText}
@@ -77,7 +66,7 @@ class TypewriterBoard extends React.Component<Props> {
           onChange={this.handleChangeRef}
         />
         <Keyboard
-          className={classes.keyboard}
+          className={'TypewriterBoard__keyboard'}
           keyboard={keyboard}
           functionKeys={functionKeys}
           keyboardKeys={keyboardKeys}
@@ -88,4 +77,4 @@ class TypewriterBoard extends React.Component<Props> {
   }
 }
 
-export default withStyles(styles)(TypewriterBoard);
+export default TypewriterBoard;

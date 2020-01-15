@@ -1,65 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
-import {
-  createStyles,
-  makeStyles,
-  Theme,
-  withTheme,
-} from '@material-ui/core/styles';
+import variables from '../../theme/variables';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    key: {
-      cursor: 'default',
-    },
-    labels: {
-      // also called keytop
-      // fill: theme.palette.grey[700],
-      fontSize: 36,
-    },
-    labelTransform: {
-      display: 'none',
-    },
-    label: {
-      fill: theme.palette.grey[400],
-    },
-    labelToWrite: {
-      fill: theme.palette.primary.contrastText,
-    },
-    keyBg: {
-      stroke: theme.palette.grey[500],
-      strokeWidth: 5,
-      fill: theme.palette.grey[500],
-    },
-    alphabet: {
-      // fill: orange[100],
-    },
-    toWrite: {
-      fill: theme.palette.primary.main, // theme.palette.primary.main,
-    },
-    locked: {
-      fill: theme.palette.green[300],
-    },
-    toPressFirst: {
-      fill: theme.palette.primary.main,
-    },
-    toPressSecond: {
-      fill: theme.palette.secondary.main,
-    },
-    pressed: {
-      fill: theme.palette.teal[700],
-    },
-    missed: {
-      stroke: theme.palette.red[800],
-    },
-    error: {
-      stroke: theme.palette.orange[800],
-    },
-    correct: {
-      stroke: theme.palette.green[800],
-    },
-  })
-);
+import './KeyboardKey.scss';
 
 export type KeyboardThemeProps = {
   keyWidth: number;
@@ -76,12 +19,7 @@ export type KeyboardThemeProps = {
   rY: number;
 };
 
-export type ThemeProps = {
-  keyboard: KeyboardThemeProps;
-};
-
 export type KeyboardKeyProps = {
-  theme: ThemeProps;
   to: string;
   shift: 'SHIFT';
   iso: string;
@@ -98,7 +36,6 @@ export type KeyboardKeyProps = {
 function KeyboardKey(props: KeyboardKeyProps) {
   // console.log(props)
   const {
-    theme,
     to,
     shift,
     iso,
@@ -124,9 +61,7 @@ function KeyboardKey(props: KeyboardKeyProps) {
     keyLabelY,
     rX,
     rY,
-  } = theme.keyboard;
-
-  const classes = useStyles();
+  } = variables;
 
   // When letters on a case pair are associated with a key, only the capital character need to be shown on the keytop for the primary group, while the lowercase character only is shown for the secondary group.
   let alphabet;
@@ -140,20 +75,20 @@ function KeyboardKey(props: KeyboardKeyProps) {
 
   let translate = 'translate(0, 0)';
 
-  const keyClass = classNames('key', iso, classes.key);
-  const keyBgClass = classNames(classes.keyBg, {
-    [classes.missed]: succeedState === 'missed',
-    [classes.correct]: succeedState === 'correct',
-    [classes.error]: succeedState === 'error',
-    [classes.alphabet]: alphabet,
-    [classes.toWrite]: toWrite,
-    [classes.toPressFirst]: marker === 'toPressFirst',
-    [classes.toPressSecond]: marker === 'toPressSecond',
-    [classes.pressed]: pressure === 'pressed',
-    [classes.locked]: pressure === 'locked',
+  const keyClass = classNames('key', iso);
+  const keyBgClass = classNames('key__keyBg', {
+    ['key--missed']: succeedState === 'missed',
+    ['key--correct']: succeedState === 'correct',
+    ['key--error']: succeedState === 'error',
+    ['key--alphabet']: alphabet,
+    ['key--toWrite']: toWrite,
+    ['key--toPressFirst']: marker === 'toPressFirst',
+    ['key--toPressSecond']: marker === 'toPressSecond',
+    ['key--pressed']: pressure === 'pressed',
+    ['key--locked']: pressure === 'locked',
   });
-  const labelClass = classNames(classes.label, {
-    [classes.labelToWrite]: toWrite,
+  const labelClass = classNames('key__label', {
+    ['key__label--toWrite']: toWrite,
   });
 
   switch (iso) {
@@ -313,7 +248,7 @@ function KeyboardKey(props: KeyboardKeyProps) {
         return (
           <g className={keyClass} transform={translate}>
             <path className={keyBgClass} d={enterPath} />
-            <g className={classes.labels}>
+            <g className={'key__labels'}>
               <text className={labelClass} x="160" y="140">
                 {to}
               </text>
@@ -341,7 +276,7 @@ function KeyboardKey(props: KeyboardKeyProps) {
               rx={rX}
               ry={rY}
             />
-            <g className={classes.labels}>
+            <g className={'key__labels'}>
               <text className={labelClass} x="30" y="80">
                 {to}
               </text>
@@ -368,7 +303,7 @@ function KeyboardKey(props: KeyboardKeyProps) {
               rx={rX}
               ry={rY}
             />
-            <g className={classes.labels}>
+            <g className={'key__labels'}>
               <text className={labelClass} x="30" y="80">
                 {to}
               </text>
@@ -385,7 +320,7 @@ function KeyboardKey(props: KeyboardKeyProps) {
         return (
           <g className={keyClass} transform={translate}>
             <path className={keyBgClass} d={enterPath2} />
-            <g className={classes.labels}>
+            <g className={'key__labels'}>
               <text className={labelClass} x="120" y="140">
                 {to}
               </text>
@@ -407,7 +342,7 @@ function KeyboardKey(props: KeyboardKeyProps) {
         ry={rY}
       />
       {displayedLevel && (
-        <g className={classes.labels}>
+        <g className={'key__labels'}>
           <text
             className={labelClass}
             dangerouslySetInnerHTML={{ __html: props[displayedLevel] }}
@@ -418,7 +353,7 @@ function KeyboardKey(props: KeyboardKeyProps) {
       )}
       {transform && (
         <text
-          className={classes.labelTransform}
+          className={'key__labelTransform'}
           dangerouslySetInnerHTML={{ __html: transform }}
         />
       )}
@@ -426,4 +361,4 @@ function KeyboardKey(props: KeyboardKeyProps) {
   );
 }
 
-export default withTheme(KeyboardKey);
+export default KeyboardKey;

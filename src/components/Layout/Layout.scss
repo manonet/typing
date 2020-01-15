@@ -1,0 +1,15 @@
+@import '../../styles/variables.scss';
+
+.layout {
+  transition: 0.2s filter ease-in-out;
+}
+
+.isblurred {
+  filter: blur(6px);
+}
+
+.content {
+  margin: auto;
+  padding-left: calc($spacer * 3);
+  padding-right: calc($spacer * 3);
+}

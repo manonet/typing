@@ -1,0 +1,21 @@
+@import '../../styles/variables.scss';
+
+.appStatistics {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+
+  &__item {
+    flex: 0 0 20%;
+    text-align: center;
+    background-color: $color-grey-600;
+    overflow: hidden;
+    padding: 20px;
+  }
+
+  &__number {
+    font-size: 56px;
+    line-height: 56px;
+    font-weight: 900;
+  }
+}

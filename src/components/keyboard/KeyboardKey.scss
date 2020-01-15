@@ -1,0 +1,54 @@
+@import '../../styles/variables.scss';
+
+.key {
+  cursor: default;
+
+  &__labels {
+    // also called keytop
+    // fill: $color-grey-700;
+  }
+  &__labelTransform {
+    display: none;
+  }
+  &__label {
+    fill: $color-grey-400;
+    font-size: 36px;
+
+    &--toWrite {
+      fill: $color-primary-contrast;
+    }
+  }
+
+  &__keyBg {
+    stroke: $color-grey-500;
+    stroke-width: 5;
+    fill: $color-grey-500;
+  }
+  &--alphabet {
+    // fill: $color-orange-100;
+  }
+  &--toWrite {
+    fill: $color-primary-main; // $color-primary.main;
+  }
+  &--locked {
+    fill: $color-green-300;
+  }
+  &--toPressFirst {
+    fill: $color-primary-main;
+  }
+  &--toPressSecond {
+    fill: $color-secondary-main;
+  }
+  &--pressed {
+    fill: $color-teal-700;
+  }
+  &--missed {
+    stroke: $color-red-800;
+  }
+  &--error {
+    stroke: $color-orange-800;
+  }
+  &--correct {
+    stroke: $color-green-800;
+  }
+}

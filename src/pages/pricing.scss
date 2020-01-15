@@ -1,0 +1,67 @@
+@import '../styles/variables.scss';
+
+.pricing {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 22%;
+    text-align: center;
+    background-color: $color-grey-900;
+    overflow: hidden;
+    padding: 20px;
+  }
+
+  &_title {
+    font-size: 32px;
+    line-height: 32px;
+  }
+
+  &__cardPrice {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-basis: 100px;
+  }
+
+  &__price {
+    font-family: $font-family-alternative;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 900;
+  }
+
+  &___discount {
+    color: $color-secondary-main;
+  }
+
+  &__reducedPrice {
+    font-family: $font-family-alternative;
+    color: $color-secondary-main;
+    font-size: 28px;
+    line-height: 28px;
+    font-weight: 900;
+  }
+
+  &__benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    padding: 10px;
+    margin: 0;
+    border-bottom: 1px solid $color-grey-500;
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+  &__subscribe {
+    margin-top: auto;
+    padding-top: 16px;
+  }
+}

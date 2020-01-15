@@ -6,6 +6,7 @@
 
 // You can delete this file if you're not using it
 
-import wrapWithProvider from './src/state/ReduxWrapper'
+import './src/styles/global.scss';
+import wrapWithProvider from './src/state/ReduxWrapper';
 // eslint-disable-next-line import/prefer-default-export
-export const wrapRootElement = wrapWithProvider
+export const wrapRootElement = wrapWithProvider;

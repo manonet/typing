@@ -1,94 +1,30 @@
 import React from 'react';
 // @ts-ignore
 import { FormattedMessage, FormattedNumber } from 'gatsby-plugin-intl';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import Button from '../components/Button';
 
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import Link from '../components/Link';
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    pricing: {
-      display: 'flex',
-      justifyContent: 'space-around',
-      margin: '20px 0',
-    },
-    card: {
-      display: 'flex',
-      flexDirection: 'column',
-      flex: '0 0 22%',
-      textAlign: 'center',
-      backgroundColor: theme.palette.grey[900],
-      overflow: 'hidden',
-      padding: '20px',
-    },
-    title: {
-      fontSize: '32px',
-      lineHeight: '32px',
-    },
-    cardPrice: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      flexBasis: '100px',
-    },
-    price: {
-      fontFamily: "'Roboto Slab', serif",
-      fontSize: '20px',
-      lineHeight: '20px',
-      fontWeight: 900,
-    },
-    discount: {
-      color: theme.palette.secondary.main,
-    },
-    reducedPrice: {
-      fontFamily: "'Roboto Slab', serif",
-      color: theme.palette.secondary.main,
-      fontSize: '28px',
-      lineHeight: '28px',
-      fontWeight: 900,
-    },
-    benefits: {
-      listStyle: 'none',
-      padding: 0,
-      margin: 0,
-    },
-    item: {
-      padding: '10px',
-      margin: 0,
-      borderBottom: `1px solid ${theme.palette.grey[500]}`,
-      '&:last-child': {
-        borderBottom: 0,
-      },
-    },
-    subscribe: {
-      marginTop: 'auto',
-      paddingTop: '16px',
-    },
-  })
-);
+import './pricing.scss';
 
 function PricingPage() {
-  const classes = useStyles();
-
   return (
     <Layout>
-      <Typography variant="h2">
+      <h2>
         <FormattedMessage id="pricing.page.title" />
-      </Typography>
-      <div className={classes.pricing}>
-        <div className={classes.card}>
-          <div className={classes.title}>
+      </h2>
+      <div className="pricing">
+        <div className="pricing__card">
+          <div className="pricing__title">
             <FormattedMessage id="pricing.licence.mini" />
           </div>
-          <div className={classes.cardPrice}>
+          <div className="pricing__cardPrice">
             <FormattedMessage
               id="pricing.pricePerMonth"
               values={{
                 price: (
-                  <div className={classes.price}>
+                  <div className="pricing__price">
                     <FormattedNumber
                       value={0}
                       style="currency"
@@ -101,12 +37,12 @@ function PricingPage() {
               }}
             />
           </div>
-          <ul className={classes.benefits}>
-            <li className={classes.item}>
+          <ul className="pricing__benefits">
+            <li className="pricing__item">
               <FormattedMessage id="pricing.benefit.1" />
             </li>
           </ul>
-          <div className={classes.subscribe}>
+          <div className="pricing__subscribe">
             <Button
               variant="contained"
               color="primary"
@@ -118,17 +54,17 @@ function PricingPage() {
           </div>
         </div>
 
-        <div className={classes.card}>
-          <div className={classes.title}>
+        <div className="pricing__card">
+          <div className="pricing__title">
             <FormattedMessage id="pricing.licence.small" />
           </div>
-          <div className={classes.cardPrice}>
+          <div className="pricing__cardPrice">
             <FormattedMessage
               id="pricing.pricePerMonth"
               values={{
                 price: (
                   <>
-                    <div className={classes.price}>
+                    <div className="pricing__price">
                       <s>
                         <FormattedNumber
                           value={4}
@@ -140,11 +76,11 @@ function PricingPage() {
                       </s>
                     </div>
 
-                    <div className={classes.discount}>
+                    <div className="pricing__discount">
                       <FormattedMessage id="pricing.discount.limited" />
                     </div>
 
-                    <div className={classes.reducedPrice}>
+                    <div className="pricing__reducedPrice">
                       <FormattedNumber
                         value={0}
                         style="currency"
@@ -158,12 +94,12 @@ function PricingPage() {
               }}
             />
           </div>
-          <ul className={classes.benefits}>
-            <li className={classes.item}>
+          <ul className="pricing__benefits">
+            <li className="pricing__item">
               <FormattedMessage id="pricing.benefit.1" />
             </li>
           </ul>
-          <div className={classes.subscribe}>
+          <div className="pricing__subscribe">
             <Button
               variant="contained"
               color="primary"
@@ -175,17 +111,17 @@ function PricingPage() {
           </div>
         </div>
 
-        <div className={classes.card}>
-          <div className={classes.title}>
+        <div className="pricing__card">
+          <div className="pricing__title">
             <FormattedMessage id="pricing.licence.medium" />
           </div>
-          <div className={classes.cardPrice}>
+          <div className="pricing__cardPrice">
             <FormattedMessage
               id="pricing.pricePerMonth"
               values={{
                 price: (
                   <>
-                    <div className={classes.price}>
+                    <div className="pricing__price">
                       <s>
                         <FormattedNumber
                           value={19}
@@ -197,11 +133,11 @@ function PricingPage() {
                       </s>
                     </div>
 
-                    <div className={classes.discount}>
+                    <div className="pricing__discount">
                       <FormattedMessage id="pricing.discount.limited" />
                     </div>
 
-                    <div className={classes.reducedPrice}>
+                    <div className="pricing__reducedPrice">
                       <FormattedNumber
                         value={0}
                         style="currency"
@@ -215,12 +151,12 @@ function PricingPage() {
               }}
             />
           </div>
-          <ul className={classes.benefits}>
-            <li className={classes.item}>
+          <ul className="pricing__benefits">
+            <li className="pricing__item">
               <FormattedMessage id="pricing.benefit.1" />
             </li>
           </ul>
-          <div className={classes.subscribe}>
+          <div className="pricing__subscribe">
             <Button
               variant="contained"
               color="primary"
@@ -232,17 +168,17 @@ function PricingPage() {
           </div>
         </div>
 
-        <div className={classes.card}>
-          <div className={classes.title}>
+        <div className="pricing__card">
+          <div className="pricing__title">
             <FormattedMessage id="pricing.licence.large" />
           </div>
-          <div className={classes.cardPrice}>
+          <div className="pricing__cardPrice">
             <FormattedMessage
               id="pricing.pricePerMonth"
               values={{
                 price: (
                   <>
-                    <div className={classes.price}>
+                    <div className="pricing__price">
                       <s>
                         <FormattedNumber
                           value={99}
@@ -254,11 +190,11 @@ function PricingPage() {
                       </s>
                     </div>
 
-                    <div className={classes.discount}>
+                    <div className="pricing__discount">
                       <FormattedMessage id="pricing.discount.limited" />
                     </div>
 
-                    <div className={classes.reducedPrice}>
+                    <div className="pricing__reducedPrice">
                       <FormattedNumber
                         value={0}
                         style="currency"
@@ -272,12 +208,12 @@ function PricingPage() {
               }}
             />
           </div>
-          <ul className={classes.benefits}>
-            <li className={classes.item}>
+          <ul className="pricing__benefits">
+            <li className="pricing__item">
               <FormattedMessage id="pricing.benefit.1" />
             </li>
           </ul>
-          <div className={classes.subscribe}>
+          <div className="pricing__subscribe">
             <Button
               variant="contained"
               color="primary"

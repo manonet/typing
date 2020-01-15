@@ -1,0 +1,147 @@
+:root {
+  // Colors
+  // ==================================================
+
+  // Greytones
+  --color-black: #1e1e1e;
+  --color-white: #fff;
+
+  --color-grey-50: #fafafa;
+  --color-grey-100: #f5f5f5;
+  --color-grey-200: #eeeeee;
+  --color-grey-300: #e0e0e0;
+  --color-grey-400: #afafb2;
+  --color-grey-500: #5b5c63;
+  --color-grey-600: #373740;
+  --color-grey-700: #32333d;
+  --color-grey-800: #25282f;
+  --color-grey-900: #27272f;
+  --color-grey-A100: #d5d5d5;
+  --color-grey-A200: #aaaaaa;
+  --color-grey-A400: #303030;
+  --color-grey-A700: #616161;
+
+  // Red
+  --color-red-50: #ffd7d0;
+  --color-red-100: #ffb3a6;
+  --color-red-200: #ff857c;
+  --color-red-300: #ff6859;
+  --color-red-400: #ff3522;
+  --color-red-500: #ff0600;
+  --color-red-600: #df0000;
+  --color-red-700: #b50000;
+  --color-red-800: #8c0000;
+  --color-red-900: #620002;
+
+  // Green
+  --color-green-50: #b6fff2;
+  --color-green-100: #88fee1;
+  --color-green-200: #5df7d2;
+  --color-green-300: #37efba;
+  --color-green-400: #00e5a8;
+  --color-green-500: #1eb980;
+  --color-green-600: #009c68;
+  --color-green-700: #007d51;
+  --color-green-800: #005f35;
+  --color-green-900: #00391e;
+
+  // Teal
+  --color-teal-50: #deeeee;
+  --color-teal-100: #b7e1e1;
+  --color-teal-200: #8bd8d9;
+  --color-teal-300: #56d1ca;
+  --color-teal-400: #15d1c6;
+  --color-teal-500: #00aea4;
+  --color-teal-600: #00837b;
+  --color-teal-700: #045d56;
+  --color-teal-800: #004940;
+  --color-teal-900: #00312a;
+
+  // Orange
+  --color-orange-50: #fff8e5;
+  --color-orange-100: #ffebb0;
+  --color-orange-200: #ffdc78;
+  --color-orange-300: #ffcf44;
+  --color-orange-400: #ffbc2b;
+  --color-orange-500: #ffac12;
+  --color-orange-600: #ff8500;
+  --color-orange-700: #ff7000;
+  --color-orange-800: #f75500;
+  --color-orange-900: #e83400;
+
+  // Purple
+  --color-purple-50: #decaf7;
+  --color-purple-100: #cb9af8;
+  --color-purple-200: #b15dff;
+  --color-purple-300: #a932ff;
+  --color-purple-400: #a500ff;
+  --color-purple-500: #a000f1;
+  --color-purple-600: #9200c8;
+  --color-purple-700: #7f009f;
+  --color-purple-800: #63007c;
+  --color-purple-900: #460052;
+
+  // Blue
+  --color-blue-50: #eafdff;
+  --color-blue-100: #b2f2ff;
+  --color-blue-200: #72deff;
+  --color-blue-300: #5cceff;
+  --color-blue-400: #42c6ff;
+  --color-blue-500: #24b4ff;
+  --color-blue-600: #009bff;
+  --color-blue-700: #0082fb;
+  --color-blue-800: #0077e5;
+  --color-blue-900: #005ccc;
+
+  --color-primary-main: var(--color-blue-200);
+  --color-primary-contrast: var(--color-black);
+  --color-secondary-main: var(--color-green-500);
+  --color-error-main: var(--color-red-600);
+  --color-error-contrast: var(--color-white);
+
+  // TEXT
+  // ==================================================
+
+  --text-color-primary: rgba(255, 255, 255, 0.87);
+  --text-color-secondary: rgba(255, 255, 255, 0.54);
+  --text-color-disabled: rgba(255, 255, 255, 0.38);
+  --text-color-hint: rgba(255, 255, 255, 0.38);
+
+  --font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  --font-family-alternative: 'Roboto Slab', sans-serif;
+
+  --font-size-default: 14px;
+
+  // spacing
+  --spacer: 8px;
+
+  --border-radius-small: calc(var(--spacer) / 4);
+  --border-radius: calc(var(--spacer) / 2);
+  --border-radius-big: var(--spacer);
+
+  // KEYBOARD
+  // ==================================================
+
+  --keyboard-key-width: 100;
+  --keyboard-key-height: 100;
+  --keyboard-keyboard-width: calc(15 * var(--keyboard-key-width));
+  --keyboard-keyboard-height: calc(5 * var(--keyboard-key-height));
+
+  --keyboard-key-padding-x: 10;
+  --keyboard-keyPadding-y: 10;
+  --keyboard-key-bg-width: calc(
+    var(--keyboard-key-width) - var(--keyboard-key-padding-x) * 2
+  );
+  --keyboard-key-bg-height: calc(
+    var(--keyboard-key-height) - var(--keyboard-key-padding-y) * 2
+  );
+
+  --keyboard-d-row-shift: 50;
+  --keyboard-c-row-shift: 80;
+  --keyboard-b-row-shift: 130;
+  --keyboard-a-row-shift: 130;
+  --keyboard-r-x: 10;
+  --keyboard-r-y: 10;
+  --keyboard-key-label-x: 50;
+  --keyboard-key-label-y: 50;
+}

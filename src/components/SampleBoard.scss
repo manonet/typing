@@ -1,0 +1,38 @@
+@import '../styles/variables.scss';
+
+.sampleBoard {
+  &__sample {
+    position: relative;
+    background-color: $color-grey-700;
+  }
+  &__wrapper {
+    position: relative;
+  }
+  &__sampleBoard {
+    display: block;
+    background: $color-grey-500;
+    border: 2px solid $color-grey-600;
+    padding: 10px;
+    color: $color-grey-500;
+    font-size: 18px;
+  }
+  &__sampleBoardFocus {
+    background: $color-white;
+    border: 2px solid $color-primary-main;
+  }
+  &__sampleBoardHint {
+    margin: 0;
+  }
+  &__userInput {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: none;
+    opacity: 0.01;
+    height: 100%;
+    max-height: none;
+  }
+}

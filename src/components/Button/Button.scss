@@ -1,0 +1,104 @@
+@import '../../styles/variables.scss';
+
+.Button {
+  position: relative;
+  display: inline-block;
+  padding: 6px 16px;
+  // overflow: hidden; cause issues with focus and active state box-shadows!
+  font-family: $font-family;
+  font-size: $font-size-default;
+  font-weight: 400;
+  line-height: 20px;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background: white;
+  color: black;
+  border: 0;
+  border-radius: $border-radius;
+  outline: none;
+  appearance: none;
+  transition: transition(box-shadow), transition(background-color, 0.1s),
+    transition(color, 0.1s);
+
+  &:hover,
+  &.hover {
+    text-decoration: none;
+  }
+
+  &:focus,
+  &.focus {
+    z-index: 2;
+    text-decoration: none;
+    outline: none;
+  }
+
+  &:active,
+  &.active {
+    z-index: 1;
+    text-decoration: none;
+    outline: none;
+  }
+
+  // Sizes
+
+  &--small {
+    height: auto;
+    padding: 2px $spacer;
+  }
+
+  // square - turns a button into a square
+  &--square {
+    display: inline-flex;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+
+    &.rs-Button--mini {
+      width: 16px;
+      height: 16px;
+    }
+
+    &.rs-Button--tiny {
+      width: 20px;
+      height: 20px;
+    }
+
+    &.rs-Button--small {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  // fullWidth - A button can take the width of its container.
+  &--fullWidth {
+    display: block;
+    width: 100%;
+  }
+
+  // "disabled" should be the last definition to be able to overwrite any other type
+  // stylelint-disable no-descending-specificity
+  &:disabled,
+  &[disabled] {
+    @extend %disabled;
+  }
+}
+
+%disabled {
+  &,
+  &:hover,
+  &.hover,
+  &:focus,
+  &.focus,
+  &:active,
+  &.active {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}

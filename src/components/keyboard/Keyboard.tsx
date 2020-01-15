@@ -1,17 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
-import {
-  createStyles,
-  makeStyles,
-  withTheme,
-  Theme,
-} from '@material-ui/core/styles';
 
 import KeyboardKey from './KeyboardKey';
-import './Keyboard.css';
+import variables from '../../theme/variables';
+
+import './Keyboard.scss';
 
 type Props = {
-  theme: Theme;
   classes?: string;
   showTitle?: boolean;
   showDeadKeys?: boolean;
@@ -20,14 +15,6 @@ type Props = {
   functionKeys: [];
   displayedLevel: string;
 };
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    keyboard: {
-      borderRadius: theme.keyboard.rX,
-    },
-  })
-);
 
 function Keyboard(props: Props) {
   /*
@@ -46,10 +33,9 @@ function Keyboard(props: Props) {
   }
   */
 
-  const { theme, keyboard, className, functionKeys, displayedLevel } = props;
+  const { keyboard, className, functionKeys, displayedLevel } = props;
   // console.log("keyboard", keyboard)
   // console.log("keys", keyboardKeys)
-  const classes = useStyles();
 
   if (!keyboard.keys) {
     return null;
@@ -68,10 +54,10 @@ function Keyboard(props: Props) {
     dRowShift,
     rX,
     rY,
-  } = theme.keyboard;
+  } = variables;
 
   return (
-    <div className={classNames(className, classes.keyboard)}>
+    <div className={classNames(className, 'keyboard')}>
       {/* {this.KeyboardTitle()}
       {this.KeyboardDeadKeys()} */}
       <svg
@@ -147,7 +133,7 @@ function Keyboard(props: Props) {
   );
 }
 
-export default withTheme(Keyboard);
+export default Keyboard;
 
 /*
 The harmonized 48 graphic key keyboard arrangement

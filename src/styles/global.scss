@@ -1,0 +1,16 @@
+// see: https://www.gatsbyjs.org/docs/global-css/
+
+@import '~sanitize.css';
+@import '~sanitize.css/forms.css';
+@import '~sanitize.css/typography.css';
+
+@import 'variables.scss';
+
+body {
+  color: $text-color-primary;
+  background: $color-grey-700;
+  font-size: $font-size-default;
+  font-family: $font-family;
+  font-weight: 400;
+  line-height: 1.43;
+}

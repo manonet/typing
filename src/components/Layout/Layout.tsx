@@ -10,44 +10,20 @@ import classNames from 'classnames';
 // @ts-ignore
 import { injectIntl, InjectedIntlProps } from 'gatsby-plugin-intl';
 import { StaticQuery, graphql } from 'gatsby';
-import Grid from '@material-ui/core/Grid';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import muiTheme from '../theme';
 
-import Header from './header';
+import Header from '../Header';
 import 'typeface-roboto';
-import LanguageSwitcher from './LanguageSwitcher';
+import LanguageSwitcher from '../../components/LanguageSwitcher';
+
+import './Layout.scss';
 
 type Props = {
   children: ReactNodeArray;
   isBlurred: boolean;
 } & InjectedIntlProps;
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      transition: '.2s filter ease-in-out',
-    },
-    isBlurred: {
-      filter: 'blur(6px)',
-    },
-    content: {
-      margin: 'auto',
-      paddingLeft: theme.spacing(3),
-      paddingRight: theme.spacing(3),
-    },
-  })
-);
-
 function Layout(props: Props) {
   const { children, isBlurred, intl } = props;
-  const classes = useStyles();
-
-  const LayoutClasses = classNames(classes.root, {
-    [classes.isBlurred]: isBlurred,
-  });
 
   return (
     <StaticQuery
@@ -62,11 +38,14 @@ function Layout(props: Props) {
         }
       `}
       render={(data) => (
-        <ThemeProvider theme={muiTheme}>
-          <CssBaseline />
-          <div className={LayoutClasses}>
+        <>
+          <div
+            className={classNames({
+              isBlurred: isBlurred,
+            })}
+          >
             <Header siteTitle={intl.formatMessage({ id: 'site.title' })} />
-            <div className={classes.content}>
+            <div className="content">
               <main>{children}</main>
             </div>
             <footer>
@@ -75,7 +54,7 @@ function Layout(props: Props) {
               {data.site.siteMetadata.version}
             </footer>
           </div>
-        </ThemeProvider>
+        </>
       )}
     />
   );

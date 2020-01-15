@@ -1,65 +1,49 @@
 import React, { ReactNode } from 'react';
-import {
-  withStyles,
-  WithStyles,
-  createStyles,
-  Theme,
-} from '@material-ui/core/styles';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Dialog from '@material-ui/core/Dialog';
+// @ts-ignore
+import { injectIntl, FormattedMessage } from 'gatsby-plugin-intl';
+import { IntlShape } from 'react-intl';
 
-export interface Props extends WithStyles<typeof styles> {
+import Button from './Button';
+
+type Props = {
+  intl: IntlShape;
   open: boolean;
+  title: ReactNode | null;
   content: ReactNode;
-  onClose: () => {};
-}
-
-const styles = (theme: Theme) =>
-  createStyles({
-    root: {
-      backgroundColor: 'transparent',
-    },
-    paper: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
-    },
-    LessonModal__title: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
-    },
-  });
+  footer: ReactNode;
+  handleClose: () => {};
+};
 
 function LessonModal(props: Props) {
-  const { classes, onClose, content, ...rest } = props;
+  const { open, content, footer } = props;
+
+  const title = props.title || <FormattedMessage id="error.title" />;
 
   const handleClose = () => {
-    onClose();
+    if (props.handleClose) {
+      props.handleClose();
+    }
   };
 
-  const title = 'Lesson summary';
-
   return (
-    <Dialog
+    <div
       onClose={handleClose}
-      aria-labelledby="LessonModal"
-      BackdropProps={{
-        classes: {
-          root: classes.root,
-        },
-      }}
-      PaperProps={{
-        classes: {
-          root: classes.paper,
-        },
-      }}
-      {...rest}
+      aria-labelledby="customized-dialog-title"
+      open={open}
     >
-      <DialogTitle classes={{ root: classes.LessonModal__title }}>
+      <div onClose={handleClose} id="customized-dialog-title">
         {title}
-      </DialogTitle>
+      </div>
       <div>{content}</div>
-    </Dialog>
+      <div>
+        {footer || (
+          <Button onClick={handleClose} color="primary">
+            <FormattedMessage id="modal.ok" />
+          </Button>
+        )}
+      </div>
+    </div>
   );
 }
 
-export default withStyles(styles)(LessonModal);
+export default injectIntl(LessonModal);

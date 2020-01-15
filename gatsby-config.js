@@ -59,20 +59,6 @@ module.exports = {
         path: `${__dirname}/src/data`,
       },
     },
-    {
-      resolve: `gatsby-theme-material-ui`,
-      options: {
-        webFontsConfig: {
-          fonts: {
-            google: [
-              {
-                family: `Roboto+Slab`,
-                variants: [`100`, `400`, `900`],
-              },
-            ],
-          },
-        },
-      },
-    },
+    'gatsby-plugin-sass',
   ],
 };

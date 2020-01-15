@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+
+import './SampleBoardChar.scss';
 
 type Props = {
   className?: string;
@@ -10,40 +11,8 @@ type Props = {
   userText: string;
 };
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'inline-block',
-      width: 10,
-      color: theme.palette.grey[700],
-      fontStyle: 'normal',
-      fontFamily: 'monospace, monospace',
-      textAlign: 'center',
-      whiteSpace: 'pre-wrap',
-    },
-    done: {
-      color: theme.palette.grey[400],
-    },
-    active: {
-      color: theme.palette.primary.contrastText,
-      backgroundColor: theme.palette.primary.main,
-    },
-    error: {
-      color: theme.palette.error.main,
-      backgroundColor: theme.palette.error.contrastText,
-    },
-    space: {
-      opacity: 0.5,
-    },
-    lineFeed: {
-      opacity: 0.5,
-    },
-  })
-);
-
 function SampleBoardChar(props: Props) {
   const { className, cursorAt, index, char, userText } = props;
-  const classes = useStyles();
 
   // classes
   const done = cursorAt > index;
@@ -66,13 +35,13 @@ function SampleBoardChar(props: Props) {
     <>
       <i
         className={classNames(
-          classes.root,
+          'SampleBoardChar',
           {
-            [classes.done]: done,
-            [classes.active]: active,
-            [classes.error]: error,
-            [classes.space]: letterToDisplay === '⸱',
-            [classes.lineFeed]: letterToDisplay === '↵',
+            ['SampleBoardChar__done']: done,
+            ['SampleBoardChar__active']: active,
+            ['SampleBoardChar__error']: error,
+            ['SampleBoardChar__space']: letterToDisplay === '⸱',
+            ['SampleBoardChar__lineFeed']: letterToDisplay === '↵',
           },
           className
         )}

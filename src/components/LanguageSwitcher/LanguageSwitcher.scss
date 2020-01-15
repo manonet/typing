@@ -1,0 +1,30 @@
+@import '../../styles/variables.scss';
+
+.languageSwitcher {
+  border-bottom: 1px solid $color-grey-500;
+  margin: $spacer 0;
+
+  &__list {
+    display: flex;
+    margin: 0;
+    padding: $spacer 0;
+  }
+
+  &__item {
+    display: flex;
+    cursor: pointer;
+    margin-left: 10px;
+
+    &:hover {
+      color: $color-white;
+    }
+
+    &--active {
+      &,
+      &:hover {
+        color: $color-grey-100;
+        cursor: default;
+      }
+    }
+  }
+}
