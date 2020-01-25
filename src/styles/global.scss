@@ -7,6 +7,9 @@
 @import 'variables.scss';
 @import 'typography.scss';
 
+@import '../components/Statistics/Charts/LineChart.scss';
+@import '../components/Statistics/Charts/PieChart.scss';
+
 @import '../components/Button/Button.scss';
 
 @import '../components/Layout/Layout.scss';
