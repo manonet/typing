@@ -384,19 +384,15 @@ const TypographyPage = () => {
           <a href="/">Visited link</a>
         </li>
         <li>
-          <a id="not_visited">Not visited link</a>
+          <a href={Math.random().toString()}>Not visited link</a>
         </li>
-        <script type="text/javascript">
-          var link = document.getElementById('not_visited'); link.href =
-          Math.random();
-        </script>
         <li>
-          <a href="/" className=".active">
+          <a href="/" className="active">
             Active link
           </a>
         </li>
         <li>
-          <a href="/" className=".hover">
+          <a href="/" className="hover">
             Hovered link
           </a>
         </li>

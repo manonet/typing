@@ -4,11 +4,7 @@
     "browser": true,
     "es6": true
   },
-  "extends": [
-    "prettier",
-    "prettier/@typescript-eslint",
-    "prettier/react"
-  ],
+  "extends": ["prettier", "prettier/@typescript-eslint", "prettier/react"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly",
@@ -21,10 +17,7 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": [
-    "prettier",
-    "react"
-  ],
+  "plugins": ["prettier", "react"],
   "rules": {
     "prettier/prettier": "error"
   }

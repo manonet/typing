@@ -2,11 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { ThunkDispatch } from 'redux-thunk';
-import { focusUserInput, FocusUserInputAction } from '../actions';
-import { State as ReduxState } from '../reducers';
-import SampleBoardChar from './SampleBoardChar';
-
-import './SampleBoard.scss';
+import { focusUserInput, FocusUserInputAction } from '../../actions';
+import { State as ReduxState } from '../../reducers';
+import SampleBoardChar from '../SampleBoardChar';
 
 type Props = {
   className?: string;

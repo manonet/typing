@@ -6,8 +6,6 @@ import Button from '../components/Button';
 import Layout from '../components/Layout';
 import Link from '../components/Link';
 
-import './pricing.scss';
-
 function PricingPage() {
   return (
     <Layout>

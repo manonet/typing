@@ -1,3 +1,5 @@
+// stylelint-disable color-no-hex
+
 :root {
   // Colors
   // ==================================================
@@ -15,7 +17,7 @@
   --color-grey-600: #373740;
   --color-grey-700: #32333d;
   --color-grey-800: #25282f;
-  --color-grey-900: #27272f;
+  --color-grey-900: #1c1c1f;
   --color-grey-A100: #d5d5d5;
   --color-grey-A200: #aaaaaa;
   --color-grey-A400: #303030;
@@ -102,15 +104,24 @@
   // TEXT
   // ==================================================
 
-  --text-color-primary: rgba(255, 255, 255, 0.87);
-  --text-color-secondary: rgba(255, 255, 255, 0.54);
-  --text-color-disabled: rgba(255, 255, 255, 0.38);
-  --text-color-hint: rgba(255, 255, 255, 0.38);
+  --text-color-primary: rgba(0, 0, 0, 0.87);
+  --text-color-secondary: rgba(0, 0, 0, 0.54);
+  --text-color-disabled: rgba(0, 0, 0, 0.38);
+  --text-color-hint: rgba(0, 0, 0, 0.38);
+
+  --text-color-inverse-primary: rgba(255, 255, 255, 0.87);
+  --text-color-inverse-secondary: rgba(255, 255, 255, 0.54);
+  --text-color-inverse-disabled: rgba(255, 255, 255, 0.38);
+  --text-color-inverse-hint: rgba(255, 255, 255, 0.38);
+
+  --text-color-danger: var(--color-red-500);
 
   --font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   --font-family-alternative: 'Roboto Slab', sans-serif;
 
   --font-size-default: 14px;
+  --font-size-small: 12px;
+  --font-size-big: 16px;
 
   // spacing
   --spacer: 8px;

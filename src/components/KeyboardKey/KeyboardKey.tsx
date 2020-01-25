@@ -2,8 +2,6 @@ import React from 'react';
 import classNames from 'classnames';
 import variables from '../../theme/variables';
 
-import './KeyboardKey.scss';
-
 export type KeyboardThemeProps = {
   keyWidth: number;
   keyHeight: number;

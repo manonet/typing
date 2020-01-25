@@ -2,8 +2,6 @@ import React from 'react';
 // @ts-ignore
 import { FormattedMessage, Link } from 'gatsby-plugin-intl';
 
-import './Header.scss';
-
 type Props = {
   siteTitle: string;
 };
@@ -23,24 +21,46 @@ function Header(props: Props) {
 
   return (
     <div className="header">
-      <menu>
-        <Link onClick={handleClose} to="/">
+      <div className="header__siteTitle">
+        <span className="header__siteName">{siteTitle}</span>
+      </div>
+      <menu className="header__menu menu">
+        <Link
+          className="menu__item"
+          activeClassName="menu__item--active"
+          onClick={handleClose}
+          to="/"
+        >
           <FormattedMessage id="site.navigation.home" />
         </Link>
 
-        <Link onClick={handleClose} to="/typewriter/">
+        <Link
+          className="menu__item"
+          activeClassName="menu__item--active"
+          onClick={handleClose}
+          to="/typewriter/"
+        >
           <FormattedMessage id="site.navigation.program" />
         </Link>
 
-        <Link onClick={handleClose} to="/statistics/">
+        <Link
+          className="menu__item"
+          activeClassName="menu__item--active"
+          onClick={handleClose}
+          to="/statistics/"
+        >
           <FormattedMessage id="site.navigation.statistics" />
         </Link>
 
-        <Link onClick={handleClose} to="/pricing/">
+        <Link
+          className="menu__item"
+          activeClassName="menu__item--active"
+          onClick={handleClose}
+          to="/pricing/"
+        >
           <FormattedMessage id="site.navigation.pricing" />
         </Link>
       </menu>
-      <div>{siteTitle}</div>
     </div>
   );
 }

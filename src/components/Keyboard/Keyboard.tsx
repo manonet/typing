@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import KeyboardKey from './KeyboardKey';
+import KeyboardKey from '../KeyboardKey';
 import variables from '../../theme/variables';
 
 import './Keyboard.scss';

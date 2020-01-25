@@ -50,8 +50,6 @@ export type BaseProps = {
 
 type Props = BaseProps & DefaultProps;
 
-import './Button.scss';
-
 class Button extends React.PureComponent<Props> {
   static defaultProps: DefaultProps = {
     displayType: ButtonDisplayType.DEFAULT,

@@ -1,0 +1,12 @@
+.TypewriterBoard {
+  position: relative;
+  color: $text-color-inverse-primary;
+  background: $color-grey-700;
+
+  &__keyboard {
+    display: flex;
+    min-height: 200px;
+    max-height: calc(100vh - 160px);
+    flex-direction: column;
+  }
+}

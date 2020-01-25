@@ -30,6 +30,10 @@
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",
     "sanitize.css": "^11.0.0",
+    "stylelint": "^13.0.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-order": "^4.0.0",
+    "stylelint-scss": "^3.13.0",
     "typeface-roboto": "^0.0.75",
     "xml2js": "^0.4.23"
   },
@@ -49,6 +53,7 @@
     "gatsby-plugin-typescript": "^2.1.26",
     "prettier": "^1.19.1",
     "react-intl": "^3.11.0",
+    "stylelint-config-prettier": "^8.0.1",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^4.1.0",

@@ -1,15 +1,16 @@
+// stylelint-disable declaration-no-important
 .keyboard {
   border-radius: 0;
 }
 
 .Backspace text {
-  transform: translate(80px, 4px);
   font-size: 46px !important;
+  transform: translate(80px, 4px);
 }
 
 .Tab text {
-  transform: translate(4px, 4px);
   font-size: 46px !important;
+  transform: translate(4px, 4px);
 }
 
 .CapsLock {

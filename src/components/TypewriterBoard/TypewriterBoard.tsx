@@ -1,13 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import SampleBoard from './SampleBoard';
-import Keyboard from './keyboard/Keyboard';
-
-import './TypewriterBoard.scss';
+import SampleBoard from '../SampleBoard';
+import Keyboard from '../Keyboard';
 
 type Props = {
-  classes?: Record<keyof typeof styles, string>;
   className?: string;
   userText: string;
   cursorAt: number;
@@ -43,7 +40,6 @@ class TypewriterBoard extends React.Component<Props> {
 
   render() {
     const {
-      classes,
       className,
       userText,
       cursorAt,

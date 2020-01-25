@@ -5,12 +5,25 @@
 @import '~sanitize.css/typography.css';
 
 @import 'variables.scss';
+@import 'typography.scss';
+
+@import '../components/Button/Button.scss';
+
+@import '../components/Layout/Layout.scss';
+@import '../components/Header/Header.scss';
+@import '../components/AppStatistics/AppStatiatics.scss';
+@import '../components/LanguageSwitcher/LanguageSwitcher.scss';
+
+@import '../pages/styleguide/colors.scss';
+@import '../pages/pricing.scss';
+
+@import '../components/Keyboard/Keyboard.scss';
+@import '../components/KeyboardKey/KeyboardKey.scss';
+@import '../components/SampleBoard/SampleBoard.scss';
+@import '../components/SampleBoardChar/SampleBoardChar.scss';
+@import '../components/TypewriterBoard/TypewriterBoard.scss';
 
 body {
   color: $text-color-primary;
-  background: $color-grey-700;
-  font-size: $font-size-default;
-  font-family: $font-family;
-  font-weight: 400;
-  line-height: 1.43;
+  background: $color-white;
 }

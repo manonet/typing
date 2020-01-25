@@ -16,9 +16,9 @@
     align-items: stretch;
 
     &::before {
-      content: '';
       display: table;
       padding-top: 100%;
+      content: '';
     }
   }
 
@@ -33,6 +33,7 @@
     position: absolute;
     opacity: 0.01;
     transition: opacity 0.2s ease-in-out;
+
     .palette__sample:hover & {
       opacity: 1;
     }
@@ -40,8 +41,8 @@
 }
 
 .colorSection {
-  overflow: hidden;
   min-height: 100vh;
+  overflow: hidden;
 
   .palette {
     width: 50%;

@@ -1,6 +1,35 @@
-@import '../../styles/variables.scss';
-
 .header {
-  background-color: $color-grey-900;
+  display: flex;
+  overflow: hidden;
   color: $color-white;
+  background-color: $color-grey-800;
+
+  &__siteTitle {
+    display: flex;
+    align-self: stretch;
+    align-items: center;
+  }
+
+  &__menu {
+    margin-left: calc($spacer * 2);
+  }
+}
+
+.menu {
+  display: flex;
+  padding: 0;
+  margin: 0;
+
+  &__item {
+    padding: $spacer;
+    color: $color-white;
+
+    &--active {
+      background: $color-grey-900;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }

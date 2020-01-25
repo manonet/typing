@@ -1,28 +1,30 @@
-@import '../styles/variables.scss';
-
 .SampleBoardChar {
   display: inline-block;
   width: 10px;
-  color: $color-grey-700;
+  font-family: monospace;
   font-style: normal;
-  font-family: 'monospace';
+  color: $color-grey-700;
   text-align: center;
   white-space: pre-wrap;
 
   &__done {
     color: $color-grey-400;
   }
+
   &__active {
     color: $color-primary-contrast;
     background-color: $color-primary-main;
   }
+
   &__error {
     color: $color-error-main;
     background-color: $color-error-contrast;
   }
+
   &__space {
     opacity: 0.5;
   }
+
   &__lineFeed {
     opacity: 0.5;
   }

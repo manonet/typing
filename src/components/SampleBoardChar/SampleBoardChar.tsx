@@ -1,8 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import './SampleBoardChar.scss';
-
 type Props = {
   className?: string;
   cursorAt: number;

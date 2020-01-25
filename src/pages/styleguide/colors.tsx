@@ -4,8 +4,6 @@ import classNames from 'classnames';
 import Layout from '../../components/Layout';
 import SEO from '../../components/seo';
 
-import './colors.scss';
-
 type Props = {
   className?: string;
   onClick: (color: string) => void;

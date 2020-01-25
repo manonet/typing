@@ -15,8 +15,6 @@ import Header from '../Header';
 import 'typeface-roboto';
 import LanguageSwitcher from '../../components/LanguageSwitcher';
 
-import './Layout.scss';
-
 type Props = {
   children: ReactNodeArray;
   isBlurred: boolean;

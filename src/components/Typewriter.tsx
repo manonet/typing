@@ -13,7 +13,7 @@ import getLevelFromKeys from '../utils/getLevelFromKeys';
 import getKeyboardOS from '../utils/getKeyboardOS';
 import getKeysFromChar from '../utils/getKeysFromChar';
 
-import TypewriterBoard from './TypewriterBoard';
+import TypewriterBoard from '../components/TypewriterBoard';
 import LessonModal from './LessonModal';
 import ErrorModal from './ErrorModal';
 import { Keyboard, StatisticProps } from '../types';

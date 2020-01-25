@@ -3,8 +3,6 @@ import classNames from 'classnames';
 // @ts-ignore
 import { IntlContextConsumer, changeLocale } from 'gatsby-plugin-intl';
 
-import './LanguageSwitcher.scss';
-
 const languageName = {
   en: 'English',
   hu: 'Magyar',

@@ -3,8 +3,6 @@ import React from 'react';
 import { FormattedMessage } from 'gatsby-plugin-intl';
 import { StaticQuery, graphql } from 'gatsby';
 
-import './AppStatiatics.scss';
-
 function AppStatiatics() {
   return (
     <StaticQuery

@@ -1,0 +1,263 @@
+%typography-size-big {
+  font-size: $font-size-big;
+  // line-height: $line-height-large;
+}
+
+%typography-size-default {
+  font-size: $font-size-default;
+  // line-height: $line-height-big;
+}
+
+%typography-size-small {
+  font-size: $font-size-small;
+  // line-height: $line-height-default;
+}
+
+%typography {
+  @extend %typography-size-default;
+
+  font-family: $font-family;
+
+  font-size: $font-size-default;
+  font-weight: 400;
+  line-height: 1.43;
+  color: $text-color-primary;
+  // important for MAC
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+%typography-italic {
+  font-style: italic;
+}
+
+%typography-thin {
+  font-weight: 100;
+}
+%typography-light {
+  font-weight: 300;
+}
+%typography-regular {
+  font-weight: 400;
+}
+%typography-medium {
+  font-weight: 500;
+}
+%typography-bold {
+  font-weight: 700;
+}
+%typography-black {
+  font-weight: 900;
+}
+
+// interactive style is for things looks like "links", mostly for "a" tag itself
+%interactive {
+  color: $color-blue-700;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover,
+  &.hover {
+    // class ".hover" is for testing purposes only
+    color: $color-blue-600;
+    text-decoration: underline;
+  }
+}
+
+.body {
+  @extend %typography;
+}
+
+a {
+  @extend %interactive;
+}
+
+// And undo these styles for placeholder links/named anchors (without href)
+// which have not been made explicitly keyboard-focusable (without tabindex).
+// It would be more straightforward to just use a[href] in previous block, but that
+// causes specificity issues in many other styles that are too complex to fix.
+// See https://github.com/twbs/bootstrap/issues/19402
+
+a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.mano-text {
+  &--italic {
+    @extend %typography-italic;
+  }
+
+  &--thin {
+    @extend %typography-thin;
+  } // not in use / not defined yet
+  &--light {
+    @extend %typography-light;
+  }
+
+  &--regular {
+    @extend %typography-regular;
+  }
+
+  &--medium {
+    @extend %typography-medium;
+  }
+
+  &--bold {
+    @extend %typography-bold;
+  }
+
+  &--black {
+    @extend %typography-black;
+  } // not in use / not defined yet
+
+  &--interactive {
+    @extend %interactive;
+  }
+
+  &--secondary {
+    color: $text-color-secondary;
+  }
+
+  &--danger {
+    color: $text-color-danger;
+  }
+
+  &--disabled {
+    color: $text-color-disabled;
+  }
+
+  &--small {
+    // font-size: $font-size-small;
+  }
+
+  &--big {
+    // font-size: $font-size-big;
+  }
+}
+
+h1,
+.mano-h1 {
+  @extend %typography-size-big;
+  margin: calc($spacer * 3) 0 calc($spacer * 2);
+  font-weight: 500;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+h2,
+.mano-h2 {
+  @extend %typography-size-big;
+  margin: calc($spacer * 3) 0 calc($spacer * 2);
+  font-weight: 400;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+h3,
+.mano-h3 {
+  @extend %typography-size-default;
+  margin: calc($spacer * 3) 0 calc($spacer * 1.5);
+  font-weight: 500;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+h4,
+.mano-h4 {
+  @extend %typography-size-default;
+  margin: calc($spacer * 3) 0 calc($spacer * 1.5);
+  font-weight: 400;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+h5,
+.mano-h5 {
+  @extend %typography-size-small;
+  margin: calc($spacer * 3) 0 calc($spacer * 1.5);
+  font-weight: 500;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+h6,
+.mano-h6 {
+  @extend %typography-size-small;
+  margin: calc($spacer * 3) 0 calc($spacer * 1.5);
+  font-weight: 400;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+p,
+ul,
+ol,
+pre,
+.mano-pre {
+  margin: 0 0 calc($spacer * 1.5);
+}
+
+i,
+em,
+.mano-italic {
+  @extend %typography-italic;
+}
+
+b,
+strong,
+.mano-bold {
+  @extend %typography-bold;
+}
+
+.mano-code,
+.mano-pre {
+  padding: 0.1em 0.4em;
+  font-family: monospace;
+  font-size: $font-size-small;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  background: $color-grey-200;
+  border-radius: $border-radius;
+}
+
+.mano-pre {
+  display: block;
+  padding: $spacer;
+  color: $text-color-secondary;
+  word-wrap: break-word;
+  // box-shadow: $box-shadow-input;
+}
+
+hr,
+.mano-hr {
+  border-color: $text-color-disabled;
+  border-bottom-width: 0;
+}
+
+ol,
+ul {
+  padding: 0 0 0 calc($spacer * 3);
+}
