@@ -1,7 +1,7 @@
 {
   "name": "manonet",
   "private": true,
-  "description": "Free Typewriter Program",
+  "description": "Online Typewriter Program",
   "version": "0.0.0",
   "author": "Szilágyi Balázs <zyxneo@gmail.com>",
   "dependencies": {
@@ -61,7 +61,7 @@
   },
   "keywords": [
     "manonet",
-    "free",
+    "online",
     "typewriting"
   ],
   "license": "MIT",
