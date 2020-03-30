@@ -1,4 +1,7 @@
-image: node:latest
+image: node:10.19.0
+
+before_script:
+  - node -v
 
 # This folder is cached between builds
 # http://docs.gitlab.com/ce/ci/yaml/README.html#cache
@@ -8,20 +11,50 @@ cache:
 
 stages:
   - test
-  - pages
+  - build_files
+  - deploy
 
-test:
+.node_setup: &node_setup
+  before_script:
+    # TBD
+
+linter:
+  <<: *node_setup
   stage: test
   script:
+    - npm ci
     - npm run lint
 
-pages:
-  stage: pages
+unit_test:
+  <<: *node_setup
+  stage: test
   script:
-    - npm install
-    - ./node_modules/.bin/gatsby build --prefix-paths
+    - npm ci
+    - npm run test
+  artifacts:
+    paths:
+      - junit.xml
+    reports:
+      junit: junit.xml
+
+build_files:
+  <<: *node_setup
+  stage: build_files
+  script:
+    - npm ci
+    - npm run build
   artifacts:
     paths:
       - public
+    expire_in: 1 day
+    when: on_success
+
+staging:
+  stage: deploy
+  script:
+    - npm ci
+    - ./node_modules/.bin/gatsby build --prefix-paths
+    - apt-get update -qq && apt-get install -y -qq lftp
+    - lftp -c "set ftp:ssl-allow no; open -u $BETA_FTP_USERNAME,$BETA_FTP_PASSWORD $FTP_SERVER; mirror -Rnev public / --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
   only:
-    - master
+    - dev

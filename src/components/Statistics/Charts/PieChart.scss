@@ -8,6 +8,69 @@
     transition: fill 0.2s, stroke 0.2s;
   }
 
+  &--thin {
+    .pie-chart__path {
+      stroke: $color-teal-500;
+    }
+
+    .pie-chart__label {
+      font-weight: 100;
+      fill: $color-grey-200;
+    }
+  }
+
+  &--arc {
+    .pie-chart__path {
+      stroke: $color-teal-500;
+    }
+
+    .pie-chart__decor {
+      fill: $color-grey-200;
+      stroke: $color-grey-300;
+    }
+  }
+
+  &--marked {
+    .pie-chart__bg {
+      fill: $color-grey-200;
+      stroke: $color-grey-300;
+    }
+
+    .pie-chart__path {
+      stroke: $color-teal-500;
+    }
+
+    .pie-chart__decor {
+      fill: none;
+      stroke: $color-grey-200;
+    }
+  }
+
+  &--inset {
+    .pie-chart__path {
+      stroke: $color-teal-500;
+    }
+
+    .pie-chart__label {
+      fill: $color-teal-500;
+    }
+  }
+
+  &--outher {
+    .pie-chart__bg {
+      fill: $color-grey-300;
+      stroke: $color-white;
+    }
+
+    .pie-chart__path {
+      stroke: $color-teal-500;
+    }
+
+    .pie-chart__label {
+      fill: $color-teal-500;
+    }
+  }
+
   &:hover {
     .pie-chart__path {
       stroke: $color-blue-500;
@@ -24,68 +87,5 @@
     font-weight: 900;
     fill: $color-grey-300;
     cursor: default;
-  }
-}
-
-.pie-chart--thin {
-  .pie-chart__path {
-    stroke: $color-teal-500;
-  }
-
-  .pie-chart__label {
-    font-weight: 100;
-    fill: $color-grey-200;
-  }
-}
-
-.pie-chart--arc {
-  .pie-chart__path {
-    stroke: $color-teal-500;
-  }
-
-  .pie-chart__decor {
-    fill: $color-grey-200;
-    stroke: $color-grey-300;
-  }
-}
-
-.pie-chart--marked {
-  .pie-chart__bg {
-    fill: $color-grey-200;
-    stroke: $color-grey-300;
-  }
-
-  .pie-chart__path {
-    stroke: $color-teal-500;
-  }
-
-  .pie-chart__decor {
-    fill: none;
-    stroke: $color-grey-200;
-  }
-}
-
-.pie-chart--inset {
-  .pie-chart__path {
-    stroke: $color-teal-500;
-  }
-
-  .pie-chart__label {
-    fill: $color-teal-500;
-  }
-}
-
-.pie-chart--outher {
-  .pie-chart__bg {
-    fill: $color-grey-300;
-    stroke: $color-white;
-  }
-
-  .pie-chart__path {
-    stroke: $color-teal-500;
-  }
-
-  .pie-chart__label {
-    fill: $color-teal-500;
   }
 }

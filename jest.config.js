@@ -25,10 +25,10 @@ module.exports = {
     __PATH_PREFIX__: ``,
   },
   setupFiles: [
-    `<rootDir>/jest/loadershim.js`,
-    `<rootDir>/jest/enzyme.setup.js`,
-    `<rootDir>/jest/shim.setup.js`,
-    `<rootDir>/jest/style.mock.js`,
+    // `<rootDir>/jest/loadershim.js`,
+    // `<rootDir>/jest/enzyme.setup.js`,
+    // `<rootDir>/jest/shim.setup.js`,
+    // `<rootDir>/jest/style.mock.js`,
   ],
 
   // Required for TS support, since the default only looks for .js/.jsx

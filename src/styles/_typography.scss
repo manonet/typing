@@ -149,7 +149,7 @@ a:not([href]):not([tabindex]) {
 h1,
 .mano-h1 {
   @extend %typography-size-big;
-  margin: calc($spacer * 3) 0 calc($spacer * 2);
+  margin: calc(#{$spacer} * 3) 0 calc(#{$spacer} * 2);
   font-weight: 500;
 
   &:first-child {
@@ -160,7 +160,7 @@ h1,
 h2,
 .mano-h2 {
   @extend %typography-size-big;
-  margin: calc($spacer * 3) 0 calc($spacer * 2);
+  margin: calc(#{$spacer} * 3) 0 calc(#{$spacer} * 2);
   font-weight: 400;
 
   &:first-child {
@@ -171,7 +171,7 @@ h2,
 h3,
 .mano-h3 {
   @extend %typography-size-default;
-  margin: calc($spacer * 3) 0 calc($spacer * 1.5);
+  margin: calc(#{$spacer} * 3) 0 calc(#{$spacer} * 1.5);
   font-weight: 500;
 
   &:first-child {
@@ -182,7 +182,7 @@ h3,
 h4,
 .mano-h4 {
   @extend %typography-size-default;
-  margin: calc($spacer * 3) 0 calc($spacer * 1.5);
+  margin: calc(#{$spacer} * 3) 0 calc(#{$spacer} * 1.5);
   font-weight: 400;
 
   &:first-child {
@@ -193,7 +193,7 @@ h4,
 h5,
 .mano-h5 {
   @extend %typography-size-small;
-  margin: calc($spacer * 3) 0 calc($spacer * 1.5);
+  margin: calc(#{$spacer} * 3) 0 calc(#{$spacer} * 1.5);
   font-weight: 500;
 
   &:first-child {
@@ -204,7 +204,7 @@ h5,
 h6,
 .mano-h6 {
   @extend %typography-size-small;
-  margin: calc($spacer * 3) 0 calc($spacer * 1.5);
+  margin: calc(#{$spacer} * 3) 0 calc(#{$spacer} * 1.5);
   font-weight: 400;
 
   &:first-child {
@@ -217,7 +217,7 @@ ul,
 ol,
 pre,
 .mano-pre {
-  margin: 0 0 calc($spacer * 1.5);
+  margin: 0 0 calc(#{$spacer} * 1.5);
 }
 
 i,
@@ -259,5 +259,5 @@ hr,
 
 ol,
 ul {
-  padding: 0 0 0 calc($spacer * 3);
+  padding: 0 0 0 calc(#{$spacer} * 3);
 }

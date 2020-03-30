@@ -1,7 +1,7 @@
 const packageJson = require('./package.json');
 
 module.exports = {
-  pathPrefix: '/typing',
+  pathPrefix: '',
   siteMetadata: {
     name: packageJson.name,
     description: packageJson.description,

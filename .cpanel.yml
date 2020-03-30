@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/ovariga1/beta.manonet.hu/
+    - /public index.html $DEPLOYPATH

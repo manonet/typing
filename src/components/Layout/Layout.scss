@@ -7,7 +7,7 @@
 }
 
 .content {
-  padding-right: calc($spacer * 3);
-  padding-left: calc($spacer * 3);
+  padding-right: calc(#{$spacer} * 3);
+  padding-left: calc(#{$spacer} * 3);
   margin: auto;
 }

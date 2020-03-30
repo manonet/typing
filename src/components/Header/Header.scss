@@ -11,7 +11,7 @@
   }
 
   &__menu {
-    margin-left: calc($spacer * 2);
+    margin-left: calc(#{$spacer} * 2);
   }
 }
 

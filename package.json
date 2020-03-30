@@ -84,8 +84,11 @@
     "test": "jest --config ./jest.config.js",
     "test:unit": "NODE_PATH=src jest --config ./jest.config.js",
     "test:unit:watch": "NODE_PATH=src jest --watch --config ./jest.config.watch.js",
+    "lint": "npm run lint:styles",
     "lint:eslint": "eslint ./src --max-warnings 20 --ext jsx --ext js",
-    "esfix": "eslint ./src --max-warnings 20 --ext jsx --ext js --fix"
+    "lint:styles": "stylelint '**/*.scss' --syntax scss",
+    "esfix": "eslint ./src --max-warnings 20 --ext jsx --ext js --fix",
+    "tsc": "tsc"
   },
   "repository": {
     "type": "git",
