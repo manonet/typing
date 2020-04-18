@@ -17,7 +17,9 @@ const IndexPage = ({ intl }: Props) => (
     <SEO lang={intl.locale} title="Manonet" />
     <h1>HomePage</h1>
 
-    <h3>Under development</h3>
+    <h3>
+      <i className="fa fa-home"></i>Under development
+    </h3>
 
     <p>
       You can find more info in{' '}
