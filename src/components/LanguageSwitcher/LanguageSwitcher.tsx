@@ -3,6 +3,10 @@ import classNames from 'classnames';
 // @ts-ignore
 import { IntlContextConsumer, changeLocale } from 'gatsby-plugin-intl';
 
+type Props = {
+  className?: string;
+};
+
 const languageName = {
   en: 'English',
   hu: 'Magyar',
@@ -14,8 +18,8 @@ export interface IntlContextConsumerProps {
   language: keyof typeof languageName;
 }
 
-const LanguageSwitcher = () => (
-  <nav className="languageSwitcher">
+const LanguageSwitcher = ({ className }: Props) => (
+  <nav className={classNames('languageSwitcher', className)}>
     <ul className="languageSwitcher__list">
       <IntlContextConsumer>
         {({ languages, language: currentLocale }: IntlContextConsumerProps) =>

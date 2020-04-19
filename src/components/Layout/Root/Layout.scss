@@ -1,0 +1,33 @@
+.body {
+  display: flex;
+  min-width: 1024px;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+// nested divs
+// stylelint-disable selector-max-id
+#___gatsby,
+#gatsby-focus-wrapper,
+.layout {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout {
+  transition: 0.2s filter ease-in-out;
+}
+
+.isblurred {
+  filter: blur(6px);
+}
+
+.content {
+  display: flex;
+  padding-right: calc(#{$spacer} * 3);
+  padding-left: calc(#{$spacer} * 3);
+  margin: auto;
+  flex-direction: column;
+  flex: 1 1 auto;
+}

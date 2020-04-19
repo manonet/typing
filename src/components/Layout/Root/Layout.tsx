@@ -12,8 +12,8 @@ import { injectIntl, InjectedIntlProps } from 'gatsby-plugin-intl';
 import { StaticQuery, graphql } from 'gatsby';
 
 import Header from '../Header';
+import Footer from '../Footer';
 import 'typeface-roboto';
-import LanguageSwitcher from '../../components/LanguageSwitcher';
 
 type Props = {
   children: ReactNodeArray;
@@ -38,7 +38,7 @@ function Layout(props: Props) {
       render={(data) => (
         <>
           <div
-            className={classNames({
+            className={classNames('layout', {
               isBlurred: isBlurred,
             })}
           >
@@ -46,11 +46,10 @@ function Layout(props: Props) {
             <div className="content">
               <main>{children}</main>
             </div>
-            <footer>
-              <LanguageSwitcher />
-              {data.site.siteMetadata.name} - version:{' '}
-              {data.site.siteMetadata.version}
-            </footer>
+            <Footer
+              appName={data.site.siteMetadata.name}
+              version={data.site.siteMetadata.version}
+            ></Footer>
           </div>
         </>
       )}

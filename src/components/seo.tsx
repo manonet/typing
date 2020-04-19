@@ -43,6 +43,9 @@ function SEO({ description, lang, meta, keywords, title, intl }: Props) {
       htmlAttributes={{
         lang,
       }}
+      bodyAttributes={{
+        class: 'body',
+      }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.name} - ${intl.formatMessage({
         id: 'site.title',

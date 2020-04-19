@@ -1,0 +1,26 @@
+.footer {
+  display: flex;
+  overflow: hidden;
+  color: $text-color-inverse-primary;
+  flex-direction: column;
+  background-color: $color-grey-800;
+  align-items: stretch;
+  flex: 0 1 auto;
+
+  &__container {
+    display: flex;
+    padding: $spacer calc(#{$spacer} * 3);
+    flex-direction: column;
+  }
+
+  &__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: $font-size-small;
+    color: $text-color-inverse-disabled;
+  }
+
+  &__version {
+    margin-left: auto;
+  }
+}

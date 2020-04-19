@@ -12,8 +12,9 @@
 
 @import '../components/Button/Button.scss';
 
-@import '../components/Layout/Layout.scss';
-@import '../components/Header/Header.scss';
+@import '../components/Layout/Root/Layout.scss';
+@import '../components/Layout/Header/Header.scss';
+@import '../components/Layout/Footer/Footer.scss';
 @import '../components/AppStatistics/AppStatiatics.scss';
 @import '../components/LanguageSwitcher/LanguageSwitcher.scss';
 
@@ -26,7 +27,7 @@
 @import '../components/SampleBoardChar/SampleBoardChar.scss';
 @import '../components/TypewriterBoard/TypewriterBoard.scss';
 
-body {
+.body {
   color: $text-color-primary;
   background: $color-white;
 }
