@@ -30,10 +30,10 @@ unit_test:
   stage: test
   script:
     - npm ci
-    - npm run test
+    - npm run test:unit
   artifacts:
     paths:
-      - junit.xml
+      - coverage/lcov-report/
     reports:
       junit: junit.xml
 
