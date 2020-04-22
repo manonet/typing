@@ -50,26 +50,32 @@
   font-weight: 900;
 }
 
-// interactive style is for things looks like "links", mostly for "a" tag itself
-%interactive {
+.body {
+  @extend %typography;
+}
+
+.interactive {
   color: $color-blue-700;
   text-decoration: none;
   cursor: pointer;
+  transition: color 0.2s ease;
 
   &:hover,
   &.hover {
     // class ".hover" is for testing purposes only
     color: $color-blue-600;
-    text-decoration: underline;
+    // text-decoration: underline;
   }
-}
 
-.body {
-  @extend %typography;
-}
+  &--inverse {
+    color: $text-color-inverse-secondary;
 
-a {
-  @extend %interactive;
+    &:hover,
+    &.hover {
+      // class ".hover" is for testing purposes only
+      color: $text-color-inverse-primary;
+    }
+  }
 }
 
 // And undo these styles for placeholder links/named anchors (without href)
@@ -93,7 +99,7 @@ a:not([href]):not([tabindex]) {
   }
 }
 
-.mano-text {
+.text {
   &--italic {
     @extend %typography-italic;
   }
@@ -117,24 +123,40 @@ a:not([href]):not([tabindex]) {
     @extend %typography-bold;
   }
 
-  &--black {
-    @extend %typography-black;
-  } // not in use / not defined yet
+  &--primary {
+    color: $text-color-primary;
 
-  &--interactive {
-    @extend %interactive;
+    .inverse & {
+      color: $text-color-inverse-primary;
+    }
   }
 
   &--secondary {
     color: $text-color-secondary;
-  }
 
-  &--danger {
-    color: $text-color-danger;
+    .inverse & {
+      color: $text-color-inverse-secondary;
+    }
   }
 
   &--disabled {
     color: $text-color-disabled;
+
+    .inverse & {
+      color: $text-color-inverse-disabled;
+    }
+  }
+
+  &--hint {
+    color: $text-color-hint;
+
+    .inverse & {
+      color: $text-color-inverse-hint;
+    }
+  }
+
+  &--danger {
+    color: $text-color-danger;
   }
 
   &--small {
@@ -147,7 +169,7 @@ a:not([href]):not([tabindex]) {
 }
 
 h1,
-.mano-h1 {
+.h1 {
   @extend %typography-size-big;
   margin: calc(#{$spacer} * 3) 0 calc(#{$spacer} * 2);
   font-weight: 500;
@@ -158,7 +180,7 @@ h1,
 }
 
 h2,
-.mano-h2 {
+.h2 {
   @extend %typography-size-big;
   margin: calc(#{$spacer} * 3) 0 calc(#{$spacer} * 2);
   font-weight: 400;
@@ -169,7 +191,7 @@ h2,
 }
 
 h3,
-.mano-h3 {
+.h3 {
   @extend %typography-size-default;
   margin: calc(#{$spacer} * 3) 0 calc(#{$spacer} * 1.5);
   font-weight: 500;
@@ -180,7 +202,7 @@ h3,
 }
 
 h4,
-.mano-h4 {
+.h4 {
   @extend %typography-size-default;
   margin: calc(#{$spacer} * 3) 0 calc(#{$spacer} * 1.5);
   font-weight: 400;
@@ -191,7 +213,7 @@ h4,
 }
 
 h5,
-.mano-h5 {
+.h5 {
   @extend %typography-size-small;
   margin: calc(#{$spacer} * 3) 0 calc(#{$spacer} * 1.5);
   font-weight: 500;
@@ -202,7 +224,7 @@ h5,
 }
 
 h6,
-.mano-h6 {
+.h6 {
   @extend %typography-size-small;
   margin: calc(#{$spacer} * 3) 0 calc(#{$spacer} * 1.5);
   font-weight: 400;
@@ -216,24 +238,24 @@ p,
 ul,
 ol,
 pre,
-.mano-pre {
+.pre {
   margin: 0 0 calc(#{$spacer} * 1.5);
 }
 
 i,
 em,
-.mano-italic {
+.italic {
   @extend %typography-italic;
 }
 
 b,
 strong,
-.mano-bold {
+.bold {
   @extend %typography-bold;
 }
 
-.mano-code,
-.mano-pre {
+.code,
+.pre {
   padding: 0.1em 0.4em;
   font-family: monospace;
   font-size: $font-size-small;
@@ -243,7 +265,7 @@ strong,
   border-radius: $border-radius;
 }
 
-.mano-pre {
+.pre {
   display: block;
   padding: $spacer;
   color: $text-color-secondary;
@@ -252,7 +274,7 @@ strong,
 }
 
 hr,
-.mano-hr {
+.hr {
   border-color: $text-color-disabled;
   border-bottom-width: 0;
 }

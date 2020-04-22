@@ -1,7 +1,4 @@
 .languageSwitcher {
-  margin: $spacer 0;
-  border-bottom: 1px solid $color-grey-500;
-
   &__list {
     display: flex;
     padding: $spacer 0;
@@ -10,8 +7,15 @@
 
   &__item {
     display: flex;
-    margin-left: 10px;
     cursor: pointer;
+
+    &::after {
+      display: block;
+      width: calc(#{$spacer} * 2);
+      color: $text-color-inverse-disabled;
+      text-align: center;
+      content: '•';
+    }
 
     &:hover {
       color: $color-white;

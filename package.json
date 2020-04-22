@@ -3,7 +3,8 @@
   "private": true,
   "description": "Online Typewriter Program",
   "version": "0.0.0",
-  "author": "Szilágyi Balázs <zyxneo@gmail.com>",
+  "author": "Szilágyi Balázs",
+  "email": "info@manonet.org",
   "dependencies": {
     "bowser": "^2.8.1",
     "classnames": "^2.2.6",

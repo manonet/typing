@@ -2,7 +2,9 @@
   display: flex;
   min-width: 1024px;
   min-height: 100vh;
+  color: $text-color-primary;
   flex-direction: column;
+  background: $color-white;
 }
 
 // nested divs
@@ -27,7 +29,6 @@
   display: flex;
   padding-right: calc(#{$spacer} * 3);
   padding-left: calc(#{$spacer} * 3);
-  margin: auto;
   flex-direction: column;
   flex: 1 1 auto;
 }

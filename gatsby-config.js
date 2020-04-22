@@ -6,6 +6,7 @@ module.exports = {
     name: packageJson.name,
     description: packageJson.description,
     author: packageJson.author,
+    email: packageJson.email,
     version: packageJson.version,
   },
   plugins: [

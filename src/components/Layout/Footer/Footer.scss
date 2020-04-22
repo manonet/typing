@@ -3,24 +3,68 @@
   overflow: hidden;
   color: $text-color-inverse-primary;
   flex-direction: column;
-  background-color: $color-grey-800;
+  background: linear-gradient(
+    to right,
+    $color-purple-900,
+    $color-purple-800,
+    $color-purple-900
+  );
   align-items: stretch;
   flex: 0 1 auto;
 
+  &__languages,
   &__container {
     display: flex;
     padding: $spacer calc(#{$spacer} * 3);
     flex-direction: column;
   }
 
-  &__bottom {
+  &__container {
+    margin: calc(#{$spacer} * 2) 0;
+  }
+
+  &__languages {
+    background: linear-gradient(
+      to right,
+      $color-purple-800,
+      $color-purple-700,
+      $color-purple-800
+    );
+  }
+
+  &__menu {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__bottom {
+    display: flex;
     font-size: $font-size-small;
     color: $text-color-inverse-disabled;
+    flex-direction: column;
+    background: $color-grey-900;
+
+    .footer__container {
+      margin: $spacer 0;
+      flex-direction: row;
+    }
   }
 
   &__version {
     margin-left: auto;
+  }
+}
+
+.footerNav {
+  margin: $spacer 0 0;
+  flex: 1 1 auto;
+
+  &__title {
+    font-size: $font-size-big;
+  }
+
+  &__item {
+    padding: 2px 0;
   }
 }
