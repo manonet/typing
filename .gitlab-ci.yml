@@ -1,4 +1,4 @@
-image: node:10.19.0
+image: node:10.20.1
 
 before_script:
   - node -v
@@ -10,38 +10,32 @@ cache:
     - node_modules/
 
 stages:
+  - setup
   - test
   - build_files
   - deploy
 
-.node_setup: &node_setup
-  before_script:
-    # TBD
-
-linter:
-  <<: *node_setup
-  stage: test
+setup:
+  stage: setup
   script:
     - npm ci
+
+linter:
+  stage: test
+  script:
     - npm run lint
 
 unit_test:
-  <<: *node_setup
   stage: test
   script:
-    - npm ci
-    - npm run test
+    - npm run test:unit
   artifacts:
-    paths:
-      - junit.xml
     reports:
       junit: junit.xml
 
 build_files:
-  <<: *node_setup
   stage: build_files
   script:
-    - npm ci
     - npm run build
   artifacts:
     paths:
@@ -52,7 +46,6 @@ build_files:
 staging:
   stage: deploy
   script:
-    - npm ci
     - ./node_modules/.bin/gatsby build --prefix-paths
     - apt-get update -qq && apt-get install -y -qq lftp
     - lftp -c "set ftp:ssl-allow no; open -u $BETA_FTP_USERNAME,$BETA_FTP_PASSWORD $FTP_SERVER; mirror -Rnev public / --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"

@@ -1,3 +1,8 @@
+[![pipeline status](https://gitlab.com/zyxneo/typing/badges/dev/pipeline.svg)](https://gitlab.com/zyxneo/typing/commits/dev)
+[![coverage report](https://gitlab.com/zyxneo/typing/badges/dev/coverage.svg)](https://gitlab.com/zyxneo/typing/commits/dev)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![devDependency Status](https://david-dm.org/electron/electron/dev-status.svg)](https://david-dm.org/manonet/typing?type=dev)
+
 # Manonet Typewriter Program
 
 Prototype: [http://beta.manonet.org](http://beta.manonet.org)
