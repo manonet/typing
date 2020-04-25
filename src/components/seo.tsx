@@ -7,7 +7,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 // @ts-ignore
 import { injectIntl } from 'gatsby-plugin-intl';
 import { IntlShape } from 'react-intl';
