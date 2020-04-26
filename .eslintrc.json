@@ -4,7 +4,12 @@
     "browser": true,
     "es6": true
   },
-  "extends": ["prettier", "prettier/@typescript-eslint", "prettier/react"],
+  "extends": [
+    "prettier",
+    "plugin:jsx-a11y/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/react"
+  ],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly",
@@ -17,8 +22,77 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["prettier", "react"],
+  "plugins": [
+    "import",
+    "jsx-a11y",
+    "prettier",
+    "react",
+    "sort-destructure-keys"
+  ],
   "rules": {
-    "prettier/prettier": "error"
+    "import/order": [
+      "error",
+      {
+        "alphabetize": {
+          "order": "asc"
+        },
+        "newlines-between": "always",
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "unknown"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "__mocks__/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "actions/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "utils/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "dataProviders/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "reducers",
+            "group": "internal"
+          },
+          {
+            "pattern": "reducers/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "components/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "assets/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "pages/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "routes",
+            "group": "internal"
+          }
+        ]
+      }
+    ],
+    "prettier/prettier": "error",
+    "sort-destructure-keys/sort-destructure-keys": 2,
+    "no-console": ["error", { "allow": ["info", "error"] }]
   }
 }
