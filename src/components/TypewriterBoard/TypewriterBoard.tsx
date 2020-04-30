@@ -1,8 +1,8 @@
-import React from 'react';
 import classNames from 'classnames';
+import React from 'react';
 
-import SampleBoard from '../SampleBoard';
 import Keyboard from '../Keyboard';
+import SampleBoard from '../SampleBoard';
 
 type Props = {
   className?: string;
@@ -26,8 +26,14 @@ class TypewriterBoard extends React.Component<Props> {
   }
 
   handleChangeRef = this.handleChange.bind(this);
+  focusTextInputRef = this.focusTextInput.bind(this);
 
   componentDidMount() {
+    this.focusTextInputRef();
+  }
+
+  focusTextInput() {
+    event?.preventDefault();
     if (this.textAreaRef.current) {
       this.textAreaRef.current.focus();
     }
@@ -41,14 +47,14 @@ class TypewriterBoard extends React.Component<Props> {
   render() {
     const {
       className,
-      userText,
       cursorAt,
-      signToWrite,
-      writtenSign,
       displayedLevel,
+      functionKeys,
       keyboard,
       keyboardKeys,
-      functionKeys,
+      signToWrite,
+      userText,
+      writtenSign,
     } = this.props;
 
     return (
@@ -60,6 +66,7 @@ class TypewriterBoard extends React.Component<Props> {
           signToWrite={signToWrite}
           writtenSign={writtenSign}
           onChange={this.handleChangeRef}
+          focusTextInput={this.focusTextInputRef}
         />
         <Keyboard
           className={'TypewriterBoard__keyboard'}

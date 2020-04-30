@@ -1,17 +1,17 @@
+import classNames from 'classnames';
 import React from 'react';
 import { connect } from 'react-redux';
-import classNames from 'classnames';
 import { ThunkDispatch } from 'redux-thunk';
+
 import { focusUserInput, FocusUserInputAction } from '../../actions';
 import { State as ReduxState } from '../../reducers';
 import SampleBoardChar from '../SampleBoardChar';
 
 type Props = {
   className?: string;
+  focusTextInput: () => void;
   cursorAt: number;
   sampleText: string;
-  signToWrite: string;
-  writtenSign?: string;
   userText: string;
   isUserInputFocused: boolean;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
@@ -23,29 +23,37 @@ const SampleBoard = React.forwardRef(
     const {
       className,
       cursorAt,
-      sampleText,
-      signToWrite,
-      writtenSign,
-      userText,
+      dispatchUserInputFocused,
+      focusTextInput,
       isUserInputFocused,
       onChange,
-      dispatchUserInputFocused,
+      sampleText,
+      userText,
     } = props;
 
     const sampleArray = sampleText.split('');
 
     return (
-      <div className={classNames('sampleBoard__sample', className)}>
-        <p className={'sampleBoard__sampleBoardHint'}>
-          Requested: {signToWrite}, written: {writtenSign}
-        </p>
+      <div
+        className={classNames('sampleBoard', {
+          ['sampleBoard--focus']: isUserInputFocused,
+        })}
+        onClick={focusTextInput}
+        tabIndex={0}
+        onKeyDown={undefined}
+        role="button"
+      >
+        <textarea
+          ref={ref}
+          className={'sampleBoard__userInput'}
+          value={userText}
+          onChange={onChange}
+          onFocus={() => dispatchUserInputFocused(true)}
+          onBlur={() => dispatchUserInputFocused(false)}
+        />
 
         <div className={'sampleBoard__wrapper'}>
-          <kbd
-            className={classNames('sampleBoard__sampleBoard', {
-              ['sampleBoard__sampleBoardFocus']: isUserInputFocused,
-            })}
-          >
+          <kbd className={classNames('sampleBoard__sample', className)}>
             {sampleArray.map((char, index) => (
               <SampleBoardChar
                 key={index}
@@ -56,15 +64,6 @@ const SampleBoard = React.forwardRef(
               />
             ))}
           </kbd>
-
-          <textarea
-            ref={ref}
-            className={'sampleBoard__userInput'}
-            value={userText}
-            onChange={onChange}
-            onFocus={() => dispatchUserInputFocused(true)}
-            onBlur={() => dispatchUserInputFocused(false)}
-          />
         </div>
       </div>
     );

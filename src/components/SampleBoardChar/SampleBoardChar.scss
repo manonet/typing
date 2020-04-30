@@ -7,18 +7,32 @@
   text-align: center;
   white-space: pre-wrap;
 
-  &__done {
-    color: $color-grey-400;
-  }
+  .sampleBoard--focus & {
+    &__done {
+      color: $color-grey-400;
+    }
 
-  &__active {
-    color: $color-primary-contrast;
-    background-color: $color-primary-main;
-  }
+    &__active {
+      position: relative;
+      color: $color-primary-contrast;
+      background-color: $color-primary-main;
 
-  &__error {
-    color: $color-error-main;
-    background-color: $color-error-contrast;
+      &::after {
+        position: absolute;
+        bottom: 0;
+        display: block;
+        width: 100%;
+        height: 0.1em;
+        content: '';
+        background: $color-grey-900;
+        animation: blink-animation 1s steps(2, start) infinite;
+      }
+    }
+
+    &__error {
+      color: $color-error-main;
+      background-color: $color-error-contrast;
+    }
   }
 
   &__space {
@@ -27,5 +41,11 @@
 
   &__lineFeed {
     opacity: 0.5;
+  }
+}
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
   }
 }

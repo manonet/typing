@@ -1,5 +1,5 @@
-import React from 'react';
 import classNames from 'classnames';
+import React from 'react';
 
 type Props = {
   className?: string;
@@ -10,7 +10,7 @@ type Props = {
 };
 
 function SampleBoardChar(props: Props) {
-  const { className, cursorAt, index, char, userText } = props;
+  const { char, className, cursorAt, index, userText } = props;
 
   // classes
   const done = cursorAt > index;

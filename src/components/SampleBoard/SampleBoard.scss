@@ -1,41 +1,36 @@
 .sampleBoard {
-  &__sample {
-    position: relative;
-    background-color: $color-grey-700;
-  }
+  display: flex;
+  font-size: 18px;
+  color: $color-grey-500;
+  flex-direction: column;
+  user-select: none;
+  background: $color-grey-500;
+  border: 2px solid $color-grey-600;
+  outline: none;
 
-  &__wrapper {
-    position: relative;
-  }
-
-  &__sampleBoard {
-    display: block;
-    padding: 10px;
-    font-size: 18px;
-    color: $color-grey-500;
-    background: $color-grey-500;
-    border: 2px solid $color-grey-600;
-  }
-
-  &__sampleBoardFocus {
+  &--focus {
     background: $color-white;
     border: 2px solid $color-primary-main;
   }
 
-  &__sampleBoardHint {
-    margin: 0;
-  }
-
   &__userInput {
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    max-width: none;
-    height: 100%;
-    max-height: none;
-    opacity: 0.01;
+    pointer-events: none;
+    resize: none;
+    user-select: none;
+    outline: none;
+    opacity: 0;
+  }
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+  }
+
+  &__sample {
+    position: relative;
+    flex: 0 1 800px;
+    padding: 10px;
+    margin: auto;
   }
 }

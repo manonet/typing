@@ -1,22 +1,21 @@
-import React from 'react';
 import { withPrefix } from 'gatsby-link';
+import { injectIntl, Link } from 'gatsby-plugin-intl';
+import mem from 'mem';
+import React from 'react';
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 // @ts-ignore
-import { injectIntl, Link } from 'gatsby-plugin-intl';
-import mem from 'mem';
 
 import { setSampleText, SetSampleTextAction } from '../actions';
+import TypewriterBoard from '../components/TypewriterBoard';
 import { State as ReduxState } from '../reducers';
-
-import getLevelFromKeys from '../utils/getLevelFromKeys';
+import { Keyboard, StatisticProps } from '../types';
 import getKeyboardOS from '../utils/getKeyboardOS';
 import getKeysFromChar from '../utils/getKeysFromChar';
+import getLevelFromKeys from '../utils/getLevelFromKeys';
 
-import TypewriterBoard from '../components/TypewriterBoard';
-import LessonModal from './LessonModal';
 import ErrorModal from './ErrorModal';
-import { Keyboard, StatisticProps } from '../types';
+import LessonModal from './LessonModal';
 
 const memoizedGetLevelFromKeys = mem(getLevelFromKeys);
 // TODO consider adding Enter key to keyboard object instead of functionKeys
@@ -29,6 +28,7 @@ const memoizedGetLevelFromKeys = mem(getLevelFromKeys);
 // TODO fix movable caret in input, disable arrow keys
 // TODO fix focus and blur styles on user input
 // TODO disable tab jump on writing
+// TODO enable/disable keyboard events check, update keyboard only if userInput focused
 
 type Props = {
   sampleText: string;
@@ -192,10 +192,10 @@ class Typewriter extends React.Component<Props, State> {
 
     this.setState((prevState) => {
       const {
-        keyboard,
+        currentKeyInfo,
         functionKeys,
         isoSucceed,
-        currentKeyInfo,
+        keyboard,
         previousKeyInfo,
         previousPressedKeyInfo,
         statistics,
@@ -358,7 +358,7 @@ class Typewriter extends React.Component<Props, State> {
   }
 
   startNewLesson(sampleText: string) {
-    const { keyboard, functionKeys } = this.state;
+    const { functionKeys, keyboard } = this.state;
 
     const nextCharInfo = getKeysFromChar(keyboard, sampleText.charAt(0));
 
@@ -396,16 +396,34 @@ class Typewriter extends React.Component<Props, State> {
 
     const getModifierStateCapsLock = event.getModifierState('CapsLock'); // always true if CapsLock pressed
 
+    const lastKeyDown = event.code;
+
+    // disable keys which makes able the navigation within the textinput. (changing caret position is undesirable)
+    if (
+      lastKeyDown === 'ArrowUp' ||
+      lastKeyDown === 'ArrowDown' ||
+      lastKeyDown === 'ArrowLeft' ||
+      lastKeyDown === 'ArrowRight' ||
+      lastKeyDown === 'PageUp' ||
+      lastKeyDown === 'PageDown' ||
+      lastKeyDown === 'Home' ||
+      lastKeyDown === 'End'
+    ) {
+      event.view.event.preventDefault();
+      // TODO: make it user friendly, e.g. toaster like info.
+      console.info(`The usage of the ${lastKeyDown} key is disabled`);
+      return;
+    }
+
     this.setState((prevState) => {
       const {
-        keyboard,
-        functionKeys,
         codeToIso,
-        keysDown,
+        functionKeys,
         isCapsLockOn: isCapsLockOnFromState,
+        keyboard,
+        keysDown,
       } = { ...prevState };
 
-      const lastKeyDown = event.code;
       const downIso = codeToIso[lastKeyDown];
       keysDown.push(lastKeyDown);
 
@@ -442,12 +460,13 @@ class Typewriter extends React.Component<Props, State> {
   handleKeyup(event) {
     this.setState((prevState) => {
       const {
-        keyboard,
-        functionKeys,
         codeToIso,
-        keysDown,
-        isCapsLockOn,
+        functionKeys,
         inputChanged,
+        isCapsLockOn,
+        keyboard,
+        keysDown,
+        userText,
       } = { ...prevState };
 
       const lastKeyUp = event.code;
@@ -481,6 +500,9 @@ class Typewriter extends React.Component<Props, State> {
         functionKeys.CapsLock.pressure = 'locked';
       }
 
+      event.target.selectionStart = userText?.length || 0;
+      event.target.selectionEnd = userText?.length || 0;
+
       return {
         keyboard,
         functionKeys,
@@ -510,14 +532,14 @@ class Typewriter extends React.Component<Props, State> {
 
   render() {
     const {
-      keyboard,
-      userText,
+      characterNotFound,
       cursorAt,
-      signToWrite,
-      writtenSign,
       displayedLevel,
       functionKeys,
-      characterNotFound,
+      keyboard,
+      signToWrite,
+      userText,
+      writtenSign,
     } = this.state;
 
     const { intl, isModalOpen, isUserInputFocused } = this.props;
@@ -561,7 +583,7 @@ class Typewriter extends React.Component<Props, State> {
 }
 
 const mapStateToProps = (state: ReduxState) => {
-  const { setSampleText, focusUserInput } = state;
+  const { focusUserInput, setSampleText } = state;
   return {
     sampleText: setSampleText.sampleText,
     isUserInputFocused: focusUserInput.isUserInputFocused,
