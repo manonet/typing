@@ -1,6 +1,7 @@
-import React from 'react';
-// @ts-ignore
 import { FormattedMessage, Link } from 'gatsby-plugin-intl';
+import React from 'react';
+
+// @ts-ignore
 import LanguageSwitcher from '../../../components/LanguageSwitcher';
 
 type Props = {
@@ -146,7 +147,13 @@ function Header(props: Props) {
               defaultMessage="All rights reserved."
             />
           </div>
-          <div className="footer__version">version: {version}</div>
+          <div className="footer__version">
+            <FormattedMessage
+              id="site.version"
+              defaultMessage="version: {version}"
+              values={{ version }}
+            />
+          </div>
         </div>
       </div>
     </footer>

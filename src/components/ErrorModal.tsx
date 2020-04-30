@@ -1,6 +1,6 @@
+import { injectIntl, FormattedMessage } from 'gatsby-plugin-intl';
 import React, { ReactNode } from 'react';
 // @ts-ignore
-import { injectIntl, FormattedMessage } from 'gatsby-plugin-intl';
 import { IntlShape } from 'react-intl';
 
 import Button from './Button';
@@ -15,9 +15,9 @@ type Props = {
 };
 
 function ErrorModal(props: Props) {
-  const { open, content, footer } = props;
+  const { content, footer, open } = props;
 
-  const title = props.title || <FormattedMessage id="error.title" />;
+  const title = props.title || <FormattedMessage id="general.error.title" />;
 
   const handleClose = () => {
     if (props.handleClose) {
@@ -38,7 +38,7 @@ function ErrorModal(props: Props) {
       <div>
         {footer || (
           <Button onClick={handleClose} color="primary">
-            <FormattedMessage id="modal.ok" />
+            <FormattedMessage id="general.ok" />
           </Button>
         )}
       </div>

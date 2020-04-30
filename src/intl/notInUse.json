@@ -1,0 +1,22 @@
+{
+  "site.navigation.pricing": "Pricing",
+  "pricing.page.title": "Pricing",
+  "pricing.licence.mini": "Basic",
+  "pricing.licence.small": "Premium",
+  "pricing.licence.medium": "Deluxe",
+  "pricing.licence.large": "Diamond",
+  "pricing.pricePerMonth": "{price} per Month",
+  "pricing.discount.limited": "Now, only for short time",
+  "pricing.benefit.1": "Write with ten fingers at once",
+  "pricing.callToAction": "Try it out now!",
+  "typing.showHands": "Show hands",
+  "typing.hideHands": "Hide hands",
+  "typing.hand.left": "left hand",
+  "typing.hand.right": "right hand",
+  "typing.finger.thumb": "thumb",
+  "typing.finger.index": "index finger",
+  "typing.finger.middle": "middle finger",
+  "typing.finger.ring": "ring finger",
+  "typing.finger.little": "pinky finger",
+  "typing.hand.finger": "{hand} {finger}"
+}
