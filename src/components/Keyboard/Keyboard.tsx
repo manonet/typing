@@ -1,8 +1,8 @@
-import React from 'react';
 import classNames from 'classnames';
+import React from 'react';
 
-import KeyboardKey from '../KeyboardKey';
 import variables from '../../theme/variables';
+import KeyboardKey from '../KeyboardKey';
 
 import './Keyboard.scss';
 
@@ -33,7 +33,7 @@ function Keyboard(props: Props) {
   }
   */
 
-  const { keyboard, className, functionKeys, displayedLevel } = props;
+  const { className, displayedLevel, functionKeys, keyboard } = props;
   // console.log("keyboard", keyboard)
   // console.log("keys", keyboardKeys)
 
@@ -44,14 +44,14 @@ function Keyboard(props: Props) {
   const { keys } = keyboard;
 
   const {
-    keyboardWidth,
-    keyboardHeight,
-    keyWidth,
-    keyHeight,
     aRowShift,
     bRowShift,
     cRowShift,
     dRowShift,
+    keyHeight,
+    keyWidth,
+    keyboardHeight,
+    keyboardWidth,
     rX,
     rY,
   } = variables;

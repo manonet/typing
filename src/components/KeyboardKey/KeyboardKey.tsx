@@ -1,5 +1,6 @@
-import React from 'react';
 import classNames from 'classnames';
+import React from 'react';
+
 import variables from '../../theme/variables';
 
 export type KeyboardThemeProps = {
@@ -25,7 +26,6 @@ export type KeyboardKeyProps = {
   pressure: 'none' | 'pressed' | 'locked'; // locked is for CapsLock 'on' state
   marker: 'none' | 'toPressFirst' | 'toPressSecond';
   transform: string;
-  translate: string;
   displayedLevel: string;
   x: number;
   y: number;
@@ -34,29 +34,29 @@ export type KeyboardKeyProps = {
 function KeyboardKey(props: KeyboardKeyProps) {
   // console.log(props)
   const {
-    to,
-    shift,
-    iso,
-    succeedState,
-    pressure,
-    marker,
-    transform,
     displayedLevel,
+    iso,
+    marker,
+    pressure,
+    shift,
+    succeedState,
+    to,
+    transform,
     x,
     y,
   } = props;
 
   const {
-    keyWidth,
-    keyHeight,
-    keyPaddingX,
-    keyPaddingY,
     aRowShift,
     bRowShift,
     cRowShift,
     dRowShift,
+    keyHeight,
     keyLabelX,
     keyLabelY,
+    keyPaddingX,
+    keyPaddingY,
+    keyWidth,
     rX,
     rY,
   } = variables;
@@ -66,176 +66,115 @@ function KeyboardKey(props: KeyboardKeyProps) {
   if (to.toString().toUpperCase() === shift) {
     alphabet = true;
   }
-  const toWrite = marker === 'toPressFirst';
 
   let width = keyWidth - keyPaddingX * 2;
   const height = keyHeight - keyPaddingY * 2;
 
-  let translate = 'translate(0, 0)';
+  let calculatedX = 0;
+  let calculatedY = 0;
 
-  const keyClass = classNames('key', iso);
-  const keyBgClass = classNames('key__keyBg', {
+  const keyClass = classNames('key', iso, {
     ['key--missed']: succeedState === 'missed',
     ['key--correct']: succeedState === 'correct',
     ['key--error']: succeedState === 'error',
     ['key--alphabet']: alphabet,
-    ['key--toWrite']: toWrite,
     ['key--toPressFirst']: marker === 'toPressFirst',
     ['key--toPressSecond']: marker === 'toPressSecond',
     ['key--pressed']: pressure === 'pressed',
     ['key--locked']: pressure === 'locked',
   });
-  const labelClass = classNames('key__label', {
-    ['key__label--toWrite']: toWrite,
-  });
+  const keyShadowClass = classNames('key__shadow');
+  const keyBgClass = classNames('key__keyBg');
+  const labelClass = classNames('key__label');
 
   switch (iso) {
     case 'Backspace':
       width = keyWidth * 2 - keyPaddingX * 2;
-      translate = props.translate || `translate(${keyWidth * 13}, 0)`;
+      calculatedX = keyWidth * 13;
+      calculatedY = 0;
       break;
 
     case 'CapsLock':
       width = keyWidth + cRowShift - keyPaddingX * 2;
-      translate = props.translate || `translate(0, ${keyHeight * 2})`;
+      calculatedX = 0;
+      calculatedY = keyHeight * 2;
       break;
 
     case 'Tab':
       width = keyWidth + dRowShift - keyPaddingX * 2;
-      translate = props.translate || `translate(0, ${keyHeight})`;
+      calculatedX = 0;
+      calculatedY = keyHeight;
       break;
 
     case 'ShiftLeft':
       width = bRowShift - keyPaddingX * 2;
-      translate = props.translate || `translate(0, ${keyHeight * 3})`;
+      calculatedX = 0;
+      calculatedY = keyHeight * 3;
       break;
 
     case 'ShiftRight':
       width = keyWidth * 3 - bRowShift - keyPaddingX * 2;
-      translate =
-        props.translate ||
-        `translate(${bRowShift + keyWidth * 12}, ${keyHeight * 3})`;
+      calculatedX = bRowShift + keyWidth * 12;
+      calculatedY = keyHeight * 3;
       break;
 
     case 'ControlLeft':
       width = bRowShift - keyPaddingX * 2;
-      translate = props.translate || `translate(0, ${keyHeight * 4})`;
+      calculatedX = 0;
+      calculatedY = keyHeight * 4;
       break;
 
     case 'WakeUp': // fn
-      translate =
-        props.translate || `translate(${aRowShift}, ${keyHeight * 4})`;
+      calculatedX = aRowShift;
+      calculatedY = keyHeight * 4;
       break;
 
     case 'OSLeft':
-      translate =
-        props.translate ||
-        `translate(${aRowShift + keyWidth}, ${keyHeight * 4})`;
+      calculatedX = aRowShift + keyWidth;
+      calculatedY = keyHeight * 4;
       break;
 
     case 'AltLeft':
-      translate =
-        props.translate ||
-        `translate(${aRowShift + keyWidth * 2}, ${keyHeight * 4})`;
+      calculatedX = aRowShift + keyWidth * 2;
+      calculatedY = keyHeight * 4;
       break;
 
     case 'AltRight':
-      translate =
-        props.translate ||
-        `translate(${aRowShift + keyWidth * 8}, ${keyHeight * 4})`;
+      calculatedX = aRowShift + keyWidth * 8;
+      calculatedY = keyHeight * 4;
       break;
 
     case 'OSRight':
-      translate =
-        props.translate ||
-        `translate(${aRowShift + keyWidth * 9}, ${keyHeight * 4})`;
+      calculatedX = aRowShift + keyWidth * 9;
+      calculatedY = keyHeight * 4;
       break;
 
     case 'A11': // Menu
-      translate =
-        props.translate ||
-        `translate(${aRowShift + keyWidth * 11}, ${keyHeight * 4})`;
+      calculatedX = aRowShift + keyWidth * 11;
+      calculatedY = keyHeight * 4;
       break;
 
     case 'ControlRight':
       width = keyWidth * 3 - bRowShift - keyPaddingX * 2;
-      translate =
-        props.translate ||
-        `translate(${bRowShift + keyWidth * 12}, ${keyHeight * 4})`;
+      calculatedX = aRowShift + keyWidth * 12;
+      calculatedY = keyHeight * 4;
       break;
 
-    case 'A03': // Space (A03 to A07)
-      return (
-        <g className={keyClass}>
-          <rect
-            className={keyBgClass}
-            x={x + keyPaddingX}
-            y={y + keyPaddingY}
-            width={keyWidth * 5 - keyPaddingX * 2}
-            height={height}
-            rx={rX}
-            ry={rY}
-          />
-        </g>
-      );
+    case 'A03': // Space (A03 to A07) no label
+      width = keyWidth * 5 - keyPaddingX * 2;
+      break;
+
     default:
       break;
   }
 
   if (iso === 'Enter') {
     // for Enter
-    const leftD = dRowShift;
-    let leftC = cRowShift;
-    const right = keyWidth * 2;
-    const bottom = keyHeight * 2;
-    translate = props.translate || `translate(${keyWidth * 13}, ${keyHeight})`;
-
-    const enterPath = `M${leftD + keyPaddingX} ${rY + keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 1, ${leftD +
-      rX +
-      keyPaddingX} ${keyPaddingY}\
-              L ${right - rX - keyPaddingX} ${keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 1, ${right - keyPaddingX} ${rY +
-      keyPaddingY}\
-              L ${right - keyPaddingX} ${bottom - rY - keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 1, ${right - rX - keyPaddingX} ${bottom -
-      keyPaddingY}\
-              L ${leftC + rX + keyPaddingX} ${bottom - keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 1, ${leftC + keyPaddingX} ${bottom -
-      rY -
-      keyPaddingY}\
-              L ${leftC + keyPaddingX} ${keyHeight + rY - keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 0, ${leftC - rX + keyPaddingX} ${keyHeight -
-      keyPaddingY}\
-              L ${leftD + rX + keyPaddingX} ${keyHeight - keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 1, ${leftD + keyPaddingX} ${keyHeight -
-      rY -
-      keyPaddingY}\
-              L ${leftD + keyPaddingX} ${rY + keyPaddingY} Z`;
-
-    leftC = cRowShift - keyWidth;
-    const enterPath2 = `M${leftD + keyPaddingX} ${rY + keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 1, ${leftD +
-      rX +
-      keyPaddingX} ${keyPaddingY}\
-              L ${right - rX - keyPaddingX} ${keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 1, ${right - keyPaddingX} ${rY +
-      keyPaddingY}\
-              L ${right - keyPaddingX} ${bottom - rY - keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 1, ${right - rX - keyPaddingX} ${bottom -
-      keyPaddingY}\
-              L ${leftC + rX + keyPaddingX} ${bottom - keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 1, ${leftC + keyPaddingX} ${bottom -
-      rY -
-      keyPaddingY}\
-              L ${leftC + keyPaddingX} ${keyHeight + rY + keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 1, ${leftC + rX + keyPaddingX} ${keyHeight +
-      keyPaddingY}\
-              L ${leftD - rX + keyPaddingX} ${keyHeight + keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 0, ${leftD + keyPaddingX} ${keyHeight -
-      rY +
-      keyPaddingY}\
-              L ${leftD + keyPaddingX} ${rY + keyPaddingY} Z`;
+    const leftD = dRowShift + keyWidth * 13;
+    let leftC = cRowShift + keyWidth * 13;
+    const right = keyWidth * 2 + keyWidth * 13;
+    const top = keyHeight;
+    const bottom = keyHeight * 3;
 
     switch (props.variant) {
       case 1:
@@ -243,15 +182,44 @@ function KeyboardKey(props: KeyboardKeyProps) {
           xx
           -x
       */
+        const enterPath = `M${leftD + keyPaddingX} ${rY + top + keyPaddingY}\
+     A ${rX} ${rY}, 0, 0, 1, ${leftD + rX + keyPaddingX} ${top + keyPaddingY}\
+     L ${right - rX - keyPaddingX} ${top + keyPaddingY}\
+     A ${rX} ${rY}, 0, 0, 1, ${right - keyPaddingX} ${top + rY + keyPaddingY}\
+     L ${right - keyPaddingX} ${bottom - rY - keyPaddingY}\
+     A ${rX} ${rY}, 0, 0, 1, ${right - rX - keyPaddingX} ${
+          bottom - keyPaddingY
+        }\
+     L ${leftC + rX + keyPaddingX} ${bottom - keyPaddingY}\
+     A ${rX} ${rY}, 0, 0, 1, ${leftC + keyPaddingX} ${
+          bottom - rY - keyPaddingY
+        }\
+     L ${leftC + keyPaddingX} ${top + keyHeight + rY - keyPaddingY}\
+     A ${rX} ${rY}, 0, 0, 0, ${leftC - rX + keyPaddingX} ${
+          top + keyHeight - keyPaddingY
+        }\
+     L ${leftD + rX + keyPaddingX} ${top + keyHeight - keyPaddingY}\
+     A ${rX} ${rY}, 0, 0, 1, ${leftD + keyPaddingX} ${
+          top + keyHeight - rY - keyPaddingY
+        }\
+     L ${leftD + keyPaddingX} ${top + rY + keyPaddingY} Z`;
+
         return (
-          <g className={keyClass} transform={translate}>
-            <path className={keyBgClass} d={enterPath} />
-            <g className={'key__labels'}>
-              <text className={labelClass} x="160" y="140">
-                {to}
-              </text>
+          <>
+            <path className={keyShadowClass} d={enterPath} />
+            <g className={keyClass}>
+              <path className={keyBgClass} d={enterPath} />
+              <g className={'key__labels'}>
+                <text
+                  className={labelClass}
+                  x={cRowShift + keyWidth * 13 + 70}
+                  y={keyHeight + 80}
+                >
+                  {to}
+                </text>
+              </g>
             </g>
-          </g>
+          </>
         );
 
       case 2:
@@ -260,26 +228,37 @@ function KeyboardKey(props: KeyboardKeyProps) {
           xx
       */
         return (
-          <g
-            className={keyClass}
-            transform={`translate(${cRowShift + keyWidth * 12}, ${keyHeight *
-              2})`}
-          >
+          <>
             <rect
-              className={keyBgClass}
-              x={x + keyPaddingX}
-              y={y + keyPaddingY}
+              className={keyShadowClass}
+              x={cRowShift + keyWidth * 12 + x + keyPaddingX}
+              y={keyHeight * 2 + y + keyPaddingY}
               width={keyWidth * 3 - cRowShift - keyPaddingX * 2}
               height={height}
               rx={rX}
               ry={rY}
             />
-            <g className={'key__labels'}>
-              <text className={labelClass} x="30" y="80">
-                {to}
-              </text>
+            <g className={keyClass}>
+              <rect
+                className={keyBgClass}
+                x={cRowShift + keyWidth * 12 + x + keyPaddingX}
+                y={keyHeight * 2 + y + keyPaddingY}
+                width={keyWidth * 3 - cRowShift - keyPaddingX * 2}
+                height={height}
+                rx={rX}
+                ry={rY}
+              />
+              <g className={'key__labels'}>
+                <text
+                  className={labelClass}
+                  x={cRowShift + keyWidth * 12 + 170}
+                  y={keyHeight * 2 + 70}
+                >
+                  {to}
+                </text>
+              </g>
             </g>
-          </g>
+          </>
         );
 
       case 3:
@@ -288,25 +267,37 @@ function KeyboardKey(props: KeyboardKeyProps) {
           --
       */
         return (
-          <g
-            className={keyClass}
-            transform={`translate(${dRowShift + keyWidth * 12}, ${keyHeight})`}
-          >
+          <>
             <rect
-              className={keyBgClass}
-              x={x + keyPaddingX}
-              y={y + keyPaddingY}
+              className={keyShadowClass}
+              x={dRowShift + keyWidth * 12 + x + keyPaddingX}
+              y={keyHeight + y + keyPaddingY}
               width={keyWidth * 3 - dRowShift - keyPaddingX * 2}
               height={height}
               rx={rX}
               ry={rY}
             />
-            <g className={'key__labels'}>
-              <text className={labelClass} x="30" y="80">
-                {to}
-              </text>
+            <g className={keyClass}>
+              <rect
+                className={keyBgClass}
+                x={dRowShift + keyWidth * 12 + x + keyPaddingX}
+                y={keyHeight + y + keyPaddingY}
+                width={keyWidth * 3 - dRowShift - keyPaddingX * 2}
+                height={height}
+                rx={rX}
+                ry={rY}
+              />
+              <g className={'key__labels'}>
+                <text
+                  className={labelClass}
+                  x={dRowShift + keyWidth * 12 + 200}
+                  y={keyHeight + 70}
+                >
+                  {to}
+                </text>
+              </g>
             </g>
-          </g>
+          </>
         );
 
       default:
@@ -315,47 +306,93 @@ function KeyboardKey(props: KeyboardKeyProps) {
           -x
           xx
       */
+
+        leftC = leftC - keyWidth;
+        const enterPath2 = `M${leftD + keyPaddingX} ${rY + top + keyPaddingY}\
+              A ${rX} ${rY}, 0, 0, 1, ${leftD + rX + keyPaddingX} ${
+          top + keyPaddingY
+        }\
+              L ${right - rX - keyPaddingX} ${top + keyPaddingY}\
+              A ${rX} ${rY}, 0, 0, 1, ${right - keyPaddingX} ${
+          rY + top + keyPaddingY
+        }\
+              L ${right - keyPaddingX} ${bottom - rY - keyPaddingY}\
+              A ${rX} ${rY}, 0, 0, 1, ${right - rX - keyPaddingX} ${
+          bottom - keyPaddingY
+        }\
+              L ${leftC + rX + keyPaddingX} ${bottom - keyPaddingY}\
+              A ${rX} ${rY}, 0, 0, 1, ${leftC + keyPaddingX} ${
+          bottom - rY - keyPaddingY
+        }\
+              L ${leftC + keyPaddingX} ${top + keyHeight + rY + keyPaddingY}\
+              A ${rX} ${rY}, 0, 0, 1, ${leftC + rX + keyPaddingX} ${
+          top + keyHeight + keyPaddingY
+        }\
+              L ${leftD - rX + keyPaddingX} ${keyHeight + top + keyPaddingY}\
+              A ${rX} ${rY}, 0, 0, 0, ${leftD + keyPaddingX} ${
+          top + keyHeight - rY + keyPaddingY
+        }\
+              L ${leftD + keyPaddingX} ${rY + top + keyPaddingY} Z`;
+
         return (
-          <g className={keyClass} transform={translate}>
-            <path className={keyBgClass} d={enterPath2} />
-            <g className={'key__labels'}>
-              <text className={labelClass} x="120" y="140">
-                {to}
-              </text>
+          <>
+            <path className={keyShadowClass} d={enterPath2} />
+            <g className={keyClass}>
+              <path className={keyBgClass} d={enterPath2} />
+              <g className={'key__labels'}>
+                <text
+                  className={labelClass}
+                  x={dRowShift + keyWidth * 14}
+                  y={keyHeight * 2 + 60}
+                >
+                  {to}
+                </text>
+              </g>
             </g>
-          </g>
+          </>
         );
     }
   }
 
   return (
-    <g className={keyClass} textAnchor="middle" transform={translate}>
+    <>
       <rect
-        className={keyBgClass}
-        x={x + keyPaddingX}
-        y={y + keyPaddingY}
+        className={keyShadowClass}
+        x={(x || calculatedX) + keyPaddingX}
+        y={(y || calculatedY) + keyPaddingY}
         width={width}
         height={height}
         rx={rX}
         ry={rY}
       />
-      {displayedLevel && (
-        <g className={'key__labels'}>
-          <text
-            className={labelClass}
-            dangerouslySetInnerHTML={{ __html: props[displayedLevel] }}
-            x={x + keyLabelX}
-            y={y + keyLabelY + 10}
-          />
-        </g>
-      )}
-      {transform && (
-        <text
-          className={'key__labelTransform'}
-          dangerouslySetInnerHTML={{ __html: transform }}
+      <g className={keyClass} textAnchor="middle">
+        <rect
+          className={keyBgClass}
+          x={(x || calculatedX) + keyPaddingX}
+          y={(y || calculatedY) + keyPaddingY}
+          width={width}
+          height={height}
+          rx={rX}
+          ry={rY}
         />
-      )}
-    </g>
+        {displayedLevel && iso !== 'A03' && (
+          <g className={'key__labels'}>
+            <text
+              className={labelClass}
+              dangerouslySetInnerHTML={{ __html: props[displayedLevel] }}
+              x={(x || calculatedX) + keyLabelX}
+              y={(y || calculatedY) + keyLabelY + 10}
+            />
+          </g>
+        )}
+        {transform && (
+          <text
+            className={'key__labelTransform'}
+            dangerouslySetInnerHTML={{ __html: transform }}
+          />
+        )}
+      </g>
+    </>
   );
 }
 
