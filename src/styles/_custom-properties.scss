@@ -7,6 +7,7 @@
   // Greytones
   --color-black: #1e1e1e;
   --color-white: #fff;
+  --color-transparent: transparent;
 
   --color-grey-50: #fafafa;
   --color-grey-100: #f5f5f5;
@@ -119,6 +120,11 @@
   --font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   --font-family-alternative: 'Roboto Slab', sans-serif;
 
+  --line-height-small: 13px;
+  --line-height-default: 16px;
+  --line-height-big: 20px;
+  --line-height-large: 24px;
+
   --font-size-default: 14px;
   --font-size-small: 12px;
   --font-size-big: 16px;
@@ -129,6 +135,18 @@
   --border-radius-small: calc(var(--spacer) / 4);
   --border-radius: calc(var(--spacer) / 2);
   --border-radius-big: var(--spacer);
+
+  --z-index-zero: 0;
+  --z-index-up: 1;
+  --z-index-down: -1;
+  --z-index-loader: 100;
+  --z-index-dropdown: 1000;
+  --z-index-fixed: 1030;
+  --z-index-sticky: 1040;
+  --z-index-modal-backdrop: 1050;
+  --z-index-modal: 1060;
+  --z-index-popover: 1070;
+  --z-index-tooltip: 1080;
 
   // KEYBOARD
   // ==================================================

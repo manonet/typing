@@ -3,9 +3,11 @@
 @import '~sanitize.css';
 @import '~sanitize.css/forms.css';
 @import '~sanitize.css/typography.css';
+@import '~react-tippy/dist/tippy.css';
 
 @import 'variables.scss';
 @import 'typography.scss';
+@import 'tippy_overrides';
 
 @import '../components/Statistics/Charts/LineChart.scss';
 @import '../components/Statistics/Charts/PieChart.scss';

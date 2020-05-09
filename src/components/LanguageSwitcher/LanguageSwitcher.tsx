@@ -1,7 +1,13 @@
-import React from 'react';
 import classNames from 'classnames';
-// @ts-ignore
-import { IntlContextConsumer, changeLocale } from 'gatsby-plugin-intl';
+import {
+  IntlContextConsumer,
+  changeLocale,
+  FormattedMessage,
+} from 'gatsby-plugin-intl';
+import React from 'react';
+import { Tooltip } from 'react-tippy';
+
+import Button from '../Button';
 
 type Props = {
   className?: string;
@@ -19,32 +25,58 @@ export interface IntlContextConsumerProps {
 }
 
 const LanguageSwitcher = ({ className }: Props) => (
-  <nav className={classNames('languageSwitcher', className)}>
-    <ul className="languageSwitcher__list">
-      <IntlContextConsumer>
-        {({ languages, language: currentLocale }: IntlContextConsumerProps) =>
-          languages.map((language) => (
-            <li
-              key={language}
-              onClick={() =>
-                currentLocale !== language ? changeLocale(language) : null
-              }
-              onKeyDown={() =>
-                currentLocale !== language ? changeLocale(language) : null
-              }
-              role="menuitem"
-              tabIndex={0}
-              className={classNames('languageSwitcher__item', {
-                ['languageSwitcher__item--active']: currentLocale === language,
+  <div className={classNames('languageSwitcher', className)}>
+    <IntlContextConsumer>
+      {({ language: currentLocale, languages }: IntlContextConsumerProps) => (
+        <Tooltip
+          position="top-start"
+          trigger="click"
+          useContext
+          interactive
+          theme="light"
+          arrow
+          distance={16}
+          html={
+            <ul className="languageSwitcher__list">
+              {languages.map((language) => {
+                if (currentLocale !== language) {
+                  return (
+                    <li
+                      key={language}
+                      onClick={() =>
+                        currentLocale !== language
+                          ? changeLocale(language)
+                          : null
+                      }
+                      onKeyDown={() =>
+                        currentLocale !== language
+                          ? changeLocale(language)
+                          : null
+                      }
+                      role="menuitem"
+                      tabIndex={0}
+                      className="languageSwitcher__item"
+                    >
+                      <bdi>{languageName[language]}</bdi>
+                    </li>
+                  );
+                }
+                return null;
               })}
-            >
-              {languageName[language]}
-            </li>
-          ))
-        }
-      </IntlContextConsumer>
-    </ul>
-  </nav>
+            </ul>
+          }
+        >
+          <Button className="languageSwitcher__button">
+            <i className="fa fa-language"></i>
+            <span className="languageSwitcher__currentLocale">
+              <FormattedMessage id="site.languageNameOnNativeLanguage" />
+            </span>
+            <i className="fa fa-angle-down"></i>
+          </Button>
+        </Tooltip>
+      )}
+    </IntlContextConsumer>
+  </div>
 );
 
 export default LanguageSwitcher;

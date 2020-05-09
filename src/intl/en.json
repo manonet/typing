@@ -13,6 +13,7 @@
     "appStatistics.allKeyboardLanguages": "available keyboard languages",
     "appStatistics.allCharacters": "supported characters",
     "appStatistics.allDeadKeys": "dead, hidden keys",
+    "site.languageNameOnNativeLanguage": "English",
     "site.version": "version: {version}",
     "site.copyright": "All rights reserved.",
     "site.customerSupport": "Customer Support",

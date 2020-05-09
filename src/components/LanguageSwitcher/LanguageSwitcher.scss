@@ -1,32 +1,27 @@
 .languageSwitcher {
   &__list {
-    display: flex;
-    padding: $spacer 0;
+    padding: $spacer;
     margin: 0;
+    flex-wrap: wrap;
+    column-count: 3;
   }
 
   &__item {
-    display: flex;
+    display: block;
+    line-height: $line-height-large;
+    color: $color-primary-main;
     cursor: pointer;
 
-    &::after {
-      display: block;
-      width: calc(#{$spacer} * 2);
-      color: $text-color-inverse-disabled;
-      text-align: center;
-      content: '•';
-    }
-
     &:hover {
-      color: $color-white;
+      color: $text-color-primary;
     }
+  }
 
-    &--active {
-      &,
-      &:hover {
-        color: $color-grey-100;
-        cursor: default;
-      }
-    }
+  &__currentLocale {
+    margin: 0 calc(#{$spacer} * 2);
+  }
+
+  .fa-language {
+    transform: scale(1.6);
   }
 }

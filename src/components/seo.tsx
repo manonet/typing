@@ -5,13 +5,13 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import { injectIntl } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 // @ts-ignore
-import { injectIntl } from 'gatsby-plugin-intl';
 import { IntlShape } from 'react-intl';
-import { useStaticQuery, graphql } from 'gatsby';
 
 type Props = {
   intl: IntlShape;
@@ -22,7 +22,31 @@ type Props = {
   lang: string;
 };
 
-function SEO({ description, lang, meta, keywords, title, intl }: Props) {
+const RtlLangs = [
+  'ae' /* Avestan */,
+  'ar' /* 'العربية', Arabic */,
+  'arc' /* Aramaic */,
+  'arz' /* 'مصرى', Egyptian  */,
+  'azb' /* 'تۆرکجه', Azeri, Azerbaijani  */,
+  'bcc' /* 'بلوچی مکرانی', Southern Balochi */,
+  'bqi' /* 'بختياري', Bakthiari */,
+  'ckb' /* 'Soranî / کوردی', Sorani */,
+  'dv' /* 'ދިވެހިބަސް', Dhivehi */,
+  'fa' /* 'فارسی', Persian, Farsi */,
+  'glk' /* 'گیلکی', Gilaki */,
+  'he' /* 'עברית', Hebrew */,
+  'ku' /* 'Kurdî / كوردی', Kurdish */,
+  'mzn' /* 'مازِرونی', Mazanderani */,
+  'nqo' /* 'ߒߞߏ', N'Ko */,
+  'pnb' /* 'پنجابی', Western Punjabi */,
+  'ps' /* 'پښتو', Pashto, */,
+  'sd' /* 'سنڌي', Sindhi */,
+  'ug' /* 'Uyghurche / ئۇيغۇرچە', Uyghur */,
+  'ur' /* 'اردو', Urdu */,
+  'yi' /* 'ייִדיש', Yiddish */,
+];
+
+function SEO({ description, intl, keywords, lang, meta, title }: Props) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -38,10 +62,16 @@ function SEO({ description, lang, meta, keywords, title, intl }: Props) {
   const metaDescription =
     description || intl.formatMessage({ id: 'site.description' });
 
+  // Ensure that land string can be matched with RtlLangs
+  const langCode = lang.replace(/([\-\_].+)/, '').toLowerCase();
+  // for the Right To Left languages add the proper HTML dir attribude
+  const dir = RtlLangs.includes(langCode) ? 'rtl' : 'ltr';
+
   return (
     <Helmet
       htmlAttributes={{
         lang,
+        dir,
       }}
       bodyAttributes={{
         class: 'body',

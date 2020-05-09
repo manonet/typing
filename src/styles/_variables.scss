@@ -6,6 +6,7 @@
 
 $color-black: var(--color-black);
 $color-white: var(--color-white);
+$color-transparent: var(--color-transparent);
 
 $color-grey-50: var(--color-grey-50);
 $color-grey-100: var(--color-grey-100);
@@ -118,6 +119,11 @@ $text-color-danger: var(--text-color-danger);
 $font-family: var(--font-family);
 $font-family-alternative: var(--font-family-alternative);
 
+$line-height-small: var(--line-height-small);
+$line-height-default: var(--line-height-default);
+$line-height-big: var(--line-height-big);
+$line-height-large: var(--line-height-large);
+
 $font-size-default: var(--font-size-default);
 $font-size-small: var(--font-size-small);
 $font-size-big: var(--font-size-big);
@@ -128,6 +134,18 @@ $spacer: var(--spacer);
 $border-radius-small: var(--border-radius--small);
 $border-radius: var(--border-radius);
 $border-radius-big: var(--border-radius-big);
+
+$z-index-zero: var(--z-index-zero);
+$z-index-up: var(--z-index-up);
+$z-index-down: var(--z-index-down);
+$z-index-loader: var(--z-index-loader);
+$z-index-dropdown: var(--z-index-dropdown);
+$z-index-fixed: var(--z-index-fixed);
+$z-index-sticky: var(--z-index-sticky);
+$z-index-modal-backdrop: var(--z-index-modal-backdrop);
+$z-index-modal: var(--z-index-modal);
+$z-index-popover: var(--z-index-popover);
+$z-index-tooltip: var(--z-index-tooltip);
 
 // KEYBOARD
 // ==================================================

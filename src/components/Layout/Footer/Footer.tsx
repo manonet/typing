@@ -15,9 +15,11 @@ function Header(props: Props) {
 
   return (
     <footer className="footer inverse">
-      <LanguageSwitcher className="footer__languages" />
       <div className="footer__container">
         <div className="footer__menu">
+          <nav className="footerNav">
+            <LanguageSwitcher className="footer__languages" />
+          </nav>
           <nav className="footerNav">
             <h3 className="footerNav__title">
               <FormattedMessage
