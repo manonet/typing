@@ -1,0 +1,1913 @@
+[
+  {
+    "data-code": "ru",
+    "langCode": "ru",
+    "dir": "ltr",
+    "languageOnNative": "Язык",
+    "nativeName": "Русский"
+  },
+  {
+    "data-code": "bar",
+    "langCode": "bar",
+    "dir": "ltr",
+    "languageOnNative": "Sproch",
+    "nativeName": "Boarisch"
+  },
+  {
+    "data-code": "de",
+    "langCode": "de",
+    "dir": "ltr",
+    "languageOnNative": "Sprache",
+    "nativeName": "Deutsch"
+  },
+  {
+    "data-code": "en",
+    "langCode": "en",
+    "dir": "ltr",
+    "languageOnNative": "Language",
+    "nativeName": "English"
+  },
+  {
+    "data-code": "fr",
+    "langCode": "fr",
+    "dir": "ltr",
+    "languageOnNative": "Langage",
+    "nativeName": "Français"
+  },
+  {
+    "data-code": "hr",
+    "langCode": "hr",
+    "dir": "ltr",
+    "languageOnNative": "Jezik",
+    "nativeName": "Hrvatski"
+  },
+  {
+    "data-code": "it",
+    "langCode": "it",
+    "dir": "ltr",
+    "languageOnNative": "Linguaggio",
+    "nativeName": "Italiano"
+  },
+  {
+    "data-code": "sl",
+    "langCode": "sl",
+    "dir": "ltr",
+    "languageOnNative": "Jezik (sredstvo sporazumevanja)",
+    "nativeName": "Slovenščina"
+  },
+  {
+    "data-code": "en",
+    "langCode": "en",
+    "dir": "ltr",
+    "languageOnNative": "Language",
+    "nativeName": "English"
+  },
+  {
+    "data-code": "es",
+    "langCode": "es",
+    "dir": "ltr",
+    "languageOnNative": "Lenguaje",
+    "nativeName": "Español"
+  },
+  {
+    "data-code": "eo",
+    "langCode": "eo",
+    "dir": "ltr",
+    "languageOnNative": "Lingvo",
+    "nativeName": "Esperanto"
+  },
+  {
+    "data-code": "fr",
+    "langCode": "fr",
+    "dir": "ltr",
+    "languageOnNative": "Langage",
+    "nativeName": "Français"
+  },
+  {
+    "data-code": "io",
+    "langCode": "io",
+    "dir": "ltr",
+    "languageOnNative": "Linguo",
+    "nativeName": "Ido"
+  },
+  {
+    "data-code": "ia",
+    "langCode": "ia",
+    "dir": "ltr",
+    "languageOnNative": "Linguage",
+    "nativeName": "Interlingua"
+  },
+  {
+    "data-code": "ie",
+    "langCode": "ie",
+    "dir": "ltr",
+    "languageOnNative": "Lingue",
+    "nativeName": "Interlingue"
+  },
+  {
+    "data-code": "lfn",
+    "langCode": "lfn",
+    "dir": "ltr",
+    "languageOnNative": "Lingua Franca Nova",
+    "nativeName": "Lingua Franca Nova"
+  },
+  {
+    "data-code": "jbo",
+    "langCode": "jbo",
+    "dir": "ltr",
+    "languageOnNative": "bangu",
+    "nativeName": "La .lojban."
+  },
+  {
+    "data-code": "nov",
+    "langCode": "nov",
+    "dir": "ltr",
+    "languageOnNative": "Lingues",
+    "nativeName": "Novial"
+  },
+  {
+    "data-code": "pt",
+    "langCode": "pt",
+    "dir": "ltr",
+    "languageOnNative": "Linguagem",
+    "nativeName": "Português"
+  },
+  {
+    "data-code": "en-simple",
+    "langCode": "simple",
+    "dir": "ltr",
+    "languageOnNative": "Language English",
+    "nativeName": "Simple English"
+  },
+  {
+    "data-code": "vo",
+    "langCode": "vo",
+    "dir": "ltr",
+    "languageOnNative": "Pük",
+    "nativeName": "Volapük"
+  },
+  {
+    "data-code": "gn",
+    "langCode": "gn",
+    "dir": "ltr",
+    "languageOnNative": "Ñe'ẽ",
+    "nativeName": "Avañe'ẽ"
+  },
+  {
+    "data-code": "ay",
+    "langCode": "ay",
+    "dir": "ltr",
+    "languageOnNative": "Aru",
+    "nativeName": "Aymar aru"
+  },
+  {
+    "data-code": "pdc",
+    "langCode": "pdc",
+    "dir": "ltr",
+    "languageOnNative": "Schprooch German",
+    "nativeName": "Deitsch"
+  },
+  {
+    "data-code": "en",
+    "langCode": "en",
+    "dir": "ltr",
+    "languageOnNative": "Language",
+    "nativeName": "English"
+  },
+  {
+    "data-code": "es",
+    "langCode": "es",
+    "dir": "ltr",
+    "languageOnNative": "Lenguaje",
+    "nativeName": "Español"
+  },
+  {
+    "data-code": "fr",
+    "langCode": "fr",
+    "dir": "ltr",
+    "languageOnNative": "Langage",
+    "nativeName": "Français"
+  },
+  {
+    "data-code": "ik",
+    "langCode": "ik",
+    "dir": "ltr",
+    "languageOnNative": "Uqautchit",
+    "nativeName": "Iñupiak"
+  },
+  {
+    "data-code": "kl",
+    "langCode": "kl",
+    "dir": "ltr",
+    "languageOnNative": "Oqaatsit",
+    "nativeName": "Kalaallisut"
+  },
+  {
+    "data-code": "ht",
+    "langCode": "ht",
+    "dir": "ltr",
+    "languageOnNative": "Lang (pawòl) kreol",
+    "nativeName": "Kreyòl ayisyen"
+  },
+  {
+    "data-code": "gcr",
+    "langCode": "gcr",
+    "dir": "ltr",
+    "languageOnNative": "Lanng Creole",
+    "nativeName": "Kriyòl gwiyannen"
+  },
+  {
+    "data-code": "nl",
+    "langCode": "nl",
+    "dir": "ltr",
+    "languageOnNative": "Taal",
+    "nativeName": "Nederlands"
+  },
+  {
+    "data-code": "nah",
+    "langCode": "nah",
+    "dir": "ltr",
+    "languageOnNative": "Tlahtōlli (tlahtōlmatiliztli)",
+    "nativeName": "Nāhuatl"
+  },
+  {
+    "data-code": "pap",
+    "langCode": "pap",
+    "dir": "ltr",
+    "languageOnNative": "Idioma",
+    "nativeName": "Papiamentu"
+  },
+  {
+    "data-code": "jam",
+    "langCode": "jam",
+    "dir": "ltr",
+    "languageOnNative": "Languij Creole English",
+    "nativeName": "Patois"
+  },
+  {
+    "data-code": "pt",
+    "langCode": "pt",
+    "dir": "ltr",
+    "languageOnNative": "Linguagem",
+    "nativeName": "Português"
+  },
+  {
+    "data-code": "qu",
+    "langCode": "qu",
+    "dir": "ltr",
+    "languageOnNative": "Rimay",
+    "nativeName": "Runa Simi"
+  },
+  {
+    "data-code": "srn",
+    "langCode": "srn",
+    "dir": "ltr",
+    "languageOnNative": "Tongo tongó",
+    "nativeName": "Sranantongo"
+  },
+  {
+    "data-code": "yi",
+    "langCode": "yi",
+    "dir": "rtl",
+    "languageOnNative": "שפראך",
+    "nativeName": "ייִדיש"
+  },
+  {
+    "data-code": "chr",
+    "langCode": "chr",
+    "dir": "ltr",
+    "languageOnNative": "ᎦᏬᏂᎯᏍᏗ",
+    "nativeName": "ᏣᎳᎩ"
+  },
+  {
+    "data-code": "ba",
+    "langCode": "ba",
+    "dir": "ltr",
+    "languageOnNative": "Тел (лингвистика)",
+    "nativeName": "Башҡортса"
+  },
+  {
+    "data-code": "be",
+    "langCode": "be",
+    "dir": "ltr",
+    "languageOnNative": "Мова",
+    "nativeName": "Беларуская"
+  },
+  {
+    "data-code": "be-tarask",
+    "langCode": "be-tarask",
+    "dir": "ltr",
+    "languageOnNative": "Мова (Taraškievica orthography)",
+    "nativeName": "Беларуская (тарашкевіца)‎"
+  },
+  {
+    "data-code": "bg",
+    "langCode": "bg",
+    "dir": "ltr",
+    "languageOnNative": "Език (лингвистика)",
+    "nativeName": "Български"
+  },
+  {
+    "data-code": "inh",
+    "langCode": "inh",
+    "dir": "ltr",
+    "languageOnNative": "Мотт",
+    "nativeName": "ГӀалгӀай"
+  },
+  {
+    "data-code": "os",
+    "langCode": "os",
+    "dir": "ltr",
+    "languageOnNative": "Æвзаг",
+    "nativeName": "Ирон"
+  },
+  {
+    "data-code": "kv",
+    "langCode": "kv",
+    "dir": "ltr",
+    "languageOnNative": "Кыв",
+    "nativeName": "Коми"
+  },
+  {
+    "data-code": "krc",
+    "langCode": "krc",
+    "dir": "ltr",
+    "languageOnNative": "Тил-balkár",
+    "nativeName": "Къарачай-малкъар"
+  },
+  {
+    "data-code": "lez",
+    "langCode": "lez",
+    "dir": "ltr",
+    "languageOnNative": "ЧIал",
+    "nativeName": "Лезги"
+  },
+  {
+    "data-code": "mk",
+    "langCode": "mk",
+    "dir": "ltr",
+    "languageOnNative": "Јазик",
+    "nativeName": "Македонски"
+  },
+  {
+    "data-code": "mhr",
+    "langCode": "mhr",
+    "dir": "ltr",
+    "languageOnNative": "Йылме Mari",
+    "nativeName": "Олык марий"
+  },
+  {
+    "data-code": "koi",
+    "langCode": "koi",
+    "dir": "ltr",
+    "languageOnNative": "Кыв-permják",
+    "nativeName": "Перем Коми"
+  },
+  {
+    "data-code": "rue",
+    "langCode": "rue",
+    "dir": "ltr",
+    "languageOnNative": "Язык",
+    "nativeName": "Русиньскый"
+  },
+  {
+    "data-code": "ru",
+    "langCode": "ru",
+    "dir": "ltr",
+    "languageOnNative": "Язык",
+    "nativeName": "Русский"
+  },
+  {
+    "data-code": "sah",
+    "langCode": "sah",
+    "dir": "ltr",
+    "languageOnNative": "Тыл (саҥарар)",
+    "nativeName": "Саха тыла"
+  },
+  {
+    "data-code": "cu",
+    "langCode": "cu",
+    "dir": "ltr",
+    "languageOnNative": "Ѩꙁꙑкъ szláv",
+    "nativeName": "Словѣньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ"
+  },
+  {
+    "data-code": "sr-cyrl",
+    "langCode": "sr",
+    "dir": "ltr",
+    "languageOnNative": "Језик",
+    "nativeName": "Српски / srpski"
+  },
+  {
+    "data-code": "tt",
+    "langCode": "tt",
+    "dir": "ltr",
+    "languageOnNative": "Тел",
+    "nativeName": "Татарча/tatarça"
+  },
+  {
+    "data-code": "uk",
+    "langCode": "uk",
+    "dir": "ltr",
+    "languageOnNative": "Мова",
+    "nativeName": "Українська"
+  },
+  {
+    "data-code": "cv",
+    "langCode": "cv",
+    "dir": "ltr",
+    "languageOnNative": "Чĕлхе",
+    "nativeName": "Чӑвашла"
+  },
+  {
+    "data-code": "kk-cyrl",
+    "langCode": "kk",
+    "dir": "ltr",
+    "languageOnNative": "Тіл (лингвистика)",
+    "nativeName": "Қазақша"
+  },
+  {
+    "data-code": "el",
+    "langCode": "el",
+    "dir": "ltr",
+    "languageOnNative": "Γλώσσα",
+    "nativeName": "Ελληνικά"
+  },
+  {
+    "data-code": "gsw",
+    "langCode": "als",
+    "dir": "ltr",
+    "languageOnNative": "Sprache",
+    "nativeName": "Alemannisch"
+  },
+  {
+    "data-code": "an",
+    "langCode": "an",
+    "dir": "ltr",
+    "languageOnNative": "Luengache",
+    "nativeName": "Aragonés"
+  },
+  {
+    "data-code": "rup",
+    "langCode": "rup",
+    "dir": "ltr",
+    "languageOnNative": "Limbâ",
+    "nativeName": "Armãneashti"
+  },
+  {
+    "data-code": "frp",
+    "langCode": "frp",
+    "dir": "ltr",
+    "languageOnNative": "Lengoua",
+    "nativeName": "Arpetan"
+  },
+  {
+    "data-code": "ast",
+    "langCode": "ast",
+    "dir": "ltr",
+    "languageOnNative": "Llinguaxe",
+    "nativeName": "Asturianu"
+  },
+  {
+    "data-code": "az-latn",
+    "langCode": "az",
+    "dir": "ltr",
+    "languageOnNative": "Dil",
+    "nativeName": "Azərbaycanca"
+  },
+  {
+    "data-code": "bar",
+    "langCode": "bar",
+    "dir": "ltr",
+    "languageOnNative": "Sproch",
+    "nativeName": "Boarisch"
+  },
+  {
+    "data-code": "bs",
+    "langCode": "bs",
+    "dir": "ltr",
+    "languageOnNative": "Jezik",
+    "nativeName": "Bosanski"
+  },
+  {
+    "data-code": "br",
+    "langCode": "br",
+    "dir": "ltr",
+    "languageOnNative": "Yezh",
+    "nativeName": "Brezhoneg"
+  },
+  {
+    "data-code": "ca",
+    "langCode": "ca",
+    "dir": "ltr",
+    "languageOnNative": "Llenguatge",
+    "nativeName": "Català"
+  },
+  {
+    "data-code": "cy",
+    "langCode": "cy",
+    "dir": "ltr",
+    "languageOnNative": "Iaith",
+    "nativeName": "Cymraeg"
+  },
+  {
+    "data-code": "da",
+    "langCode": "da",
+    "dir": "ltr",
+    "languageOnNative": "Sprog",
+    "nativeName": "Dansk"
+  },
+  {
+    "data-code": "se",
+    "langCode": "se",
+    "dir": "ltr",
+    "languageOnNative": "Giella számi",
+    "nativeName": "Davvisámegiella"
+  },
+  {
+    "data-code": "pdc",
+    "langCode": "pdc",
+    "dir": "ltr",
+    "languageOnNative": "Schprooch German",
+    "nativeName": "Deitsch"
+  },
+  {
+    "data-code": "de",
+    "langCode": "de",
+    "dir": "ltr",
+    "languageOnNative": "Sprache",
+    "nativeName": "Deutsch"
+  },
+  {
+    "data-code": "et",
+    "langCode": "et",
+    "dir": "ltr",
+    "languageOnNative": "Keel",
+    "nativeName": "Eesti"
+  },
+  {
+    "data-code": "egl",
+    "langCode": "eml",
+    "dir": "ltr",
+    "languageOnNative": "Langua-Romagnolo",
+    "nativeName": "Emiliàn e rumagnòl"
+  },
+  {
+    "data-code": "en",
+    "langCode": "en",
+    "dir": "ltr",
+    "languageOnNative": "Language",
+    "nativeName": "English"
+  },
+  {
+    "data-code": "es",
+    "langCode": "es",
+    "dir": "ltr",
+    "languageOnNative": "Lenguaje",
+    "nativeName": "Español"
+  },
+  {
+    "data-code": "ext",
+    "langCode": "ext",
+    "dir": "ltr",
+    "languageOnNative": "Lenguagi",
+    "nativeName": "Estremeñu"
+  },
+  {
+    "data-code": "eu",
+    "langCode": "eu",
+    "dir": "ltr",
+    "languageOnNative": "Hizkuntza",
+    "nativeName": "Euskara"
+  },
+  {
+    "data-code": "fr",
+    "langCode": "fr",
+    "dir": "ltr",
+    "languageOnNative": "Langage",
+    "nativeName": "Français"
+  },
+  {
+    "data-code": "fy",
+    "langCode": "fy",
+    "dir": "ltr",
+    "languageOnNative": "Taal fríz",
+    "nativeName": "Frysk"
+  },
+  {
+    "data-code": "fur",
+    "langCode": "fur",
+    "dir": "ltr",
+    "languageOnNative": "Lengaç",
+    "nativeName": "Furlan"
+  },
+  {
+    "data-code": "fo",
+    "langCode": "fo",
+    "dir": "ltr",
+    "languageOnNative": "Mál",
+    "nativeName": "Føroyskt"
+  },
+  {
+    "data-code": "ga",
+    "langCode": "ga",
+    "dir": "ltr",
+    "languageOnNative": "Teanga (cumarsáid)",
+    "nativeName": "Gaeilge"
+  },
+  {
+    "data-code": "gv",
+    "langCode": "gv",
+    "dir": "ltr",
+    "languageOnNative": "Çhengey (çhaghteraght)-szigeti",
+    "nativeName": "Gaelg"
+  },
+  {
+    "data-code": "gl",
+    "langCode": "gl",
+    "dir": "ltr",
+    "languageOnNative": "Linguaxe",
+    "nativeName": "Galego"
+  },
+  {
+    "data-code": "gd",
+    "langCode": "gd",
+    "dir": "ltr",
+    "languageOnNative": "Cànan kelta",
+    "nativeName": "Gàidhlig"
+  },
+  {
+    "data-code": "hr",
+    "langCode": "hr",
+    "dir": "ltr",
+    "languageOnNative": "Jezik",
+    "nativeName": "Hrvatski"
+  },
+  {
+    "data-code": "it",
+    "langCode": "it",
+    "dir": "ltr",
+    "languageOnNative": "Linguaggio",
+    "nativeName": "Italiano"
+  },
+  {
+    "data-code": "kl",
+    "langCode": "kl",
+    "dir": "ltr",
+    "languageOnNative": "Oqaatsit",
+    "nativeName": "Kalaallisut"
+  },
+  {
+    "data-code": "kw",
+    "langCode": "kw",
+    "dir": "ltr",
+    "languageOnNative": "Yeth",
+    "nativeName": "Kernowek"
+  },
+  {
+    "data-code": "ku-latn",
+    "langCode": "ku",
+    "dir": "ltr",
+    "languageOnNative": "Ziman",
+    "nativeName": "Kurdî"
+  },
+  {
+    "data-code": "ltg",
+    "langCode": "ltg",
+    "dir": "ltr",
+    "languageOnNative": "Volūda",
+    "nativeName": "Latgaļu"
+  },
+  {
+    "data-code": "la",
+    "langCode": "la",
+    "dir": "ltr",
+    "languageOnNative": "Lingua",
+    "nativeName": "Latina"
+  },
+  {
+    "data-code": "lv",
+    "langCode": "lv",
+    "dir": "ltr",
+    "languageOnNative": "Valoda",
+    "nativeName": "Latviešu"
+  },
+  {
+    "data-code": "lt",
+    "langCode": "lt",
+    "dir": "ltr",
+    "languageOnNative": "Kalba",
+    "nativeName": "Lietuvių"
+  },
+  {
+    "data-code": "li",
+    "langCode": "li",
+    "dir": "ltr",
+    "languageOnNative": "Taol",
+    "nativeName": "Limburgs"
+  },
+  {
+    "data-code": "lmo",
+    "langCode": "lmo",
+    "dir": "ltr",
+    "languageOnNative": "Idioma",
+    "nativeName": "Lumbaart"
+  },
+  {
+    "data-code": "lb",
+    "langCode": "lb",
+    "dir": "ltr",
+    "languageOnNative": "Sprooch",
+    "nativeName": "Lëtzebuergesch"
+  },
+  {
+    "data-code": "nap",
+    "langCode": "nap",
+    "dir": "ltr",
+    "languageOnNative": "Lengua",
+    "nativeName": "Napulitano"
+  },
+  {
+    "data-code": "nl",
+    "langCode": "nl",
+    "dir": "ltr",
+    "languageOnNative": "Taal",
+    "nativeName": "Nederlands"
+  },
+  {
+    "data-code": "nds-nl",
+    "langCode": "nds-nl",
+    "dir": "ltr",
+    "languageOnNative": "Taol",
+    "nativeName": "Nedersaksies"
+  },
+  {
+    "data-code": "frr",
+    "langCode": "frr",
+    "dir": "ltr",
+    "languageOnNative": "Spräke (iinjtål) fríz",
+    "nativeName": "Nordfriisk"
+  },
+  {
+    "data-code": "nb",
+    "langCode": "no",
+    "dir": "ltr",
+    "languageOnNative": "Språk (bokmål)",
+    "nativeName": "Norsk bokmål"
+  },
+  {
+    "data-code": "nn",
+    "langCode": "nn",
+    "dir": "ltr",
+    "languageOnNative": "Språk (nynorsk)",
+    "nativeName": "Norsk nynorsk"
+  },
+  {
+    "data-code": "oc",
+    "langCode": "oc",
+    "dir": "ltr",
+    "languageOnNative": "Lengatge",
+    "nativeName": "Occitan"
+  },
+  {
+    "data-code": "pcd",
+    "langCode": "pcd",
+    "dir": "ltr",
+    "languageOnNative": "Langache",
+    "nativeName": "Picard"
+  },
+  {
+    "data-code": "pms",
+    "langCode": "pms",
+    "dir": "ltr",
+    "languageOnNative": "Langagi",
+    "nativeName": "Piemontèis"
+  },
+  {
+    "data-code": "nds",
+    "langCode": "nds",
+    "dir": "ltr",
+    "languageOnNative": "Spraak",
+    "nativeName": "Plattdüütsch"
+  },
+  {
+    "data-code": "pl",
+    "langCode": "pl",
+    "dir": "ltr",
+    "languageOnNative": "Język (mowa)",
+    "nativeName": "Polski"
+  },
+  {
+    "data-code": "pt",
+    "langCode": "pt",
+    "dir": "ltr",
+    "languageOnNative": "Linguagem",
+    "nativeName": "Português"
+  },
+  {
+    "data-code": "ksh",
+    "langCode": "ksh",
+    "dir": "ltr",
+    "languageOnNative": "Sprooch",
+    "nativeName": "Ripoarisch"
+  },
+  {
+    "data-code": "rmy",
+    "langCode": "rmy",
+    "dir": "ltr",
+    "languageOnNative": "Chhib Romani",
+    "nativeName": "Romani čhib"
+  },
+  {
+    "data-code": "ro",
+    "langCode": "ro",
+    "dir": "ltr",
+    "languageOnNative": "Limbă (comunicare)",
+    "nativeName": "Română"
+  },
+  {
+    "data-code": "rm",
+    "langCode": "rm",
+    "dir": "ltr",
+    "languageOnNative": "Lingua",
+    "nativeName": "Rumantsch"
+  },
+  {
+    "data-code": "sc",
+    "langCode": "sc",
+    "dir": "ltr",
+    "languageOnNative": "Limbas",
+    "nativeName": "Sardu"
+  },
+  {
+    "data-code": "sco",
+    "langCode": "sco",
+    "dir": "ltr",
+    "languageOnNative": "Leid",
+    "nativeName": "Scots"
+  },
+  {
+    "data-code": "stq",
+    "langCode": "stq",
+    "dir": "ltr",
+    "languageOnNative": "Sproake Frisian",
+    "nativeName": "Seeltersk"
+  },
+  {
+    "data-code": "sq",
+    "langCode": "sq",
+    "dir": "ltr",
+    "languageOnNative": "Gjuha (komunikim)",
+    "nativeName": "Shqip"
+  },
+  {
+    "data-code": "scn",
+    "langCode": "scn",
+    "dir": "ltr",
+    "languageOnNative": "Lingua (parràta)",
+    "nativeName": "Sicilianu"
+  },
+  {
+    "data-code": "sk",
+    "langCode": "sk",
+    "dir": "ltr",
+    "languageOnNative": "Jazyk (jazykoveda)",
+    "nativeName": "Slovenčina"
+  },
+  {
+    "data-code": "sl",
+    "langCode": "sl",
+    "dir": "ltr",
+    "languageOnNative": "Jezik (sredstvo sporazumevanja)",
+    "nativeName": "Slovenščina"
+  },
+  {
+    "data-code": "srn",
+    "langCode": "srn",
+    "dir": "ltr",
+    "languageOnNative": "Tongo tongó",
+    "nativeName": "Sranantongo"
+  },
+  {
+    "data-code": "sh",
+    "langCode": "sh",
+    "dir": "ltr",
+    "languageOnNative": "Jezik",
+    "nativeName": "Srpskohrvatski / српскохрватски"
+  },
+  {
+    "data-code": "fi",
+    "langCode": "fi",
+    "dir": "ltr",
+    "languageOnNative": "Kieli",
+    "nativeName": "Suomi"
+  },
+  {
+    "data-code": "sv",
+    "langCode": "sv",
+    "dir": "ltr",
+    "languageOnNative": "Språk",
+    "nativeName": "Svenska"
+  },
+  {
+    "data-code": "kab",
+    "langCode": "kab",
+    "dir": "ltr",
+    "languageOnNative": "Tutlayt",
+    "nativeName": "Taqbaylit"
+  },
+  {
+    "data-code": "tr",
+    "langCode": "tr",
+    "dir": "ltr",
+    "languageOnNative": "Dil",
+    "nativeName": "Türkçe"
+  },
+  {
+    "data-code": "vep",
+    "langCode": "vep",
+    "dir": "ltr",
+    "languageOnNative": "Kel'",
+    "nativeName": "Vepsän kel’"
+  },
+  {
+    "data-code": "vec",
+    "langCode": "vec",
+    "dir": "ltr",
+    "languageOnNative": "Lenguajo",
+    "nativeName": "Vèneto"
+  },
+  {
+    "data-code": "vro",
+    "langCode": "vro",
+    "dir": "ltr",
+    "languageOnNative": "Kiil (keeletiidüs)",
+    "nativeName": "Võro"
+  },
+  {
+    "data-code": "wa",
+    "langCode": "wa",
+    "dir": "ltr",
+    "languageOnNative": "Lingaedje",
+    "nativeName": "Walon"
+  },
+  {
+    "data-code": "diq",
+    "langCode": "diq",
+    "dir": "ltr",
+    "languageOnNative": "Zıwan (lısan)",
+    "nativeName": "Zazaki"
+  },
+  {
+    "data-code": "zea",
+    "langCode": "zea",
+    "dir": "ltr",
+    "languageOnNative": "Taele",
+    "nativeName": "Zeêuws"
+  },
+  {
+    "data-code": "ang",
+    "langCode": "ang",
+    "dir": "ltr",
+    "languageOnNative": "Sprǣc",
+    "nativeName": "Ænglisc"
+  },
+  {
+    "data-code": "is",
+    "langCode": "is",
+    "dir": "ltr",
+    "languageOnNative": "Tungumál",
+    "nativeName": "Íslenska"
+  },
+  {
+    "data-code": "cs",
+    "langCode": "cs",
+    "dir": "ltr",
+    "languageOnNative": "Jazyk (lingvistika)",
+    "nativeName": "Čeština"
+  },
+  {
+    "data-code": "szl",
+    "langCode": "szl",
+    "dir": "ltr",
+    "languageOnNative": "Godka",
+    "nativeName": "Ślůnski"
+  },
+  {
+    "data-code": "sgs",
+    "langCode": "sgs",
+    "dir": "ltr",
+    "languageOnNative": "Kalba",
+    "nativeName": "Žemaitėška"
+  },
+  {
+    "data-code": "yi",
+    "langCode": "yi",
+    "dir": "rtl",
+    "languageOnNative": "שפראך",
+    "nativeName": "ייִדיש"
+  },
+  {
+    "data-code": "hy",
+    "langCode": "hy",
+    "dir": "ltr",
+    "languageOnNative": "Լեզու",
+    "nativeName": "Հայերեն"
+  },
+  {
+    "data-code": "xmf",
+    "langCode": "xmf",
+    "dir": "ltr",
+    "languageOnNative": "ნინა",
+    "nativeName": "მარგალური"
+  },
+  {
+    "data-code": "ka",
+    "langCode": "ka",
+    "dir": "ltr",
+    "languageOnNative": "ენა",
+    "nativeName": "ქართული"
+  },
+  {
+    "data-code": "ur",
+    "langCode": "ur",
+    "dir": "rtl",
+    "languageOnNative": "زبان",
+    "nativeName": "اردو"
+  },
+  {
+    "data-code": "ar",
+    "langCode": "ar",
+    "dir": "rtl",
+    "languageOnNative": "لغة",
+    "nativeName": "العربية"
+  },
+  {
+    "data-code": "az-arab",
+    "langCode": "azb",
+    "dir": "rtl",
+    "languageOnNative": "دیل Azerbaijani",
+    "nativeName": "تۆرکجه"
+  },
+  {
+    "data-code": "fa",
+    "langCode": "fa",
+    "dir": "rtl",
+    "languageOnNative": "زبان",
+    "nativeName": "فارسی"
+  },
+  {
+    "data-code": "mzn",
+    "langCode": "mzn",
+    "dir": "rtl",
+    "languageOnNative": "زوون",
+    "nativeName": "مازِرونی"
+  },
+  {
+    "data-code": "arz",
+    "langCode": "arz",
+    "dir": "rtl",
+    "languageOnNative": "لغه Arabic",
+    "nativeName": "مصرى"
+  },
+  {
+    "data-code": "pnb",
+    "langCode": "pnb",
+    "dir": "rtl",
+    "languageOnNative": "بولی Punjabi",
+    "nativeName": "پنجابی"
+  },
+  {
+    "data-code": "ps",
+    "langCode": "ps",
+    "dir": "rtl",
+    "languageOnNative": "ژبه",
+    "nativeName": "پښتو"
+  },
+  {
+    "data-code": "ckb",
+    "langCode": "ckb",
+    "dir": "rtl",
+    "languageOnNative": "زمان-ázsiai kurd",
+    "nativeName": "کوردی"
+  },
+  {
+    "data-code": "glk",
+    "langCode": "glk",
+    "dir": "rtl",
+    "languageOnNative": "زوان",
+    "nativeName": "گیلکی"
+  },
+  {
+    "data-code": "ru",
+    "langCode": "ru",
+    "dir": "ltr",
+    "languageOnNative": "Язык",
+    "nativeName": "Русский"
+  },
+  {
+    "data-code": "az-latn",
+    "langCode": "az",
+    "dir": "ltr",
+    "languageOnNative": "Dil",
+    "nativeName": "Azərbaycanca"
+  },
+  {
+    "data-code": "en",
+    "langCode": "en",
+    "dir": "ltr",
+    "languageOnNative": "Language",
+    "nativeName": "English"
+  },
+  {
+    "data-code": "ku-latn",
+    "langCode": "ku",
+    "dir": "ltr",
+    "languageOnNative": "Ziman",
+    "nativeName": "Kurdî"
+  },
+  {
+    "data-code": "tr",
+    "langCode": "tr",
+    "dir": "ltr",
+    "languageOnNative": "Dil",
+    "nativeName": "Türkçe"
+  },
+  {
+    "data-code": "yi",
+    "langCode": "yi",
+    "dir": "rtl",
+    "languageOnNative": "שפראך",
+    "nativeName": "ייִדיש"
+  },
+  {
+    "data-code": "he",
+    "langCode": "he",
+    "dir": "rtl",
+    "languageOnNative": "שפה",
+    "nativeName": "עברית"
+  },
+  {
+    "data-code": "mr",
+    "langCode": "mr",
+    "dir": "ltr",
+    "languageOnNative": "भाषा",
+    "nativeName": "मराठी"
+  },
+  {
+    "data-code": "ml",
+    "langCode": "ml",
+    "dir": "ltr",
+    "languageOnNative": "ഭാഷ",
+    "nativeName": "മലയാളം"
+  },
+  {
+    "data-code": "hy",
+    "langCode": "hy",
+    "dir": "ltr",
+    "languageOnNative": "Լեզու",
+    "nativeName": "Հայերեն"
+  },
+  {
+    "data-code": "nqo",
+    "langCode": "nqo",
+    "dir": "rtl",
+    "languageOnNative": "ߞߊ߲’kó",
+    "nativeName": "ߒߞߏ"
+  },
+  {
+    "data-code": "am",
+    "langCode": "am",
+    "dir": "ltr",
+    "languageOnNative": "ቋንቋ",
+    "nativeName": "አማርኛ"
+  },
+  {
+    "data-code": "af",
+    "langCode": "af",
+    "dir": "ltr",
+    "languageOnNative": "Taal",
+    "nativeName": "Afrikaans"
+  },
+  {
+    "data-code": "bm",
+    "langCode": "bm",
+    "dir": "ltr",
+    "languageOnNative": "Kan",
+    "nativeName": "Bamanankan"
+  },
+  {
+    "data-code": "sn",
+    "langCode": "sn",
+    "dir": "ltr",
+    "languageOnNative": "Mutauro",
+    "nativeName": "ChiShona"
+  },
+  {
+    "data-code": "en",
+    "langCode": "en",
+    "dir": "ltr",
+    "languageOnNative": "Language",
+    "nativeName": "English"
+  },
+  {
+    "data-code": "es",
+    "langCode": "es",
+    "dir": "ltr",
+    "languageOnNative": "Lenguaje",
+    "nativeName": "Español"
+  },
+  {
+    "data-code": "xh",
+    "langCode": "xh",
+    "dir": "ltr",
+    "languageOnNative": "Ulwimi",
+    "nativeName": "IsiXhosa"
+  },
+  {
+    "data-code": "sw",
+    "langCode": "sw",
+    "dir": "ltr",
+    "languageOnNative": "Lugha",
+    "nativeName": "Kiswahili"
+  },
+  {
+    "data-code": "kg",
+    "langCode": "kg",
+    "dir": "ltr",
+    "languageOnNative": "Ndînga",
+    "nativeName": "Kongo"
+  },
+  {
+    "data-code": "ln",
+    "langCode": "ln",
+    "dir": "ltr",
+    "languageOnNative": "Lokótá",
+    "nativeName": "Lingála"
+  },
+  {
+    "data-code": "mg",
+    "langCode": "mg",
+    "dir": "ltr",
+    "languageOnNative": "Fiteny (heviny mivelatra)",
+    "nativeName": "Malagasy"
+  },
+  {
+    "data-code": "pt",
+    "langCode": "pt",
+    "dir": "ltr",
+    "languageOnNative": "Linguagem",
+    "nativeName": "Português"
+  },
+  {
+    "data-code": "st",
+    "langCode": "st",
+    "dir": "ltr",
+    "languageOnNative": "Dipuo szeszotó",
+    "nativeName": "Sesotho"
+  },
+  {
+    "data-code": "so",
+    "langCode": "so",
+    "dir": "ltr",
+    "languageOnNative": "Luuqad",
+    "nativeName": "Soomaaliga"
+  },
+  {
+    "data-code": "sg",
+    "langCode": "sg",
+    "dir": "ltr",
+    "languageOnNative": "Yângâködörö",
+    "nativeName": "Sängö"
+  },
+  {
+    "data-code": "kab",
+    "langCode": "kab",
+    "dir": "ltr",
+    "languageOnNative": "Tutlayt",
+    "nativeName": "Taqbaylit"
+  },
+  {
+    "data-code": "wo",
+    "langCode": "wo",
+    "dir": "ltr",
+    "languageOnNative": "Kàllaama",
+    "nativeName": "Wolof"
+  },
+  {
+    "data-code": "ts",
+    "langCode": "ts",
+    "dir": "ltr",
+    "languageOnNative": "Ririmi",
+    "nativeName": "Xitsonga"
+  },
+  {
+    "data-code": "yo",
+    "langCode": "yo",
+    "dir": "ltr",
+    "languageOnNative": "Èdè",
+    "nativeName": "Yorùbá"
+  },
+  {
+    "data-code": "ur",
+    "langCode": "ur",
+    "dir": "rtl",
+    "languageOnNative": "زبان",
+    "nativeName": "اردو"
+  },
+  {
+    "data-code": "az-arab",
+    "langCode": "azb",
+    "dir": "rtl",
+    "languageOnNative": "دیل Azerbaijani",
+    "nativeName": "تۆرکجه"
+  },
+  {
+    "data-code": "sd",
+    "langCode": "sd",
+    "dir": "rtl",
+    "languageOnNative": "ٻولي",
+    "nativeName": "سنڌي"
+  },
+  {
+    "data-code": "fa",
+    "langCode": "fa",
+    "dir": "rtl",
+    "languageOnNative": "زبان",
+    "nativeName": "فارسی"
+  },
+  {
+    "data-code": "mzn",
+    "langCode": "mzn",
+    "dir": "rtl",
+    "languageOnNative": "زوون",
+    "nativeName": "مازِرونی"
+  },
+  {
+    "data-code": "pnb",
+    "langCode": "pnb",
+    "dir": "rtl",
+    "languageOnNative": "بولی Punjabi",
+    "nativeName": "پنجابی"
+  },
+  {
+    "data-code": "ps",
+    "langCode": "ps",
+    "dir": "rtl",
+    "languageOnNative": "ژبه",
+    "nativeName": "پښتو"
+  },
+  {
+    "data-code": "glk",
+    "langCode": "glk",
+    "dir": "rtl",
+    "languageOnNative": "زوان",
+    "nativeName": "گیلکی"
+  },
+  {
+    "data-code": "zh",
+    "langCode": "zh",
+    "dir": "ltr",
+    "languageOnNative": "語言",
+    "nativeName": "中文"
+  },
+  {
+    "data-code": "wuu",
+    "langCode": "wuu",
+    "dir": "ltr",
+    "languageOnNative": "語言 kínai",
+    "nativeName": "吴语"
+  },
+  {
+    "data-code": "lzh",
+    "langCode": "lzh",
+    "dir": "ltr",
+    "languageOnNative": "語言 Chinese",
+    "nativeName": "文言"
+  },
+  {
+    "data-code": "ja",
+    "langCode": "ja",
+    "dir": "ltr",
+    "languageOnNative": "言語",
+    "nativeName": "日本語"
+  },
+  {
+    "data-code": "yue",
+    "langCode": "yue",
+    "dir": "ltr",
+    "languageOnNative": "語言",
+    "nativeName": "粵語"
+  },
+  {
+    "data-code": "gan",
+    "langCode": "gan",
+    "dir": "ltr",
+    "languageOnNative": "語言 kínai",
+    "nativeName": "贛語"
+  },
+  {
+    "data-code": "ko",
+    "langCode": "ko",
+    "dir": "ltr",
+    "languageOnNative": "언어",
+    "nativeName": "한국어"
+  },
+  {
+    "data-code": "bxr",
+    "langCode": "bxr",
+    "dir": "ltr",
+    "languageOnNative": "Хэлэн Buriat",
+    "nativeName": "Буряад"
+  },
+  {
+    "data-code": "ky",
+    "langCode": "ky",
+    "dir": "ltr",
+    "languageOnNative": "Тил",
+    "nativeName": "Кыргызча"
+  },
+  {
+    "data-code": "mn",
+    "langCode": "mn",
+    "dir": "ltr",
+    "languageOnNative": "Хэл",
+    "nativeName": "Монгол"
+  },
+  {
+    "data-code": "ru",
+    "langCode": "ru",
+    "dir": "ltr",
+    "languageOnNative": "Язык",
+    "nativeName": "Русский"
+  },
+  {
+    "data-code": "sah",
+    "langCode": "sah",
+    "dir": "ltr",
+    "languageOnNative": "Тыл (саҥарар)",
+    "nativeName": "Саха тыла"
+  },
+  {
+    "data-code": "tg-cyrl",
+    "langCode": "tg",
+    "dir": "ltr",
+    "languageOnNative": "Забон",
+    "nativeName": "Тоҷикӣ"
+  },
+  {
+    "data-code": "kk-cyrl",
+    "langCode": "kk",
+    "dir": "ltr",
+    "languageOnNative": "Тіл (лингвистика)",
+    "nativeName": "Қазақша"
+  },
+  {
+    "data-code": "ace",
+    "langCode": "ace",
+    "dir": "ltr",
+    "languageOnNative": "Bahsa",
+    "nativeName": "Acèh"
+  },
+  {
+    "data-code": "gor",
+    "langCode": "gor",
+    "dir": "ltr",
+    "languageOnNative": "Bahasa",
+    "nativeName": "Bahasa Hulontalo"
+  },
+  {
+    "data-code": "id",
+    "langCode": "id",
+    "dir": "ltr",
+    "languageOnNative": "Bahasa",
+    "nativeName": "Bahasa Indonesia"
+  },
+  {
+    "data-code": "ms",
+    "langCode": "ms",
+    "dir": "ltr",
+    "languageOnNative": "Bahasa",
+    "nativeName": "Bahasa Melayu"
+  },
+  {
+    "data-code": "bcl",
+    "langCode": "bcl",
+    "dir": "ltr",
+    "languageOnNative": "Tataramon Bikol",
+    "nativeName": "Bikol Central"
+  },
+  {
+    "data-code": "nan",
+    "langCode": "nan",
+    "dir": "ltr",
+    "languageOnNative": "Giân-gú (Min Nan)",
+    "nativeName": "Bân-lâm-gú"
+  },
+  {
+    "data-code": "ceb",
+    "langCode": "ceb",
+    "dir": "ltr",
+    "languageOnNative": "Pinulongan",
+    "nativeName": "Cebuano"
+  },
+  {
+    "data-code": "en",
+    "langCode": "en",
+    "dir": "ltr",
+    "languageOnNative": "Language",
+    "nativeName": "English"
+  },
+  {
+    "data-code": "hif",
+    "langCode": "hif",
+    "dir": "ltr",
+    "languageOnNative": "Bhasa Hindi",
+    "nativeName": "Fiji Hindi"
+  },
+  {
+    "data-code": "hak",
+    "langCode": "hak",
+    "dir": "ltr",
+    "languageOnNative": "Ngî-ngièn kínai",
+    "nativeName": "客家語/Hak-kâ-ngî"
+  },
+  {
+    "data-code": "ilo",
+    "langCode": "ilo",
+    "dir": "ltr",
+    "languageOnNative": "Pagsasao",
+    "nativeName": "Ilokano"
+  },
+  {
+    "data-code": "jv",
+    "langCode": "jv",
+    "dir": "ltr",
+    "languageOnNative": "Basa",
+    "nativeName": "Jawa"
+  },
+  {
+    "data-code": "min",
+    "langCode": "min",
+    "dir": "ltr",
+    "languageOnNative": "Bahaso",
+    "nativeName": "Minangkabau"
+  },
+  {
+    "data-code": "cdo",
+    "langCode": "cdo",
+    "dir": "ltr",
+    "languageOnNative": "Ngṳ̄-ngiòng Dong Chinese",
+    "nativeName": "Mìng-dĕ̤ng-ngṳ̄"
+  },
+  {
+    "data-code": "uz",
+    "langCode": "uz",
+    "dir": "ltr",
+    "languageOnNative": "Til",
+    "nativeName": "Oʻzbekcha/ўзбекча"
+  },
+  {
+    "data-code": "pt",
+    "langCode": "pt",
+    "dir": "ltr",
+    "languageOnNative": "Linguagem",
+    "nativeName": "Português"
+  },
+  {
+    "data-code": "szy",
+    "langCode": "szy",
+    "dir": "ltr",
+    "languageOnNative": "kamu",
+    "nativeName": "Sakizaya"
+  },
+  {
+    "data-code": "su",
+    "langCode": "su",
+    "dir": "ltr",
+    "languageOnNative": "Basa",
+    "nativeName": "Sunda"
+  },
+  {
+    "data-code": "tl",
+    "langCode": "tl",
+    "dir": "ltr",
+    "languageOnNative": "Wika",
+    "nativeName": "Tagalog"
+  },
+  {
+    "data-code": "vi",
+    "langCode": "vi",
+    "dir": "ltr",
+    "languageOnNative": "Ngôn ngữ",
+    "nativeName": "Tiếng Việt"
+  },
+  {
+    "data-code": "tpi",
+    "langCode": "tpi",
+    "dir": "ltr",
+    "languageOnNative": "Tokples pisin",
+    "nativeName": "Tok Pisin"
+  },
+  {
+    "data-code": "tk",
+    "langCode": "tk",
+    "dir": "ltr",
+    "languageOnNative": "Dil",
+    "nativeName": "Türkmençe"
+  },
+  {
+    "data-code": "za",
+    "langCode": "za",
+    "dir": "ltr",
+    "languageOnNative": "Vah",
+    "nativeName": "Vahcuengh"
+  },
+  {
+    "data-code": "war",
+    "langCode": "war",
+    "dir": "ltr",
+    "languageOnNative": "Yinaknan",
+    "nativeName": "Winaray"
+  },
+  {
+    "data-code": "diq",
+    "langCode": "diq",
+    "dir": "ltr",
+    "languageOnNative": "Zıwan (lısan)",
+    "nativeName": "Zazaki"
+  },
+  {
+    "data-code": "dv",
+    "langCode": "dv",
+    "dir": "rtl",
+    "languageOnNative": "ބަސް",
+    "nativeName": "ދިވެހިބަސް"
+  },
+  {
+    "data-code": "gom-deva",
+    "langCode": "gom",
+    "dir": "ltr",
+    "languageOnNative": "भास आनी भासविज्ञान Konkani",
+    "nativeName": "गोंयची कोंकणी / Gõychi Konknni"
+  },
+  {
+    "data-code": "dty",
+    "langCode": "dty",
+    "dir": "ltr",
+    "languageOnNative": "भाषा",
+    "nativeName": "डोटेली"
+  },
+  {
+    "data-code": "new",
+    "langCode": "new",
+    "dir": "ltr",
+    "languageOnNative": "भाषा",
+    "nativeName": "नेपाल भाषा"
+  },
+  {
+    "data-code": "ne",
+    "langCode": "ne",
+    "dir": "ltr",
+    "languageOnNative": "भाषा",
+    "nativeName": "नेपाली"
+  },
+  {
+    "data-code": "pi",
+    "langCode": "pi",
+    "dir": "ltr",
+    "languageOnNative": "भाषा",
+    "nativeName": "पालि"
+  },
+  {
+    "data-code": "bho",
+    "langCode": "bh",
+    "dir": "ltr",
+    "languageOnNative": "भाषा",
+    "nativeName": "भोजपुरी"
+  },
+  {
+    "data-code": "mr",
+    "langCode": "mr",
+    "dir": "ltr",
+    "languageOnNative": "भाषा",
+    "nativeName": "मराठी"
+  },
+  {
+    "data-code": "mai",
+    "langCode": "mai",
+    "dir": "ltr",
+    "languageOnNative": "भाषा",
+    "nativeName": "मैथिली"
+  },
+  {
+    "data-code": "sa",
+    "langCode": "sa",
+    "dir": "ltr",
+    "languageOnNative": "भाषा",
+    "nativeName": "संस्कृतम्"
+  },
+  {
+    "data-code": "hi",
+    "langCode": "hi",
+    "dir": "ltr",
+    "languageOnNative": "भाषा",
+    "nativeName": "हिन्दी"
+  },
+  {
+    "data-code": "as",
+    "langCode": "as",
+    "dir": "ltr",
+    "languageOnNative": "ভাষা",
+    "nativeName": "অসমীয়া"
+  },
+  {
+    "data-code": "bn",
+    "langCode": "bn",
+    "dir": "ltr",
+    "languageOnNative": "ভাষা",
+    "nativeName": "বাংলা"
+  },
+  {
+    "data-code": "pa-guru",
+    "langCode": "pa",
+    "dir": "ltr",
+    "languageOnNative": "ਭਾਸ਼ਾ",
+    "nativeName": "ਪੰਜਾਬੀ"
+  },
+  {
+    "data-code": "gu",
+    "langCode": "gu",
+    "dir": "ltr",
+    "languageOnNative": "ભાષા",
+    "nativeName": "ગુજરાતી"
+  },
+  {
+    "data-code": "or",
+    "langCode": "or",
+    "dir": "ltr",
+    "languageOnNative": "ଭାଷା",
+    "nativeName": "ଓଡ଼ିଆ"
+  },
+  {
+    "data-code": "ta",
+    "langCode": "ta",
+    "dir": "ltr",
+    "languageOnNative": "மொழி",
+    "nativeName": "தமிழ்"
+  },
+  {
+    "data-code": "te",
+    "langCode": "te",
+    "dir": "ltr",
+    "languageOnNative": "భాష",
+    "nativeName": "తెలుగు"
+  },
+  {
+    "data-code": "kn",
+    "langCode": "kn",
+    "dir": "ltr",
+    "languageOnNative": "ಭಾಷೆ",
+    "nativeName": "ಕನ್ನಡ"
+  },
+  {
+    "data-code": "tcy",
+    "langCode": "tcy",
+    "dir": "ltr",
+    "languageOnNative": "ಭಾಷೆ",
+    "nativeName": "ತುಳು"
+  },
+  {
+    "data-code": "ml",
+    "langCode": "ml",
+    "dir": "ltr",
+    "languageOnNative": "ഭാഷ",
+    "nativeName": "മലയാളം"
+  },
+  {
+    "data-code": "si",
+    "langCode": "si",
+    "dir": "ltr",
+    "languageOnNative": "භාෂාව",
+    "nativeName": "සිංහල"
+  },
+  {
+    "data-code": "bo",
+    "langCode": "bo",
+    "dir": "ltr",
+    "languageOnNative": "སྐད་རིགས།",
+    "nativeName": "བོད་ཡིག"
+  },
+  {
+    "data-code": "sat",
+    "langCode": "sat",
+    "dir": "ltr",
+    "languageOnNative": "ᱯᱟᱹᱨᱥᱤ",
+    "nativeName": "ᱥᱟᱱᱛᱟᱲᱤ"
+  },
+  {
+    "data-code": "th",
+    "langCode": "th",
+    "dir": "ltr",
+    "languageOnNative": "ภาษา",
+    "nativeName": "ไทย"
+  },
+  {
+    "data-code": "lo",
+    "langCode": "lo",
+    "dir": "ltr",
+    "languageOnNative": "ພາສາ",
+    "nativeName": "ລາວ"
+  },
+  {
+    "data-code": "my",
+    "langCode": "my",
+    "dir": "ltr",
+    "languageOnNative": "ဘာသာစကား",
+    "nativeName": "မြန်မာဘာသာ"
+  },
+  {
+    "data-code": "km",
+    "langCode": "km",
+    "dir": "ltr",
+    "languageOnNative": "ភាសា",
+    "nativeName": "ភាសាខ្មែរ"
+  },
+  {
+    "data-code": "ace",
+    "langCode": "ace",
+    "dir": "ltr",
+    "languageOnNative": "Bahsa",
+    "nativeName": "Acèh"
+  },
+  {
+    "data-code": "ch",
+    "langCode": "ch",
+    "dir": "ltr",
+    "languageOnNative": "Lengguahe",
+    "nativeName": "Chamoru"
+  },
+  {
+    "data-code": "en",
+    "langCode": "en",
+    "dir": "ltr",
+    "languageOnNative": "Language",
+    "nativeName": "English"
+  },
+  {
+    "data-code": "es",
+    "langCode": "es",
+    "dir": "ltr",
+    "languageOnNative": "Lenguaje",
+    "nativeName": "Español"
+  },
+  {
+    "data-code": "hif",
+    "langCode": "hif",
+    "dir": "ltr",
+    "languageOnNative": "Bhasa Hindi",
+    "nativeName": "Fiji Hindi"
+  },
+  {
+    "data-code": "sm",
+    "langCode": "sm",
+    "dir": "ltr",
+    "languageOnNative": "Gagana",
+    "nativeName": "Gagana Samoa"
+  },
+  {
+    "data-code": "jv",
+    "langCode": "jv",
+    "dir": "ltr",
+    "languageOnNative": "Basa",
+    "nativeName": "Jawa"
+  },
+  {
+    "data-code": "fj",
+    "langCode": "fj",
+    "dir": "ltr",
+    "languageOnNative": "Vosa",
+    "nativeName": "Na Vosa Vakaviti"
+  },
+  {
+    "data-code": "pih",
+    "langCode": "pih",
+    "dir": "ltr",
+    "languageOnNative": "Laenghwij / Pitkern",
+    "nativeName": "Norfuk / Pitkern"
+  },
+  {
+    "data-code": "pt",
+    "langCode": "pt",
+    "dir": "ltr",
+    "languageOnNative": "Linguagem",
+    "nativeName": "Português"
+  },
+  {
+    "data-code": "tpi",
+    "langCode": "tpi",
+    "dir": "ltr",
+    "languageOnNative": "Tokples pisin",
+    "nativeName": "Tok Pisin"
+  }
+]

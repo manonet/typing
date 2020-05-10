@@ -53,6 +53,7 @@ function SEO({ description, intl, keywords, lang, meta, title }: Props) {
         site {
           siteMetadata {
             name
+            author
           }
         }
       }
@@ -61,6 +62,24 @@ function SEO({ description, intl, keywords, lang, meta, title }: Props) {
 
   const metaDescription =
     description || intl.formatMessage({ id: 'site.description' });
+  const metaKeywords = keywords || [
+    intl.formatMessage({ id: 'site.keywords.online' }),
+    intl.formatMessage({ id: 'site.keywords.instructor' }),
+    intl.formatMessage({ id: 'site.keywords.tutor' }),
+    intl.formatMessage({ id: 'site.keywords.tutorial' }),
+    intl.formatMessage({ id: 'site.keywords.education' }),
+    intl.formatMessage({ id: 'site.keywords.teaching' }),
+    intl.formatMessage({ id: 'site.keywords.learning' }),
+    intl.formatMessage({ id: 'site.keywords.application' }),
+    intl.formatMessage({ id: 'site.keywords.typewriting' }),
+    intl.formatMessage({ id: 'site.keywords.typewriter' }),
+    intl.formatMessage({ id: 'site.keywords.type' }),
+    intl.formatMessage({ id: 'site.keywords.10Thumbs' }),
+    intl.formatMessage({ id: 'site.keywords.tenFinger' }),
+    intl.formatMessage({ id: 'site.keywords.lessons' }),
+    intl.formatMessage({ id: 'site.keywords.practices' }),
+    intl.formatMessage({ id: 'site.keywords.course' }),
+  ];
 
   // Ensure that land string can be matched with RtlLangs
   const langCode = lang.replace(/([\-\_].+)/, '').toLowerCase();
@@ -103,7 +122,7 @@ function SEO({ description, intl, keywords, lang, meta, title }: Props) {
         },
         {
           name: 'twitter:creator',
-          content: intl.formatMessage({ id: 'site.author' }),
+          content: site.siteMetadata.author,
         },
         {
           name: 'twitter:title',
@@ -113,16 +132,11 @@ function SEO({ description, intl, keywords, lang, meta, title }: Props) {
           name: 'twitter:description',
           content: metaDescription,
         },
-      ]
-        .concat(
-          typeof keywords !== 'undefined'
-            ? {
-                name: 'keywords',
-                content: keywords,
-              }
-            : []
-        )
-        .concat(meta)}
+        {
+          name: 'keywords',
+          content: metaKeywords,
+        },
+      ].concat(meta)}
     >
       <link
         rel="stylesheet"

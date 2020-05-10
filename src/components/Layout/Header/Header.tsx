@@ -1,6 +1,6 @@
+import { FormattedMessage, Link } from 'gatsby-plugin-intl';
 import React from 'react';
 // @ts-ignore
-import { FormattedMessage, Link } from 'gatsby-plugin-intl';
 
 type Props = {
   siteTitle: string;
@@ -50,15 +50,6 @@ function Header(props: Props) {
           to="/statistics/"
         >
           <FormattedMessage id="site.navigation.statistics" />
-        </Link>
-
-        <Link
-          className="menu__item"
-          activeClassName="menu__item--active"
-          onClick={handleClose}
-          to="/pricing/"
-        >
-          <FormattedMessage id="site.navigation.pricing" />
         </Link>
       </menu>
     </div>

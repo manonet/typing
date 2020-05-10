@@ -23,11 +23,7 @@ I have the following priority list in my mind if it goes about languages.
 5. My dream is to have the app also on **Russian** language. Russia is a big market. Very-very big market. No one will pay for the app, but still. I hope this dream comes true.
 6. For sure, the next step is **French**, **Spanish**, **Italian**, and other European languages, which are used widely (because of historical reasons)
 7. Other languages, which are spoken by some of my helpful friends.
-
-Low priority languages
-
-- Right to left languages. Sorry, it is not just about the translation, but more the layout, and first of all the app itself. It will be definitely a challenge. (or adding flex-direction: row-reverse; ...?)
-- And of course ancient and extinct languages. Absolutely no time for that.
+8. Right to left languages.
 
 If you like to help in translation of **Any** language, just forget what I wrote. Join on the link or contact me.
 

@@ -1,9 +1,8 @@
+import { Link } from 'gatsby';
+import { injectIntl, FormattedMessage } from 'gatsby-plugin-intl';
 import React from 'react';
 // @ts-ignore
-import { injectIntl } from 'gatsby-plugin-intl';
-import { Link } from 'gatsby';
 import { IntlShape } from 'react-intl';
-import AppStatistics from '../components/AppStatistics';
 
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
@@ -18,7 +17,7 @@ const IndexPage = ({ intl }: Props) => (
     <h1>HomePage</h1>
 
     <h3>
-      <i className="fa fa-home"></i>Under development
+      <FormattedMessage id="site.underDevelopement" />
     </h3>
 
     <p>
@@ -26,8 +25,6 @@ const IndexPage = ({ intl }: Props) => (
       <a href="https://github.com/manonet/typing/">Github repository</a>
     </p>
     <Link to="/typewriter/">Go to the Typewriter</Link>
-
-    <AppStatistics />
   </Layout>
 );
 

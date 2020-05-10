@@ -1,11 +1,11 @@
+import { injectIntl } from 'gatsby-plugin-intl';
 import React from 'react';
 // @ts-ignore
-import { injectIntl } from 'gatsby-plugin-intl';
 import { IntlShape } from 'react-intl';
 
 import Layout from '../components/Layout';
-import SEO from '../components/seo';
 import Typewriter from '../components/Typewriter';
+import SEO from '../components/seo';
 
 type Props = {
   intl: IntlShape;
@@ -45,7 +45,6 @@ class TypewriterPage extends React.Component<Props, State> {
         <SEO
           lang={intl.locale}
           title={intl.formatMessage({ id: 'typewriter.page.title' })}
-          keywords={intl.formatMessage({ id: 'site.keywords' })}
         />
         <Typewriter
           isModalOpen={isModalOpen}

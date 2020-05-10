@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
 import classNames from 'classnames';
+import React, { ReactNode, MouseEvent, KeyboardEvent } from 'react';
 
 export const BUTTON_CLASS_NAME = 'Button';
 
@@ -24,16 +24,12 @@ export const ButtonDisplayType = {
 export type TTypeValue = typeof ButtonDisplayType[keyof typeof ButtonDisplayType];
 
 export type DefaultProps = {
-  displayType: TTypeValue;
-  disabled: boolean;
-  onClick: (
-    event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>
-  ) => void;
-  onKeyPress: (
-    event: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement>
-  ) => void;
-  selected: boolean;
-  type: 'button' | 'submit' | 'reset';
+  displayType?: TTypeValue;
+  disabled?: boolean;
+  onClick?: (event: MouseEvent) => void;
+  onKeyPress?: (event: KeyboardEvent) => void;
+  selected?: boolean;
+  type?: 'button' | 'submit' | 'reset';
 };
 
 export type BaseProps = {
@@ -50,80 +46,63 @@ export type BaseProps = {
 
 type Props = BaseProps & DefaultProps;
 
-class Button extends React.PureComponent<Props> {
-  static defaultProps: DefaultProps = {
-    displayType: ButtonDisplayType.DEFAULT,
-    disabled: false,
-    onClick: () => {},
-    onKeyPress: () => {},
-    selected: false,
-    type: 'button',
-  };
-
-  onClick: React.MouseEventHandler<HTMLAnchorElement | HTMLButtonElement> = (
-    event
-  ) => {
+const Button = ({
+  children,
+  className,
+  color,
+  disabled = false,
+  displaySize,
+  displayType = ButtonDisplayType.DEFAULT,
+  fullWidth,
+  inverse,
+  onClick = (e) => e,
+  onKeyPress = (e) => e,
+  selected = false,
+  square,
+  title,
+  type = 'button',
+}: Props) => {
+  function handleOnClick(event: MouseEvent) {
     event.preventDefault();
-    const { disabled, onClick } = this.props;
 
     if (disabled) return;
     onClick(event);
-  };
+  }
 
-  onKeyPress: React.KeyboardEventHandler<
-    HTMLAnchorElement | HTMLButtonElement
-  > = (event) => {
+  function handleOnKeyPress(event: KeyboardEvent) {
     event.preventDefault();
-    const { disabled, onKeyPress } = this.props;
 
     if (disabled) return;
     onKeyPress(event);
-  };
-
-  render() {
-    const {
-      selected,
-      children,
-      className,
-      color,
-      disabled,
-      displaySize,
-      fullWidth,
-      square,
-      type,
-      displayType,
-      title,
-      inverse,
-    } = this.props;
-
-    if (!children) return null;
-
-    const buttonClassNames = classNames([
-      BUTTON_CLASS_NAME,
-      selected ? 'Button--selected' : '',
-      displaySize ? `Button--${displaySize}` : '',
-      `Button--${displayType}`,
-      color ? `Button--${color}` : '',
-      fullWidth ? 'Button--fullWidth' : '',
-      square ? 'Button--square' : '',
-      disabled ? 'Button--disabled' : '',
-      inverse ? 'Button--inverse' : '',
-      className,
-    ]);
-
-    return (
-      <button
-        className={buttonClassNames}
-        disabled={disabled}
-        onClick={this.onClick}
-        onKeyPress={this.onKeyPress}
-        type={type}
-        title={title}
-      >
-        {children}
-      </button>
-    );
   }
-}
+
+  if (!children) return null;
+
+  const buttonClassNames = classNames([
+    BUTTON_CLASS_NAME,
+    selected ? 'Button--selected' : '',
+    displaySize ? `Button--${displaySize}` : '',
+    `Button--${displayType}`,
+    color ? `Button--${color}` : '',
+    fullWidth ? 'Button--fullWidth' : '',
+    square ? 'Button--square' : '',
+    disabled ? 'Button--disabled' : '',
+    inverse ? 'Button--inverse' : '',
+    className,
+  ]);
+
+  return (
+    <button
+      className={buttonClassNames}
+      disabled={disabled}
+      onClick={handleOnClick}
+      onKeyPress={handleOnKeyPress}
+      type={type}
+      title={title}
+    >
+      {children}
+    </button>
+  );
+};
 
 export default Button;

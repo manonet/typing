@@ -15,11 +15,8 @@
   &__container {
     display: flex;
     padding: $spacer calc(#{$spacer} * 3);
-    flex-direction: column;
-  }
-
-  &__container {
     margin: calc(#{$spacer} * 2) 0;
+    flex-direction: column;
   }
 
   &__menu {
