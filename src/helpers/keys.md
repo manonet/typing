@@ -1,31 +1,31 @@
 # Keys
 
 Hardware - can not be changed, must be identified, e.g. Enter key shape and position
-  the labels on the keys are irrelevant, they can not be detected, they have no effect.
+the labels on the keys are irrelevant, they can not be detected, they have no effect.
 
 Operating system
-  win
-    extra C12
-  mac
-    extra D13
-    extra E13
+win
+extra C12
+mac
+extra D13
+extra E13
 
 Selected keyboard layout in the operating system
-  can be anything, even if it conflicts with the physical keyboard layout
-  this determinates which characters will be written
+can be anything, even if it conflicts with the physical keyboard layout
+this determinates which characters will be written
 
-|physical keyboard   |Key event           |Displayed Layout    |
-|--------------------|--------------------|--------------------|
-|ISO                 |not exist           |ISO                 |
-|?                   |different meaning   |keycode             |
+| physical keyboard | Key event         | Displayed Layout |
+| ----------------- | ----------------- | ---------------- |
+| ISO               | not exist         | ISO              |
+| ?                 | different meaning | keycode          |
 
-https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent
+<https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent>
 
-event.code - returns KeyY for letter "z" https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code
+event.code - returns KeyY for letter "z" <https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code>
 
-event.location - https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/location
+event.location - <https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/location>
 
-event.repeat - (not on IE) https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/repeat
+event.repeat - (not on IE) <https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/repeat>
 
 ```js
 ​event: {
@@ -67,3 +67,43 @@ event.repeat - (not on IE) https://developer.mozilla.org/en-US/docs/Web/API/Keyb
     ​<prototype>: KeyboardEventPrototype { getModifierState: getModifierState(), initKeyboardEvent: initKeyboardEvent(), initKeyEvent: initKeyEvent(), … }
 }
 ```
+
+---
+
+### Links
+
+- <https://en.wikipedia.org/wiki/ISO/IEC_9995>
+- <http://www.unicode.org/reports/tr35/tr35-49/tr35-keyboards.html>
+- <https://unicode.org/reports/tr35/tr35-keyboards.html>
+- <https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState>
+
+### Caveats
+
+Things which makes a typewriter app complicated
+
+Because some browsers choose to interpret physical keys differently, there are some differences in which keys map to which codes. ...On Mac OS X, it's hard to get scancode or something which can distinguish a physical key from a key event. Therefore, Gecko always maps code value from the virtual keycode. [KeyboardEvent: code values](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code/code_values)
+
+---
+
+### Caveats
+
+Things which makes a typewriter app complicated
+
+Because some browsers choose to interpret physical keys differently, there are some differences in which keys map to which codes. ...On Mac OS X, it's hard to get scancode or something that can distinguish a physical key from a key event. Therefore, Gecko always maps code value from the virtual keycode. [KeyboardEvent: code values](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code/code_values)
+
+---
+
+## Order of the keys in lessons
+
+It is clear, that the order of the keys is important by learning. It seems obvious, that everyone should start on the "F" and "J" keys, and spread learning from those keys. But how to exactly continue, depends on
+
+- Physical keyboard layout. The number and position of the keys are different on keyboards, it can not be handled in the same way.
+- Keyboard language, the order of importance of letters. E.g. the letter "a" or "e" appears usually more in words like the letter "q" or "y". So it makes sense to start with "useful" ones
+- Possible characters. E.g. some keyboard has a character on "D04" + AltGr position, some not. The arrangement of characters on different levels is various.
+- Personal attitude. Some may like to do it differently. Or different kind of school
+
+### Recommendation
+
+1. Get all the characters from the keyboard grouped by level. Subgroup and sort them 1. alpha 2. numeric 3. others. Arrange each group by the pre-defined physical order.
+2. Make it possible to override it with a JSON which can belong to a specific keyboard layout.
+3. Make it possible to override it by the user.

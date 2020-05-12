@@ -44,7 +44,7 @@ build_files:
     expire_in: 1 day
     when: on_success
 
-staging:
+beta:
   stage: deploy
   script:
     - ./node_modules/.bin/gatsby build --prefix-paths
@@ -53,4 +53,15 @@ staging:
     # Keep in mind that GitLab server has different time settings than the target one.
     - lftp -c "set ftp:ssl-allow no; open -u $BETA_FTP_USERNAME,$BETA_FTP_PASSWORD $FTP_SERVER; mirror --reverse --delete-first --scan-all-first --depth-first --transfer-all --verbose public / --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
   only:
-    - dev
+    - tags
+
+staging:
+  stage: deploy
+  script:
+    - ./node_modules/.bin/gatsby build --prefix-paths
+    - apt-get update -qq && apt-get install -y -qq lftp
+    - date
+    # Keep in mind that GitLab server has different time settings than the target one.
+    - lftp -c "set ftp:ssl-allow no; open -u $STAGING_FTP_USERNAME,$STAGING_FTP_PASSWORD $FTP_SERVER; mirror --reverse --delete-first --scan-all-first --depth-first --transfer-all --verbose public / --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/"
+  only:
+    - master
