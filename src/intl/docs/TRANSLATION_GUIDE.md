@@ -1,5 +1,23 @@
 # Translation guide
 
+## Poeditor.com howto
+
+However the UI of the Translation manager system is quite straightforward, I like to point on the common mistakes.
+
+-   **Do not translate placeholders**! The text in curly brackets is a variable, please keep it as it is. E.g `version: {version}` can be translated as `wersja: {version}`. `{hand} {finger}` should not be translated at all, because it only contains variables, but it can be rearranged, some languages may say it a different way, like `{finger} {hand}`.
+
+![variable error warning](images/variable_error.png)
+
+-   Please keep in mind, that you can see the template name, which helps you to get some background what you translating.
+
+![template name](images/template_name.png)
+
+-   Notice the comments, there are maybe useful instructions. You even can ask questions if sou have any doubt.
+
+![comments](images/comments.png)
+
+-   Do not response to comments, if not necessary :)
+
 ## Voice and Tone
 
 ### Audience
@@ -29,7 +47,3 @@ The app should be like a game. There are no explanations for the games usually, 
 ### Synonyms
 
 By translating "repeating" content, like `site.keywords`, please use your imagination or a synonym dictionary. If your language does not contain as many synonyms as many exist in English, e.g. "lesson, practice, course, tutorial", please use something similar, which fits the topic, something which people may search for on your language. If you translate a "collection" like `site.keywords`, please try not to use the same word twice, rather a word which may not a right translation, but a good fit for the overall topic.
-
-### Technical
-
-Because of maintainability reasons, I try to keep the amount strings limited. This leads to a programmatical combination of words, like "left" and "hand" and "index finger" becomes "left hand left index finger". Please pay attention if you see {curly brackets} in the strings because they indicate a placeholder of a different string or value.
