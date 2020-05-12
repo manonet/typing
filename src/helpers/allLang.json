@@ -4,7 +4,8 @@
     "langCode": "ru",
     "dir": "ltr",
     "languageOnNative": "Язык",
-    "nativeName": "Русский"
+    "nativeName": "Русский",
+    "name": "Russian"
   },
   {
     "data-code": "bar",
@@ -32,28 +33,32 @@
     "langCode": "fr",
     "dir": "ltr",
     "languageOnNative": "Langage",
-    "nativeName": "Français"
+    "nativeName": "Français",
+    "name": "French"
   },
   {
     "data-code": "hr",
     "langCode": "hr",
     "dir": "ltr",
     "languageOnNative": "Jezik",
-    "nativeName": "Hrvatski"
+    "nativeName": "Hrvatski",
+    "name": "Croatian"
   },
   {
     "data-code": "it",
     "langCode": "it",
     "dir": "ltr",
     "languageOnNative": "Linguaggio",
-    "nativeName": "Italiano"
+    "nativeName": "Italiano",
+    "name": "Italian"
   },
   {
     "data-code": "sl",
     "langCode": "sl",
     "dir": "ltr",
     "languageOnNative": "Jezik (sredstvo sporazumevanja)",
-    "nativeName": "Slovenščina"
+    "nativeName": "Slovenščina",
+    "name": "Slovenian"
   },
   {
     "data-code": "en",
@@ -63,25 +68,11 @@
     "nativeName": "English"
   },
   {
-    "data-code": "es",
-    "langCode": "es",
-    "dir": "ltr",
-    "languageOnNative": "Lenguaje",
-    "nativeName": "Español"
-  },
-  {
     "data-code": "eo",
     "langCode": "eo",
     "dir": "ltr",
     "languageOnNative": "Lingvo",
     "nativeName": "Esperanto"
-  },
-  {
-    "data-code": "fr",
-    "langCode": "fr",
-    "dir": "ltr",
-    "languageOnNative": "Langage",
-    "nativeName": "Français"
   },
   {
     "data-code": "io",
@@ -130,7 +121,8 @@
     "langCode": "pt",
     "dir": "ltr",
     "languageOnNative": "Linguagem",
-    "nativeName": "Português"
+    "nativeName": "Português",
+    "name": "Portuguese"
   },
   {
     "data-code": "en-simple",
@@ -175,20 +167,6 @@
     "nativeName": "English"
   },
   {
-    "data-code": "es",
-    "langCode": "es",
-    "dir": "ltr",
-    "languageOnNative": "Lenguaje",
-    "nativeName": "Español"
-  },
-  {
-    "data-code": "fr",
-    "langCode": "fr",
-    "dir": "ltr",
-    "languageOnNative": "Langage",
-    "nativeName": "Français"
-  },
-  {
     "data-code": "ik",
     "langCode": "ik",
     "dir": "ltr",
@@ -221,7 +199,8 @@
     "langCode": "nl",
     "dir": "ltr",
     "languageOnNative": "Taal",
-    "nativeName": "Nederlands"
+    "nativeName": "Nederlands",
+    "name": "Dutch"
   },
   {
     "data-code": "nah",
@@ -243,13 +222,6 @@
     "dir": "ltr",
     "languageOnNative": "Languij Creole English",
     "nativeName": "Patois"
-  },
-  {
-    "data-code": "pt",
-    "langCode": "pt",
-    "dir": "ltr",
-    "languageOnNative": "Linguagem",
-    "nativeName": "Português"
   },
   {
     "data-code": "qu",
@@ -305,7 +277,8 @@
     "langCode": "bg",
     "dir": "ltr",
     "languageOnNative": "Език (лингвистика)",
-    "nativeName": "Български"
+    "nativeName": "Български",
+    "name": "Bulgarian"
   },
   {
     "data-code": "inh",
@@ -347,7 +320,8 @@
     "langCode": "mk",
     "dir": "ltr",
     "languageOnNative": "Јазик",
-    "nativeName": "Македонски"
+    "nativeName": "Македонски",
+    "name": "Macedonian"
   },
   {
     "data-code": "mhr",
@@ -375,7 +349,8 @@
     "langCode": "ru",
     "dir": "ltr",
     "languageOnNative": "Язык",
-    "nativeName": "Русский"
+    "nativeName": "Русский",
+    "name": "Russian"
   },
   {
     "data-code": "sah",
@@ -396,7 +371,8 @@
     "langCode": "sr",
     "dir": "ltr",
     "languageOnNative": "Језик",
-    "nativeName": "Српски / srpski"
+    "nativeName": "Српски / srpski",
+    "name": "Serbian"
   },
   {
     "data-code": "tt",
@@ -410,7 +386,8 @@
     "langCode": "uk",
     "dir": "ltr",
     "languageOnNative": "Мова",
-    "nativeName": "Українська"
+    "nativeName": "Українська",
+    "name": "Ukrainian"
   },
   {
     "data-code": "cv",
@@ -431,7 +408,8 @@
     "langCode": "el",
     "dir": "ltr",
     "languageOnNative": "Γλώσσα",
-    "nativeName": "Ελληνικά"
+    "nativeName": "Ελληνικά",
+    "name": "Greek"
   },
   {
     "data-code": "gsw",
@@ -487,7 +465,8 @@
     "langCode": "bs",
     "dir": "ltr",
     "languageOnNative": "Jezik",
-    "nativeName": "Bosanski"
+    "nativeName": "Bosanski",
+    "name": "Bosnian"
   },
   {
     "data-code": "br",
@@ -515,7 +494,8 @@
     "langCode": "da",
     "dir": "ltr",
     "languageOnNative": "Sprog",
-    "nativeName": "Dansk"
+    "nativeName": "Dansk",
+    "name": "Danish"
   },
   {
     "data-code": "se",
@@ -543,7 +523,8 @@
     "langCode": "et",
     "dir": "ltr",
     "languageOnNative": "Keel",
-    "nativeName": "Eesti"
+    "nativeName": "Eesti",
+    "name": "Estonian"
   },
   {
     "data-code": "egl",
@@ -560,13 +541,6 @@
     "nativeName": "English"
   },
   {
-    "data-code": "es",
-    "langCode": "es",
-    "dir": "ltr",
-    "languageOnNative": "Lenguaje",
-    "nativeName": "Español"
-  },
-  {
     "data-code": "ext",
     "langCode": "ext",
     "dir": "ltr",
@@ -579,13 +553,6 @@
     "dir": "ltr",
     "languageOnNative": "Hizkuntza",
     "nativeName": "Euskara"
-  },
-  {
-    "data-code": "fr",
-    "langCode": "fr",
-    "dir": "ltr",
-    "languageOnNative": "Langage",
-    "nativeName": "Français"
   },
   {
     "data-code": "fy",
@@ -641,7 +608,8 @@
     "langCode": "hr",
     "dir": "ltr",
     "languageOnNative": "Jezik",
-    "nativeName": "Hrvatski"
+    "nativeName": "Hrvatski",
+    "name": "Croatian"
   },
   {
     "data-code": "it",
@@ -690,14 +658,16 @@
     "langCode": "lv",
     "dir": "ltr",
     "languageOnNative": "Valoda",
-    "nativeName": "Latviešu"
+    "nativeName": "Latviešu",
+    "name": "Latvian"
   },
   {
     "data-code": "lt",
     "langCode": "lt",
     "dir": "ltr",
     "languageOnNative": "Kalba",
-    "nativeName": "Lietuvių"
+    "nativeName": "Lietuvių",
+    "name": "Lithuanian"
   },
   {
     "data-code": "li",
@@ -795,14 +765,8 @@
     "langCode": "pl",
     "dir": "ltr",
     "languageOnNative": "Język (mowa)",
-    "nativeName": "Polski"
-  },
-  {
-    "data-code": "pt",
-    "langCode": "pt",
-    "dir": "ltr",
-    "languageOnNative": "Linguagem",
-    "nativeName": "Português"
+    "nativeName": "Polski",
+    "name": "Polish"
   },
   {
     "data-code": "ksh",
@@ -823,7 +787,8 @@
     "langCode": "ro",
     "dir": "ltr",
     "languageOnNative": "Limbă (comunicare)",
-    "nativeName": "Română"
+    "nativeName": "Română",
+    "name": "Romanian"
   },
   {
     "data-code": "rm",
@@ -858,7 +823,8 @@
     "langCode": "sq",
     "dir": "ltr",
     "languageOnNative": "Gjuha (komunikim)",
-    "nativeName": "Shqip"
+    "nativeName": "Shqip",
+    "name": "Albanian"
   },
   {
     "data-code": "scn",
@@ -872,14 +838,8 @@
     "langCode": "sk",
     "dir": "ltr",
     "languageOnNative": "Jazyk (jazykoveda)",
-    "nativeName": "Slovenčina"
-  },
-  {
-    "data-code": "sl",
-    "langCode": "sl",
-    "dir": "ltr",
-    "languageOnNative": "Jezik (sredstvo sporazumevanja)",
-    "nativeName": "Slovenščina"
+    "nativeName": "Slovenčina",
+    "name": "Slovak"
   },
   {
     "data-code": "srn",
@@ -900,14 +860,16 @@
     "langCode": "fi",
     "dir": "ltr",
     "languageOnNative": "Kieli",
-    "nativeName": "Suomi"
+    "nativeName": "Suomi",
+    "name": "Finnish"
   },
   {
     "data-code": "sv",
     "langCode": "sv",
     "dir": "ltr",
     "languageOnNative": "Språk",
-    "nativeName": "Svenska"
+    "nativeName": "Svenska",
+    "name": "Swedish"
   },
   {
     "data-code": "kab",
@@ -921,7 +883,8 @@
     "langCode": "tr",
     "dir": "ltr",
     "languageOnNative": "Dil",
-    "nativeName": "Türkçe"
+    "nativeName": "Türkçe",
+    "name": "Turkish"
   },
   {
     "data-code": "vep",
@@ -984,7 +947,8 @@
     "langCode": "cs",
     "dir": "ltr",
     "languageOnNative": "Jazyk (lingvistika)",
-    "nativeName": "Čeština"
+    "nativeName": "Čeština",
+    "name": "Czech"
   },
   {
     "data-code": "szl",
@@ -1040,7 +1004,8 @@
     "langCode": "ar",
     "dir": "rtl",
     "languageOnNative": "لغة",
-    "nativeName": "العربية"
+    "nativeName": "العربية",
+    "name": "Arabic"
   },
   {
     "data-code": "az-arab",
@@ -1054,7 +1019,8 @@
     "langCode": "fa",
     "dir": "rtl",
     "languageOnNative": "زبان",
-    "nativeName": "فارسی"
+    "nativeName": "فارسی",
+    "name": "Persian"
   },
   {
     "data-code": "mzn",
@@ -1127,13 +1093,6 @@
     "nativeName": "Kurdî"
   },
   {
-    "data-code": "tr",
-    "langCode": "tr",
-    "dir": "ltr",
-    "languageOnNative": "Dil",
-    "nativeName": "Türkçe"
-  },
-  {
     "data-code": "yi",
     "langCode": "yi",
     "dir": "rtl",
@@ -1159,7 +1118,8 @@
     "langCode": "ml",
     "dir": "ltr",
     "languageOnNative": "ഭാഷ",
-    "nativeName": "മലയാളം"
+    "nativeName": "മലയാളം",
+    "name": "Malayalam"
   },
   {
     "data-code": "hy",
@@ -1211,13 +1171,6 @@
     "nativeName": "English"
   },
   {
-    "data-code": "es",
-    "langCode": "es",
-    "dir": "ltr",
-    "languageOnNative": "Lenguaje",
-    "nativeName": "Español"
-  },
-  {
     "data-code": "xh",
     "langCode": "xh",
     "dir": "ltr",
@@ -1251,13 +1204,6 @@
     "dir": "ltr",
     "languageOnNative": "Fiteny (heviny mivelatra)",
     "nativeName": "Malagasy"
-  },
-  {
-    "data-code": "pt",
-    "langCode": "pt",
-    "dir": "ltr",
-    "languageOnNative": "Linguagem",
-    "nativeName": "Português"
   },
   {
     "data-code": "st",
@@ -1330,13 +1276,6 @@
     "nativeName": "سنڌي"
   },
   {
-    "data-code": "fa",
-    "langCode": "fa",
-    "dir": "rtl",
-    "languageOnNative": "زبان",
-    "nativeName": "فارسی"
-  },
-  {
     "data-code": "mzn",
     "langCode": "mzn",
     "dir": "rtl",
@@ -1369,7 +1308,8 @@
     "langCode": "zh",
     "dir": "ltr",
     "languageOnNative": "語言",
-    "nativeName": "中文"
+    "nativeName": "中文",
+    "name": "Chinese"
   },
   {
     "data-code": "wuu",
@@ -1390,7 +1330,8 @@
     "langCode": "ja",
     "dir": "ltr",
     "languageOnNative": "言語",
-    "nativeName": "日本語"
+    "nativeName": "日本語",
+    "name": "Japanese"
   },
   {
     "data-code": "yue",
@@ -1568,13 +1509,6 @@
     "nativeName": "Oʻzbekcha/ўзбекча"
   },
   {
-    "data-code": "pt",
-    "langCode": "pt",
-    "dir": "ltr",
-    "languageOnNative": "Linguagem",
-    "nativeName": "Português"
-  },
-  {
     "data-code": "szy",
     "langCode": "szy",
     "dir": "ltr",
@@ -1712,7 +1646,8 @@
     "langCode": "hi",
     "dir": "ltr",
     "languageOnNative": "भाषा",
-    "nativeName": "हिन्दी"
+    "nativeName": "हिन्दी",
+    "name": "Hindi"
   },
   {
     "data-code": "as",
@@ -1733,7 +1668,8 @@
     "langCode": "pa",
     "dir": "ltr",
     "languageOnNative": "ਭਾਸ਼ਾ",
-    "nativeName": "ਪੰਜਾਬੀ"
+    "nativeName": "ਪੰਜਾਬੀ",
+    "name": "Punjabi"
   },
   {
     "data-code": "gu",
@@ -1761,7 +1697,8 @@
     "langCode": "te",
     "dir": "ltr",
     "languageOnNative": "భాష",
-    "nativeName": "తెలుగు"
+    "nativeName": "తెలుగు",
+    "name": "Telugu"
   },
   {
     "data-code": "kn",
@@ -1859,7 +1796,8 @@
     "langCode": "es",
     "dir": "ltr",
     "languageOnNative": "Lenguaje",
-    "nativeName": "Español"
+    "nativeName": "Español",
+    "name": "Spanish"
   },
   {
     "data-code": "hif",
@@ -1895,13 +1833,6 @@
     "dir": "ltr",
     "languageOnNative": "Laenghwij / Pitkern",
     "nativeName": "Norfuk / Pitkern"
-  },
-  {
-    "data-code": "pt",
-    "langCode": "pt",
-    "dir": "ltr",
-    "languageOnNative": "Linguagem",
-    "nativeName": "Português"
   },
   {
     "data-code": "tpi",
