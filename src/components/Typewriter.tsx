@@ -9,7 +9,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { setSampleText, SetSampleTextAction } from '../actions';
 import TypewriterBoard from '../components/TypewriterBoard';
 import { State as ReduxState } from '../reducers';
-import { Keyboard, StatisticProps } from '../types';
+import { Keyboard, StatisticProps, ISOFingers } from '../types';
 import getKeyboardOS from '../utils/getKeyboardOS';
 import getKeysFromChar from '../utils/getKeysFromChar';
 import getLevelFromKeys from '../utils/getLevelFromKeys';
@@ -50,6 +50,7 @@ type State = {
   statistics: StatisticProps;
   characterNotFound: boolean;
   currentKeyInfo: [];
+  isoToHandFingers: ISOFingers;
 };
 
 class Typewriter extends React.Component<Props, State> {
@@ -108,6 +109,7 @@ class Typewriter extends React.Component<Props, State> {
       fetch(withPrefix('/keyboards/windows/hu-t-k0-windows.json')),
       fetch(withPrefix('/keyboards/codeToIso.json')),
       fetch(withPrefix('/keyboards/functionKeys.json')),
+      fetch(withPrefix('/keyboards/isoToHandFinger.json')),
       // fetch(withPrefix(`/keyboards/${keyboardOS}FunctionKeys.json`)),
     ])
       .then((responses) => Promise.all(responses.map((r) => r.json())))
@@ -115,6 +117,7 @@ class Typewriter extends React.Component<Props, State> {
         const keyboard = responses[0];
         const codeToIso = responses[1];
         const functionKeys = responses[2];
+        const isoToHandFingers = responses[3];
         functionKeys.Enter.variant = keyboard.enterVariant;
 
         const { sampleText } = this.props;
@@ -126,6 +129,7 @@ class Typewriter extends React.Component<Props, State> {
             codeToIso,
             functionKeys,
             currentKeyInfo: nextCharInfo,
+            isoToHandFingers,
           },
           this.startNewLesson("Lí|Ä¶ćČ et's\nTyyyype Something (@)...")
         );
@@ -536,6 +540,7 @@ class Typewriter extends React.Component<Props, State> {
       cursorAt,
       displayedLevel,
       functionKeys,
+      isoToHandFingers,
       keyboard,
       signToWrite,
       userText,
@@ -564,6 +569,7 @@ class Typewriter extends React.Component<Props, State> {
           displayedLevel={displayedLevel}
           keyboard={keyboard}
           functionKeys={functionKeys}
+          isoToHandFingers={isoToHandFingers}
         />
         <LessonModal
           open={isModalOpen}

@@ -1,19 +1,23 @@
+import Tippy, { useSingleton } from '@tippyjs/react';
 import classNames from 'classnames';
+import { FormattedMessage, useIntl } from 'gatsby-plugin-intl';
 import React from 'react';
 
 import variables from '../../theme/variables';
+import { ISOFingers } from '../../types';
 import KeyboardKey from '../KeyboardKey';
 
 import './Keyboard.scss';
 
 type Props = {
   classes?: string;
-  showTitle?: boolean;
-  showDeadKeys?: boolean;
-  keyboard: [];
   className?: string;
-  functionKeys: [];
   displayedLevel: string;
+  functionKeys: [];
+  isoToHandFingers: ISOFingers;
+  keyboard: [];
+  showDeadKeys?: boolean;
+  showTitle?: boolean;
 };
 
 function Keyboard(props: Props) {
@@ -33,7 +37,13 @@ function Keyboard(props: Props) {
   }
   */
 
-  const { className, displayedLevel, functionKeys, keyboard } = props;
+  const {
+    className,
+    displayedLevel,
+    functionKeys,
+    isoToHandFingers,
+    keyboard,
+  } = props;
   // console.log("keyboard", keyboard)
   // console.log("keys", keyboardKeys)
 
@@ -41,6 +51,11 @@ function Keyboard(props: Props) {
     return null;
   }
 
+  const intl = useIntl();
+
+  const [source, target] = useSingleton({
+    overrides: ['placement'],
+  });
   const { keys } = keyboard;
 
   const {
@@ -60,6 +75,13 @@ function Keyboard(props: Props) {
     <div className={classNames(className, 'keyboard')}>
       {/* {this.KeyboardTitle()}
       {this.KeyboardDeadKeys()} */}
+
+      {/* This is the tippy that gets used as the singleton */}
+      <Tippy
+        singleton={source}
+        delay={500}
+        moveTransition={'transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)'}
+      />
       <svg
         className="keyboard__svg"
         version="1.1"
@@ -99,34 +121,73 @@ function Keyboard(props: Props) {
           }
 
           return (
+            <Tippy
+              key={iso}
+              singleton={target}
+              content={
+                <>
+                  <FormattedMessage
+                    id="typing.hand.finger"
+                    values={{
+                      hand: intl.formatMessage({
+                        id: `typing.hand.${isoToHandFingers.keys[iso].hand}`,
+                      }),
+                      finger: intl.formatMessage({
+                        id: `typing.finger.${isoToHandFingers.keys[iso].finger}`,
+                      }),
+                    }}
+                  />
+                </>
+              }
+            >
+              <KeyboardKey
+                displayedLevel={displayedLevel}
+                iso={iso}
+                {...keys[iso]}
+                x={translateX}
+                y={translateY}
+                width={keyWidth}
+                height={keyWidth}
+                rx={rY}
+                ry={rY}
+              />
+            </Tippy>
+          );
+        })}
+        ;
+        {Object.keys(functionKeys).map((iso) => (
+          <Tippy
+            key={iso}
+            singleton={target}
+            content={
+              <>
+                <FormattedMessage
+                  id="typing.hand.finger"
+                  values={{
+                    hand: intl.formatMessage({
+                      id: `typing.hand.${isoToHandFingers.keys[iso].hand}`,
+                    }),
+                    finger: intl.formatMessage({
+                      id: `typing.finger.${isoToHandFingers.keys[iso].finger}`,
+                    }),
+                  }}
+                />
+              </>
+            }
+          >
             <KeyboardKey
               key={iso}
-              displayedLevel={displayedLevel}
+              displayedLevel="to"
               iso={iso}
-              {...keys[iso]}
-              x={translateX}
-              y={translateY}
+              {...functionKeys[iso]}
+              x={0}
+              y={0}
               width={keyWidth}
               height={keyWidth}
               rx={rY}
               ry={rY}
             />
-          );
-        })}
-        ;
-        {Object.keys(functionKeys).map((iso) => (
-          <KeyboardKey
-            key={iso}
-            displayedLevel="to"
-            iso={iso}
-            {...functionKeys[iso]}
-            x={0}
-            y={0}
-            width={keyWidth}
-            height={keyWidth}
-            rx={rY}
-            ry={rY}
-          />
+          </Tippy>
         ))}
       </svg>
     </div>

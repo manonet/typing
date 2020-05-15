@@ -1,3 +1,4 @@
+import Tippy from '@tippyjs/react';
 import classNames from 'classnames';
 import {
   IntlContextConsumer,
@@ -5,7 +6,6 @@ import {
   FormattedMessage,
 } from 'gatsby-plugin-intl';
 import React from 'react';
-import { Tooltip } from 'react-tippy';
 
 import Button from '../Button';
 
@@ -62,15 +62,13 @@ const LanguageSwitcher = ({ className }: Props) => (
   <div className={classNames('languageSwitcher', className)}>
     <IntlContextConsumer>
       {({ language: currentLocale, languages }: IntlContextConsumerProps) => (
-        <Tooltip
-          position="top-start"
+        <Tippy
+          placement="top-start"
           trigger="click"
-          useContext
           interactive
           theme="light"
           arrow
-          distance={16}
-          html={
+          content={
             <ul className="languageSwitcher__list">
               {languages.map((language) => {
                 if (currentLocale !== language) {
@@ -107,7 +105,7 @@ const LanguageSwitcher = ({ className }: Props) => (
             </span>
             <i className="fa fa-angle-down"></i>
           </Button>
-        </Tooltip>
+        </Tippy>
       )}
     </IntlContextConsumer>
   </div>

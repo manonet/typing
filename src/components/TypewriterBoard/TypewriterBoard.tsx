@@ -1,11 +1,13 @@
 import classNames from 'classnames';
 import React from 'react';
 
+import { ISOFingers } from '../../types';
 import Keyboard from '../Keyboard';
 import SampleBoard from '../SampleBoard';
 
 type Props = {
   className?: string;
+  isoToHandFingers: ISOFingers;
   userText: string;
   cursorAt: number;
   signToWrite: string;
@@ -50,6 +52,7 @@ class TypewriterBoard extends React.Component<Props> {
       cursorAt,
       displayedLevel,
       functionKeys,
+      isoToHandFingers,
       keyboard,
       keyboardKeys,
       signToWrite,
@@ -74,6 +77,7 @@ class TypewriterBoard extends React.Component<Props> {
           functionKeys={functionKeys}
           keyboardKeys={keyboardKeys}
           displayedLevel={displayedLevel}
+          isoToHandFingers={isoToHandFingers}
         />
       </div>
     );

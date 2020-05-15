@@ -1,6 +1,6 @@
-import { allLevels } from './allLevels';
-import { allISO } from './allISO';
 import { allEventCodes } from './allEventCodes';
+import { allISO } from './allISO';
+import { allLevels } from './allLevels';
 export type Character = string;
 export type CapsLockDown = boolean;
 
@@ -48,6 +48,15 @@ export type LevelMap = {
 
 export type ISOKeys = {
   [key in ISO]: LevelMap;
+};
+
+export type ISOFingers = {
+  keys: {
+    [key in ISO]: {
+      hand: 'left' | 'right';
+      finger: 'thumb' | 'index' | 'middle' | 'ring' | 'small';
+    };
+  };
 };
 
 export type Levels = {

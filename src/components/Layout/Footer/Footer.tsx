@@ -10,7 +10,7 @@ type Props = {
   email: string;
 };
 
-function Header(props: Props) {
+function Footer(props: Props) {
   const { appName, email, version } = props;
 
   return (
@@ -162,4 +162,4 @@ function Header(props: Props) {
   );
 }
 
-export default Header;
+export default Footer;

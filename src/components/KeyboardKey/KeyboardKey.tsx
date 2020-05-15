@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import variables from '../../theme/variables';
 
@@ -31,7 +31,7 @@ export type KeyboardKeyProps = {
   y: number;
 };
 
-function KeyboardKey(props: KeyboardKeyProps) {
+const KeyboardKey = forwardRef((props: KeyboardKeyProps, ref) => {
   // console.log(props)
   const {
     displayedLevel,
@@ -208,7 +208,7 @@ function KeyboardKey(props: KeyboardKeyProps) {
           <>
             <path className={keyShadowClass} d={enterPath} />
             <g className={keyClass}>
-              <path className={keyBgClass} d={enterPath} />
+              <path ref={ref} className={keyBgClass} d={enterPath} />
               <g className={'key__labels'}>
                 <text
                   className={labelClass}
@@ -240,6 +240,7 @@ function KeyboardKey(props: KeyboardKeyProps) {
             />
             <g className={keyClass}>
               <rect
+                ref={ref}
                 className={keyBgClass}
                 x={cRowShift + keyWidth * 12 + x + keyPaddingX}
                 y={keyHeight * 2 + y + keyPaddingY}
@@ -279,6 +280,7 @@ function KeyboardKey(props: KeyboardKeyProps) {
             />
             <g className={keyClass}>
               <rect
+                ref={ref}
                 className={keyBgClass}
                 x={dRowShift + keyWidth * 12 + x + keyPaddingX}
                 y={keyHeight + y + keyPaddingY}
@@ -338,7 +340,7 @@ function KeyboardKey(props: KeyboardKeyProps) {
           <>
             <path className={keyShadowClass} d={enterPath2} />
             <g className={keyClass}>
-              <path className={keyBgClass} d={enterPath2} />
+              <path ref={ref} className={keyBgClass} d={enterPath2} />
               <g className={'key__labels'}>
                 <text
                   className={labelClass}
@@ -365,7 +367,7 @@ function KeyboardKey(props: KeyboardKeyProps) {
         rx={rX}
         ry={rY}
       />
-      <g className={keyClass} textAnchor="middle">
+      <g ref={ref} className={keyClass} textAnchor="middle">
         <rect
           className={keyBgClass}
           x={(x || calculatedX) + keyPaddingX}
@@ -394,6 +396,6 @@ function KeyboardKey(props: KeyboardKeyProps) {
       </g>
     </>
   );
-}
+});
 
 export default KeyboardKey;
