@@ -5,14 +5,22 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React, { ReactNodeArray } from 'react';
 import classNames from 'classnames';
-// @ts-ignore
-import { injectIntl, InjectedIntlProps } from 'gatsby-plugin-intl';
 import { StaticQuery, graphql } from 'gatsby';
+import {
+  injectIntl,
+  // @ts-ignore
+  InjectedIntlProps,
+  FormattedMessage,
+} from 'gatsby-plugin-intl';
+import React, { ReactNodeArray } from 'react';
+import { connect } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
 
-import Header from '../Header';
+import { userIsTouching, UserIsTouchingAction } from '../../../actions';
+import { State as ReduxState } from '../../../reducers';
 import Footer from '../Footer';
+import Header from '../Header';
 import 'typeface-roboto';
 
 type Props = {
@@ -21,7 +29,23 @@ type Props = {
 } & InjectedIntlProps;
 
 function Layout(props: Props) {
-  const { children, isBlurred, intl } = props;
+  const {
+    children,
+    dispatchUserIsTouching,
+    intl,
+    isBlurred,
+    isTouchDevice,
+  } = props;
+
+  // detect touch event to display mobile warning
+  window.addEventListener(
+    'touchstart',
+    function onFirstTouch() {
+      dispatchUserIsTouching(true);
+      window.removeEventListener('touchstart', onFirstTouch, false);
+    },
+    false
+  );
 
   return (
     <StaticQuery
@@ -43,6 +67,11 @@ function Layout(props: Props) {
               isBlurred: isBlurred,
             })}
           >
+            {isTouchDevice && (
+              <div className="layout__alert">
+                <FormattedMessage id="site.warning.mobile" />
+              </div>
+            )}
             <Header siteTitle={intl.formatMessage({ id: 'site.title' })} />
             <div className="content">
               <main>{children}</main>
@@ -58,5 +87,18 @@ function Layout(props: Props) {
     />
   );
 }
+const mapStateToProps = (state: ReduxState) => {
+  const { userIsTouching } = state;
+  return {
+    isTouchDevice: userIsTouching.isTouchDevice,
+  };
+};
 
-export default injectIntl(Layout);
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<ReduxState, undefined, UserIsTouchingAction>
+) => ({
+  dispatchUserIsTouching: (isTouchDevice: boolean) =>
+    dispatch(userIsTouching(isTouchDevice)),
+});
+
+export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(Layout));

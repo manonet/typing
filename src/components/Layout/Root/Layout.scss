@@ -19,6 +19,17 @@
 
 .layout {
   transition: 0.2s filter ease-in-out;
+
+  &__alert {
+    position: sticky;
+    top: 0;
+    z-index: $z-index-sticky;
+    padding: 4px 16px;
+    font-weight: 600;
+    color: $text-color-inverse-primary;
+    text-align: center;
+    background: $color-red-500;
+  }
 }
 
 .isblurred {
