@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 
 import focusUserInputReducer from './focusUserInput';
-import setSampleTextReducer from './setSampleText';
+import typingReducer from './typing';
 import userIsTouchingReducer from './userIsTouching';
 
 const rootReducer = combineReducers({
   focusUserInput: focusUserInputReducer,
-  setSampleText: setSampleTextReducer,
+  typing: typingReducer,
   userIsTouching: userIsTouchingReducer,
 });
 
