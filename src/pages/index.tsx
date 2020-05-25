@@ -21,6 +21,9 @@ const IndexPage = ({ intl }: Props) => (
     </h3>
 
     <p>
+      <FormattedMessage id="site.description" />
+    </p>
+    <p>
       You can find more info in{' '}
       <a href="https://github.com/manonet/typing/">Github repository</a>
     </p>
