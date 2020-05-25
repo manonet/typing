@@ -1,23 +1,21 @@
-import { withPrefix } from 'gatsby-link';
-import { injectIntl, Link } from 'gatsby-plugin-intl';
-import mem from 'mem';
+import { injectIntl } from 'gatsby-plugin-intl';
 import React from 'react';
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
-// @ts-ignore
 
-import { setSampleText, SetSampleTextAction } from '../actions';
-import TypewriterBoard from '../components/TypewriterBoard';
+import {
+  setSampleText,
+  SetSampleTextAction,
+  keyDown,
+  keyUp,
+  KeyboardAction,
+} from '../actions';
 import { State as ReduxState } from '../reducers';
-import { Keyboard, StatisticProps, ISOFingers } from '../types';
-import getKeyboardOS from '../utils/getKeyboardOS';
-import getKeysFromChar from '../utils/getKeysFromChar';
-import getLevelFromKeys from '../utils/getLevelFromKeys';
+import { navigationKeyCodes } from '../types/allEventKeyCodes';
 
-import ErrorModal from './ErrorModal';
-import LessonModal from './LessonModal';
+import Keyboard from './Keyboard';
+import SampleBoard from './SampleBoard';
 
-const memoizedGetLevelFromKeys = mem(getLevelFromKeys);
 // TODO consider adding Enter key to keyboard object instead of functionKeys
 // TODO add close on Enter function to modals
 // TODO lift ErrorModal, make it reusable
@@ -29,164 +27,58 @@ const memoizedGetLevelFromKeys = mem(getLevelFromKeys);
 // TODO fix focus and blur styles on user input
 // TODO disable tab jump on writing
 // TODO enable/disable keyboard events check, update keyboard only if userInput focused
+// TODO language detection if necessary -  navigator.language.substring(0, 2) https://medium.com/ableneo/internationalize-react-apps-done-right-using-react-intl-library-82978dbe175e
+
+// TODO Enable layout separation, make it possible to switch between layouts. User should be able to define names for them.
+// TODO Recognise new layouts, layout changes - handle characterNotFound
+// TODO statistic may only belong to a specific keyboard layout. Create new statistic for each and every layouts
+// TODO Create keyboardDiscoveryProgressBar component, which dynamically display the known percentage. Green can be for fully discovered keys, yellow for the partial ones, like new levels or dead keys. Promote it as a feature, not as weakness :)
+// TODO Lesson can be started, because key.code, so position of keys on the mechanical board is known, e.g.: KeyF and KeyJ.
+// TODO
+// TODO
 
 type Props = {
   sampleText: string;
+  isUserInputFocused: boolean;
+  userText: string;
   dispatchSetSampleText: (sampleText: string) => {};
+  dispatchKeyDown: (event) => {};
+  dispatchKeyUp: (event) => {};
 };
 
-type State = {
-  userText?: string;
-  cursorAt: number;
-  signToWrite: string;
-  writtenSign?: string;
-  inputChanged: boolean;
-  keyboard: Keyboard;
-  codeToIso: {};
-  functionKeys: {};
-  keysDown: [];
-  displayedLevel: string;
-  isCapsLockOn: boolean;
-  statistics: StatisticProps;
-  characterNotFound: boolean;
-  currentKeyInfo: [];
-  isoToHandFingers: ISOFingers;
-};
+class Typewriter extends React.Component<Props> {
+  public textAreaRef: React.RefObject<HTMLTextAreaElement>;
 
-class Typewriter extends React.Component<Props, State> {
   constructor() {
     super();
-    this.state = {
-      userText: '',
-      cursorAt: 0,
-      signToWrite: '',
-      writtenSign: '',
-      inputChanged: false,
-      keyboard: {
-        name: '',
-        keys: [],
-        levels: {},
-        allChars: [],
-        charMap: [],
-        deadKeys: [],
-        enterVariant: 1,
-        enterIso: 'C13',
-      },
-      codeToIso: {},
-      functionKeys: {},
-      keysDown: [],
-      displayedLevel: 'to',
-      isCapsLockOn: false,
-      statistics: {
-        correct: [],
-        miswrite: [],
-        misspell: [],
-      },
-      characterNotFound: false,
-    };
+    this.textAreaRef = React.createRef();
+    this.state = {};
 
-    this.markCharOnBoard = this.markCharOnBoard.bind(this);
     this.handleKeydown = this.handleKeydown.bind(this);
     this.handleKeyup = this.handleKeyup.bind(this);
-    this.userInputText = this.userInputText.bind(this);
     this.startNewLesson = this.startNewLesson.bind(this);
-    this.handleModalClose = this.handleModalClose.bind(this);
-    this.handleError = this.handleError.bind(this);
-    this.handleErrorClose = this.handleErrorClose.bind(this);
   }
 
+  focusTextInputRef = this.focusTextInput.bind(this);
+
   componentDidMount() {
-    const keyboardOS = getKeyboardOS();
-    const keyboardLang = navigator.language.substring(0, 2);
-    console.info('keyboardOS', keyboardOS, 'keyboardLang', keyboardLang);
+    this.focusTextInputRef();
 
     const { dispatchSetSampleText } = this.props;
 
-    dispatchSetSampleText('');
-
-    Promise.all([
-      // fetch(withPrefix(`/keyboards/${keyboardOS}/${keyboardLang}-t-k0-${keyboardOS}.json`)),
-      fetch(withPrefix('/keyboards/windows/hu-t-k0-windows.json')),
-      fetch(withPrefix('/keyboards/codeToIso.json')),
-      fetch(withPrefix('/keyboards/functionKeys.json')),
-      fetch(withPrefix('/keyboards/isoToHandFinger.json')),
-      // fetch(withPrefix(`/keyboards/${keyboardOS}FunctionKeys.json`)),
-    ])
-      .then((responses) => Promise.all(responses.map((r) => r.json())))
-      .then((responses) => {
-        const keyboard = responses[0];
-        const codeToIso = responses[1];
-        const functionKeys = responses[2];
-        const isoToHandFingers = responses[3];
-        functionKeys.Enter.variant = keyboard.enterVariant;
-
-        const { sampleText } = this.props;
-        const nextCharInfo = getKeysFromChar(keyboard, sampleText.charAt(0));
-
-        this.setState(
-          {
-            keyboard,
-            codeToIso,
-            functionKeys,
-            currentKeyInfo: nextCharInfo,
-            isoToHandFingers,
-          },
-          this.startNewLesson("Lí|Ä¶ćČ et's\nTyyyype Something (@)...")
-        );
-      });
+    dispatchSetSampleText("Let's\nTyyyype Something €éÉÈǽ...");
   }
 
-  markCharOnBoard(keyboard, functionKeys, keyInfo, colorProp, color) {
-    if (keyInfo) {
-      if (keyboard.keys[keyInfo.iso]) {
-        keyboard.keys[keyInfo.iso][colorProp] = color;
-        const { level } = keyInfo;
-        if (level && level.length && level[Object.keys(level)[0]][0]) {
-          let previousFunctionKey;
-          level[0].map((l) => {
-            if (functionKeys[l[0]]) {
-              // mark function key
-              functionKeys[l[0]][colorProp] = color;
-              // if the function key is in pair of both left and right
-              if (
-                previousFunctionKey &&
-                previousFunctionKey.lastIndexOf('Left') !== -1 &&
-                previousFunctionKey.substring(
-                  0,
-                  previousFunctionKey.lastIndexOf('Left')
-                ) === l[0].substring(0, l[0].lastIndexOf('Right'))
-              ) {
-                // mark only the opposite side than the character
-                if (keyInfo.side === 'Left') {
-                  functionKeys[previousFunctionKey][colorProp] = 'def';
-                } else {
-                  functionKeys[l[0]][colorProp] = 'def';
-                }
-              } else if (
-                previousFunctionKey &&
-                previousFunctionKey.lastIndexOf('Right') !== -1 &&
-                previousFunctionKey.substring(
-                  0,
-                  previousFunctionKey.lastIndexOf('Right')
-                ) === l[0].substring(0, l[0].lastIndexOf('Left'))
-              ) {
-                if (keyInfo.side === 'Right') {
-                  functionKeys[previousFunctionKey][colorProp] = 'def';
-                } else {
-                  functionKeys[l[0]][colorProp] = 'def';
-                }
-              }
-              previousFunctionKey = l[0];
-            }
-          });
-        }
-      } else if (keyInfo.iso === 'Enter') {
-        // Enter is not part of keyboard object but the functionkexs
-        functionKeys.Enter[colorProp] = color;
-      }
+  focusTextInput() {
+    const userInput = this.textAreaRef.current;
+    if (userInput) {
+      userInput.focus();
+      userInput.selectionStart = userInput.selectionEnd =
+        this.props.userText?.length || 0; // set caret position to the end of the user text
     }
   }
 
+  /*
   userInputText(userText) {
     const { sampleText } = this.props;
     if (userText.length === sampleText.length) {
@@ -196,47 +88,15 @@ class Typewriter extends React.Component<Props, State> {
 
     this.setState((prevState) => {
       const {
-        currentKeyInfo,
-        functionKeys,
         isoSucceed,
         keyboard,
         previousKeyInfo,
         previousPressedKeyInfo,
-        statistics,
       } = { ...prevState };
-
-      const signToWrite =
-        userText.length >= 1
-          ? sampleText.substring(userText.length - 1, userText.length)
-          : '';
-      const cursorAt = userText.length;
-      const writtenSign = cursorAt > 0 ? userText.charAt(cursorAt - 1) : '';
-      const nextSign = sampleText.charAt(cursorAt);
-      const charsSucceed = signToWrite === writtenSign;
 
       if (charsSucceed && charsSucceed !== isoSucceed) {
         console.warn(
           'The selected keyboard layout is not matching with the actual input method'
-        );
-      }
-
-      const pressedKeyInfo = getKeysFromChar(keyboard, writtenSign);
-
-      // reset previous keys
-      if (currentKeyInfo && currentKeyInfo[0] && currentKeyInfo[0].iso) {
-        this.markCharOnBoard(
-          keyboard,
-          functionKeys,
-          currentKeyInfo[0],
-          'marker',
-          'none'
-        );
-        this.markCharOnBoard(
-          keyboard,
-          functionKeys,
-          currentKeyInfo[1],
-          'marker',
-          'none'
         );
       }
 
@@ -297,34 +157,16 @@ class Typewriter extends React.Component<Props, State> {
         this.markCharOnBoard(
           keyboard,
           functionKeys,
-          currentKeyInfo[0],
           'succeedState',
           'correct'
         );
         this.markCharOnBoard(
           keyboard,
           functionKeys,
-          currentKeyInfo[1],
           'succeedState',
           'correct'
         );
-        statistics.correct.push(currentKeyInfo);
-      } else if (currentKeyInfo) {
-        this.markCharOnBoard(
-          keyboard,
-          functionKeys,
-          currentKeyInfo[0],
-          'succeedState',
-          'error'
-        );
-        this.markCharOnBoard(
-          keyboard,
-          functionKeys,
-          currentKeyInfo[1],
-          'succeedState',
-          'error'
-        );
-        statistics.misspell.push(currentKeyInfo);
+      }
 
         if (pressedKeyInfo) {
           this.markCharOnBoard(
@@ -341,35 +183,25 @@ class Typewriter extends React.Component<Props, State> {
             'succeedState',
             'missed'
           );
-          statistics.miswrite.push(pressedKeyInfo);
         }
       }
 
       return {
-        userText,
         cursorAt,
-        signToWrite,
-        writtenSign,
-        inputChanged: true,
         keyboard,
-        functionKeys,
-        currentKeyInfo: nextCharInfo,
-        previousKeyInfo: currentKeyInfo,
         previousPressedKeyInfo: pressedKeyInfo,
-        statistics,
       };
     });
   }
-
+*/
   startNewLesson(sampleText: string) {
-    const { functionKeys, keyboard } = this.state;
-
-    const nextCharInfo = getKeysFromChar(keyboard, sampleText.charAt(0));
+    // const nextCharInfo = getKeysFromChar(keyboard, sampleText.charAt(0));
 
     const { dispatchSetSampleText } = this.props;
 
     dispatchSetSampleText(sampleText);
 
+    /*
     this.markCharOnBoard(
       keyboard,
       functionKeys,
@@ -384,171 +216,32 @@ class Typewriter extends React.Component<Props, State> {
       'marker',
       'toPressSecond'
     );
-
-    this.setState(() => ({
-      userText: '',
-      cursorAt: 0,
-      signToWrite: '',
-      writtenSign: '',
-      inputChanged: false,
-      currentKeyInfo: nextCharInfo,
-    }));
+*/
   }
 
   handleKeydown(event) {
-    // const succeedState = isoSucceed ? 'correct' : 'error'
+    const currentKeyDown = event.code;
 
-    const getModifierStateCapsLock = event.getModifierState('CapsLock'); // always true if CapsLock pressed
+    const { dispatchKeyDown } = this.props;
 
-    const lastKeyDown = event.code;
-
+    dispatchKeyDown(event);
     // disable keys which makes able the navigation within the textinput. (changing caret position is undesirable)
-    if (
-      lastKeyDown === 'ArrowUp' ||
-      lastKeyDown === 'ArrowDown' ||
-      lastKeyDown === 'ArrowLeft' ||
-      lastKeyDown === 'ArrowRight' ||
-      lastKeyDown === 'PageUp' ||
-      lastKeyDown === 'PageDown' ||
-      lastKeyDown === 'Home' ||
-      lastKeyDown === 'End'
-    ) {
+    if (navigationKeyCodes.includes(currentKeyDown)) {
       event.view.event.preventDefault();
       // TODO: make it user friendly, e.g. toaster like info.
-      console.info(`The usage of the ${lastKeyDown} key is disabled`);
+      console.info(`The usage of the ${currentKeyDown} key is disabled`);
       return;
     }
-
-    this.setState((prevState) => {
-      const {
-        codeToIso,
-        functionKeys,
-        isCapsLockOn: isCapsLockOnFromState,
-        keyboard,
-        keysDown,
-      } = { ...prevState };
-
-      const downIso = codeToIso[lastKeyDown];
-      keysDown.push(lastKeyDown);
-
-      let isCapsLockOn = isCapsLockOnFromState;
-
-      if (lastKeyDown === 'CapsLock') {
-        isCapsLockOn = !isCapsLockOn;
-      } else if (!keysDown.includes('CapsLock')) {
-        isCapsLockOn = getModifierStateCapsLock;
-      }
-
-      if (keyboard.keys[downIso]) {
-        keyboard.keys[downIso].pressure = 'pressed';
-      } else if (functionKeys[lastKeyDown]) {
-        functionKeys[lastKeyDown].pressure = 'pressed';
-      }
-
-      const displayedLevel = memoizedGetLevelFromKeys(
-        keysDown,
-        keyboard.levels,
-        isCapsLockOn
-      );
-
-      return {
-        keyboard,
-        functionKeys,
-        keysDown,
-        isCapsLockOn,
-        displayedLevel,
-      };
-    });
   }
 
   handleKeyup(event) {
-    this.setState((prevState) => {
-      const {
-        codeToIso,
-        functionKeys,
-        inputChanged,
-        isCapsLockOn,
-        keyboard,
-        keysDown,
-        userText,
-      } = { ...prevState };
+    const { dispatchKeyUp, userText } = this.props;
 
-      const lastKeyUp = event.code;
-      const upIso = codeToIso[lastKeyUp];
-
-      const filteredKeysDownArray = keysDown.filter((code) => {
-        const modifiersActuallyNotDown = [];
-        // e.g. Alt key changes the focus of the browser, so no key up event fired for Alt
-        if (!event.getModifierState('Alt')) {
-          modifiersActuallyNotDown.push('AltLeft');
-          functionKeys.AltLeft.pressure = 'none';
-        }
-        return code !== event.code && !modifiersActuallyNotDown.includes(code);
-      });
-
-      const displayedLevel = memoizedGetLevelFromKeys(
-        filteredKeysDownArray,
-        keyboard.levels,
-        isCapsLockOn
-      );
-
-      if (inputChanged) {
-        if (keyboard.keys[upIso]) {
-          keyboard.keys[upIso].pressure = 'none';
-        } else if (functionKeys[lastKeyUp]) {
-          functionKeys[lastKeyUp].pressure = 'none';
-        }
-      }
-
-      if (isCapsLockOn) {
-        functionKeys.CapsLock.pressure = 'locked';
-      }
-
-      event.target.selectionStart = userText?.length || 0;
-      event.target.selectionEnd = userText?.length || 0;
-
-      return {
-        keyboard,
-        functionKeys,
-        displayedLevel,
-        keysDown: filteredKeysDownArray,
-      };
-    });
-  }
-
-  handleModalClose() {
-    const { handleModalClose } = this.props;
-
-    if (handleModalClose) {
-      handleModalClose();
-    }
-
-    this.startNewLesson('New lesson');
-  }
-
-  handleError() {
-    this.setState({ characterNotFound: true });
-  }
-
-  handleErrorClose() {
-    this.setState({ characterNotFound: false });
+    dispatchKeyUp(event);
   }
 
   render() {
-    const {
-      characterNotFound,
-      cursorAt,
-      displayedLevel,
-      functionKeys,
-      isoToHandFingers,
-      keyboard,
-      signToWrite,
-      userText,
-      writtenSign,
-    } = this.state;
-
     const { intl, isModalOpen, isUserInputFocused } = this.props;
-
     // TODO - this check shall only happen on focus change!
     if (isUserInputFocused) {
       document.addEventListener('keydown', this.handleKeydown, false);
@@ -560,47 +253,38 @@ class Typewriter extends React.Component<Props, State> {
 
     return (
       <>
-        <TypewriterBoard
-          userText={userText}
-          cursorAt={cursorAt}
-          signToWrite={signToWrite}
-          writtenSign={writtenSign}
-          userInputText={this.userInputText}
-          displayedLevel={displayedLevel}
-          keyboard={keyboard}
-          functionKeys={functionKeys}
-          isoToHandFingers={isoToHandFingers}
-        />
-        <LessonModal
-          open={isModalOpen}
-          onClose={this.handleModalClose}
-          content="content"
-        />
-        <ErrorModal
-          open={characterNotFound}
-          handleClose={this.handleErrorClose}
-          content={intl.formatMessage({
-            id: 'error.not.found.character.on.keyboard',
-          })}
-        />
+        <div className="TypewriterBoard">
+          <SampleBoard
+            ref={this.textAreaRef}
+            focusTextInput={this.focusTextInputRef}
+          />
+          <Keyboard className={'TypewriterBoard__keyboard'} />
+        </div>
       </>
     );
   }
 }
 
 const mapStateToProps = (state: ReduxState) => {
-  const { focusUserInput, setSampleText } = state;
+  const { focusUserInput, typing } = state;
   return {
-    sampleText: setSampleText.sampleText,
     isUserInputFocused: focusUserInput.isUserInputFocused,
+    sampleText: typing.sampleText,
+    userText: typing.userText,
   };
 };
 
 const mapDispatchToProps = (
-  dispatch: ThunkDispatch<ReduxState, undefined, SetSampleTextAction>
+  dispatch: ThunkDispatch<
+    ReduxState,
+    undefined,
+    SetSampleTextAction | KeyboardAction
+  >
 ) => ({
   dispatchSetSampleText: (sampleText: string) =>
     dispatch(setSampleText(sampleText)),
+  dispatchKeyDown: (event) => dispatch(keyDown(event)),
+  dispatchKeyUp: (event) => dispatch(keyUp(event)),
 });
 
 export default connect(
