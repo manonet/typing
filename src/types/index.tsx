@@ -1,85 +1,64 @@
-import { allEventCodes } from './allEventCodes';
+import { OS } from '../utils';
+
+import { allEventKeyCodes } from './allEventKeyCodes';
 import { allISO } from './allISO';
 import { allLevels } from './allLevels';
-export type Character = string;
-export type CapsLockDown = boolean;
+
+export type Glyph = string;
 
 export type ISO = typeof allISO[number];
-export type EventCode = typeof allEventCodes[number];
 
-export const Modifier = {
-  SHIFT: 'shift' as 'shift',
-  SHIFTL: 'shiftL' as 'shiftL',
-  SHIFTR: 'shiftR' as 'shiftR',
-  CTRL: 'ctrl' as 'ctrl',
-  CTRLL: 'ctrlL' as 'ctrlL',
-  CTRLR: 'ctrlR' as 'ctrlR',
-  ALT: 'alt' as 'alt',
-  ALTL: 'altL' as 'altL',
-  ALTR: 'altR' as 'altR',
-  OPT: 'opt' as 'opt',
-  OPTL: 'optL' as 'optL',
-  OPTR: 'optR' as 'optR',
-  CMD: 'cmd' as 'cmd',
-};
-export type TModifierValue = typeof Modifier[keyof typeof Modifier];
-export type Modifiers = TModifierValue[];
-
-export const KeyboardEventKey = {
-  SHIFTLEFT: 'ShiftLeft' as 'ShiftLeft',
-  SHIFTRIGHT: 'ShiftRight' as 'ShiftRight',
-  CONTROLLEFT: 'ControlLeft' as 'ControlLeft',
-  CONTROLRIGHT: 'ControlRight' as 'ControlRight',
-  ALTLEFT: 'AltLeft' as 'AltLeft',
-  ALTRIGHT: 'AltRight' as 'AltRight',
-  METALEFT: 'MetaLeft' as 'MetaLeft',
-  METARIGHT: 'MetaRight' as 'MetaRight',
-  OSLEFT: 'OSLeft' as 'OSLeft',
-  OSRIGHT: 'OSRight' as 'OSRight',
-};
-export type TKeyboardEventKeyValue = typeof KeyboardEventKey[keyof typeof KeyboardEventKey];
-export type KeyboardEventKeys = TKeyboardEventKeyValue[];
+export type EventCode = typeof allEventKeyCodes[number];
 
 export type Level = typeof allLevels[number];
 
+export type Levels = Level[];
+
 export type LevelMap = {
-  [key in Level]: Character;
+  [key in Level]?: Glyph;
 };
 
-export type ISOKeys = {
-  [key in ISO]: LevelMap;
+export type HandsAndFingers = {
+  hand: 'left' | 'right';
+  finger: 'thumb' | 'index' | 'middle' | 'ring' | 'little';
 };
 
-export type ISOFingers = {
-  keys: {
-    [key in ISO]: {
-      hand: 'left' | 'right';
-      finger: 'thumb' | 'index' | 'middle' | 'ring' | 'small';
-    };
-  };
+export type PossibleKeyStates = {
+  marker?: 'toPressFirst' | 'toPressSecond' | 'uncovered';
+  pressure?: 'pressed' | 'locked'; // locked is for CapsLock 'on' state
+  succeedState?: 'missed' | 'correct' | 'error';
 };
 
-export type Levels = {
-  [key in Level]: Array<Array<KeyboardEventKeys>>;
-};
-
-export type CharMap = {
-  [key in Character]: [ISO, Level];
-};
+export type Key = {
+  iso: ISO;
+  code: EventCode;
+  dead?: boolean;
+  label?: string;
+  optional?: boolean;
+} & HandsAndFingers &
+  PossibleKeyStates &
+  LevelMap;
 
 export type DeadKeys = {
-  [key in Character]: [Character, Character];
+  [key in Glyph]: [Glyph, Glyph];
 };
 
+export type Layout =
+  | '101/104-ANSI'
+  | '101/104-Variant'
+  | '102/105-ISO'
+  | '103/106-KS'
+  | '104/107-ABNT'
+  | '106/109-JIS';
+
 export type Keyboard = {
-  name: string;
-  keys: ISOKeys;
-  levels: Levels;
-  charMap: CharMap;
-  allChars: string[];
+  allChars: [];
   deadKeys?: DeadKeys;
-  enterVariant: 1 | 2 | 3 | 4;
-  enterIso: 'C12' | 'C13';
+  displayedLevel: Level;
+  keys: Key[];
+  layout: Layout;
+  name: string;
+  os: OS;
 };
 
 export type StatisticProps = {
