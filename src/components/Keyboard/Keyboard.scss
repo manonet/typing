@@ -4,8 +4,8 @@
 }
 
 .Backspace text {
-  font-size: 46px !important;
-  transform: translate(80px, 4px);
+  font-size: 40px !important;
+  transform: translate(0, 4px);
 }
 
 .Tab text {
@@ -28,26 +28,63 @@
   transform: translate(0, 10px);
 }
 
-.ShiftRight text {
-  transform: translate(66px, 10px);
-}
-
 .ControlLeft text,
 .WakeUp text,
-.OSLeft text,
 .AltLeft text,
 .AltRight text,
-.OSRight text,
-.A10 text,
-.A11 text,
+.ContextMenu text,
 .ControlRight text {
   font-size: 24px !important;
+}
+
+.OSLeft text,
+.OSRight text {
+  font-size: 36px !important;
+  transform: translate(0, 4px);
 }
 
 .ControlRight text {
   transform: translate(58px, 0);
 }
 
+.Space text {
+  transform: translate(200px, 0);
+}
+
 .Enter text {
   font-size: 48px !important;
+}
+
+.Lang2 text,
+.Lang1 text {
+  font-size: 24px !important;
+}
+
+.NonConvert text,
+.Convert text {
+  font-size: 20px !important;
+}
+
+.KanaMode text {
+  font-size: 16px !important;
+}
+
+.ShiftRight text {
+  transform: translate(166px, 10px);
+
+  .layout-104\/107-ABNT &,
+  .layout-106\/109-JIS & {
+    transform: translate(66px, 10px);
+  }
+}
+
+.Android,
+.iOS,
+.Linux,
+.Unknown,
+.Windows {
+  .OSLeft text,
+  .OSRight text {
+    font-family: 'Font Awesome 5 Brands';
+  }
 }
