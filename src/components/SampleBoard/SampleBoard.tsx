@@ -3,7 +3,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 
-import { focusUserInput, FocusUserInputAction } from '../../actions';
+import {
+  focusUserInput,
+  FocusUserInputAction,
+  inputChange,
+  InputChangeAction,
+} from '../../actions';
 import { State as ReduxState } from '../../reducers';
 import SampleBoardChar from '../SampleBoardChar';
 
@@ -14,7 +19,7 @@ type Props = {
   sampleText: string;
   userText: string;
   isUserInputFocused: boolean;
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  dispatchInputChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   dispatchUserInputFocused: (isUserInputFocused: boolean) => {};
 };
 
@@ -23,10 +28,10 @@ const SampleBoard = React.forwardRef(
     const {
       className,
       cursorAt,
+      dispatchInputChange,
       dispatchUserInputFocused,
       focusTextInput,
       isUserInputFocused,
-      onChange,
       sampleText,
       userText,
     } = props;
@@ -47,7 +52,9 @@ const SampleBoard = React.forwardRef(
           ref={ref}
           className={'sampleBoard__userInput'}
           value={userText}
-          onChange={onChange}
+          onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
+            dispatchInputChange(event)
+          }
           onFocus={() => dispatchUserInputFocused(true)}
           onBlur={() => dispatchUserInputFocused(false)}
         />
@@ -70,20 +77,28 @@ const SampleBoard = React.forwardRef(
   }
 );
 
+const mapStateToProps = (state: ReduxState) => {
+  const { focusUserInput, typing } = state;
+  return {
+    isUserInputFocused: focusUserInput.isUserInputFocused,
+    sampleText: typing.sampleText,
+    userText: typing.userText,
+    cursorAt: typing.cursorAt,
+  };
+};
+
 const mapDispatchToProps = (
-  dispatch: ThunkDispatch<ReduxState, undefined, FocusUserInputAction>
+  dispatch: ThunkDispatch<
+    ReduxState,
+    undefined,
+    FocusUserInputAction | InputChangeAction
+  >
 ) => ({
   dispatchUserInputFocused: (isUserInputFocused: boolean) =>
     dispatch(focusUserInput(isUserInputFocused)),
+  dispatchInputChange: (event: React.ChangeEvent<HTMLTextAreaElement>) =>
+    dispatch(inputChange(event.target.value)),
 });
-
-const mapStateToProps = (state: ReduxState) => {
-  const { focusUserInput, setSampleText } = state;
-  return {
-    isUserInputFocused: focusUserInput.isUserInputFocused,
-    sampleText: setSampleText.sampleText,
-  };
-};
 
 export default connect(mapStateToProps, mapDispatchToProps, null, {
   forwardRef: true,
