@@ -107,3 +107,13 @@ It is clear, that the order of the keys is important by learning. It seems obvio
 1. Get all the characters from the keyboard grouped by level. Subgroup and sort them 1. alpha 2. numeric 3. others. Arrange each group by the pre-defined physical order.
 2. Make it possible to override it with a JSON which can belong to a specific keyboard layout.
 3. Make it possible to override it by the user.
+
+The harmonized 48 graphic key keyboard arrangement
+Keyboards which comply to this narrower specification contain all the keys shown in white in the figure above, the key at C12 shown in yellow, and one of the two keys at E13 and B00 shown in red. The standard does not require this; it only says that keyboards complying to this narrower specification can be called such.
+In fact, several layouts (e. g. the US layout), to allow a wider return key, have a key at D13 (shown in green) instead of C12 (shown in yellow). Thus, while they cannot be called “harmonized 48 graphic key keyboards” according to the standard, they still comply to the standard itself. It is to be noted that ISO/IEC 9995-3:2010, in referring to the basic layout within its specific scope, does take a possible substitution of C12 by D13 into account.
+
+<https://www.w3.org/TR/uievents-code/>
+
+- Standard "101": "Backslash" above a single-row Enter key
+- Alternate "101": has a large Enter key and shrinks the Backspace key to make room for the "IntlYen" key
+- Standard "102": adds a key that doesn’t exist on the "101" layouts: The "IntlBackslash" next to the left shift key. (Standard ▜ shape enter)
