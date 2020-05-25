@@ -59,6 +59,28 @@ $transition-timing-function: ease-out;
     }
   }
 
+  &--uncovered {
+    opacity: 0.5;
+
+    .key__keyBg {
+      fill: $color-grey-200;
+    }
+
+    .key__label {
+      fill: $color-white;
+    }
+  }
+
+  &--dead {
+    .key__keyBg {
+      fill: $color-purple-100;
+    }
+
+    .key__label {
+      fill: $color-white;
+    }
+  }
+
   &--toPressFirst {
     .key__keyBg {
       fill: $color-primary-main;

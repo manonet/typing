@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React, { forwardRef } from 'react';
 
 import variables from '../../theme/variables';
+import { Level, Key } from '../../types';
 
 export type KeyboardThemeProps = {
   keyWidth: number;
@@ -18,15 +19,11 @@ export type KeyboardThemeProps = {
   rY: number;
 };
 
-export type KeyboardKeyProps = {
-  to: string;
-  shift: 'SHIFT';
-  iso: string;
-  succeedState: 'missed' | 'correct' | 'error';
-  pressure: 'none' | 'pressed' | 'locked'; // locked is for CapsLock 'on' state
-  marker: 'none' | 'toPressFirst' | 'toPressSecond';
-  transform: string;
-  displayedLevel: string;
+export type KeyboardKeyProps = Key & {
+  displayedLevel: Level;
+  label?: string;
+  width?: number;
+  height?: number;
   x: number;
   y: number;
 };
@@ -34,14 +31,20 @@ export type KeyboardKeyProps = {
 const KeyboardKey = forwardRef((props: KeyboardKeyProps, ref) => {
   // console.log(props)
   const {
+    Shift,
+    code,
+    dead,
     displayedLevel,
+    enterPath,
+    height,
     iso,
+    label,
+    layout,
     marker,
     pressure,
-    shift,
     succeedState,
     to,
-    transform,
+    width,
     x,
     y,
   } = props;
@@ -63,296 +66,112 @@ const KeyboardKey = forwardRef((props: KeyboardKeyProps, ref) => {
 
   // When letters on a case pair are associated with a key, only the capital character need to be shown on the keytop for the primary group, while the lowercase character only is shown for the secondary group.
   let alphabet;
-  if (to.toString().toUpperCase() === shift) {
+  if (to && to.toString().toUpperCase() === Shift) {
     alphabet = true;
   }
 
-  let width = keyWidth - keyPaddingX * 2;
-  const height = keyHeight - keyPaddingY * 2;
+  // TODO - make Enter iso constant
+  const uncovered = !label && !props[displayedLevel];
 
-  let calculatedX = 0;
-  let calculatedY = 0;
-
-  const keyClass = classNames('key', iso, {
+  const keyClass = classNames('key', iso, code, {
     ['key--missed']: succeedState === 'missed',
     ['key--correct']: succeedState === 'correct',
     ['key--error']: succeedState === 'error',
     ['key--alphabet']: alphabet,
     ['key--toPressFirst']: marker === 'toPressFirst',
     ['key--toPressSecond']: marker === 'toPressSecond',
+    ['key--uncovered']: uncovered,
     ['key--pressed']: pressure === 'pressed',
     ['key--locked']: pressure === 'locked',
+    ['key--dead']: dead,
   });
   const keyShadowClass = classNames('key__shadow');
   const keyBgClass = classNames('key__keyBg');
   const labelClass = classNames('key__label');
 
-  switch (iso) {
-    case 'Backspace':
-      width = keyWidth * 2 - keyPaddingX * 2;
-      calculatedX = keyWidth * 13;
-      calculatedY = 0;
-      break;
+  // TODO - define Enter variant
 
-    case 'CapsLock':
-      width = keyWidth + cRowShift - keyPaddingX * 2;
-      calculatedX = 0;
-      calculatedY = keyHeight * 2;
-      break;
-
-    case 'Tab':
-      width = keyWidth + dRowShift - keyPaddingX * 2;
-      calculatedX = 0;
-      calculatedY = keyHeight;
-      break;
-
-    case 'ShiftLeft':
-      width = bRowShift - keyPaddingX * 2;
-      calculatedX = 0;
-      calculatedY = keyHeight * 3;
-      break;
-
-    case 'ShiftRight':
-      width = keyWidth * 3 - bRowShift - keyPaddingX * 2;
-      calculatedX = bRowShift + keyWidth * 12;
-      calculatedY = keyHeight * 3;
-      break;
-
-    case 'ControlLeft':
-      width = bRowShift - keyPaddingX * 2;
-      calculatedX = 0;
-      calculatedY = keyHeight * 4;
-      break;
-
-    case 'WakeUp': // fn
-      calculatedX = aRowShift;
-      calculatedY = keyHeight * 4;
-      break;
-
-    case 'OSLeft':
-      calculatedX = aRowShift + keyWidth;
-      calculatedY = keyHeight * 4;
-      break;
-
-    case 'AltLeft':
-      calculatedX = aRowShift + keyWidth * 2;
-      calculatedY = keyHeight * 4;
-      break;
-
-    case 'AltRight':
-      calculatedX = aRowShift + keyWidth * 8;
-      calculatedY = keyHeight * 4;
-      break;
-
-    case 'OSRight':
-      calculatedX = aRowShift + keyWidth * 9;
-      calculatedY = keyHeight * 4;
-      break;
-
-    case 'A11': // Menu
-      calculatedX = aRowShift + keyWidth * 11;
-      calculatedY = keyHeight * 4;
-      break;
-
-    case 'ControlRight':
-      width = keyWidth * 3 - bRowShift - keyPaddingX * 2;
-      calculatedX = aRowShift + keyWidth * 12;
-      calculatedY = keyHeight * 4;
-      break;
-
-    case 'A03': // Space (A03 to A07) no label
-      width = keyWidth * 5 - keyPaddingX * 2;
-      break;
-
-    default:
-      break;
-  }
-
-  if (iso === 'Enter') {
-    // for Enter
-    const leftD = dRowShift + keyWidth * 13;
-    let leftC = cRowShift + keyWidth * 13;
-    const right = keyWidth * 2 + keyWidth * 13;
-    const top = keyHeight;
-    const bottom = keyHeight * 3;
-
-    switch (props.variant) {
-      case 1:
-        /* shape:
-          xx
-          -x
-      */
-        const enterPath = `M${leftD + keyPaddingX} ${rY + top + keyPaddingY}\
-     A ${rX} ${rY}, 0, 0, 1, ${leftD + rX + keyPaddingX} ${top + keyPaddingY}\
-     L ${right - rX - keyPaddingX} ${top + keyPaddingY}\
-     A ${rX} ${rY}, 0, 0, 1, ${right - keyPaddingX} ${top + rY + keyPaddingY}\
-     L ${right - keyPaddingX} ${bottom - rY - keyPaddingY}\
-     A ${rX} ${rY}, 0, 0, 1, ${right - rX - keyPaddingX} ${
-          bottom - keyPaddingY
-        }\
-     L ${leftC + rX + keyPaddingX} ${bottom - keyPaddingY}\
-     A ${rX} ${rY}, 0, 0, 1, ${leftC + keyPaddingX} ${
-          bottom - rY - keyPaddingY
-        }\
-     L ${leftC + keyPaddingX} ${top + keyHeight + rY - keyPaddingY}\
-     A ${rX} ${rY}, 0, 0, 0, ${leftC - rX + keyPaddingX} ${
-          top + keyHeight - keyPaddingY
-        }\
-     L ${leftD + rX + keyPaddingX} ${top + keyHeight - keyPaddingY}\
-     A ${rX} ${rY}, 0, 0, 1, ${leftD + keyPaddingX} ${
-          top + keyHeight - rY - keyPaddingY
-        }\
-     L ${leftD + keyPaddingX} ${top + rY + keyPaddingY} Z`;
-
-        return (
-          <>
-            <path className={keyShadowClass} d={enterPath} />
-            <g className={keyClass}>
-              <path ref={ref} className={keyBgClass} d={enterPath} />
-              <g className={'key__labels'}>
-                <text
-                  className={labelClass}
-                  x={cRowShift + keyWidth * 13 + 70}
-                  y={keyHeight + 80}
-                >
-                  {to}
-                </text>
-              </g>
+  if (iso === 'C13') {
+    if (layout === '101/104-Variant' || layout === '103/106-KS') {
+      return (
+        <>
+          <path className={keyShadowClass} d={enterPath} />
+          <g className={keyClass}>
+            <path ref={ref} className={keyBgClass} d={enterPath} />
+            <g className={'key__labels'}>
+              <text
+                className={labelClass}
+                x={dRowShift + keyWidth * 14}
+                y={keyHeight * 2 + 60}
+              >
+                {label}
+              </text>
             </g>
-          </>
-        );
-
-      case 2:
-        /* shape:
+          </g>
+        </>
+      );
+    } else if (layout === '101/104-ANSI') {
+      /* shape:
           --
           xx
       */
-        return (
-          <>
+      return (
+        <>
+          <rect
+            className={keyShadowClass}
+            width={keyWidth * 3 - cRowShift - keyPaddingX * 2}
+            height={height}
+            x={x - keyWidth + keyPaddingX}
+            y={y + keyPaddingY}
+            rx={rX}
+            ry={rY}
+          />
+          <g className={keyClass}>
             <rect
-              className={keyShadowClass}
-              x={cRowShift + keyWidth * 12 + x + keyPaddingX}
-              y={keyHeight * 2 + y + keyPaddingY}
+              ref={ref}
+              className={keyBgClass}
               width={keyWidth * 3 - cRowShift - keyPaddingX * 2}
               height={height}
+              x={x - keyWidth + keyPaddingX}
+              y={y + keyPaddingY}
               rx={rX}
               ry={rY}
             />
-            <g className={keyClass}>
-              <rect
-                ref={ref}
-                className={keyBgClass}
-                x={cRowShift + keyWidth * 12 + x + keyPaddingX}
-                y={keyHeight * 2 + y + keyPaddingY}
-                width={keyWidth * 3 - cRowShift - keyPaddingX * 2}
-                height={height}
-                rx={rX}
-                ry={rY}
-              />
-              <g className={'key__labels'}>
-                <text
-                  className={labelClass}
-                  x={cRowShift + keyWidth * 12 + 170}
-                  y={keyHeight * 2 + 70}
-                >
-                  {to}
-                </text>
-              </g>
+            <g className={'key__labels'}>
+              <text
+                className={labelClass}
+                x={cRowShift + keyWidth * 12 + 170}
+                y={keyHeight * 2 + 70}
+              >
+                {label}
+              </text>
             </g>
-          </>
-        );
-
-      case 3:
-        /* shape:
+          </g>
+        </>
+      );
+    } else {
+      /* shape:
           xx
-          --
-      */
-        return (
-          <>
-            <rect
-              className={keyShadowClass}
-              x={dRowShift + keyWidth * 12 + x + keyPaddingX}
-              y={keyHeight + y + keyPaddingY}
-              width={keyWidth * 3 - dRowShift - keyPaddingX * 2}
-              height={height}
-              rx={rX}
-              ry={rY}
-            />
-            <g className={keyClass}>
-              <rect
-                ref={ref}
-                className={keyBgClass}
-                x={dRowShift + keyWidth * 12 + x + keyPaddingX}
-                y={keyHeight + y + keyPaddingY}
-                width={keyWidth * 3 - dRowShift - keyPaddingX * 2}
-                height={height}
-                rx={rX}
-                ry={rY}
-              />
-              <g className={'key__labels'}>
-                <text
-                  className={labelClass}
-                  x={dRowShift + keyWidth * 12 + 200}
-                  y={keyHeight + 70}
-                >
-                  {to}
-                </text>
-              </g>
-            </g>
-          </>
-        );
-
-      default:
-        // 4
-        /* shape:
           -x
-          xx
       */
 
-        leftC = leftC - keyWidth;
-        const enterPath2 = `M${leftD + keyPaddingX} ${rY + top + keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 1, ${leftD + rX + keyPaddingX} ${
-          top + keyPaddingY
-        }\
-              L ${right - rX - keyPaddingX} ${top + keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 1, ${right - keyPaddingX} ${
-          rY + top + keyPaddingY
-        }\
-              L ${right - keyPaddingX} ${bottom - rY - keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 1, ${right - rX - keyPaddingX} ${
-          bottom - keyPaddingY
-        }\
-              L ${leftC + rX + keyPaddingX} ${bottom - keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 1, ${leftC + keyPaddingX} ${
-          bottom - rY - keyPaddingY
-        }\
-              L ${leftC + keyPaddingX} ${top + keyHeight + rY + keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 1, ${leftC + rX + keyPaddingX} ${
-          top + keyHeight + keyPaddingY
-        }\
-              L ${leftD - rX + keyPaddingX} ${keyHeight + top + keyPaddingY}\
-              A ${rX} ${rY}, 0, 0, 0, ${leftD + keyPaddingX} ${
-          top + keyHeight - rY + keyPaddingY
-        }\
-              L ${leftD + keyPaddingX} ${rY + top + keyPaddingY} Z`;
-
-        return (
-          <>
-            <path className={keyShadowClass} d={enterPath2} />
-            <g className={keyClass}>
-              <path ref={ref} className={keyBgClass} d={enterPath2} />
-              <g className={'key__labels'}>
-                <text
-                  className={labelClass}
-                  x={dRowShift + keyWidth * 14}
-                  y={keyHeight * 2 + 60}
-                >
-                  {to}
-                </text>
-              </g>
+      return (
+        <>
+          <path className={keyShadowClass} d={enterPath} />
+          <g className={keyClass}>
+            <path ref={ref} className={keyBgClass} d={enterPath} />
+            <g className={'key__labels'}>
+              <text
+                className={labelClass}
+                x={cRowShift + keyWidth * 13 + 70}
+                y={keyHeight + 80}
+              >
+                {label}
+              </text>
             </g>
-          </>
-        );
+          </g>
+        </>
+      );
     }
   }
 
@@ -360,8 +179,8 @@ const KeyboardKey = forwardRef((props: KeyboardKeyProps, ref) => {
     <>
       <rect
         className={keyShadowClass}
-        x={(x || calculatedX) + keyPaddingX}
-        y={(y || calculatedY) + keyPaddingY}
+        x={x + keyPaddingX}
+        y={y + keyPaddingY}
         width={width}
         height={height}
         rx={rX}
@@ -370,28 +189,24 @@ const KeyboardKey = forwardRef((props: KeyboardKeyProps, ref) => {
       <g ref={ref} className={keyClass} textAnchor="middle">
         <rect
           className={keyBgClass}
-          x={(x || calculatedX) + keyPaddingX}
-          y={(y || calculatedY) + keyPaddingY}
+          x={x + keyPaddingX}
+          y={y + keyPaddingY}
           width={width}
           height={height}
           rx={rX}
           ry={rY}
         />
-        {displayedLevel && iso !== 'A03' && (
+        {displayedLevel && (
           <g className={'key__labels'}>
             <text
               className={labelClass}
-              dangerouslySetInnerHTML={{ __html: props[displayedLevel] }}
-              x={(x || calculatedX) + keyLabelX}
-              y={(y || calculatedY) + keyLabelY + 10}
+              dangerouslySetInnerHTML={{
+                __html: props[displayedLevel] || label || '?',
+              }}
+              x={x + keyLabelX}
+              y={y + keyLabelY + 10}
             />
           </g>
-        )}
-        {transform && (
-          <text
-            className={'key__labelTransform'}
-            dangerouslySetInnerHTML={{ __html: transform }}
-          />
         )}
       </g>
     </>
