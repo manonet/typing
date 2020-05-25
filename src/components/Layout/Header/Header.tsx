@@ -22,7 +22,10 @@ function Header(props: Props) {
   return (
     <div className="header">
       <div className="header__siteTitle">
-        <span className="header__siteName">{siteTitle}</span>
+        <span className="header__siteName">
+          {'Manonet - '}
+          <FormattedMessage id="site.underDevelopement" />
+        </span>
       </div>
       <menu className="header__menu menu">
         <Link
