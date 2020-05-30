@@ -1,8 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-const getKeyArrayFromLevelString = require('./getKeyArrayFromLevelString');
-
 const keyboardFolder = '../../static/keyboards';
 const outputFolder = '../../static/keyboards';
 
