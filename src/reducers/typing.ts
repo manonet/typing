@@ -346,8 +346,17 @@ export default function typingReducer(
           };
         }
 
+        // Do not assign glyph to the key if CapsLock is on or a dead key was pressed before
+        if (!(isCapsLockOn || state.currentKeyDown?.dead)) {
+          return {
+            // "discover key"
+            [level]: key !== 'Dead' ? key : undefined, // this case will be handled on input
+            ...item,
+            pressure: 'pressed',
+            dead: key === 'Dead',
+          };
+        }
         return {
-          [level]: key !== 'Dead' ? key : undefined, // this case will be handled on input
           ...item,
           pressure: 'pressed',
           dead: key === 'Dead',
