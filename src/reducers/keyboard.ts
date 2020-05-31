@@ -57,6 +57,7 @@ const keyboard: Keyboard = {
       hand: 'left',
       finger: 'thumb',
       code: 'Space',
+      to: ' ',
     },
     {
       iso: 'A06',
@@ -294,6 +295,7 @@ const keyboard: Keyboard = {
       finger: 'little',
       code: 'Enter',
       label: '↵',
+      to: '\n',
     },
     {
       iso: 'D00',
