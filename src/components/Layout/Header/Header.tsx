@@ -1,23 +1,14 @@
 import { FormattedMessage, Link } from 'gatsby-plugin-intl';
 import React from 'react';
-// @ts-ignore
+import { connect } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
 
-type Props = {
-  siteTitle: string;
-};
+import { flushKeyboard } from '../../../actions';
+import { State as ReduxState } from '../../../reducers';
+import Button from '../../Button';
 
-function Header(props: Props) {
-  const { siteTitle } = props;
-
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+function Header(props) {
+  const { dispatchFlushKeyboard } = props;
 
   return (
     <div className="header">
@@ -31,7 +22,6 @@ function Header(props: Props) {
         <Link
           className="menu__item"
           activeClassName="menu__item--active"
-          onClick={handleClose}
           to="/"
         >
           <FormattedMessage id="site.navigation.home" />
@@ -40,7 +30,6 @@ function Header(props: Props) {
         <Link
           className="menu__item"
           activeClassName="menu__item--active"
-          onClick={handleClose}
           to="/typewriter/"
         >
           <FormattedMessage id="site.navigation.program" />
@@ -49,14 +38,22 @@ function Header(props: Props) {
         <Link
           className="menu__item"
           activeClassName="menu__item--active"
-          onClick={handleClose}
           to="/statistics/"
         >
           <FormattedMessage id="site.navigation.statistics" />
         </Link>
       </menu>
+      <div className="header__userMenu">
+        <Button onClick={dispatchFlushKeyboard}>Clear keyboard data</Button>
+      </div>
     </div>
   );
 }
 
-export default Header;
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<ReduxState, undefined, KeyboardAction>
+) => ({
+  dispatchFlushKeyboard: () => dispatch(flushKeyboard()),
+});
+
+export default connect(null, mapDispatchToProps)(Header);
