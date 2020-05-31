@@ -88,3 +88,27 @@
     font-family: 'Font Awesome 5 Brands';
   }
 }
+
+// Tooltip
+
+.keyInfo {
+  &__title {
+    margin: $spacer 0;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  &__content {
+    display: flex;
+    padding: $spacer;
+    overflow: hidden;
+    background: $color-grey-600;
+  }
+
+  &__glyphs {
+    span {
+      padding: 2px;
+      background: $color-grey-500;
+    }
+  }
+}

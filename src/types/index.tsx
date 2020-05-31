@@ -4,6 +4,8 @@ import { allEventKeyCodes } from './allEventKeyCodes';
 import { allISO } from './allISO';
 import { allLevels } from './allLevels';
 
+export { allISO, allLevels };
+
 export type Glyph = string;
 
 export type ISO = typeof allISO[number];

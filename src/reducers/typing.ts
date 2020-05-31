@@ -8,7 +8,6 @@ import {
   SET_SAMPLE_TEXT,
   FLUSH_KEYBOARD,
 } from '../actions/index';
-import Layout from '../components/Layout';
 import {
   EventCode,
   Level,
@@ -66,12 +65,11 @@ const initialState: TypingState = {
     'Shift',
     'AltGraph',
     'AltGraph+Shift',
-    'Alt+AltGraph+Shift',
     // 'Alt',
     // 'Alt+Shift',
     // 'Alt+AltGraph',
-    'CapsLock',
-    'CapsLock+Shift',
+    // 'CapsLock',
+    // 'CapsLock+Shift',
     // 'Alt+CapsLock',
     // 'CapsLock+Control',
     // 'CapsLock+Control+Shift',
@@ -311,8 +309,8 @@ export default function typingReducer(
         // ORDER COUNTS!
         ...(event.getModifierState('Alt') ? ['Alt'] : []),
         ...(event.getModifierState('AltGraph') ? ['AltGraph'] : []),
-        ...(getModifierStateCapsLock ? ['CapsLock'] : []),
-        ...(event.getModifierState('Control') ? ['Control'] : []),
+        // ...(getModifierStateCapsLock ? ['CapsLock'] : []),
+        // ...(event.getModifierState('Control') ? ['Control'] : []),
         ...(event.getModifierState('Shift') ? ['Shift'] : []),
       ];
       const level: Level = modifiers.length ? modifiers.join('+') : 'to';
@@ -321,7 +319,7 @@ export default function typingReducer(
         // ORDER COUNTS!
         ...(newKeysDown.includes('AltLeft') ? ['Alt'] : []),
         ...(newKeysDown.includes('AltRight') ? ['AltGraph'] : []),
-        ...(isCapsLockOn ? ['CapsLock'] : []),
+        // ...(isCapsLockOn ? ['CapsLock'] : []),
         ...(newKeysDown.includes('ShiftLeft') ? ['Shift'] : []),
         ...(newKeysDown.includes('ShiftRight') ? ['Shift'] : []),
       ];
@@ -396,7 +394,7 @@ export default function typingReducer(
         // ORDER COUNTS!
         ...(newKeysDown.includes('AltLeft') ? ['Alt'] : []),
         ...(newKeysDown.includes('AltRight') ? ['AltGraph'] : []),
-        ...(isCapsLockOn ? ['CapsLock'] : []),
+        // ...(isCapsLockOn ? ['CapsLock'] : []),
         ...(newKeysDown.includes('ShiftLeft') ? ['Shift'] : []),
         ...(newKeysDown.includes('ShiftRight') ? ['Shift'] : []),
       ];

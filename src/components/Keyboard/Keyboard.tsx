@@ -6,10 +6,8 @@ import { connect } from 'react-redux';
 
 import { State as ReduxState } from '../../reducers';
 import variables from '../../theme/variables';
-import { Keyboard as KeyboardProps } from '../../types';
+import { Keyboard as KeyboardProps, allLevels } from '../../types';
 import KeyboardKey from '../KeyboardKey';
-
-import './Keyboard.scss';
 
 type Props = KeyboardProps & {
   className?: string;
@@ -106,6 +104,7 @@ function Keyboard(props: Props) {
     >
       {/* This is the tippy that gets used as the singleton */}
       <Tippy
+        className="keyInfo"
         singleton={source}
         delay={500}
         moveTransition={'transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)'}
@@ -320,24 +319,58 @@ function Keyboard(props: Props) {
               calculatedWidth = keyWidth * 5 - keyPaddingX * 2;
             }
           }
-
           return (
             <Tippy
               key={iso}
               singleton={target}
               content={
                 <>
-                  <FormattedMessage
-                    id="typing.hand.finger"
-                    values={{
-                      hand: intl.formatMessage({
-                        id: `typing.hand.${hand}`,
-                      }),
-                      finger: intl.formatMessage({
-                        id: `typing.finger.${finger}`,
-                      }),
-                    }}
-                  />
+                  <div className="keyInfo__title">
+                    {key.to ? key.to : 'Unexplored'}
+                  </div>
+                  <div className="keyInfo__content">
+                    <div className="keyInfo__left">
+                      <FormattedMessage
+                        id="typing.hand.finger"
+                        values={{
+                          hand: intl.formatMessage({
+                            id: `typing.hand.${hand}`,
+                          }),
+                          finger: intl.formatMessage({
+                            id: `typing.finger.${finger}`,
+                          }),
+                        }}
+                      />
+                    </div>
+
+                    <div className="keyInfo__right">
+                      {key.to && (
+                        <ul className="keyInfo__glyphs">
+                          {allLevels.map((level) => {
+                            if (level === 'to') return;
+                            return (
+                              <li key={level}>
+                                {level}
+                                {'+'}
+                                {key.to}
+                                {': '}
+                                <span>
+                                  {key[level] ? (
+                                    <span>{key[level]}</span>
+                                  ) : (
+                                    <FormattedMessage
+                                      id="typing.key.unexplored"
+                                      defaultMessage="Unexplored"
+                                    />
+                                  )}
+                                </span>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </div>
+                  </div>
                 </>
               }
             >

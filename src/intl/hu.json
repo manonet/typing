@@ -51,6 +51,7 @@
     "typing.finger.ring": "gyűrűsujj",
     "typing.finger.little": "kisujj",
     "typing.hand.finger": "{hand} {finger}",
+    "typing.key.unexplored": "Felderítetlen",
     "contribution.translate.title": "Kérlek segíts az oldal lefordításában.",
     "contribution.translate.desc": "Ha értesz angolul ( vagy németül vagy magyarul ) segíthetsz abban, hogy a felhasználók az oldalt a te nyelveden is elérjék és használni tudják. További részleteket az alábbi linken találsz."
 }

@@ -51,6 +51,7 @@
     "typing.finger.ring": "ring finger",
     "typing.finger.little": "pinky finger",
     "typing.hand.finger": "{hand} {finger}",
+    "typing.key.unexplored": "Unexplored",
     "contribution.translate.title": "Please help with the translation of the page.",
     "contribution.translate.desc": "If you understand English (or Hungarian), please help people to use this application in their own native language. Click on the link below for further details:"
 }
