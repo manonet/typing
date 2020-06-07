@@ -1,10 +1,12 @@
-import { OS } from '../utils';
+import type { OS } from '../utils';
 
 import { allEventKeyCodes } from './allEventKeyCodes';
 import { allISO } from './allISO';
 import { allLevels } from './allLevels';
 
 export { allISO, allLevels };
+
+export type { OS };
 
 export type Glyph = string;
 
@@ -16,8 +18,10 @@ export type Level = typeof allLevels[number];
 
 export type Levels = Level[];
 
-export type LevelMap = {
-  [key in Level]?: Glyph;
+export type KeyTop = {
+  dead?: boolean;
+  level: Level;
+  label: Glyph;
 };
 
 export type HandsAndFingers = {
@@ -34,15 +38,27 @@ export type PossibleKeyStates = {
 export type Key = {
   iso: ISO;
   code: EventCode;
+  color: string;
   dead?: boolean;
   label?: string;
   optional?: boolean;
+  keyTops?: KeyTop[];
 } & HandsAndFingers &
-  PossibleKeyStates &
-  LevelMap;
+  PossibleKeyStates;
+
+export type KeyMap = {
+  [key in Glyph]: { index: number; level: Level };
+};
 
 export type DeadKeys = {
   [key in Glyph]: [Glyph, Glyph];
+};
+
+export type GlyphStatistics = {
+  glyph: Glyph;
+  correct?: number;
+  miswrite?: number;
+  misread?: number;
 };
 
 export type Layout =
@@ -54,17 +70,13 @@ export type Layout =
   | '106/109-JIS';
 
 export type Keyboard = {
-  allChars: [];
+  allChars: GlyphStatistics[];
   deadKeys?: DeadKeys;
   displayedLevel: Level;
   keys: Key[];
+  keyMap: KeyMap[];
+  codeMap: EventCode[];
   layout: Layout;
   name: string;
   os: OS;
-};
-
-export type StatisticProps = {
-  correct: [];
-  miswrite: [];
-  misspell: [];
 };

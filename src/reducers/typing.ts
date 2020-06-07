@@ -15,8 +15,14 @@ import {
   Key,
   PossibleKeyStates,
   Keyboard,
+  OS,
+  KeyMap,
+  DeadKeys,
 } from '../types';
-import { functionalKeyCodes } from '../types/allEventKeyCodes';
+import {
+  functionalKeyCodes,
+  navigationKeyCodes,
+} from '../types/allEventKeyCodes';
 
 import keyboard from './keyboard';
 
@@ -45,7 +51,9 @@ export type TypingState = {
   userText: string;
   isCapsLockOn: boolean;
   keys: Key[];
-  os: string;
+  allChars: [];
+  keyMap: {};
+  os: OS;
 } & Keyboard;
 
 const initialState: TypingState = {
@@ -58,6 +66,8 @@ const initialState: TypingState = {
   keysDown: [],
   ...keyboard,
   keys: [...keyboard.keys],
+  allChars: [...keyboard.allChars],
+  keyMap: { ...keyboard.keyMap },
   isCapsLockOn: false,
   os: keyboard.os,
   levels: [
@@ -78,88 +88,88 @@ const initialState: TypingState = {
 };
 
 function markCharOnBoard({
+  deadKeys,
+  keyMap,
   keys,
-  levels,
   marks,
   reset,
 }: {
   keys: Key[];
-  levels: Levels;
+  keyMap: KeyMap;
   marks: Marks;
+  deadKeys: DeadKeys;
   reset: boolean;
 }) {
-  // reset all marks
-  if (reset) {
-    keys = keys.map((item) => {
-      return {
-        ...item,
-        succeedState: undefined,
-        marker: undefined,
-      };
-    });
-  }
-  // Loop in levels first. This is important, some characters exist on different keys on different levels, e.g.: 'í' on hungarian also exist on 'j' key + AltGr. We search obviously the basic ones.
-  let modifierKeysToMark: Marks = {};
-  for (let i = 0; i < levels.length; i++) {
-    const level = levels[i];
-    keys = keys.map((item) => {
-      const mark = marks[item[level]];
-      if (marks.hasOwnProperty(item[level])) {
-        if (level !== 'to') {
-          level.split('+').map((modifier) => {
-            // mark only the opposite side than the character
-            if (modifier === 'Shift') {
-              if (item.hand === 'left') {
-                modifierKeysToMark['ShiftRight'] = mark;
-              } else {
-                modifierKeysToMark['ShiftLeft'] = mark;
-              }
+  keys = keys.map((item, index) => {
+    let mark = {};
+    let modifierKeysToMark: PossibleKeyStates = {};
+
+    Object.keys(marks).map(function (key) {
+      const level = keyMap[key] && keyMap[key].level;
+      if (level && level !== 'to') {
+        const hand = keyMap[key].index && keys[keyMap[key].index].hand;
+        level.split('+').map((modifier) => {
+          // mark only the opposite side than the character
+          if (modifier === 'Shift') {
+            if (hand === 'left' && item.code === 'ShiftRight') {
+              modifierKeysToMark = marks[key];
             }
-            if (modifier === 'Alt') {
-              modifierKeysToMark['AltLeft'] = mark;
+            if (hand === 'right' && item.code === 'ShiftLeft') {
+              modifierKeysToMark = marks[key];
             }
-            if (modifier === 'AltGraph') {
-              modifierKeysToMark['AltRight'] = mark;
-            }
-            if (modifier === 'Control') {
-              if (item.hand === 'left') {
-                modifierKeysToMark['ControlRigt'] = mark;
-              } else {
-                modifierKeysToMark['ControlLeft'] = mark;
-              }
-            }
-          });
-        }
-        delete marks[item[level]];
-        return {
-          ...item,
-          ...mark,
-        };
+          }
+          if (modifier === 'Alt' && item.code === 'AltLeft') {
+            modifierKeysToMark = marks[key];
+          }
+          if (modifier === 'AltGraph' && item.code === 'AltRight') {
+            modifierKeysToMark = marks[key];
+          }
+        });
       }
 
-      return item;
+      if (keyMap[key] && index === keyMap[key].index) {
+        mark = marks[key];
+        delete marks[key];
+      }
     });
-    if (
-      Object.keys(modifierKeysToMark).length !== 0 &&
-      modifierKeysToMark.constructor === Object
-    ) {
-      keys = keys.map((item) => {
-        if (modifierKeysToMark.hasOwnProperty(item.code)) {
-          return {
-            ...item,
-            ...modifierKeysToMark[item.code],
-          };
-        }
 
-        return item;
-      });
-    }
+    return {
+      ...item,
+      // reset all marks
+      ...(reset ? { succeedState: undefined } : {}),
+      ...(reset ? { marker: undefined } : {}),
+      ...mark,
+      ...modifierKeysToMark,
+    };
+  });
 
-    if (Object.keys(marks).length === 0 && marks.constructor === Object) {
-      // exit levels loop if all key marked
-      break;
-    }
+  if (Object.keys(marks).length !== 0) {
+    Object.keys(marks).map(function (key) {
+      const deadKey = deadKeys[key];
+      const mark = marks[key];
+      if (deadKey) {
+        const glyph1 = deadKey[0].label;
+        const glyph2 = deadKey[1].label;
+        console.log(mark);
+        const mark2 =
+          mark.marker === 'toPressFirst'
+            ? { ...mark, marker: 'toPressSecond' }
+            : mark;
+        const deadMarks = {
+          [glyph1]: { ...mark },
+          [glyph2]: { ...mark2 },
+        };
+        keys = markCharOnBoard({
+          deadKeys,
+          keyMap,
+          keys,
+          marks: deadMarks,
+        });
+      }
+    });
   }
+
+  console.log('marks', keys);
   return keys;
 }
 
@@ -168,6 +178,12 @@ export default function typingReducer(
   action: SetSampleTextAction | InputChangeAction | KeyboardAction
 ): TypingState {
   let layout = state.layout;
+
+  function changeBackslashPosition() {
+    // Change the physical position of the Backslash key
+    const backslashKey = state.keys.find((key) => key.code === 'Backslash');
+    backslashKey.iso = 'C12';
+  }
 
   switch (action.type) {
     case SET_SAMPLE_TEXT:
@@ -185,10 +201,11 @@ export default function typingReducer(
       const signToWrite = cursorAt >= 1 ? sampleText.charAt(cursorAt - 1) : '';
       const charsSucceed = signToWrite === writtenSign;
       const { currentKeyDown, previousKeyDown } = state;
+      let keyMap = { ...state.keyMap };
+      let allChars = [...state.allChars];
 
       // change layout if necessary
-      // TODO - add props to keys and make this check in Keyboard component for performance
-
+      // TODO - add props to keys instead and make this check in Keyboard component for performance
       if (!(layout === '106/109-JIS' || layout === '103/106-KS')) {
         if (!(layout === '104/107-ABNT')) {
           if (currentKeyDown?.code === 'IntlYen') {
@@ -196,6 +213,7 @@ export default function typingReducer(
           }
           if (currentKeyDown?.code === 'IntlBackslash') {
             layout = '102/105-ISO';
+            changeBackslashPosition();
           }
         }
         if (
@@ -206,6 +224,7 @@ export default function typingReducer(
         }
         if (currentKeyDown?.code === 'IntlRo') {
           layout = '104/107-ABNT';
+          changeBackslashPosition();
         }
         if (
           currentKeyDown?.code === 'NonConvert' ||
@@ -213,6 +232,48 @@ export default function typingReducer(
           currentKeyDown?.code === 'KanaMode'
         ) {
           layout = '106/109-JIS';
+          changeBackslashPosition();
+        }
+      }
+
+      // allChars, statistics
+      const allCharsWrittenIndex = allChars.findIndex(
+        (char) => char.glyph === writtenSign
+      );
+      if (charsSucceed) {
+        if (allCharsWrittenIndex === -1) {
+          allChars.push({
+            glyph: writtenSign,
+            correct: 1,
+            miswrite: 0,
+            misread: 0,
+          });
+        } else {
+          allChars[allCharsWrittenIndex].correct += 1;
+        }
+      } else {
+        if (allCharsWrittenIndex === -1) {
+          allChars.push({
+            glyph: writtenSign,
+            correct: 0,
+            miswrite: 1,
+            misread: 0,
+          });
+        } else {
+          allChars[allCharsWrittenIndex].miswrite += 1;
+        }
+        const allCharsToWriteIndex = allChars.findIndex(
+          (char) => char.glyph === signToWrite
+        );
+        if (allCharsToWriteIndex === -1) {
+          allChars.push({
+            glyph: signToWrite,
+            correct: 0,
+            miswrite: 0,
+            misread: 1,
+          });
+        } else {
+          allChars[allCharsToWriteIndex].misread += 1;
         }
       }
 
@@ -237,25 +298,40 @@ export default function typingReducer(
         }
       );
 
+      // handle dead keys
       let deadKeys = { ...state.deadKeys };
       let keys = markCharOnBoard({
         keys: [...state.keys],
         reset: true,
-        levels: [...state.levels],
+        keyMap,
         marks,
+        deadKeys,
       });
 
       if (previousKeyDown?.dead) {
         if (currentKeyDown && previousKeyDown.code === currentKeyDown.code) {
-          // the dead key was pressed twice. It is highly possible that the iput is the right character as a key label. So update the keys, save it to corresponding level. ( It can be e.g.:´`¸˛)
+          // the dead key was pressed at least twice. It is highly possible that the iput is the right character as a key label. So update the keys, save it to corresponding level. ( It can be e.g.:´`¸˛)
           const { code, level } = previousKeyDown;
-          keys = keys.map((item) => {
+          keys = keys.map((item, index) => {
             if (item.code !== code) {
               return item;
             }
+
+            let keyTops = item.keyTops ? [...item.keyTops] : [];
+            const i = keyTops.findIndex((top) => top.level === level);
+            if (i) {
+              keyTops[i].label = writtenSign;
+            }
+
+            if (!keyMap[writtenSign]) {
+              keyMap[writtenSign] = {
+                index,
+                level,
+              };
+            }
             return {
               ...item,
-              [level]: writtenSign,
+              keyTops,
             };
           });
         } else {
@@ -264,11 +340,18 @@ export default function typingReducer(
             (item) => item.code === previousKeyDown.code
           );
           const previousChar =
-            previousKey && previousKey[previousKeyDown.level];
+            previousKey &&
+            previousKey.keyTops?.find(
+              (top) => top.level === previousKeyDown.level
+            );
           const currentKey = keys.find(
             (item) => item.code === currentKeyDown?.code
           );
-          const currentChar = currentKey && currentKey[currentKeyDown.level];
+          const currentChar =
+            currentKey &&
+            currentKey.keyTops?.find(
+              (top) => top.level === currentKeyDown?.level
+            );
           if (previousChar && currentChar) {
             deadKeys[writtenSign] = [previousChar, currentChar];
           }
@@ -277,6 +360,7 @@ export default function typingReducer(
 
       return {
         ...state,
+        allChars,
         userText,
         cursorAt,
         writtenSign,
@@ -286,6 +370,7 @@ export default function typingReducer(
         deadKeys,
         keys,
         layout,
+        keyMap,
       };
     }
 
@@ -293,8 +378,26 @@ export default function typingReducer(
       // if 'DEAD' - second input does not count as label, but dead key combination
 
       const event = action.event;
+      const { code, key, marker } = event;
 
-      const { code, key } = event;
+      let keyMap = { ...state.keyMap };
+      let keys = [...state.keys];
+
+      // disable keys which makes able the navigation within the textinput. (changing caret position is undesirable)
+      if (navigationKeyCodes.includes(code)) {
+        event.view.event.preventDefault();
+        // TODO: make it user friendly, e.g. toaster like info.
+        console.info(`The usage of the ${code} key is disabled`);
+      }
+
+      /*
+      const isToPressNext =
+        keyMap[key] && keys[keyMap[key].index].marker === 'toPressFirst';
+      console.log(isToPressNext);
+      if (!isToPressNext) {
+        event.view.event.preventDefault();
+      }
+      */
 
       const newKeysDown =
         state.keysDown.indexOf(code) === -1
@@ -327,9 +430,7 @@ export default function typingReducer(
         ? modifiersDown.join('+')
         : 'to';
 
-      let keys = [...state.keys];
-
-      keys = keys.map((item) => {
+      keys = keys.map((item, index) => {
         if (isCapsLockOn && item.code === 'CapsLock' && code !== 'CapsLock') {
           return {
             ...item,
@@ -348,18 +449,35 @@ export default function typingReducer(
 
         // Do not assign glyph to the key if CapsLock is on or a dead key was pressed before
         if (!(isCapsLockOn || state.currentKeyDown?.dead)) {
+          let keyTops = item.keyTops ? [...item.keyTops] : [];
+
+          const i = keyTops.findIndex((top) => top.level === level);
+
+          if (i === -1) {
+            keyTops.push({
+              level,
+              label: key !== 'Dead' ? key : undefined, // this case will be handled on input
+              dead: key === 'Dead',
+            });
+          }
+
+          if (!keyMap[key]) {
+            keyMap[key] = {
+              index,
+              level,
+            };
+          }
           return {
             // "discover key"
-            [level]: key !== 'Dead' ? key : undefined, // this case will be handled on input
             ...item,
+            keyTops,
             pressure: 'pressed',
-            dead: key === 'Dead',
           };
         }
         return {
           ...item,
           pressure: 'pressed',
-          dead: key === 'Dead',
+          // dead: key === 'Dead',
         };
       });
 
@@ -379,6 +497,7 @@ export default function typingReducer(
         // displayedLevel,
         // cursorAt: state.userText.length,
         keys,
+        keyMap,
       };
     }
 

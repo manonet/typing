@@ -16,17 +16,13 @@ import { navigationKeyCodes } from '../types/allEventKeyCodes';
 import Keyboard from './Keyboard';
 import SampleBoard from './SampleBoard';
 
-// TODO consider adding Enter key to keyboard object instead of functionKeys
 // TODO add close on Enter function to modals
 // TODO lift ErrorModal, make it reusable
 // TODO enable/disable backspace
 // TODO differentiate same character on different levels: 'e', 'E', '€' ...
 // TODO fix stucked last hint on new lesson
 // TODO initial hint on the very first lesson
-// TODO fix movable caret in input, disable arrow keys
-// TODO fix focus and blur styles on user input
-// TODO disable tab jump on writing
-// TODO enable/disable keyboard events check, update keyboard only if userInput focused
+
 // TODO language detection if necessary -  navigator.language.substring(0, 2) https://medium.com/ableneo/internationalize-react-apps-done-right-using-react-intl-library-82978dbe175e
 
 // TODO Enable layout separation, make it possible to switch between layouts. User should be able to define names for them.
@@ -66,7 +62,7 @@ class Typewriter extends React.Component<Props> {
 
     const { dispatchSetSampleText } = this.props;
 
-    dispatchSetSampleText("Let's\nTyyyype Something €éÉÈǽ...");
+    dispatchSetSampleText("LôeòÎŰt's\nTyyyype Something €éÉÈǽ...");
   }
 
   focusTextInput() {
@@ -78,164 +74,20 @@ class Typewriter extends React.Component<Props> {
     }
   }
 
-  /*
-  userInputText(userText) {
-    const { sampleText } = this.props;
-    if (userText.length === sampleText.length) {
-      this.props.handleModalOpen();
-      return;
-    }
-
-    this.setState((prevState) => {
-      const {
-        isoSucceed,
-        keyboard,
-        previousKeyInfo,
-        previousPressedKeyInfo,
-      } = { ...prevState };
-
-      if (charsSucceed && charsSucceed !== isoSucceed) {
-        console.warn(
-          'The selected keyboard layout is not matching with the actual input method'
-        );
-      }
-
-      if (previousKeyInfo) {
-        this.markCharOnBoard(
-          keyboard,
-          functionKeys,
-          previousKeyInfo[0],
-          'succeedState',
-          'def'
-        );
-        this.markCharOnBoard(
-          keyboard,
-          functionKeys,
-          previousKeyInfo[1],
-          'succeedState',
-          'def'
-        );
-      }
-      if (previousPressedKeyInfo) {
-        this.markCharOnBoard(
-          keyboard,
-          functionKeys,
-          previousPressedKeyInfo[0],
-          'succeedState',
-          'def'
-        );
-        this.markCharOnBoard(
-          keyboard,
-          functionKeys,
-          previousPressedKeyInfo[1],
-          'succeedState',
-          'def'
-        );
-      }
-
-      const nextCharInfo = getKeysFromChar(keyboard, nextSign);
-      this.markCharOnBoard(
-        keyboard,
-        functionKeys,
-        nextCharInfo[0],
-        'marker',
-        'toPressFirst'
-      );
-      this.markCharOnBoard(
-        keyboard,
-        functionKeys,
-        nextCharInfo[1],
-        'marker',
-        'toPressSecond'
-      );
-
-      if (!nextCharInfo[0]) {
-        this.handleError();
-      }
-
-      if (charsSucceed) {
-        this.markCharOnBoard(
-          keyboard,
-          functionKeys,
-          'succeedState',
-          'correct'
-        );
-        this.markCharOnBoard(
-          keyboard,
-          functionKeys,
-          'succeedState',
-          'correct'
-        );
-      }
-
-        if (pressedKeyInfo) {
-          this.markCharOnBoard(
-            keyboard,
-            functionKeys,
-            pressedKeyInfo[0],
-            'succeedState',
-            'missed'
-          );
-          this.markCharOnBoard(
-            keyboard,
-            functionKeys,
-            pressedKeyInfo[1],
-            'succeedState',
-            'missed'
-          );
-        }
-      }
-
-      return {
-        cursorAt,
-        keyboard,
-        previousPressedKeyInfo: pressedKeyInfo,
-      };
-    });
-  }
-*/
   startNewLesson(sampleText: string) {
-    // const nextCharInfo = getKeysFromChar(keyboard, sampleText.charAt(0));
-
     const { dispatchSetSampleText } = this.props;
 
     dispatchSetSampleText(sampleText);
-
-    /*
-    this.markCharOnBoard(
-      keyboard,
-      functionKeys,
-      nextCharInfo[0],
-      'marker',
-      'toPressFirst'
-    );
-    this.markCharOnBoard(
-      keyboard,
-      functionKeys,
-      nextCharInfo[1],
-      'marker',
-      'toPressSecond'
-    );
-*/
   }
 
   handleKeydown(event) {
-    const currentKeyDown = event.code;
-
     const { dispatchKeyDown } = this.props;
 
     dispatchKeyDown(event);
-    // disable keys which makes able the navigation within the textinput. (changing caret position is undesirable)
-    if (navigationKeyCodes.includes(currentKeyDown)) {
-      event.view.event.preventDefault();
-      // TODO: make it user friendly, e.g. toaster like info.
-      console.info(`The usage of the ${currentKeyDown} key is disabled`);
-      return;
-    }
   }
 
   handleKeyup(event) {
-    const { dispatchKeyUp, userText } = this.props;
+    const { dispatchKeyUp } = this.props;
 
     dispatchKeyUp(event);
   }
