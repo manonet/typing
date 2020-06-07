@@ -150,6 +150,20 @@ function SEO({ description, intl, keywords, lang, meta, title }: Props) {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/brands.min.css"
       />
+      {/* Global site tag (gtag.js) - Google Analytics */}
+      <script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=UA-4516268-16"
+      ></script>
+      <script>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-4516268-16');
+        `}
+      </script>
     </Helmet>
   );
 }
