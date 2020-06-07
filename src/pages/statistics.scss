@@ -1,0 +1,50 @@
+.statistics {
+  &__allChars {
+  }
+}
+
+.allChars {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  &__char {
+    position: relative;
+    width: 100px;
+    margin: $spacer;
+    text-align: center;
+    background: $color-grey-100;
+    border: 1px solid $color-grey-300;
+  }
+
+  &__glyph {
+    font-size: 60px;
+    line-height: 100px;
+    white-space: pre;
+    transition: font-size 0.4s ease-in-out;
+  }
+
+  &__details {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    color: $color-white;
+    background: $color-grey-700;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__correct,
+  &__miswrite,
+  &__misread {
+    display: block;
+    white-space: nowrap;
+  }
+}
