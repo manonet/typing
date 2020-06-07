@@ -3,7 +3,8 @@
 ## Old site
 
 - [x] Add countdown with the remaining time till relaunch
-- [ ] Bacup site under flash.manonet.org and share it on the old website
+- [x] Bacup site under flash.manonet.hu
+- [ ] Share the legacy location on the old website
 
 ---
 

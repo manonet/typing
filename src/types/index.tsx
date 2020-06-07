@@ -1,12 +1,10 @@
-import type { OS } from '../utils';
+import { OS } from '../utils';
 
 import { allEventKeyCodes } from './allEventKeyCodes';
 import { allISO } from './allISO';
 import { allLevels } from './allLevels';
 
-export { allISO, allLevels };
-
-export type { OS };
+export { allISO, allLevels, OS };
 
 export type Glyph = string;
 
