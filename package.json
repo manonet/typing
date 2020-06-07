@@ -2,7 +2,7 @@
   "name": "manonet",
   "private": true,
   "description": "Online Typewriter Program",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Szilágyi Balázs",
   "email": "info@manonet.org",
   "dependencies": {
