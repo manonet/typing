@@ -85,7 +85,9 @@
 .Windows {
   .OSLeft text,
   .OSRight text {
+    // stylelint-disable font-family-no-missing-generic-family-keyword
     font-family: 'Font Awesome 5 Brands';
+    // stylelint-enable font-family-no-missing-generic-family-keyword
   }
 }
 
