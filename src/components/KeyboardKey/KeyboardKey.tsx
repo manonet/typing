@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React, { forwardRef } from 'react';
 
 import variables from '../../theme/variables';
-import { Level, Key } from '../../types';
+import { Level, Key, Layout } from '../../types';
 
 export type KeyboardThemeProps = {
   keyWidth: number;
@@ -21,33 +21,36 @@ export type KeyboardThemeProps = {
 
 export type KeyboardKeyProps = Key & {
   displayedLevel: Level;
+  enterPath?: string;
   label?: string;
   width?: number;
   height?: number;
+  layout: Layout;
   x: number;
   y: number;
 };
 
 const KeyboardKey = forwardRef((props: KeyboardKeyProps, ref) => {
-  // console.log(props)
   const {
-    Shift,
     code,
     dead,
     displayedLevel,
     enterPath,
     height,
     iso,
+    keyTops,
     label,
     layout,
     marker,
     pressure,
     succeedState,
-    to,
     width,
     x,
     y,
   } = props;
+
+  const keyTop =
+    keyTops && keyTops.find((item) => item.level === displayedLevel);
 
   const {
     aRowShift,
@@ -65,31 +68,37 @@ const KeyboardKey = forwardRef((props: KeyboardKeyProps, ref) => {
   } = variables;
 
   // When letters on a case pair are associated with a key, only the capital character need to be shown on the keytop for the primary group, while the lowercase character only is shown for the secondary group.
-  let alphabet;
-  if (to && to.toString().toUpperCase() === Shift) {
-    alphabet = true;
-  }
+  // let alphabet;
 
-  // TODO - make Enter iso constant
-  const uncovered = !label && !props[displayedLevel];
+  const uncovered = !label && !keyTop?.label;
 
   const keyClass = classNames('key', iso, code, {
     ['key--missed']: succeedState === 'missed',
     ['key--correct']: succeedState === 'correct',
     ['key--error']: succeedState === 'error',
-    ['key--alphabet']: alphabet,
     ['key--toPressFirst']: marker === 'toPressFirst',
     ['key--toPressSecond']: marker === 'toPressSecond',
     ['key--uncovered']: uncovered,
     ['key--pressed']: pressure === 'pressed',
     ['key--locked']: pressure === 'locked',
-    ['key--dead']: dead,
+    ['key--dead']: keyTop?.dead,
+    // ['key--alphabet']: alphabet,
   });
   const keyShadowClass = classNames('key__shadow');
   const keyBgClass = classNames('key__keyBg');
   const labelClass = classNames('key__label');
 
-  // TODO - define Enter variant
+  // overwrite color vaues
+  let color = props.color || '#fff';
+  if (marker === 'toPressFirst') {
+    color = '#42c6ff';
+  }
+  if (pressure === 'pressed') {
+    color = '#15d1c6';
+  }
+  if (pressure === 'locked') {
+    color = '#37efba';
+  }
 
   if (iso === 'C13') {
     if (layout === '101/104-Variant' || layout === '103/106-KS') {
@@ -97,7 +106,14 @@ const KeyboardKey = forwardRef((props: KeyboardKeyProps, ref) => {
         <>
           <path className={keyShadowClass} d={enterPath} />
           <g className={keyClass}>
-            <path ref={ref} className={keyBgClass} d={enterPath} />
+            <path
+              ref={ref}
+              className={keyBgClass}
+              d={enterPath}
+              style={{
+                fill: color,
+              }}
+            />
             <g className={'key__labels'}>
               <text
                 className={labelClass}
@@ -136,6 +152,9 @@ const KeyboardKey = forwardRef((props: KeyboardKeyProps, ref) => {
               y={y + keyPaddingY}
               rx={rX}
               ry={rY}
+              style={{
+                fill: color,
+              }}
             />
             <g className={'key__labels'}>
               <text
@@ -159,7 +178,14 @@ const KeyboardKey = forwardRef((props: KeyboardKeyProps, ref) => {
         <>
           <path className={keyShadowClass} d={enterPath} />
           <g className={keyClass}>
-            <path ref={ref} className={keyBgClass} d={enterPath} />
+            <path
+              ref={ref}
+              className={keyBgClass}
+              d={enterPath}
+              style={{
+                fill: color,
+              }}
+            />
             <g className={'key__labels'}>
               <text
                 className={labelClass}
@@ -195,13 +221,16 @@ const KeyboardKey = forwardRef((props: KeyboardKeyProps, ref) => {
           height={height}
           rx={rX}
           ry={rY}
+          style={{
+            fill: color,
+          }}
         />
         {displayedLevel && (
           <g className={'key__labels'}>
             <text
               className={labelClass}
               dangerouslySetInnerHTML={{
-                __html: props[displayedLevel] || label || '?',
+                __html: keyTop?.label || label || '?',
               }}
               x={x + keyLabelX}
               y={y + keyLabelY + 10}

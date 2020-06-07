@@ -9,14 +9,17 @@ import variables from '../../theme/variables';
 import { Keyboard as KeyboardProps, allLevels } from '../../types';
 import KeyboardKey from '../KeyboardKey';
 
+import getEnterPath from './getEnterPath';
+
 type Props = KeyboardProps & {
   className?: string;
 };
 
 function Keyboard(props: Props) {
   const { className, displayedLevel, keys, layout, os } = props;
+  const enterPath = getEnterPath({ layout });
 
-  if (!(keys && keys.length)) {
+  if (!(Array.isArray(keys) && keys.length)) {
     return null;
   }
 
@@ -41,63 +44,6 @@ function Keyboard(props: Props) {
     rY,
   } = variables;
 
-  // for Enter
-  const leftD = dRowShift + keyWidth * 13;
-  let leftC = cRowShift + keyWidth * 13;
-  const right = keyWidth * 2 + keyWidth * 13;
-  const top = keyHeight;
-  const bottom = keyHeight * 3;
-
-  let enterPath = '';
-  if (layout === '101/104-Variant' || layout === '103/106-KS') {
-    // 3
-    /* shape:
-          -x
-          xx
-      */
-
-    leftC = leftC - keyWidth;
-    enterPath = `M${leftD + keyPaddingX} ${rY + top + keyPaddingY}\
-      A ${rX} ${rY}, 0, 0, 1, ${leftD + rX + keyPaddingX} ${top + keyPaddingY}\
-      L ${right - rX - keyPaddingX} ${top + keyPaddingY}\
-      A ${rX} ${rY}, 0, 0, 1, ${right - keyPaddingX} ${rY + top + keyPaddingY}\
-      L ${right - keyPaddingX} ${bottom - rY - keyPaddingY}\
-      A ${rX} ${rY}, 0, 0, 1, ${right - rX - keyPaddingX} ${
-      bottom - keyPaddingY
-    }\
-      L ${leftC + rX + keyPaddingX} ${bottom - keyPaddingY}\
-      A ${rX} ${rY}, 0, 0, 1, ${leftC + keyPaddingX} ${
-      bottom - rY - keyPaddingY
-    }\
-      L ${leftC + keyPaddingX} ${top + keyHeight + rY + keyPaddingY}\
-      A ${rX} ${rY}, 0, 0, 1, ${leftC + rX + keyPaddingX} ${
-      top + keyHeight + keyPaddingY
-    }\
-      L ${leftD - rX + keyPaddingX} ${keyHeight + top + keyPaddingY}\
-      A ${rX} ${rY}, 0, 0, 0, ${leftD + keyPaddingX} ${
-      top + keyHeight - rY + keyPaddingY
-    }\
-      L ${leftD + keyPaddingX} ${rY + top + keyPaddingY} Z`;
-  } else if (layout !== '101/104-ANSI') {
-    enterPath = `M${leftD + keyPaddingX} ${rY + top + keyPaddingY}\
-    A ${rX} ${rY}, 0, 0, 1, ${leftD + rX + keyPaddingX} ${top + keyPaddingY}\
-    L ${right - rX - keyPaddingX} ${top + keyPaddingY}\
-    A ${rX} ${rY}, 0, 0, 1, ${right - keyPaddingX} ${top + rY + keyPaddingY}\
-    L ${right - keyPaddingX} ${bottom - rY - keyPaddingY}\
-    A ${rX} ${rY}, 0, 0, 1, ${right - rX - keyPaddingX} ${bottom - keyPaddingY}\
-    L ${leftC + rX + keyPaddingX} ${bottom - keyPaddingY}\
-    A ${rX} ${rY}, 0, 0, 1, ${leftC + keyPaddingX} ${bottom - rY - keyPaddingY}\
-    L ${leftC + keyPaddingX} ${top + keyHeight + rY - keyPaddingY}\
-    A ${rX} ${rY}, 0, 0, 0, ${leftC - rX + keyPaddingX} ${
-      top + keyHeight - keyPaddingY
-    }\
-    L ${leftD + rX + keyPaddingX} ${top + keyHeight - keyPaddingY}\
-    A ${rX} ${rY}, 0, 0, 1, ${leftD + keyPaddingX} ${
-      top + keyHeight - rY - keyPaddingY
-    }\
-    L ${leftD + keyPaddingX} ${top + rY + keyPaddingY} Z`;
-  }
-
   return (
     <div
       className={classNames(className, 'keyboard', os.name, `layout-${layout}`)}
@@ -117,6 +63,8 @@ function Keyboard(props: Props) {
       >
         {keys.map((key) => {
           const { code, finger, hand, iso } = key;
+          const to =
+            key.keyTops && key.keyTops.find((top) => top.level === 'to')?.label;
 
           const rowLetter = iso.substring(0, 1);
           const column = parseInt(iso.substring(1, 3), 10);
@@ -325,9 +273,7 @@ function Keyboard(props: Props) {
               singleton={target}
               content={
                 <>
-                  <div className="keyInfo__title">
-                    {key.to ? key.to : 'Unexplored'}
-                  </div>
+                  <div className="keyInfo__title">{to ? to : 'Unexplored'}</div>
                   <div className="keyInfo__content">
                     <div className="keyInfo__left">
                       <FormattedMessage
@@ -344,26 +290,15 @@ function Keyboard(props: Props) {
                     </div>
 
                     <div className="keyInfo__right">
-                      {key.to && (
+                      {key.keyTops && key.keyTops.length && (
                         <ul className="keyInfo__glyphs">
-                          {allLevels.map((level) => {
-                            if (level === 'to') return;
+                          {key.keyTops.map((keyTop) => {
+                            if (keyTop.level === 'to') return;
                             return (
-                              <li key={level}>
-                                {level}
-                                {'+'}
-                                {key.to}
+                              <li key={keyTop.level}>
+                                {keyTop.level}
                                 {': '}
-                                <span>
-                                  {key[level] ? (
-                                    <span>{key[level]}</span>
-                                  ) : (
-                                    <FormattedMessage
-                                      id="typing.key.unexplored"
-                                      defaultMessage="Unexplored"
-                                    />
-                                  )}
-                                </span>
+                                <span>{keyTop.label}</span>
                               </li>
                             );
                           })}
