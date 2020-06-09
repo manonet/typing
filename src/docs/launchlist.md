@@ -8,6 +8,11 @@
 
 ---
 
+- [ ] Introduction page
+  - [ ] explain project
+  - [ ] future plans
+- [ ] Update structure and { imports }
+
 ## Development test
 
 ### Prepare Development
