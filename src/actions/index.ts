@@ -1,12 +1,4 @@
-// SET_SAMPLE_TEXT
-
-export type SetSampleTextAction = ReturnType<typeof setSampleText>;
-
-export const SET_SAMPLE_TEXT = 'SET_SAMPLE_TEXT';
-
-export function setSampleText(sampleText: string) {
-  return { type: SET_SAMPLE_TEXT, sampleText };
-}
+export * from './practices';
 
 // FOCUSUSERINPUT
 

@@ -1,23 +1,25 @@
 import {
-  SetSampleTextAction,
-  InputChangeAction,
-  KeyboardAction,
+  FLUSH_KEYBOARD,
+  INIT_PRACTICE,
   INPUT_CHANGE,
+  InputChangeAction,
   KEY_DOWN,
   KEY_UP,
-  SET_SAMPLE_TEXT,
-  FLUSH_KEYBOARD,
+  KeyboardAction,
+  PracticeAction,
+  SUMMARIZE_PRACTICE,
 } from '../actions/index';
 import {
+  DeadKeys,
   EventCode,
+  GlyphStatistics,
+  Key,
+  Keyboard,
+  KeyMap,
   Level,
   Levels,
-  Key,
-  PossibleKeyStates,
-  Keyboard,
   OS,
-  KeyMap,
-  DeadKeys,
+  PossibleKeyStates,
 } from '../types';
 import {
   functionalKeyCodes,
@@ -37,39 +39,40 @@ export type KeyDown = {
 };
 
 export type TypingState = {
-  sampleText: string;
-  lastKeyUp?: EventCode;
-  previousKeyDown?: KeyDown;
+  allChars: GlyphStatistics[];
   currentKeyDown?: KeyDown;
-  keysDown: EventCode[];
-  displayedLevel: Level;
-  levels: Levels;
   cursorAt: number;
-  signToWrite: string;
-  writtenSign: string;
+  displayedLevel: Level;
+  finishedPractices: number;
   inputChanged: boolean;
-  userText: string;
   isCapsLockOn: boolean;
-  keys: Key[];
-  allChars: [];
+  isPracticing: boolean;
   keyMap: {};
+  keys: Key[];
+  keysDown: EventCode[];
+  lastKeyUp?: EventCode;
+  levels: Levels;
   os: OS;
+  practiceLength: number;
+  previousKeyDown?: KeyDown;
+  sampleText: string;
+  signToWrite: string;
+  showSummary: boolean;
+  userText: string;
+  writtenSign: string;
 } & Keyboard;
 
 const initialState: TypingState = {
-  cursorAt: 0,
-  userText: '',
-  signToWrite: '',
-  writtenSign: '',
-  inputChanged: false,
-  sampleText: '',
-  keysDown: [],
   ...keyboard,
-  keys: [...keyboard.keys],
   allChars: [...keyboard.allChars],
-  keyMap: { ...keyboard.keyMap },
+  cursorAt: 0,
+  finishedPractices: 0,
+  inputChanged: false,
   isCapsLockOn: false,
-  os: keyboard.os,
+  isPracticing: false,
+  keyMap: { ...keyboard.keyMap },
+  keys: [...keyboard.keys],
+  keysDown: [],
   levels: [
     'to',
     'Shift',
@@ -85,6 +88,13 @@ const initialState: TypingState = {
     // 'CapsLock+Control+Shift',
     // 'AltGraph+Control',
   ],
+  os: keyboard.os,
+  practiceLength: 0,
+  sampleText: '',
+  signToWrite: '',
+  showSummary: false,
+  userText: '',
+  writtenSign: '',
 };
 
 function markCharOnBoard({
@@ -150,7 +160,7 @@ function markCharOnBoard({
       if (deadKey) {
         const glyph1 = deadKey[0].label;
         const glyph2 = deadKey[1].label;
-        console.log(mark);
+
         const mark2 =
           mark.marker === 'toPressFirst'
             ? { ...mark, marker: 'toPressSecond' }
@@ -169,13 +179,12 @@ function markCharOnBoard({
     });
   }
 
-  console.log('marks', keys);
   return keys;
 }
 
 export default function typingReducer(
   state: TypingState = initialState,
-  action: SetSampleTextAction | InputChangeAction | KeyboardAction
+  action: PracticeAction | InputChangeAction | KeyboardAction
 ): TypingState {
   let layout = state.layout;
 
@@ -186,12 +195,29 @@ export default function typingReducer(
   }
 
   switch (action.type) {
-    case SET_SAMPLE_TEXT:
+    case INIT_PRACTICE:
       return Object.assign({}, state, {
         sampleText: action.sampleText,
+        practiceLength: action.sampleText.length,
+        userText: '',
+        cursorAt: 0,
+        isPracticing: true,
+        showSummary: false,
+      });
+
+    case SUMMARIZE_PRACTICE:
+      return Object.assign({}, state, {
+        showSummary: true,
       });
 
     case INPUT_CHANGE: {
+      const { currentKeyDown, practiceLength, previousKeyDown } = state;
+
+      let keyMap = { ...state.keyMap };
+      let allChars = [...state.allChars];
+      let finishedPractices = state.finishedPractices;
+      let isPracticing = state.isPracticing;
+
       // TODO desc
       const userText = action.userText;
       const sampleText = state.sampleText;
@@ -200,9 +226,6 @@ export default function typingReducer(
       const nextSign = sampleText.charAt(cursorAt);
       const signToWrite = cursorAt >= 1 ? sampleText.charAt(cursorAt - 1) : '';
       const charsSucceed = signToWrite === writtenSign;
-      const { currentKeyDown, previousKeyDown } = state;
-      let keyMap = { ...state.keyMap };
-      let allChars = [...state.allChars];
 
       // change layout if necessary
       // TODO - add props to keys instead and make this check in Keyboard component for performance
@@ -242,22 +265,26 @@ export default function typingReducer(
       );
       if (charsSucceed) {
         if (allCharsWrittenIndex === -1) {
+          // first time found
           allChars.push({
             glyph: writtenSign,
             correct: 1,
             miswrite: 0,
             misread: 0,
+            discoveredAt: Date.now(),
           });
         } else {
           allChars[allCharsWrittenIndex].correct += 1;
         }
       } else {
         if (allCharsWrittenIndex === -1) {
+          // first time found
           allChars.push({
             glyph: writtenSign,
             correct: 0,
             miswrite: 1,
             misread: 0,
+            discoveredAt: Date.now(),
           });
         } else {
           allChars[allCharsWrittenIndex].miswrite += 1;
@@ -266,11 +293,13 @@ export default function typingReducer(
           (char) => char.glyph === signToWrite
         );
         if (allCharsToWriteIndex === -1) {
+          // first time found
           allChars.push({
             glyph: signToWrite,
             correct: 0,
             miswrite: 0,
             misread: 1,
+            discoveredAt: Date.now(),
           });
         } else {
           allChars[allCharsToWriteIndex].misread += 1;
@@ -358,10 +387,18 @@ export default function typingReducer(
         }
       }
 
+      if (isPracticing && cursorAt >= practiceLength) {
+        // end reached or exceeded
+        isPracticing = false;
+        finishedPractices += 1;
+      }
+
       return {
         ...state,
         allChars,
         userText,
+        finishedPractices,
+        isPracticing,
         cursorAt,
         writtenSign,
         nextSign,

@@ -5,17 +5,19 @@ import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 
 import {
-  setSampleText,
-  SetSampleTextAction,
   keyDown,
   keyUp,
   KeyboardAction,
+  initPractice,
+  PracticeAction,
+  summarizePractice,
 } from '../actions';
 import Keyboard from '../components/Keyboard';
 import Layout from '../components/Layout';
 import SampleBoard from '../components/SampleBoard';
 import SEO from '../components/seo';
 import { State as ReduxState } from '../reducers';
+import { generatePracticeText } from '../utils';
 
 // TODO add close on Enter function to modals
 // TODO lift ErrorModal, make it reusable
@@ -35,12 +37,14 @@ import { State as ReduxState } from '../reducers';
 // TODO
 
 type Props = {
-  sampleText: string;
-  isUserInputFocused: boolean;
-  userText: string;
-  dispatchSetSampleText: (sampleText: string) => {};
+  dispatchInitPractice: (sampleText: string) => {};
   dispatchKeyDown: (event) => {};
   dispatchKeyUp: (event) => {};
+  finishedPractices: number;
+  isUserInputFocused: boolean;
+  sampleText: string;
+  showSummary: boolean;
+  userText: string;
 } & WrappedComponentProps;
 
 type State = {
@@ -66,12 +70,17 @@ class TypewriterPage extends React.Component<Props, State> {
 
   focusTextInputRef = this.focusTextInput.bind(this);
 
+  static getDerivedStateFromProps(nextProps) {
+    if (!nextProps.isPracticing) {
+      // practice ended
+      nextProps.dispatchSummarizePractice();
+    }
+    return null;
+  }
+
   componentDidMount() {
     this.focusTextInputRef();
-
-    const { dispatchSetSampleText } = this.props;
-
-    dispatchSetSampleText("LôeòÎŰt's\nTyyyype Something €éÉÈǽ...");
+    this.startNewLesson();
   }
 
   focusTextInput() {
@@ -83,10 +92,30 @@ class TypewriterPage extends React.Component<Props, State> {
     }
   }
 
-  startNewLesson(sampleText: string) {
-    const { dispatchSetSampleText } = this.props;
+  startNewLesson() {
+    const { allChars, dispatchInitPractice } = this.props;
+    const wordLength = 4; // TODO use state value and wire it
+    const nonPracticeGlyphs = ['', ' ', '\n'];
+    const filteredChars = allChars.filter((char) => char.correct < 10);
+    if (Array.isArray(filteredChars) && filteredChars.length > wordLength) {
+      const practiceGlyphs = filteredChars.map((char) => char.glyph);
+      const filteredGlyphs = practiceGlyphs.filter(
+        (glyph) => !nonPracticeGlyphs.includes(glyph)
+      );
 
-    dispatchSetSampleText(sampleText);
+      const sampleText = generatePracticeText({
+        glyphs: filteredGlyphs,
+        parcticeLength: 5,
+        wordLength: 2,
+        uniqueWordCount: 2,
+      });
+      dispatchInitPractice(sampleText);
+
+      this.focusTextInputRef();
+    } else {
+      // explore new chars
+      console.info("can't start new practice");
+    }
   }
 
   handleKeydown(event) {
@@ -113,7 +142,12 @@ class TypewriterPage extends React.Component<Props, State> {
 
   render() {
     const { isModalOpen } = this.state;
-    const { intl, isUserInputFocused } = this.props;
+    const {
+      finishedPractices,
+      intl,
+      isUserInputFocused,
+      showSummary,
+    } = this.props;
     // TODO - this check shall only happen on focus change!
     if (isUserInputFocused) {
       document.addEventListener('keydown', this.handleKeydown, false);
@@ -129,11 +163,16 @@ class TypewriterPage extends React.Component<Props, State> {
           lang={intl.locale}
           title={intl.formatMessage({ id: 'typewriter.page.title' })}
         />
+
         <div className="TypewriterBoard">
           <SampleBoard
             ref={this.textAreaRef}
             focusTextInput={this.focusTextInputRef}
           />
+          {showSummary && <button onClick={this.startNewLesson}>new</button>}
+          <div className="finishedPractices">
+            № {finishedPractices + 1}, finished: {finishedPractices}
+          </div>
           <Keyboard className={'TypewriterBoard__keyboard'} />
         </div>
       </Layout>
@@ -147,6 +186,10 @@ const mapStateToProps = (state: ReduxState) => {
     isUserInputFocused: focusUserInput.isUserInputFocused,
     sampleText: typing.sampleText,
     userText: typing.userText,
+    allChars: typing.allChars,
+    finishedPractices: typing.finishedPractices,
+    isPracticing: typing.isPracticing,
+    showSummary: typing.showSummary,
   };
 };
 
@@ -154,11 +197,12 @@ const mapDispatchToProps = (
   dispatch: ThunkDispatch<
     ReduxState,
     undefined,
-    SetSampleTextAction | KeyboardAction
+    PracticeAction | KeyboardAction
   >
 ) => ({
-  dispatchSetSampleText: (sampleText: string) =>
-    dispatch(setSampleText(sampleText)),
+  dispatchInitPractice: (sampleText: string) =>
+    dispatch(initPractice(sampleText)),
+  dispatchSummarizePractice: () => dispatch(summarizePractice()),
   dispatchKeyDown: (event) => dispatch(keyDown(event)),
   dispatchKeyUp: (event) => dispatch(keyUp(event)),
 });

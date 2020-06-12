@@ -57,6 +57,7 @@ export type GlyphStatistics = {
   correct?: number;
   miswrite?: number;
   misread?: number;
+  discoveredAt?: number;
 };
 
 export type Layout =

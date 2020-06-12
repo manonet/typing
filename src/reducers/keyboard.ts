@@ -1,5 +1,5 @@
 import { Keyboard } from '../types';
-import { getOperationSystem } from '../utils';
+import { getOperationSystem, DEFAULT_SPEACER } from '../utils';
 
 const os = getOperationSystem();
 const osLabel = os.sign;
@@ -627,7 +627,14 @@ const keyboard: Keyboard = {
     'IntlYen',
     'Backspace',
   ],
-  allChars: [],
+  allChars: [
+    {
+      glyph: DEFAULT_SPEACER,
+      correct: 0,
+      miswrite: 0,
+      misread: 0,
+    },
+  ],
   layout: '101/104-ANSI',
   deadKeys: {},
 };
