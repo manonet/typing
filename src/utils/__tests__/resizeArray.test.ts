@@ -1,4 +1,4 @@
-import resizeArray from '../resizeArray';
+import { resizeArray } from '../resizeArray';
 
 describe('resizeArray', () => {
   it('return empty array if no parameters was provided', () => {

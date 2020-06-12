@@ -1,4 +1,4 @@
-import generatePracticeText from '../generatePracticeText';
+import { generatePracticeText } from '../generatePracticeText';
 
 describe('generatePracticeText', () => {
   global.Math.random = () => 0.5;

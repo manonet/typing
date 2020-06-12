@@ -1,4 +1,4 @@
-import generateRandomWordFromLetters from '../generateRandomWordFromLetters';
+import { generateRandomWordFromLetters } from '../generateRandomWordFromLetters';
 
 describe('generateRandomWordFromLetters', () => {
   global.Math.random = () => 0.5;

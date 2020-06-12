@@ -1,4 +1,4 @@
-export default function arrayContainsAnotherArray(
+export const arrayContainsAnotherArray = function (
   needle: string[],
   haystack: string[]
 ) {
@@ -11,4 +11,4 @@ export default function arrayContainsAnotherArray(
     }
   }
   return true;
-}
+};

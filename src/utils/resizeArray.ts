@@ -7,7 +7,7 @@ type Props = {
   index?: number;
 };
 
-const resizeArray = function ({
+export const resizeArray = function ({
   glyphs,
   length = 3,
   outArray = [],
@@ -43,5 +43,3 @@ const resizeArray = function ({
 
   return outArray;
 };
-
-export default resizeArray;

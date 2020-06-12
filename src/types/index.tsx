@@ -1,10 +1,14 @@
-import { OS } from '../utils';
-
 import { allEventKeyCodes } from './allEventKeyCodes';
 import { allISO } from './allISO';
 import { allLevels } from './allLevels';
 
-export { allISO, allLevels, OS };
+export { allISO, allLevels };
+
+export type OS = {
+  name: 'MacOS' | 'iOS' | 'Android' | 'Windows' | 'Linux' | 'UNIX' | 'Unknown';
+  os: 'osx' | 'android' | 'windows' | 'unknown';
+  sign: '&#xf17a;' | '⌘' | '&#xf17c;' | '&#xf179;' | '&#xf17b;' | 'OS';
+};
 
 export type Glyph = string;
 

@@ -1,5 +1,5 @@
-import resizeArray from './resizeArray';
-import shuffleArray from './shuffleArray';
+import { resizeArray } from './resizeArray';
+import { shuffleArray } from './shuffleArray';
 
 type Params = {
   length?: number;
@@ -10,7 +10,7 @@ export const DEFAULT_WORD_LENGTH = 3;
 
 // warning, it can contain repeating glyphs in the output
 // e.g.: input ['d', 'e', 'f'] output 'ddeefddfef'
-const generateRandomWordFromLetters = ({
+export const generateRandomWordFromLetters = ({
   length = DEFAULT_WORD_LENGTH,
   glyphs,
 }: Params) => {
@@ -21,5 +21,3 @@ const generateRandomWordFromLetters = ({
     })
   ).join('');
 };
-
-export default generateRandomWordFromLetters;

@@ -1,4 +1,4 @@
-import shuffleArray from '../shuffleArray';
+import { shuffleArray } from '../shuffleArray';
 
 describe('shuffleArray', () => {
   global.Math.random = () => 0.5;

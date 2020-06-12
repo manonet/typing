@@ -1,7 +1,6 @@
 import { FormattedMessage, useIntl } from 'gatsby-plugin-intl';
 import React from 'react';
 import { connect } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
 
 import Keyboard from '../components/Keyboard';
 import Layout from '../components/Layout';
@@ -11,7 +10,7 @@ import { State as ReduxState } from '../reducers';
 function StatisticsPage(props) {
   const intl = useIntl();
   const { locale } = intl;
-  const { allChars, keys, layout, layoutName } = props;
+  const { allChars, layout, layoutName } = props;
 
   allChars.sort((a, b) =>
     a.glyph.localeCompare(b.glyph, locale, {
@@ -62,7 +61,7 @@ function StatisticsPage(props) {
 }
 
 const mapStateToProps = (state: ReduxState) => {
-  const { focusUserInput, typing } = state;
+  const { typing } = state;
   return {
     layout: typing.layout,
     layoutName: typing.name,
@@ -71,17 +70,4 @@ const mapStateToProps = (state: ReduxState) => {
   };
 };
 
-const mapDispatchToProps = (
-  dispatch: ThunkDispatch<
-    ReduxState,
-    undefined,
-    SetSampleTextAction | KeyboardAction
-  >
-) => ({
-  dispatchSetSampleText: (sampleText: string) =>
-    dispatch(setSampleText(sampleText)),
-  dispatchKeyDown: (event) => dispatch(keyDown(event)),
-  dispatchKeyUp: (event) => dispatch(keyUp(event)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(StatisticsPage);
+export default connect(mapStateToProps, null)(StatisticsPage);

@@ -1,7 +1,7 @@
 import { Glyph } from '../types';
 
-import resizeArray from './resizeArray';
-import shuffleArray from './shuffleArray';
+import { resizeArray } from './resizeArray';
+import { shuffleArray } from './shuffleArray';
 
 type Params = {
   glyphs: Glyph[];
@@ -16,7 +16,7 @@ export const DEFAULT_UNIQUE_WORD_COUNT = 4;
 export const DEFAULT_WORD_LENGTH = 4;
 export const DEFAULT_SPEACER = ' ';
 
-const generatePracticeText = ({
+export const generatePracticeText = ({
   glyphs,
   parcticeLength = DEFAULT_PRACTICE_LENGTH,
   uniqueWordCount = DEFAULT_UNIQUE_WORD_COUNT,
@@ -76,5 +76,3 @@ const generatePracticeText = ({
   // or if the sequence is long enough, return it
   return sequence;
 };
-
-export default generatePracticeText;

@@ -1,14 +1,10 @@
 import Bowser from 'bowser';
 
-export type OS = {
-  name: 'MacOS' | 'iOS' | 'Android' | 'Windows' | 'Linux' | 'UNIX' | 'Unknown';
-  os: 'osx' | 'android' | 'windows' | 'unknown';
-  sign: '&#xf17a;' | '⌘' | '&#xf17c;' | '&#xf179;' | '&#xf17b;' | 'OS';
-};
+import { OS } from '../types';
 
-const getOperationSystem = function (): OS {
+export const getOperationSystem = function (): OS {
   const browser =
-    typeof window !== 'undefined' && Bowser.parse(window.navigator?.userAgent);
+    typeof window !== 'undefined' && Bowser.parse(window.navigator.userAgent);
   if (browser && browser.os && browser.os.name) {
     switch (browser.os.name) {
       case 'MacOS':
@@ -61,5 +57,3 @@ const getOperationSystem = function (): OS {
     sign: 'OS',
   };
 };
-
-export default getOperationSystem;
