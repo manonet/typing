@@ -12,6 +12,7 @@ import {
   PracticeAction,
   summarizePractice,
 } from '../actions';
+import { PracticeProgressBar } from '../components';
 import Keyboard from '../components/Keyboard';
 import Layout from '../components/Layout';
 import SampleBoard from '../components/SampleBoard';
@@ -159,6 +160,7 @@ class TypewriterPage extends React.Component<Props, State> {
 
     return (
       <Layout isBlurred={isModalOpen}>
+        <PracticeProgressBar />
         <SEO
           lang={intl.locale}
           title={intl.formatMessage({ id: 'typewriter.page.title' })}

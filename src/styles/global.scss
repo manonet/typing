@@ -19,12 +19,12 @@
 @import '../components/Layout/Header/Header.scss';
 @import '../components/Layout/Footer/Footer.scss';
 @import '../components/LanguageSwitcher/LanguageSwitcher.scss';
-
-@import '../pages/styleguide/colors.scss';
-@import '../pages/statistics.scss';
-@import '../pages/typewriter.scss';
-
+@import '../components/PracticeProgressBar/PracticeProgressBar.scss';
 @import '../components/Keyboard/Keyboard.scss';
 @import '../components/KeyboardKey/KeyboardKey.scss';
 @import '../components/SampleBoard/SampleBoard.scss';
 @import '../components/SampleBoardChar/SampleBoardChar.scss';
+
+@import '../pages/styleguide/colors.scss';
+@import '../pages/statistics.scss';
+@import '../pages/typewriter.scss';
