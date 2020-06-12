@@ -10,10 +10,5 @@
     "pricing.pricePerMonth": "{price} per Month",
     "pricing.discount.limited": "Now, only for short time",
     "pricing.benefit.1": "Write with ten fingers at once",
-    "pricing.callToAction": "Try it out now!",
-
-    "appStatistics.allKeyboards": "different keyboard layouts",
-    "appStatistics.allKeyboardLanguages": "available keyboard languages",
-    "appStatistics.allCharacters": "supported characters",
-    "appStatistics.allDeadKeys": "dead, hidden keys"
+    "pricing.callToAction": "Try it out now!"
 }
