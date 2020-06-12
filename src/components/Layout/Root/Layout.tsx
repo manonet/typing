@@ -47,8 +47,6 @@ function Layout(props: Props) {
     false
   );
 
-  console.info('Happy hacking! (۶ૈ ಠ益ಠ)۶ૈ=͟͟͞͞ ⌨');
-
   return (
     <StaticQuery
       query={graphql`
