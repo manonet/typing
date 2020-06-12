@@ -17,6 +17,8 @@ module.exports = {
     '!**/theme/**',
     '!**/types/**',
     '!**/types.ts',
+    // Exclude redux test helper
+    '!**/create-store-test-helper.ts',
   ],
 
   transform: {
