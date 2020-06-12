@@ -17,6 +17,8 @@ module.exports = {
     '!**/theme/**',
     '!**/types/**',
     '!**/types.ts',
+    // Exclude enzyme's react-intl test helper
+    '!**/intl-enzyme-test-helper.ts',
     // Exclude redux test helper
     '!**/create-store-test-helper.ts',
   ],
