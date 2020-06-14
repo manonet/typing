@@ -2,7 +2,7 @@ import { mount } from 'enzyme';
 import React from 'react';
 import { Provider } from 'react-redux';
 
-import setupStore from '../../utils/create-store-test-helper';
+import setupStore from '../../utils/createStoreTestHelper';
 
 import PracticeProgressBar from './PracticeProgressBar';
 
