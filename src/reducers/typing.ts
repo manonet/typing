@@ -10,33 +10,23 @@ import {
   SUMMARIZE_PRACTICE,
 } from '../actions/index';
 import {
-  DeadKeys,
   EventCode,
   GlyphStatistics,
   Key,
   Keyboard,
-  KeyMap,
+  KeyDown,
   Level,
   Levels,
+  Marks,
   OS,
-  PossibleKeyStates,
 } from '../types';
 import {
   functionalKeyCodes,
   navigationKeyCodes,
 } from '../types/allEventKeyCodes';
+import { markCharOnBoard } from '../utils';
 
 import keyboard from './keyboard';
-
-export type Marks = {
-  [key in string]: PossibleKeyStates;
-};
-
-export type KeyDown = {
-  code: EventCode;
-  dead?: boolean;
-  level: Level;
-};
 
 export type TypingState = {
   allChars: GlyphStatistics[];
@@ -96,91 +86,6 @@ const initialState: TypingState = {
   userText: '',
   writtenSign: '',
 };
-
-function markCharOnBoard({
-  deadKeys,
-  keyMap,
-  keys,
-  marks,
-  reset,
-}: {
-  keys: Key[];
-  keyMap: KeyMap;
-  marks: Marks;
-  deadKeys: DeadKeys;
-  reset: boolean;
-}) {
-  keys = keys.map((item, index) => {
-    let mark = {};
-    let modifierKeysToMark: PossibleKeyStates = {};
-
-    Object.keys(marks).map(function (key) {
-      const level = keyMap[key] && keyMap[key].level;
-      if (level && level !== 'to') {
-        const hand = keyMap[key].index && keys[keyMap[key].index].hand;
-        level.split('+').map((modifier) => {
-          // mark only the opposite side than the character
-          if (modifier === 'Shift') {
-            if (hand === 'left' && item.code === 'ShiftRight') {
-              modifierKeysToMark = marks[key];
-            }
-            if (hand === 'right' && item.code === 'ShiftLeft') {
-              modifierKeysToMark = marks[key];
-            }
-          }
-          if (modifier === 'Alt' && item.code === 'AltLeft') {
-            modifierKeysToMark = marks[key];
-          }
-          if (modifier === 'AltGraph' && item.code === 'AltRight') {
-            modifierKeysToMark = marks[key];
-          }
-        });
-      }
-
-      if (keyMap[key] && index === keyMap[key].index) {
-        mark = marks[key];
-        delete marks[key];
-      }
-    });
-
-    return {
-      ...item,
-      // reset all marks
-      ...(reset ? { succeedState: undefined } : {}),
-      ...(reset ? { marker: undefined } : {}),
-      ...mark,
-      ...modifierKeysToMark,
-    };
-  });
-
-  if (Object.keys(marks).length !== 0) {
-    Object.keys(marks).map(function (key) {
-      const deadKey = deadKeys[key];
-      const mark = marks[key];
-      if (deadKey) {
-        const glyph1 = deadKey[0].label;
-        const glyph2 = deadKey[1].label;
-
-        const mark2 =
-          mark.marker === 'toPressFirst'
-            ? { ...mark, marker: 'toPressSecond' }
-            : mark;
-        const deadMarks = {
-          [glyph1]: { ...mark },
-          [glyph2]: { ...mark2 },
-        };
-        keys = markCharOnBoard({
-          deadKeys,
-          keyMap,
-          keys,
-          marks: deadMarks,
-        });
-      }
-    });
-  }
-
-  return keys;
-}
 
 export default function typingReducer(
   state: TypingState = initialState,

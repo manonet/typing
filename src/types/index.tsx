@@ -52,6 +52,16 @@ export type KeyMap = {
   [key in Glyph]: { index: number; level: Level };
 };
 
+export type Marks = {
+  [key in string]: PossibleKeyStates;
+};
+
+export type KeyDown = {
+  code: EventCode;
+  dead?: boolean;
+  level: Level;
+};
+
 export type DeadKeys = {
   [key in Glyph]: [Glyph, Glyph];
 };
