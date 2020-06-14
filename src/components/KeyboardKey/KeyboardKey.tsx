@@ -100,6 +100,50 @@ const KeyboardKey = forwardRef((props: KeyboardKeyProps, ref) => {
     color = '#37efba';
   }
 
+  function renderBump() {
+    const bumpWidth = (keyWidth - keyPaddingX * 2) / 3;
+    const bumpHeight = (keyHeight - keyPaddingY * 2) / 15;
+
+    // bump on F key
+    if (iso === 'C04') {
+      return (
+        <rect
+          className="key__bump"
+          width={bumpWidth}
+          height={bumpHeight}
+          x={
+            cRowShift +
+            keyWidth * 4 +
+            (keyPaddingY + (keyWidth - keyPaddingX * 2) / 3)
+          }
+          y={keyHeight * 3 - (keyPaddingY + 2 * bumpHeight)}
+          rx={(keyHeight - keyPaddingY * 2) / 20}
+          ry={(keyHeight - keyPaddingY * 2) / 20}
+        />
+      );
+    }
+
+    // bump on J key
+    if (iso === 'C07') {
+      return (
+        <rect
+          className="key__bump"
+          width={bumpWidth}
+          height={bumpHeight}
+          x={
+            cRowShift +
+            keyWidth * 7 +
+            (keyPaddingY + (keyWidth - keyPaddingX * 2) / 3)
+          }
+          y={keyHeight * 3 - (keyPaddingY + 2 * bumpHeight)}
+          rx={(keyHeight - keyPaddingY * 2) / 20}
+          ry={(keyHeight - keyPaddingY * 2) / 20}
+        />
+      );
+    }
+    return null;
+  }
+
   if (iso === 'C13') {
     if (layout === '101/104-Variant' || layout === '103/106-KS') {
       return (
@@ -237,6 +281,7 @@ const KeyboardKey = forwardRef((props: KeyboardKeyProps, ref) => {
             />
           </g>
         )}
+        {(iso === 'C04' || iso === 'C07') && renderBump()}
       </g>
     </>
   );

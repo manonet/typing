@@ -25,6 +25,10 @@ $transition-timing-function: ease-out;
     }
   }
 
+  &__bump {
+    fill: $color-grey-300;
+  }
+
   &__keyBg {
     fill: $color-white;
     stroke: $color-white;
@@ -76,7 +80,8 @@ $transition-timing-function: ease-out;
       fill: $color-purple-100;
     }
 
-    .key__label {
+    .key__label,
+    .key__bump {
       fill: $color-white;
     }
   }
@@ -89,6 +94,10 @@ $transition-timing-function: ease-out;
     .key__label {
       fill: $color-primary-contrast;
     }
+
+    .key__bump {
+      fill: $color-white;
+    }
   }
 
   &--toPressSecond {
@@ -98,6 +107,10 @@ $transition-timing-function: ease-out;
 
     .key__label {
       fill: $color-primary-contrast;
+    }
+
+    .key__bump {
+      fill: $color-white;
     }
   }
 
@@ -124,6 +137,10 @@ $transition-timing-function: ease-out;
 
     .key__label {
       fill: $color-primary-contrast;
+    }
+
+    .key__bump {
+      fill: $color-white;
     }
 
     transform: translate(0, 1.5%);
