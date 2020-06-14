@@ -5,6 +5,7 @@
   color: $text-color-primary;
   flex-direction: column;
   background: $color-white;
+  @extend %font-family;
 }
 
 // nested divs

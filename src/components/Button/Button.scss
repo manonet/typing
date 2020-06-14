@@ -3,7 +3,6 @@
   display: inline-block;
   padding: 6px 16px;
   // overflow: hidden; cause issues with focus and active state box-shadows!
-  font-family: $font-family;
   font-size: $font-size-default;
   font-weight: 400;
   line-height: 20px; /* stylelint-disable-line property-blacklist */
@@ -21,6 +20,7 @@
   transition: transition(box-shadow), transition(background-color, 0.1s),
     transition(color, 0.1s);
   appearance: none;
+  @extend %font-family;
 
   &:hover,
   &.hover {

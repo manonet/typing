@@ -142,6 +142,12 @@ function SEO({ description, intl, keywords, lang, meta, title }: Props) {
         rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
       />
+      {langCode === 'fa' && (
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Cairo:300,400,500"
+        />
+      )}
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"

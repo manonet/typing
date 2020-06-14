@@ -13,10 +13,18 @@
   // line-height: $line-height-default;
 }
 
+%font-family {
+  font-family: $font-family;
+
+  /* stylelint-disable-next-line selector-no-qualifying-type */
+  html[lang='fa'] & {
+    font-family: $font-family-fa;
+  }
+}
+
 %typography {
   @extend %typography-size-default;
-
-  font-family: $font-family;
+  @extend %font-family;
 
   font-size: $font-size-default;
   font-weight: 400;
