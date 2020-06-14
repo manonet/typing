@@ -20,7 +20,7 @@
 
   font-size: $font-size-default;
   font-weight: 400;
-  line-height: 1.43;
+  line-height: 1.43; /* stylelint-disable-line property-blacklist */
   color: $text-color-primary;
   // important for MAC
   -webkit-font-smoothing: antialiased;

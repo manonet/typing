@@ -6,7 +6,7 @@
   font-family: $font-family;
   font-size: $font-size-default;
   font-weight: 400;
-  line-height: 20px;
+  line-height: 20px; /* stylelint-disable-line property-blacklist */
   color: $color-black;
   text-decoration: none;
   text-overflow: ellipsis;

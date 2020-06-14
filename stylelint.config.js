@@ -219,6 +219,8 @@ module.exports = {
     'declaration-no-important': true,
     'declaration-property-value-blacklist': {
       '/^transition/': ['/all/'],
+      '/text-align/': ['left', 'right'],
+      '/text-decoration/': ['/underline/'], // https://rtlstyling.com/posts/rtl-styling/#2.-underlined-links
       '/^background/': ['http:', 'https:'],
       '/^border/': ['none'],
       '/.+/': ['initial'],
@@ -250,6 +252,27 @@ module.exports = {
     'no-missing-end-of-source-newline': true,
     'number-no-trailing-zeros': true,
     'prettier/prettier': true,
+    'property-blacklist': [
+      'letter-spacing', // https://rtlstyling.com/posts/rtl-styling/#1.-letter-spacing
+      'line-height', // https://rtlstyling.com/posts/rtl-styling/#1.-line-height
+      'word-break', // https://rtlstyling.com/posts/rtl-styling/#3.-line-break
+      'margin-left', // https://rtlstyling.com/posts/rtl-styling/#logical-properties-cheat-sheet
+      'margin-right',
+      'padding-left',
+      'padding-right',
+      'border-top-right-radius',
+      'border-top-left-radius',
+      'border-bottom-right-radius',
+      'border-bottom-left-radius',
+      'border-left',
+      'border-left-color',
+      'border-left-width',
+      'border-left-style',
+      'border-right',
+      'border-right-color',
+      'border-right-width',
+      'border-right-style',
+    ],
     'property-case': 'lower',
     'property-no-vendor-prefix': true,
     'property-no-unknown': [true, { ignoreProperties: ['composes'] }],

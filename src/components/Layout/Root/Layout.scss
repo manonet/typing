@@ -38,8 +38,8 @@
 
 .content {
   display: flex;
-  padding-right: calc(#{$spacer} * 3);
-  padding-left: calc(#{$spacer} * 3);
+  padding-inline-end: calc(#{$spacer} * 3);
+  padding-inline-start: calc(#{$spacer} * 3);
   flex-direction: column;
   flex: 1 1 auto;
 }

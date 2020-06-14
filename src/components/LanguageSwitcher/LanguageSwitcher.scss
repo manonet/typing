@@ -8,7 +8,7 @@
 
   &__item {
     display: block;
-    line-height: $line-height-large;
+    line-height: $line-height-large; /* stylelint-disable-line property-blacklist */
     color: $color-primary-main;
     cursor: pointer;
 

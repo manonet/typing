@@ -15,7 +15,7 @@
 
   &_title {
     font-size: 32px;
-    line-height: 32px;
+    line-height: 32px; /* stylelint-disable-line property-blacklist */
   }
 
   &__cardPrice {
@@ -29,7 +29,7 @@
     font-family: $font-family-alternative;
     font-size: 20px;
     font-weight: 900;
-    line-height: 20px;
+    line-height: 20px; /* stylelint-disable-line property-blacklist */
   }
 
   &___discount {
@@ -40,7 +40,7 @@
     font-family: $font-family-alternative;
     font-size: 28px;
     font-weight: 900;
-    line-height: 28px;
+    line-height: 28px; /* stylelint-disable-line property-blacklist */
     color: $color-secondary-main;
   }
 
