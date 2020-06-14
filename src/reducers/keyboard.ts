@@ -553,6 +553,8 @@ const keyboard: Keyboard = {
   ],
   os,
   displayedLevel: 'to',
+
+  // @ts-ignore
   keyMap: { ' ': { index: 6, level: 'to' }, '\n': { index: 41, level: 'to' } },
   codeMap: [
     'ControlLeft',

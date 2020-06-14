@@ -96,13 +96,16 @@ export default function typingReducer(
   function changeBackslashPosition() {
     // Change the physical position of the Backslash key
     const backslashKey = state.keys.find((key) => key.code === 'Backslash');
+    // @ts-ignore
     backslashKey.iso = 'C12';
   }
 
   switch (action.type) {
     case INIT_PRACTICE:
       return Object.assign({}, state, {
+        // @ts-ignore
         sampleText: action.sampleText,
+        // @ts-ignore
         practiceLength: action.sampleText.length,
         userText: '',
         cursorAt: 0,
@@ -124,6 +127,7 @@ export default function typingReducer(
       let isPracticing = state.isPracticing;
 
       // TODO desc
+      // @ts-ignore
       const userText = action.userText;
       const sampleText = state.sampleText;
       const cursorAt = userText.length;
@@ -136,28 +140,37 @@ export default function typingReducer(
       // TODO - add props to keys instead and make this check in Keyboard component for performance
       if (!(layout === '106/109-JIS' || layout === '103/106-KS')) {
         if (!(layout === '104/107-ABNT')) {
-          if (currentKeyDown?.code === 'IntlYen') {
+          // @ts-ignore
+          if (currentKeyDown.code === 'IntlYen') {
             layout = '101/104-Variant';
           }
-          if (currentKeyDown?.code === 'IntlBackslash') {
+          // @ts-ignore
+          if (currentKeyDown.code === 'IntlBackslash') {
             layout = '102/105-ISO';
             changeBackslashPosition();
           }
         }
         if (
-          currentKeyDown?.code === 'Lang2' ||
-          currentKeyDown?.code === 'Lang1'
+          // @ts-ignore
+          currentKeyDown.code === 'Lang2' ||
+          // @ts-ignore
+          currentKeyDown.code === 'Lang1'
         ) {
           layout = '103/106-KS';
         }
-        if (currentKeyDown?.code === 'IntlRo') {
+
+        // @ts-ignore
+        if (currentKeyDown.code === 'IntlRo') {
           layout = '104/107-ABNT';
           changeBackslashPosition();
         }
         if (
-          currentKeyDown?.code === 'NonConvert' ||
-          currentKeyDown?.code === 'Convert' ||
-          currentKeyDown?.code === 'KanaMode'
+          // @ts-ignore
+          currentKeyDown.code === 'NonConvert' ||
+          // @ts-ignore
+          currentKeyDown.code === 'Convert' ||
+          // @ts-ignore
+          currentKeyDown.code === 'KanaMode'
         ) {
           layout = '106/109-JIS';
           changeBackslashPosition();
@@ -179,6 +192,7 @@ export default function typingReducer(
             discoveredAt: Date.now(),
           });
         } else {
+          // @ts-ignore
           allChars[allCharsWrittenIndex].correct += 1;
         }
       } else {
@@ -192,6 +206,7 @@ export default function typingReducer(
             discoveredAt: Date.now(),
           });
         } else {
+          // @ts-ignore
           allChars[allCharsWrittenIndex].miswrite += 1;
         }
         const allCharsToWriteIndex = allChars.findIndex(
@@ -207,6 +222,7 @@ export default function typingReducer(
             discoveredAt: Date.now(),
           });
         } else {
+          // @ts-ignore
           allChars[allCharsToWriteIndex].misread += 1;
         }
       }
@@ -237,14 +253,21 @@ export default function typingReducer(
       let keys = markCharOnBoard({
         keys: [...state.keys],
         reset: true,
+        // @ts-ignore
         keyMap,
         marks,
         deadKeys,
       });
 
-      if (previousKeyDown?.dead) {
-        if (currentKeyDown && previousKeyDown.code === currentKeyDown.code) {
+      if (previousKeyDown && previousKeyDown.dead) {
+        if (
+          currentKeyDown &&
+          previousKeyDown &&
+          previousKeyDown.code === currentKeyDown.code
+        ) {
           // the dead key was pressed at least twice. It is highly possible that the iput is the right character as a key label. So update the keys, save it to corresponding level. ( It can be e.g.:´`¸˛)
+
+          // @ts-ignore
           const { code, level } = previousKeyDown;
           keys = keys.map((item, index) => {
             if (item.code !== code) {
@@ -259,7 +282,9 @@ export default function typingReducer(
 
             if (!keyMap[writtenSign]) {
               keyMap[writtenSign] = {
+                // @ts-ignore
                 index,
+                // @ts-ignore
                 level,
               };
             }
@@ -271,22 +296,29 @@ export default function typingReducer(
         } else {
           // Some key was pressed after a dead key. If it produces a different input than normal, save it into deadKeys. TODO - how to determine what is 'normal'?
           const previousKey = keys.find(
+            // @ts-ignore
             (item) => item.code === previousKeyDown.code
           );
           const previousChar =
             previousKey &&
-            previousKey.keyTops?.find(
+            // @ts-ignore
+            previousKey.keyTops.find(
+              // @ts-ignore
               (top) => top.level === previousKeyDown.level
             );
           const currentKey = keys.find(
-            (item) => item.code === currentKeyDown?.code
+            // @ts-ignore
+            (item) => item.code === currentKeyDown.code
           );
           const currentChar =
             currentKey &&
-            currentKey.keyTops?.find(
-              (top) => top.level === currentKeyDown?.level
+            // @ts-ignore
+            currentKey.keyTops.find(
+              // @ts-ignore
+              (top) => top.level === currentKeyDown.level
             );
           if (previousChar && currentChar) {
+            // @ts-ignore
             deadKeys[writtenSign] = [previousChar, currentChar];
           }
         }
@@ -306,6 +338,7 @@ export default function typingReducer(
         isPracticing,
         cursorAt,
         writtenSign,
+        // @ts-ignore
         nextSign,
         signToWrite,
         charsSucceed,
@@ -319,6 +352,7 @@ export default function typingReducer(
     case KEY_DOWN: {
       // if 'DEAD' - second input does not count as label, but dead key combination
 
+      // @ts-ignore
       const event = action.event;
       const { code, key, marker } = event;
 
@@ -358,6 +392,7 @@ export default function typingReducer(
         // ...(event.getModifierState('Control') ? ['Control'] : []),
         ...(event.getModifierState('Shift') ? ['Shift'] : []),
       ];
+      // @ts-ignore
       const level: Level = modifiers.length ? modifiers.join('+') : 'to';
 
       const modifiersDown = [
@@ -368,6 +403,7 @@ export default function typingReducer(
         ...(newKeysDown.includes('ShiftLeft') ? ['Shift'] : []),
         ...(newKeysDown.includes('ShiftRight') ? ['Shift'] : []),
       ];
+      // @ts-ignore
       const displayedLevel: Level = modifiersDown.length
         ? modifiersDown.join('+')
         : 'to';
@@ -390,7 +426,9 @@ export default function typingReducer(
         }
 
         // Do not assign glyph to the key if CapsLock is on or a dead key was pressed before
-        if (!(isCapsLockOn || state.currentKeyDown?.dead)) {
+        if (
+          !(isCapsLockOn || (state.currentKeyDown && state.currentKeyDown.dead))
+        ) {
           let keyTops = item.keyTops ? [...item.keyTops] : [];
 
           const i = keyTops.findIndex((top) => top.level === level);
@@ -405,7 +443,9 @@ export default function typingReducer(
 
           if (!keyMap[key]) {
             keyMap[key] = {
+              // @ts-ignore
               index,
+              // @ts-ignore
               level,
             };
           }
@@ -444,6 +484,7 @@ export default function typingReducer(
     }
 
     case KEY_UP: {
+      // @ts-ignore
       const event = action.event;
 
       const { code, key } = event;
@@ -468,6 +509,7 @@ export default function typingReducer(
         ...(newKeysDown.includes('ShiftLeft') ? ['Shift'] : []),
         ...(newKeysDown.includes('ShiftRight') ? ['Shift'] : []),
       ];
+      // @ts-ignore
       const displayedLevel: Level = modifiersDown.length
         ? modifiersDown.join('+')
         : 'to';
