@@ -1,0 +1,50 @@
+.ReactModalPortal {
+  //
+}
+
+.ReactModal__Overlay {
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.8) !important;
+  transition: background-color 0.5s ease;
+
+  &--after-open {
+    //
+  }
+}
+
+.ReactModal__Content {
+  &--after-open {
+    //
+  }
+}
+
+.practiceSummary {
+  max-width: 640px;
+  background: $color-white;
+
+  // background: radial-gradient(
+  //   circle,
+  //   $color-purple-700 0%,
+  //   $color-purple-800 100%
+  // );
+
+  &__content {
+    margin-inline-start: calc(#{$spacer} * 2);
+    margin-inline-end: calc(#{$spacer} * 2);
+    // background: radial-gradient(
+    //   circle,
+    //   $color-purple-600 0%,
+    //   $color-purple-700 100%
+    // );
+  }
+
+  &__footer {
+    display: flex;
+  }
+
+  &__footerButtons {
+    padding: calc(#{$spacer} * 2);
+    margin-inline-start: auto;
+  }
+}

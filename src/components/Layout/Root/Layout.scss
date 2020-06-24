@@ -6,6 +6,10 @@
   flex-direction: column;
   background: $color-white;
   @extend %font-family;
+
+  &.isModalOpen {
+    overflow: hidden;
+  }
 }
 
 // nested divs
@@ -31,10 +35,10 @@
     text-align: center;
     background: $color-red-500;
   }
-}
 
-.isblurred {
-  filter: blur(6px);
+  &.isModalOpen {
+    filter: blur(6px);
+  }
 }
 
 .content {

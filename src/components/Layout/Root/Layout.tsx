@@ -25,7 +25,7 @@ import 'typeface-roboto';
 
 type Props = {
   children: ReactNodeArray;
-  isBlurred: boolean;
+  isModalOpen: boolean;
 } & InjectedIntlProps;
 
 function Layout(props: Props) {
@@ -33,7 +33,7 @@ function Layout(props: Props) {
     children,
     dispatchUserIsTouching,
     intl,
-    isBlurred,
+    isModalOpen,
     isTouchDevice,
   } = props;
 
@@ -64,7 +64,7 @@ function Layout(props: Props) {
         <>
           <div
             className={classNames('layout', {
-              isBlurred: isBlurred,
+              isModalOpen: isModalOpen,
             })}
           >
             {isTouchDevice && (

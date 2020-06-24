@@ -15,6 +15,7 @@ import {
 import { PracticeProgressBar } from '../components';
 import Keyboard from '../components/Keyboard';
 import Layout from '../components/Layout';
+import PracticeSummaryModal from '../components/PracticeSummaryModal';
 import SampleBoard from '../components/SampleBoard';
 import SEO from '../components/seo';
 import { State as ReduxState } from '../reducers';
@@ -24,8 +25,8 @@ import { generatePracticeText } from '../utils';
 // TODO lift ErrorModal, make it reusable
 // TODO enable/disable backspace
 // TODO differentiate same character on different levels: 'e', 'E', '€' ...
-// TODO fix stucked last hint on new lesson
-// TODO initial hint on the very first lesson
+// TODO fix stucked last hint on new Practice
+// TODO initial hint on the very first Practice
 
 // TODO language detection if necessary -  navigator.language.substring(0, 2) https://medium.com/ableneo/internationalize-react-apps-done-right-using-react-intl-library-82978dbe175e
 
@@ -33,7 +34,7 @@ import { generatePracticeText } from '../utils';
 // TODO Recognise new layouts, layout changes - handle characterNotFound
 // TODO statistic may only belong to a specific keyboard layout. Create new statistic for each and every layouts
 // TODO Create keyboardDiscoveryProgressBar component, which dynamically display the known percentage. Green can be for fully discovered keys, yellow for the partial ones, like new levels or dead keys. Promote it as a feature, not as weakness :)
-// TODO Lesson can be started, because key.code, so position of keys on the mechanical board is known, e.g.: KeyF and KeyJ.
+// TODO Practice can be started, because key.code, so position of keys on the mechanical board is known, e.g.: KeyF and KeyJ.
 // TODO
 // TODO
 
@@ -52,6 +53,8 @@ type State = {
   isModalOpen: boolean;
 };
 
+export const MODAL_CLOSE_TIMEOUT = 500;
+
 class TypewriterPage extends React.Component<Props, State> {
   public textAreaRef: React.RefObject<HTMLTextAreaElement>;
 
@@ -66,7 +69,9 @@ class TypewriterPage extends React.Component<Props, State> {
     this.handleModalClose = this.handleModalClose.bind(this);
     this.handleKeydown = this.handleKeydown.bind(this);
     this.handleKeyup = this.handleKeyup.bind(this);
-    this.startNewLesson = this.startNewLesson.bind(this);
+    this.startNewPractice = this.startNewPractice.bind(this);
+    this.repeatPractice = this.repeatPractice.bind(this);
+    this.cancelPractice = this.cancelPractice.bind(this);
   }
 
   focusTextInputRef = this.focusTextInput.bind(this);
@@ -75,13 +80,14 @@ class TypewriterPage extends React.Component<Props, State> {
     if (!nextProps.isPracticing) {
       // practice ended
       nextProps.dispatchSummarizePractice();
+      return { isModalOpen: true };
     }
     return null;
   }
 
   componentDidMount() {
     this.focusTextInputRef();
-    this.startNewLesson();
+    this.startNewPractice();
   }
 
   focusTextInput() {
@@ -93,7 +99,7 @@ class TypewriterPage extends React.Component<Props, State> {
     }
   }
 
-  startNewLesson() {
+  startNewPractice() {
     const { allChars, dispatchInitPractice } = this.props;
     const wordLength = 4; // TODO use state value and wire it
     const nonPracticeGlyphs = ['', ' ', '\n'];
@@ -111,12 +117,23 @@ class TypewriterPage extends React.Component<Props, State> {
         uniqueWordCount: 2,
       });
       dispatchInitPractice(sampleText);
-
+      this.handleModalClose();
       this.focusTextInputRef();
     } else {
       // explore new chars
       console.info("can't start new practice");
     }
+  }
+
+  repeatPractice() {
+    const { dispatchInitPractice, sampleText } = this.props;
+    dispatchInitPractice(sampleText);
+    this.handleModalClose();
+    this.focusTextInputRef();
+  }
+
+  cancelPractice() {
+    this.handleModalClose();
   }
 
   handleKeydown(event) {
@@ -159,11 +176,12 @@ class TypewriterPage extends React.Component<Props, State> {
     }
 
     return (
-      <Layout isBlurred={isModalOpen}>
+      <Layout isModalOpen={isModalOpen}>
         <PracticeProgressBar />
         <SEO
           lang={intl.locale}
           title={intl.formatMessage({ id: 'typewriter.page.title' })}
+          isModalOpen={isModalOpen}
         />
 
         <div className="TypewriterBoard">
@@ -171,12 +189,22 @@ class TypewriterPage extends React.Component<Props, State> {
             ref={this.textAreaRef}
             focusTextInput={this.focusTextInputRef}
           />
-          {showSummary && <button onClick={this.startNewLesson}>new</button>}
           <div className="finishedPractices">
             № {finishedPractices + 1}, finished: {finishedPractices}
           </div>
           <Keyboard className={'TypewriterBoard__keyboard'} />
         </div>
+        <PracticeSummaryModal
+          title="Summary"
+          isOpen={isModalOpen}
+          closeTimeoutMS={MODAL_CLOSE_TIMEOUT}
+          startNewPractice={this.startNewPractice}
+          cancelPractice={this.cancelPractice}
+          repeatPractice={this.repeatPractice}
+          correctChars={120}
+          mistakenChars={2}
+          elapsedTime={238}
+        ></PracticeSummaryModal>
       </Layout>
     );
   }

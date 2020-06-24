@@ -7,6 +7,7 @@
   "email": "info@manonet.org",
   "dependencies": {
     "@tippyjs/react": "^4.0.2",
+    "@types/react-modal": "^3.10.5",
     "bowser": "^2.8.1",
     "classnames": "^2.2.6",
     "gatsby": "^2.21.33",
@@ -28,6 +29,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.0.0",
+    "react-modal": "^3.11.2",
     "react-redux": "^7.1.3",
     "redux": "^4.0.5",
     "redux-persist": "^6.0.0",

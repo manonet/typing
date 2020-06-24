@@ -5,6 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
+import classNames from 'classnames';
 import { useStaticQuery, graphql } from 'gatsby';
 import { injectIntl } from 'gatsby-plugin-intl';
 import PropTypes from 'prop-types';
@@ -20,6 +21,7 @@ type Props = {
   meta: [];
   keywords: string;
   lang: string;
+  isModalOpen?: boolean;
 };
 
 const RtlLangs = [
@@ -46,7 +48,15 @@ const RtlLangs = [
   'yi' /* 'ייִדיש', Yiddish */,
 ];
 
-function SEO({ description, intl, keywords, lang, meta, title }: Props) {
+function SEO({
+  description,
+  intl,
+  isModalOpen,
+  keywords,
+  lang,
+  meta,
+  title,
+}: Props) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -93,7 +103,7 @@ function SEO({ description, intl, keywords, lang, meta, title }: Props) {
         dir,
       }}
       bodyAttributes={{
-        class: 'body',
+        class: classNames('body ', { isModalOpen: isModalOpen }),
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.name} - ${intl.formatMessage({
