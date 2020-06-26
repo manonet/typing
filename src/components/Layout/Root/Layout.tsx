@@ -7,17 +7,11 @@
 
 import classNames from 'classnames';
 import { StaticQuery, graphql } from 'gatsby';
-import {
-  injectIntl,
-  // @ts-ignore
-  InjectedIntlProps,
-  FormattedMessage,
-} from 'gatsby-plugin-intl';
+import { useIntl, FormattedMessage } from 'gatsby-plugin-intl';
 import React, { ReactNodeArray } from 'react';
-import { connect } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { userIsTouching, UserIsTouchingAction } from '../../../actions';
+import { userIsTouching } from '../../../actions';
 import { State as ReduxState } from '../../../reducers';
 import Footer from '../Footer';
 import Header from '../Header';
@@ -26,22 +20,23 @@ import 'typeface-roboto';
 type Props = {
   children: ReactNodeArray;
   isModalOpen: boolean;
-} & InjectedIntlProps;
+};
 
-function Layout(props: Props) {
-  const {
-    children,
-    dispatchUserIsTouching,
-    intl,
-    isModalOpen,
-    isTouchDevice,
-  } = props;
+export default function Layout(props: Props) {
+  const { children, isModalOpen } = props;
+
+  const intl = useIntl();
+  const dispatch = useDispatch();
+
+  const { isTouchDevice } = useSelector(
+    (state: ReduxState) => state.userIsTouching
+  );
 
   // detect touch event to display mobile warning
   window.addEventListener(
     'touchstart',
     function onFirstTouch() {
-      dispatchUserIsTouching(true);
+      dispatch(userIsTouching(true));
       window.removeEventListener('touchstart', onFirstTouch, false);
     },
     false
@@ -87,18 +82,3 @@ function Layout(props: Props) {
     />
   );
 }
-const mapStateToProps = (state: ReduxState) => {
-  const { userIsTouching } = state;
-  return {
-    isTouchDevice: userIsTouching.isTouchDevice,
-  };
-};
-
-const mapDispatchToProps = (
-  dispatch: ThunkDispatch<ReduxState, undefined, UserIsTouchingAction>
-) => ({
-  dispatchUserIsTouching: (isTouchDevice: boolean) =>
-    dispatch(userIsTouching(isTouchDevice)),
-});
-
-export default injectIntl(connect(mapStateToProps, mapDispatchToProps)(Layout));

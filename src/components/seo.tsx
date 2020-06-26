@@ -7,15 +7,11 @@
 
 import classNames from 'classnames';
 import { useStaticQuery, graphql } from 'gatsby';
-import { injectIntl } from 'gatsby-plugin-intl';
-import PropTypes from 'prop-types';
+import { useIntl } from 'gatsby-plugin-intl';
 import React from 'react';
 import { Helmet } from 'react-helmet';
-// @ts-ignore
-import { IntlShape } from 'react-intl';
 
 type Props = {
-  intl: IntlShape;
   description: string | null;
   title?: string;
   meta: [];
@@ -48,13 +44,12 @@ const RtlLangs = [
   'yi' /* 'ייִדיש', Yiddish */,
 ];
 
-function SEO({
+export default function SEO({
   description,
-  intl,
   isModalOpen,
   keywords,
   lang,
-  meta,
+  meta = [],
   title,
 }: Props) {
   const { site } = useStaticQuery(
@@ -69,6 +64,8 @@ function SEO({
       }
     `
   );
+
+  const intl = useIntl();
 
   const metaDescription =
     description || intl.formatMessage({ id: 'site.description' });
@@ -187,19 +184,3 @@ function SEO({
     </Helmet>
   );
 }
-
-SEO.defaultProps = {
-  lang: 'en',
-  meta: [],
-  keywords: '',
-};
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.array,
-  keywords: PropTypes.string,
-  title: PropTypes.string.isRequired,
-};
-
-export default injectIntl(SEO);

@@ -1,105 +1,93 @@
 import classNames from 'classnames';
-import React from 'react';
-import { connect } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import {
-  focusUserInput,
-  FocusUserInputAction,
-  inputChange,
-  InputChangeAction,
-} from '../../actions';
+import { focusUserInput, inputChange, keyDown, keyUp } from '../../actions';
 import { State as ReduxState } from '../../reducers';
 import SampleBoardChar from '../SampleBoardChar';
 
-type Props = {
-  className?: string;
-  focusTextInput: () => void;
-  cursorAt: number;
-  sampleText: string;
-  userText: string;
-  isUserInputFocused: boolean;
-  dispatchInputChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  dispatchUserInputFocused: (isUserInputFocused: boolean) => {};
-};
+function focusTextInput(
+  textAreaRef: React.RefObject<HTMLTextAreaElement>,
+  caretPosition: number
+) {
+  const userInput = textAreaRef.current;
+  if (userInput) {
+    userInput.focus();
+    userInput.selectionStart = userInput.selectionEnd = caretPosition; // set caret position to the end of the user text
+  }
+}
 
-const SampleBoard = React.forwardRef(
-  (props: Props, ref?: React.Ref<HTMLTextAreaElement>) => {
-    const {
-      className,
-      cursorAt,
-      dispatchInputChange,
-      dispatchUserInputFocused,
-      focusTextInput,
-      isUserInputFocused,
-      sampleText,
-      userText,
-    } = props;
+export default function SampleBoard() {
+  const textAreaRef: React.RefObject<HTMLTextAreaElement> = React.createRef();
 
-    const sampleArray = sampleText.split('');
+  const dispatch = useDispatch();
 
-    return (
-      <div
-        className={classNames('sampleBoard', {
-          ['sampleBoard--focus']: isUserInputFocused,
-        })}
-        onClick={focusTextInput}
-        tabIndex={0}
-        onKeyDown={undefined}
-        role="button"
-      >
+  const isUserInputFocused = useSelector(
+    (state: ReduxState) => state.focusUserInput.isUserInputFocused
+  );
+
+  const { cursorAt, sampleText, userText } = useSelector(
+    (state: ReduxState) => state.typing
+  );
+
+  const sampleArray = sampleText.split('');
+
+  function handleKeydown(event: KeyboardEvent) {
+    dispatch(keyDown(event));
+  }
+
+  function handleKeyup(event: KeyboardEvent) {
+    dispatch(keyUp(event));
+  }
+
+  useEffect(() => {
+    focusTextInput(textAreaRef, userText?.length || 0);
+  }, []);
+
+  useEffect(() => {
+    if (isUserInputFocused) {
+      document.addEventListener('keydown', handleKeydown, true);
+      document.addEventListener('keyup', handleKeyup, true);
+    }
+    return () => {
+      document.removeEventListener('keydown', handleKeydown, true);
+      document.removeEventListener('keyup', handleKeyup, true);
+    };
+  }, [isUserInputFocused]);
+
+  return (
+    <div
+      className={classNames('sampleBoard', {
+        ['sampleBoard--focus']: isUserInputFocused,
+      })}
+      onClick={() => focusTextInput(textAreaRef, userText?.length || 0)}
+      tabIndex={0}
+      onKeyDown={undefined}
+      role="button"
+    >
+      <div className={'sampleBoard__wrapper'}>
+        <kbd className={classNames('sampleBoard__sample')}>
+          {sampleArray.map((char, index) => (
+            <SampleBoardChar
+              key={index}
+              index={index}
+              cursorAt={cursorAt}
+              userText={userText}
+              char={char}
+            />
+          ))}
+        </kbd>
         <textarea
-          ref={ref}
+          ref={textAreaRef}
           className={'sampleBoard__userInput'}
           value={userText}
           onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
-            dispatchInputChange(event)
+            dispatch(inputChange(event.target.value))
           }
-          onFocus={() => dispatchUserInputFocused(true)}
-          onBlur={() => dispatchUserInputFocused(false)}
+          onFocus={() => dispatch(focusUserInput(true))}
+          onBlur={() => dispatch(focusUserInput(false))}
         />
-
-        <div className={'sampleBoard__wrapper'}>
-          <kbd className={classNames('sampleBoard__sample', className)}>
-            {sampleArray.map((char, index) => (
-              <SampleBoardChar
-                key={index}
-                index={index}
-                cursorAt={cursorAt}
-                userText={userText}
-                char={char}
-              />
-            ))}
-          </kbd>
-        </div>
       </div>
-    );
-  }
-);
-
-const mapStateToProps = (state: ReduxState) => {
-  const { focusUserInput, typing } = state;
-  return {
-    isUserInputFocused: focusUserInput.isUserInputFocused,
-    sampleText: typing.sampleText,
-    userText: typing.userText,
-    cursorAt: typing.cursorAt,
-  };
-};
-
-const mapDispatchToProps = (
-  dispatch: ThunkDispatch<
-    ReduxState,
-    undefined,
-    FocusUserInputAction | InputChangeAction
-  >
-) => ({
-  dispatchUserInputFocused: (isUserInputFocused: boolean) =>
-    dispatch(focusUserInput(isUserInputFocused)),
-  dispatchInputChange: (event: React.ChangeEvent<HTMLTextAreaElement>) =>
-    dispatch(inputChange(event.target.value)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps, null, {
-  forwardRef: true,
-})(SampleBoard);
+    </div>
+  );
+}

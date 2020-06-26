@@ -2,26 +2,29 @@ import Tippy, { useSingleton } from '@tippyjs/react';
 import classNames from 'classnames';
 import { FormattedMessage, useIntl } from 'gatsby-plugin-intl';
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { State as ReduxState } from '../../reducers';
 import variables from '../../theme/variables';
-import { Keyboard as KeyboardProps, allLevels } from '../../types';
 import KeyboardKey from '../KeyboardKey';
 
 import getEnterPath from './getEnterPath';
 
-type Props = KeyboardProps & {
+type Props = {
   className?: string;
 };
 
-function Keyboard(props: Props) {
-  const { className, displayedLevel, keys, layout, os } = props;
-  const enterPath = getEnterPath({ layout });
+export default function Keyboard(props: Props) {
+  const { className } = props;
+  const { displayedLevel, keys, layout, os } = useSelector(
+    (state: ReduxState) => state.typing
+  );
 
   if (!(Array.isArray(keys) && keys.length)) {
     return null;
   }
+
+  const enterPath = getEnterPath({ layout });
 
   const intl = useIntl();
 
@@ -327,15 +330,3 @@ function Keyboard(props: Props) {
     </div>
   );
 }
-
-const mapStateToProps = (state: ReduxState) => {
-  const { typing } = state;
-  return {
-    displayedLevel: typing.displayedLevel,
-    keys: typing.keys,
-    os: typing.os,
-    layout: typing.layout,
-  };
-};
-
-export default connect(mapStateToProps, null)(Keyboard);

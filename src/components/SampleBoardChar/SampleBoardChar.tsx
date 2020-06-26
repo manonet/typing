@@ -9,7 +9,7 @@ type Props = {
   userText: string;
 };
 
-function SampleBoardChar(props: Props) {
+export default function SampleBoardChar(props: Props) {
   const { char, className, cursorAt, index, userText } = props;
 
   // classes
@@ -50,5 +50,3 @@ function SampleBoardChar(props: Props) {
     </>
   );
 }
-
-export default SampleBoardChar;
