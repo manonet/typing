@@ -13,13 +13,14 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { userIsTouching } from '../../../actions';
 import { State as ReduxState } from '../../../reducers';
+import CookieConsent from '../../CookieConsent';
 import Footer from '../Footer';
 import Header from '../Header';
 import 'typeface-roboto';
 
 type Props = {
   children: ReactNodeArray;
-  isModalOpen: boolean;
+  isModalOpen?: boolean;
 };
 
 export default function Layout(props: Props) {
@@ -76,6 +77,7 @@ export default function Layout(props: Props) {
               version={data.site.siteMetadata.version}
               email={data.site.siteMetadata.email}
             ></Footer>
+            <CookieConsent />
           </div>
         </>
       )}
