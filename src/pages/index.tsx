@@ -1,19 +1,13 @@
 import { Link } from 'gatsby';
-import { injectIntl, FormattedMessage } from 'gatsby-plugin-intl';
+import { FormattedMessage } from 'gatsby-plugin-intl';
 import React from 'react';
-// @ts-ignore
-import { IntlShape } from 'react-intl';
 
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
 
-type Props = {
-  intl: IntlShape;
-};
-
-const IndexPage = ({ intl }: Props) => (
+const IndexPage = () => (
   <Layout>
-    <SEO lang={intl.locale} title="Manonet" />
+    <SEO title="Manonet" />
     <h1>HomePage</h1>
 
     <h3>
@@ -31,4 +25,4 @@ const IndexPage = ({ intl }: Props) => (
   </Layout>
 );
 
-export default injectIntl(IndexPage);
+export default IndexPage;

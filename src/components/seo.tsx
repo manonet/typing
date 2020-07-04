@@ -12,11 +12,11 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 
 type Props = {
-  description: string | null;
+  description?: string | null;
   title?: string;
-  meta: [];
-  keywords: string;
-  lang: string;
+  meta?: [];
+  keywords?: string;
+  lang?: string;
   isModalOpen?: boolean;
 };
 
@@ -48,7 +48,7 @@ export default function SEO({
   description,
   isModalOpen,
   keywords,
-  lang,
+  lang: language,
   meta = [],
   title,
 }: Props) {
@@ -66,6 +66,7 @@ export default function SEO({
   );
 
   const intl = useIntl();
+  const lang = language || intl.locale;
 
   const metaDescription =
     description || intl.formatMessage({ id: 'site.description' });
