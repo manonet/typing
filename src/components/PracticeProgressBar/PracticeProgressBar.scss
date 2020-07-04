@@ -1,14 +1,32 @@
+/* stylelint-disable at-rule-no-unknown */
+@mixin rtlGradient($dir) {
+  background: linear-gradient(to $dir, $color-purple-600, $color-blue-500);
+}
+
 .practiceProgressBar {
   position: fixed;
   top: 0;
   left: 0;
   z-index: $z-index-fixed;
+  display: flex;
+  width: 100%;
   height: calc(#{$spacer} / 2);
-  background-color: $color-purple-400;
   opacity: 0;
-  transition: width 0.5s ease, opacity 0.5s ease;
+  justify-content: flex-end;
+  @include rtlGradient(right);
+
+  /* stylelint-disable-next-line selector-no-qualifying-type */
+  html[dir='rtl'] & {
+    @include rtlGradient(left);
+  }
 
   &--open {
     opacity: 1;
+  }
+
+  &__bar {
+    height: calc(#{$spacer} / 2);
+    background-color: $color-grey-500;
+    transition: width 0.5s ease, opacity 0.5s ease;
   }
 }

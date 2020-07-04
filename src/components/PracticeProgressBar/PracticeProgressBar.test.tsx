@@ -36,10 +36,9 @@ describe('<PracticeProgressBar>', () => {
 
     expect(wrapper.find('.practiceProgressBar')).toHaveLength(1);
     expect(wrapper.find('.practiceProgressBar--open')).toHaveLength(0);
-    expect(wrapper.find('.practiceProgressBar').prop('style')).toHaveProperty(
-      'width',
-      '0%'
-    );
+    expect(
+      wrapper.find('.practiceProgressBar__bar').prop('style')
+    ).toHaveProperty('width', '0%');
   });
 
   it('hides if sample text and user text is not given', () => {
@@ -55,10 +54,9 @@ describe('<PracticeProgressBar>', () => {
 
     expect(wrapper.find('.practiceProgressBar')).toHaveLength(1);
     expect(wrapper.find('.practiceProgressBar--open')).toHaveLength(0);
-    expect(wrapper.find('.practiceProgressBar').prop('style')).toHaveProperty(
-      'width',
-      '0%'
-    );
+    expect(
+      wrapper.find('.practiceProgressBar__bar').prop('style')
+    ).toHaveProperty('width', '0%');
   });
 
   it('hides if user text is not given', () => {
@@ -74,10 +72,9 @@ describe('<PracticeProgressBar>', () => {
 
     expect(wrapper.find('.practiceProgressBar')).toHaveLength(1);
     expect(wrapper.find('.practiceProgressBar--open')).toHaveLength(0);
-    expect(wrapper.find('.practiceProgressBar').prop('style')).toHaveProperty(
-      'width',
-      '0%'
-    );
+    expect(
+      wrapper.find('.practiceProgressBar__bar').prop('style')
+    ).toHaveProperty('width', '0%');
   });
 
   it('displays the proper width during the practice', () => {
@@ -92,10 +89,9 @@ describe('<PracticeProgressBar>', () => {
     );
 
     expect(wrapper.find('.practiceProgressBar--open')).toHaveLength(1);
-    expect(wrapper.find('.practiceProgressBar').prop('style')).toHaveProperty(
-      'width',
-      '42.86%'
-    );
+    expect(
+      wrapper.find('.practiceProgressBar__bar').prop('style')
+    ).toHaveProperty('width', '57.14%');
   });
 
   it('displays 100% width on practice end', () => {
@@ -114,10 +110,9 @@ describe('<PracticeProgressBar>', () => {
     );
 
     expect(wrapper.find('.practiceProgressBar--open')).toHaveLength(1);
-    expect(wrapper.find('.practiceProgressBar').prop('style')).toHaveProperty(
-      'width',
-      '100.00%'
-    );
+    expect(
+      wrapper.find('.practiceProgressBar__bar').prop('style')
+    ).toHaveProperty('width', '0.00%');
   });
 
   it('displays 100% width even if practice ended, but it hides', () => {
@@ -137,9 +132,8 @@ describe('<PracticeProgressBar>', () => {
 
     expect(wrapper.find('.practiceProgressBar')).toHaveLength(1);
     expect(wrapper.find('.practiceProgressBar--open')).toHaveLength(0);
-    expect(wrapper.find('.practiceProgressBar').prop('style')).toHaveProperty(
-      'width',
-      '100.00%'
-    );
+    expect(
+      wrapper.find('.practiceProgressBar__bar').prop('style')
+    ).toHaveProperty('width', '0.00%');
   });
 });

@@ -17,7 +17,7 @@ const PracticeProgressBar = (props: Props) => {
   const widthPercent =
     // 0 / 0 is NaN
     userText.length && sampleText.length
-      ? ((userText.length / sampleText.length) * 100).toFixed(2)
+      ? (100 - (userText.length / sampleText.length) * 100).toFixed(2)
       : 0;
 
   return (
@@ -29,8 +29,12 @@ const PracticeProgressBar = (props: Props) => {
         },
         className
       )}
-      style={{ width: `${widthPercent}%` }}
-    ></div>
+    >
+      <div
+        className="practiceProgressBar__bar"
+        style={{ width: `${widthPercent}%` }}
+      ></div>
+    </div>
   );
 };
 
