@@ -14,6 +14,7 @@ Feel free to report or fix typos or grammar issues in the code-base too. (e.g. t
 
 #### Current status
 
+- BR [![POEditor](https://img.shields.io/poeditor/progress/332969/pt-br?token=1aabd279b4b49d495134bbcff94c2199)](https://poeditor.com/projects/po_edit?id_language=190&per_page=50&id=332969) - thanks to [Guilherme Anselmo](https://www.linkedin.com/in/guilhermeanselmo/)
 - DE [![POEditor](https://img.shields.io/poeditor/progress/332969/de?token=1aabd279b4b49d495134bbcff94c2199)](https://poeditor.com/projects/po_edit?id_language=55&per_page=50&id=332969) - thanks to [Marlies Kirchner](https://www.linkedin.com/in/marliesolensky/)
 - EN [![POEditor](https://img.shields.io/poeditor/progress/332969/en?token=1aabd279b4b49d495134bbcff94c2199)](https://poeditor.com/projects/po_edit?id_language=43&per_page=50&id=332969)
 - HR [![POEditor](https://img.shields.io/poeditor/progress/332969/hr?token=1aabd279b4b49d495134bbcff94c2199)](https://poeditor.com/projects/po_edit?id_language=37&per_page=50&id=332969) - thanks to [Nedelov Mónika](https://www.linkedin.com/in/monika-nedelov/)

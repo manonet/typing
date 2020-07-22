@@ -41,7 +41,7 @@ module.exports = {
         // language JSON resource path
         path: `${__dirname}/src/intl`,
         // supported language
-        languages: ['en', 'de', 'fa', 'hr', 'hu', 'pl'],
+        languages: ['en', 'de', 'fa', 'hr', 'hu', 'pl', 'pt-br'],
         // language file path
         defaultLanguage: 'en',
         // option to redirect to `/ko` when connecting `/`

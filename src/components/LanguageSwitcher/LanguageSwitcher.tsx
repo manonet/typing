@@ -40,6 +40,7 @@ const languageName = {
   pa: 'ਪੰਜਾਬੀ', // Punjabi
   pl: 'Polski', // Polish
   pt: 'Português', // Portuguese
+  'pt-br': 'Português (BR)', // Brazilian
   ro: 'Română', // Romanian
   ru: 'Русский', // Russian
   sk: 'Slovenčina', // Slovak
