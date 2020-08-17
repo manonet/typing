@@ -6,7 +6,11 @@
 
 // You can delete this file if you're not using it
 
+import 'firebase/auth';
+import 'firebase/firestore';
+import 'firebase/functions';
+import 'firebase/messaging';
 
-import wrapWithProvider from './src/state/ReduxWrapper'
+import wrapWithProvider from './src/state/ReduxWrapper';
 // eslint-disable-next-line import/prefer-default-export
-export const wrapRootElement = wrapWithProvider
+export const wrapRootElement = wrapWithProvider;

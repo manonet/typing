@@ -44,6 +44,13 @@ function Header(props) {
         </Link>
       </menu>
       <div className="header__userMenu">
+        <Link
+          className="menu__item"
+          activeClassName="menu__item--active"
+          to="/login/"
+        >
+          <FormattedMessage id="site.navigation.login" />
+        </Link>
         <Button onClick={dispatchFlushKeyboard}>Clear keyboard data</Button>
       </div>
     </div>
