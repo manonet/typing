@@ -216,7 +216,7 @@ module.exports = {
     'declaration-block-trailing-semicolon': 'always',
     'declaration-colon-space-after': 'always-single-line',
     'declaration-colon-space-before': 'never',
-    'declaration-no-important': true,
+    // 'declaration-no-important': true, // due to the ReactModal__Overlay background
     'declaration-property-value-blacklist': {
       '/^transition/': ['/all/'],
       '/text-align/': ['left', 'right'],
