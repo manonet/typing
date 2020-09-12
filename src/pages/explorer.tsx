@@ -8,11 +8,22 @@ import Keyboard from '../components/Keyboard';
 import Layout from '../components/Layout';
 import { State as ReduxState } from '../reducers';
 
-class ExplorerPage extends React.Component {
+type Props = {
+  userText?: string;
+  dispatchKeyUp: (event: KeyboardEvent) => void;
+  dispatchKeyDown: (event: KeyboardEvent) => void;
+  dispatchFlushKeyboard: (event: React.MouseEvent) => void;
+};
+
+type State = {
+  output: Partial<React.KeyboardEvent & { modifiers: string[] }>;
+};
+
+class ExplorerPage extends React.Component<Props, State> {
   public textAreaRef: React.RefObject<HTMLTextAreaElement>;
 
-  constructor() {
-    super();
+  constructor(props: Props) {
+    super(props);
     this.textAreaRef = React.createRef();
     this.state = {
       output: {},
@@ -37,7 +48,7 @@ class ExplorerPage extends React.Component {
     }
   }
 
-  handleKeydown = (e) => {
+  handleKeydown = (e: KeyboardEvent) => {
     const { dispatchKeyDown } = this.props;
     dispatchKeyDown(e);
 
@@ -46,7 +57,7 @@ class ExplorerPage extends React.Component {
         timeStamp: e.timeStamp, // https://developer.mozilla.org/en-US/docs/Web/API/Event/timeStamp,
         type: e.type,
         key: e.key, // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key
-        code: e.code, // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code
+        code: e.code, // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code code does not exist in KeyboardEvent type
         altKey: e.altKey, // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/altKey
         ctrlKey: e.ctrlKey, // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/ctrlKey
         metaKey: e.metaKey, // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/metaKey
@@ -65,10 +76,11 @@ class ExplorerPage extends React.Component {
     });
   };
 
-  handleKeyup = (event) => {
+  handleKeyup = (event: KeyboardEvent) => {
     const { dispatchKeyUp } = this.props;
     dispatchKeyUp(event);
   };
+
   render() {
     const { dispatchFlushKeyboard } = this.props;
     // console.log('KeyEventInfo', this.state.output);
@@ -92,7 +104,7 @@ class ExplorerPage extends React.Component {
             }}
             // onKeyDown={(e) => handleKeydown(e)}
             // onKeyUp={(e) => handleKeyup(e)}
-          ></textarea>
+          />
           <Button onClick={dispatchFlushKeyboard}>Clear data</Button>
         </div>
         <Keyboard />
@@ -112,8 +124,8 @@ const mapDispatchToProps = (
   dispatch: ThunkDispatch<ReduxState, undefined, KeyboardAction>
 ) => ({
   dispatchFlushKeyboard: () => dispatch(flushKeyboard()),
-  dispatchKeyDown: (event) => dispatch(keyDown(event)),
-  dispatchKeyUp: (event) => dispatch(keyUp(event)),
+  dispatchKeyDown: (event: KeyboardEvent) => dispatch(keyDown(event)),
+  dispatchKeyUp: (event: KeyboardEvent) => dispatch(keyUp(event)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExplorerPage);

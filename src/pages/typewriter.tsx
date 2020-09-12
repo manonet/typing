@@ -1,8 +1,8 @@
 import { useIntl } from 'gatsby-plugin-intl';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { initPractice, summarizePractice, focusUserInput } from '../actions';
+import { initPractice, focusUserInput } from '../actions';
 import { PracticeProgressBar } from '../components';
 import Keyboard from '../components/Keyboard';
 import Layout from '../components/Layout';
@@ -36,23 +36,22 @@ export default function TypewriterPage() {
   const intl = useIntl();
   const dispatch = useDispatch();
 
-  const { allChars, finishedPractices, isPracticing, sampleText } = useSelector(
-    (state: ReduxState) => state.typing
-  );
+  // TODO where to trigger isPracticing to true and where to false? useEffect didn't have much sense
 
-  useEffect(() => {
-    startNewPractice();
-    if (!isPracticing) {
-      // practice ended
-      dispatch(summarizePractice());
-      return setIsOpen(true);
-    }
-  }, [isPracticing]);
+  const {
+    allChars,
+    finishedPractices,
+    isPracticing,
+    sampleText,
+    showSummary,
+  } = useSelector((state: ReduxState) => state.typing);
 
   function startNewPractice() {
     const wordLength = 4; // TODO use state value and wire it
     const nonPracticeGlyphs = ['', ' ', '\n'];
-    const filteredChars = allChars.filter((char) => char.correct < 10);
+    const filteredChars = allChars.filter(
+      (char) => (char.correct as number) < 10
+    );
     if (Array.isArray(filteredChars) && filteredChars.length > wordLength) {
       const practiceGlyphs = filteredChars.map((char) => char.glyph);
       const filteredGlyphs = practiceGlyphs.filter(
@@ -108,18 +107,20 @@ export default function TypewriterPage() {
         <Keyboard className={'TypewriterBoard__keyboard'} />
       </div>
 
-      <PracticeSummaryModal
-        title="Summary"
-        isOpen={isModalOpen}
-        closeTimeoutMS={MODAL_CLOSE_TIMEOUT}
-        startNewPractice={startNewPractice}
-        cancelPractice={cancelPractice}
-        repeatPractice={repeatPractice}
-        correctChars={120}
-        mistakenChars={2}
-        elapsedTime={238}
-        onRequestClose={closeModal}
-      ></PracticeSummaryModal>
+      {showSummary ? (
+        <PracticeSummaryModal
+          title="Summary"
+          isOpen={isModalOpen}
+          closeTimeoutMS={MODAL_CLOSE_TIMEOUT}
+          startNewPractice={startNewPractice}
+          cancelPractice={cancelPractice}
+          repeatPractice={repeatPractice}
+          correctChars={120}
+          mistakenChars={2}
+          elapsedTime={238}
+          onRequestClose={closeModal}
+        />
+      ) : null}
     </Layout>
   );
 }

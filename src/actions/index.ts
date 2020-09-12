@@ -22,7 +22,9 @@ export function userIsTouching(isTouchDevice: boolean) {
 
 // KEY_DOWN
 
-export type KeyboardAction = ReturnType<typeof keyDown | typeof keyUp>;
+export type KeyboardAction = ReturnType<
+  typeof keyDown | typeof keyUp | typeof flushKeyboard | typeof inputChange
+>;
 
 export const KEY_DOWN = 'KEY_DOWN';
 

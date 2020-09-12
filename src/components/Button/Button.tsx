@@ -1,33 +1,33 @@
 import classNames from 'classnames';
-import React, { ReactNode, MouseEvent, KeyboardEvent, forwardRef } from 'react';
+import React, { ReactNode, forwardRef } from 'react';
 
 export const BUTTON_CLASS_NAME = 'Button';
 
 export const ButtonColor = {
-  PRIMARY: 'primary' as 'primary',
-  SECONDARY: 'secondary' as 'secondary',
-  DANGER: 'danger' as 'danger',
-};
+  PRIMARY: 'primary',
+  SECONDARY: 'secondary',
+  DANGER: 'danger',
+} as const;
 export type TButtonColorValue = typeof ButtonColor[keyof typeof ButtonColor];
 
 export const ButtonSize = {
-  SMALL: 'small' as 'small',
-  MEDIUM: 'medium' as 'medium',
-  BIG: 'big' as 'big',
-};
+  SMALL: 'small',
+  MEDIUM: 'medium',
+  BIG: 'big',
+} as const;
 export type TButtonSizeValue = typeof ButtonSize[keyof typeof ButtonSize];
 
 export const ButtonDisplayType = {
-  DEFAULT: 'default' as 'default',
-  UNSTYLED: 'unstyled' as 'unstyled',
-};
+  DEFAULT: 'default',
+  UNSTYLED: 'unstyled',
+} as const;
 export type TTypeValue = typeof ButtonDisplayType[keyof typeof ButtonDisplayType];
 
 export type DefaultProps = {
   displayType?: TTypeValue;
   disabled?: boolean;
-  onClick?: (event: MouseEvent) => void;
-  onKeyPress?: (event: KeyboardEvent) => void;
+  onClick?: (event: React.MouseEvent) => void;
+  onKeyPress?: (event: React.KeyboardEvent) => void;
   selected?: boolean;
   type?: 'button' | 'submit' | 'reset';
 };
@@ -46,7 +46,9 @@ export type BaseProps = {
 
 type Props = BaseProps & DefaultProps;
 
-const Button = forwardRef(
+type RefType = HTMLButtonElement | null;
+
+const Button = forwardRef<RefType, Props>(
   (
     {
       children,
@@ -66,14 +68,14 @@ const Button = forwardRef(
     }: Props,
     ref
   ) => {
-    function handleOnClick(event: MouseEvent) {
+    function handleOnClick(event: React.MouseEvent) {
       event.preventDefault();
 
       if (disabled) return;
       onClick(event);
     }
 
-    function handleOnKeyPress(event: KeyboardEvent) {
+    function handleOnKeyPress(event: React.KeyboardEvent) {
       event.preventDefault();
 
       if (disabled) return;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import { createStore as reduxCreateStore } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
@@ -16,8 +16,8 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const createStore = () => reduxCreateStore(persistedReducer);
 
-// eslint-disable-next-line react/display-name,react/prop-types
-export default ({ element }) => {
+// TODO what's the proper type?
+export default ({ element }: { element: ReactNode }) => {
   // Instantiating store in `wrapRootElement` handler ensures:
   //  - there is fresh store for each SSR page
   //  - it will be called only once in browser, when React mounts

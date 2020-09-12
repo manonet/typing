@@ -9,27 +9,26 @@ ReactModal.setAppElement('#___gatsby');
 type Props = {
   isOpen: boolean;
   title: ReactNode;
+  cancelPractice: () => void;
+  repeatPractice: () => void;
   correctChars: number;
   mistakenChars: number;
   elapsedTime: number;
-  onRequestClose: () => {};
-  startNewPractice: () => {};
+  onRequestClose: () => void;
+  startNewPractice: () => void;
 };
 
-export default function PracticeSummaryModal(props: Props) {
-  const {
-    cancelPractice,
-    correctChars,
-    elapsedTime,
-    isOpen,
-    mistakenChars,
-    onRequestClose,
-    repeatPractice,
-    startNewPractice,
-  } = props;
-
-  const title = props.title;
-
+export default function PracticeSummaryModal({
+  cancelPractice,
+  correctChars,
+  elapsedTime,
+  isOpen,
+  mistakenChars,
+  onRequestClose,
+  repeatPractice,
+  startNewPractice,
+  title,
+}: Props) {
   const customStyles = {
     // stylelint-disable
     overlay: {

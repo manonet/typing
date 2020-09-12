@@ -8,7 +8,7 @@ import {
   KeyboardAction,
   PracticeAction,
   SUMMARIZE_PRACTICE,
-} from '../actions/index';
+} from '../actions';
 import {
   EventCode,
   GlyphStatistics,
