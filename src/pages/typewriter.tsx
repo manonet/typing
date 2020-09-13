@@ -86,7 +86,6 @@ export default function TypewriterPage() {
     <Layout isModalOpen={showSummary}>
       <PracticeProgressBar />
       <SEO
-        lang={intl.locale}
         title={intl.formatMessage({ id: 'typewriter.page.title' })}
         isModalOpen={showSummary}
       />
