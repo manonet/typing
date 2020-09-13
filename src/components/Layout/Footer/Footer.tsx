@@ -15,7 +15,7 @@ function Footer(props: Props) {
 
   return (
     <footer className="footer inverse">
-      <div className="footer__container">
+      <div className="container footer__container">
         <div className="footer__menu">
           <nav className="footerNav">
             <LanguageSwitcher className="footer__languages" />
@@ -30,46 +30,38 @@ function Footer(props: Props) {
             <ul className="footerNav__list">
               <li className="footerNav__item">
                 <i className="fa fa-envelope"></i>
-                <FormattedMessage id="site.email" defaultMessage="Email" />
-                {': '}
-                <a
+                <Link
                   className="footerNav__link interactive interactive--inverse"
-                  href={`mailto:${email}`}
+                  to="/contact"
                 >
-                  {email}
-                </a>
-              </li>
-              <li className="footerNav__item">
-                <i className="fab fa-github"></i>
-                Github
-                {': '}
-                <a
-                  className="footerNav__link interactive interactive--inverse"
-                  href="https://github.com/manonet/typing"
-                >
-                  https://github.com/manonet/typing
-                </a>
-              </li>
-              <li className="footerNav__item">
-                <i className="fab fa-gitlab"></i>
-                Gitlab
-                {': '}
-                <a
-                  className="footerNav__link interactive interactive--inverse"
-                  href="https://gitlab.com/zyxneo/typing"
-                >
-                  https://gitlab.com/zyxneo/typing
-                </a>
+                  <FormattedMessage id="site.email" defaultMessage="Email" />
+                </Link>
               </li>
               <li className="footerNav__item">
                 <i className="fab fa-facebook"></i>
-                Facebook
-                {': '}
                 <a
                   className="footerNav__link interactive interactive--inverse"
                   href="https://www.facebook.com/manonet/"
                 >
-                  https://www.facebook.com/manonet/
+                  Facebook
+                </a>
+              </li>
+              <li className="footerNav__item">
+                <i className="fab fa-github"></i>
+                <a
+                  className="footerNav__link interactive interactive--inverse"
+                  href="https://github.com/manonet/typing"
+                >
+                  Github
+                </a>
+              </li>
+              <li className="footerNav__item">
+                <i className="fab fa-gitlab"></i>
+                <a
+                  className="footerNav__link interactive interactive--inverse"
+                  href="https://gitlab.com/zyxneo/typing"
+                >
+                  Gitlab
                 </a>
               </li>
             </ul>
@@ -141,7 +133,7 @@ function Footer(props: Props) {
       </div>
 
       <div className="footer__bottom">
-        <div className="footer__container">
+        <div className="container footer__container">
           <div className="footer__copy">
             © {new Date().getFullYear()} {appName}.{' '}
             <FormattedMessage

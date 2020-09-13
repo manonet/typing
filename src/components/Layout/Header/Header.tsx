@@ -16,39 +16,41 @@ function Header(props: Props) {
 
   return (
     <div className="header">
-      <div className="header__siteTitle">
-        <span className="header__siteName">
-          {'Manonet - '}
-          <FormattedMessage id="site.underDevelopement" />
-        </span>
-      </div>
-      <menu className="header__menu menu">
-        <Link
-          className="menu__item"
-          activeClassName="menu__item--active"
-          to="/"
-        >
-          <FormattedMessage id="site.navigation.home" />
-        </Link>
+      <div className="container header__container">
+        <div className="header__siteTitle">
+          <span className="header__siteName">
+            {'Manonet - '}
+            <FormattedMessage id="site.underDevelopement" />
+          </span>
+        </div>
+        <menu className="header__menu menu">
+          <Link
+            className="menu__item"
+            activeClassName="menu__item--active"
+            to="/"
+          >
+            <FormattedMessage id="site.navigation.home" />
+          </Link>
 
-        <Link
-          className="menu__item"
-          activeClassName="menu__item--active"
-          to="/typewriter/"
-        >
-          <FormattedMessage id="site.navigation.program" />
-        </Link>
+          <Link
+            className="menu__item"
+            activeClassName="menu__item--active"
+            to="/typewriter/"
+          >
+            <FormattedMessage id="site.navigation.program" />
+          </Link>
 
-        <Link
-          className="menu__item"
-          activeClassName="menu__item--active"
-          to="/statistics/"
-        >
-          <FormattedMessage id="site.navigation.statistics" />
-        </Link>
-      </menu>
-      <div className="header__userMenu">
-        <Button onClick={dispatchFlushKeyboard}>Clear keyboard data</Button>
+          <Link
+            className="menu__item"
+            activeClassName="menu__item--active"
+            to="/statistics/"
+          >
+            <FormattedMessage id="site.navigation.statistics" />
+          </Link>
+        </menu>
+        <div className="header__userMenu">
+          <Button onClick={dispatchFlushKeyboard}>Clear keyboard data</Button>
+        </div>
       </div>
     </div>
   );

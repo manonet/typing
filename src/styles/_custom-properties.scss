@@ -102,6 +102,10 @@
   --color-error-main: var(--color-red-600);
   --color-error-contrast: var(--color-white);
 
+  --color-theme-active: var(--color-orange-600);
+  --color-theme-complementary: #5898bc;
+  --color-theme-dark: var(--color-grey-800);
+
   // TEXT
   // ==================================================
 
@@ -129,6 +133,9 @@
   --font-size-default: 14px;
   --font-size-small: 12px;
   --font-size-big: 16px;
+  --font-size-large: 24px;
+  --font-size-huge: 32px;
+  --font-size-hero: 40px;
 
   // spacing
   --spacer: 8px;

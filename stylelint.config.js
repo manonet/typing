@@ -237,7 +237,13 @@ module.exports = {
     'function-parentheses-space-inside': 'never-single-line',
     'function-url-quotes': 'always',
     'function-whitespace-after': 'always',
-    indentation: 2,
+    indentation: [
+      2,
+      {
+        except: ['value'],
+        severity: 'warning',
+      },
+    ],
     'length-zero-no-unit': true,
     'max-empty-lines': 1,
     'max-nesting-depth': 3,

@@ -53,5 +53,31 @@
     "typing.hand.finger": "{hand} {finger}",
     "typing.key.unexplored": "Felderítetlen",
     "contribution.translate.title": "Kérlek segíts az oldal lefordításában.",
-    "contribution.translate.desc": "Ha értesz angolul ( vagy németül vagy magyarul ) segíthetsz abban, hogy a felhasználók az oldalt a te nyelveden is elérjék és használni tudják. További részleteket az alábbi linken találsz."
+    "contribution.translate.desc": "Ha értesz angolul ( vagy németül vagy magyarul ) segíthetsz abban, hogy a felhasználók az oldalt a te nyelveden is elérjék és használni tudják. További részleteket az alábbi linken találsz.",
+    "home.intro.confident": "Gépelj magabiztosan",
+    "home.intro.pro1": "Egyszerű, ingyenes, online, tízujjas gépírás oktató program.",
+    "home.intro.pro2": "Magyar nyelvű leckék, szinte végtelen mennyiségben...",
+    "home.intro.pro3": "Állítsd be módozatait, ahogy neked tetszik! Tanulj saját igényeid szerint!",
+    "home.intro.pro4": "Készíts egyéni gyakorlatokat, gyakorold saját szövegeid!",
+
+    "home.features.title": "Funkciók",
+    "home.features.keyboard.title": "Billentyűzet",
+    "home.features.keyboard.desc": "A kijelzőn a billentyűzeted minden fontos részletét nyomon követheted, így nem kell a billentyűzeted nézni.",
+    "home.features.metronome.title": "Metronóm",
+    "home.features.metronome.desc": "A beépített metronóm segít, hogy helyes ütemben gépelj. Így anélkül, hogy kapkodnál, jól haladhatsz a leckékkel",
+    "home.features.characters.title": "Az összes karakter",
+    "home.features.characters.desc": "Segítünk, hogy teljes mértékben feltérképezhesd a billentyűzet-kiosztásodat és megismerd az összes begépelhető karaktert. Meg fogsz lepődni...",
+
+    "home.testimonials.title": "Amiért a {siteName}et kedvelik",
+    "home.testimonials.desc1": "Nem terveztem, hogy megtanulok vakon gépelni. Valamikor februárban egy kocsmázós éjszaka után, véletlenül akadtam az oldalra, kipróbáltam és úgy maradtam, beleragadtam. ...Ma 160 bpm-mel 3-4 százalékos hibával, de biztonsággal írok és nagyon élvezem.",
+    "home.testimonials.desc2": "Gratulálok a manonet-es gépíró programhoz, nagyon szellemes! Jókat nevetgélek, miközben próbálom elsajátítani a 10 ujjas gépelés fortélyait. Korábban többször föladtam a próbálkozást, mert elképesztően unalmas gépíró programokkal találkoztam. A manonet ezzel szemben zseniális.",
+    "home.testimonials.generic.user": "Talán a Te Neved?",
+    "home.testimonials.generic.desc": "Híres személy vagy? Elnök vagy divatdiktátor? Egy celeb vagy influencer? Az se baj. Oszd meg tapasztalatod és akár ide is kikerülhet.",
+    "home.testimonials.feedback": "Mond el véleményed",
+
+    "home.startNow.title": "Kezd el a gyakorlást — ingyenes",
+    "home.startNow.desc": "A {siteName} egy nyílt forráskódú, közösség által fenntartott alkalmazás. Adományokat elfogadunk, de nem kell fizetned a program használatáért. Tervezzük fizetős funkciók fejlesztését, hogy kiadásainkat fedezzük, de még ezek is elérhetőek egy kis közreműködés árán.",
+    "home.learn.more": "Tudj meg többet",
+    
+    "button.startNow": "Kezdd el a gyakorlást"
 }

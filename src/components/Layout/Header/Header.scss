@@ -1,8 +1,11 @@
 .header {
-  display: flex;
   overflow: hidden;
   color: $color-white;
   background-color: $color-grey-800;
+
+  &__container {
+    display: flex;
+  }
 
   &__siteTitle {
     display: flex;

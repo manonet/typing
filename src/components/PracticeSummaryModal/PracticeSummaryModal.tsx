@@ -61,14 +61,12 @@ export default function PracticeSummaryModal({
   }
 
   useEffect(() => {
-    if (isOpen) {
-      document.addEventListener('keydown', handleKeydown, true);
-    }
+    document.addEventListener('keydown', handleKeydown, true);
 
     return () => {
       document.removeEventListener('keydown', handleKeydown, true);
     };
-  }, [isOpen]);
+  }, []);
 
   return (
     <ReactModal

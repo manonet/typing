@@ -1,3 +1,14 @@
+%typography-size-hero {
+  font-size: $font-size-hero;
+}
+%typography-size-huge {
+  font-size: $font-size-huge;
+}
+
+%typography-size-large {
+  font-size: $font-size-large;
+}
+
 %typography-size-big {
   font-size: $font-size-big;
   // line-height: $line-height-large;
@@ -178,7 +189,7 @@ a:not([href]):not([tabindex]) {
 
 h1,
 .h1 {
-  @extend %typography-size-big;
+  @extend %typography-size-hero;
   margin: calc(#{$spacer} * 3) 0 calc(#{$spacer} * 2);
   font-weight: 500;
 
@@ -189,7 +200,7 @@ h1,
 
 h2,
 .h2 {
-  @extend %typography-size-big;
+  @extend %typography-size-huge;
   margin: calc(#{$spacer} * 3) 0 calc(#{$spacer} * 2);
   font-weight: 400;
 
@@ -200,7 +211,7 @@ h2,
 
 h3,
 .h3 {
-  @extend %typography-size-default;
+  @extend %typography-size-large;
   margin: calc(#{$spacer} * 3) 0 calc(#{$spacer} * 1.5);
   font-weight: 500;
 
@@ -211,7 +222,7 @@ h3,
 
 h4,
 .h4 {
-  @extend %typography-size-default;
+  @extend %typography-size-big;
   margin: calc(#{$spacer} * 3) 0 calc(#{$spacer} * 1.5);
   font-weight: 400;
 
@@ -222,7 +233,7 @@ h4,
 
 h5,
 .h5 {
-  @extend %typography-size-small;
+  @extend %typography-size-default;
   margin: calc(#{$spacer} * 3) 0 calc(#{$spacer} * 1.5);
   font-weight: 500;
 

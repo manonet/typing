@@ -101,6 +101,10 @@ $color-secondary-main: var(--color-secondary-main);
 $color-error-main: var(--color-error-main);
 $color-error-contrast: var(--color-error-contrast);
 
+$color-theme-active: var(--color-theme-active);
+$color-theme-complementary: var(--color-theme-complementary);
+$color-theme-dark: var(--color-theme-dark);
+
 // TEXT
 // ==================================================
 
@@ -128,6 +132,9 @@ $line-height-large: var(--line-height-large);
 $font-size-default: var(--font-size-default);
 $font-size-small: var(--font-size-small);
 $font-size-big: var(--font-size-big);
+$font-size-large: var(--font-size-large);
+$font-size-huge: var(--font-size-huge);
+$font-size-hero: var(--font-size-hero);
 
 // spacing
 $spacer: var(--spacer);

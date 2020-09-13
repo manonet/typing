@@ -1,21 +1,11 @@
 .footer {
-  display: flex;
   overflow: hidden;
   color: $text-color-inverse-primary;
-  flex-direction: column;
-  background: linear-gradient(
-    to right,
-    $color-purple-900,
-    $color-purple-800,
-    $color-purple-900
-  );
-  align-items: stretch;
-  flex: 0 1 auto;
+  background: $color-theme-dark;
 
   &__container {
     display: flex;
-    padding: $spacer calc(#{$spacer} * 3);
-    margin: calc(#{$spacer} * 2) 0;
+    padding: calc(#{$spacer} * 3) 0;
     flex-direction: column;
   }
 
@@ -26,14 +16,12 @@
   }
 
   &__bottom {
-    display: flex;
     font-size: $font-size-small;
     color: $text-color-inverse-disabled;
-    flex-direction: column;
     background: $color-grey-900;
 
     .footer__container {
-      margin: $spacer 0;
+      padding: calc(#{$spacer} * 2) 0;
       flex-direction: row;
     }
   }
@@ -53,5 +41,9 @@
 
   &__item {
     padding: 2px 0;
+
+    i {
+      margin-inline-end: $spacer;
+    }
   }
 }

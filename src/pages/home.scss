@@ -1,0 +1,251 @@
+$introImagePush: 100px;
+
+.home {
+  a {
+    color: $color-theme-active;
+  }
+
+  &__intro {
+    color: $color-white;
+    background-color: $color-theme-dark;
+  }
+
+  &__features {
+    background-image: linear-gradient(
+        $color-white,
+        rgba(255, 255, 255, 0.9),
+        $color-white
+      ),
+      url('../images/keyboard4.jpg');
+    background-position: center;
+    background-size: cover;
+  }
+
+  &__testimonials {
+    position: relative;
+    background-image: linear-gradient(
+        $color-theme-complementary,
+        rgba(255, 255, 255, 0),
+        $color-theme-complementary
+      ),
+      url('../images/keyboard4.jpg');
+    background-position: center;
+    background-size: cover;
+
+    &::before {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      content: '';
+      background: $color-theme-complementary;
+      opacity: 0.9;
+    }
+  }
+
+  &__startToday {
+    min-height: 44vw;
+    background-image: url('../images/typing-girl.jpg');
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+.startNowButton {
+  padding: calc(#{$spacer} * 2) calc(#{$spacer} * 3);
+  margin-top: calc(#{$spacer} * 2);
+  font-size: $font-size-big;
+  font-weight: 700;
+  color: $color-white;
+  background-color: $color-theme-active;
+}
+
+.intro {
+  &__logo {
+    margin: calc(#{$spacer} * 3) auto;
+    color: $color-theme-active;
+    text-align: center;
+  }
+
+  &__title {
+    margin: 1em 0;
+    text-align: center;
+  }
+
+  &__desc {
+    font-size: $font-size-big;
+    text-align: center;
+  }
+
+  &__advantages {
+    position: relative;
+    top: $introImagePush;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .advantages {
+    width: 50%;
+    font-size: $font-size-big;
+    text-align: start;
+    padding-inline-start: calc(#{$spacer} * 3);
+
+    ul {
+      padding: $spacer 0 0;
+      margin: 0;
+    }
+
+    li {
+      display: flex;
+      padding-bottom: $spacer;
+      list-style: none;
+      align-items: start;
+    }
+
+    i {
+      font-size: 20px;
+      padding-inline-end: $spacer;
+      color: $color-theme-active;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+.features {
+  position: relative;
+  padding: 60px 0;
+  margin-top: $introImagePush;
+
+  &__title {
+    margin: 2em 0 !important;
+    text-align: center;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item {
+    display: flex;
+    max-width: 320px;
+
+    // stylelint-disable no-descending-specificity
+    i {
+      font-size: 30px;
+      margin-inline-end: calc(#{$spacer} * 2);
+    }
+    // stylelint-enable no-descending-specificity
+  }
+
+  &__itemWrapper {
+    h3 {
+      //
+    }
+
+    div {
+      //
+    }
+  }
+}
+
+.testimonials {
+  position: relative;
+
+  &__title {
+    margin: 2em 0 !important;
+    color: $color-white;
+    text-align: center;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3em;
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    max-width: 320px;
+    padding: calc(#{$spacer} * 2);
+    padding-top: 70px;
+    flex-direction: column;
+    background: $color-white;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.1),
+      0 1px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  &__picture {
+    position: absolute;
+    top: -50px;
+    width: 100px;
+    height: 100px;
+    padding: calc(#{$spacer} / 2);
+    overflow: hidden;
+    background: $color-white;
+    border-radius: 100%;
+    align-self: center;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.1),
+      0 1px 4px 0 rgba(0, 0, 0, 0.1);
+
+    img {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      object-fit: cover;
+      border-radius: 100%;
+    }
+  }
+
+  &__user {
+    margin-bottom: 1em;
+    font-size: $font-size-big;
+    text-align: center;
+  }
+
+  &__desc {
+    position: relative;
+    padding-inline-start: 50px;
+    font-style: italic;
+
+    &::before {
+      position: absolute;
+      top: -26px;
+      left: -1px;
+      display: block;
+      font-size: 100px;
+      color: var(--color-black);
+      content: '\201C';
+      opacity: 0.15;
+    }
+  }
+
+  &__feedback {
+    display: flex;
+    margin-top: auto;
+    justify-content: end;
+    padding-inline-start: 50px;
+
+    // stylelint-disable no-descending-specificity
+    i {
+      margin-inline-end: $spacer;
+    }
+    // stylelint-enable no-descending-specificity
+  }
+}
+
+.startToday {
+  padding: 64px 512px 40px 0;
+
+  &__title {
+    margin: 2em 0 !important;
+  }
+
+  &__desc {
+    margin-bottom: 4em;
+  }
+}

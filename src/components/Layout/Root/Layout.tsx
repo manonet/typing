@@ -20,11 +20,13 @@ import 'typeface-roboto';
 
 type Props = {
   children: ReactNodeArray;
+  className?: string;
   isModalOpen?: boolean;
+  hasHeader?: boolean;
 };
 
 export default function Layout(props: Props) {
-  const { children, isModalOpen } = props;
+  const { children, className, hasHeader = true, isModalOpen } = props;
 
   const intl = useIntl();
   const dispatch = useDispatch();
@@ -34,14 +36,15 @@ export default function Layout(props: Props) {
   );
 
   // detect touch event to display mobile warning
-  window.addEventListener(
-    'touchstart',
-    function onFirstTouch() {
-      dispatch(userIsTouching(true));
-      window.removeEventListener('touchstart', onFirstTouch, false);
-    },
-    false
-  );
+  typeof window !== 'undefined' &&
+    window.addEventListener(
+      'touchstart',
+      function onFirstTouch() {
+        dispatch(userIsTouching(true));
+        window.removeEventListener('touchstart', onFirstTouch, false);
+      },
+      false
+    );
 
   return (
     <StaticQuery
@@ -68,10 +71,10 @@ export default function Layout(props: Props) {
                 <FormattedMessage id="site.warning.mobile" />
               </div>
             )}
-            <Header siteTitle={intl.formatMessage({ id: 'site.title' })} />
-            <div className="content">
-              <main>{children}</main>
-            </div>
+            {hasHeader && (
+              <Header siteTitle={intl.formatMessage({ id: 'site.title' })} />
+            )}
+            <main className={classNames('main', className)}>{children}</main>
             <Footer
               appName={data.site.siteMetadata.name}
               version={data.site.siteMetadata.version}

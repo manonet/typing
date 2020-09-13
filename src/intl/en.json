@@ -58,5 +58,31 @@
     "typing.hand.finger": "{hand} {finger}",
     "typing.key.unexplored": "Unexplored",
     "contribution.translate.title": "Please help with the translation of the page.",
-    "contribution.translate.desc": "If you understand English (or Hungarian), please help people to use this application in their own native language. Click on the link below for further details:"
+    "contribution.translate.desc": "If you understand English (or Hungarian), please help people to use this application in their own native language. Click on the link below for further details:",
+    "home.intro.confident": "Type with confident",
+    "home.intro.pro1": "Simple, free, online, touch typing tutorials.",
+    "home.intro.pro2": "Lessons in English, in almost endless quantities ...",
+    "home.intro.pro3": "Set your modes the way you like! Learn according to your own needs!",
+    "home.intro.pro4": "Make individual exercises, practice your own texts!",
+
+    "home.features.title": "Features",
+    "home.features.keyboard.title": "Keyboard",
+    "home.features.keyboard.desc": "The keyboard on the screen keeps you updated about every necessary information. No need to look down while typing.",
+    "home.features.metronome.title": "Metronome",
+    "home.features.metronome.desc": "The built-in metronome helps you too keep focus on a moderate tempo. This way you do not have to hurry, but also keep a nice progress",
+    "home.features.characters.title": "All characters",
+    "home.features.characters.desc": "We help you to fully discover your keyboard and get to know all characters which you able to type. You will be suprised...",
+
+    "home.testimonials.title": "Why users love {siteName}",
+    "home.testimonials.desc1": "I didn't plan to learn touch typing. After a pub night sometime in February, I stumbled upon it. I tried it out, and I got stuck, addicted. ...Today I type with 160 BPM and 3-4 error percent, but I write with confidence and I really enjoy it.",
+    "home.testimonials.desc2": "Congratulations on the {siteName} typing program, very witty! I giggle good at trying to master 10 fingers typing tricks. I have given up {siteName} several times before because I came across amazingly boring typing programs. The manonet, on the other hand, is brilliant.",
+    "home.testimonials.generic.user": "Maybe Your Name?",
+    "home.testimonials.generic.desc": "Are you a famous person like Madonna or Obama? No problem if not, we're welcome your feedback, and we may even share it with everyone here.",
+    "home.testimonials.feedback": "Tell your opinion",
+
+    "home.startNow.title": "Start now — it's free",
+    "home.startNow.desc": "{siteName} is an open source, community driven application. We accept donations, but you do not have pay for using the app. We also plan to make and offer payed features to cover expenses, but even these you can get for a bit of a conrtibution.",
+    "home.learn.more": "Learn more",
+
+    "button.startNow": "Start Now"
 }

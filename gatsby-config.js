@@ -3,7 +3,7 @@ const packageJson = require('./package.json');
 module.exports = {
   pathPrefix: '',
   siteMetadata: {
-    name: packageJson.name,
+    name: 'ManoNet',
     description: packageJson.description,
     author: packageJson.author,
     email: packageJson.email,
