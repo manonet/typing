@@ -2,6 +2,7 @@
 
 List of project related terms
 
+- [Touch typing](https://en.wikipedia.org/wiki/Touch_typing)
 - [Typewriter](https://en.wikipedia.org/wiki/Typewriter)
 - [Keyboard layout](https://en.wikipedia.org/wiki/Keyboard_layout)
 - [Numeric keypad](https://en.wikipedia.org/wiki/Numeric_keypad)
