@@ -14,7 +14,7 @@ describe('generatePracticeText', () => {
   it('returns randomized string if practice length given', () => {
     const sampleText = generatePracticeText({
       glyphs: ['a', 'b', 'c'],
-      parcticeLength: 20,
+      practiceLength: 20,
     });
 
     expect(sampleText).toEqual('aacb aabc aacb aabc aacb aabc aacb aabc');
@@ -23,7 +23,7 @@ describe('generatePracticeText', () => {
   it('returns randomized string if word length given', () => {
     const sampleText = generatePracticeText({
       glyphs: ['a', 'b', 'c'],
-      parcticeLength: 20,
+      practiceLength: 20,
       wordLength: 2,
     });
 
@@ -33,7 +33,7 @@ describe('generatePracticeText', () => {
   it('returns randomized string if uniqueWordCount is given', () => {
     const sampleText = generatePracticeText({
       glyphs: ['a', 'b', 'c'],
-      parcticeLength: 20,
+      practiceLength: 20,
       uniqueWordCount: 2,
     });
 
@@ -43,7 +43,7 @@ describe('generatePracticeText', () => {
   it('returns randomized string even if the configured practice length is shorter than the generated text', () => {
     const sampleText = generatePracticeText({
       glyphs: ['a', 'b', 'c', 'd', 'e'],
-      parcticeLength: 10,
+      practiceLength: 10,
       uniqueWordCount: 4,
       wordLength: 6,
     });

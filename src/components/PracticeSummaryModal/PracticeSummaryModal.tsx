@@ -7,7 +7,6 @@ import Button from '../Button';
 ReactModal.setAppElement('#___gatsby');
 
 type Props = {
-  isOpen: boolean;
   title: ReactNode;
   cancelPractice: () => void;
   repeatPractice: () => void;
@@ -22,7 +21,6 @@ export default function PracticeSummaryModal({
   cancelPractice,
   correctChars,
   elapsedTime,
-  isOpen,
   mistakenChars,
   onRequestClose,
   repeatPractice,
@@ -54,7 +52,7 @@ export default function PracticeSummaryModal({
     <ReactModal
       onRequestClose={onRequestClose}
       aria-labelledby="customized-dialog-title"
-      isOpen={isOpen}
+      isOpen
       style={customStyles}
     >
       <div className="practiceSummary">

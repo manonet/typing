@@ -5,7 +5,7 @@ import { shuffleArray } from './shuffleArray';
 
 type Params = {
   glyphs: Glyph[];
-  parcticeLength?: number;
+  practiceLength?: number;
   wordLength?: number;
   uniqueWordCount?: number;
   spacer?: string;
@@ -18,7 +18,7 @@ export const DEFAULT_SPEACER = ' ';
 
 export const generatePracticeText = ({
   glyphs,
-  parcticeLength = DEFAULT_PRACTICE_LENGTH,
+  practiceLength = DEFAULT_PRACTICE_LENGTH,
   uniqueWordCount = DEFAULT_UNIQUE_WORD_COUNT,
   wordLength = DEFAULT_WORD_LENGTH,
   spacer = DEFAULT_SPEACER,
@@ -60,15 +60,14 @@ export const generatePracticeText = ({
   // create the repeating string part
   const sequence = words.join(spacer);
 
-  if (sequence.length < parcticeLength) {
+  if (sequence.length < practiceLength) {
     // if the string is short, repeat it as long it reach the length of the practice
 
     // + 1 because of the space attached every time
-    const multiplier = parcticeLength / Math.floor(sequence.length + 1);
+    const multiplier = practiceLength / Math.floor(sequence.length + 1);
     let practice = sequence;
     for (let i = 0; i < multiplier; i++) {
-      const extendedString = practice.concat(spacer, sequence);
-      practice = extendedString;
+      practice = practice.concat(spacer, sequence);
     }
     return practice;
   }

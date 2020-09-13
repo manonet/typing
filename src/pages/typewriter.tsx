@@ -1,8 +1,8 @@
 import { useIntl } from 'gatsby-plugin-intl';
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { initPractice, focusUserInput } from '../actions';
+import { initPractice, focusUserInput, closeSummary } from '../actions';
 import { PracticeProgressBar } from '../components';
 import Keyboard from '../components/Keyboard';
 import Layout from '../components/Layout';
@@ -32,11 +32,8 @@ import { generatePracticeText } from '../utils';
 export const MODAL_CLOSE_TIMEOUT = 500;
 
 export default function TypewriterPage() {
-  const [isModalOpen, setIsOpen] = useState(false);
   const intl = useIntl();
   const dispatch = useDispatch();
-
-  // TODO where to trigger isPracticing to true and where to false? useEffect didn't have much sense
 
   const {
     allChars,
@@ -45,6 +42,10 @@ export default function TypewriterPage() {
     sampleText,
     showSummary,
   } = useSelector((state: ReduxState) => state.typing);
+
+  if (!isPracticing && !showSummary) {
+    startNewPractice();
+  }
 
   function startNewPractice() {
     const wordLength = 4; // TODO use state value and wire it
@@ -60,12 +61,11 @@ export default function TypewriterPage() {
 
       const sampleText = generatePracticeText({
         glyphs: filteredGlyphs,
-        parcticeLength: 5,
+        practiceLength: 5,
         wordLength: 2,
         uniqueWordCount: 2,
       });
       dispatch(initPractice(sampleText));
-      closeModal();
       dispatch(focusUserInput(true));
     } else {
       // explore new chars
@@ -75,29 +75,20 @@ export default function TypewriterPage() {
 
   function repeatPractice() {
     dispatch(initPractice(sampleText));
-    closeModal();
     dispatch(focusUserInput(true));
   }
 
   function cancelPractice() {
-    closeModal();
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
+    dispatch(closeSummary());
   }
 
   return (
-    <Layout isModalOpen={isModalOpen}>
+    <Layout isModalOpen={showSummary}>
       <PracticeProgressBar />
       <SEO
         lang={intl.locale}
         title={intl.formatMessage({ id: 'typewriter.page.title' })}
-        isModalOpen={isModalOpen}
+        isModalOpen={showSummary}
       />
       <div className="TypewriterBoard">
         <SampleBoard />
@@ -110,7 +101,6 @@ export default function TypewriterPage() {
       {showSummary ? (
         <PracticeSummaryModal
           title="Summary"
-          isOpen={isModalOpen}
           closeTimeoutMS={MODAL_CLOSE_TIMEOUT}
           startNewPractice={startNewPractice}
           cancelPractice={cancelPractice}
@@ -118,7 +108,7 @@ export default function TypewriterPage() {
           correctChars={120}
           mistakenChars={2}
           elapsedTime={238}
-          onRequestClose={closeModal}
+          onRequestClose={() => dispatch(closeSummary())}
         />
       ) : null}
     </Layout>

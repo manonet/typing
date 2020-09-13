@@ -14,12 +14,17 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const createStore = () =>
-  reduxCreateStore(
-    persistedReducer,
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-      (window as any).__REDUX_DEVTOOLS_EXTENSION__()
-  );
+const createStore = () => {
+  if (typeof window === 'object') {
+    return reduxCreateStore(
+      persistedReducer,
+      (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
+        (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+    );
+  }
+
+  return reduxCreateStore(persistedReducer);
+};
 
 // TODO what's the proper type?
 export default ({ element }: { element: ReactNode }) => {

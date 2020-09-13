@@ -59,3 +59,13 @@ export const FLUSH_KEYBOARD = 'FLUSH_KEYBOARD';
 export function flushKeyboard() {
   return { type: FLUSH_KEYBOARD };
 }
+
+// CLOSE_SUMMARY
+
+export type CloseSummaryAction = ReturnType<typeof closeSummary>;
+
+export const CLOSE_SUMMARY = 'CLOSE_SUMMARY';
+
+export function closeSummary() {
+  return { type: CLOSE_SUMMARY };
+}

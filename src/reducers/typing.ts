@@ -1,4 +1,5 @@
 import {
+  CLOSE_SUMMARY,
   FLUSH_KEYBOARD,
   INIT_PRACTICE,
   INPUT_CHANGE,
@@ -102,7 +103,8 @@ export default function typingReducer(
 
   switch (action.type) {
     case INIT_PRACTICE:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         // @ts-ignore
         sampleText: action.sampleText,
         // @ts-ignore
@@ -111,13 +113,12 @@ export default function typingReducer(
         cursorAt: 0,
         isPracticing: true,
         showSummary: false,
-      });
-
+      };
     case SUMMARIZE_PRACTICE:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         showSummary: true,
-      });
-
+      };
     case INPUT_CHANGE: {
       const { currentKeyDown, practiceLength, previousKeyDown } = state;
 
@@ -125,6 +126,7 @@ export default function typingReducer(
       let allChars = [...state.allChars];
       let finishedPractices = state.finishedPractices;
       let isPracticing = state.isPracticing;
+      let showSummary = state.showSummary;
 
       // TODO desc
       // @ts-ignore
@@ -233,20 +235,14 @@ export default function typingReducer(
           marker: 'toPressFirst',
         },
       };
-      marks[signToWrite] = Object.assign(
-        {},
-        { ...(marks[signToWrite] ? marks[signToWrite] : {}) },
-        {
-          succeedState: charsSucceed ? 'correct' : 'missed',
-        }
-      );
-      marks[writtenSign] = Object.assign(
-        {},
-        { ...(marks[writtenSign] ? marks[writtenSign] : {}) },
-        {
-          succeedState: charsSucceed ? 'correct' : 'error',
-        }
-      );
+      marks[signToWrite] = {
+        ...(marks[signToWrite] ? marks[signToWrite] : {}),
+        succeedState: charsSucceed ? 'correct' : 'missed',
+      };
+      marks[writtenSign] = {
+        ...(marks[writtenSign] ? marks[writtenSign] : {}),
+        succeedState: charsSucceed ? 'correct' : 'error',
+      };
 
       // handle dead keys
       let deadKeys = { ...state.deadKeys };
@@ -327,6 +323,7 @@ export default function typingReducer(
       if (isPracticing && cursorAt >= practiceLength) {
         // end reached or exceeded
         isPracticing = false;
+        showSummary = true;
         finishedPractices += 1;
       }
 
@@ -336,6 +333,7 @@ export default function typingReducer(
         userText,
         finishedPractices,
         isPracticing,
+        showSummary,
         cursorAt,
         writtenSign,
         // @ts-ignore
@@ -552,6 +550,14 @@ export default function typingReducer(
       return {
         ...state,
         keys: [...keyboard.keys],
+      };
+    }
+
+    case CLOSE_SUMMARY: {
+      return {
+        ...state,
+        showSummary: false,
+        isPracticing: false,
       };
     }
 
