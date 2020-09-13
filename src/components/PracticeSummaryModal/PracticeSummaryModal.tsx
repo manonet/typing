@@ -1,5 +1,5 @@
 import { FormattedMessage } from 'gatsby-plugin-intl';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import ReactModal from 'react-modal';
 
 import Button from '../Button';
@@ -48,6 +48,28 @@ export default function PracticeSummaryModal({
     },
   };
 
+  function handleKeydown(event: KeyboardEvent) {
+    if (event.code === 'Enter') {
+      startNewPractice && startNewPractice();
+    }
+    if (event.code === 'Space') {
+      repeatPractice && repeatPractice();
+    }
+    if (event.code === 'Esc') {
+      cancelPractice && cancelPractice();
+    }
+  }
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('keydown', handleKeydown, true);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeydown, true);
+    };
+  }, [isOpen]);
+
   return (
     <ReactModal
       onRequestClose={onRequestClose}
@@ -65,13 +87,13 @@ export default function PracticeSummaryModal({
         <div className="practiceSummary__footer">
           <div className="practiceSummary__footerButtons">
             <Button onClick={cancelPractice} color="primary">
-              cancel
+              Cancel (Esc)
             </Button>
             <Button onClick={repeatPractice} color="primary">
-              repeatPractice
+              Repeat (Space)
             </Button>
             <Button onClick={startNewPractice} color="primary">
-              <FormattedMessage id="general.ok" />
+              New (Enter)
             </Button>
           </div>
         </div>

@@ -5,7 +5,9 @@
 .ReactModal__Overlay {
   overflow-x: hidden;
   overflow-y: auto;
+  /* stylelint-disable declaration-no-important */
   background: rgba(0, 0, 0, 0.8) !important;
+  /* stylelint-enable declaration-no-important */
   transition: background-color 0.5s ease;
 
   &--after-open {
