@@ -14,7 +14,12 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const createStore = () => reduxCreateStore(persistedReducer);
+const createStore = () =>
+  reduxCreateStore(
+    persistedReducer,
+    (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
+      (window as any).__REDUX_DEVTOOLS_EXTENSION__()
+  );
 
 // TODO what's the proper type?
 export default ({ element }: { element: ReactNode }) => {
