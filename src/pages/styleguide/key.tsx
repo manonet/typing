@@ -1,9 +1,13 @@
 import React from 'react';
 
-import vars from '../../theme/variables';
 import KeyboardKey from '../../components/KeyboardKey';
+import vars from '../../theme/variables';
 
-function StyleguideKey(props) {
+type Props = {
+  state: any;
+};
+
+function StyleguideKey(props: Props) {
   // Backspace
   let state = props.state || 'def';
   return (
@@ -18,10 +22,13 @@ function StyleguideKey(props) {
         to="a"
         shift="SHIFT"
         succeedState="correct"
+        // @ts-ignore
         pressure="none"
+        // @ts-ignore
         marker="none"
         transform=""
         translate=""
+        // @ts-ignore
         displayedLevel=""
         x={0}
         y={0}
@@ -50,6 +57,7 @@ export default class KeySection extends React.Component {
             <tr>
               <th scope="row">def</th>
               <td>
+                {/* @ts-ignore */}
                 <StyleguideKey />
               </td>
               <td>
@@ -110,12 +118,15 @@ export default class KeySection extends React.Component {
             <tr>
               <th scope="row">def</th>
               <td>
+                {/* @ts-ignore */}
                 <StyleguideKey />
               </td>
               <td>
+                {/* @ts-ignore */}
                 <StyleguideKey />
               </td>
               <td>
+                {/* @ts-ignore */}
                 <StyleguideKey />
               </td>
             </tr>

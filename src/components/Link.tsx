@@ -13,6 +13,7 @@ type Props = {
 export default function Link({ children, language, to, ...rest }: Props) {
   const intl = useIntl();
   const languageLink = language || intl.locale;
+  // @ts-ignore FIXME figure out types
   const link = intl.routed || languageLink ? `/${languageLink}${to}` : `${to}`;
   return (
     <GatsbyLink {...rest} to={link}>

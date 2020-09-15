@@ -7,7 +7,18 @@ import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import { State as ReduxState } from '../reducers';
 
-function StatisticsPage(props) {
+type Props = {
+  allChars: {
+    glyph: string;
+    correct: string;
+    miswrite: string;
+    misread: string;
+  }[];
+  layout: any;
+  layoutName: any;
+};
+
+function StatisticsPage(props: Props) {
   const intl = useIntl();
   const { locale } = intl;
   const { allChars, layout, layoutName } = props;

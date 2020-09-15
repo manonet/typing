@@ -1,15 +1,68 @@
 import React from 'react';
 
+// TODO figure out types
+export type PieChartProps = {
+  unitAll: any;
+  unitPart: any;
+  percent: number;
+  pieClassModifier: any;
+  archWidth: any;
+  r: any;
+  transform: any;
+  bgcolor: any;
+  circleFill: any;
+  color: any;
+  rArch: any;
+  rotation: number;
+  strokeLinecap: any;
+  filter: any;
+  floodColor: any;
+  labeled: any;
+  textColor: any;
+  dur: any;
+  decorated: any;
+  decoStrokeWidth: any;
+  decoStroke: any;
+  decoFill: any;
+  decoStrokeDashWidth: any;
+  decoR: any;
+  decoStrokeDasharray: any;
+  strokeDasharray: any;
+  repeatCount: number;
+  padding: number;
+};
+
+type PieChartDecoProps = {
+  decorated: any;
+  cx: any;
+  cy: any;
+  r: any;
+  stroke: any;
+  fill: any;
+  strokeDashoffset: any;
+  strokeDasharray: any;
+  strokeWidth: any;
+  transform: any;
+};
+
+type PieChartLabelProps = {
+  labeled: any;
+  x: any;
+  y: any;
+  textColor: any;
+  label: any;
+};
+
 // helpers
-function toDegrees(angle) {
+function toDegrees(angle: number) {
   return angle * (180 / Math.PI);
 }
 
-function toRadians(angle) {
+function toRadians(angle: number) {
   return angle * (Math.PI / 180);
 }
 
-function PieChartDeco1(props) {
+function PieChartDeco1(props: PieChartDecoProps) {
   if (props.decorated) {
     return (
       <circle
@@ -30,7 +83,7 @@ function PieChartDeco1(props) {
   }
 }
 
-function PieChartLabel(props) {
+function PieChartLabel(props: PieChartLabelProps) {
   if (props.labeled) {
     return (
       <text
@@ -48,41 +101,42 @@ function PieChartLabel(props) {
   }
 }
 
-export default class PieChart extends React.Component {
+export default class PieChart extends React.Component<PieChartProps> {
   render() {
-    // props
-    let unitAll = this.props.unitAll;
-    let unitPart = this.props.unitPart;
-    let percent = this.props.percent || (unitPart / unitAll) * 100 || 0;
+    const {
+      // props
+      unitAll,
+      unitPart,
+      archWidth = 10,
+      bgcolor,
+      circleFill = 'none',
+      color,
+      padding = 20,
+      percent = (unitPart / unitAll) * 100 || 0,
+      pieClassModifier = 'default',
+      r = 80, // radius
+      rArch = r - archWidth / 2,
+      rotation = 0,
+      strokeLinecap = 'butt',
+      // filter
+      filter = 'none',
+      floodColor,
+      // label
+      labeled = false,
+      textColor,
+      // animation
+      repeatCount = 1, // 0, 1, ... indefinite
+      dur = '2s', // duration
+      // decoration
+      decorated = false,
+      decoStrokeWidth = 5,
+      decoStroke,
+      decoFill = 'none',
+      decoStrokeDashWidth = 2,
+    } = this.props;
 
-    let pieClassModifier = this.props.pieClassModifier || 'default';
-    let archWidth = this.props.archWidth || 10;
-    let r = this.props.r || 80; // radius
-    let rArch = r - archWidth / 2;
-    let padding = this.props.padding || 20;
-    let color = this.props.color;
-    let bgcolor = this.props.bgcolor;
-    let strokeLinecap = this.props.strokeLinecap || 'butt';
-    let rotation = this.props.rotation || 0; // 0 - default left
-    let circleFill = this.props.circleFill || 'none';
-    // filter
-    let filter = this.props.filter || 'none';
-    let floodColor = this.props.floodColor;
-    // label
-    let labeled = this.props.labeled || false;
-    let textColor = this.props.textColor;
-
-    // animation
-    let repeatCount = this.props.repeatCount || 1; // 0, 1, ... indefinite
-    let dur = this.props.dur || '2s'; // duration
-    // decoration
-    let decorated = this.props.decorated || false;
-    let decoStrokeWidth = this.props.decoStrokeWidth || 5;
     let decoR =
       this.props.decoR - decoStrokeWidth / 2 || rArch + archWidth / 2 + 5;
-    let decoStroke = this.props.decoStroke;
-    let decoFill = this.props.decoFill || 'none';
-    let decoStrokeDashWidth = this.props.decoStrokeDashWidth || 2;
     let decoC = 2 * decoR * Math.PI; // circumference of deco circle
     let decoStrokeDasharray =
       this.props.decoStrokeDasharray ||
@@ -160,6 +214,7 @@ export default class PieChart extends React.Component {
           fill={decoFill}
           strokeWidth={decoStrokeWidth}
           strokeDasharray={decoStrokeDasharray}
+          strokeDashoffset={-decoStrokeDashWidth}
           transform={'rotate(' + (rotation + 180) + ' ' + cx + ' ' + cy + ')'}
         />
 
@@ -201,7 +256,7 @@ export default class PieChart extends React.Component {
         </path>
         <PieChartLabel
           labeled={labeled}
-          label={parseFloat(Math.round(percent * 10) / 10).toFixed(1) + '%'}
+          label={(Math.round(percent * 10) / 10).toFixed(1) + '%'}
           textColor={textColor}
           x={cx}
           y={cy}

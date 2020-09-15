@@ -3,11 +3,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 
-import { flushKeyboard } from '../../../actions';
+import { flushKeyboard, KeyboardAction } from '../../../actions';
 import { State as ReduxState } from '../../../reducers';
 import Button from '../../Button';
 
-function Header(props) {
+type Props = {
+  dispatchFlushKeyboard: any;
+};
+
+function Header(props: Props) {
   const { dispatchFlushKeyboard } = props;
 
   return (

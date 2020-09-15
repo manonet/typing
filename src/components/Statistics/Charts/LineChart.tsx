@@ -2,11 +2,24 @@
 
 import React from 'react';
 
-function toRadians(angle) {
+function toRadians(angle: number) {
   return angle * (Math.PI / 180);
 }
 
-function Column(props) {
+type ColumnProps = {
+  item: {
+    label: string;
+  };
+  index: any;
+  width: any;
+  height: any;
+  top: any;
+  left: any;
+  labelColor: any;
+  labelHeight: any;
+};
+
+function Column(props: ColumnProps) {
   let label = props.item.label;
   let i = props.index;
   let width = props.width;
@@ -41,7 +54,33 @@ function Column(props) {
   );
 }
 
-export default class LineChart extends React.Component {
+type LineChartProps = {
+  data: {
+    type: string;
+    toolTipContent: string;
+    dataPoints: { label: string; y: number }[];
+  };
+  dropShadowAAngle: any;
+  graphWidth: any;
+  graphHeight: any;
+  graphX: any;
+  graphY: any;
+  graphPaddingTop: any;
+  graphPaddingBottom: any;
+  width: any;
+  barHeight: any;
+  height: any;
+  lineClassModifier: any;
+  stroke: any;
+  strokeWallHeight: any;
+  strokeWallColor: any;
+  strokeLinecap: any;
+  strokeWidth: any;
+  strokeDasharray: any;
+  strokeDashoffset: any;
+};
+
+export default class LineChart extends React.Component<LineChartProps> {
   render() {
     // props
     let data = this.props.data || {
@@ -87,13 +126,13 @@ export default class LineChart extends React.Component {
     // calculated
     let graphMaxY = Math.max.apply(
       Math,
-      dataPoints.map(function(o) {
+      dataPoints.map(function (o) {
         return o.y;
       })
     );
     let graphMinY = Math.min.apply(
       Math,
-      dataPoints.map(function(o) {
+      dataPoints.map(function (o) {
         return o.y;
       })
     );
@@ -233,8 +272,9 @@ export default class LineChart extends React.Component {
           height={graphHeight}
         />
 
-        {dataPoints.map(function(item, index) {
+        {dataPoints.map(function (item, index) {
           return (
+            // @ts-ignore
             <Column
               key={index}
               index={index}

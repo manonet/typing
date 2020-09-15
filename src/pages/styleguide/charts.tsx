@@ -1,12 +1,15 @@
 import React from 'react';
 
 import LineChart from '../../components/Statistics/Charts/LineChart';
-import PieChart from '../../components/Statistics/Charts/PieChart';
+import PieChart, {
+  PieChartProps,
+} from '../../components/Statistics/Charts/PieChart';
 
 // examples: http://canvasjs.com/docs/charts/integration/jquery/chart-types/jquery-line-chart/
 
-function PieChartThin(props) {
+function PieChartThin(props: PieChartProps) {
   return (
+    // @ts-ignore FIXME
     <PieChart
       archWidth={5}
       strokeLinecap="round"
@@ -19,8 +22,9 @@ function PieChartThin(props) {
   );
 }
 
-function PieChartArc(props) {
+function PieChartArc(props: PieChartProps) {
   return (
+    // @ts-ignore FIXME
     <PieChart
       pieClassModifier="arc"
       unitAll={props.unitAll}
@@ -34,8 +38,9 @@ function PieChartArc(props) {
   );
 }
 
-function PieChartMarked(props) {
+function PieChartMarked(props: PieChartProps) {
   return (
+    // @ts-ignore FIXME
     <PieChart
       pieClassModifier="marked"
       unitAll={props.unitAll}
@@ -54,8 +59,9 @@ function PieChartMarked(props) {
   );
 }
 
-function PieChartInset(props) {
+function PieChartInset(props: PieChartProps) {
   return (
+    // @ts-ignore FIXME
     <PieChart
       pieClassModifier="inset"
       unitAll={props.unitAll}
@@ -72,8 +78,9 @@ function PieChartInset(props) {
   );
 }
 
-function PieChartOuther(props) {
+function PieChartOuther(props: PieChartProps) {
   return (
+    // @ts-ignore FIXME
     <PieChart
       pieClassModifier="outher"
       unitAll={props.unitAll}
@@ -94,17 +101,24 @@ export default class ChartsSection extends React.Component {
 
         <h3>LineCharts</h3>
 
+        {/* @ts-ignore */}
         <LineChart />
 
         <h3>Pie</h3>
 
+        {/* @ts-ignore */}
         <PieChart />
 
+        {/* @ts-ignore */}
         <PieChartThin percent={35.5} />
 
+        {/* @ts-ignore */}
         <PieChartArc percent={65.5} />
+        {/* @ts-ignore */}
         <PieChartMarked unitAll={150} unitPart={49} />
+        {/* @ts-ignore */}
         <PieChartInset percent={82} />
+        {/* @ts-ignore */}
         <PieChartOuther percent={72} />
       </section>
     );

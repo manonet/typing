@@ -1,8 +1,8 @@
-import React from 'react';
-// @ts-ignore
 import { FormattedMessage, FormattedNumber } from 'gatsby-plugin-intl';
-import Button from '../components/Button';
+import React from 'react';
 
+// @ts-ignore
+import Button from '../components/Button';
 import Layout from '../components/Layout';
 import Link from '../components/Link';
 
@@ -41,12 +41,7 @@ function PricingPage() {
             </li>
           </ul>
           <div className="pricing__subscribe">
-            <Button
-              variant="contained"
-              color="primary"
-              component={Link}
-              to="/typewriter/"
-            >
+            <Button color="primary">
               <FormattedMessage id="pricing.callToAction" />
             </Button>
           </div>
@@ -98,12 +93,7 @@ function PricingPage() {
             </li>
           </ul>
           <div className="pricing__subscribe">
-            <Button
-              variant="contained"
-              color="primary"
-              component={Link}
-              to="/typewriter/"
-            >
+            <Button color="primary">
               <FormattedMessage id="pricing.callToAction" />
             </Button>
           </div>
@@ -155,12 +145,7 @@ function PricingPage() {
             </li>
           </ul>
           <div className="pricing__subscribe">
-            <Button
-              variant="contained"
-              color="primary"
-              component={Link}
-              to="/typewriter/"
-            >
+            <Button color="primary">
               <FormattedMessage id="pricing.callToAction" />
             </Button>
           </div>
@@ -212,12 +197,7 @@ function PricingPage() {
             </li>
           </ul>
           <div className="pricing__subscribe">
-            <Button
-              variant="contained"
-              color="primary"
-              component={Link}
-              to="/typewriter/"
-            >
+            <Button color="primary">
               <FormattedMessage id="pricing.callToAction" />
             </Button>
           </div>

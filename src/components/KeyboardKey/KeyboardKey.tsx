@@ -30,261 +30,266 @@ export type KeyboardKeyProps = Key & {
   y: number;
 };
 
-const KeyboardKey = forwardRef((props: KeyboardKeyProps, ref) => {
-  const {
-    code,
-    dead,
-    displayedLevel,
-    enterPath,
-    height,
-    iso,
-    keyTops,
-    label,
-    layout,
-    marker,
-    pressure,
-    succeedState,
-    width,
-    x,
-    y,
-  } = props;
+// FIXME replace any with proper ref types
+const KeyboardKey = forwardRef<any, KeyboardKeyProps>(
+  (
+    {
+      code,
+      color,
+      dead,
+      displayedLevel,
+      enterPath,
+      height,
+      iso,
+      keyTops,
+      label,
+      layout,
+      marker,
+      pressure,
+      succeedState,
+      width,
+      x,
+      y,
+    }: KeyboardKeyProps,
+    ref
+  ) => {
+    const keyTop =
+      keyTops && keyTops.find((item) => item.level === displayedLevel);
 
-  const keyTop =
-    keyTops && keyTops.find((item) => item.level === displayedLevel);
+    const {
+      aRowShift,
+      bRowShift,
+      cRowShift,
+      dRowShift,
+      keyHeight,
+      keyLabelX,
+      keyLabelY,
+      keyPaddingX,
+      keyPaddingY,
+      keyWidth,
+      rX,
+      rY,
+    } = variables;
 
-  const {
-    aRowShift,
-    bRowShift,
-    cRowShift,
-    dRowShift,
-    keyHeight,
-    keyLabelX,
-    keyLabelY,
-    keyPaddingX,
-    keyPaddingY,
-    keyWidth,
-    rX,
-    rY,
-  } = variables;
+    // When letters on a case pair are associated with a key, only the capital character need to be shown on the keytop for the primary group, while the lowercase character only is shown for the secondary group.
+    // let alphabet;
 
-  // When letters on a case pair are associated with a key, only the capital character need to be shown on the keytop for the primary group, while the lowercase character only is shown for the secondary group.
-  // let alphabet;
+    const uncovered = !label && !keyTop?.label;
 
-  const uncovered = !label && !keyTop?.label;
+    const keyClass = classNames('key', iso, code, {
+      ['key--missed']: succeedState === 'missed',
+      ['key--correct']: succeedState === 'correct',
+      ['key--error']: succeedState === 'error',
+      ['key--toPressFirst']: marker === 'toPressFirst',
+      ['key--toPressSecond']: marker === 'toPressSecond',
+      ['key--uncovered']: uncovered,
+      ['key--pressed']: pressure === 'pressed',
+      ['key--locked']: pressure === 'locked',
+      ['key--dead']: keyTop?.dead,
+      // ['key--alphabet']: alphabet,
+    });
+    const keyShadowClass = classNames('key__shadow');
+    const keyBgClass = classNames('key__keyBg');
+    const labelClass = classNames('key__label');
 
-  const keyClass = classNames('key', iso, code, {
-    ['key--missed']: succeedState === 'missed',
-    ['key--correct']: succeedState === 'correct',
-    ['key--error']: succeedState === 'error',
-    ['key--toPressFirst']: marker === 'toPressFirst',
-    ['key--toPressSecond']: marker === 'toPressSecond',
-    ['key--uncovered']: uncovered,
-    ['key--pressed']: pressure === 'pressed',
-    ['key--locked']: pressure === 'locked',
-    ['key--dead']: keyTop?.dead,
-    // ['key--alphabet']: alphabet,
-  });
-  const keyShadowClass = classNames('key__shadow');
-  const keyBgClass = classNames('key__keyBg');
-  const labelClass = classNames('key__label');
-
-  // overwrite color vaues
-  let color = props.color || '#fff';
-  if (marker === 'toPressFirst') {
-    color = '#42c6ff';
-  }
-  if (pressure === 'pressed') {
-    color = '#15d1c6';
-  }
-  if (pressure === 'locked') {
-    color = '#37efba';
-  }
-
-  function renderBump() {
-    const bumpWidth = (keyWidth - keyPaddingX * 2) / 3;
-    const bumpHeight = (keyHeight - keyPaddingY * 2) / 15;
-
-    // bump on F key
-    if (iso === 'C04') {
-      return (
-        <rect
-          className="key__bump"
-          width={bumpWidth}
-          height={bumpHeight}
-          x={
-            cRowShift +
-            keyWidth * 4 +
-            (keyPaddingY + (keyWidth - keyPaddingX * 2) / 3)
-          }
-          y={keyHeight * 3 - (keyPaddingY + 2 * bumpHeight)}
-          rx={(keyHeight - keyPaddingY * 2) / 20}
-          ry={(keyHeight - keyPaddingY * 2) / 20}
-        />
-      );
+    // overwrite color vaues
+    let overwriteColor = color || '#fff';
+    if (marker === 'toPressFirst') {
+      overwriteColor = '#42c6ff';
+    }
+    if (pressure === 'pressed') {
+      overwriteColor = '#15d1c6';
+    }
+    if (pressure === 'locked') {
+      overwriteColor = '#37efba';
     }
 
-    // bump on J key
-    if (iso === 'C07') {
-      return (
-        <rect
-          className="key__bump"
-          width={bumpWidth}
-          height={bumpHeight}
-          x={
-            cRowShift +
-            keyWidth * 7 +
-            (keyPaddingY + (keyWidth - keyPaddingX * 2) / 3)
-          }
-          y={keyHeight * 3 - (keyPaddingY + 2 * bumpHeight)}
-          rx={(keyHeight - keyPaddingY * 2) / 20}
-          ry={(keyHeight - keyPaddingY * 2) / 20}
-        />
-      );
-    }
-    return null;
-  }
+    function renderBump() {
+      const bumpWidth = (keyWidth - keyPaddingX * 2) / 3;
+      const bumpHeight = (keyHeight - keyPaddingY * 2) / 15;
 
-  if (iso === 'C13') {
-    if (layout === '101/104-Variant' || layout === '103/106-KS') {
-      return (
-        <>
-          <path className={keyShadowClass} d={enterPath} />
-          <g className={keyClass}>
-            <path
-              ref={ref}
-              className={keyBgClass}
-              d={enterPath}
-              style={{
-                fill: color,
-              }}
-            />
-            <g className={'key__labels'}>
-              <text
-                className={labelClass}
-                x={dRowShift + keyWidth * 14}
-                y={keyHeight * 2 + 60}
-              >
-                {label}
-              </text>
+      // bump on F key
+      if (iso === 'C04') {
+        return (
+          <rect
+            className="key__bump"
+            width={bumpWidth}
+            height={bumpHeight}
+            x={
+              cRowShift +
+              keyWidth * 4 +
+              (keyPaddingY + (keyWidth - keyPaddingX * 2) / 3)
+            }
+            y={keyHeight * 3 - (keyPaddingY + 2 * bumpHeight)}
+            rx={(keyHeight - keyPaddingY * 2) / 20}
+            ry={(keyHeight - keyPaddingY * 2) / 20}
+          />
+        );
+      }
+
+      // bump on J key
+      if (iso === 'C07') {
+        return (
+          <rect
+            className="key__bump"
+            width={bumpWidth}
+            height={bumpHeight}
+            x={
+              cRowShift +
+              keyWidth * 7 +
+              (keyPaddingY + (keyWidth - keyPaddingX * 2) / 3)
+            }
+            y={keyHeight * 3 - (keyPaddingY + 2 * bumpHeight)}
+            rx={(keyHeight - keyPaddingY * 2) / 20}
+            ry={(keyHeight - keyPaddingY * 2) / 20}
+          />
+        );
+      }
+      return null;
+    }
+
+    if (iso === 'C13') {
+      if (layout === '101/104-Variant' || layout === '103/106-KS') {
+        return (
+          <>
+            <path className={keyShadowClass} d={enterPath} />
+            <g className={keyClass}>
+              <path
+                ref={ref}
+                className={keyBgClass}
+                d={enterPath}
+                style={{
+                  fill: overwriteColor,
+                }}
+              />
+              <g className={'key__labels'}>
+                <text
+                  className={labelClass}
+                  x={dRowShift + keyWidth * 14}
+                  y={keyHeight * 2 + 60}
+                >
+                  {label}
+                </text>
+              </g>
             </g>
-          </g>
-        </>
-      );
-    } else if (layout === '101/104-ANSI') {
-      /* shape:
+          </>
+        );
+      } else if (layout === '101/104-ANSI') {
+        /* shape:
           --
           xx
       */
-      return (
-        <>
-          <rect
-            className={keyShadowClass}
-            width={keyWidth * 3 - cRowShift - keyPaddingX * 2}
-            height={height}
-            x={x - keyWidth + keyPaddingX}
-            y={y + keyPaddingY}
-            rx={rX}
-            ry={rY}
-          />
-          <g className={keyClass}>
+        return (
+          <>
             <rect
-              ref={ref}
-              className={keyBgClass}
+              className={keyShadowClass}
               width={keyWidth * 3 - cRowShift - keyPaddingX * 2}
               height={height}
               x={x - keyWidth + keyPaddingX}
               y={y + keyPaddingY}
               rx={rX}
               ry={rY}
-              style={{
-                fill: color,
-              }}
             />
-            <g className={'key__labels'}>
-              <text
-                className={labelClass}
-                x={cRowShift + keyWidth * 12 + 170}
-                y={keyHeight * 2 + 70}
-              >
-                {label}
-              </text>
+            <g className={keyClass}>
+              <rect
+                ref={ref}
+                className={keyBgClass}
+                width={keyWidth * 3 - cRowShift - keyPaddingX * 2}
+                height={height}
+                x={x - keyWidth + keyPaddingX}
+                y={y + keyPaddingY}
+                rx={rX}
+                ry={rY}
+                style={{
+                  fill: overwriteColor,
+                }}
+              />
+              <g className={'key__labels'}>
+                <text
+                  className={labelClass}
+                  x={cRowShift + keyWidth * 12 + 170}
+                  y={keyHeight * 2 + 70}
+                >
+                  {label}
+                </text>
+              </g>
             </g>
-          </g>
-        </>
-      );
-    } else {
-      /* shape:
+          </>
+        );
+      } else {
+        /* shape:
           xx
           -x
       */
 
-      return (
-        <>
-          <path className={keyShadowClass} d={enterPath} />
-          <g className={keyClass}>
-            <path
-              ref={ref}
-              className={keyBgClass}
-              d={enterPath}
-              style={{
-                fill: color,
-              }}
-            />
-            <g className={'key__labels'}>
-              <text
-                className={labelClass}
-                x={cRowShift + keyWidth * 13 + 70}
-                y={keyHeight + 80}
-              >
-                {label}
-              </text>
+        return (
+          <>
+            <path className={keyShadowClass} d={enterPath} />
+            <g className={keyClass}>
+              <path
+                ref={ref}
+                className={keyBgClass}
+                d={enterPath}
+                style={{
+                  fill: overwriteColor,
+                }}
+              />
+              <g className={'key__labels'}>
+                <text
+                  className={labelClass}
+                  x={cRowShift + keyWidth * 13 + 70}
+                  y={keyHeight + 80}
+                >
+                  {label}
+                </text>
+              </g>
             </g>
-          </g>
-        </>
-      );
+          </>
+        );
+      }
     }
-  }
 
-  return (
-    <>
-      <rect
-        className={keyShadowClass}
-        x={x + keyPaddingX}
-        y={y + keyPaddingY}
-        width={width}
-        height={height}
-        rx={rX}
-        ry={rY}
-      />
-      <g ref={ref} className={keyClass} textAnchor="middle">
+    return (
+      <>
         <rect
-          className={keyBgClass}
+          className={keyShadowClass}
           x={x + keyPaddingX}
           y={y + keyPaddingY}
           width={width}
           height={height}
           rx={rX}
           ry={rY}
-          style={{
-            fill: color,
-          }}
         />
-        {displayedLevel && (
-          <g className={'key__labels'}>
-            <text
-              className={labelClass}
-              dangerouslySetInnerHTML={{
-                __html: keyTop?.label || label || '?',
-              }}
-              x={x + keyLabelX}
-              y={y + keyLabelY + 10}
-            />
-          </g>
-        )}
-        {(iso === 'C04' || iso === 'C07') && renderBump()}
-      </g>
-    </>
-  );
-});
+        <g ref={ref} className={keyClass} textAnchor="middle">
+          <rect
+            className={keyBgClass}
+            x={x + keyPaddingX}
+            y={y + keyPaddingY}
+            width={width}
+            height={height}
+            rx={rX}
+            ry={rY}
+            style={{
+              fill: overwriteColor,
+            }}
+          />
+          {displayedLevel && (
+            <g className={'key__labels'}>
+              <text
+                className={labelClass}
+                dangerouslySetInnerHTML={{
+                  __html: keyTop?.label || label || '?',
+                }}
+                x={x + keyLabelX}
+                y={y + keyLabelY + 10}
+              />
+            </g>
+          )}
+          {(iso === 'C04' || iso === 'C07') && renderBump()}
+        </g>
+      </>
+    );
+  }
+);
 
 export default KeyboardKey;

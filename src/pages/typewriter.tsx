@@ -101,6 +101,7 @@ export default function TypewriterPage() {
       {showSummary ? (
         <PracticeSummaryModal
           title="Summary"
+          // @ts-ignore
           closeTimeoutMS={MODAL_CLOSE_TIMEOUT}
           startNewPractice={startNewPractice}
           cancelPractice={cancelPractice}

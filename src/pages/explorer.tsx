@@ -57,6 +57,7 @@ class ExplorerPage extends React.Component<Props, State> {
         timeStamp: e.timeStamp, // https://developer.mozilla.org/en-US/docs/Web/API/Event/timeStamp,
         type: e.type,
         key: e.key, // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key
+        // @ts-ignore
         code: e.code, // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code code does not exist in KeyboardEvent type
         altKey: e.altKey, // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/altKey
         ctrlKey: e.ctrlKey, // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/ctrlKey
