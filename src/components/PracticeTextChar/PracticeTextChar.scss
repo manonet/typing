@@ -1,4 +1,4 @@
-.SampleBoardChar {
+.PracticeTextChar {
   display: inline-block;
   font-style: normal;
   color: $color-grey-700;
@@ -6,7 +6,7 @@
   white-space: pre-wrap;
   @extend %font-family;
 
-  .sampleBoard--focus & {
+  .PracticeText--focus & {
     &__done {
       color: $color-grey-400;
     }

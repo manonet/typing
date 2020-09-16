@@ -25,7 +25,7 @@ describe('<PracticeProgressBar>', () => {
 
   it('hides initially', () => {
     const store = setupStore({
-      typing: { userText: '', isPracticing: false, sampleText: '' },
+      typing: { userText: '', isPracticing: false, lessonText: '' },
     });
 
     const wrapper = mount(
@@ -43,7 +43,7 @@ describe('<PracticeProgressBar>', () => {
 
   it('hides if sample text and user text is not given', () => {
     const store = setupStore({
-      typing: { userText: '', isPracticing: true, sampleText: '' },
+      typing: { userText: '', isPracticing: true, lessonText: '' },
     });
 
     const wrapper = mount(
@@ -61,7 +61,7 @@ describe('<PracticeProgressBar>', () => {
 
   it('hides if user text is not given', () => {
     const store = setupStore({
-      typing: { userText: '', isPracticing: true, sampleText: 'abcdefg' },
+      typing: { userText: '', isPracticing: true, lessonText: 'abcdefg' },
     });
 
     const wrapper = mount(
@@ -79,7 +79,7 @@ describe('<PracticeProgressBar>', () => {
 
   it('displays the proper width during the practice', () => {
     const store = setupStore({
-      typing: { userText: 'abc', isPracticing: true, sampleText: 'abcdefg' },
+      typing: { userText: 'abc', isPracticing: true, lessonText: 'abcdefg' },
     });
 
     const wrapper = mount(
@@ -99,7 +99,7 @@ describe('<PracticeProgressBar>', () => {
       typing: {
         userText: 'abcdefg',
         isPracticing: true,
-        sampleText: 'abcdefg',
+        lessonText: 'abcdefg',
       },
     });
 
@@ -120,7 +120,7 @@ describe('<PracticeProgressBar>', () => {
       typing: {
         userText: 'abcdefg',
         isPracticing: false,
-        sampleText: 'abcdefg',
+        lessonText: 'abcdefg',
       },
     });
 

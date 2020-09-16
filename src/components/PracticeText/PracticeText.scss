@@ -1,4 +1,4 @@
-// TODO - double-checek, moved
+// TODO - double-check, moved
 .TypewriterBoard {
   position: relative;
   color: $text-color-inverse-primary;
@@ -11,9 +11,9 @@
     flex-direction: column;
   }
 }
-// TODO - double-checek, moved
+// TODO - double-check, moved
 
-.sampleBoard {
+.PracticeText {
   display: flex;
   font-size: 18px;
   color: $color-grey-500;
@@ -46,7 +46,7 @@
     display: flex;
   }
 
-  &__sample {
+  &__lessonContent {
     position: relative;
     flex: 0 1 800px;
     padding: 10px;

@@ -7,7 +7,7 @@ import { PracticeProgressBar } from '../components';
 import Keyboard from '../components/Keyboard';
 import Layout from '../components/Layout';
 import PracticeSummaryModal from '../components/PracticeSummaryModal';
-import SampleBoard from '../components/SampleBoard';
+import PracticeText from '../components/PracticeText';
 import SEO from '../components/seo';
 import { State as ReduxState } from '../reducers';
 import { generatePracticeText } from '../utils';
@@ -39,7 +39,7 @@ export default function TypewriterPage() {
     allChars,
     finishedPractices,
     isPracticing,
-    sampleText,
+    lessonText,
     showSummary,
   } = useSelector((state: ReduxState) => state.typing);
 
@@ -59,13 +59,13 @@ export default function TypewriterPage() {
         (glyph) => !nonPracticeGlyphs.includes(glyph)
       );
 
-      const sampleText = generatePracticeText({
+      const lessonText = generatePracticeText({
         glyphs: filteredGlyphs,
         practiceLength: 5,
         wordLength: 2,
         uniqueWordCount: 2,
       });
-      dispatch(initPractice(sampleText));
+      dispatch(initPractice(lessonText));
       dispatch(focusUserInput(true));
     } else {
       // explore new chars
@@ -74,7 +74,7 @@ export default function TypewriterPage() {
   }
 
   function repeatPractice() {
-    dispatch(initPractice(sampleText));
+    dispatch(initPractice(lessonText));
     dispatch(focusUserInput(true));
   }
 
@@ -91,7 +91,7 @@ export default function TypewriterPage() {
         isModalOpen={showSummary}
       />
       <div className="TypewriterBoard">
-        <SampleBoard />
+        <PracticeText />
         <div className="finishedPractices">
           № {finishedPractices + 1}, finished: {finishedPractices}
         </div>

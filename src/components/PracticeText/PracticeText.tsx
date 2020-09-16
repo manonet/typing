@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { focusUserInput, inputChange, keyDown, keyUp } from '../../actions';
 import { State as ReduxState } from '../../reducers';
-import SampleBoardChar from '../SampleBoardChar';
+import PracticeTextChar from '../PracticeTextChar';
 
 function focusTextInput(
   textAreaRef: React.RefObject<HTMLTextAreaElement>,
@@ -17,7 +17,7 @@ function focusTextInput(
   }
 }
 
-export default function SampleBoard() {
+export default function PracticeText() {
   const textAreaRef: React.RefObject<HTMLTextAreaElement> = React.createRef();
 
   const dispatch = useDispatch();
@@ -26,11 +26,11 @@ export default function SampleBoard() {
     (state: ReduxState) => state.focusUserInput.isUserInputFocused
   );
 
-  const { cursorAt, sampleText, userText } = useSelector(
+  const { cursorAt, lessonText, userText } = useSelector(
     (state: ReduxState) => state.typing
   );
 
-  const sampleArray = sampleText.split('');
+  const lessonContentArray = lessonText.split('');
 
   function handleKeydown(event: KeyboardEvent) {
     dispatch(keyDown(event));
@@ -57,18 +57,18 @@ export default function SampleBoard() {
 
   return (
     <div
-      className={classNames('sampleBoard', {
-        ['sampleBoard--focus']: isUserInputFocused,
+      className={classNames('PracticeText', {
+        ['PracticeText--focus']: isUserInputFocused,
       })}
       onClick={() => focusTextInput(textAreaRef, userText?.length || 0)}
       tabIndex={0}
       onKeyDown={undefined}
       role="button"
     >
-      <div className={'sampleBoard__wrapper'}>
-        <kbd className={classNames('sampleBoard__sample')}>
-          {sampleArray.map((char, index) => (
-            <SampleBoardChar
+      <div className={'PracticeText__wrapper'}>
+        <kbd className={classNames('PracticeText__lessonContent')}>
+          {lessonContentArray.map((char, index) => (
+            <PracticeTextChar
               key={index}
               index={index}
               cursorAt={cursorAt}
@@ -79,7 +79,7 @@ export default function SampleBoard() {
         </kbd>
         <textarea
           ref={textAreaRef}
-          className={'sampleBoard__userInput'}
+          className={'PracticeText__userInput'}
           value={userText}
           onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
             dispatch(inputChange(event.target.value))

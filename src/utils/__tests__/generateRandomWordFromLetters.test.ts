@@ -4,36 +4,36 @@ describe('generateRandomWordFromLetters', () => {
   global.Math.random = () => 0.5;
 
   it('returns an empty string if the array is empty', () => {
-    const sampleText = generateRandomWordFromLetters({
+    const lessonText = generateRandomWordFromLetters({
       glyphs: [],
     });
 
-    expect(sampleText).toEqual('');
+    expect(lessonText).toEqual('');
   });
 
   it('returns a random string based on the array items', () => {
-    const sampleText = generateRandomWordFromLetters({
+    const lessonText = generateRandomWordFromLetters({
       glyphs: ['a', 'b', 'c'],
     });
 
-    expect(sampleText).toEqual('acb');
+    expect(lessonText).toEqual('acb');
   });
 
   it('returns a random string with the given length', () => {
-    const sampleText = generateRandomWordFromLetters({
+    const lessonText = generateRandomWordFromLetters({
       glyphs: ['a', 'b', 'c', 'd', 'e', 'f'],
       length: 3,
     });
 
-    expect(sampleText).toEqual('acb');
+    expect(lessonText).toEqual('acb');
   });
 
   it('returns a string with the given length, even if there are not enough glyphs', () => {
-    const sampleText = generateRandomWordFromLetters({
+    const lessonText = generateRandomWordFromLetters({
       glyphs: ['d', 'e', 'f'],
       length: 10,
     });
 
-    expect(sampleText).toEqual('ddeefddfef');
+    expect(lessonText).toEqual('ddeefddfef');
   });
 });

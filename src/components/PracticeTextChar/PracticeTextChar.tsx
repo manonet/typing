@@ -9,7 +9,7 @@ type Props = {
   userText: string;
 };
 
-export default function SampleBoardChar(props: Props) {
+export default function PracticeTextChar(props: Props) {
   const { char, className, cursorAt, index, userText } = props;
 
   // classes
@@ -33,13 +33,13 @@ export default function SampleBoardChar(props: Props) {
     <>
       <i
         className={classNames(
-          'SampleBoardChar',
+          'PracticeTextChar',
           {
-            ['SampleBoardChar__done']: done,
-            ['SampleBoardChar__active']: active,
-            ['SampleBoardChar__error']: error,
-            ['SampleBoardChar__space']: letterToDisplay === '⸱',
-            ['SampleBoardChar__lineFeed']: letterToDisplay === '↵',
+            ['PracticeTextChar__done']: done,
+            ['PracticeTextChar__active']: active,
+            ['PracticeTextChar__error']: error,
+            ['PracticeTextChar__space']: letterToDisplay === '⸱',
+            ['PracticeTextChar__lineFeed']: letterToDisplay === '↵',
           },
           className
         )}

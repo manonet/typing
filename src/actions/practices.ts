@@ -10,8 +10,8 @@ export type PracticeAction = ReturnType<
 
 export const INIT_PRACTICE = 'INIT_PRACTICE';
 
-export function initPractice(sampleText: string) {
-  return { type: INIT_PRACTICE, sampleText };
+export function initPractice(lessonText: string) {
+  return { type: INIT_PRACTICE, lessonText };
 }
 
 // START_PRACTICE

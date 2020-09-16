@@ -46,7 +46,7 @@ export type TypingState = {
   os: OS;
   practiceLength: number;
   previousKeyDown?: KeyDown;
-  sampleText: string;
+  lessonText: string;
   signToWrite: string;
   showSummary: boolean;
   userText: string;
@@ -81,7 +81,7 @@ const initialState: TypingState = {
   ],
   os: keyboard.os,
   practiceLength: 0,
-  sampleText: '',
+  lessonText: '',
   signToWrite: '',
   showSummary: false,
   userText: '',
@@ -106,9 +106,9 @@ export default function typingReducer(
       return {
         ...state,
         // @ts-ignore
-        sampleText: action.sampleText,
+        lessonText: action.lessonText,
         // @ts-ignore
-        practiceLength: action.sampleText.length,
+        practiceLength: action.lessonText.length,
         userText: '',
         cursorAt: 0,
         isPracticing: true,
@@ -131,11 +131,11 @@ export default function typingReducer(
       // TODO desc
       // @ts-ignore
       const userText = action.userText;
-      const sampleText = state.sampleText;
+      const lessonText = state.lessonText;
       const cursorAt = userText.length;
       const writtenSign = cursorAt > 0 ? userText.charAt(cursorAt - 1) : '';
-      const nextSign = sampleText.charAt(cursorAt);
-      const signToWrite = cursorAt >= 1 ? sampleText.charAt(cursorAt - 1) : '';
+      const nextSign = lessonText.charAt(cursorAt);
+      const signToWrite = cursorAt >= 1 ? lessonText.charAt(cursorAt - 1) : '';
       const charsSucceed = signToWrite === writtenSign;
 
       // change layout if necessary
