@@ -17,6 +17,7 @@ const languageName = {
   ar: 'العربية', // Arabic
   bg: 'Български', // Bulgarian
   bs: 'Bosanski', // Bosnian
+  ca: 'Català', // Catalan
   cs: 'Čeština', // Czech
   da: 'Dansk', // Danish
   de: 'Deutsch', // German
