@@ -11,44 +11,20 @@ import { useIntl } from 'gatsby-plugin-intl';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
+import { RtlLangs, getLangCode } from '../intl/languages';
+
 type Props = {
   description?: string | null;
   title?: string;
   meta?: [];
   keywords?: string;
-  lang?: string;
   isModalOpen?: boolean;
 };
-
-const RtlLangs = [
-  'ae' /* Avestan */,
-  'ar' /* 'العربية', Arabic */,
-  'arc' /* Aramaic */,
-  'arz' /* 'مصرى', Egyptian  */,
-  'azb' /* 'تۆرکجه', Azeri, Azerbaijani  */,
-  'bcc' /* 'بلوچی مکرانی', Southern Balochi */,
-  'bqi' /* 'بختياري', Bakthiari */,
-  'ckb' /* 'Soranî / کوردی', Sorani */,
-  'dv' /* 'ދިވެހިބަސް', Dhivehi */,
-  'fa' /* 'فارسی', Persian, Farsi */,
-  'glk' /* 'گیلکی', Gilaki */,
-  'he' /* 'עברית', Hebrew */,
-  'ku' /* 'Kurdî / كوردی', Kurdish */,
-  'mzn' /* 'مازِرونی', Mazanderani */,
-  'nqo' /* 'ߒߞߏ', N'Ko */,
-  'pnb' /* 'پنجابی', Western Punjabi */,
-  'ps' /* 'پښتو', Pashto, */,
-  'sd' /* 'سنڌي', Sindhi */,
-  'ug' /* 'Uyghurche / ئۇيغۇرچە', Uyghur */,
-  'ur' /* 'اردو', Urdu */,
-  'yi' /* 'ייִדיש', Yiddish */,
-];
 
 export default function SEO({
   description,
   isModalOpen,
   keywords,
-  lang: language,
   meta = [],
   title,
 }: Props) {
@@ -66,7 +42,7 @@ export default function SEO({
   );
 
   const intl = useIntl();
-  const lang = language || intl.locale;
+  const lang = intl.locale;
 
   const metaDescription =
     description || intl.formatMessage({ id: 'site.description' });
@@ -89,8 +65,7 @@ export default function SEO({
     intl.formatMessage({ id: 'site.keywords.course' }),
   ];
 
-  // Ensure that land string can be matched with RtlLangs
-  const langCode = lang.replace(/([\-\_].+)/, '').toLowerCase();
+  const langCode = getLangCode(lang);
   // for the Right To Left languages add the proper HTML dir attribude
   const dir = RtlLangs.includes(langCode) ? 'rtl' : 'ltr';
 

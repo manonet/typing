@@ -52,5 +52,19 @@
     "typing.finger.little": "kleiner Finger",
     "typing.hand.finger": "{hand} {finger}",
     "contribution.translate.title": "Bitte hilf mit diese Seite zu übersetzen.",
-    "contribution.translate.desc": "Wenn Du Englisch (oder Ungarisch) verstehst, kannst du mithelfen dieses Lernprogramm auch in anderen Sprachen verfügbar zu machen. Klick auf den unten angeführten Link um mehr zu erfahren."
+    "contribution.translate.desc": "Wenn Du Englisch (oder Ungarisch) verstehst, kannst du mithelfen dieses Lernprogramm auch in anderen Sprachen verfügbar zu machen. Klick auf den unten angeführten Link um mehr zu erfahren.",
+
+    "contact.title": "Kontakt",
+    "contact.form.name": "Name",
+    "contact.form.email": "Email",
+    "contact.form.mailingAddress": "An",
+    "contact.form.subject": "Betreff",
+    "contact.form.message": "Nachricht",
+    "contact.form.submit": "Senden",
+    "contact.form.reset": "Verwerfen",
+    "contact.form.success": "Die Email wurde erfolgreich versendet",
+    "contact.form.error": "Beim Senden der Nachricht ist ein Fehler aufgetreten. Bitte versuch es später noch einmal.",
+
+    "form.field.required": "{label} ist erforderlich!",
+    "form.field.invalid.email": "Dies ist keine echte E-Mail-Adresse!"
 }

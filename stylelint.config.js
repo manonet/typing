@@ -10,7 +10,7 @@ module.exports = {
     'at-rule-name-space-after': 'always-single-line',
     'at-rule-no-unknown': [
       true,
-      { ignoreAtRules: ['extend', 'function', 'return', 'value'] },
+      { ignoreAtRules: ['each', 'extend', 'function', 'return', 'value'] },
     ],
     'at-rule-no-vendor-prefix': true,
     'at-rule-semicolon-newline-after': 'always',

@@ -78,6 +78,20 @@
     "home.startNow.title": "Kezd el a gyakorlást — ingyenes",
     "home.startNow.desc": "A {siteName} egy nyílt forráskódú, közösség által fenntartott alkalmazás. Adományokat elfogadunk, de nem kell fizetned a program használatáért. Tervezzük fizetős funkciók fejlesztését, hogy kiadásainkat fedezzük, de még ezek is elérhetőek egy kis közreműködés árán.",
     "home.learn.more": "Tudj meg többet",
-    
-    "button.startNow": "Kezdd el a gyakorlást"
+
+    "button.startNow": "Kezdd el a gyakorlást",
+
+    "contact.title": "Kapcsolat",
+    "contact.form.name": "Név",
+    "contact.form.email": "E-mail",
+    "contact.form.mailingAddress": "Címzett",
+    "contact.form.subject": "Tárgy",
+    "contact.form.message": "ÜSzenet",
+    "contact.form.submit": "Küldés",
+    "contact.form.reset": "Töröl",
+    "contact.form.success": "E-mail sikeresen elküldve!",
+    "contact.form.error": "Hiba történt az üzenet elküldése során. Kérlek, próbáld újra később.",
+
+    "form.field.required": "Kérlek töltsd ki a mezőt ({label})!",
+    "form.field.invalid.email": "Ez nem valódi e-mail cím!"
 }

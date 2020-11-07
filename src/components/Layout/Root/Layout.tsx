@@ -71,9 +71,7 @@ export default function Layout(props: Props) {
                 <FormattedMessage id="site.warning.mobile" />
               </div>
             )}
-            {hasHeader && (
-              <Header siteTitle={intl.formatMessage({ id: 'site.title' })} />
-            )}
+            {hasHeader && <Header />}
             <main className={classNames('main', className)}>{children}</main>
             <Footer
               appName={data.site.siteMetadata.name}

@@ -84,5 +84,19 @@
     "home.startNow.desc": "{siteName} is an open source, community driven application. We accept donations, but you do not have pay for using the app. We also plan to make and offer payed features to cover expenses, but even these you can get for a bit of a conrtibution.",
     "home.learn.more": "Learn more",
 
-    "button.startNow": "Start Now"
+    "button.startNow": "Start Now",
+
+    "contact.title": "Contact us",
+    "contact.form.name": "Name",
+    "contact.form.email": "Email",
+    "contact.form.mailingAddress": "To",
+    "contact.form.subject": "Subject",
+    "contact.form.message": "Message",
+    "contact.form.submit": "Submit",
+    "contact.form.reset": "Reset",
+    "contact.form.success": "The Email was sent successfully",
+    "contact.form.error": "There was an error trying to send your message. Please try again later.",
+
+    "form.field.required": "{label} is required!",
+    "form.field.invalid.email": "{label} is not validate email!"
 }
