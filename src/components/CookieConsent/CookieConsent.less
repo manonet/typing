@@ -2,12 +2,12 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: $z-index-fixed;
+  z-index: @zindex-picker-panel;
   display: flex;
   width: 100%;
-  padding: $spacer calc(#{$spacer} * 2);
-  background: $color-white;
-  border-top: 1px solid $color-grey-300;
+  padding: @padding-xs @padding-md;
+  background: @white;
+  border-top: 1px solid @gray-3;
   box-shadow: rgba(0, 0, 0, 0.5) 0 8px 10px 5px;
   flex-wrap: wrap;
   justify-content: space-between;

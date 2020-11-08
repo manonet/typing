@@ -23,7 +23,7 @@
 
 .practiceSummary {
   max-width: 640px;
-  background: $color-white;
+  background: @white;
 
   // background: radial-gradient(
   //   circle,
@@ -32,8 +32,8 @@
   // );
 
   &__content {
-    margin-inline-start: calc(#{$spacer} * 2);
-    margin-inline-end: calc(#{$spacer} * 2);
+    margin-inline-start: @margin-md;
+    margin-inline-end: @margin-md;
     // background: radial-gradient(
     //   circle,
     //   $color-purple-600 0%,
@@ -46,7 +46,7 @@
   }
 
   &__footerButtons {
-    padding: calc(#{$spacer} * 2);
+    padding: @margin-md;
     margin-inline-start: auto;
   }
 }

@@ -1,13 +1,10 @@
-$transition-duration: 0.13s;
-$transition-timing-function: ease-out;
-
 .key {
   cursor: default;
-  transition: transform 0.05s $transition-timing-function;
+  transition: transform 0.05s @ease-out;
 
   &__labels {
     // also called keytop, currently only contains one char, one label.
-    // fill: $color-grey-700;
+    // fill: @gray-700;
     user-select: none;
   }
 
@@ -17,49 +14,49 @@ $transition-timing-function: ease-out;
 
   &__label {
     font-size: 36px;
-    fill: $color-grey-400;
-    transition: fill $transition-duration $transition-timing-function;
+    fill: @gray-4;
+    transition: fill @animation-duration-base @ease-out;
 
     &--toWrite {
-      fill: $color-primary-contrast;
+      fill: @black;
     }
   }
 
   &__bump {
-    fill: $color-grey-300;
+    fill: @gray-3;
   }
 
   &__keyBg {
-    fill: $color-white;
-    stroke: $color-white;
+    fill: @white;
+    stroke: @white;
     stroke-width: 5;
-    transition: fill $transition-duration $transition-timing-function,
-      stroke $transition-duration $transition-timing-function;
+    transition: fill @animation-duration-base @ease-out,
+      stroke @animation-duration-base @ease-out;
   }
 
   &__shadow {
-    fill: $color-grey-300;
-    stroke: $color-grey-300;
+    fill: @gray-3;
+    stroke: @gray-3;
     stroke-width: 5;
     transform: translate(0, 1.5%);
   }
 
   // &--alphabet {
-  // fill: $color-orange-100;
+  // fill: @orange-100;
   // }
 
   // TODO - cleanup, "toWrite" is duplicated, use "toPressFirst" or "toPressSecond" instead if possible
   &--toWrite .key__keyBg {
-    fill: $color-primary-main;
+    fill: @primary-color;
   }
 
   &--locked {
     .key__keyBg {
-      fill: $color-green-300;
+      fill: @green-3;
     }
 
     .key__label {
-      fill: $color-primary-contrast;
+      fill: @black;
     }
   }
 
@@ -67,80 +64,80 @@ $transition-timing-function: ease-out;
     opacity: 0.5;
 
     .key__keyBg {
-      fill: $color-grey-200;
+      fill: @gray-2;
     }
 
     .key__label {
-      fill: $color-white;
+      fill: @white;
     }
   }
 
   &--dead {
     .key__keyBg {
-      fill: $color-purple-100;
+      fill: @purple-1;
     }
 
     .key__label,
     .key__bump {
-      fill: $color-white;
+      fill: @white;
     }
   }
 
   &--toPressFirst {
     .key__keyBg {
-      fill: $color-primary-main;
+      fill: @primary-color;
     }
 
     .key__label {
-      fill: $color-primary-contrast;
+      fill: @black;
     }
 
     .key__bump {
-      fill: $color-white;
+      fill: @white;
     }
   }
 
   &--toPressSecond {
     .key__keyBg {
-      fill: $color-secondary-main;
+      fill: @green-3;
     }
 
     .key__label {
-      fill: $color-primary-contrast;
+      fill: @black;
     }
 
     .key__bump {
-      fill: $color-white;
+      fill: @white;
     }
   }
 
   &--missed {
     .key__keyBg {
-      stroke: $color-red-400;
+      stroke: @red-4;
     }
   }
 
   &--error .key__keyBg {
-    stroke: $color-orange-400;
+    stroke: @orange-4;
   }
 
   &--correct .key__keyBg {
-    stroke: $color-green-500;
+    stroke: @green-5;
   }
 
   // pressed state overwrites all others
   &--pressed {
     .key__keyBg {
-      fill: $color-teal-400;
-      stroke: $color-teal-400;
+      fill: @cyan-4;
+      stroke: @cyan-4;
     }
 
     .key__label {
-      fill: $color-primary-contrast;
+      fill: @black;
     }
 
     .key__bump {
-      fill: $color-white;
+      fill: @white;
     }
 
     transform: translate(0, 1.5%);

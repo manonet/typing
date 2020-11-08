@@ -1,4 +1,7 @@
+// import theme from './src/theme/ant-design-theme.ts';
+
 const packageJson = require('./package.json');
+const theme = require('./src/theme/ant-design-theme.ts');
 
 module.exports = {
   pathPrefix: '',
@@ -71,13 +74,6 @@ module.exports = {
         path: `${__dirname}/src/data`,
       },
     },
-    'gatsby-plugin-sass',
-    {
-      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
-      options: {
-        // devMode: true,
-      },
-    },
     {
       resolve: `gatsby-plugin-gdpr-cookies`,
       options: {
@@ -97,6 +93,21 @@ module.exports = {
         },
         // defines the environments where the tracking should be available  - default is ["production"]
         // environments: ['production', 'development'],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-antd',
+      options: {
+        style: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-less',
+      options: {
+        lessOptions: {
+          javascriptEnabled: true,
+          modifyVars: theme,
+        },
       },
     },
   ],

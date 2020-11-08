@@ -1,7 +1,6 @@
 .header {
-  overflow: hidden;
-  color: $color-white;
-  background-color: $color-grey-800;
+  color: @white;
+  background-color: @gray-8;
 
   &__container {
     display: flex;
@@ -14,7 +13,7 @@
   }
 
   &__menu {
-    margin-inline-start: calc(#{$spacer} * 2);
+    margin-inline-start: @margin-md;
   }
 
   &__userMenu {
@@ -28,11 +27,11 @@
   margin: 0;
 
   &__item {
-    padding: $spacer;
-    color: $color-white;
+    padding: @padding-xs;
+    color: @white;
 
     &--active {
-      background: $color-grey-900;
+      background: @gray-8;
     }
 
     &:hover {

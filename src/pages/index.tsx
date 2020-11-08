@@ -1,8 +1,8 @@
+import { Button } from 'antd';
 import { StaticQuery, graphql, navigate, Link } from 'gatsby';
 import { FormattedMessage } from 'gatsby-plugin-intl';
 import React from 'react';
 
-import Button from '../components/Button';
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import imgTestimonials1 from '../images/testimonials1.jpg';
@@ -13,6 +13,8 @@ import imgSam from '../images/uncle-sam.png';
 const startNowButton = (
   <Button
     className="startNowButton"
+    type="primary"
+    size="large"
     onClick={() => {
       if (typeof window !== 'undefined') {
         navigate('/typewriter');

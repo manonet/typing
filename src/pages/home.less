@@ -1,21 +1,17 @@
-$introImagePush: 100px;
+@introImagePush: 100px;
 
 .home {
   a {
-    color: $color-theme-active;
+    // color: @primary-color;
   }
 
   &__intro {
-    color: $color-white;
-    background-color: $color-theme-dark;
+    color: @white;
+    background-color: @gray-8;
   }
 
   &__features {
-    background-image: linear-gradient(
-        $color-white,
-        rgba(255, 255, 255, 0.9),
-        $color-white
-      ),
+    background-image: linear-gradient(@white, rgba(255, 255, 255, 0.9), @white),
       url('../images/keyboard4.jpg');
     background-position: center;
     background-size: cover;
@@ -24,9 +20,9 @@ $introImagePush: 100px;
   &__testimonials {
     position: relative;
     background-image: linear-gradient(
-        $color-theme-complementary,
+        @primary-color,
         rgba(255, 255, 255, 0),
-        $color-theme-complementary
+        @primary-color
       ),
       url('../images/keyboard4.jpg');
     background-position: center;
@@ -37,7 +33,7 @@ $introImagePush: 100px;
       width: 100%;
       height: 100%;
       content: '';
-      background: $color-theme-complementary;
+      background: @primary-color;
       opacity: 0.9;
     }
   }
@@ -51,60 +47,62 @@ $introImagePush: 100px;
 }
 
 .startNowButton {
-  padding: calc(#{$spacer} * 2) calc(#{$spacer} * 3);
-  margin-top: calc(#{$spacer} * 2);
-  font-size: $font-size-big;
+  padding: @padding-md @padding-lg;
+  margin-top: @margin-md;
+  font-size: @font-size-lg;
   font-weight: 700;
-  color: $color-white;
-  background-color: $color-theme-active;
+  color: @white;
+  background-color: @primary-color;
 }
 
 .intro {
   &__logo {
-    margin: calc(#{$spacer} * 3) auto;
-    color: $color-theme-active;
+    margin: @margin-lg auto;
+    color: @primary-color;
     text-align: center;
   }
 
   &__title {
     margin: 1em 0;
+    font-size: @heading-1-size;
+    color: @white;
     text-align: center;
   }
 
   &__desc {
-    font-size: $font-size-big;
+    font-size: @font-size-lg;
     text-align: center;
   }
 
   &__advantages {
     position: relative;
-    top: $introImagePush;
+    top: @introImagePush;
     display: flex;
     flex-direction: row-reverse;
   }
 
   .advantages {
     width: 50%;
-    font-size: $font-size-big;
+    font-size: @font-size-lg;
     text-align: start;
-    padding-inline-start: calc(#{$spacer} * 3);
+    padding-inline-start: @padding-lg;
 
     ul {
-      padding: $spacer 0 0;
+      padding: @padding-xs 0 0;
       margin: 0;
     }
 
     li {
       display: flex;
-      padding-bottom: $spacer;
+      padding-bottom: @padding-xs;
       list-style: none;
       align-items: start;
     }
 
     i {
       font-size: 20px;
-      padding-inline-end: $spacer;
-      color: $color-theme-active;
+      padding-inline-end: @padding-xs;
+      color: @primary-color;
     }
   }
 
@@ -117,10 +115,11 @@ $introImagePush: 100px;
 .features {
   position: relative;
   padding: 60px 0;
-  margin-top: $introImagePush;
+  margin-top: @introImagePush;
 
   &__title {
     margin: 2em 0 !important;
+    font-size: @heading-1-size;
     text-align: center;
   }
 
@@ -136,7 +135,7 @@ $introImagePush: 100px;
     // stylelint-disable no-descending-specificity
     i {
       font-size: 30px;
-      margin-inline-end: calc(#{$spacer} * 2);
+      margin-inline-end: @margin-md;
     }
     // stylelint-enable no-descending-specificity
   }
@@ -157,7 +156,8 @@ $introImagePush: 100px;
 
   &__title {
     margin: 2em 0 !important;
-    color: $color-white;
+    font-size: @heading-1-size;
+    color: @white;
     text-align: center;
   }
 
@@ -171,10 +171,10 @@ $introImagePush: 100px;
     position: relative;
     display: flex;
     max-width: 320px;
-    padding: calc(#{$spacer} * 2);
+    padding: @padding-md;
     padding-top: 70px;
     flex-direction: column;
-    background: $color-white;
+    background: @white;
     box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.1),
       0 1px 4px 0 rgba(0, 0, 0, 0.1);
   }
@@ -184,9 +184,9 @@ $introImagePush: 100px;
     top: -50px;
     width: 100px;
     height: 100px;
-    padding: calc(#{$spacer} / 2);
+    padding: @padding-xss;
     overflow: hidden;
-    background: $color-white;
+    background: @white;
     border-radius: 100%;
     align-self: center;
     box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.1),
@@ -203,7 +203,7 @@ $introImagePush: 100px;
 
   &__user {
     margin-bottom: 1em;
-    font-size: $font-size-big;
+    font-size: @font-size-lg;
     text-align: center;
   }
 
@@ -218,7 +218,7 @@ $introImagePush: 100px;
       left: -1px;
       display: block;
       font-size: 100px;
-      color: var(--color-black);
+      color: @black;
       content: '\201C';
       opacity: 0.15;
     }
@@ -232,7 +232,7 @@ $introImagePush: 100px;
 
     // stylelint-disable no-descending-specificity
     i {
-      margin-inline-end: $spacer;
+      margin-inline-end: @margin-xs;
     }
     // stylelint-enable no-descending-specificity
   }
@@ -243,6 +243,7 @@ $introImagePush: 100px;
 
   &__title {
     margin: 2em 0 !important;
+    font-size: @heading-1-size;
   }
 
   &__desc {

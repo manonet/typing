@@ -1,9 +1,8 @@
+import { Button } from 'antd';
 import classNames from 'classnames';
 import { FormattedMessage, Link } from 'gatsby-plugin-intl';
 import Cookies from 'js-cookie';
 import React from 'react';
-
-import Button from '../Button';
 
 type Props = {
   className?: string;

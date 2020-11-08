@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import { FormattedMessage, Link } from 'gatsby-plugin-intl';
 import React from 'react';
 import { connect } from 'react-redux';
@@ -5,7 +6,6 @@ import { ThunkDispatch } from 'redux-thunk';
 
 import { flushKeyboard, KeyboardAction } from '../../../actions';
 import { State as ReduxState } from '../../../reducers';
-import Button from '../../Button';
 
 type Props = {
   dispatchFlushKeyboard: any;

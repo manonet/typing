@@ -1,8 +1,7 @@
+import { Button } from 'antd';
 import { FormattedMessage } from 'gatsby-plugin-intl';
 import React, { ReactNode, useEffect } from 'react';
 import ReactModal from 'react-modal';
-
-import Button from '../Button';
 
 ReactModal.setAppElement('#___gatsby');
 

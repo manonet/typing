@@ -1,13 +1,8 @@
 import Tippy from '@tippyjs/react';
+import { Button, Space } from 'antd';
 import classNames from 'classnames';
-import {
-  IntlContextConsumer,
-  changeLocale,
-  FormattedMessage,
-} from 'gatsby-plugin-intl';
+import { IntlContextConsumer, changeLocale } from 'gatsby-plugin-intl';
 import React from 'react';
-
-import Button from '../Button';
 
 type Props = {
   className?: string;
@@ -64,50 +59,31 @@ const LanguageSwitcher = ({ className }: Props) => (
   <div className={classNames('languageSwitcher', className)}>
     <IntlContextConsumer>
       {({ language: currentLocale, languages }: IntlContextConsumerProps) => (
-        <Tippy
-          placement="top-start"
-          trigger="click"
-          interactive
-          theme="light"
-          arrow
-          content={
-            <ul className="languageSwitcher__list">
-              {languages.map((language) => {
-                if (currentLocale !== language) {
-                  return (
-                    <li
-                      key={language}
-                      onClick={() =>
-                        currentLocale !== language
-                          ? changeLocale(language)
-                          : null
-                      }
-                      onKeyDown={() =>
-                        currentLocale !== language
-                          ? changeLocale(language)
-                          : null
-                      }
-                      role="menuitem"
-                      tabIndex={0}
-                      className="languageSwitcher__item"
-                    >
-                      <bdi>{languageName[language]}</bdi>
-                    </li>
-                  );
-                }
-                return null;
-              })}
-            </ul>
-          }
-        >
-          <Button className="languageSwitcher__button">
-            <i className="fa fa-language"></i>
-            <span className="languageSwitcher__currentLocale">
-              <FormattedMessage id="site.languageNameOnNativeLanguage" />
-            </span>
-            <i className="fa fa-angle-down"></i>
-          </Button>
-        </Tippy>
+        <Space className="languageSwitcher__list">
+          {languages.map((language) => {
+            if (currentLocale !== language) {
+              return (
+                <Button
+                  key={language}
+                  onClick={() =>
+                    currentLocale !== language ? changeLocale(language) : null
+                  }
+                  onKeyDown={() =>
+                    currentLocale !== language ? changeLocale(language) : null
+                  }
+                  role="menuitem"
+                  tabIndex={0}
+                  className="languageSwitcher__item"
+                  type="link"
+                  size="small"
+                >
+                  <bdi>{languageName[language]}</bdi>
+                </Button>
+              );
+            }
+            return null;
+          })}
+        </Space>
       )}
     </IntlContextConsumer>
   </div>

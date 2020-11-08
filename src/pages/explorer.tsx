@@ -1,9 +1,9 @@
+import { Button } from 'antd';
 import React from 'react';
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 
 import { flushKeyboard, keyDown, keyUp, KeyboardAction } from '../actions';
-import Button from '../components/Button';
 import Keyboard from '../components/Keyboard';
 import Layout from '../components/Layout';
 import { State as ReduxState } from '../reducers';

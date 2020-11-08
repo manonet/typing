@@ -1,8 +1,8 @@
+import { Button } from 'antd';
 import { FormattedMessage, FormattedNumber } from 'gatsby-plugin-intl';
 import React from 'react';
 
 // @ts-ignore
-import Button from '../components/Button';
 import Layout from '../components/Layout';
 import Link from '../components/Link';
 

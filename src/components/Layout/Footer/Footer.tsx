@@ -18,9 +18,6 @@ function Footer(props: Props) {
       <div className="container footer__container">
         <div className="footer__menu">
           <nav className="footerNav">
-            <LanguageSwitcher className="footer__languages" />
-          </nav>
-          <nav className="footerNav">
             <h3 className="footerNav__title">
               <FormattedMessage
                 id="site.contactInfo"
@@ -130,6 +127,8 @@ function Footer(props: Props) {
             </ul>
           </nav>
         </div>
+
+        <LanguageSwitcher className="footer__languages" />
       </div>
 
       <div className="footer__bottom">

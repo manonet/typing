@@ -1,11 +1,10 @@
 .footer {
-  overflow: hidden;
-  color: $text-color-inverse-primary;
-  background: $color-theme-dark;
+  color: @white;
+  background: @gray-8;
 
   &__container {
     display: flex;
-    padding: calc(#{$spacer} * 3) 0;
+    padding: @padding-lg 0;
     flex-direction: column;
   }
 
@@ -16,12 +15,12 @@
   }
 
   &__bottom {
-    font-size: $font-size-small;
-    color: $text-color-inverse-disabled;
-    background: $color-grey-900;
+    font-size: @font-size-sm;
+    color: @gray-5;
+    background: @gray-9;
 
     .footer__container {
-      padding: calc(#{$spacer} * 2) 0;
+      padding: @padding-md 0;
       flex-direction: row;
     }
   }
@@ -32,18 +31,23 @@
 }
 
 .footerNav {
-  margin: $spacer 0 0;
+  margin: @margin-xs 0 0;
   flex: 1 1 auto;
 
   &__title {
-    font-size: $font-size-big;
+    font-size: @font-size-lg;
+    color: @white;
   }
 
   &__item {
     padding: 2px 0;
 
     i {
-      margin-inline-end: $spacer;
+      margin-inline-end: @margin-xs;
     }
+  }
+
+  &__link {
+    color: @text-color-secondary-dark;
   }
 }

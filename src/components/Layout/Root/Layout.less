@@ -2,10 +2,8 @@
   display: flex;
   min-width: 1024px;
   min-height: 100vh;
-  color: $text-color-primary;
   flex-direction: column;
-  background: $color-white;
-  @extend %font-family;
+  background: @white;
 
   &.isModalOpen {
     overflow: hidden;
@@ -26,20 +24,20 @@
 .layout {
   transition: 0.2s filter ease-in-out;
 
-  &__alert {
-    position: sticky;
-    top: 0;
-    z-index: $z-index-sticky;
-    padding: 4px 16px;
-    font-weight: 600;
-    color: $text-color-inverse-primary;
-    text-align: center;
-    background: $color-red-500;
-  }
+  // &__alert {
+  //   position: sticky;
+  //   top: 0;
+  //   z-index: $z-index-sticky;
+  //   padding: 4px 16px;
+  //   font-weight: 600;
+  //   color: $text-color-inverse-primary;
+  //   text-align: center;
+  //   background: $color-red-500;
+  // }
 
-  &.isModalOpen {
-    filter: blur(6px);
-  }
+  // &.isModalOpen {
+  //   filter: blur(6px);
+  // }
 }
 
 .main {
@@ -54,6 +52,6 @@
 }
 
 .content {
-  padding-inline-end: calc(#{$spacer} * 3);
-  padding-inline-start: calc(#{$spacer} * 3);
+  padding-inline-end: @margin-lg;
+  padding-inline-start: @margin-lg;
 }
