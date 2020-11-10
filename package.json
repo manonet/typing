@@ -106,10 +106,10 @@
     "test": "jest --config ./jest.config.js",
     "test:unit": "NODE_PATH=src jest --config ./jest.config.js",
     "test:unit:watch": "NODE_PATH=src jest --watch --config ./jest.config.watch.js",
-    "lint": "npm run lint:styles",
-    "lint:eslint": "eslint ./src --max-warnings 20 --ext jsx --ext js",
+    "lint": "tsc && npm run lint:styles && npm run lint:eslint",
+    "lint:eslint": "eslint src --max-warnings 20 --ext tsx --ext ts",
     "lint:styles": "stylelint '**/*.scss' --syntax scss",
-    "esfix": "eslint ./src --max-warnings 20 --ext jsx --ext js --fix",
+    "esfix": "eslint src --max-warnings 20 --ext tsx --ext ts --fix",
     "tsc": "tsc",
     "version": "auto-changelog -p && git add CHANGELOG.md"
   },
