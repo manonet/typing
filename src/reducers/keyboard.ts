@@ -38,7 +38,7 @@ const keyboard: Keyboard = {
       finger: 'thumb',
       code: 'AltLeft',
       color: '#fff',
-      label: 'Alt',
+      label: os.name === 'MacOS' ? '⌥' : 'Alt',
     },
     {
       iso: 'A03',
@@ -106,7 +106,7 @@ const keyboard: Keyboard = {
       finger: 'thumb',
       code: 'AltRight',
       color: '#fff',
-      label: 'Alt Gr',
+      label: os.name === 'MacOS' ? '⌥' : 'Alt Gr',
     },
     {
       iso: 'A09',
