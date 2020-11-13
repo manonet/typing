@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { focusUserInput, inputChange, keyDown, keyUp } from '../../actions';
 import { State as ReduxState } from '../../reducers';
+import { navigationKeyCodes } from '../../types/allEventKeyCodes';
 import PracticeTextChar from '../PracticeTextChar';
 
 function focusTextInput(
@@ -33,6 +34,12 @@ export default function PracticeText() {
   const lessonContentArray = lessonText.split('');
 
   function handleKeydown(event: KeyboardEvent) {
+    if (navigationKeyCodes.includes(event.code)) {
+      event.preventDefault();
+      // TODO: make it user friendly, e.g. toaster like info.
+      console.info(`The usage of the ${event.code} key is disabled`);
+    }
+
     dispatch(
       keyDown({
         code: event.code,

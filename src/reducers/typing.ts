@@ -21,10 +21,7 @@ import {
   Marks,
   OS,
 } from '../types';
-import {
-  functionalKeyCodes,
-  navigationKeyCodes,
-} from '../types/allEventKeyCodes';
+import { functionalKeyCodes } from '../types/allEventKeyCodes';
 import { markCharOnBoard } from '../utils';
 
 import keyboard from './keyboard';
@@ -364,11 +361,6 @@ export default function typingReducer(
       let keys = [...state.keys];
 
       // disable keys which makes able the navigation within the textinput. (changing caret position is undesirable)
-      if (navigationKeyCodes.includes(code)) {
-        event.view.event.preventDefault();
-        // TODO: make it user friendly, e.g. toaster like info.
-        console.info(`The usage of the ${code} key is disabled`);
-      }
 
       /*
       const isToPressNext =
