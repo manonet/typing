@@ -48,6 +48,7 @@ export default function PracticeSummaryModal({
   };
 
   function handleKeydown(event: KeyboardEvent) {
+    event.preventDefault();
     if (event.code === 'Enter') {
       startNewPractice && startNewPractice();
     }
