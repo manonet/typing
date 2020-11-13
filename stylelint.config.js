@@ -4,7 +4,7 @@ module.exports = {
     'stylelint-config-prettier',
     'stylelint-prettier/recommended',
   ],
-  plugins: ['stylelint-order', 'stylelint-prettier', 'stylelint-scss'],
+  plugins: ['stylelint-order', 'stylelint-prettier'],
   rules: {
     'at-rule-name-case': 'lower',
     'at-rule-name-space-after': 'always-single-line',
@@ -217,7 +217,7 @@ module.exports = {
     'declaration-colon-space-after': 'always-single-line',
     'declaration-colon-space-before': 'never',
     // 'declaration-no-important': true, // due to the ReactModal__Overlay background
-    'declaration-property-value-blacklist': {
+    'declaration-property-value-disallowed-list': {
       '/^transition/': ['/all/'],
       '/text-align/': ['left', 'right'],
       '/text-decoration/': ['/underline/'], // https://rtlstyling.com/posts/rtl-styling/#2.-underlined-links
@@ -237,13 +237,6 @@ module.exports = {
     'function-parentheses-space-inside': 'never-single-line',
     'function-url-quotes': 'always',
     'function-whitespace-after': 'always',
-    indentation: [
-      2,
-      {
-        except: ['value'],
-        severity: 'warning',
-      },
-    ],
     'length-zero-no-unit': true,
     'max-empty-lines': 1,
     'max-nesting-depth': 3,
@@ -258,7 +251,7 @@ module.exports = {
     'no-missing-end-of-source-newline': true,
     'number-no-trailing-zeros': true,
     'prettier/prettier': true,
-    'property-blacklist': [
+    'property-disallowed-list': [
       'letter-spacing', // https://rtlstyling.com/posts/rtl-styling/#1.-letter-spacing
       'line-height', // https://rtlstyling.com/posts/rtl-styling/#1.-line-height
       'word-break', // https://rtlstyling.com/posts/rtl-styling/#3.-line-break
@@ -289,7 +282,6 @@ module.exports = {
         ignore: ['after-comment'],
       },
     ],
-    'scss/selector-no-redundant-nesting-selector': true,
     'selector-attribute-operator-space-after': 'never',
     'selector-attribute-operator-space-before': 'never',
     'selector-combinator-space-after': 'always',

@@ -1,3 +1,5 @@
+// stylelint-disable no-descending-specificity
+
 .key {
   cursor: default;
   transition: transform 0.05s @ease-out;
@@ -111,7 +113,8 @@
     }
   }
 
-  &--toLearn.key--uncovered, // &--toDiscover,
+  // &--toDiscover,
+  &--toLearn.key--uncovered,
   &--toPressFirst {
     opacity: 1;
 
