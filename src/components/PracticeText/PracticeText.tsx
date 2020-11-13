@@ -33,11 +33,33 @@ export default function PracticeText() {
   const lessonContentArray = lessonText.split('');
 
   function handleKeydown(event: KeyboardEvent) {
-    dispatch(keyDown(event));
+    dispatch(
+      keyDown({
+        code: event.code,
+        key: event.key,
+        isCapsLockDown: event.getModifierState('CapsLock') ? true : undefined,
+        isAltDown: event.getModifierState('Alt') ? true : undefined,
+        isAltGraphDown: event.getModifierState('AltGraph') ? true : undefined,
+        isShiftDown: event.getModifierState('Shift') ? true : undefined,
+        // isControlDown: event.getModifierState('Control') ? true : undefined,
+        timeStamp: event.timeStamp,
+      })
+    );
   }
 
   function handleKeyup(event: KeyboardEvent) {
-    dispatch(keyUp(event));
+    dispatch(
+      keyUp({
+        code: event.code,
+        key: event.key,
+        isCapsLockDown: event.getModifierState('CapsLock') ? true : undefined,
+        isAltDown: event.getModifierState('Alt') ? true : undefined,
+        isAltGraphDown: event.getModifierState('AltGraph') ? true : undefined,
+        isShiftDown: event.getModifierState('Shift') ? true : undefined,
+        // isControlDown: event.getModifierState('Control') ? true : undefined,
+        timeStamp: event.timeStamp,
+      })
+    );
   }
 
   useEffect(() => {

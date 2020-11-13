@@ -351,8 +351,14 @@ export default function typingReducer(
       // if 'DEAD' - second input does not count as label, but dead key combination
 
       // @ts-ignore
-      const event = action.event;
-      const { code, key, marker } = event;
+      const {
+        code,
+        isAltDown,
+        isAltGraphDown,
+        isCapsLockDown,
+        isShiftDown,
+        key,
+      } = action.eventProps;
 
       let keyMap = { ...state.keyMap };
       let keys = [...state.keys];
@@ -378,17 +384,17 @@ export default function typingReducer(
           ? [...state.keysDown, code]
           : state.keysDown;
 
-      const getModifierStateCapsLock = event.getModifierState('CapsLock'); // always true if CapsLock pressed, also buggy
+      const getModifierStateCapsLock = isCapsLockDown; // always true if CapsLock pressed, also buggy
       const isCapsLockOn = getModifierStateCapsLock ? true : state.isCapsLockOn;
 
       const modifiers = [
         // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/getModifierState
         // ORDER COUNTS!
-        ...(event.getModifierState('Alt') ? ['Alt'] : []),
-        ...(event.getModifierState('AltGraph') ? ['AltGraph'] : []),
+        ...(isAltDown ? ['Alt'] : []),
+        ...(isAltGraphDown ? ['AltGraph'] : []),
         // ...(getModifierStateCapsLock ? ['CapsLock'] : []),
-        // ...(event.getModifierState('Control') ? ['Control'] : []),
-        ...(event.getModifierState('Shift') ? ['Shift'] : []),
+        // ...(isControlDown ? ['Control'] : []),
+        ...(isShiftDown ? ['Shift'] : []),
       ];
       // @ts-ignore
       const level: Level = modifiers.length ? modifiers.join('+') : 'to';
@@ -483,21 +489,16 @@ export default function typingReducer(
 
     case KEY_UP: {
       // @ts-ignore
-      const event = action.event;
+      const { code, isAltDown, isCapsLockDown } = action.eventProps;
 
-      const { code, key } = event;
-      const modifiersActuallyNotDown = [
-        ...(!event.getModifierState('Alt') ? ['AltLeft'] : []),
-      ];
+      const modifiersActuallyNotDown = [...(!isAltDown ? ['AltLeft'] : [])];
       const newKeysDown = state.keysDown.filter((item) => {
         // e.g. Alt key changes the focus of the browser, so no key up event fired for Alt
         return item !== code && !modifiersActuallyNotDown.includes(item);
       });
 
       let isCapsLockOn =
-        code === 'CapsLock'
-          ? !state.isCapsLockOn
-          : event.getModifierState('CapsLock');
+        code === 'CapsLock' ? !state.isCapsLockOn : isCapsLockDown;
 
       const modifiersDown = [
         // ORDER COUNTS!
