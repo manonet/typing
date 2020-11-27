@@ -8,7 +8,7 @@ import SEO from '../components/seo';
 import imgTestimonials1 from '../images/testimonials1.jpg';
 import imgTestimonials2 from '../images/testimonials2.jpg';
 import imgTypewriter from '../images/typewriter.png';
-import imgSam from '../images/uncle-sam.png';
+import imgSam from '../images/uncle-sam.jpg';
 
 const startNowButton = (
   <Button
