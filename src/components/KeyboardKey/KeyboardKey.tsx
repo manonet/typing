@@ -92,7 +92,7 @@ const KeyboardKey = forwardRef<any, KeyboardKeyProps>(
     const labelClass = classNames('key__label');
 
     // overwrite color vaues
-    let overwriteColor = color || '#fff';
+    let overwriteColor = color;
     if (marker === 'toPressFirst') {
       overwriteColor = '#42c6ff';
     }

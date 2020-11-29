@@ -43,7 +43,7 @@ export type PossibleKeyStates = {
 export type Key = {
   iso: ISO;
   code: EventCode;
-  color: string;
+  color?: string;
   dead?: boolean;
   label?: string;
   optional?: boolean;
