@@ -81,7 +81,10 @@ const KeyboardKey = forwardRef<any, KeyboardKeyProps>(
       ['key--error']: succeedState === 'error',
       ['key--toPressFirst']: marker === 'toPressFirst',
       ['key--toPressSecond']: marker === 'toPressSecond',
+      ['key--toLearn']: keyTop?.toLearn,
+      ['key--learned']: keyTop?.learned,
       ['key--uncovered']: uncovered,
+      // toLearn + uncovered means toDiscover
       ['key--pressed']: pressure === 'pressed',
       ['key--locked']: pressure === 'locked',
       ['key--dead']: keyTop?.dead,

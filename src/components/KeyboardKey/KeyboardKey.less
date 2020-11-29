@@ -83,7 +83,38 @@
     }
   }
 
+  &--learned {
+    .key__keyBg {
+      fill: @yellow-1;
+    }
+
+    .key__label {
+      fill: @black;
+    }
+
+    .key__bump {
+      fill: @white;
+    }
+  }
+
+  &--toLearn {
+    .key__keyBg {
+      fill: @yellow-4;
+    }
+
+    .key__label {
+      fill: @black;
+    }
+
+    .key__bump {
+      fill: @white;
+    }
+  }
+
+  &--toLearn.key--uncovered, // &--toDiscover,
   &--toPressFirst {
+    opacity: 1;
+
     .key__keyBg {
       fill: @primary-color;
     }
