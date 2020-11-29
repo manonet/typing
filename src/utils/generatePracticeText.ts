@@ -33,7 +33,7 @@ export const generatePracticeText = ({
       shuffleArray(glyphs);
       // so when it will be extended, random glyphs will repeat
       const wordLetters = resizeArray({ glyphs, length: wordLength });
-      // shuffle array afain, in order not to have the same sequence or repetition
+      // shuffle array again, in order not to have the same sequence or repetition
       shuffleArray(wordLetters);
       const word = wordLetters.join('');
       words.push(word);
