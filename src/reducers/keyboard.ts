@@ -65,12 +65,11 @@ const keyboard: Keyboard = {
       code: 'Space',
       color: '#fff',
       label: ' ',
-      keyTops: [
-        {
-          level: 'to',
+      keyTops: {
+        to: {
           label: ' ',
         },
-      ],
+      },
     },
     {
       iso: 'A06',
@@ -334,14 +333,12 @@ const keyboard: Keyboard = {
       hand: 'right',
       finger: 'little',
       code: 'Enter',
-      color: '#fff',
       label: '↵',
-      keyTops: [
-        {
-          level: 'to',
+      keyTops: {
+        to: {
           label: '\n',
         },
-      ],
+      },
     },
     {
       iso: 'D00',

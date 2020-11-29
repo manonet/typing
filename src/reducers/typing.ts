@@ -267,11 +267,15 @@ export default function typingReducer(
               return item;
             }
 
-            let keyTops = item.keyTops ? [...item.keyTops] : [];
-            const i = keyTops.findIndex((top) => top.level === level);
-            if (i) {
-              keyTops[i].label = writtenSign;
-            }
+            const keyTops = {
+              ...(item?.keyTops ? item.keyTops : {}),
+              [level]: {
+                ...(item?.keyTops && item?.keyTops[level]
+                  ? item?.keyTops[level]
+                  : {}),
+                label: writtenSign,
+              },
+            };
 
             if (!keyMap[writtenSign]) {
               keyMap[writtenSign] = {
@@ -295,10 +299,7 @@ export default function typingReducer(
           const previousChar =
             previousKey &&
             // @ts-ignore
-            previousKey.keyTops.find(
-              // @ts-ignore
-              (top) => top.level === previousKeyDown.level
-            );
+            previousKey.keyTops[previousKeyDown.level];
           const currentKey = keys.find(
             // @ts-ignore
             (item) => item.code === currentKeyDown.code
@@ -306,10 +307,7 @@ export default function typingReducer(
           const currentChar =
             currentKey &&
             // @ts-ignore
-            currentKey.keyTops.find(
-              // @ts-ignore
-              (top) => top.level === currentKeyDown.level
-            );
+            currentKey.keyTops[currentKeyDown.level];
           if (previousChar && currentChar) {
             // @ts-ignore
             deadKeys[writtenSign] = [previousChar, currentChar];
@@ -425,17 +423,16 @@ export default function typingReducer(
         if (
           !(isCapsLockOn || (state.currentKeyDown && state.currentKeyDown.dead))
         ) {
-          let keyTops = item.keyTops ? [...item.keyTops] : [];
-
-          const i = keyTops.findIndex((top) => top.level === level);
-
-          if (i === -1) {
-            keyTops.push({
-              level,
+          const keyTops = {
+            ...(item?.keyTops ? item.keyTops : {}),
+            [level]: {
+              ...(item?.keyTops && item?.keyTops[level]
+                ? item?.keyTops[level]
+                : {}),
               label: key !== 'Dead' ? key : undefined, // this case will be handled on input
               dead: key === 'Dead',
-            });
-          }
+            },
+          };
 
           if (!keyMap[key]) {
             keyMap[key] = {

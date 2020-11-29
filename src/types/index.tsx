@@ -20,11 +20,14 @@ export type Level = typeof allLevels[number];
 
 export type Levels = Level[];
 
-export type KeyTop = {
-  dead?: boolean;
-  level: Level;
-  label: Glyph;
-};
+export type KeyTop = Partial<
+  {
+    [key in Level]: {
+      dead?: boolean;
+      label?: Glyph;
+    };
+  }
+>;
 
 export type HandsAndFingers = {
   hand: 'left' | 'right';
@@ -44,7 +47,7 @@ export type Key = {
   dead?: boolean;
   label?: string;
   optional?: boolean;
-  keyTops?: KeyTop[];
+  keyTops?: KeyTop;
 } & HandsAndFingers &
   PossibleKeyStates;
 

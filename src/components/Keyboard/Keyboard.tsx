@@ -6,19 +6,21 @@ import { useSelector } from 'react-redux';
 
 import { State as ReduxState } from '../../reducers';
 import variables from '../../theme/variables';
+import { Level, Key, Layout, OS } from '../../types';
 import KeyboardKey from '../KeyboardKey';
 
 import getEnterPath from './getEnterPath';
 
 type Props = {
   className?: string;
+  displayedLevel: Level;
+  keys: Key[];
+  layout: Layout;
+  os: OS;
 };
 
 export default function Keyboard(props: Props) {
-  const { className } = props;
-  const { displayedLevel, keys, layout, os } = useSelector(
-    (state: ReduxState) => state.typing
-  );
+  const { className, displayedLevel, keys, layout, os } = props;
 
   if (!(Array.isArray(keys) && keys.length)) {
     return null;
@@ -66,8 +68,7 @@ export default function Keyboard(props: Props) {
       >
         {keys.map((key) => {
           const { code, finger, hand, iso } = key;
-          const to =
-            key.keyTops && key.keyTops.find((top) => top.level === 'to')?.label;
+          const to = key.keyTops && key.keyTops['to']?.label;
 
           const rowLetter = iso.substring(0, 1);
           const column = parseInt(iso.substring(1, 3), 10);
@@ -293,18 +294,22 @@ export default function Keyboard(props: Props) {
                     </div>
 
                     <div className="keyInfo__right">
-                      {key.keyTops && key.keyTops.length && (
+                      {key.keyTops && (
                         <ul className="keyInfo__glyphs">
-                          {key.keyTops.map((keyTop) => {
-                            if (keyTop.level === 'to') return;
-                            return (
-                              <li key={keyTop.level}>
-                                {keyTop.level}
-                                {': '}
-                                <span>{keyTop.label}</span>
-                              </li>
-                            );
-                          })}
+                          {key.keyTops &&
+                            Object.keys(key.keyTops).map(function (
+                              keyTop,
+                              index
+                            ) {
+                              if (keyTop === 'to') return;
+                              return (
+                                <li key={keyTop}>
+                                  {keyTop}
+                                  {': '}
+                                  <span>{keyTop[index].label}</span>
+                                </li>
+                              );
+                            })}
                         </ul>
                       )}
                     </div>

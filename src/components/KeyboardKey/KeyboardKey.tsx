@@ -53,8 +53,7 @@ const KeyboardKey = forwardRef<any, KeyboardKeyProps>(
     }: KeyboardKeyProps,
     ref
   ) => {
-    const keyTop =
-      keyTops && keyTops.find((item) => item.level === displayedLevel);
+    const keyTop = keyTops && keyTops[displayedLevel];
 
     const {
       aRowShift,
