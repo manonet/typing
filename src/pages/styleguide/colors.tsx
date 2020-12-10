@@ -1,5 +1,7 @@
-import React from 'react';
+/* eslint-disable */
+
 import classNames from 'classnames';
+import React from 'react';
 
 import Layout from '../../components/Layout';
 import SEO from '../../components/seo';
@@ -13,8 +15,22 @@ type State = {
   selectedColor: string;
 };
 
-const colorNames = ['purple', 'red', 'orange', 'green', 'teal', 'blue', 'grey'];
-const colorShades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
+const colorNames = [
+  'red',
+  'volcano',
+  'orange',
+  'gold',
+  'yellow',
+  'lime',
+  'green',
+  'cyan',
+  'blue',
+  'geekblue',
+  'purple',
+  'magenta',
+  'grey',
+];
+const colorShades = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const Palette = ({ className, onClick }: Props) => {
   return (
@@ -23,8 +39,8 @@ const Palette = ({ className, onClick }: Props) => {
         return (
           <div key={colorName} className="palette__colorRow">
             {colorShades.map((colorShade) => {
-              const colorStyle = `var(--color-${colorName}-${colorShade})`;
-              const colorVar = `$color-${colorName}-${colorShade}`;
+              const colorStyle = `@${colorName}-${colorShade}`;
+              const colorVar = `@${colorName}-${colorShade}`;
               return (
                 <div className="palette__colorCell" key={colorVar}>
                   <div
