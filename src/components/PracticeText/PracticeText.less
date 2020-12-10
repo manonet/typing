@@ -1,8 +1,23 @@
+@practiceTextHeight: 100px;
+
 // TODO - double-check, moved
 .TypewriterBoard {
   position: relative;
   color: @white;
   background: @gray-2;
+
+  &__desk {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  &__hand {
+    display: flex;
+    max-width: 100px;
+    max-height: calc(100vh - 160px);
+    flex-direction: column;
+  }
 
   &__keyboard {
     display: flex;
@@ -32,6 +47,18 @@
       fade(@primary-color, 20);
   }
 
+  &__exploreHelper,
+  &__clickHelper {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    color: @gray-5;
+    align-items: center;
+    justify-content: center;
+    background: @white;
+  }
+
   &__userInput {
     position: absolute;
     width: 100%;
@@ -52,6 +79,7 @@
 
   &__lessonContent {
     position: relative;
+    min-height: @practiceTextHeight;
     padding: 10px;
     margin: auto;
     flex: 0 1 800px;

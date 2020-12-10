@@ -1,19 +1,19 @@
 // Levels in theory: 'shift', 'ctrl', 'alt', 'caps', 'cmd', 'opt' along with the 'L' and 'R' optional single suffixes for the first 3
 
-// order of the components (may) counts!
-export const allLevels = [
+// The order of the items counts!
+export const allLevelsOrdered = [
   'to',
-  'Alt',
+  'Shift',
   'AltGraph',
+  'AltGraph+Shift',
+  // 'Alt',
   // 'CapsLock',
   // 'Control',
-  'Shift',
   // 'Alt+CapsLock',
   // 'Alt+Control',
-  'Alt+Shift',
+  // 'Alt+Shift',
   // 'AltGraph+CapsLock',
   // 'AltGraph+Control',
-  'AltGraph+Shift',
   // 'CapsLock+Control',
   // 'CapsLock+Shift',
   // 'Control+Shift',

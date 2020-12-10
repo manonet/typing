@@ -63,7 +63,7 @@ function StatisticsPage(props: Props) {
           })}
         </div>
       </div>
-      <Keyboard className={'TypewriterBoard__keyboard'} />
+      {/* <Keyboard className={'TypewriterBoard__keyboard'} /> */}
     </Layout>
   );
 }

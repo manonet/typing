@@ -15,6 +15,7 @@ export const DEFAULT_PRACTICE_LENGTH = 200;
 export const DEFAULT_UNIQUE_WORD_COUNT = 4;
 export const DEFAULT_WORD_LENGTH = 4;
 export const DEFAULT_SPEACER = ' ';
+// export const NON_PRACTICE_GLYPHS = ['', DEFAULT_SPEACER, '\n'];
 
 export const generatePracticeText = ({
   glyphs,
@@ -24,6 +25,11 @@ export const generatePracticeText = ({
   spacer = DEFAULT_SPEACER,
 }: Params) => {
   let words: string[] = [];
+
+  // TODO - filter glyphs if needed
+  // const filteredGlyphs = glyphs.filter(
+  //   (glyph) => !NON_PRACTICE_GLYPHS.includes(glyph)
+  // );
 
   if (glyphs.length < wordLength) {
     // There are not enough glyphs for a word, some will repeat

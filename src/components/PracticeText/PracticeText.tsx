@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import { FormattedMessage } from 'gatsby-plugin-intl';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -27,9 +28,13 @@ export default function PracticeText() {
     (state: ReduxState) => state.focusUserInput.isUserInputFocused
   );
 
-  const { cursorAt, lessonText, userText } = useSelector(
-    (state: ReduxState) => state.typing
-  );
+  const {
+    charToLearn,
+    cursorAt,
+    explorerMode,
+    lessonText,
+    userText,
+  } = useSelector((state: ReduxState) => state.typing);
 
   const lessonContentArray = lessonText.split('');
 
@@ -106,6 +111,35 @@ export default function PracticeText() {
             />
           ))}
         </kbd>
+
+        {explorerMode && (
+          <div className="PracticeText__exploreHelper">
+            {charToLearn ? (
+              <span>
+                <FormattedMessage
+                  id="keyboard.instruction.continue"
+                  defaultMessage="Feel free to explore more, and hit Enter when ready."
+                />
+              </span>
+            ) : (
+              <span>
+                <FormattedMessage
+                  id="keyboard.instruction.pressKey"
+                  defaultMessage="Press the highlighted char on your keyboard."
+                />
+              </span>
+            )}
+          </div>
+        )}
+
+        {!isUserInputFocused && (
+          <div className="PracticeText__clickHelper">
+            <FormattedMessage
+              id="keyboard.instruction.clickTofocus"
+              defaultMessage="Click here"
+            />
+          </div>
+        )}
         <textarea
           ref={textAreaRef}
           className={'PracticeText__userInput'}

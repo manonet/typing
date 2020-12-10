@@ -98,5 +98,23 @@
     "contact.form.error": "There was an error trying to send your message. Please try again later.",
 
     "form.field.required": "{label} is required!",
-    "form.field.invalid.email": "{label} is not validate email!"
+    "form.field.invalid.email": "{label} is not validate email!",
+
+    "keyboard.key.space": "Space",
+    "keyboard.instruction.clickTofocus": "Click here",
+    "keyboard.instruction.pressKey": "Press the highlighted char on your keyboard.",
+    "keyboard.instruction.continue": "Feel free to explore more, and hit Enter when ready.",
+
+    "modal.button.next": "Next",
+    "modal.summary.title.accomplished": "Accomplished!",
+    "modal.summary.title.failed": "Failed!",
+    "modal.summary.button.repeat": "Repeat",
+    "modal.summary.button.new": "New",
+
+    "modal.explore.title": "Explore new areas!",
+    "modal.explore.desc": "It is time to explore your keyboard and discover new characters!\nIt is simple, just press the marked keys.",
+    "modal.explore.button.explore": "I am ready!",
+
+    "modal.introduction.title": "Introduction",
+    "modal.introduction.desc": "Next char to learn is {charToLearn}. For that use your {hand} {finger}"
 }

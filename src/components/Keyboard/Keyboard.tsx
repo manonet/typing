@@ -306,7 +306,8 @@ export default function Keyboard(props: Props) {
                                 <li key={keyTop}>
                                   {keyTop}
                                   {': '}
-                                  <span>{keyTop[index].label}</span>
+                                  {/* @ts-ignore */}
+                                  <span>{key.keyTops[keyTop].label}</span>
                                 </li>
                               );
                             })}

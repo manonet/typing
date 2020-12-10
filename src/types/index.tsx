@@ -1,8 +1,8 @@
 import { allEventKeyCodes } from './allEventKeyCodes';
 import { allISO } from './allISO';
-import { allLevels } from './allLevels';
+import { allLevelsOrdered } from './allLevelsOrdered';
 
-export { allISO, allLevels };
+export { allISO, allLevelsOrdered };
 
 export type OS = {
   name: 'MacOS' | 'iOS' | 'Android' | 'Windows' | 'Linux' | 'UNIX' | 'Unknown';
@@ -16,7 +16,7 @@ export type ISO = typeof allISO[number];
 
 export type EventCode = typeof allEventKeyCodes[number];
 
-export type Level = typeof allLevels[number];
+export type Level = typeof allLevelsOrdered[number];
 
 export type Levels = Level[];
 
@@ -25,13 +25,17 @@ export type KeyTop = Partial<
     [key in Level]: {
       dead?: boolean;
       label?: Glyph;
+      toLearn?: boolean;
+      learned?: boolean;
     };
   }
 >;
 
+export type HandSide = 'left' | 'right';
+export type Fingers = 'thumb' | 'index' | 'middle' | 'ring' | 'little';
 export type HandsAndFingers = {
-  hand: 'left' | 'right';
-  finger: 'thumb' | 'index' | 'middle' | 'ring' | 'little';
+  hand: HandSide;
+  finger: Fingers;
 };
 
 export type PossibleKeyStates = {
@@ -90,7 +94,7 @@ export type Keyboard = {
   deadKeys?: DeadKeys;
   displayedLevel: Level;
   keys: Key[];
-  keyMap: KeyMap[];
+  keyMap: KeyMap;
   codeMap: EventCode[];
   layout: Layout;
   name: string;

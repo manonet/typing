@@ -91,3 +91,13 @@ export const CLOSE_SUMMARY = 'CLOSE_SUMMARY';
 export function closeSummary() {
   return { type: CLOSE_SUMMARY };
 }
+
+// EXPLORE_KEYS
+
+export type exploreKeysAction = ReturnType<typeof exploreKeys>;
+
+export const EXPLORE_KEYS = 'EXPLORE_KEYS';
+
+export function exploreKeys() {
+  return { type: EXPLORE_KEYS };
+}

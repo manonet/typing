@@ -9,6 +9,7 @@ import {
   KeyboardAction,
   PracticeAction,
   SUMMARIZE_PRACTICE,
+  EXPLORE_KEYS,
 } from '../actions';
 import {
   EventCode,
@@ -17,17 +18,29 @@ import {
   Keyboard,
   KeyDown,
   Level,
-  Levels,
   Marks,
   OS,
+  Glyph,
+  allLevelsOrdered,
+  KeyMap,
 } from '../types';
 import { functionalKeyCodes } from '../types/allEventKeyCodes';
-import { markCharOnBoard } from '../utils';
+import {
+  markCharOnBoard,
+  keyOrder,
+  keyRequirements,
+  complianceRatio,
+} from '../utils';
 
 import keyboard from './keyboard';
 
 export type TypingState = {
   allChars: GlyphStatistics[];
+  keyToLearn: EventCode;
+  levelToLearn: Level;
+  explorerMode: boolean;
+  charToLearn?: Glyph;
+  charsLearned: Glyph[];
   currentKeyDown?: KeyDown;
   cursorAt: number;
   displayedLevel: Level;
@@ -35,17 +48,20 @@ export type TypingState = {
   inputChanged: boolean;
   isCapsLockOn: boolean;
   isPracticing: boolean;
-  keyMap: {};
+  isPracticeAccomplished: boolean; // TODO - make it work
+  keyMap: KeyMap;
   keys: Key[];
   keysDown: EventCode[];
   lastKeyUp?: EventCode;
-  levels: Levels;
+  levels: typeof allLevelsOrdered;
   os: OS;
   practiceLength: number;
   previousKeyDown?: KeyDown;
   lessonText: string;
   signToWrite: string;
+  showIntroduction: boolean;
   showSummary: boolean;
+  showExploreMore: boolean;
   userText: string;
   writtenSign: string;
 } & Keyboard;
@@ -53,34 +69,27 @@ export type TypingState = {
 const initialState: TypingState = {
   ...keyboard,
   allChars: [...keyboard.allChars],
+  keyToLearn: keyOrder[0],
+  levelToLearn: allLevelsOrdered[0],
+  charsLearned: [],
+  explorerMode: true,
   cursorAt: 0,
   finishedPractices: 0,
   inputChanged: false,
   isCapsLockOn: false,
   isPracticing: false,
+  isPracticeAccomplished: true, // TODO - make it work
   keyMap: { ...keyboard.keyMap },
   keys: [...keyboard.keys],
   keysDown: [],
-  levels: [
-    'to',
-    'Shift',
-    'AltGraph',
-    'AltGraph+Shift',
-    // 'Alt',
-    // 'Alt+Shift',
-    // 'Alt+AltGraph',
-    // 'CapsLock',
-    // 'CapsLock+Shift',
-    // 'Alt+CapsLock',
-    // 'CapsLock+Control',
-    // 'CapsLock+Control+Shift',
-    // 'AltGraph+Control',
-  ],
+  levels: allLevelsOrdered,
   os: keyboard.os,
   practiceLength: 0,
   lessonText: '',
   signToWrite: '',
+  showIntroduction: false,
   showSummary: false,
+  showExploreMore: false,
   userText: '',
   writtenSign: '',
 };
@@ -110,6 +119,13 @@ export default function typingReducer(
         cursorAt: 0,
         isPracticing: true,
         showSummary: false,
+        showIntroduction: false,
+      };
+    case EXPLORE_KEYS:
+      return {
+        ...state,
+        explorerMode: true,
+        showSummary: false,
       };
     case SUMMARIZE_PRACTICE:
       return {
@@ -117,13 +133,12 @@ export default function typingReducer(
         showSummary: true,
       };
     case INPUT_CHANGE: {
-      const { currentKeyDown, practiceLength, previousKeyDown } = state;
+      const { currentKeyDown, previousKeyDown } = state;
 
       let keyMap = { ...state.keyMap };
       let allChars = [...state.allChars];
-      let finishedPractices = state.finishedPractices;
-      let isPracticing = state.isPracticing;
-      let showSummary = state.showSummary;
+      let keys = state.keys;
+      let explorerMode = state.explorerMode;
 
       // TODO desc
       // @ts-ignore
@@ -232,18 +247,19 @@ export default function typingReducer(
           marker: 'toPressFirst',
         },
       };
-      marks[signToWrite] = {
-        ...(marks[signToWrite] ? marks[signToWrite] : {}),
-        succeedState: charsSucceed ? 'correct' : 'missed',
-      };
-      marks[writtenSign] = {
-        ...(marks[writtenSign] ? marks[writtenSign] : {}),
-        succeedState: charsSucceed ? 'correct' : 'error',
-      };
-
+      if (!explorerMode) {
+        marks[signToWrite] = {
+          ...(marks[signToWrite] ? marks[signToWrite] : {}),
+          succeedState: charsSucceed ? 'correct' : 'missed',
+        };
+        marks[writtenSign] = {
+          ...(marks[writtenSign] ? marks[writtenSign] : {}),
+          succeedState: charsSucceed ? 'correct' : 'error',
+        };
+      }
       // handle dead keys
       let deadKeys = { ...state.deadKeys };
-      let keys = markCharOnBoard({
+      keys = markCharOnBoard({
         keys: [...state.keys],
         reset: true,
         // @ts-ignore
@@ -266,12 +282,11 @@ export default function typingReducer(
             if (item.code !== code) {
               return item;
             }
-
             const keyTops = {
-              ...(item?.keyTops ? item.keyTops : {}),
+              ...(item.keyTops ? item.keyTops : {}),
               [level]: {
-                ...(item?.keyTops && item?.keyTops[level]
-                  ? item?.keyTops[level]
+                ...(item.keyTops && item.keyTops[level]
+                  ? item.keyTops[level]
                   : {}),
                 label: writtenSign,
               },
@@ -279,9 +294,7 @@ export default function typingReducer(
 
             if (!keyMap[writtenSign]) {
               keyMap[writtenSign] = {
-                // @ts-ignore
                 index,
-                // @ts-ignore
                 level,
               };
             }
@@ -315,20 +328,10 @@ export default function typingReducer(
         }
       }
 
-      if (isPracticing && cursorAt >= practiceLength) {
-        // end reached or exceeded
-        isPracticing = false;
-        showSummary = true;
-        finishedPractices += 1;
-      }
-
       return {
         ...state,
         allChars,
         userText,
-        finishedPractices,
-        isPracticing,
-        showSummary,
         cursorAt,
         writtenSign,
         // @ts-ignore
@@ -339,13 +342,13 @@ export default function typingReducer(
         keys,
         layout,
         keyMap,
+        explorerMode,
       };
     }
 
     case KEY_DOWN: {
       // if 'DEAD' - second input does not count as label, but dead key combination
 
-      // @ts-ignore
       const {
         code,
         isAltDown,
@@ -353,6 +356,7 @@ export default function typingReducer(
         isCapsLockDown,
         isShiftDown,
         key,
+        // @ts-ignore
       } = action.eventProps;
 
       let keyMap = { ...state.keyMap };
@@ -424,10 +428,10 @@ export default function typingReducer(
           !(isCapsLockOn || (state.currentKeyDown && state.currentKeyDown.dead))
         ) {
           const keyTops = {
-            ...(item?.keyTops ? item.keyTops : {}),
+            ...(item.keyTops ? item.keyTops : {}),
             [level]: {
-              ...(item?.keyTops && item?.keyTops[level]
-                ? item?.keyTops[level]
+              ...(item.keyTops && item.keyTops[level]
+                ? item.keyTops[level]
                 : {}),
               label: key !== 'Dead' ? key : undefined, // this case will be handled on input
               dead: key === 'Dead',
@@ -436,9 +440,7 @@ export default function typingReducer(
 
           if (!keyMap[key]) {
             keyMap[key] = {
-              // @ts-ignore
               index,
-              // @ts-ignore
               level,
             };
           }
@@ -486,8 +488,26 @@ export default function typingReducer(
         return item !== code && !modifiersActuallyNotDown.includes(item);
       });
 
+      const {
+        currentKeyDown,
+        cursorAt,
+        levelToLearn,
+        practiceLength,
+        writtenSign,
+      } = state;
+
       let isCapsLockOn =
         code === 'CapsLock' ? !state.isCapsLockOn : isCapsLockDown;
+      let keys = [...state.keys];
+      let finishedPractices = state.finishedPractices;
+      let isPracticing = state.isPracticing;
+      let showSummary = state.showSummary;
+      let showIntroduction = state.showIntroduction;
+      let showExploreMore = state.showExploreMore;
+      let keyToLearn = state.keyToLearn;
+      let explorerMode = state.explorerMode;
+      let charToLearn = state.charToLearn;
+      let charsLearned = state.charsLearned;
 
       const modifiersDown = [
         // ORDER COUNTS!
@@ -502,7 +522,27 @@ export default function typingReducer(
         ? modifiersDown.join('+')
         : 'to';
 
-      let keys = [...state.keys];
+      if (
+        !charToLearn &&
+        currentKeyDown &&
+        currentKeyDown.code === keyToLearn &&
+        displayedLevel === levelToLearn
+      ) {
+        charToLearn = writtenSign;
+      }
+
+      if (
+        explorerMode &&
+        !showIntroduction &&
+        currentKeyDown &&
+        currentKeyDown.code === 'Enter' &&
+        charToLearn
+      ) {
+        // While exploring characters, the next keyToLearn was discovered, and after that Enter key was pressed in order to escape discovering and continue practicing
+        explorerMode = false;
+        showIntroduction = true;
+      }
+
       keys = keys.map((item) => {
         if (isCapsLockOn && item.code === 'CapsLock') {
           return {
@@ -516,6 +556,13 @@ export default function typingReducer(
             pressure: undefined,
           };
         }
+        if (item.code === 'Enter' && explorerMode && charToLearn) {
+          // highlight Enter to make it easier to recognize, that it can be used for the default action
+          return {
+            ...item,
+            marker: 'toPressFirst',
+          };
+        }
         if (item.code === code) {
           return {
             ...item,
@@ -526,6 +573,88 @@ export default function typingReducer(
         return item;
       });
 
+      if (cursorAt >= practiceLength && isPracticing && charToLearn) {
+        // end of practice text reached (or exceeded)
+
+        // TODO - if the user chooses repeat, the practice should be repeated, regardless from other conditions
+
+        isPracticing = false;
+        showSummary = true;
+        finishedPractices += 1;
+
+        const charStats = state.allChars.find(
+          (char) => char.glyph === charToLearn
+        );
+        const correctHits = (charStats && charStats.correct) || 0;
+        const mistakenHits = (charStats && charStats.miswrite) || 0;
+        const charComplianceRatio = correctHits / mistakenHits;
+        const requiredHits =
+          keyRequirements[keyToLearn] && keyRequirements[keyToLearn].hits;
+
+        if (
+          correctHits > requiredHits &&
+          charComplianceRatio > complianceRatio
+        ) {
+          // the given character is "learned", time to move on to the next one
+
+          charsLearned.push(charToLearn);
+
+          keyToLearn =
+            keyOrder[keyOrder.findIndex((elem) => elem === keyToLearn) + 1];
+          const keyboardKeyToLearn = keys.find(
+            (key) => key.code === keyToLearn
+          );
+
+          charToLearn =
+            keyboardKeyToLearn &&
+            keyboardKeyToLearn.keyTops &&
+            keyboardKeyToLearn.keyTops[levelToLearn] &&
+            // @ts-ignore
+            keyboardKeyToLearn.keyTops[levelToLearn].label;
+
+          if (!charToLearn) {
+            explorerMode = true;
+            showExploreMore = true;
+          }
+
+          keys = keys.map((item) => {
+            if (keyToLearn === item.code) {
+              const keyTops = {
+                ...item.keyTops,
+                [levelToLearn]: {
+                  ...(item.keyTops ? item.keyTops[levelToLearn] : {}),
+                  toLearn: true,
+                },
+              };
+              return {
+                ...item,
+                keyTops,
+              };
+            } else if (
+              item &&
+              item.keyTops &&
+              item.keyTops[levelToLearn] &&
+              // @ts-ignore
+              item.keyTops[levelToLearn].toLearn === true
+            ) {
+              const keyTops = {
+                ...item.keyTops,
+                [levelToLearn]: {
+                  ...(item.keyTops ? item.keyTops[levelToLearn] : {}),
+                  toLearn: false,
+                  learned: true,
+                },
+              };
+              return {
+                ...item,
+                keyTops,
+              };
+            }
+            return item;
+          });
+        }
+      }
+
       return {
         ...state,
         // lastKeyUp: code,
@@ -533,6 +662,15 @@ export default function typingReducer(
         keysDown: newKeysDown,
         displayedLevel,
         keys,
+        keyToLearn,
+        explorerMode,
+        finishedPractices,
+        isPracticing,
+        showSummary,
+        showExploreMore,
+        showIntroduction,
+        charToLearn,
+        charsLearned,
       };
     }
 
@@ -548,6 +686,7 @@ export default function typingReducer(
         ...state,
         showSummary: false,
         isPracticing: false,
+        showExploreMore: false,
       };
     }
 

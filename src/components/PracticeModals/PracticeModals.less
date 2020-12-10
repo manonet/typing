@@ -21,24 +21,22 @@
   }
 }
 
+.exploreMoreModal,
+.practiceStart,
 .practiceSummary {
   max-width: 640px;
   background: @white;
 
-  // background: radial-gradient(
-  //   circle,
-  //   $color-purple-700 0%,
-  //   $color-purple-800 100%
-  // );
+  &__header {
+    margin-inline-start: @margin-md;
+    margin-inline-end: @margin-md;
+    text-align: center;
+  }
 
   &__content {
     margin-inline-start: @margin-md;
     margin-inline-end: @margin-md;
-    // background: radial-gradient(
-    //   circle,
-    //   $color-purple-600 0%,
-    //   $color-purple-700 100%
-    // );
+    white-space: pre-wrap;
   }
 
   &__footer {
@@ -48,5 +46,33 @@
   &__footerButtons {
     padding: @margin-md;
     margin-inline-start: auto;
+  }
+}
+
+.practiceStart {
+  &__info {
+    display: flex;
+  }
+
+  &__charInfo,
+  &__fingerInfo {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__char {
+    display: block;
+    font-size: 80px;
+    // stylelint-disable property-blacklist
+    line-height: 80px;
+  }
+
+  &__hand {
+    display: block;
+    max-width: 100px;
+    max-height: 100px;
+    fill: @gray-3;
   }
 }

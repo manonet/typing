@@ -2,11 +2,21 @@ import { useIntl } from 'gatsby-plugin-intl';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { initPractice, focusUserInput, closeSummary } from '../actions';
-import { PracticeProgressBar } from '../components';
+import {
+  initPractice,
+  focusUserInput,
+  closeSummary,
+  exploreKeys,
+} from '../actions';
+import {
+  Hand,
+  PracticeProgressBar,
+  ExploreMoreModal,
+  PracticeIntroductionModal,
+  PracticeSummaryModal,
+} from '../components';
 import Keyboard from '../components/Keyboard';
 import Layout from '../components/Layout';
-import PracticeSummaryModal from '../components/PracticeSummaryModal';
 import PracticeText from '../components/PracticeText';
 import SEO from '../components/seo';
 import { State as ReduxState } from '../reducers';
@@ -26,8 +36,8 @@ import { generatePracticeText } from '../utils';
 // TODO statistic may only belong to a specific keyboard layout. Create new statistic for each and every layouts
 // TODO Create keyboardDiscoveryProgressBar component, which dynamically display the known percentage. Green can be for fully discovered keys, yellow for the partial ones, like new levels or dead keys. Promote it as a feature, not as weakness :)
 // TODO Practice can be started, because key.code, so position of keys on the mechanical board is known, e.g.: KeyF and KeyJ.
-// TODO
-// TODO
+// TODO Check for keyboard layout changes on every input change. Display warning and do not change keyboard state in case of layout change, but offer creating a new one.
+// TODO show introduction also if char is already discovered
 
 export const MODAL_CLOSE_TIMEOUT = 500;
 
@@ -36,40 +46,65 @@ export default function TypewriterPage() {
   const dispatch = useDispatch();
 
   const {
-    allChars,
+    charToLearn,
+    charsLearned,
+    displayedLevel,
+    explorerMode,
     finishedPractices,
-    isPracticing,
+    isPracticeAccomplished,
+    keyToLearn,
+    keys,
+    keysDown,
+    layout,
     lessonText,
+    os,
+    showExploreMore,
+    showIntroduction,
     showSummary,
   } = useSelector((state: ReduxState) => state.typing);
 
-  if (!isPracticing && !showSummary) {
-    startNewPractice();
-  }
-
   function startNewPractice() {
-    const wordLength = 4; // TODO use state value and wire it
-    const nonPracticeGlyphs = ['', ' ', '\n'];
-    const filteredChars = allChars.filter(
-      (char) => (char.correct as number) < 10
-    );
-    if (Array.isArray(filteredChars) && filteredChars.length > wordLength) {
-      const practiceGlyphs = filteredChars.map((char) => char.glyph);
-      const filteredGlyphs = practiceGlyphs.filter(
-        (glyph) => !nonPracticeGlyphs.includes(glyph)
-      );
+    if (charToLearn) {
+      console.info('startNewPractice');
+      const wordLength = 4; // TODO use state value and wire it
+      // const filteredChars = allChars.filter(
+      //   (char) => (char.correct as number) < 10
+      // );
+      const filteredChars = [charToLearn, ...charsLearned];
+      // if (Array.isArray(filteredChars) && filteredChars.length > wordLength) {
+      //   const practiceGlyphs = filteredChars.map((char) => char.glyph);
+      //   const filteredGlyphs = practiceGlyphs.filter(
+      //     (glyph) => !nonPracticeGlyphs.includes(glyph)
+      //   );
 
-      const lessonText = generatePracticeText({
-        glyphs: filteredGlyphs,
-        practiceLength: 5,
-        wordLength: 2,
-        uniqueWordCount: 2,
-      });
-      dispatch(initPractice(lessonText));
-      dispatch(focusUserInput(true));
+      //   const lessonText = generatePracticeText({
+      //     glyphs: filteredGlyphs,
+      //     practiceLength: 5,
+      //     wordLength: 2,
+      //     uniqueWordCount: 2,
+      //   });
+      //   dispatch(initPractice(lessonText));
+      //   dispatch(focusUserInput(true));
+
+      // keyMap: {
+      //   ' ': { index: 6, level: 'to', learned: false },
+      //   '\n': { index: 41, level: 'to', learned: false },
+      // },
+
+      if (!keysDown.length) {
+        const lessonText = generatePracticeText({
+          glyphs: filteredChars,
+          practiceLength: 7,
+          wordLength: 3,
+          uniqueWordCount: 2,
+        });
+
+        dispatch(initPractice(lessonText));
+        dispatch(focusUserInput(true));
+      }
     } else {
-      // explore new chars
-      console.info("can't start new practice");
+      console.info("can't start new practice, exploring new keys is necessary");
+      dispatch(exploreKeys());
     }
   }
 
@@ -78,8 +113,15 @@ export default function TypewriterPage() {
     dispatch(focusUserInput(true));
   }
 
-  function cancelPractice() {
+  // buggy, or not even necessary
+  // function cancelPractice() {
+  //   dispatch(closeSummary());
+  //   dispatch(focusUserInput(true));
+  // }
+
+  function exploreMore() {
     dispatch(closeSummary());
+    dispatch(focusUserInput(true));
   }
 
   return (
@@ -94,23 +136,51 @@ export default function TypewriterPage() {
         <div className="finishedPractices">
           № {finishedPractices + 1}, finished: {finishedPractices}
         </div>
-        <Keyboard className={'TypewriterBoard__keyboard'} />
+        <div className="TypewriterBoard__desk">
+          <Hand className="TypewriterBoard__hand" handSide="left" />
+          <Keyboard
+            className={'TypewriterBoard__keyboard'}
+            displayedLevel={displayedLevel}
+            keys={keys}
+            layout={layout}
+            os={os}
+          />
+          <Hand className="TypewriterBoard__hand" handSide="right" />
+        </div>
       </div>
 
-      {showSummary ? (
-        <PracticeSummaryModal
-          title="Summary"
-          // @ts-ignore
-          closeTimeoutMS={MODAL_CLOSE_TIMEOUT}
-          startNewPractice={startNewPractice}
-          cancelPractice={cancelPractice}
-          repeatPractice={repeatPractice}
-          correctChars={120}
-          mistakenChars={2}
-          elapsedTime={238}
-          onRequestClose={() => dispatch(closeSummary())}
-        />
-      ) : null}
+      <PracticeSummaryModal
+        isOpen={showSummary}
+        // @ts-ignore
+        closeTimeoutMS={MODAL_CLOSE_TIMEOUT}
+        startNewPractice={startNewPractice}
+        // cancelPractice={cancelPractice}
+        isPracticeAccomplished={isPracticeAccomplished}
+        repeatPractice={repeatPractice}
+        correctChars={120}
+        mistakenChars={2}
+        elapsedTime={238}
+        onRequestClose={() => dispatch(closeSummary())}
+        explorerMode={explorerMode}
+      />
+
+      <PracticeIntroductionModal
+        isOpen={showIntroduction}
+        // @ts-ignore
+        closeTimeoutMS={MODAL_CLOSE_TIMEOUT}
+        startNewPractice={startNewPractice}
+        charToLearn={charToLearn}
+        keys={keys}
+        keyToLearn={keyToLearn}
+        onRequestClose={() => dispatch(closeSummary())}
+      />
+
+      <ExploreMoreModal
+        isOpen={!showSummary && showExploreMore}
+        // @ts-ignore
+        closeTimeoutMS={MODAL_CLOSE_TIMEOUT}
+        exploreMore={exploreMore}
+      />
     </Layout>
   );
 }
