@@ -51,7 +51,12 @@
 
 .practiceStart {
   &__info {
+    direction: ltr; // right hand should be on right, left on the left side regardless of language
     display: flex;
+
+    &--left {
+      flex-direction: row-reverse;
+    }
   }
 
   &__charInfo,

@@ -3,7 +3,7 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { focusUserInput, inputChange, keyDown, keyUp } from '../../actions';
+import { getUserInputFocus, inputChange, keyDown, keyUp } from '../../actions';
 import { State as ReduxState } from '../../reducers';
 import { navigationKeyCodes } from '../../types/allEventKeyCodes';
 import PracticeTextChar from '../PracticeTextChar';
@@ -18,14 +18,20 @@ function focusTextInput(
     userInput.selectionStart = userInput.selectionEnd = caretPosition; // set caret position to the end of the user text
   }
 }
+function blurTextInput(textAreaRef: React.RefObject<HTMLTextAreaElement>) {
+  const userInput = textAreaRef.current;
+  if (userInput) {
+    userInput.blur();
+  }
+}
 
 export default function PracticeText() {
   const textAreaRef: React.RefObject<HTMLTextAreaElement> = React.createRef();
 
   const dispatch = useDispatch();
 
-  const isUserInputFocused = useSelector(
-    (state: ReduxState) => state.focusUserInput.isUserInputFocused
+  const { isUserInputFocused, shouldUserInputFocus } = useSelector(
+    (state: ReduxState) => state.userInputFocus
   );
 
   const {
@@ -89,6 +95,14 @@ export default function PracticeText() {
     };
   }, [isUserInputFocused]);
 
+  useEffect(() => {
+    if (shouldUserInputFocus) {
+      focusTextInput(textAreaRef, userText?.length || 0);
+    } else {
+      blurTextInput(textAreaRef);
+    }
+  }, [shouldUserInputFocus]);
+
   return (
     <div
       className={classNames('PracticeText', {
@@ -147,8 +161,8 @@ export default function PracticeText() {
           onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
             dispatch(inputChange(event.target.value))
           }
-          onFocus={() => dispatch(focusUserInput(true))}
-          onBlur={() => dispatch(focusUserInput(false))}
+          onFocus={() => dispatch(getUserInputFocus(true))}
+          onBlur={() => dispatch(getUserInputFocus(false))}
         />
       </div>
     </div>

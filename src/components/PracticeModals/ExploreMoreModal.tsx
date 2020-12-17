@@ -2,23 +2,33 @@ import { Button, Typography } from 'antd';
 import { FormattedMessage } from 'gatsby-plugin-intl';
 import React, { useEffect } from 'react';
 import ReactModal from 'react-modal';
+import { useDispatch } from 'react-redux';
+
+import { APP_ELEMENT } from '../../';
+import { discoveryModalClosed, setUserInputFocus } from '../../actions';
 
 import { modalCustomStyles } from './modalCustomStyles';
 
-ReactModal.setAppElement('#___gatsby');
+ReactModal.setAppElement(APP_ELEMENT);
 
 const { Title } = Typography;
 
 type Props = {
   isOpen: boolean;
-  exploreMore: () => void;
 };
 
-export default function ExploreMoreModal({ exploreMore, isOpen }: Props) {
+export default function ExploreMoreModal({ isOpen }: Props) {
+  const dispatch = useDispatch();
+
+  function closeModal() {
+    dispatch(discoveryModalClosed());
+    dispatch(setUserInputFocus(true));
+  }
+
   function handleKeydown(event: KeyboardEvent) {
     event.preventDefault();
     if (event.code === 'Enter') {
-      exploreMore && exploreMore();
+      closeModal();
     }
   }
 
@@ -41,7 +51,7 @@ export default function ExploreMoreModal({ exploreMore, isOpen }: Props) {
 
   return (
     <ReactModal
-      onRequestClose={exploreMore}
+      onRequestClose={closeModal}
       aria-labelledby={title}
       isOpen={isOpen}
       style={modalCustomStyles}
@@ -60,7 +70,7 @@ export default function ExploreMoreModal({ exploreMore, isOpen }: Props) {
         </div>
         <div className="exploreMoreModal__footer">
           <div className="exploreMoreModal__footerButtons">
-            <Button onClick={exploreMore} color="primary">
+            <Button onClick={closeModal}>
               <FormattedMessage
                 id="modal.explore.button.explore"
                 defaultMessage="I am ready!"

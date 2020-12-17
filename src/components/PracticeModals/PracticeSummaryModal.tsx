@@ -2,47 +2,52 @@ import { Button, Typography } from 'antd';
 import { FormattedMessage } from 'gatsby-plugin-intl';
 import React, { useEffect } from 'react';
 import ReactModal from 'react-modal';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { APP_ELEMENT } from '../../';
+import { summaryModalClosed } from '../../actions';
+import { State as ReduxState } from '../../reducers';
 
 import { modalCustomStyles } from './modalCustomStyles';
 
-ReactModal.setAppElement('#___gatsby');
+ReactModal.setAppElement(APP_ELEMENT);
 
 const { Title } = Typography;
 
 type Props = {
   isOpen: boolean;
-  isPracticeAccomplished: boolean;
-  // cancelPractice: () => void;
-  repeatPractice: () => void;
-  correctChars: number;
-  mistakenChars: number;
-  elapsedTime: number;
-  onRequestClose: () => void;
-  startNewPractice: () => void;
 };
 
-export default function PracticeSummaryModal({
-  // cancelPractice,
-  correctChars,
-  elapsedTime,
-  isOpen,
-  isPracticeAccomplished,
-  mistakenChars,
-  onRequestClose,
-  repeatPractice,
-  startNewPractice,
-}: Props) {
+export default function PracticeSummaryModal({ isOpen }: Props) {
+  const dispatch = useDispatch();
+
+  const { isPracticeAccomplished } = useSelector(
+    (state: ReduxState) => state.typing
+  );
+
+  const correctChars = 1;
+  const mistakenChars = 1;
+  const elapsedTime = 1;
+
+  function closeSummary() {
+    dispatch(summaryModalClosed());
+  }
+
+  function repeatPractice() {
+    // dispatch(initializeRepeatPractice());
+  }
+
   function handleKeydown(event: KeyboardEvent) {
     event.preventDefault();
     if (event.code === 'Enter') {
-      startNewPractice && startNewPractice();
+      closeSummary();
     }
     if (event.code === 'Space') {
-      repeatPractice && repeatPractice();
+      repeatPractice();
     }
-    // buggy, or not even necessary
+
     // if (event.code === 'Esc') {
-    //   cancelPractice && cancelPractice();
+    //
     // }
   }
 
@@ -71,7 +76,7 @@ export default function PracticeSummaryModal({
 
   return (
     <ReactModal
-      onRequestClose={onRequestClose}
+      onRequestClose={closeSummary}
       aria-labelledby={title}
       isOpen={isOpen}
       style={modalCustomStyles}
@@ -90,29 +95,32 @@ export default function PracticeSummaryModal({
           <div className="practiceSummary__footerButtons">
             {/* 
             buggy, or not even necessary
-            <Button onClick={cancelPractice} color="primary">
+            <Button onClick={cancelPractice}>
               Cancel (Esc)
             </Button> */}
 
-            {/* TODO - before explore modal a "continue" button needed! */}
-            <Button onClick={repeatPractice} color="primary">
-              <FormattedMessage
-                id="modal.summary.button.repeat"
-                defaultMessage="Repeat"
-              />{' '}
-              (
-              <FormattedMessage
-                id="keyboard.key.space"
-                defaultMessage="Space"
-              />
-              )
+            <Button onClick={repeatPractice}>
+              <span>
+                <FormattedMessage
+                  id="modal.summary.button.repeat"
+                  defaultMessage="Repeat"
+                />
+                {' ('}
+                <FormattedMessage
+                  id="keyboard.key.space"
+                  defaultMessage="Space"
+                />
+                )
+              </span>
             </Button>
-            <Button onClick={startNewPractice} color="primary">
-              <FormattedMessage
-                id="modal.summary.button.new"
-                defaultMessage="New"
-              />{' '}
-              (Enter)
+            <Button onClick={closeSummary}>
+              <span>
+                <FormattedMessage
+                  id="modal.button.continue"
+                  defaultMessage="Continue"
+                />
+                {' (Enter)'}
+              </span>
             </Button>
           </div>
         </div>

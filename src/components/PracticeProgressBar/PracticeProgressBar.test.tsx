@@ -25,7 +25,7 @@ describe('<PracticeProgressBar>', () => {
 
   it('hides initially', () => {
     const store = setupStore({
-      typing: { userText: '', isPracticing: false, lessonText: '' },
+      typing: { userText: '', explorerMode: true, lessonText: '' },
     });
 
     const wrapper = mount(
@@ -38,12 +38,12 @@ describe('<PracticeProgressBar>', () => {
     expect(wrapper.find('.practiceProgressBar--open')).toHaveLength(0);
     expect(
       wrapper.find('.practiceProgressBar__bar').prop('style')
-    ).toHaveProperty('width', '0%');
+    ).toHaveProperty('width', '100%');
   });
 
-  it('hides if sample text and user text is not given', () => {
+  it('hides in discovery mode', () => {
     const store = setupStore({
-      typing: { userText: '', isPracticing: true, lessonText: '' },
+      typing: { userText: '', explorerMode: false, lessonText: '' },
     });
 
     const wrapper = mount(
@@ -56,12 +56,12 @@ describe('<PracticeProgressBar>', () => {
     expect(wrapper.find('.practiceProgressBar--open')).toHaveLength(0);
     expect(
       wrapper.find('.practiceProgressBar__bar').prop('style')
-    ).toHaveProperty('width', '0%');
+    ).toHaveProperty('width', '100%');
   });
 
   it('hides if user text is not given', () => {
     const store = setupStore({
-      typing: { userText: '', isPracticing: true, lessonText: 'abcdefg' },
+      typing: { userText: '', explorerMode: false, lessonText: 'abcdefg' },
     });
 
     const wrapper = mount(
@@ -74,12 +74,12 @@ describe('<PracticeProgressBar>', () => {
     expect(wrapper.find('.practiceProgressBar--open')).toHaveLength(0);
     expect(
       wrapper.find('.practiceProgressBar__bar').prop('style')
-    ).toHaveProperty('width', '0%');
+    ).toHaveProperty('width', '100%');
   });
 
   it('displays the proper width during the practice', () => {
     const store = setupStore({
-      typing: { userText: 'abc', isPracticing: true, lessonText: 'abcdefg' },
+      typing: { userText: 'abc', explorerMode: false, lessonText: 'abcdefg' },
     });
 
     const wrapper = mount(
@@ -98,7 +98,7 @@ describe('<PracticeProgressBar>', () => {
     const store = setupStore({
       typing: {
         userText: 'abcdefg',
-        isPracticing: true,
+        explorerMode: false,
         lessonText: 'abcdefg',
       },
     });
@@ -119,7 +119,7 @@ describe('<PracticeProgressBar>', () => {
     const store = setupStore({
       typing: {
         userText: 'abcdefg',
-        isPracticing: false,
+        explorerMode: true,
         lessonText: 'abcdefg',
       },
     });

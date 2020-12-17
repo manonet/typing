@@ -1,13 +1,21 @@
 export * from './practices';
 
-// FOCUSUSERINPUT
+// USER_INPUT_FOCUS
 
-export type FocusUserInputAction = ReturnType<typeof focusUserInput>;
+export type UserInputFocusAction = ReturnType<
+  typeof getUserInputFocus | typeof setUserInputFocus
+>;
 
-export const FOCUSUSERINPUT = 'FOCUSUSERINPUT';
+export const GET_USER_INPUT_FOCUS = 'GET_USER_INPUT_FOCUS';
 
-export function focusUserInput(isUserInputFocused: boolean) {
-  return { type: FOCUSUSERINPUT, isUserInputFocused };
+export function getUserInputFocus(focus: boolean) {
+  return { type: GET_USER_INPUT_FOCUS, focus };
+}
+
+export const SET_USER_INPUT_FOCUS = 'SET_USER_INPUT_FOCUS';
+
+export function setUserInputFocus(focus: boolean) {
+  return { type: SET_USER_INPUT_FOCUS, focus };
 }
 
 // USER_IS_TOUCHING
@@ -82,22 +90,46 @@ export function flushKeyboard() {
   return { type: FLUSH_KEYBOARD };
 }
 
-// CLOSE_SUMMARY
+// DISCOVERY_MODAL_CLOSED
 
-export type CloseSummaryAction = ReturnType<typeof closeSummary>;
+export type discoveryModalClosedAction = ReturnType<
+  typeof discoveryModalClosed
+>;
 
-export const CLOSE_SUMMARY = 'CLOSE_SUMMARY';
+export const DISCOVERY_MODAL_CLOSED = 'DISCOVERY_MODAL_CLOSED';
 
-export function closeSummary() {
-  return { type: CLOSE_SUMMARY };
+export function discoveryModalClosed() {
+  return { type: DISCOVERY_MODAL_CLOSED };
 }
 
-// EXPLORE_KEYS
+// INTRODUCTION_MODAL_CLOSED
 
-export type exploreKeysAction = ReturnType<typeof exploreKeys>;
+export type IntroductionModalClosedAction = ReturnType<
+  typeof introductionModalClosed
+>;
 
-export const EXPLORE_KEYS = 'EXPLORE_KEYS';
+export const INTRODUCTION_MODAL_CLOSED = 'INTRODUCTION_MODAL_CLOSED';
 
-export function exploreKeys() {
-  return { type: EXPLORE_KEYS };
+export function introductionModalClosed() {
+  return { type: INTRODUCTION_MODAL_CLOSED };
+}
+
+// SUMMARY_MODAL_CLOSED
+
+export type SummaryModalClosedAction = ReturnType<typeof summaryModalClosed>;
+
+export const SUMMARY_MODAL_CLOSED = 'SUMMARY_MODAL_CLOSED';
+
+export function summaryModalClosed() {
+  return { type: SUMMARY_MODAL_CLOSED };
+}
+
+// EXPLORE_FINISHED
+
+export type exploreFinishedAction = ReturnType<typeof exploreFinished>;
+
+export const EXPLORE_FINISHED = 'EXPLORE_FINISHED';
+
+export function exploreFinished() {
+  return { type: EXPLORE_FINISHED };
 }

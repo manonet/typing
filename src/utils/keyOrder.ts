@@ -4,6 +4,9 @@
 // TODO - start with introduction for 'Space', 'Enter', 'Backspace', etc. keys
 import { EventCode } from '../types';
 
+// Original lesson order of the Hungarian manonet app: jfkdlséaárueiwovmc,x.t[Shift]zghbnqpy-íőöüóúű
+
+// The keyOrder is the recommended order to learn the characters on the keyboard one-by-one. The list contains the keyboard key `code`, because characters are unknown on the beginning.
 export const keyOrder = [
   'KeyJ',
   'KeyF',
@@ -13,14 +16,47 @@ export const keyOrder = [
   'KeyS',
   'Semicolon',
   'KeyA',
+  'Quote',
   'KeyU',
-  'KeyT',
-  'KeyI',
   'KeyR',
-  'KeyO',
+  'KeyI',
   'KeyE',
+  'KeyO',
+  'KeyW',
   'KeyM',
   'KeyC',
+  'Comma',
+  'KeyX',
+  'Period',
+  'KeyZ',
+  'KeyY',
+  'KeyT',
+  'KeyP',
+  'KeyQ',
+  'KeyN',
+  'KeyV',
+  'KeyH',
+  'KeyG',
+  'KeyB',
+  'Slash',
+  'BracketLeft',
+  'Minus',
+  'Minus',
+  'Equal',
+  'BracketRight',
+  'Backslash',
+  'IntlBackslash',
+  'Backquote',
+  'Digit0',
+  'Digit1',
+  'Digit2',
+  'Digit3',
+  'Digit4',
+  'Digit5',
+  'Digit6',
+  'Digit7',
+  'Digit8',
+  'Digit9',
 ] as EventCode[];
 
 export const homeRowKeys = [
@@ -42,6 +78,7 @@ export type KeyRequirements = {
   };
 };
 
+const DEFAULT_HIT_REQUIREMENT = 100;
 export const keyRequirements: KeyRequirements = {
   KeyJ: {
     hits: 3,
@@ -57,5 +94,14 @@ export const keyRequirements: KeyRequirements = {
   },
   KeyL: {
     hits: 3,
+  },
+  KeyA: {
+    hits: DEFAULT_HIT_REQUIREMENT,
+  },
+  Semicolon: {
+    hits: DEFAULT_HIT_REQUIREMENT,
+  },
+  KeyU: {
+    hits: DEFAULT_HIT_REQUIREMENT,
   },
 };

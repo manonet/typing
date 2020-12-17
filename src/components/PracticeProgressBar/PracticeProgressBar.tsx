@@ -11,21 +11,21 @@ type Props = {
 const PracticeProgressBar = (props: Props) => {
   const { getState } = useStore<ReduxState>();
   const {
-    typing: { isPracticing, lessonText, userText },
+    typing: { explorerMode, lessonText, userText },
   } = getState();
   const { className } = props;
   const widthPercent =
     // 0 / 0 is NaN
     userText.length && lessonText.length
       ? (100 - (userText.length / lessonText.length) * 100).toFixed(2)
-      : 0;
+      : 100;
 
   return (
     <div
       className={classNames(
         'practiceProgressBar',
         {
-          'practiceProgressBar--open': isPracticing && userText.length,
+          'practiceProgressBar--open': !explorerMode && userText.length,
         },
         className
       )}

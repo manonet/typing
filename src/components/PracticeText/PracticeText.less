@@ -7,6 +7,7 @@
   background: @gray-2;
 
   &__desk {
+    direction: ltr; // right hand should be on right, left on the left side regardless of language
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -17,13 +18,16 @@
     max-width: 100px;
     max-height: calc(100vh - 160px);
     flex-direction: column;
+    flex: 1;
   }
 
   &__keyboard {
+    direction: inherit;
     display: flex;
     min-height: 200px;
     max-height: calc(100vh - 160px);
     flex-direction: column;
+    flex: 1;
   }
 }
 // TODO - double-check, moved

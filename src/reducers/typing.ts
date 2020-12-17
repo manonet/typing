@@ -1,15 +1,15 @@
 import {
-  CLOSE_SUMMARY,
   FLUSH_KEYBOARD,
-  INIT_PRACTICE,
+  INTRODUCTION_MODAL_CLOSED,
   INPUT_CHANGE,
   InputChangeAction,
   KEY_DOWN,
   KEY_UP,
   KeyboardAction,
   PracticeAction,
-  SUMMARIZE_PRACTICE,
-  EXPLORE_KEYS,
+  EXPLORE_FINISHED,
+  SUMMARY_MODAL_CLOSED,
+  DISCOVERY_MODAL_CLOSED,
 } from '../actions';
 import {
   EventCode,
@@ -30,6 +30,7 @@ import {
   keyOrder,
   keyRequirements,
   complianceRatio,
+  generatePracticeText,
 } from '../utils';
 
 import keyboard from './keyboard';
@@ -40,6 +41,12 @@ export type TypingState = {
   levelToLearn: Level;
   explorerMode: boolean;
   charToLearn?: Glyph;
+  charsToLearn: Glyph[];
+  charsIntroduced: Glyph[];
+  charToLearnIsNew: boolean;
+  isCharIntroduced: boolean;
+  isPracticeFinished: boolean;
+  isDiscovereyNeeded: boolean;
   charsLearned: Glyph[];
   currentKeyDown?: KeyDown;
   cursorAt: number;
@@ -59,9 +66,6 @@ export type TypingState = {
   previousKeyDown?: KeyDown;
   lessonText: string;
   signToWrite: string;
-  showIntroduction: boolean;
-  showSummary: boolean;
-  showExploreMore: boolean;
   userText: string;
   writtenSign: string;
 } & Keyboard;
@@ -72,6 +76,12 @@ const initialState: TypingState = {
   keyToLearn: keyOrder[0],
   levelToLearn: allLevelsOrdered[0],
   charsLearned: [],
+  charsToLearn: [],
+  charsIntroduced: [],
+  charToLearnIsNew: false,
+  isCharIntroduced: true,
+  isPracticeFinished: false,
+  isDiscovereyNeeded: true,
   explorerMode: true,
   cursorAt: 0,
   finishedPractices: 0,
@@ -87,9 +97,6 @@ const initialState: TypingState = {
   practiceLength: 0,
   lessonText: '',
   signToWrite: '',
-  showIntroduction: false,
-  showSummary: false,
-  showExploreMore: false,
   userText: '',
   writtenSign: '',
 };
@@ -107,31 +114,103 @@ export default function typingReducer(
     backslashKey.iso = 'C12';
   }
 
+  function initializeNewPracticeState() {
+    const { charToLearn, charsLearned } = state;
+
+    // TODO - charToLearn must be defined here
+    const lessonText = generatePracticeText({
+      glyphs: [...(charToLearn ? charToLearn : []), ...charsLearned],
+      practiceLength: 7,
+      wordLength: 3, // TODO use state value and wire it
+      uniqueWordCount: 2,
+    });
+
+    return {
+      // @ts-ignore
+      lessonText: lessonText,
+      // @ts-ignore
+      practiceLength: lessonText.length,
+      userText: '',
+      cursorAt: 0,
+      isPracticing: true, // TODO - move it to `start`
+    };
+  }
+
   switch (action.type) {
-    case INIT_PRACTICE:
+    case INTRODUCTION_MODAL_CLOSED: {
+      const { charToLearn } = state;
+
+      let charsIntroduced = state.charsIntroduced;
+      charToLearn && charsIntroduced.push(charToLearn); // TODO raise error if `charToLearn` is not defined
       return {
         ...state,
-        // @ts-ignore
-        lessonText: action.lessonText,
-        // @ts-ignore
-        practiceLength: action.lessonText.length,
-        userText: '',
-        cursorAt: 0,
-        isPracticing: true,
-        showSummary: false,
-        showIntroduction: false,
+        ...initializeNewPracticeState(),
+        isCharIntroduced: true,
+        explorerMode: false,
+        charsIntroduced,
       };
-    case EXPLORE_KEYS:
+    }
+
+    case DISCOVERY_MODAL_CLOSED: {
       return {
         ...state,
-        explorerMode: true,
-        showSummary: false,
+        isDiscovereyNeeded: false,
       };
-    case SUMMARIZE_PRACTICE:
+    }
+
+    case SUMMARY_MODAL_CLOSED: {
+      const { charToLearn, charsIntroduced, charsToLearn } = state;
+
+      let keyToLearn = state.keyToLearn;
+
+      const charStats = state.allChars.find(
+        (char) => char.glyph === charToLearn
+      );
+      const correctHits = (charStats && charStats.correct) || 0;
+      const mistakenHits = (charStats && charStats.miswrite) || 0;
+      const charComplianceRatio = correctHits / mistakenHits;
+      const requiredHits =
+        keyRequirements[keyToLearn] && keyRequirements[keyToLearn].hits;
+
+      if (!charToLearn) {
+        // the new character to learn is unknown, it has to be discovered
+        return {
+          ...state,
+          isDiscovereyNeeded: true,
+          explorerMode: true,
+          isPracticeFinished: false, // showSummary
+        };
+      }
+
+      // Else, the new character is known but not yet introduced
+      if (
+        charsToLearn.sort().toString() !== charsIntroduced.sort().toString()
+      ) {
+        // The character is not yet introduces, so introduce the new character
+        return {
+          ...state,
+          isCharIntroduced: false,
+          isPracticeFinished: false,
+        };
+      }
+
+      // Else, continue with a new lesson for the same character
+      // generate new lesson
       return {
         ...state,
-        showSummary: true,
+        ...initializeNewPracticeState(),
+        isPracticeFinished: false,
       };
+    }
+
+    case EXPLORE_FINISHED: {
+      return {
+        ...state,
+        // isDiscovereyNeeded: false,
+        explorerMode: false,
+      };
+    }
+
     case INPUT_CHANGE: {
       const { currentKeyDown, previousKeyDown } = state;
 
@@ -501,13 +580,16 @@ export default function typingReducer(
       let keys = [...state.keys];
       let finishedPractices = state.finishedPractices;
       let isPracticing = state.isPracticing;
-      let showSummary = state.showSummary;
-      let showIntroduction = state.showIntroduction;
-      let showExploreMore = state.showExploreMore;
       let keyToLearn = state.keyToLearn;
       let explorerMode = state.explorerMode;
       let charToLearn = state.charToLearn;
       let charsLearned = state.charsLearned;
+      let charToLearnIsNew = state.charToLearnIsNew;
+      let userText = state.userText;
+      let charsToLearn = state.charsToLearn;
+      let isCharIntroduced = state.isCharIntroduced;
+      let isPracticeFinished = state.isPracticeFinished;
+      let isDiscovereyNeeded = state.isDiscovereyNeeded;
 
       const modifiersDown = [
         // ORDER COUNTS!
@@ -522,64 +604,34 @@ export default function typingReducer(
         ? modifiersDown.join('+')
         : 'to';
 
-      if (
-        !charToLearn &&
-        currentKeyDown &&
-        currentKeyDown.code === keyToLearn &&
-        displayedLevel === levelToLearn
-      ) {
-        charToLearn = writtenSign;
+      if (!charToLearn && writtenSign) {
+        // The character to learn is unknown
+        if (
+          currentKeyDown &&
+          currentKeyDown.code === keyToLearn &&
+          displayedLevel === levelToLearn
+        ) {
+          // The user just pressed the key to learn, so the next char to learn become known
+          charToLearn = writtenSign;
+          if (charsToLearn.slice(-1)[0] !== charToLearn) {
+            charsToLearn.push(charToLearn);
+          }
+        }
       }
 
-      if (
-        explorerMode &&
-        !showIntroduction &&
-        currentKeyDown &&
-        currentKeyDown.code === 'Enter' &&
-        charToLearn
-      ) {
+      if (explorerMode && currentKeyDown && currentKeyDown.code === 'Enter') {
         // While exploring characters, the next keyToLearn was discovered, and after that Enter key was pressed in order to escape discovering and continue practicing
+        charToLearnIsNew = true;
+        isCharIntroduced = false;
         explorerMode = false;
-        showIntroduction = true;
+        userText = '';
       }
 
-      keys = keys.map((item) => {
-        if (isCapsLockOn && item.code === 'CapsLock') {
-          return {
-            ...item,
-            pressure: 'locked',
-          };
-        }
-        if (modifiersActuallyNotDown.includes(item.code)) {
-          return {
-            ...item,
-            pressure: undefined,
-          };
-        }
-        if (item.code === 'Enter' && explorerMode && charToLearn) {
-          // highlight Enter to make it easier to recognize, that it can be used for the default action
-          return {
-            ...item,
-            marker: 'toPressFirst',
-          };
-        }
-        if (item.code === code) {
-          return {
-            ...item,
-            pressure: undefined,
-          };
-        }
-
-        return item;
-      });
-
-      if (cursorAt >= practiceLength && isPracticing && charToLearn) {
+      if (cursorAt >= practiceLength && isPracticing) {
         // end of practice text reached (or exceeded)
 
-        // TODO - if the user chooses repeat, the practice should be repeated, regardless from other conditions
-
         isPracticing = false;
-        showSummary = true;
+        isPracticeFinished = true;
         finishedPractices += 1;
 
         const charStats = state.allChars.find(
@@ -596,8 +648,8 @@ export default function typingReducer(
           charComplianceRatio > complianceRatio
         ) {
           // the given character is "learned", time to move on to the next one
-
-          charsLearned.push(charToLearn);
+          charToLearn && charsLearned.push(charToLearn);
+          charToLearnIsNew = true;
 
           keyToLearn =
             keyOrder[keyOrder.findIndex((elem) => elem === keyToLearn) + 1];
@@ -612,9 +664,8 @@ export default function typingReducer(
             // @ts-ignore
             keyboardKeyToLearn.keyTops[levelToLearn].label;
 
-          if (!charToLearn) {
-            explorerMode = true;
-            showExploreMore = true;
+          if (charToLearn && charsToLearn.slice(-1)[0] !== charToLearn) {
+            charsToLearn.push(charToLearn);
           }
 
           keys = keys.map((item) => {
@@ -655,6 +706,36 @@ export default function typingReducer(
         }
       }
 
+      keys = keys.map((item) => {
+        if (isCapsLockOn && item.code === 'CapsLock') {
+          return {
+            ...item,
+            pressure: 'locked',
+          };
+        }
+        if (modifiersActuallyNotDown.includes(item.code)) {
+          return {
+            ...item,
+            pressure: undefined,
+          };
+        }
+        if (item.code === 'Enter' && explorerMode && charToLearn) {
+          // highlight Enter to make it easier to recognize, that it can be used for the default action
+          return {
+            ...item,
+            marker: 'toPressFirst',
+          };
+        }
+        if (item.code === code) {
+          return {
+            ...item,
+            pressure: undefined,
+          };
+        }
+
+        return item;
+      });
+
       return {
         ...state,
         // lastKeyUp: code,
@@ -666,11 +747,14 @@ export default function typingReducer(
         explorerMode,
         finishedPractices,
         isPracticing,
-        showSummary,
-        showExploreMore,
-        showIntroduction,
+        isPracticeFinished,
         charToLearn,
+        charsToLearn,
         charsLearned,
+        charToLearnIsNew,
+        isCharIntroduced,
+        userText,
+        isDiscovereyNeeded,
       };
     }
 
@@ -678,15 +762,6 @@ export default function typingReducer(
       return {
         ...state,
         keys: [...keyboard.keys],
-      };
-    }
-
-    case CLOSE_SUMMARY: {
-      return {
-        ...state,
-        showSummary: false,
-        isPracticing: false,
-        showExploreMore: false,
       };
     }
 

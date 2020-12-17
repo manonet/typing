@@ -1,13 +1,7 @@
 import { useIntl } from 'gatsby-plugin-intl';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import {
-  initPractice,
-  focusUserInput,
-  closeSummary,
-  exploreKeys,
-} from '../actions';
 import {
   Hand,
   PracticeProgressBar,
@@ -20,7 +14,6 @@ import Layout from '../components/Layout';
 import PracticeText from '../components/PracticeText';
 import SEO from '../components/seo';
 import { State as ReduxState } from '../reducers';
-import { generatePracticeText } from '../utils';
 
 // TODO add close on Enter function to modals
 // TODO lift ErrorModal, make it reusable
@@ -43,93 +36,48 @@ export const MODAL_CLOSE_TIMEOUT = 500;
 
 export default function TypewriterPage() {
   const intl = useIntl();
-  const dispatch = useDispatch();
 
   const {
     charToLearn,
+    charToLearnIsNew,
     charsLearned,
+    charsToLearn,
     displayedLevel,
     explorerMode,
     finishedPractices,
-    isPracticeAccomplished,
+    isCharIntroduced,
+    isDiscovereyNeeded,
+    isPracticeFinished,
+    isPracticing,
     keyToLearn,
     keys,
     keysDown,
     layout,
-    lessonText,
     os,
-    showExploreMore,
-    showIntroduction,
-    showSummary,
+    userText,
   } = useSelector((state: ReduxState) => state.typing);
 
-  function startNewPractice() {
-    if (charToLearn) {
-      console.info('startNewPractice');
-      const wordLength = 4; // TODO use state value and wire it
-      // const filteredChars = allChars.filter(
-      //   (char) => (char.correct as number) < 10
-      // );
-      const filteredChars = [charToLearn, ...charsLearned];
-      // if (Array.isArray(filteredChars) && filteredChars.length > wordLength) {
-      //   const practiceGlyphs = filteredChars.map((char) => char.glyph);
-      //   const filteredGlyphs = practiceGlyphs.filter(
-      //     (glyph) => !nonPracticeGlyphs.includes(glyph)
-      //   );
+  // console.log({
+  //   isCharIntroduced,
+  //   isPracticeFinished,
+  //   keyToLearn,
+  //   explorerMode,
+  //   isPracticing,
+  //   charToLearn,
+  //   charsToLearn,
+  //   charsLearned,
+  //   charToLearnIsNew,
+  //   userText,
+  // });
 
-      //   const lessonText = generatePracticeText({
-      //     glyphs: filteredGlyphs,
-      //     practiceLength: 5,
-      //     wordLength: 2,
-      //     uniqueWordCount: 2,
-      //   });
-      //   dispatch(initPractice(lessonText));
-      //   dispatch(focusUserInput(true));
-
-      // keyMap: {
-      //   ' ': { index: 6, level: 'to', learned: false },
-      //   '\n': { index: 41, level: 'to', learned: false },
-      // },
-
-      if (!keysDown.length) {
-        const lessonText = generatePracticeText({
-          glyphs: filteredChars,
-          practiceLength: 7,
-          wordLength: 3,
-          uniqueWordCount: 2,
-        });
-
-        dispatch(initPractice(lessonText));
-        dispatch(focusUserInput(true));
-      }
-    } else {
-      console.info("can't start new practice, exploring new keys is necessary");
-      dispatch(exploreKeys());
-    }
-  }
-
-  function repeatPractice() {
-    dispatch(initPractice(lessonText));
-    dispatch(focusUserInput(true));
-  }
-
-  // buggy, or not even necessary
-  // function cancelPractice() {
-  //   dispatch(closeSummary());
-  //   dispatch(focusUserInput(true));
-  // }
-
-  function exploreMore() {
-    dispatch(closeSummary());
-    dispatch(focusUserInput(true));
-  }
+  const isModalOpen = false; // TODO - check conditions for modaly
 
   return (
-    <Layout isModalOpen={showSummary}>
+    <Layout isModalOpen={isModalOpen}>
       <PracticeProgressBar />
       <SEO
         title={intl.formatMessage({ id: 'typewriter.page.title' })}
-        isModalOpen={showSummary}
+        isModalOpen={isModalOpen}
       />
       <div className="TypewriterBoard">
         <PracticeText />
@@ -150,36 +98,21 @@ export default function TypewriterPage() {
       </div>
 
       <PracticeSummaryModal
-        isOpen={showSummary}
+        isOpen={isPracticeFinished}
         // @ts-ignore
         closeTimeoutMS={MODAL_CLOSE_TIMEOUT}
-        startNewPractice={startNewPractice}
-        // cancelPractice={cancelPractice}
-        isPracticeAccomplished={isPracticeAccomplished}
-        repeatPractice={repeatPractice}
-        correctChars={120}
-        mistakenChars={2}
-        elapsedTime={238}
-        onRequestClose={() => dispatch(closeSummary())}
-        explorerMode={explorerMode}
       />
 
       <PracticeIntroductionModal
-        isOpen={showIntroduction}
+        isOpen={!isCharIntroduced}
         // @ts-ignore
         closeTimeoutMS={MODAL_CLOSE_TIMEOUT}
-        startNewPractice={startNewPractice}
-        charToLearn={charToLearn}
-        keys={keys}
-        keyToLearn={keyToLearn}
-        onRequestClose={() => dispatch(closeSummary())}
       />
 
       <ExploreMoreModal
-        isOpen={!showSummary && showExploreMore}
+        isOpen={isDiscovereyNeeded}
         // @ts-ignore
         closeTimeoutMS={MODAL_CLOSE_TIMEOUT}
-        exploreMore={exploreMore}
       />
     </Layout>
   );

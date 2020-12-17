@@ -106,6 +106,7 @@
     "keyboard.instruction.continue": "Feel free to explore more, and hit Enter when ready.",
 
     "modal.button.next": "Next",
+    "modal.button.continue": "Continue",
     "modal.summary.title.accomplished": "Accomplished!",
     "modal.summary.title.failed": "Failed!",
     "modal.summary.button.repeat": "Repeat",

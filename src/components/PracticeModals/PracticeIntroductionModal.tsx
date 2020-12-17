@@ -2,39 +2,40 @@ import { Button, Typography } from 'antd';
 import { FormattedMessage, useIntl } from 'gatsby-plugin-intl';
 import React, { useEffect } from 'react';
 import ReactModal from 'react-modal';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { Glyph, EventCode, Key } from '../../types';
+import { APP_ELEMENT } from '../../';
+import { introductionModalClosed } from '../../actions';
+import { State as ReduxState } from '../../reducers';
+import { Key } from '../../types';
 import { Hand } from '../index';
 
 import { modalCustomStyles } from './modalCustomStyles';
 
-ReactModal.setAppElement('#___gatsby');
+ReactModal.setAppElement(APP_ELEMENT);
 
 const { Title } = Typography;
 
 type Props = {
   isOpen: boolean;
-  keys: Key[];
-  charToLearn?: Glyph;
-  keyToLearn: EventCode;
-  onRequestClose: () => void;
-  startNewPractice: () => void;
 };
 
-export default function PracticeStartModal({
-  charToLearn,
-  isOpen,
-  keyToLearn,
-  keys,
-  onRequestClose,
-  startNewPractice,
-}: Props) {
+export default function PracticeStartModal({ isOpen }: Props) {
   const intl = useIntl();
+  const dispatch = useDispatch();
+
+  const { charToLearn, keyToLearn, keys } = useSelector(
+    (state: ReduxState) => state.typing
+  );
+
+  function closeModal() {
+    dispatch(introductionModalClosed());
+  }
 
   function handleKeydown(event: KeyboardEvent) {
     event.preventDefault();
     if (event.code === 'Enter') {
-      startNewPractice && startNewPractice();
+      closeModal();
     }
   }
 
@@ -49,7 +50,7 @@ export default function PracticeStartModal({
   }, [isOpen]);
 
   const key =
-    keys && keys.length && keys.find((key) => key.code === keyToLearn);
+    keys && keys.length && keys.find((key: Key) => key.code === keyToLearn);
 
   const title = (
     <FormattedMessage
@@ -60,7 +61,7 @@ export default function PracticeStartModal({
 
   return (
     <ReactModal
-      onRequestClose={onRequestClose}
+      onRequestClose={closeModal}
       aria-labelledby={title}
       isOpen={isOpen}
       style={modalCustomStyles}
@@ -87,7 +88,9 @@ export default function PracticeStartModal({
                 }}
               />
             </div>
-            <div className="practiceStart__info">
+            <div
+              className={`practiceStart__info practiceStart__info--${key.hand}`}
+            >
               <div className="practiceStart__charInfo">
                 <span className="practiceStart__char">{charToLearn}</span>
               </div>
@@ -103,10 +106,15 @@ export default function PracticeStartModal({
         )}
         <div className="practiceStart__footer">
           <div className="practiceStart__footerButtons">
-            <Button onClick={startNewPractice} color="primary">
-              <FormattedMessage id="modal.button.next" defaultMessage="Next" />{' '}
-              (Enter)
-            </Button>
+            <span>
+              <Button onClick={closeModal}>
+                <FormattedMessage
+                  id="modal.button.next"
+                  defaultMessage="Next"
+                />{' '}
+                (Enter)
+              </Button>
+            </span>
           </div>
         </div>
       </div>
