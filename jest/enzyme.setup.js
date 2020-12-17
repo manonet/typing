@@ -1,4 +1,5 @@
+// https://github.com/enzymejs/enzyme/issues/2429
+const Adapter = require('@wojtekmaj/enzyme-adapter-react-17');
 const { configure } = require('enzyme');
-const Adapter = require('enzyme-adapter-react-16');
 
 module.exports = configure({ adapter: new Adapter() });
