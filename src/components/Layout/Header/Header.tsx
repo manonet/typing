@@ -1,19 +1,32 @@
-import { Button } from 'antd';
+import { Button, Menu, Dropdown } from 'antd';
+import { navigate } from 'gatsby';
 import { FormattedMessage, Link } from 'gatsby-plugin-intl';
-import React from 'react';
-import { connect } from 'react-redux';
-import { ThunkDispatch } from 'redux-thunk';
+import React, { useState, useEffect } from 'react';
 
-import { flushKeyboard, KeyboardAction } from '../../../actions';
-import { State as ReduxState } from '../../../reducers';
+import useFirebase from '../../../utils/useFirebase';
 
-type Props = {
-  dispatchFlushKeyboard: any;
-};
+function Header() {
+  const [isSignedIn, setIsSignedIn] = useState(false);
 
-function Header(props: Props) {
-  const { dispatchFlushKeyboard } = props;
+  const firebase = useFirebase();
 
+  useEffect(() => {
+    if (!firebase) return;
+    // @ts-ignore
+    return firebase.auth().onAuthStateChanged((user: any) => {
+      setIsSignedIn(!!user);
+    });
+  }, [firebase]);
+
+  function userMenu(firebase: any) {
+    return (
+      <Menu>
+        <Menu.Item onClick={() => firebase.auth().signOut()}>
+          <FormattedMessage id="site.logout" defaultMessage="Sign-out" />
+        </Menu.Item>
+      </Menu>
+    );
+  }
   return (
     <div className="header">
       <div className="container header__container">
@@ -49,17 +62,40 @@ function Header(props: Props) {
           </Link>
         </menu>
         <div className="header__userMenu">
-          <Button onClick={dispatchFlushKeyboard}>Clear keyboard data</Button>
+          {firebase && isSignedIn ? (
+            <Dropdown overlay={userMenu(firebase)} arrow trigger={['click']}>
+              <div className="userMenu">
+                <img
+                  className="userMenu__photo"
+                  // @ts-ignore
+                  src={firebase.auth().currentUser.photoURL}
+                  // @ts-ignore
+                  alt={firebase.auth().currentUser.displayName}
+                />
+                <div className="userMenu__displayName">
+                  {
+                    // @ts-ignore
+                    firebase.auth().currentUser.displayName
+                  }
+                </div>
+              </div>
+            </Dropdown>
+          ) : (
+            <Button
+              size="small"
+              onClick={() => {
+                if (typeof window !== 'undefined') {
+                  navigate('/login');
+                }
+              }}
+            >
+              <FormattedMessage id="site.login" defaultMessage="Sign in" />
+            </Button>
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-const mapDispatchToProps = (
-  dispatch: ThunkDispatch<ReduxState, undefined, KeyboardAction>
-) => ({
-  dispatchFlushKeyboard: () => dispatch(flushKeyboard()),
-});
-
-export default connect(null, mapDispatchToProps)(Header);
+export default Header;

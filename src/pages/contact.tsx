@@ -2,12 +2,13 @@ import { Button, Form, Input, Select, Space, message } from 'antd';
 import Bowser from 'bowser';
 import { useStaticQuery, graphql } from 'gatsby';
 import { useIntl, FormattedMessage } from 'gatsby-plugin-intl';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import { languageName } from '../intl/languages';
 import { firstNameIsTheLastLanguages, getLangCode } from '../intl/languages';
+import useFirebase from '../utils/useFirebase';
 
 const contacts = [
   {
@@ -39,6 +40,10 @@ const layout = {
 const { Option } = Select;
 
 const ContactPage = () => {
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
+  const firebase = useFirebase();
+
   const [isSending, setIsSending] = useState(false);
   const [form] = Form.useForm();
   const intl = useIntl();
@@ -86,7 +91,24 @@ const ContactPage = () => {
     'Browser version': browser && browser.browser && browser.browser.version,
     'Operation system': browser && browser.os && browser.os.name,
     Platform: browser && browser.platform && browser.platform.type,
+    userUID: '',
   };
+
+  useEffect(() => {
+    if (!firebase) return;
+    // @ts-ignore
+    return firebase.auth().onAuthStateChanged((user) => {
+      setIsSignedIn(!!user);
+      if (!!user) {
+        // If the user is logged in, prefill form with existing data
+        form.setFieldsValue({
+          name: user.displayName,
+          email: user.email,
+        });
+        debugInfo.userUID = user.uid;
+      }
+    });
+  }, [firebase]);
 
   function sendMail(values: any) {
     const data = values;
@@ -94,8 +116,7 @@ const ContactPage = () => {
     setIsSending(true);
 
     // TODO replace it with axios or similar
-    // TODO add versioning to API
-    fetch('http://manonet.org/api/contact.php', {
+    fetch('/api/v1/contact.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -168,7 +189,8 @@ const ContactPage = () => {
                 defaultMessage: 'Name',
               })}
             >
-              <Input />
+              {/* If the user is logged in, force using existing data, and disable input changes. */}
+              <Input disabled={!!(firebase && isSignedIn)} />
             </Form.Item>
             <Form.Item
               name="email"
@@ -178,7 +200,8 @@ const ContactPage = () => {
               })}
               rules={[{ required: true, type: 'email' }]}
             >
-              <Input />
+              {/* If the user is logged in, force using existing data, and disable input changes. */}
+              <Input disabled={!!(firebase && isSignedIn)} />
             </Form.Item>
             <Form.Item
               name="to"

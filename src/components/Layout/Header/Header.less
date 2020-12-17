@@ -17,7 +17,9 @@
   }
 
   &__userMenu {
+    align-items: center;
     margin-inline-start: auto;
+    display: flex;
   }
 }
 
@@ -27,8 +29,10 @@
   margin: 0;
 
   &__item {
+    display: flex;
     padding: @padding-xs;
     color: @white;
+    align-items: center;
 
     &--active {
       background: @gray-8;
@@ -37,5 +41,24 @@
     &:hover {
       text-decoration: none;
     }
+  }
+}
+
+.userMenu {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  cursor: pointer;
+
+  &__photo {
+    width: 28px;
+    height: 28px;
+    font-size: 8px; // for the `alt` property
+    border-radius: 100%;
+    margin-inline-end: @margin-sm;
+  }
+
+  &__displayName {
+    opacity: 0.5;
   }
 }

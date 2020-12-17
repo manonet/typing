@@ -17,6 +17,8 @@
     "site.privacyPolicy.cookies.title": "Cookies",
     "site.privacyPolicy.cookies.desc": "This list of cookies will be constantly updated, therefore we recommend checking it from time to time.",
     "site.contactInfo": "Contact Info",
+    "site.login": "Sign in",
+    "site.logout": "Sign out",
     "site.email": "Email",
     "site.about": "About Us",
     "site.navigation.settings": "Settings",
