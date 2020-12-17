@@ -3,6 +3,11 @@ import { navigate } from 'gatsby';
 import { FormattedMessage, Link } from 'gatsby-plugin-intl';
 import React, { useState, useEffect } from 'react';
 
+import {
+  ROUTE_PATH_LOGIN,
+  ROUTE_PATH_TYPEWRITER,
+  ROUTE_PATH_STATISTICS,
+} from '../../../routes';
 import useFirebase from '../../../utils/useFirebase';
 
 function Header() {
@@ -48,7 +53,7 @@ function Header() {
           <Link
             className="menu__item"
             activeClassName="menu__item--active"
-            to="/typewriter/"
+            to={ROUTE_PATH_TYPEWRITER}
           >
             <FormattedMessage id="site.navigation.program" />
           </Link>
@@ -56,7 +61,7 @@ function Header() {
           <Link
             className="menu__item"
             activeClassName="menu__item--active"
-            to="/statistics/"
+            to={ROUTE_PATH_STATISTICS}
           >
             <FormattedMessage id="site.navigation.statistics" />
           </Link>
@@ -85,7 +90,7 @@ function Header() {
               size="small"
               onClick={() => {
                 if (typeof window !== 'undefined') {
-                  navigate('/login');
+                  navigate(ROUTE_PATH_LOGIN);
                 }
               }}
             >

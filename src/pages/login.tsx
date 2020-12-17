@@ -6,6 +6,7 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
+import { ROUTE_PATH_TYPEWRITER } from '../routes';
 import useFirebase from '../utils/useFirebase';
 
 const LoginPage = () => {
@@ -25,7 +26,7 @@ const LoginPage = () => {
     if (firebase) {
       if (isSignedIn) {
         return (
-          <div>
+          <div className="login__form">
             {
               // @ts-ignore
               renderProfile(firebase.auth().currentUser)
@@ -55,7 +56,7 @@ const LoginPage = () => {
           //   // Avoid redirects after sign-in.
           //   signInSuccessWithAuthResult: () => false,
           // },
-          signInSuccessUrl: '/typewriter',
+          signInSuccessUrl: ROUTE_PATH_TYPEWRITER,
         };
         return (
           <div>
@@ -73,11 +74,11 @@ const LoginPage = () => {
   }
 
   return (
-    <Layout className="contact">
-      <SEO title="" />
-      <section className="contactForm__section">
+    <Layout className="login">
+      <SEO />
+      <section className="loginForm__section">
         <div className="container">
-          <h2 className="contact__title">
+          <h2 className="login__title">
             <FormattedMessage id="site.login" defaultMessage="Login" />
           </h2>
           <div>{getContent()}</div>

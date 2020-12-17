@@ -9,6 +9,12 @@ import imgTestimonials1 from '../images/testimonials1.jpg';
 import imgTestimonials2 from '../images/testimonials2.jpg';
 import imgTypewriter from '../images/typewriter.png';
 import imgSam from '../images/uncle-sam.jpg';
+import {
+  ROUTE_PATH_LOGIN,
+  ROUTE_PATH_TYPEWRITER,
+  ROUTE_PATH_CONTACT,
+  ROUTE_PATH_CONTRIBUTION,
+} from '../routes';
 import useFirebase from '../utils/useFirebase';
 
 const IndexPage = () => {
@@ -32,7 +38,7 @@ const IndexPage = () => {
         size="large"
         onClick={() => {
           if (typeof window !== 'undefined') {
-            navigate(isSignedIn ? '/typewriter' : '/login');
+            navigate(isSignedIn ? ROUTE_PATH_TYPEWRITER : ROUTE_PATH_LOGIN);
           }
         }}
       >
@@ -183,7 +189,7 @@ const IndexPage = () => {
                     <FormattedMessage id="home.testimonials.generic.desc" />
                   </div>
                   <div className="testimonials__feedback">
-                    <Link to="/contact">
+                    <Link to={ROUTE_PATH_CONTACT}>
                       <i className="far fa-comment-dots"></i>
                       <FormattedMessage id="home.testimonials.feedback" />
                     </Link>
@@ -203,7 +209,7 @@ const IndexPage = () => {
                   id="home.startNow.desc"
                   values={{ siteName: data.site.siteMetadata.name }}
                 />{' '}
-                <Link to="/contribution">
+                <Link to={ROUTE_PATH_CONTRIBUTION}>
                   <FormattedMessage id="home.learn.more" />
                 </Link>
               </div>

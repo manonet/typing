@@ -3,15 +3,21 @@ import React from 'react';
 
 // @ts-ignore
 import LanguageSwitcher from '../../../components/LanguageSwitcher';
+import {
+  ROUTE_PATH_CONTACT,
+  ROUTE_PATH_FAQ,
+  ROUTE_PATH_TERMS_OF_USE,
+  ROUTE_PATH_PRIVACY_POLICY,
+  ROUTE_PATH_LEGAL_NOTICE,
+} from '../../../routes';
 
 type Props = {
   appName: string;
   version: string;
-  email: string;
 };
 
 function Footer(props: Props) {
-  const { appName, email, version } = props;
+  const { appName, version } = props;
 
   return (
     <footer className="footer inverse">
@@ -29,7 +35,7 @@ function Footer(props: Props) {
                 <i className="fa fa-envelope"></i>
                 <Link
                   className="footerNav__link interactive interactive--inverse"
-                  to="/contact"
+                  to={ROUTE_PATH_CONTACT}
                 >
                   <FormattedMessage id="site.email" defaultMessage="Email" />
                 </Link>
@@ -75,18 +81,15 @@ function Footer(props: Props) {
               <li className="footerNav__item">
                 <Link
                   className="footerNav__link interactive interactive--inverse"
-                  to="/terms-of-use"
+                  to={ROUTE_PATH_FAQ}
                 >
-                  <FormattedMessage
-                    id="site.termsOfUse"
-                    defaultMessage="Terms of use"
-                  />
+                  <FormattedMessage id="site.faq" defaultMessage="FAQ" />
                 </Link>
               </li>
               <li className="footerNav__item">
                 <Link
                   className="footerNav__link interactive interactive--inverse"
-                  to="/privacy-policy"
+                  to={ROUTE_PATH_PRIVACY_POLICY}
                 >
                   <FormattedMessage
                     id="site.privacyPolicy"
@@ -97,7 +100,7 @@ function Footer(props: Props) {
               <li className="footerNav__item">
                 <Link
                   className="footerNav__link interactive interactive--inverse"
-                  to="/legal-notice"
+                  to={ROUTE_PATH_LEGAL_NOTICE}
                 >
                   <FormattedMessage
                     id="site.legalNotice"
@@ -116,7 +119,7 @@ function Footer(props: Props) {
               <li className="footerNav__item">
                 <Link
                   className="footerNav__link interactive interactive--inverse"
-                  to="/terms-of-use"
+                  to={ROUTE_PATH_TERMS_OF_USE}
                 >
                   <FormattedMessage
                     id="site.termsOfUse"

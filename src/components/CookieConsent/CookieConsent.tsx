@@ -4,6 +4,8 @@ import { FormattedMessage, Link } from 'gatsby-plugin-intl';
 import Cookies from 'js-cookie';
 import React from 'react';
 
+import { ROUTE_PATH_PRIVACY_POLICY } from '../../routes';
+
 type Props = {
   className?: string;
 };
@@ -30,7 +32,10 @@ export default function CookieConsent({ className }: Props) {
           defaultMessage="We use cookies to ensure that we give you the best experience on our website. If you continue to use this site we will assume that you are happy with it."
         />
         &nbsp;
-        <Link className="cookieConsent__link interactive" to="/privacy-policy">
+        <Link
+          className="cookieConsent__link interactive"
+          to={ROUTE_PATH_PRIVACY_POLICY}
+        >
           <FormattedMessage
             id="site.cookieConsent.moreDetails"
             defaultMessage="More details"

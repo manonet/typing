@@ -1,0 +1,9 @@
+export const ROUTE_PATH_LOGIN = '/login';
+export const ROUTE_PATH_TYPEWRITER = '/typewriter';
+export const ROUTE_PATH_STATISTICS = '/statistics';
+export const ROUTE_PATH_CONTACT = '/contact';
+export const ROUTE_PATH_TERMS_OF_USE = '/terms-of-use';
+export const ROUTE_PATH_PRIVACY_POLICY = '/privacy-policy';
+export const ROUTE_PATH_LEGAL_NOTICE = '/legal-notice';
+export const ROUTE_PATH_FAQ = '/faq';
+export const ROUTE_PATH_CONTRIBUTION = '/contribution';
