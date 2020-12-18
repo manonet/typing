@@ -91,7 +91,6 @@ const ContactPage = () => {
     'Browser version': browser && browser.browser && browser.browser.version,
     'Operation system': browser && browser.os && browser.os.name,
     Platform: browser && browser.platform && browser.platform.type,
-    userUID: '',
   };
 
   useEffect(() => {
@@ -105,13 +104,16 @@ const ContactPage = () => {
           name: user.displayName,
           email: user.email,
         });
-        debugInfo.userUID = user.uid;
       }
     });
   }, [firebase]);
 
   function sendMail(values: any) {
     const data = values;
+    if (!!(firebase && isSignedIn)) {
+      // @ts-ignore
+      debugInfo.userUID = firebase.auth().currentUser.uid;
+    }
     data.debug = debugInfo;
     setIsSending(true);
 

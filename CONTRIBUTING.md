@@ -8,7 +8,7 @@ For setting up the development environment see [README.md](README.md)
 
 Translations are very important, and I can't do them. If you speak any language then you have perfect skills for translation contributions! You can translate the application interface, or you can simply review and proofread the existing translations, fix translation issues, bugs, typos, or grammar issues. Any help is a BIG help.
 
-How to translate? Simple and easy! The user interface is managed in [POEditor](https://poeditor.com), a great translation management system, and in that way translation is even fun! Feel free to join under this link: [Join Translation of Manonet](https://poeditor.com/join/project/eIB3WJcqZ9) See details in [TRANSLATION_GUIDE.md](/src/intl/docs/TRANSLATION_GUIDE.md)
+How to translate? Simple and easy! The user interface is managed in POEditor, a great translation management system, and in that way translation is even fun! Feel free to join under this link: [Join Translation of Manonet](https://poeditor.com/join/project/eIB3WJcqZ9) See details in [TRANSLATION_GUIDE.md](/src/intl/docs/TRANSLATION_GUIDE.md)
 
 Feel free to report or fix typos or grammar issues in the code-base too. (e.g. this file)
 

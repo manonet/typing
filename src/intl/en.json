@@ -11,6 +11,7 @@
     "site.version": "version: {version}",
     "site.copyright": "All rights reserved.",
     "site.faq": "FAQ",
+    "faq.page.title": "Frequently Asked Questions",
     "site.customerSupport": "Customer Support",
     "site.legalNotice": "Legal Notice",
     "site.termsOfUse": "Terms of use",
@@ -116,7 +117,7 @@
     "modal.summary.button.new": "New",
 
     "modal.explore.title": "Explore new areas!",
-    "modal.explore.desc": "It is time to explore your keyboard and discover new characters!\nIt is simple, just press the marked keys.",
+    "modal.explore.desc": "It is time to explore your keyboard and discover new characters! It is simple, just press the marked keys.",
     "modal.explore.button.explore": "I am ready!",
 
     "modal.introduction.title": "Introduction",
