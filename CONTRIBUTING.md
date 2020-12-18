@@ -1,6 +1,6 @@
 # How to contribute
 
-Contributions are welcome in any form :) The project currently maintained in [GitLab](https://gitlab.com/zyxneo/typing). If you do not like to use its features, you can even write an email. (Hint: see [package.json](package.json) for details, or go to the [website](http://beta.manonet.org))
+Contributions are welcome in any form :) The project currently maintained in [GitLab](https://gitlab.com/zyxneo/typing). If you do not like to use its features, you can even write an [email](mailto:info@manonet.org). (Hint: see [package.json](package.json) for details, or go to the [website](http://beta.manonet.org))
 
 For setting up the development environment see [README.md](README.md)
 

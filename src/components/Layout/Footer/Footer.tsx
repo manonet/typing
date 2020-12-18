@@ -9,6 +9,7 @@ import {
   ROUTE_PATH_TERMS_OF_USE,
   ROUTE_PATH_PRIVACY_POLICY,
   ROUTE_PATH_LEGAL_NOTICE,
+  ROUTE_PATH_CONTRIBUTION,
 } from '../../../routes';
 
 type Props = {
@@ -124,6 +125,17 @@ function Footer(props: Props) {
                   <FormattedMessage
                     id="site.termsOfUse"
                     defaultMessage="Terms of use"
+                  />
+                </Link>
+              </li>
+              <li className="footerNav__item">
+                <Link
+                  className="footerNav__link interactive interactive--inverse"
+                  to={ROUTE_PATH_CONTRIBUTION}
+                >
+                  <FormattedMessage
+                    id="site.contribution"
+                    defaultMessage="Contribution"
                   />
                 </Link>
               </li>

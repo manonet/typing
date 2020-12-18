@@ -11,6 +11,7 @@
     "site.version": "version: {version}",
     "site.copyright": "All rights reserved.",
     "site.faq": "FAQ",
+    "site.contribution": "Contribution",
     "faq.page.title": "Frequently Asked Questions",
     "site.customerSupport": "Customer Support",
     "site.legalNotice": "Legal Notice",

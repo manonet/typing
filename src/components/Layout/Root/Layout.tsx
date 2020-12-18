@@ -76,7 +76,6 @@ export default function Layout(props: Props) {
             <Footer
               appName={data.site.siteMetadata.name}
               version={data.site.siteMetadata.version}
-              email={data.site.siteMetadata.email}
             ></Footer>
             <CookieConsent />
           </div>
