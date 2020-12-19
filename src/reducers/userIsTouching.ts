@@ -1,4 +1,4 @@
-import { UserIsTouchingAction } from '../actions/index';
+import { UserIsTouchingAction } from '@actions';
 export type UserIsTouchingState = {
   isTouchDevice: boolean;
 };

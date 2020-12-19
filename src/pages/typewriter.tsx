@@ -3,17 +3,17 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import {
+  Layout,
+  SEO,
+  PracticeText,
+  Keyboard,
   Hand,
   PracticeProgressBar,
   ExploreMoreModal,
   PracticeIntroductionModal,
   PracticeSummaryModal,
-} from '../components';
-import Keyboard from '../components/Keyboard';
-import Layout from '../components/Layout';
-import PracticeText from '../components/PracticeText';
-import SEO from '../components/seo';
-import { State as ReduxState } from '../reducers';
+} from '@components';
+import { State as ReduxState } from '@reducers';
 
 // TODO add close on Enter function to modals
 // TODO lift ErrorModal, make it reusable

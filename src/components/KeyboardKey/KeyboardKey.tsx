@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import React, { forwardRef } from 'react';
 
-import variables from '../../theme/variables';
-import { Level, Key, Layout } from '../../types';
+import variables from '@theme/variables';
+import { Level, Key, Layout } from '@types';
 
 export type KeyboardThemeProps = {
   keyWidth: number;

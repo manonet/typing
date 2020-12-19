@@ -11,11 +11,10 @@ import { useIntl, FormattedMessage } from 'gatsby-plugin-intl';
 import React, { ReactNodeArray } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { userIsTouching } from '../../../actions';
-import { State as ReduxState } from '../../../reducers';
-import CookieConsent from '../../CookieConsent';
-import Footer from '../Footer';
-import Header from '../Header';
+import { userIsTouching } from '@actions';
+import { CookieConsent, Footer, Header } from '@components';
+import { State as ReduxState } from '@reducers';
+
 import 'typeface-roboto';
 
 type Props = {

@@ -1,6 +1,12 @@
-import { allEventKeyCodes } from './allEventKeyCodes';
+import {
+  allEventKeyCodes,
+  navigationKeyCodes,
+  functionalKeyCodes,
+} from './allEventKeyCodes';
 import { allISO } from './allISO';
 import { allLevelsOrdered } from './allLevelsOrdered';
+
+export { navigationKeyCodes, functionalKeyCodes };
 
 export { allISO, allLevelsOrdered };
 

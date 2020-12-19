@@ -1,7 +1,7 @@
 import mem from 'mem';
 
-import variables from '../../theme/variables';
-import { Layout } from '../../types';
+import variables from '@theme/variables';
+import { Layout } from '@types';
 
 function getEnterPath({ layout }: { layout: Layout }) {
   const {

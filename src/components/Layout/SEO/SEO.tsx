@@ -11,7 +11,7 @@ import { useIntl } from 'gatsby-plugin-intl';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import { RtlLangs, getLangCode } from '../intl/languages';
+import { RtlLangs, getLangCode } from '@intl/languages';
 
 type Props = {
   description?: string | null;

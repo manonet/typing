@@ -4,9 +4,9 @@ import React, { useEffect } from 'react';
 import ReactModal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { APP_ELEMENT } from '../../';
-import { summaryModalClosed } from '../../actions';
-import { State as ReduxState } from '../../reducers';
+import { APP_ELEMENT } from '@';
+import { summaryModalClosed } from '@actions';
+import { State as ReduxState } from '@reducers';
 
 import { modalCustomStyles } from './modalCustomStyles';
 

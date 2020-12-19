@@ -1,7 +1,7 @@
 import React from 'react';
 
-import KeyboardKey from '../../components/KeyboardKey';
-import vars from '../../theme/variables';
+import { KeyboardKey } from '@components';
+import vars from '@theme/variables';
 
 type Props = {
   state: any;

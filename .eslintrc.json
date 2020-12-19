@@ -53,15 +53,91 @@
             "group": "internal"
           },
           {
+            "pattern": "@",
+            "group": "internal"
+          },
+          {
+            "pattern": "@/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "actions",
+            "group": "internal"
+          },
+          {
             "pattern": "actions/**",
             "group": "internal"
           },
           {
-            "pattern": "utils/**",
+            "pattern": "@actions",
             "group": "internal"
           },
           {
-            "pattern": "dataProviders/**",
+            "pattern": "@actions/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "components",
+            "group": "internal"
+          },
+          {
+            "pattern": "components/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "@components",
+            "group": "internal"
+          },
+          {
+            "pattern": "@components/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "images",
+            "group": "internal"
+          },
+          {
+            "pattern": "images/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "@images",
+            "group": "internal"
+          },
+          {
+            "pattern": "@images/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "intl",
+            "group": "internal"
+          },
+          {
+            "pattern": "intl/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "@intl",
+            "group": "internal"
+          },
+          {
+            "pattern": "@intl/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "pages",
+            "group": "internal"
+          },
+          {
+            "pattern": "pages/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "@pages",
+            "group": "internal"
+          },
+          {
+            "pattern": "@pages/**",
             "group": "internal"
           },
           {
@@ -73,19 +149,83 @@
             "group": "internal"
           },
           {
-            "pattern": "components/**",
+            "pattern": "@reducers",
             "group": "internal"
           },
           {
-            "pattern": "assets/**",
-            "group": "internal"
-          },
-          {
-            "pattern": "pages/**",
+            "pattern": "@reducers/**",
             "group": "internal"
           },
           {
             "pattern": "routes",
+            "group": "internal"
+          },
+          {
+            "pattern": "@routes",
+            "group": "internal"
+          },
+          {
+            "pattern": "state",
+            "group": "internal"
+          },
+          {
+            "pattern": "@state",
+            "group": "internal"
+          },
+          {
+            "pattern": "styles",
+            "group": "internal"
+          },
+          {
+            "pattern": "@styles",
+            "group": "internal"
+          },
+          {
+            "pattern": "theme",
+            "group": "internal"
+          },
+          {
+            "pattern": "theme/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "@theme",
+            "group": "internal"
+          },
+          {
+            "pattern": "@theme/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "types",
+            "group": "internal"
+          },
+          {
+            "pattern": "types/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "@types",
+            "group": "internal"
+          },
+          {
+            "pattern": "@types/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "utils",
+            "group": "internal"
+          },
+          {
+            "pattern": "utils/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "@utils",
+            "group": "internal"
+          },
+          {
+            "pattern": "@utils/**",
             "group": "internal"
           }
         ]

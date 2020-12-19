@@ -2,10 +2,8 @@ import { FormattedMessage, useIntl } from 'gatsby-plugin-intl';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import Keyboard from '../components/Keyboard';
-import Layout from '../components/Layout';
-import SEO from '../components/seo';
-import { State as ReduxState } from '../reducers';
+import { Layout, SEO } from '@components';
+import { State as ReduxState } from '@reducers';
 
 type Props = {
   allChars: {

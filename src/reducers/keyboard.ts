@@ -1,5 +1,5 @@
-import { Keyboard } from '../types';
-import { getOperationSystem, DEFAULT_SPEACER } from '../utils';
+import { Keyboard } from '@types';
+import { getOperationSystem, DEFAULT_SPEACER } from '@utils';
 
 const os = getOperationSystem();
 const osLabel = os.sign;

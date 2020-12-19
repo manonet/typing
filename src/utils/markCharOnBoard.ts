@@ -1,4 +1,4 @@
-import { DeadKeys, Key, KeyMap, PossibleKeyStates, Marks } from '../types';
+import { DeadKeys, Key, KeyMap, PossibleKeyStates, Marks } from '@types';
 
 export const markCharOnBoard = function ({
   deadKeys,

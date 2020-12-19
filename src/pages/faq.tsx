@@ -1,9 +1,8 @@
 import { Link, FormattedMessage } from 'gatsby-plugin-intl';
 import React from 'react';
 
-import Layout from '../components/Layout';
-import SEO from '../components/seo';
-import { ROUTE_PATH_CONTRIBUTION, ROUTE_PATH_CONTACT } from '../routes';
+import { Layout, SEO } from '@components';
+import { ROUTE_PATH_CONTRIBUTION, ROUTE_PATH_CONTACT } from '@routes';
 
 const FaqPage = () => {
   return (

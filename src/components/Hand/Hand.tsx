@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
 
-import { HandSide, Fingers } from '../../types';
+import { HandSide, Fingers } from '@types';
 
 type Props = {
   handSide: HandSide;

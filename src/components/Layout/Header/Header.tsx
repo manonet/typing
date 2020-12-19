@@ -7,8 +7,8 @@ import {
   ROUTE_PATH_LOGIN,
   ROUTE_PATH_TYPEWRITER,
   ROUTE_PATH_STATISTICS,
-} from '../../../routes';
-import useFirebase from '../../../utils/useFirebase';
+} from '@routes';
+import useFirebase from '@utils/useFirebase';
 
 function Header() {
   const [isSignedIn, setIsSignedIn] = useState(false);

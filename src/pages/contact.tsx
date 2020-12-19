@@ -1,14 +1,17 @@
 import { Button, Form, Input, Select, Space, message } from 'antd';
+import axios from 'axios';
 import Bowser from 'bowser';
 import { useStaticQuery, graphql } from 'gatsby';
 import { useIntl, FormattedMessage } from 'gatsby-plugin-intl';
 import React, { useState, useEffect } from 'react';
 
-import Layout from '../components/Layout';
-import SEO from '../components/seo';
-import { languageName } from '../intl/languages';
-import { firstNameIsTheLastLanguages, getLangCode } from '../intl/languages';
-import useFirebase from '../utils/useFirebase';
+import { Layout, SEO } from '@components';
+import {
+  languageName,
+  firstNameIsTheLastLanguages,
+  getLangCode,
+} from '@intl/languages';
+import useFirebase from '@utils/useFirebase';
 
 const contacts = [
   {
@@ -118,17 +121,17 @@ const ContactPage = () => {
     setIsSending(true);
 
     // TODO replace it with axios or similar
-    fetch('/api/v1/contact.php', {
-      method: 'POST',
+    axios({
+      method: 'post',
+      url: '/api/v1/contact.php',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      data,
     })
-      .then((response) => response.json())
-      .then((data) => {
+      .then((response) => {
         setIsSending(false);
-        if (data.response === 'success') {
+        if (response.data.response === 'success') {
           // Actually sent based on BE response
           form.resetFields();
           message.success(

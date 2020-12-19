@@ -2,8 +2,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import { useIntl, FormattedMessage } from 'gatsby-plugin-intl';
 import React from 'react';
 
-import Layout from '../components/Layout';
-import SEO from '../components/seo';
+import { Layout, SEO } from '@components';
 
 export default function TermsOfUsePage() {
   const intl = useIntl();

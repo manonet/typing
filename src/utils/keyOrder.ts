@@ -2,7 +2,7 @@
 // TODO - order should be customizable by the user
 // TODO - if the user can reorder the list, how to determin, which item was already learned, and which not?
 // TODO - start with introduction for 'Space', 'Enter', 'Backspace', etc. keys
-import { EventCode } from '../types';
+import { EventCode } from '@types';
 
 // Original lesson order of the Hungarian manonet app: jfkdlséaárueiwovmc,x.t[Shift]zghbnqpy-íőöüóúű
 

@@ -3,10 +3,10 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getUserInputFocus, inputChange, keyDown, keyUp } from '../../actions';
-import { State as ReduxState } from '../../reducers';
-import { navigationKeyCodes } from '../../types/allEventKeyCodes';
-import PracticeTextChar from '../PracticeTextChar';
+import { getUserInputFocus, inputChange, keyDown, keyUp } from '@actions';
+import { PracticeTextChar } from '@components';
+import { State as ReduxState } from '@reducers';
+import { navigationKeyCodes } from '@types';
 
 function focusTextInput(
   textAreaRef: React.RefObject<HTMLTextAreaElement>,

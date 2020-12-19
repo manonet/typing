@@ -4,8 +4,8 @@ import React, { useEffect } from 'react';
 import ReactModal from 'react-modal';
 import { useDispatch } from 'react-redux';
 
-import { APP_ELEMENT } from '../../';
-import { discoveryModalClosed, setUserInputFocus } from '../../actions';
+import { APP_ELEMENT } from '@';
+import { discoveryModalClosed, setUserInputFocus } from '@actions';
 
 import { modalCustomStyles } from './modalCustomStyles';
 

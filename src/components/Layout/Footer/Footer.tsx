@@ -1,8 +1,7 @@
 import { FormattedMessage, Link } from 'gatsby-plugin-intl';
 import React from 'react';
 
-// @ts-ignore
-import LanguageSwitcher from '../../../components/LanguageSwitcher';
+import { LanguageSwitcher } from '@components';
 import {
   ROUTE_PATH_CONTACT,
   ROUTE_PATH_FAQ,
@@ -10,7 +9,9 @@ import {
   ROUTE_PATH_PRIVACY_POLICY,
   ROUTE_PATH_LEGAL_NOTICE,
   ROUTE_PATH_CONTRIBUTION,
-} from '../../../routes';
+} from '@routes';
+
+// @ts-ignore
 
 type Props = {
   appName: string;

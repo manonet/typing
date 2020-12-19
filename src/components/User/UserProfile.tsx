@@ -1,7 +1,7 @@
 import { FormattedDate } from 'gatsby-plugin-intl';
 import React, { useState, useEffect } from 'react';
 
-import useFirebase from '../../utils/useFirebase';
+import useFirebase from '@utils/useFirebase';
 
 type UserProfile = {
   displayName: string;

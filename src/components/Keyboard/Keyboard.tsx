@@ -2,12 +2,10 @@ import Tippy, { useSingleton } from '@tippyjs/react';
 import classNames from 'classnames';
 import { FormattedMessage, useIntl } from 'gatsby-plugin-intl';
 import React from 'react';
-import { useSelector } from 'react-redux';
 
-import { State as ReduxState } from '../../reducers';
-import variables from '../../theme/variables';
-import { Level, Key, Layout, OS } from '../../types';
-import KeyboardKey from '../KeyboardKey';
+import { KeyboardKey } from '@components';
+import variables from '@theme/variables';
+import { Level, Key, Layout, OS } from '@types';
 
 import getEnterPath from './getEnterPath';
 

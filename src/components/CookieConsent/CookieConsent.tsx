@@ -4,7 +4,7 @@ import { FormattedMessage, Link } from 'gatsby-plugin-intl';
 import Cookies from 'js-cookie';
 import React from 'react';
 
-import { ROUTE_PATH_PRIVACY_POLICY } from '../../routes';
+import { ROUTE_PATH_PRIVACY_POLICY } from '@routes';
 
 type Props = {
   className?: string;

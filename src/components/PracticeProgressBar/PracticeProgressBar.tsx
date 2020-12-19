@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import React from 'react';
 import { useStore } from 'react-redux';
 
-import { State as ReduxState } from '../../reducers';
+import { State as ReduxState } from '@reducers';
 
 type Props = {
   className?: string;

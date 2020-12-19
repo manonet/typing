@@ -10,7 +10,7 @@ import {
   EXPLORE_FINISHED,
   SUMMARY_MODAL_CLOSED,
   DISCOVERY_MODAL_CLOSED,
-} from '../actions';
+} from '@actions';
 import {
   EventCode,
   GlyphStatistics,
@@ -23,15 +23,15 @@ import {
   Glyph,
   allLevelsOrdered,
   KeyMap,
-} from '../types';
-import { functionalKeyCodes } from '../types/allEventKeyCodes';
+  functionalKeyCodes,
+} from '@types';
 import {
   markCharOnBoard,
   keyOrder,
   keyRequirements,
   complianceRatio,
   generatePracticeText,
-} from '../utils';
+} from '@utils';
 
 import keyboard from './keyboard';
 

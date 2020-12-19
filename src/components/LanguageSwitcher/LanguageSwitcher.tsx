@@ -1,10 +1,10 @@
-import Tippy from '@tippyjs/react';
 import { Button, Space } from 'antd';
 import classNames from 'classnames';
 import { IntlContextConsumer, changeLocale } from 'gatsby-plugin-intl';
 import React from 'react';
 
-import { languageName } from '../../intl/languages';
+import { languageName } from '@intl/languages';
+
 type Props = {
   className?: string;
 };

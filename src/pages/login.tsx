@@ -4,10 +4,9 @@ import { FormattedMessage } from 'gatsby-plugin-intl';
 import React, { useState, useEffect } from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
-import Layout from '../components/Layout';
-import SEO from '../components/seo';
-import { ROUTE_PATH_TYPEWRITER } from '../routes';
-import useFirebase from '../utils/useFirebase';
+import { Layout, SEO } from '@components';
+import { ROUTE_PATH_TYPEWRITER } from '@routes';
+import useFirebase from '@utils/useFirebase';
 
 const LoginPage = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);

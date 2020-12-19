@@ -1,4 +1,4 @@
-import { Glyph } from '../types';
+import { Glyph } from '@types';
 
 import { resizeArray } from './resizeArray';
 import { shuffleArray } from './shuffleArray';

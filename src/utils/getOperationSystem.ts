@@ -1,6 +1,6 @@
 import Bowser from 'bowser';
 
-import { OS } from '../types';
+import { OS } from '@types';
 
 export const getOperationSystem = function (): OS {
   const browser =

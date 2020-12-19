@@ -2,9 +2,7 @@ import { Button } from 'antd';
 import { FormattedMessage, FormattedNumber } from 'gatsby-plugin-intl';
 import React from 'react';
 
-// @ts-ignore
-import Layout from '../components/Layout';
-import Link from '../components/Link';
+import { Layout, SEO } from '@components';
 
 function PricingPage() {
   return (

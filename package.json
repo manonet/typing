@@ -11,6 +11,7 @@
     "@types/js-cookie": "^2.2.6",
     "@types/react-modal": "^3.10.6",
     "antd": "^4.8.2",
+    "axios": "^0.21.0",
     "babel-plugin-import": "^1.13.1",
     "bowser": "^2.11.0",
     "classnames": "^2.2.6",

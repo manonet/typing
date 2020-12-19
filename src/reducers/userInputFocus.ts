@@ -1,4 +1,4 @@
-import { UserInputFocusAction } from '../actions';
+import { UserInputFocusAction } from '@actions';
 
 export type FocusUserInputState = {
   isUserInputFocused: boolean;
