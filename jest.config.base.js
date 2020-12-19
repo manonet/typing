@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   reporters: ['default', 'jest-junit'],
 
@@ -58,4 +60,19 @@ module.exports = {
   // @link https://github.com/simon360/jest-environment-jsdom-global
   //
   testEnvironment: 'jest-environment-jsdom-global',
+  moduleNameMapper: {
+    // CUSTOM PACKAGES:
+    // '^@/(.*)$': '<rootDir>/src/$1',
+    '^@reducers/(.*)$': '<rootDir>/src/reducers/$1',
+    '^@actions/(.*)$': '<rootDir>/src/actions/$1',
+    '^@components/(.*)$': '<rootDir>/src/components/$1',
+    '^@images/(.*)$': '<rootDir>/src/images/$1',
+    '^@intl/(.*)$': '<rootDir>/src/intl/$1',
+    '^@pages/(.*)$': '<rootDir>/src/pages/$1',
+    '^@reducers/(.*)$': '<rootDir>/src/reducers/$1',
+    '^@state/(.*)$': '<rootDir>/src/state/$1',
+    '^@styles/(.*)$': '<rootDir>/src/styles/$1',
+    '^@types/(.*)$': '<rootDir>/src/types/$1',
+    '^@utils/(.*)$': '<rootDir>/src/utils/$1',
+  },
 };

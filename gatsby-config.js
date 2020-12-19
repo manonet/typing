@@ -1,4 +1,5 @@
 // import theme from './src/theme/ant-design-theme.ts';
+const path = require('path');
 
 const packageJson = require('./package.json');
 const theme = require('./src/theme/ant-design-theme.ts');
@@ -108,6 +109,21 @@ module.exports = {
           javascriptEnabled: true,
           modifyVars: theme,
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-root-import`,
+      options: {
+        '@actions': path.join(__dirname, '/src/actions'),
+        '@components': path.join(__dirname, '/src/components'),
+        '@images': path.join(__dirname, '/src/images'),
+        '@intl': path.join(__dirname, '/src/intl'),
+        '@pages': path.join(__dirname, '/src/pages'),
+        '@reducers': path.join(__dirname, '/src/reducers'),
+        '@state': path.join(__dirname, '/src/state'),
+        '@styles': path.join(__dirname, '/src/styles'),
+        '@types': path.join(__dirname, '/src/types'),
+        '@utils': path.join(__dirname, '/src/utils'),
       },
     },
   ],

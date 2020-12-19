@@ -10,6 +10,29 @@
     "noEmit": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
+    "baseUrl": "./",
+    "paths": {
+      "@actions": ["./src/actions"],
+      "@actions/*": ["./src/actions/*"],
+      "@components": ["./src/components"],
+      "@components/*": ["./src/components/*"],
+      "@images": ["./src/images"],
+      "@images/*": ["./src/images/*"],
+      "@intl": ["./src/intl"],
+      "@intl/*": ["./src/intl/*"],
+      "@pages": ["./src/pages"],
+      "@pages/*": ["./src/pages/*"],
+      "@reducers": ["./src/reducers"],
+      "@reducers/*": ["./src/reducers/*"],
+      "@state": ["./src/state"],
+      "@state/*": ["./src/state/*"],
+      "@styles": ["./src/styles"],
+      "@styles/*": ["./src/styles/*"],
+      "@types": ["./src/types"],
+      "@types/*": ["./src/types/*"],
+      "@utils": ["./src/utils"],
+      "@utils/*": ["./src/utils/*"],
+    }
   }
 }
