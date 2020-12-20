@@ -25,6 +25,8 @@ module.exports = {
     '!**/createStoreTestHelper.ts',
   ],
 
+  watchPathIgnorePatterns: ['<rootDir>/node_modules/'],
+
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
     '^.+\\.jsx?$': `<rootDir>/jest/jest-preprocess.js`,

@@ -15,8 +15,6 @@ import { userIsTouching } from '@actions';
 import { CookieConsent, Footer, Header } from '@components';
 import { State as ReduxState } from '@reducers';
 
-import 'typeface-roboto';
-
 type Props = {
   children: ReactNodeArray;
   className?: string;
