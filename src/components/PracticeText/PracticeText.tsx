@@ -1,12 +1,15 @@
 import classNames from 'classnames';
 import { FormattedMessage } from 'gatsby-plugin-intl';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getUserInputFocus, inputChange, keyDown, keyUp } from '@actions';
 import { RenderPreacticeRows } from '@components';
 import { State as ReduxState } from '@reducers';
 import { navigationKeyCodes } from '@types';
+
+const ROW_HEIGHT = 44; // keep it sync with @rowHeight
+const FOCUSED_ROW_INDEX = 2; // keep it sync with @numberOfRows
 
 function focusTextInput(
   textAreaRef: React.RefObject<HTMLTextAreaElement>,
@@ -27,6 +30,7 @@ function blurTextInput(textAreaRef: React.RefObject<HTMLTextAreaElement>) {
 
 export default function PracticeText() {
   const textAreaRef: React.RefObject<HTMLTextAreaElement> = React.createRef();
+  const [rowIndex, setRowIndex] = useState(0);
 
   const dispatch = useDispatch();
 
@@ -36,6 +40,7 @@ export default function PracticeText() {
 
   const {
     charToLearn,
+    cursorAt,
     explorerMode,
     isPracticeFinished,
     practiceTextLetterArray,
@@ -78,6 +83,10 @@ export default function PracticeText() {
     );
   }
 
+  function scrollContentTo(rowIndex: number) {
+    setRowIndex(rowIndex);
+  }
+
   useEffect(() => {
     focusTextInput(textAreaRef, userText?.length || 0);
   }, []);
@@ -112,10 +121,15 @@ export default function PracticeText() {
       role="button"
     >
       <div className={'PracticeText__wrapper'}>
-        <kbd className={classNames('PracticeText__lessonContent')}>
+        <kbd
+          className={classNames('PracticeText__lessonContent')}
+          style={{ marginTop: (rowIndex - FOCUSED_ROW_INDEX) * -ROW_HEIGHT }}
+        >
           <RenderPreacticeRows
             practiceTextArray={practiceTextLetterArray}
             practiceRowLength={3}
+            cursorAt={cursorAt}
+            scrollContentTo={scrollContentTo}
           />
         </kbd>
 

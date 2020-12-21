@@ -4,15 +4,25 @@ import { PracticeTextChar } from '@components';
 import { PracticeTextLetterArray } from '@types';
 
 export const PRACTICE_ROW_CLASS = 'ptr';
-export const DEFAULT_PRACTICE_ROW_LENGTH = 60; // number 60 can be divided with 2, 3, 4, 5, 6, 10, 12, and it has similar length as usual text editors per default
+export const DEFAULT_PRACTICE_ROW_LENGTH = 42;
+// number 40 can be divided with 2, 4, 5, 8, 10
+// number 42 can be divided with 2, 3, 6, 7, 14
+// number 45 can be divided with 3, 5, 9, 15
+// number 60 can be divided with 2, 3, 4, 5, 6, 10, 12, and it has similar length as usual text editors per default
 type RenderPreacticeRowsProps = {
   practiceTextArray: PracticeTextLetterArray;
+  rowInFocusIndex?: number;
   practiceRowLength?: number;
+  cursorAt: number;
+  scrollContentTo: (rowIndex: number) => void;
 };
 
 export default function RenderPreacticeRows({
   practiceRowLength = DEFAULT_PRACTICE_ROW_LENGTH,
   practiceTextArray,
+  rowInFocusIndex = 0,
+  cursorAt,
+  scrollContentTo,
 }: RenderPreacticeRowsProps): JSX.Element {
   const chunk = practiceTextArray.slice(0, practiceRowLength);
 
@@ -22,7 +32,8 @@ export default function RenderPreacticeRows({
     // check for the last ocurrence of space character in the chunk
     chunk[length][0] === ' ' && (lastRowSpaceIndex = length);
   }
-
+  // increase row index for every iteration
+  rowInFocusIndex++;
   if (!lastRowSpaceIndex && chunk.length < practiceTextArray.length) {
     // the "text" is longer than the desired length,
     // but it does not contain any spaces,
@@ -32,21 +43,27 @@ export default function RenderPreacticeRows({
     return (
       <>
         <div className={PRACTICE_ROW_CLASS}>
-          {arrayChunk.map((arr) => (
-            <PracticeTextChar
-              key={arr[1]}
-              char={arr[0]}
-              active={arr[2]}
-              done={arr[3]}
-              error={arr[4]}
-              userChar={arr[5]}
-            />
-          ))}
+          {arrayChunk.map((arr) => {
+            cursorAt === arr[1] && scrollContentTo(rowInFocusIndex);
+            return (
+              <PracticeTextChar
+                key={arr[1]}
+                char={arr[0]}
+                active={arr[2]}
+                done={arr[3]}
+                error={arr[4]}
+                userChar={arr[5]}
+              />
+            );
+          })}
         </div>
         {/* recursion for the rest */}
         <RenderPreacticeRows
           practiceTextArray={restArray}
           practiceRowLength={practiceRowLength}
+          rowInFocusIndex={rowInFocusIndex}
+          cursorAt={cursorAt}
+          scrollContentTo={scrollContentTo}
         />
       </>
     );
@@ -61,21 +78,27 @@ export default function RenderPreacticeRows({
     return (
       <>
         <div className={PRACTICE_ROW_CLASS}>
-          {arrayChunk.map((arr) => (
-            <PracticeTextChar
-              key={arr[1]}
-              char={arr[0]}
-              active={arr[2]}
-              done={arr[3]}
-              error={arr[4]}
-              userChar={arr[5]}
-            />
-          ))}
+          {arrayChunk.map((arr) => {
+            cursorAt === arr[1] && scrollContentTo(rowInFocusIndex);
+            return (
+              <PracticeTextChar
+                key={arr[1]}
+                char={arr[0]}
+                active={arr[2]}
+                done={arr[3]}
+                error={arr[4]}
+                userChar={arr[5]}
+              />
+            );
+          })}
         </div>
         {/* recursion for the rest */}
         <RenderPreacticeRows
           practiceTextArray={restArray}
           practiceRowLength={practiceRowLength}
+          rowInFocusIndex={rowInFocusIndex}
+          cursorAt={cursorAt}
+          scrollContentTo={scrollContentTo}
         />
       </>
     );
@@ -84,16 +107,19 @@ export default function RenderPreacticeRows({
   // this is the last row output of the recursion
   return (
     <div className={PRACTICE_ROW_CLASS}>
-      {chunk.map((arr) => (
-        <PracticeTextChar
-          key={arr[1]}
-          char={arr[0]}
-          active={arr[2]}
-          done={arr[3]}
-          error={arr[4]}
-          userChar={arr[5]}
-        />
-      ))}
+      {chunk.map((arr) => {
+        cursorAt === arr[1] && scrollContentTo(rowInFocusIndex);
+        return (
+          <PracticeTextChar
+            key={arr[1]}
+            char={arr[0]}
+            active={arr[2]}
+            done={arr[3]}
+            error={arr[4]}
+            userChar={arr[5]}
+          />
+        );
+      })}
     </div>
   );
 }

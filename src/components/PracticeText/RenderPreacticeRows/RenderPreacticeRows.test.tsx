@@ -53,6 +53,8 @@ describe('<RenderPreacticeRows>', () => {
         <RenderPreacticeRows
           practiceTextArray={testPracticeTextLetterArray}
           practiceRowLength={100}
+          cursorAt={0}
+          scrollContentTo={() => {}}
         />
       </Provider>
     );
@@ -73,6 +75,8 @@ describe('<RenderPreacticeRows>', () => {
         <RenderPreacticeRows
           practiceTextArray={testPracticeTextLetterArray}
           practiceRowLength={3}
+          cursorAt={0}
+          scrollContentTo={() => {}}
         />
       </Provider>
     );
@@ -109,6 +113,8 @@ describe('<RenderPreacticeRows>', () => {
         <RenderPreacticeRows
           practiceTextArray={testPracticeTextLetterArray}
           practiceRowLength={5} // number of characters
+          cursorAt={0}
+          scrollContentTo={() => {}}
         />
       </Provider>
     );
@@ -141,6 +147,8 @@ describe('<RenderPreacticeRows>', () => {
         <RenderPreacticeRows
           practiceTextArray={testPracticeTextLetterArray}
           practiceRowLength={9} // number of characters
+          cursorAt={0}
+          scrollContentTo={() => {}}
         />
       </Provider>
     );
@@ -172,6 +180,8 @@ describe('<RenderPreacticeRows>', () => {
         <RenderPreacticeRows
           practiceTextArray={testPracticeTextLetterArray}
           practiceRowLength={10} // number of characters
+          cursorAt={0}
+          scrollContentTo={() => {}}
         />
       </Provider>
     );

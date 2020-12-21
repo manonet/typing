@@ -1,4 +1,8 @@
-@practiceTextHeight: 100px;
+@fontSize: 28px;
+@rowHeight: 44px; // keep it sync with ROW_HEIGHT
+@numberOfRows: 3; // keep it sync with FOCUSED_ROW_INDEX
+@wrapperPadding: 8px;
+@practiceTextHeight: @rowHeight * @numberOfRows + @wrapperPadding * 2;
 
 @import './PracticeTextChar/PracticeTextChar.less';
 @import './RenderPreacticeRows/RenderPreacticeRows.less';
@@ -37,7 +41,6 @@
 
 .PracticeText {
   display: flex;
-  font-size: 18px;
   color: @gray-5;
   flex-direction: column;
   user-select: none;
@@ -82,13 +85,18 @@
   &__wrapper {
     position: relative;
     display: flex;
+    height: @practiceTextHeight;
+    padding: @wrapperPadding;
+    overflow: hidden;
   }
 
   &__lessonContent {
     position: relative;
-    min-height: @practiceTextHeight;
-    padding: 10px;
     margin: auto;
+    font-size: @fontSize;
+    // stylelint-disable property-disallowed-list
+    line-height: @rowHeight;
     flex: 0 1 800px;
+    transition: 1s margin-top ease-in-out;
   }
 }
