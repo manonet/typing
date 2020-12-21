@@ -119,31 +119,60 @@ export default function typingReducer(
 
   function initializeNewPracticeState() {
     const { charToLearn, charsLearned } = state;
-
     // TODO - charToLearn must be defined here
-    const lessonText = generatePracticeText({
-      glyphs: [...(charToLearn ? charToLearn : []), ...charsLearned],
-      practiceLength: 7,
-      wordLength: 3, // TODO use state value and wire it
-      uniqueWordCount: 2,
-    });
+    if (charToLearn) {
+      let keys = state.keys;
+      let deadKeys = { ...state.deadKeys };
+      let keyMap = { ...state.keyMap };
 
-    function practiceTextToArray(text: string): PracticeTextLetterArray {
-      const arr = text.split('');
-      return arr.map((char, index) => [char, index]);
+      const lessonText = generatePracticeText({
+        glyphs: [...(charToLearn ? charToLearn : []), ...charsLearned],
+        practiceLength: 7,
+        wordLength: 3, // TODO use state value and wire it
+        uniqueWordCount: 2,
+      });
+
+      function practiceTextToArray(text: string): PracticeTextLetterArray {
+        const arr = text.split('');
+        return arr.map((char, index) => [char, index]);
+      }
+
+      const practiceTextLetterArray = practiceTextToArray(lessonText);
+      // mark first letter to active
+      practiceTextLetterArray[0][2] = true;
+
+      const marks: Marks = {
+        [practiceTextLetterArray[0][0]]: {
+          marker: 'toPressFirst',
+        },
+      };
+
+      keys = markCharOnBoard({
+        keys: [...state.keys],
+        reset: true,
+        keyMap,
+        marks,
+        deadKeys,
+      });
+
+      return {
+        lessonText: lessonText,
+        practiceLength: lessonText.length,
+        userText: '',
+        cursorAt: 0,
+        isPracticing: true, // TODO - move it to `start`
+        keys,
+        practiceTextLetterArray,
+      };
+    } else {
+      return {
+        lessonText: 'error',
+        practiceLength: 0,
+        userText: '',
+        cursorAt: 0,
+        isPracticing: true, // TODO - move it to `start`
+      };
     }
-
-    const practiceTextLetterArray = practiceTextToArray(lessonText);
-    return {
-      // @ts-ignore
-      lessonText: lessonText,
-      // @ts-ignore
-      practiceLength: lessonText.length,
-      userText: '',
-      cursorAt: 0,
-      isPracticing: true, // TODO - move it to `start`
-      practiceTextLetterArray,
-    };
   }
 
   switch (action.type) {
