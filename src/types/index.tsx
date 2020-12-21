@@ -106,3 +106,14 @@ export type Keyboard = {
   name: string;
   os: OS;
 };
+
+// [practiceChar, index, active, done, error, userChar]
+export type PracticeTextLetter = [
+  string,
+  number,
+  boolean?,
+  boolean?,
+  boolean?,
+  string?
+];
+export type PracticeTextLetterArray = PracticeTextLetter[];

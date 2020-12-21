@@ -10,8 +10,10 @@ import {
   ExploreMoreModal,
 } from './PracticeModals';
 import PracticeProgressBar from './PracticeProgressBar';
-import PracticeText from './PracticeText';
-import PracticeTextChar from './PracticeTextChar';
+import PracticeText, {
+  PracticeTextChar,
+  RenderPreacticeRows,
+} from './PracticeText';
 import { UserProfile } from './User';
 
 export {
@@ -29,6 +31,7 @@ export {
   PracticeSummaryModal,
   ExploreMoreModal,
   PracticeText,
+  RenderPreacticeRows,
   PracticeTextChar,
   UserProfile,
 };

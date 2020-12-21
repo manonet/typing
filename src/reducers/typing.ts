@@ -24,6 +24,7 @@ import {
   allLevelsOrdered,
   KeyMap,
   functionalKeyCodes,
+  PracticeTextLetterArray,
 } from '@types';
 import {
   markCharOnBoard,
@@ -68,6 +69,7 @@ export type TypingState = {
   signToWrite: string;
   userText: string;
   writtenSign: string;
+  practiceTextLetterArray: PracticeTextLetterArray;
 } & Keyboard;
 
 const initialState: TypingState = {
@@ -99,6 +101,7 @@ const initialState: TypingState = {
   signToWrite: '',
   userText: '',
   writtenSign: '',
+  practiceTextLetterArray: [],
 };
 
 export default function typingReducer(
@@ -125,6 +128,12 @@ export default function typingReducer(
       uniqueWordCount: 2,
     });
 
+    function practiceTextToArray(text: string): PracticeTextLetterArray {
+      const arr = text.split('');
+      return arr.map((char, index) => [char, index]);
+    }
+
+    const practiceTextLetterArray = practiceTextToArray(lessonText);
     return {
       // @ts-ignore
       lessonText: lessonText,
@@ -133,6 +142,7 @@ export default function typingReducer(
       userText: '',
       cursorAt: 0,
       isPracticing: true, // TODO - move it to `start`
+      practiceTextLetterArray,
     };
   }
 
@@ -179,6 +189,7 @@ export default function typingReducer(
           isDiscovereyNeeded: true,
           explorerMode: true,
           isPracticeFinished: false, // showSummary
+          practiceTextLetterArray: [],
         };
       }
 
@@ -191,6 +202,7 @@ export default function typingReducer(
           ...state,
           isCharIntroduced: false,
           isPracticeFinished: false,
+          practiceTextLetterArray: [],
         };
       }
 
@@ -228,6 +240,7 @@ export default function typingReducer(
       const nextSign = lessonText.charAt(cursorAt);
       const signToWrite = cursorAt >= 1 ? lessonText.charAt(cursorAt - 1) : '';
       const charsSucceed = signToWrite === writtenSign;
+      let practiceTextLetterArray = state.practiceTextLetterArray;
 
       // change layout if necessary
       // TODO - add props to keys instead and make this check in Keyboard component for performance
@@ -407,6 +420,39 @@ export default function typingReducer(
         }
       }
 
+      // update practice text
+      if (practiceTextLetterArray.length) {
+        // if there is text at all
+        if (cursorAt < practiceTextLetterArray.length) {
+          // if the caret position is within the text
+          // set the character to type active
+          practiceTextLetterArray[cursorAt][2] = true;
+        }
+        if (cursorAt > 0) {
+          // if user already typed anything, set the previous character
+          // active
+          practiceTextLetterArray[cursorAt - 1][2] = false;
+          // done
+          practiceTextLetterArray[cursorAt - 1][3] = true;
+          // error
+          practiceTextLetterArray[cursorAt - 1][4] =
+            practiceTextLetterArray[cursorAt - 1][0] !== writtenSign;
+          // userChar
+          practiceTextLetterArray[cursorAt - 1][5] = writtenSign;
+        }
+        if (cursorAt + 1 < practiceTextLetterArray.length) {
+          // if characters are deleted with backspace, set the "deleted" ones
+          // active
+          practiceTextLetterArray[cursorAt + 1][2] = false;
+          // done
+          practiceTextLetterArray[cursorAt + 1][3] = undefined;
+          // error
+          practiceTextLetterArray[cursorAt + 1][4] = undefined;
+          // userChar
+          practiceTextLetterArray[cursorAt + 1][5] = undefined;
+        }
+      }
+
       return {
         ...state,
         allChars,
@@ -422,6 +468,7 @@ export default function typingReducer(
         layout,
         keyMap,
         explorerMode,
+        practiceTextLetterArray,
       };
     }
 

@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getUserInputFocus, inputChange, keyDown, keyUp } from '@actions';
-import { PracticeTextChar } from '@components';
+import { RenderPreacticeRows } from '@components';
 import { State as ReduxState } from '@reducers';
 import { navigationKeyCodes } from '@types';
 
@@ -36,13 +36,11 @@ export default function PracticeText() {
 
   const {
     charToLearn,
-    cursorAt,
     explorerMode,
-    lessonText,
+    isPracticeFinished,
+    practiceTextLetterArray,
     userText,
   } = useSelector((state: ReduxState) => state.typing);
-
-  const lessonContentArray = lessonText.split('');
 
   function handleKeydown(event: KeyboardEvent) {
     if (navigationKeyCodes.includes(event.code)) {
@@ -115,15 +113,10 @@ export default function PracticeText() {
     >
       <div className={'PracticeText__wrapper'}>
         <kbd className={classNames('PracticeText__lessonContent')}>
-          {lessonContentArray.map((char, index) => (
-            <PracticeTextChar
-              key={index}
-              index={index}
-              cursorAt={cursorAt}
-              userText={userText}
-              char={char}
-            />
-          ))}
+          <RenderPreacticeRows
+            practiceTextArray={practiceTextLetterArray}
+            practiceRowLength={3}
+          />
         </kbd>
 
         {explorerMode && (
@@ -146,14 +139,17 @@ export default function PracticeText() {
           </div>
         )}
 
-        {!isUserInputFocused && (
-          <div className="PracticeText__clickHelper">
-            <FormattedMessage
-              id="keyboard.instruction.clickTofocus"
-              defaultMessage="Click here"
-            />
-          </div>
-        )}
+        {
+          // display a helper in input is not focused, but not right after the pactice ended, so the user can see the result
+          !isUserInputFocused && !isPracticeFinished && (
+            <div className="PracticeText__clickHelper">
+              <FormattedMessage
+                id="keyboard.instruction.clickTofocus"
+                defaultMessage="Click here"
+              />
+            </div>
+          )
+        }
         <textarea
           ref={textAreaRef}
           className={'PracticeText__userInput'}
