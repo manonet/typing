@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getUserInputFocus, inputChange, keyDown, keyUp } from '@actions';
-import { RenderPreacticeRows } from '@components';
+import { RenderPracticeRows } from '@components';
 import { State as ReduxState } from '@reducers';
 import { navigationKeyCodes } from '@types';
 
@@ -125,7 +125,7 @@ export default function PracticeText() {
           className={classNames('PracticeText__lessonContent')}
           style={{ marginTop: (rowIndex - FOCUSED_ROW_INDEX) * -ROW_HEIGHT }}
         >
-          <RenderPreacticeRows
+          <RenderPracticeRows
             practiceTextArray={practiceTextLetterArray}
             practiceRowLength={3}
             cursorAt={cursorAt}

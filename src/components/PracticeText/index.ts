@@ -1,5 +1,5 @@
 import PracticeTextChar from './PracticeTextChar';
-import RenderPreacticeRows from './RenderPreacticeRows';
+import RenderPracticeRows from './RenderPracticeRows';
 
 export { default } from './PracticeText';
-export { PracticeTextChar, RenderPreacticeRows };
+export { PracticeTextChar, RenderPracticeRows };

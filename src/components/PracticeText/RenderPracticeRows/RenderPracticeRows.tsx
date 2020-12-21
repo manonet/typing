@@ -9,7 +9,7 @@ export const DEFAULT_PRACTICE_ROW_LENGTH = 42;
 // number 42 can be divided with 2, 3, 6, 7, 14
 // number 45 can be divided with 3, 5, 9, 15
 // number 60 can be divided with 2, 3, 4, 5, 6, 10, 12, and it has similar length as usual text editors per default
-type RenderPreacticeRowsProps = {
+type RenderPracticeRowsProps = {
   practiceTextArray: PracticeTextLetterArray;
   rowInFocusIndex?: number;
   practiceRowLength?: number;
@@ -17,13 +17,13 @@ type RenderPreacticeRowsProps = {
   scrollContentTo: (rowIndex: number) => void;
 };
 
-export default function RenderPreacticeRows({
+export default function RenderPracticeRows({
   practiceRowLength = DEFAULT_PRACTICE_ROW_LENGTH,
   practiceTextArray,
   rowInFocusIndex = 0,
   cursorAt,
   scrollContentTo,
-}: RenderPreacticeRowsProps): JSX.Element {
+}: RenderPracticeRowsProps): JSX.Element {
   const chunk = practiceTextArray.slice(0, practiceRowLength);
 
   let length = chunk.length; // equals practiceRowLength
@@ -58,7 +58,7 @@ export default function RenderPreacticeRows({
           })}
         </div>
         {/* recursion for the rest */}
-        <RenderPreacticeRows
+        <RenderPracticeRows
           practiceTextArray={restArray}
           practiceRowLength={practiceRowLength}
           rowInFocusIndex={rowInFocusIndex}
@@ -93,7 +93,7 @@ export default function RenderPreacticeRows({
           })}
         </div>
         {/* recursion for the rest */}
-        <RenderPreacticeRows
+        <RenderPracticeRows
           practiceTextArray={restArray}
           practiceRowLength={practiceRowLength}
           rowInFocusIndex={rowInFocusIndex}

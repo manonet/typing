@@ -12,7 +12,7 @@ import {
 import PracticeProgressBar from './PracticeProgressBar';
 import PracticeText, {
   PracticeTextChar,
-  RenderPreacticeRows,
+  RenderPracticeRows,
 } from './PracticeText';
 import { UserProfile } from './User';
 
@@ -31,7 +31,7 @@ export {
   PracticeSummaryModal,
   ExploreMoreModal,
   PracticeText,
-  RenderPreacticeRows,
+  RenderPracticeRows,
   PracticeTextChar,
   UserProfile,
 };

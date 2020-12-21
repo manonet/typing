@@ -7,7 +7,7 @@ import setupStore from '@utils/createStoreTestHelper';
 
 import { SPACE_CHAR } from '../PracticeTextChar';
 
-import RenderPreacticeRows, { PRACTICE_ROW_CLASS } from './RenderPreacticeRows';
+import RenderPracticeRows, { PRACTICE_ROW_CLASS } from './RenderPracticeRows';
 
 const testPracticeTextLetterArray: PracticeTextLetterArray = [
   ['a', 0],
@@ -40,7 +40,7 @@ const testPracticeTextLetterArray: PracticeTextLetterArray = [
   ['m', 27],
   ['.', 28],
 ];
-describe('<RenderPreacticeRows>', () => {
+describe('<RenderPracticeRows>', () => {
   beforeEach(() => {
     localStorage.clear();
   });
@@ -50,7 +50,7 @@ describe('<RenderPreacticeRows>', () => {
 
     const wrapper = mount(
       <Provider store={store}>
-        <RenderPreacticeRows
+        <RenderPracticeRows
           practiceTextArray={testPracticeTextLetterArray}
           practiceRowLength={100}
           cursorAt={0}
@@ -72,7 +72,7 @@ describe('<RenderPreacticeRows>', () => {
 
     const wrapper = mount(
       <Provider store={store}>
-        <RenderPreacticeRows
+        <RenderPracticeRows
           practiceTextArray={testPracticeTextLetterArray}
           practiceRowLength={3}
           cursorAt={0}
@@ -110,7 +110,7 @@ describe('<RenderPreacticeRows>', () => {
 
     const wrapper = mount(
       <Provider store={store}>
-        <RenderPreacticeRows
+        <RenderPracticeRows
           practiceTextArray={testPracticeTextLetterArray}
           practiceRowLength={5} // number of characters
           cursorAt={0}
@@ -144,7 +144,7 @@ describe('<RenderPreacticeRows>', () => {
 
     const wrapper = mount(
       <Provider store={store}>
-        <RenderPreacticeRows
+        <RenderPracticeRows
           practiceTextArray={testPracticeTextLetterArray}
           practiceRowLength={9} // number of characters
           cursorAt={0}
@@ -177,7 +177,7 @@ describe('<RenderPreacticeRows>', () => {
 
     const wrapper = mount(
       <Provider store={store}>
-        <RenderPreacticeRows
+        <RenderPracticeRows
           practiceTextArray={testPracticeTextLetterArray}
           practiceRowLength={10} // number of characters
           cursorAt={0}

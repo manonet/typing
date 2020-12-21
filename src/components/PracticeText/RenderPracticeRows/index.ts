@@ -1,8 +1,8 @@
 import {
   DEFAULT_PRACTICE_ROW_LENGTH,
   PRACTICE_ROW_CLASS,
-} from './RenderPreacticeRows';
+} from './RenderPracticeRows';
 
-export { default } from './RenderPreacticeRows';
+export { default } from './RenderPracticeRows';
 
 export { DEFAULT_PRACTICE_ROW_LENGTH, PRACTICE_ROW_CLASS };
