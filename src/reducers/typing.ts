@@ -124,12 +124,11 @@ export default function typingReducer(
       let keys = state.keys;
       let deadKeys = { ...state.deadKeys };
       let keyMap = { ...state.keyMap };
-
       const lessonText = generatePracticeText({
         glyphs: [...(charToLearn ? charToLearn : []), ...charsLearned],
-        practiceLength: 7,
+        practiceLength: (charsLearned.length + 1) * 7,
         wordLength: 3, // TODO use state value and wire it
-        uniqueWordCount: 2,
+        uniqueWordCount: 100,
       });
 
       function practiceTextToArray(text: string): PracticeTextLetterArray {
@@ -269,7 +268,7 @@ export default function typingReducer(
       const nextSign = lessonText.charAt(cursorAt);
       const signToWrite = cursorAt >= 1 ? lessonText.charAt(cursorAt - 1) : '';
       const charsSucceed = signToWrite === writtenSign;
-      let practiceTextLetterArray = state.practiceTextLetterArray;
+      let practiceTextLetterArray = [...state.practiceTextLetterArray];
 
       // change layout if necessary
       // TODO - add props to keys instead and make this check in Keyboard component for performance
@@ -463,11 +462,17 @@ export default function typingReducer(
           practiceTextLetterArray[cursorAt - 1][2] = false;
           // done
           practiceTextLetterArray[cursorAt - 1][3] = true;
-          // error
+          // keep error if it was true already!
           practiceTextLetterArray[cursorAt - 1][4] =
+            practiceTextLetterArray[cursorAt - 1][4] ||
             practiceTextLetterArray[cursorAt - 1][0] !== writtenSign;
+          // corrected state means it has error state,
+          // but requested and written characters are corrected to be the same
+          practiceTextLetterArray[cursorAt - 1][5] =
+            practiceTextLetterArray[cursorAt - 1][4] &&
+            practiceTextLetterArray[cursorAt - 1][0] === writtenSign;
           // userChar
-          practiceTextLetterArray[cursorAt - 1][5] = writtenSign;
+          practiceTextLetterArray[cursorAt - 1][6] = writtenSign;
         }
         if (cursorAt + 1 < practiceTextLetterArray.length) {
           // if characters are deleted with backspace, set the "deleted" ones
@@ -475,10 +480,9 @@ export default function typingReducer(
           practiceTextLetterArray[cursorAt + 1][2] = false;
           // done
           practiceTextLetterArray[cursorAt + 1][3] = undefined;
-          // error
-          practiceTextLetterArray[cursorAt + 1][4] = undefined;
+          // keep error for calculating corrected!
           // userChar
-          practiceTextLetterArray[cursorAt + 1][5] = undefined;
+          practiceTextLetterArray[cursorAt + 1][6] = undefined;
         }
       }
 
@@ -497,7 +501,7 @@ export default function typingReducer(
         layout,
         keyMap,
         explorerMode,
-        practiceTextLetterArray,
+        // practiceTextLetterArray,
       };
     }
 

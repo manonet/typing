@@ -127,7 +127,6 @@ export default function PracticeText() {
         >
           <RenderPracticeRows
             practiceTextArray={practiceTextLetterArray}
-            practiceRowLength={3}
             cursorAt={cursorAt}
             scrollContentTo={scrollContentTo}
           />

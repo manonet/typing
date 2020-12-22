@@ -52,7 +52,8 @@ export default function RenderPracticeRows({
                 active={arr[2]}
                 done={arr[3]}
                 error={arr[4]}
-                userChar={arr[5]}
+                corrected={arr[5]}
+                userChar={arr[6]}
               />
             );
           })}
@@ -87,7 +88,8 @@ export default function RenderPracticeRows({
                 active={arr[2]}
                 done={arr[3]}
                 error={arr[4]}
-                userChar={arr[5]}
+                corrected={arr[5]}
+                userChar={arr[6]}
               />
             );
           })}
@@ -116,7 +118,8 @@ export default function RenderPracticeRows({
             active={arr[2]}
             done={arr[3]}
             error={arr[4]}
-            userChar={arr[5]}
+            corrected={arr[5]}
+            userChar={arr[6]}
           />
         );
       })}

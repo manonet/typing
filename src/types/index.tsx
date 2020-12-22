@@ -107,10 +107,11 @@ export type Keyboard = {
   os: OS;
 };
 
-// [practiceChar, index, active, done, error, userChar]
+// [practiceChar, index, active, done, error, corrected, userChar]
 export type PracticeTextLetter = [
   string,
   number,
+  boolean?,
   boolean?,
   boolean?,
   boolean?,

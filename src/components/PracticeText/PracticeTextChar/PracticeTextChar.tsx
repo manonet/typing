@@ -6,6 +6,8 @@ export const PRACTICE_TEXT_CHAR_CLASS = 'ptc';
 export const PRACTICE_TEXT_ACTIVE_CHAR_CLASS = PRACTICE_TEXT_CHAR_CLASS + '-a';
 export const PRACTICE_TEXT_DONE_CHAR_CLASS = PRACTICE_TEXT_CHAR_CLASS + '-d';
 export const PRACTICE_TEXT_ERROR_CHAR_CLASS = PRACTICE_TEXT_CHAR_CLASS + '-e';
+export const PRACTICE_TEXT_CORRECTED_CHAR_CLASS =
+  PRACTICE_TEXT_CHAR_CLASS + '-c';
 export const SPACE_CHAR_CLASS = 'c--space';
 export const ENTER_CHAR_CLASS = 'c--lineFeed';
 
@@ -19,6 +21,7 @@ export const ENTER_CHAR = '↵';
 type Props = {
   className?: string;
   char: {};
+  corrected?: boolean;
   done?: boolean;
   active?: boolean;
   error?: boolean;
@@ -29,6 +32,7 @@ export default function PracticeTextChar({
   active,
   char,
   className,
+  corrected,
   done,
   error,
   userChar,
@@ -61,6 +65,7 @@ export default function PracticeTextChar({
           [PRACTICE_TEXT_DONE_CHAR_CLASS]: done,
           [PRACTICE_TEXT_ACTIVE_CHAR_CLASS]: active,
           [PRACTICE_TEXT_ERROR_CHAR_CLASS]: error,
+          [PRACTICE_TEXT_CORRECTED_CHAR_CLASS]: corrected,
         },
         className
       )}
