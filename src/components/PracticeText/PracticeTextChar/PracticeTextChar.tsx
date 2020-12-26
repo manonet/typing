@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import React from 'react';
 
+import { PracticeTextCharProps } from '@types';
+
 // keep classNames short and compact for performance
 export const PRACTICE_TEXT_CHAR_CLASS = 'ptc';
 export const PRACTICE_TEXT_ACTIVE_CHAR_CLASS = PRACTICE_TEXT_CHAR_CLASS + '-a';
@@ -18,26 +20,17 @@ export const ENTER_CHAR_CLASS = 'c--lineFeed';
 export const SPACE_CHAR = '·';
 export const ENTER_CHAR = '↵';
 
-type Props = {
-  className?: string;
-  char: {};
-  corrected?: boolean;
-  done?: boolean;
-  active?: boolean;
-  error?: boolean;
-  userChar?: string;
-};
-
+type Props = PracticeTextCharProps & { className?: string };
 export default function PracticeTextChar({
   active,
-  char,
   className,
   corrected,
   done,
   error,
+  practiceChar,
   userChar,
 }: Props) {
-  let practiceCharToDisplay = char;
+  let practiceCharToDisplay = practiceChar;
 
   if (practiceCharToDisplay === ' ') {
     practiceCharToDisplay = SPACE_CHAR;

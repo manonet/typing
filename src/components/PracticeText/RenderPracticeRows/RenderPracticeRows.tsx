@@ -30,7 +30,7 @@ export default function RenderPracticeRows({
   let lastRowSpaceIndex: number = 0;
   while (!lastRowSpaceIndex && length--) {
     // check for the last ocurrence of space character in the chunk
-    chunk[length][0] === ' ' && (lastRowSpaceIndex = length);
+    chunk[length].practiceChar === ' ' && (lastRowSpaceIndex = length);
   }
   // increase row index for every iteration
   rowInFocusIndex++;
@@ -44,18 +44,9 @@ export default function RenderPracticeRows({
       <>
         <div className={PRACTICE_ROW_CLASS}>
           {arrayChunk.map((arr) => {
-            cursorAt === arr[1] && scrollContentTo(rowInFocusIndex);
-            return (
-              <PracticeTextChar
-                key={arr[1]}
-                char={arr[0]}
-                active={arr[2]}
-                done={arr[3]}
-                error={arr[4]}
-                corrected={arr[5]}
-                userChar={arr[6]}
-              />
-            );
+            const { index, ...rest } = arr;
+            cursorAt === index && scrollContentTo(rowInFocusIndex);
+            return <PracticeTextChar key={index} {...rest} />;
           })}
         </div>
         {/* recursion for the rest */}
@@ -80,18 +71,9 @@ export default function RenderPracticeRows({
       <>
         <div className={PRACTICE_ROW_CLASS}>
           {arrayChunk.map((arr) => {
-            cursorAt === arr[1] && scrollContentTo(rowInFocusIndex);
-            return (
-              <PracticeTextChar
-                key={arr[1]}
-                char={arr[0]}
-                active={arr[2]}
-                done={arr[3]}
-                error={arr[4]}
-                corrected={arr[5]}
-                userChar={arr[6]}
-              />
-            );
+            const { index, ...rest } = arr;
+            cursorAt === index && scrollContentTo(rowInFocusIndex);
+            return <PracticeTextChar key={index} {...rest} />;
           })}
         </div>
         {/* recursion for the rest */}
@@ -110,18 +92,9 @@ export default function RenderPracticeRows({
   return (
     <div className={PRACTICE_ROW_CLASS}>
       {chunk.map((arr) => {
-        cursorAt === arr[1] && scrollContentTo(rowInFocusIndex);
-        return (
-          <PracticeTextChar
-            key={arr[1]}
-            char={arr[0]}
-            active={arr[2]}
-            done={arr[3]}
-            error={arr[4]}
-            corrected={arr[5]}
-            userChar={arr[6]}
-          />
-        );
+        const { index, ...rest } = arr;
+        cursorAt === index && scrollContentTo(rowInFocusIndex);
+        return <PracticeTextChar key={index} {...rest} />;
       })}
     </div>
   );

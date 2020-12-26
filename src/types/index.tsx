@@ -107,14 +107,17 @@ export type Keyboard = {
   os: OS;
 };
 
-// [practiceChar, index, active, done, error, corrected, userChar]
-export type PracticeTextLetter = [
-  string,
-  number,
-  boolean?,
-  boolean?,
-  boolean?,
-  boolean?,
-  string?
-];
-export type PracticeTextLetterArray = PracticeTextLetter[];
+export type PracticeTextCharProps = {
+  practiceChar: string;
+  active?: boolean;
+  done?: boolean;
+  error?: boolean;
+  corrected?: boolean;
+  userChar?: string;
+};
+
+export type PracticeTextArrayItem = {
+  index: number;
+} & PracticeTextCharProps;
+
+export type PracticeTextLetterArray = PracticeTextArrayItem[];

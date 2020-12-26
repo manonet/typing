@@ -32,6 +32,7 @@ import {
   keyRequirements,
   complianceRatio,
   generatePracticeText,
+  updatePracticeText,
 } from '@utils';
 
 import keyboard from './keyboard';
@@ -133,15 +134,22 @@ export default function typingReducer(
 
       function practiceTextToArray(text: string): PracticeTextLetterArray {
         const arr = text.split('');
-        return arr.map((char, index) => [char, index]);
+        return arr.map((practiceChar, index) => ({
+          practiceChar,
+          index,
+        }));
       }
 
-      const practiceTextLetterArray = practiceTextToArray(lessonText);
-      // mark first letter to active
-      practiceTextLetterArray[0][2] = true;
+      let practiceTextLetterArray = practiceTextToArray(lessonText);
 
+      // mark first letter to active
+      practiceTextLetterArray = updatePracticeText({
+        cursorAt: 0,
+        practiceTextLetterArray,
+        writtenSign: '',
+      });
       const marks: Marks = {
-        [practiceTextLetterArray[0][0]]: {
+        [practiceTextLetterArray[0].practiceChar]: {
           marker: 'toPressFirst',
         },
       };
@@ -449,42 +457,11 @@ export default function typingReducer(
       }
 
       // update practice text
-      if (practiceTextLetterArray.length) {
-        // if there is text at all
-        if (cursorAt < practiceTextLetterArray.length) {
-          // if the caret position is within the text
-          // set the character to type active
-          practiceTextLetterArray[cursorAt][2] = true;
-        }
-        if (cursorAt > 0) {
-          // if user already typed anything, set the previous character
-          // active
-          practiceTextLetterArray[cursorAt - 1][2] = false;
-          // done
-          practiceTextLetterArray[cursorAt - 1][3] = true;
-          // keep error if it was true already!
-          practiceTextLetterArray[cursorAt - 1][4] =
-            practiceTextLetterArray[cursorAt - 1][4] ||
-            practiceTextLetterArray[cursorAt - 1][0] !== writtenSign;
-          // corrected state means it has error state,
-          // but requested and written characters are corrected to be the same
-          practiceTextLetterArray[cursorAt - 1][5] =
-            practiceTextLetterArray[cursorAt - 1][4] &&
-            practiceTextLetterArray[cursorAt - 1][0] === writtenSign;
-          // userChar
-          practiceTextLetterArray[cursorAt - 1][6] = writtenSign;
-        }
-        if (cursorAt + 1 < practiceTextLetterArray.length) {
-          // if characters are deleted with backspace, set the "deleted" ones
-          // active
-          practiceTextLetterArray[cursorAt + 1][2] = false;
-          // done
-          practiceTextLetterArray[cursorAt + 1][3] = undefined;
-          // keep error for calculating corrected!
-          // userChar
-          practiceTextLetterArray[cursorAt + 1][6] = undefined;
-        }
-      }
+      practiceTextLetterArray = updatePracticeText({
+        cursorAt,
+        practiceTextLetterArray,
+        writtenSign,
+      });
 
       return {
         ...state,
@@ -501,7 +478,7 @@ export default function typingReducer(
         layout,
         keyMap,
         explorerMode,
-        // practiceTextLetterArray,
+        practiceTextLetterArray,
       };
     }
 

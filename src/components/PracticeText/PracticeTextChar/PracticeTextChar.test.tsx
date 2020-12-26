@@ -14,7 +14,7 @@ import PracticeTextChar, {
 
 describe('<PracticeTextChar>', () => {
   it('renders a character properly', () => {
-    const wrapper = mount(<PracticeTextChar char="a" />);
+    const wrapper = mount(<PracticeTextChar practiceChar="a" />);
 
     expect(wrapper.find(`.${PRACTICE_TEXT_CHAR_CLASS}`)).toHaveLength(1);
     expect(wrapper.find(`.${PRACTICE_TEXT_CHAR_CLASS}`).text()).toBe('a');
@@ -28,7 +28,7 @@ describe('<PracticeTextChar>', () => {
   });
 
   it('renders a space properly', () => {
-    const wrapper = mount(<PracticeTextChar char=" " />);
+    const wrapper = mount(<PracticeTextChar practiceChar=" " />);
 
     const charWrapper = wrapper.find(`.${PRACTICE_TEXT_CHAR_CLASS}`);
     const practiceChar = charWrapper.find(`.${PRACTICE_TEXT_CHAR_CLASS}`);
@@ -42,7 +42,7 @@ describe('<PracticeTextChar>', () => {
     expect(wrapper.find(`.${PRACTICE_TEXT_DONE_CHAR_CLASS}`)).toHaveLength(0);
     expect(wrapper.find(`.${PRACTICE_TEXT_ERROR_CHAR_CLASS}`)).toHaveLength(0);
     expect(wrapper.find(`.${ENTER_CHAR_CLASS}`)).toHaveLength(0);
-    // do not add other classes to the char
+    // do not add other classes to the practiceChar
     expect(
       practiceChar.find(`.${PRACTICE_TEXT_ACTIVE_CHAR_CLASS}`)
     ).toHaveLength(0);
@@ -58,7 +58,7 @@ describe('<PracticeTextChar>', () => {
   it('renders a new line (Enter) properly', () => {
     const wrapper = mount(
       <PracticeTextChar
-        char="
+        practiceChar="
 "
       />
     );
@@ -74,7 +74,7 @@ describe('<PracticeTextChar>', () => {
     expect(wrapper.find(`.${PRACTICE_TEXT_DONE_CHAR_CLASS}`)).toHaveLength(0);
     expect(wrapper.find(`.${PRACTICE_TEXT_ERROR_CHAR_CLASS}`)).toHaveLength(0);
     expect(wrapper.find(`.${SPACE_CHAR_CLASS}`)).toHaveLength(0);
-    // do not add other classes to the char
+    // do not add other classes to the practiceChar
     expect(
       practiceChar.find(`.${PRACTICE_TEXT_ACTIVE_CHAR_CLASS}`)
     ).toHaveLength(0);
@@ -88,7 +88,7 @@ describe('<PracticeTextChar>', () => {
   });
 
   it('renders `done` state properly', () => {
-    const wrapper = mount(<PracticeTextChar char="s" done />);
+    const wrapper = mount(<PracticeTextChar practiceChar="s" done />);
 
     expect(wrapper.find(`.${PRACTICE_TEXT_CHAR_CLASS}`)).toHaveLength(1);
     expect(wrapper.find(`.${PRACTICE_TEXT_CHAR_CLASS}`).text()).toBe('s');
@@ -102,7 +102,7 @@ describe('<PracticeTextChar>', () => {
   });
 
   it('renders `active` state properly', () => {
-    const wrapper = mount(<PracticeTextChar char="s" active />);
+    const wrapper = mount(<PracticeTextChar practiceChar="s" active />);
 
     expect(wrapper.find(`.${PRACTICE_TEXT_CHAR_CLASS}`)).toHaveLength(1);
     expect(wrapper.find(`.${PRACTICE_TEXT_CHAR_CLASS}`).text()).toBe('s');
@@ -116,7 +116,7 @@ describe('<PracticeTextChar>', () => {
   });
 
   it('renders `error` state properly', () => {
-    const wrapper = mount(<PracticeTextChar char="s" error />);
+    const wrapper = mount(<PracticeTextChar practiceChar="s" error />);
 
     expect(wrapper.find(`.${PRACTICE_TEXT_CHAR_CLASS}`)).toHaveLength(1);
     expect(wrapper.find(`.${PRACTICE_TEXT_CHAR_CLASS}`).text()).toBe('s');

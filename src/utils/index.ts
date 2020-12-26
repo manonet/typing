@@ -4,4 +4,5 @@ export * from './generatePracticeText';
 export * from './getOperationSystem';
 export * from './intlEnzymeTestHelper';
 export * from './markCharOnBoard';
+export * from './updatePracticeText';
 export * from './keyOrder';
