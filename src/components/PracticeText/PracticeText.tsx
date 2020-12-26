@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getUserInputFocus, inputChange, keyDown, keyUp } from '@actions';
-import { RenderPracticeRows } from '@components';
+import { RenderPracticeRows, PracticeProgressBar } from '@components';
 import { State as ReduxState } from '@reducers';
 import { navigationKeyCodes } from '@types';
 
@@ -131,6 +131,8 @@ export default function PracticeText() {
             scrollContentTo={scrollContentTo}
           />
         </kbd>
+
+        <PracticeProgressBar />
 
         {explorerMode && (
           <div className="PracticeText__exploreHelper">

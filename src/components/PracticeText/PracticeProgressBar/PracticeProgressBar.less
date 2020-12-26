@@ -1,8 +1,7 @@
 .practiceProgressBar {
-  position: fixed;
-  top: 0;
+  position: absolute;
+  bottom: 0;
   left: 0;
-  z-index: @zindex-affix;
   display: flex;
   width: 100%;
   height: @padding-xss;
@@ -21,7 +20,7 @@
 
   &__bar {
     height: @padding-xss;
-    background-color: @gray-5;
+    background-color: @white;
     transition: width 0.5s ease, opacity 0.5s ease;
   }
 }

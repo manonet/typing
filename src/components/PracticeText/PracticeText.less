@@ -6,6 +6,7 @@
 
 @import './PracticeTextChar/PracticeTextChar.less';
 @import './RenderPracticeRows/RenderPracticeRows.less';
+@import './PracticeProgressBar/PracticeProgressBar.less';
 
 // TODO - double-check, moved
 .TypewriterBoard {
@@ -44,14 +45,13 @@
   color: @gray-5;
   flex-direction: column;
   user-select: none;
-  background: @gray-2;
+  background: @white;
 
   border: @border-width-base @border-style-base @input-border-color;
   border-radius: @border-radius-base;
   outline: none;
 
   &--focus {
-    background: @white;
     border-color: @primary-color;
     box-shadow: @input-outline-offset @outline-blur-size @outline-width
       fade(@primary-color, 20);
@@ -60,12 +60,20 @@
   &__exploreHelper,
   &__clickHelper {
     position: absolute;
+    // width: 100%;
+    // height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     display: flex;
-    width: 100%;
-    height: 100%;
     color: @gray-5;
+    background: @gray-2;
     align-items: center;
     justify-content: center;
+  }
+
+  &__exploreHelper {
     background: @white;
   }
 

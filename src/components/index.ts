@@ -9,10 +9,10 @@ import {
   PracticeSummaryModal,
   ExploreMoreModal,
 } from './PracticeModals';
-import PracticeProgressBar from './PracticeProgressBar';
 import PracticeText, {
   PracticeTextChar,
   RenderPracticeRows,
+  PracticeProgressBar,
 } from './PracticeText';
 import { UserProfile } from './User';
 

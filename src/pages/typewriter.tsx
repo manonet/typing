@@ -8,7 +8,6 @@ import {
   PracticeText,
   Keyboard,
   Hand,
-  PracticeProgressBar,
   ExploreMoreModal,
   PracticeIntroductionModal,
   PracticeSummaryModal,
@@ -74,7 +73,6 @@ export default function TypewriterPage() {
 
   return (
     <Layout isModalOpen={isModalOpen}>
-      <PracticeProgressBar />
       <SEO
         title={intl.formatMessage({ id: 'typewriter.page.title' })}
         isModalOpen={isModalOpen}
