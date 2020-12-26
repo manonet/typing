@@ -172,6 +172,8 @@ export default function PracticeText() {
           }
           onFocus={() => dispatch(getUserInputFocus(true))}
           onBlur={() => dispatch(getUserInputFocus(false))}
+          onPaste={(e) => e.preventDefault()}
+          onCopy={(e) => e.preventDefault()}
         />
       </div>
     </div>
