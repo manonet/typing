@@ -24,7 +24,7 @@ export default function PracticeStartModal({ isOpen }: Props) {
   const intl = useIntl();
   const dispatch = useDispatch();
 
-  const { charToLearn, keyToLearn, keys } = useSelector(
+  const { charToLearn, charsToLearn, keyToLearn, keys } = useSelector(
     (state: ReduxState) => state.typing
   );
 
@@ -54,8 +54,11 @@ export default function PracticeStartModal({ isOpen }: Props) {
 
   const title = (
     <FormattedMessage
-      id="modal.introduction.title"
-      defaultMessage="Introduction"
+      id="lesson.title"
+      defaultMessage="Lesson {numberOfLesson}"
+      values={{
+        numberOfLesson: charsToLearn.length,
+      }}
     />
   );
 
@@ -73,10 +76,21 @@ export default function PracticeStartModal({ isOpen }: Props) {
 
         {key && (
           <div className="practiceStart__content">
+            {charsToLearn.length > 1 ? (
+              <div>
+                <FormattedMessage
+                  id="modal.introduction.previous.finished"
+                  defaultMessage="Now you know how to type the character {charLearned}. It's time to move to the next one!"
+                  values={{
+                    charLearned: charsToLearn[charsToLearn.length - 2],
+                  }}
+                />
+              </div>
+            ) : null}
             <div>
               <FormattedMessage
                 id="modal.introduction.desc"
-                defaultMessage="Next char to learn is {charToLearn}. For that use your {hand} {finger}"
+                defaultMessage="The next character to learn is {charToLearn}. For that use your {hand} {finger}."
                 values={{
                   hand: intl.formatMessage({
                     id: `typing.hand.${key.hand}`,

@@ -1,6 +1,6 @@
 {
-    "site.title": "Online Typewriter Application",
-    "site.description": "Free online typing exercises. Learn to type properly, increase your typing skills and boost your typing speed.",
+    "site.title": "Online touch typing application",
+    "site.description": "Free online touch typing exercises. Learn to type properly, increase your typing skills and boost your typing speed.",
     "site.navigation.home": "Home",
     "site.navigation.program": "Typewriter application",
     "site.navigation.statistics": "Statistics",
@@ -121,6 +121,7 @@
     "modal.explore.desc": "It is time to explore your keyboard and discover new characters! It is simple, just press the marked keys.",
     "modal.explore.button.explore": "I am ready!",
 
-    "modal.introduction.title": "Introduction",
-    "modal.introduction.desc": "Next char to learn is {charToLearn}. For that use your {hand} {finger}"
+    "lesson.title": "Lesson {numberOfLesson}",
+    "modal.introduction.previous.finished": "Now you know how to type the character {charLearned}. It's time to move to the next one!",
+    "modal.introduction.desc": "The next character to learn is {charToLearn}. For that use your {hand} {finger}."
 }
