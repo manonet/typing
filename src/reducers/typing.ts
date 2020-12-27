@@ -49,7 +49,6 @@ export type TypingState = {
   isCharIntroduced: boolean;
   isPracticeFinished: boolean;
   isDiscovereyNeeded: boolean;
-  charsLearned: Glyph[];
   currentKeyDown?: KeyDown;
   cursorAt: number;
   displayedLevel: Level;
@@ -78,7 +77,6 @@ const initialState: TypingState = {
   allChars: [...keyboard.allChars],
   keyToLearn: keyOrder[0],
   levelToLearn: allLevelsOrdered[0],
-  charsLearned: [],
   charsToLearn: [],
   charsIntroduced: [],
   charToLearnIsNew: false,
@@ -119,17 +117,17 @@ export default function typingReducer(
   }
 
   function initializeNewPracticeState() {
-    const { charToLearn, charsLearned } = state;
+    const { charToLearn, charsToLearn } = state;
     // TODO - charToLearn must be defined here
     if (charToLearn) {
       let keys = state.keys;
       let deadKeys = { ...state.deadKeys };
       let keyMap = { ...state.keyMap };
       const lessonText = generatePracticeText({
-        glyphs: [...(charToLearn ? charToLearn : []), ...charsLearned],
-        practiceLength: (charsLearned.length + 1) * 7,
+        glyphs: [...charsToLearn],
+        practiceLength: charsToLearn.length * 7,
         wordLength: 3, // TODO use state value and wire it
-        uniqueWordCount: 100,
+        uniqueWordCount: 1,
       });
 
       function practiceTextToArray(text: string): PracticeTextLetterArray {
@@ -640,7 +638,6 @@ export default function typingReducer(
       let keyToLearn = state.keyToLearn;
       let explorerMode = state.explorerMode;
       let charToLearn = state.charToLearn;
-      let charsLearned = state.charsLearned;
       let charToLearnIsNew = state.charToLearnIsNew;
       let userText = state.userText;
       let charsToLearn = state.charsToLearn;
@@ -705,7 +702,6 @@ export default function typingReducer(
           charComplianceRatio > complianceRatio
         ) {
           // the given character is "learned", time to move on to the next one
-          charToLearn && charsLearned.push(charToLearn);
           charToLearnIsNew = true;
 
           keyToLearn =
@@ -807,7 +803,6 @@ export default function typingReducer(
         isPracticeFinished,
         charToLearn,
         charsToLearn,
-        charsLearned,
         charToLearnIsNew,
         isCharIntroduced,
         userText,
