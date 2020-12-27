@@ -133,3 +133,13 @@ export const EXPLORE_FINISHED = 'EXPLORE_FINISHED';
 export function exploreFinished() {
   return { type: EXPLORE_FINISHED };
 }
+
+// SCROLL_ROWS_TO
+
+export type scrollRowsToAction = ReturnType<typeof scrollRowsTo>;
+
+export const SCROLL_ROWS_TO = 'SCROLL_ROWS_TO';
+
+export function scrollRowsTo(rowIndex: number) {
+  return { type: SCROLL_ROWS_TO, rowIndex };
+}

@@ -10,6 +10,8 @@ import {
   EXPLORE_FINISHED,
   SUMMARY_MODAL_CLOSED,
   DISCOVERY_MODAL_CLOSED,
+  SCROLL_ROWS_TO,
+  scrollRowsToAction,
 } from '@actions';
 import {
   EventCode,
@@ -64,6 +66,7 @@ export type TypingState = {
   levels: typeof allLevelsOrdered;
   os: OS;
   practiceLength: number;
+  practiceScrollIndex: number;
   previousKeyDown?: KeyDown;
   lessonText: string;
   signToWrite: string;
@@ -96,6 +99,7 @@ const initialState: TypingState = {
   levels: allLevelsOrdered,
   os: keyboard.os,
   practiceLength: 0,
+  practiceScrollIndex: 0,
   lessonText: '',
   signToWrite: '',
   userText: '',
@@ -105,7 +109,11 @@ const initialState: TypingState = {
 
 export default function typingReducer(
   state: TypingState = initialState,
-  action: PracticeAction | InputChangeAction | KeyboardAction
+  action:
+    | PracticeAction
+    | InputChangeAction
+    | KeyboardAction
+    | scrollRowsToAction
 ): TypingState {
   let layout = state.layout;
 
@@ -814,6 +822,16 @@ export default function typingReducer(
       return {
         ...state,
         keys: [...keyboard.keys],
+      };
+    }
+
+    case SCROLL_ROWS_TO: {
+      // @ts-ignore
+      const rowIndex = action.rowIndex;
+
+      return {
+        ...state,
+        practiceScrollIndex: rowIndex,
       };
     }
 
