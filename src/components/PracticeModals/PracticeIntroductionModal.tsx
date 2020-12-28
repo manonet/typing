@@ -5,7 +5,7 @@ import ReactModal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { APP_ELEMENT } from '@';
-import { introductionModalClosed } from '@actions';
+import { introductionModalClosed, setUserInputFocus } from '@actions';
 import { Hand } from '@components';
 import { State as ReduxState } from '@reducers';
 import { Key } from '@types';
@@ -30,6 +30,7 @@ export default function PracticeStartModal({ isOpen }: Props) {
 
   function closeModal() {
     dispatch(introductionModalClosed());
+    dispatch(setUserInputFocus(true));
   }
 
   function handleKeydown(event: KeyboardEvent) {

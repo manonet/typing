@@ -5,7 +5,7 @@ import ReactModal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { APP_ELEMENT } from '@';
-import { summaryModalClosed } from '@actions';
+import { summaryModalClosed, setUserInputFocus } from '@actions';
 import { State as ReduxState } from '@reducers';
 
 import { modalCustomStyles } from './modalCustomStyles';
@@ -31,6 +31,7 @@ export default function PracticeSummaryModal({ isOpen }: Props) {
 
   function closeSummary() {
     dispatch(summaryModalClosed());
+    dispatch(setUserInputFocus(true));
   }
 
   function repeatPractice() {
