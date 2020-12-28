@@ -14,22 +14,19 @@ import {
 } from '@components';
 import { State as ReduxState } from '@reducers';
 
-// TODO add close on Enter function to modals
 // TODO lift ErrorModal, make it reusable
 // TODO enable/disable backspace
 // TODO differentiate same character on different levels: 'e', 'E', '€' ...
-// TODO fix stucked last hint on new Practice
 // TODO initial hint on the very first Practice
 
 // TODO language detection if necessary -  navigator.language.substring(0, 2) https://medium.com/ableneo/internationalize-react-apps-done-right-using-react-intl-library-82978dbe175e
 
 // TODO Enable layout separation, make it possible to switch between layouts. User should be able to define names for them.
-// TODO Recognise new layouts, layout changes - handle characterNotFound
+// TODO Recognize new layouts, layout changes
+// TODO - Handle characterNotFound
 // TODO statistic may only belong to a specific keyboard layout. Create new statistic for each and every layouts
 // TODO Create keyboardDiscoveryProgressBar component, which dynamically display the known percentage. Green can be for fully discovered keys, yellow for the partial ones, like new levels or dead keys. Promote it as a feature, not as weakness :)
-// TODO Practice can be started, because key.code, so position of keys on the mechanical board is known, e.g.: KeyF and KeyJ.
 // TODO Check for keyboard layout changes on every input change. Display warning and do not change keyboard state in case of layout change, but offer creating a new one.
-// TODO show introduction also if char is already discovered
 
 export const MODAL_CLOSE_TIMEOUT = 500;
 

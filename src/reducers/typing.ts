@@ -138,9 +138,9 @@ export default function typingReducer(
       let keyMap = { ...state.keyMap };
       const lessonText = generatePracticeText({
         glyphs: [...charsToLearn],
-        practiceLength: charsToLearn.length * 7,
+        practiceLength: charsToLearn.length * 17,
         wordLength: 3, // TODO use state value and wire it
-        uniqueWordCount: 1,
+        uniqueWordCount: 20,
       });
 
       function practiceTextToArray(text: string): PracticeTextLetterArray {
