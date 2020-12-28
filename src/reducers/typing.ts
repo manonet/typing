@@ -75,18 +75,25 @@ export type TypingState = {
   practiceTextLetterArray: PracticeTextLetterArray;
 } & Keyboard;
 
+// Calculate initial state based on existing or missing character definition on the first key.
+// If there is a character on the keyboard key, use that, otherwise explore the key.
+// This way both predefined and empty layouts can work.
+const firstKeyToPress = keyboard.keys.find((key) => key.code === keyOrder[0]);
+const firstCharToLearn = firstKeyToPress && firstKeyToPress.keyTops?.to?.label;
+
 const initialState: TypingState = {
   ...keyboard,
   allChars: [...keyboard.allChars],
   keyToLearn: keyOrder[0],
   levelToLearn: allLevelsOrdered[0],
-  charsToLearn: [],
+  charsToLearn: firstCharToLearn ? [firstCharToLearn] : [],
   charsIntroduced: [],
   charToLearnIsNew: false,
-  isCharIntroduced: true,
+  isCharIntroduced: !firstCharToLearn,
   isPracticeFinished: false,
-  isDiscovereyNeeded: true,
-  explorerMode: true,
+  isDiscovereyNeeded: !firstCharToLearn,
+  explorerMode: !firstCharToLearn,
+  charToLearn: firstCharToLearn || '',
   cursorAt: 0,
   finishedPractices: 0,
   inputChanged: false,
