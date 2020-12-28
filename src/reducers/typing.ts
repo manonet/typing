@@ -47,7 +47,6 @@ export type TypingState = {
   charToLearn?: Glyph;
   charsToLearn: Glyph[];
   charsIntroduced: Glyph[];
-  charToLearnIsNew: boolean;
   isCharIntroduced: boolean;
   isPracticeFinished: boolean;
   isDiscovereyNeeded: boolean;
@@ -88,7 +87,6 @@ const initialState: TypingState = {
   levelToLearn: allLevelsOrdered[0],
   charsToLearn: firstCharToLearn ? [firstCharToLearn] : [],
   charsIntroduced: [],
-  charToLearnIsNew: false,
   isCharIntroduced: !firstCharToLearn,
   isPracticeFinished: false,
   isDiscovereyNeeded: !firstCharToLearn,
@@ -653,7 +651,6 @@ export default function typingReducer(
       let keyToLearn = state.keyToLearn;
       let explorerMode = state.explorerMode;
       let charToLearn = state.charToLearn;
-      let charToLearnIsNew = state.charToLearnIsNew;
       let userText = state.userText;
       let charsToLearn = state.charsToLearn;
       let isCharIntroduced = state.isCharIntroduced;
@@ -690,7 +687,6 @@ export default function typingReducer(
 
       if (explorerMode && currentKeyDown && currentKeyDown.code === 'Enter') {
         // While exploring characters, the next keyToLearn was discovered, and after that Enter key was pressed in order to escape discovering and continue practicing
-        charToLearnIsNew = true;
         isCharIntroduced = false;
         explorerMode = false;
         userText = '';
@@ -717,8 +713,6 @@ export default function typingReducer(
           charComplianceRatio > complianceRatio
         ) {
           // the given character is "learned", time to move on to the next one
-          charToLearnIsNew = true;
-
           keyToLearn =
             keyOrder[keyOrder.findIndex((elem) => elem === keyToLearn) + 1];
           const keyboardKeyToLearn = keys.find(
@@ -818,7 +812,6 @@ export default function typingReducer(
         isPracticeFinished,
         charToLearn,
         charsToLearn,
-        charToLearnIsNew,
         isCharIntroduced,
         userText,
         isDiscovereyNeeded,

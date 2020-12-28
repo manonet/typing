@@ -38,7 +38,6 @@ export default function TypewriterPage() {
 
   const {
     charToLearn,
-    charToLearnIsNew,
     charsToLearn,
     displayedLevel,
     explorerMode,
@@ -63,7 +62,6 @@ export default function TypewriterPage() {
   //   isPracticing,
   //   charToLearn,
   //   charsToLearn,
-  //   charToLearnIsNew,
   //   userText,
   // });
 
