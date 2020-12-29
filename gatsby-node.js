@@ -4,16 +4,6 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
-// exports.onCreateBabelConfig = ({ actions }) => {
-//   actions.setBabelPlugin({
-//     name: 'babel-plugin-import',
-//     options: {
-//       libraryName: 'antd',
-//       style: true,
-//     },
-//   });
-// };
 exports.onCreateWebpackConfig = ({ actions, loaders, stage }) => {
   if (stage === 'build-html') {
     actions.setWebpackConfig({
@@ -27,4 +17,40 @@ exports.onCreateWebpackConfig = ({ actions, loaders, stage }) => {
       },
     });
   }
+};
+
+exports.createPages = ({ actions }) => {
+  const { createRedirect } = actions;
+
+  // redirect old app paths
+  createRedirect({
+    fromPath: `/index.html`,
+    toPath: `/hu/`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: `/hu/gepiro_program/ingyenes_gepiras_oktato_program.html`,
+    toPath: `/hu/typewriter/`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: `/hu/kapcsolat/szilagyi_balazs.html`,
+    toPath: `/hu/contact/`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: `/hu/fejlesztes/fejlesztes_menete.html`,
+    toPath: `/hu/faq`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: `/hu/tamogatas/anyagi_tamogatas.html`,
+    toPath: `/hu/contribution`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  });
 };
