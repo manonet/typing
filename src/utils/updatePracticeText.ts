@@ -22,7 +22,8 @@ export const updatePracticeText = function ({
         active: true,
       };
     }
-    if (cursorAt > 0) {
+    if (cursorAt > 0 && practiceTextLetterArray[cursorAt - 1]) {
+      // TODO - investigate "practiceTextLetterArray[cursorAt - 1] is undefined" error. Typing too fast can cause it without this condition
       practiceTextLetterArray[cursorAt - 1] = {
         ...practiceTextLetterArray[cursorAt - 1],
         // if user already typed anything, set the previous character
@@ -40,7 +41,11 @@ export const updatePracticeText = function ({
         userChar: writtenSign,
       };
     }
-    if (cursorAt + 1 < practiceTextLetterArray.length) {
+    if (
+      cursorAt + 1 < practiceTextLetterArray.length &&
+      practiceTextLetterArray[cursorAt + 1]
+    ) {
+      // TODO - investigate "practiceTextLetterArray[cursorAt + 1] is undefined" error. Typing too fast can cause it without this condition
       practiceTextLetterArray[cursorAt + 1] = {
         ...practiceTextLetterArray[cursorAt + 1],
         // if characters are deleted with backspace, set the "deleted" ones
