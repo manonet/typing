@@ -120,8 +120,8 @@ export type SummaryModalClosedAction = ReturnType<typeof summaryModalClosed>;
 
 export const SUMMARY_MODAL_CLOSED = 'SUMMARY_MODAL_CLOSED';
 
-export function summaryModalClosed() {
-  return { type: SUMMARY_MODAL_CLOSED };
+export function summaryModalClosed(props: { repeat?: boolean }) {
+  return { type: SUMMARY_MODAL_CLOSED, props };
 }
 
 // EXPLORE_FINISHED

@@ -9,6 +9,7 @@ import {
   PracticeAction,
   EXPLORE_FINISHED,
   SUMMARY_MODAL_CLOSED,
+  SummaryModalClosedAction,
   DISCOVERY_MODAL_CLOSED,
   SCROLL_ROWS_TO,
   scrollRowsToAction,
@@ -119,6 +120,7 @@ export default function typingReducer(
     | InputChangeAction
     | KeyboardAction
     | scrollRowsToAction
+    | SummaryModalClosedAction
 ): TypingState {
   let layout = state.layout;
 
@@ -193,6 +195,53 @@ export default function typingReducer(
     }
   }
 
+  function initializeRepeatPracticeState() {
+    const { lessonText } = state;
+    let keys = state.keys;
+    let deadKeys = { ...state.deadKeys };
+    let keyMap = { ...state.keyMap };
+
+    function practiceTextToArray(text: string): PracticeTextLetterArray {
+      const arr = text.split('');
+      return arr.map((practiceChar, index) => ({
+        practiceChar,
+        index,
+      }));
+    }
+
+    let practiceTextLetterArray = practiceTextToArray(lessonText);
+
+    // mark first letter to active
+    practiceTextLetterArray = updatePracticeText({
+      cursorAt: 0,
+      practiceTextLetterArray,
+      writtenSign: '',
+    });
+    const marks: Marks = {
+      [practiceTextLetterArray[0].practiceChar]: {
+        marker: 'toPressFirst',
+      },
+    };
+
+    keys = markCharOnBoard({
+      keys: [...state.keys],
+      reset: true,
+      keyMap,
+      marks,
+      deadKeys,
+    });
+
+    return {
+      lessonText: lessonText,
+      practiceLength: lessonText.length,
+      userText: '',
+      cursorAt: 0,
+      isPracticing: true, // TODO - move it to `start`
+      keys,
+      practiceTextLetterArray,
+    };
+  }
+
   switch (action.type) {
     case INTRODUCTION_MODAL_CLOSED: {
       const { charToLearn } = state;
@@ -216,6 +265,17 @@ export default function typingReducer(
     }
 
     case SUMMARY_MODAL_CLOSED: {
+      // @ts-ignore
+      const repeat = action.props && action.props.repeat;
+
+      if (repeat) {
+        // do not look further, just repeat the same practice
+        return {
+          ...state,
+          ...initializeRepeatPracticeState(),
+          isPracticeFinished: false,
+        };
+      }
       const { charToLearn, charsIntroduced, charsToLearn } = state;
 
       let keyToLearn = state.keyToLearn;

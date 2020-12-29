@@ -30,12 +30,13 @@ export default function PracticeSummaryModal({ isOpen }: Props) {
   const elapsedTime = 1;
 
   function closeSummary() {
-    dispatch(summaryModalClosed());
+    dispatch(summaryModalClosed({}));
     dispatch(setUserInputFocus(true));
   }
 
   function repeatPractice() {
-    // dispatch(initializeRepeatPractice());
+    dispatch(summaryModalClosed({ repeat: true }));
+    dispatch(setUserInputFocus(true));
   }
 
   function handleKeydown(event: KeyboardEvent) {
