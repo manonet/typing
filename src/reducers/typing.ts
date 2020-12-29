@@ -28,12 +28,12 @@ import {
   KeyMap,
   functionalKeyCodes,
   PracticeTextLetterArray,
+  PracticeStatistics,
 } from '@types';
 import {
   markCharOnBoard,
   keyOrder,
   keyRequirements,
-  complianceRatio,
   generatePracticeText,
   updatePracticeText,
 } from '@utils';
@@ -49,6 +49,7 @@ export type TypingState = {
   charsToLearn: Glyph[];
   charsIntroduced: Glyph[];
   isCharIntroduced: boolean;
+  charComplianceRatio: number; // Integer between 0 and 1. It is the the portion of sucessfully written characters during the lesson. (multiple practices)
   isPracticeFinished: boolean;
   isDiscovereyNeeded: boolean;
   currentKeyDown?: KeyDown;
@@ -58,7 +59,7 @@ export type TypingState = {
   inputChanged: boolean;
   isCapsLockOn: boolean;
   isPracticing: boolean;
-  isPracticeAccomplished: boolean; // TODO - make it work
+  isPracticeAccomplished: boolean; // Whenever the actual practice was successfully finished, or failed because of too many mistakes
   keyMap: KeyMap;
   keys: Key[];
   keysDown: EventCode[];
@@ -73,6 +74,8 @@ export type TypingState = {
   userText: string;
   writtenSign: string;
   practiceTextLetterArray: PracticeTextLetterArray;
+  practiceStatistics: PracticeStatistics; // Contains statistic data only for the practice session
+  complianceRatio: number; // Treshold of the isPracticeAccomplished
 } & Keyboard;
 
 // Calculate initial state based on existing or missing character definition on the first key.
@@ -80,6 +83,12 @@ export type TypingState = {
 // This way both predefined and empty layouts can work.
 const firstKeyToPress = keyboard.keys.find((key) => key.code === keyOrder[0]);
 const firstCharToLearn = firstKeyToPress && firstKeyToPress.keyTops?.to?.label;
+
+const initialPracticeStatistics = {
+  correctHits: 0,
+  incorrectHits: 0,
+  elapsedTime: 0,
+};
 
 const initialState: TypingState = {
   ...keyboard,
@@ -93,12 +102,13 @@ const initialState: TypingState = {
   isDiscovereyNeeded: !firstCharToLearn,
   explorerMode: !firstCharToLearn,
   charToLearn: firstCharToLearn || '',
+  charComplianceRatio: 0,
   cursorAt: 0,
   finishedPractices: 0,
   inputChanged: false,
   isCapsLockOn: false,
   isPracticing: false,
-  isPracticeAccomplished: true, // TODO - make it work
+  isPracticeAccomplished: false,
   keyMap: { ...keyboard.keyMap },
   keys: [...keyboard.keys],
   keysDown: [],
@@ -111,6 +121,8 @@ const initialState: TypingState = {
   userText: '',
   writtenSign: '',
   practiceTextLetterArray: [],
+  practiceStatistics: initialPracticeStatistics,
+  complianceRatio: 0.98,
 };
 
 export default function typingReducer(
@@ -183,6 +195,7 @@ export default function typingReducer(
         isPracticing: true, // TODO - move it to `start`
         keys,
         practiceTextLetterArray,
+        practiceStatistics: initialPracticeStatistics,
       };
     } else {
       return {
@@ -239,6 +252,7 @@ export default function typingReducer(
       isPracticing: true, // TODO - move it to `start`
       keys,
       practiceTextLetterArray,
+      practiceStatistics: initialPracticeStatistics,
     };
   }
 
@@ -331,10 +345,11 @@ export default function typingReducer(
     }
 
     case INPUT_CHANGE: {
-      const { currentKeyDown, previousKeyDown } = state;
+      const { currentKeyDown, isPracticing, previousKeyDown } = state;
 
       let keyMap = { ...state.keyMap };
       let allChars = [...state.allChars];
+      let practiceStatistics = { ...state.practiceStatistics };
       let keys = state.keys;
       let explorerMode = state.explorerMode;
 
@@ -391,52 +406,60 @@ export default function typingReducer(
       }
 
       // allChars, statistics
-      const allCharsWrittenIndex = allChars.findIndex(
-        (char) => char.glyph === writtenSign
-      );
-      if (charsSucceed) {
-        if (allCharsWrittenIndex === -1) {
-          // first time found
-          allChars.push({
-            glyph: writtenSign,
-            correct: 1,
-            miswrite: 0,
-            misread: 0,
-            discoveredAt: Date.now(),
-          });
-        } else {
-          // @ts-ignore
-          allChars[allCharsWrittenIndex].correct += 1;
-        }
-      } else {
-        if (allCharsWrittenIndex === -1) {
-          // first time found
-          allChars.push({
-            glyph: writtenSign,
-            correct: 0,
-            miswrite: 1,
-            misread: 0,
-            discoveredAt: Date.now(),
-          });
-        } else {
-          // @ts-ignore
-          allChars[allCharsWrittenIndex].miswrite += 1;
-        }
-        const allCharsToWriteIndex = allChars.findIndex(
-          (char) => char.glyph === signToWrite
+      if (isPracticing && cursorAt > state.userText.length) {
+        // Count only the characters actually written, but not the deleted ones
+
+        const allCharsWrittenIndex = allChars.findIndex(
+          (char) => char.glyph === writtenSign
         );
-        if (allCharsToWriteIndex === -1) {
-          // first time found
-          allChars.push({
-            glyph: signToWrite,
-            correct: 0,
-            miswrite: 0,
-            misread: 1,
-            discoveredAt: Date.now(),
-          });
+        if (charsSucceed) {
+          practiceStatistics.correctHits += 1;
+
+          if (allCharsWrittenIndex === -1) {
+            // first time found
+            allChars.push({
+              glyph: writtenSign,
+              correct: 1,
+              miswrite: 0,
+              misread: 0,
+              discoveredAt: Date.now(),
+            });
+          } else {
+            // @ts-ignore
+            allChars[allCharsWrittenIndex].correct += 1;
+          }
         } else {
-          // @ts-ignore
-          allChars[allCharsToWriteIndex].misread += 1;
+          practiceStatistics.incorrectHits += 1;
+
+          if (allCharsWrittenIndex === -1) {
+            // first time found
+            allChars.push({
+              glyph: writtenSign,
+              correct: 0,
+              miswrite: 1,
+              misread: 0,
+              discoveredAt: Date.now(),
+            });
+          } else {
+            // @ts-ignore
+            allChars[allCharsWrittenIndex].miswrite += 1;
+          }
+          const allCharsToWriteIndex = allChars.findIndex(
+            (char) => char.glyph === signToWrite
+          );
+          if (allCharsToWriteIndex === -1) {
+            // first time found
+            allChars.push({
+              glyph: signToWrite,
+              correct: 0,
+              miswrite: 0,
+              misread: 1,
+              discoveredAt: Date.now(),
+            });
+          } else {
+            // @ts-ignore
+            allChars[allCharsToWriteIndex].misread += 1;
+          }
         }
       }
 
@@ -550,6 +573,7 @@ export default function typingReducer(
         keyMap,
         explorerMode,
         practiceTextLetterArray,
+        practiceStatistics,
       };
     }
 
@@ -696,6 +720,7 @@ export default function typingReducer(
       });
 
       const {
+        complianceRatio,
         currentKeyDown,
         cursorAt,
         levelToLearn,
@@ -716,6 +741,8 @@ export default function typingReducer(
       let isCharIntroduced = state.isCharIntroduced;
       let isPracticeFinished = state.isPracticeFinished;
       let isDiscovereyNeeded = state.isDiscovereyNeeded;
+      let charComplianceRatio = state.charComplianceRatio;
+      let isPracticeAccomplished = false;
 
       const modifiersDown = [
         // ORDER COUNTS!
@@ -759,18 +786,25 @@ export default function typingReducer(
         isPracticeFinished = true;
         finishedPractices += 1;
 
+        const { correctHits, incorrectHits } = state.practiceStatistics;
+        isPracticeAccomplished =
+          correctHits / (incorrectHits + correctHits) > complianceRatio;
+
         const charStats = state.allChars.find(
           (char) => char.glyph === charToLearn
         );
-        const correctHits = (charStats && charStats.correct) || 0;
-        const mistakenHits = (charStats && charStats.miswrite) || 0;
-        const charComplianceRatio = correctHits / mistakenHits;
+        const correctTotalCharHits = (charStats && charStats.correct) || 0;
+        const incorrectTotalCharHits = (charStats && charStats.miswrite) || 0;
+        charComplianceRatio =
+          correctTotalCharHits /
+          (incorrectTotalCharHits + correctTotalCharHits);
         const requiredHits =
           keyRequirements[keyToLearn] && keyRequirements[keyToLearn].hits;
 
         if (
-          correctHits > requiredHits &&
-          charComplianceRatio > complianceRatio
+          correctTotalCharHits > requiredHits &&
+          charComplianceRatio > complianceRatio &&
+          isPracticeAccomplished
         ) {
           // the given character is "learned", time to move on to the next one
           keyToLearn =
@@ -875,6 +909,8 @@ export default function typingReducer(
         isCharIntroduced,
         userText,
         isDiscovereyNeeded,
+        isPracticeAccomplished,
+        charComplianceRatio,
       };
     }
 

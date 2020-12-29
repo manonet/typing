@@ -1,11 +1,12 @@
 import { Button, Typography } from 'antd';
-import { FormattedMessage } from 'gatsby-plugin-intl';
+import { FormattedMessage, useIntl } from 'gatsby-plugin-intl';
 import React, { useEffect } from 'react';
 import ReactModal from 'react-modal';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { APP_ELEMENT } from '@';
 import { summaryModalClosed, setUserInputFocus } from '@actions';
+import { getLangCode } from '@intl/languages';
 import { State as ReduxState } from '@reducers';
 
 import { modalCustomStyles } from './modalCustomStyles';
@@ -21,13 +22,32 @@ type Props = {
 export default function PracticeSummaryModal({ isOpen }: Props) {
   const dispatch = useDispatch();
 
-  const { isPracticeAccomplished } = useSelector(
-    (state: ReduxState) => state.typing
-  );
+  const intl = useIntl();
+  const lang = intl.locale;
+  const langCode = getLangCode(lang);
 
-  const correctChars = 1;
-  const mistakenChars = 1;
-  const elapsedTime = 1;
+  const {
+    complianceRatio,
+    isPracticeAccomplished,
+    practiceStatistics,
+  } = useSelector((state: ReduxState) => state.typing);
+
+  const { correctHits, incorrectHits } = practiceStatistics;
+  const achievementRatio = correctHits / (incorrectHits + correctHits);
+  const formattedAchievementPercentage = (
+    achievementRatio * 100
+  ).toLocaleString(langCode, {
+    maximumFractionDigits: 2,
+    minimumFractionDigits: 0,
+  });
+
+  const formattedCompliancePercentage = (complianceRatio * 100).toLocaleString(
+    langCode,
+    {
+      maximumFractionDigits: 2,
+      minimumFractionDigits: 0,
+    }
+  );
 
   function closeSummary() {
     dispatch(summaryModalClosed({}));
@@ -47,10 +67,6 @@ export default function PracticeSummaryModal({ isOpen }: Props) {
     if (event.code === 'Space') {
       repeatPractice();
     }
-
-    // if (event.code === 'Esc') {
-    //
-    // }
   }
 
   useEffect(() => {
@@ -63,7 +79,6 @@ export default function PracticeSummaryModal({ isOpen }: Props) {
     }
   }, [isOpen]);
 
-  // isPracticeAccomplished is not yet calculated, but set fix true.
   const title = isPracticeAccomplished ? (
     <FormattedMessage
       id="modal.summary.title.accomplished"
@@ -74,6 +89,101 @@ export default function PracticeSummaryModal({ isOpen }: Props) {
       id="modal.summary.title.failed"
       defaultMessage="Failed!"
     />
+  );
+
+  const statisticSummary = (
+    <div>
+      <div>
+        <FormattedMessage
+          id="statistics.hits.correct"
+          defaultMessage="Correct hits"
+        />
+        : {correctHits}
+      </div>
+      <div>
+        <FormattedMessage
+          id="statistics.hits.incorrect"
+          defaultMessage="Incorrect hits"
+        />
+        : {incorrectHits}
+      </div>
+      <div>
+        <FormattedMessage id="statistics.accuracy" defaultMessage="Accuracy" />:{' '}
+        {formattedAchievementPercentage}%
+      </div>
+      <div>
+        <FormattedMessage
+          id="statistics.requirement"
+          defaultMessage="Requirement"
+        />
+        : {formattedCompliancePercentage}%
+      </div>
+    </div>
+  );
+
+  const content = isPracticeAccomplished ? (
+    <div className="practiceSummary__content practiceSummary__content--accomplished">
+      <div>
+        <FormattedMessage
+          id="modal.summary.exclamation.accomplished"
+          defaultMessage="Congratulation!"
+        />{' '}
+        <FormattedMessage
+          id="modal.summary.practice.accomplished"
+          defaultMessage="You finished this practice successfully."
+        />
+      </div>
+      {statisticSummary}
+    </div>
+  ) : (
+    <div className="practiceSummary__content practiceSummary__content--failed">
+      <div>
+        <FormattedMessage
+          id="modal.summary.exclamation.failed"
+          defaultMessage="Oh no!"
+        />{' '}
+        <FormattedMessage
+          id="modal.summary.practice.failed"
+          defaultMessage="You made too many mistakes, so you have to repeat this practice."
+        />
+      </div>
+      {statisticSummary}
+    </div>
+  );
+
+  const footerButtons = isPracticeAccomplished ? (
+    <>
+      <Button onClick={repeatPractice}>
+        <span>
+          <FormattedMessage
+            id="modal.summary.button.repeat"
+            defaultMessage="Repeat"
+          />
+          {' ('}
+          <FormattedMessage id="keyboard.key.space" defaultMessage="Space" />)
+        </span>
+      </Button>
+      <Button onClick={closeSummary}>
+        <span>
+          <FormattedMessage
+            id="modal.button.continue"
+            defaultMessage="Continue"
+          />
+          {' (Enter)'}
+        </span>
+      </Button>
+    </>
+  ) : (
+    <Button onClick={repeatPractice}>
+      <span>
+        <FormattedMessage
+          id="modal.summary.button.repeat"
+          defaultMessage="Repeat"
+        />
+        {' ('}
+        <FormattedMessage id="keyboard.key.enter" defaultMessage="Enter" />)
+      </span>
+    </Button>
   );
 
   return (
@@ -87,44 +197,11 @@ export default function PracticeSummaryModal({ isOpen }: Props) {
         <Title level={2} className="practiceSummary__header">
           {title}
         </Title>
-        <div className="practiceSummary__content">
-          <div>Statistic comes here, e.g.:</div>
-          <div>Succeed characters: {mistakenChars}</div>
-          <div>Mistaken characters: {correctChars}</div>
-          <div>Elapsed Time: {elapsedTime}</div>
-        </div>
-        <div className="practiceSummary__footer">
-          <div className="practiceSummary__footerButtons">
-            {/* 
-            buggy, or not even necessary
-            <Button onClick={cancelPractice}>
-              Cancel (Esc)
-            </Button> */}
 
-            <Button onClick={repeatPractice}>
-              <span>
-                <FormattedMessage
-                  id="modal.summary.button.repeat"
-                  defaultMessage="Repeat"
-                />
-                {' ('}
-                <FormattedMessage
-                  id="keyboard.key.space"
-                  defaultMessage="Space"
-                />
-                )
-              </span>
-            </Button>
-            <Button onClick={closeSummary}>
-              <span>
-                <FormattedMessage
-                  id="modal.button.continue"
-                  defaultMessage="Continue"
-                />
-                {' (Enter)'}
-              </span>
-            </Button>
-          </div>
+        {content}
+
+        <div className="practiceSummary__footer">
+          <div className="practiceSummary__footerButtons">{footerButtons}</div>
         </div>
       </div>
     </ReactModal>

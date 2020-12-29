@@ -121,3 +121,9 @@ export type PracticeTextArrayItem = {
 } & PracticeTextCharProps;
 
 export type PracticeTextLetterArray = PracticeTextArrayItem[];
+
+export type PracticeStatistics = {
+  correctHits: number;
+  incorrectHits: number;
+  elapsedTime: number;
+};

@@ -70,8 +70,6 @@ export const homeRowKeys = [
   'KeyA',
 ];
 
-export const complianceRatio = 0.5; // 0.98;
-
 export type KeyRequirements = {
   [key in EventCode]: {
     hits: number;

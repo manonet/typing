@@ -113,7 +113,11 @@
     "modal.button.next": "Next",
     "modal.button.continue": "Continue",
     "modal.summary.title.accomplished": "Accomplished!",
+    "modal.summary.exclamation.accomplished": "Congratulation!",
+    "modal.summary.practice.accomplished": "You finished this practice successfully.",
     "modal.summary.title.failed": "Failed!",
+    "modal.summary.exclamation.failed": "Oh no!",
+    "modal.summary.practice.failed": "You made too many mistakes. You have to repeat this practice.",
     "modal.summary.button.repeat": "Repeat",
     "modal.summary.button.new": "New",
 
@@ -123,5 +127,10 @@
 
     "lesson.title": "Lesson {numberOfLesson}",
     "modal.introduction.previous.finished": "Now you know how to type the character {charLearned}. It's time to move to the next one!",
-    "modal.introduction.desc": "The next character to learn is {charToLearn}. For that use your {hand} {finger}."
+    "modal.introduction.desc": "The next character to learn is {charToLearn}. For that use your {hand} {finger}.",
+
+    "statistics.hits.correct": "Correct hits",
+    "statistics.hits.incorrect": "Incorrect hits",
+    "statistics.accuracy": "Accuracy",
+    "statistics.requirement": "Requirement"
 }
