@@ -75,6 +75,11 @@ export default function Keyboard(props: Props) {
           let calculatedY = 0;
           let calculatedWidth = keyWidth - keyPaddingX * 2;
           let calculatedHeight = keyHeight - keyPaddingX * 2;
+          let title = to
+            ? to
+            : intl.formatMessage({
+                id: 'typing.key.unexplored',
+              });
 
           switch (rowLetter) {
             case 'D':
@@ -99,6 +104,10 @@ export default function Keyboard(props: Props) {
 
           switch (iso) {
             case 'E14': // Backspace
+              title = intl.formatMessage({
+                id: 'keyboard.key.backspace',
+                defaultMessage: 'Backspace',
+              });
               calculatedWidth = keyWidth - keyPaddingX * 2;
               calculatedX = keyWidth * 14;
               calculatedY = 0;
@@ -127,6 +136,10 @@ export default function Keyboard(props: Props) {
               break;
 
             case 'C00': // CapsLock
+              title = intl.formatMessage({
+                id: 'keyboard.key.capslock',
+                defaultMessage: 'Caps Lock',
+              });
               calculatedWidth = keyWidth + cRowShift - keyPaddingX * 2;
               calculatedX = 0;
               calculatedY = keyHeight * 2;
@@ -145,6 +158,10 @@ export default function Keyboard(props: Props) {
               break;
 
             case 'D00': // Tab
+              title = intl.formatMessage({
+                id: 'keyboard.key.tab',
+                defaultMessage: 'Tab',
+              });
               calculatedWidth = keyWidth + dRowShift - keyPaddingX * 2;
               calculatedX = 0;
               calculatedY = keyHeight;
@@ -158,6 +175,10 @@ export default function Keyboard(props: Props) {
               break;
 
             case 'B99': // ShiftLeft
+              title = intl.formatMessage({
+                id: 'keyboard.key.shift',
+                defaultMessage: 'Shift',
+              });
               calculatedWidth = bRowShift - keyPaddingX * 2;
               calculatedX = 0;
               calculatedY = keyHeight * 3;
@@ -180,6 +201,10 @@ export default function Keyboard(props: Props) {
               break;
 
             case 'B12': // ShiftRight
+              title = intl.formatMessage({
+                id: 'keyboard.key.shift',
+                defaultMessage: 'Shift',
+              });
               calculatedWidth = keyWidth * 3 - bRowShift - keyPaddingX * 2;
               calculatedX = bRowShift + keyWidth * 12;
               calculatedY = keyHeight * 3;
@@ -191,42 +216,74 @@ export default function Keyboard(props: Props) {
               break;
 
             case 'A99': // ControlLeft
+              title = intl.formatMessage({
+                id: 'keyboard.key.control',
+                defaultMessage: 'Control',
+              });
               calculatedWidth = bRowShift - keyPaddingX * 2;
               calculatedX = 0;
               calculatedY = keyHeight * 4;
               break;
 
             case 'A00': // fn, WakeUp
+              title = intl.formatMessage({
+                id: 'keyboard.key.fn',
+                defaultMessage: 'Function',
+              });
               calculatedX = aRowShift;
               calculatedY = keyHeight * 4;
               break;
 
             case 'A01': // OSLeft
+              title = intl.formatMessage({
+                id: 'keyboard.key.os',
+                defaultMessage: 'Super-key',
+              });
               calculatedX = aRowShift + keyWidth;
               calculatedY = keyHeight * 4;
               break;
 
             case 'A02': // AltLeft
+              title = intl.formatMessage({
+                id: 'keyboard.key.alt',
+                defaultMessage: 'Alt',
+              });
               calculatedX = aRowShift + keyWidth * 2;
               calculatedY = keyHeight * 4;
               break;
 
             case 'A08': // AltRight
+              title = intl.formatMessage({
+                id: 'keyboard.key.altgr',
+                defaultMessage: 'Alt Graph',
+              });
               calculatedX = aRowShift + keyWidth * 8;
               calculatedY = keyHeight * 4;
               break;
 
             case 'A10': // OSRight
+              title = intl.formatMessage({
+                id: 'keyboard.key.os',
+                defaultMessage: 'Super-key',
+              });
               calculatedX = aRowShift + keyWidth * 9;
               calculatedY = keyHeight * 4;
               break;
 
             case 'A11': // Menu
+              title = intl.formatMessage({
+                id: 'keyboard.key.menu',
+                defaultMessage: 'Context Menu',
+              });
               calculatedX = aRowShift + keyWidth * 11;
               calculatedY = keyHeight * 4;
               break;
 
             case 'A12': // ControlRight
+              title = intl.formatMessage({
+                id: 'keyboard.key.control',
+                defaultMessage: 'Control',
+              });
               calculatedWidth = keyWidth * 3 - bRowShift - keyPaddingX * 2;
               calculatedX = aRowShift + keyWidth * 12;
               calculatedY = keyHeight * 4;
@@ -242,6 +299,10 @@ export default function Keyboard(props: Props) {
             }
           } else {
             if (code === 'Space') {
+              title = intl.formatMessage({
+                id: 'keyboard.key.space',
+                defaultMessage: 'Space',
+              });
               calculatedWidth = keyWidth * 3 - keyPaddingX * 2;
               calculatedX = aRowShift + keyWidth * 4;
             }
@@ -257,6 +318,10 @@ export default function Keyboard(props: Props) {
             }
           } else {
             if (code === 'Space') {
+              title = intl.formatMessage({
+                id: 'keyboard.key.space',
+                defaultMessage: 'Space',
+              });
               calculatedWidth = keyWidth * 2 - keyPaddingX * 2;
               calculatedX = aRowShift + keyWidth * 4;
             }
@@ -265,17 +330,29 @@ export default function Keyboard(props: Props) {
           if (!(layout === '103/106-KS' || layout === '106/109-JIS')) {
             if (code === 'Space') {
               // Space (A03 to A07) no label
+              title = intl.formatMessage({
+                id: 'keyboard.key.space',
+                defaultMessage: 'Space',
+              });
               calculatedX = aRowShift + keyWidth * 3;
               calculatedWidth = keyWidth * 5 - keyPaddingX * 2;
             }
           }
+
+          if (code === 'Enter') {
+            title = intl.formatMessage({
+              id: 'keyboard.key.enter',
+              defaultMessage: 'Enter',
+            });
+          }
+
           return (
             <Tippy
               key={iso}
               singleton={target}
               content={
                 <>
-                  <div className="keyInfo__title">{to ? to : 'Unexplored'}</div>
+                  <div className="keyInfo__title">{title}</div>
                   <div className="keyInfo__content">
                     <div className="keyInfo__left">
                       <FormattedMessage

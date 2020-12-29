@@ -160,7 +160,8 @@ export default function PracticeSummaryModal({ isOpen }: Props) {
             defaultMessage="Repeat"
           />
           {' ('}
-          <FormattedMessage id="keyboard.key.space" defaultMessage="Space" />)
+          <FormattedMessage id="keyboard.key.space" defaultMessage="Space" />
+          {')'}
         </span>
       </Button>
       <Button onClick={closeSummary}>
@@ -169,7 +170,9 @@ export default function PracticeSummaryModal({ isOpen }: Props) {
             id="modal.button.continue"
             defaultMessage="Continue"
           />
-          {' (Enter)'}
+          {' ('}
+          <FormattedMessage id="keyboard.key.enter" defaultMessage="Enter" />
+          {')'}
         </span>
       </Button>
     </>
@@ -181,7 +184,8 @@ export default function PracticeSummaryModal({ isOpen }: Props) {
           defaultMessage="Repeat"
         />
         {' ('}
-        <FormattedMessage id="keyboard.key.enter" defaultMessage="Enter" />)
+        <FormattedMessage id="keyboard.key.enter" defaultMessage="Enter" />
+        {')'}
       </span>
     </Button>
   );

@@ -127,7 +127,12 @@ export default function PracticeStartModal({ isOpen }: Props) {
                   id="modal.button.next"
                   defaultMessage="Next"
                 />{' '}
-                (Enter)
+                (
+                <FormattedMessage
+                  id="keyboard.key.enter"
+                  defaultMessage="Enter"
+                />
+                )
               </Button>
             </span>
           </div>
