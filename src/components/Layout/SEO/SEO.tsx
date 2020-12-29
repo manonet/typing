@@ -47,22 +47,64 @@ export default function SEO({
   const metaDescription =
     description || intl.formatMessage({ id: 'site.description' });
   const metaKeywords = keywords || [
-    intl.formatMessage({ id: 'site.keywords.online' }),
-    intl.formatMessage({ id: 'site.keywords.instructor' }),
-    intl.formatMessage({ id: 'site.keywords.tutor' }),
-    intl.formatMessage({ id: 'site.keywords.tutorial' }),
-    intl.formatMessage({ id: 'site.keywords.education' }),
-    intl.formatMessage({ id: 'site.keywords.teaching' }),
-    intl.formatMessage({ id: 'site.keywords.learning' }),
-    intl.formatMessage({ id: 'site.keywords.application' }),
-    intl.formatMessage({ id: 'site.keywords.typewriting' }),
-    intl.formatMessage({ id: 'site.keywords.typewriter' }),
-    intl.formatMessage({ id: 'site.keywords.type' }),
-    intl.formatMessage({ id: 'site.keywords.10Thumbs' }),
-    intl.formatMessage({ id: 'site.keywords.tenFinger' }),
-    intl.formatMessage({ id: 'site.keywords.lessons' }),
-    intl.formatMessage({ id: 'site.keywords.practices' }),
-    intl.formatMessage({ id: 'site.keywords.course' }),
+    intl.formatMessage({
+      id: 'site.keywords.online',
+      defaultMessage: 'online',
+    }),
+    intl.formatMessage({
+      id: 'site.keywords.instructor',
+      defaultMessage: 'instructor',
+    }),
+    intl.formatMessage({ id: 'site.keywords.tutor', defaultMessage: 'tutor' }),
+    intl.formatMessage({
+      id: 'site.keywords.tutorial',
+      defaultMessage: 'tutorial',
+    }),
+    intl.formatMessage({
+      id: 'site.keywords.education',
+      defaultMessage: 'education',
+    }),
+    intl.formatMessage({
+      id: 'site.keywords.teaching',
+      defaultMessage: 'teaching',
+    }),
+    intl.formatMessage({
+      id: 'site.keywords.learning',
+      defaultMessage: 'learning',
+    }),
+    intl.formatMessage({
+      id: 'site.keywords.application',
+      defaultMessage: 'application',
+    }),
+    intl.formatMessage({
+      id: 'site.keywords.typewriting',
+      defaultMessage: 'typewriting',
+    }),
+    intl.formatMessage({
+      id: 'site.keywords.typewriter',
+      defaultMessage: 'typewriter',
+    }),
+    intl.formatMessage({ id: 'site.keywords.type', defaultMessage: 'type' }),
+    intl.formatMessage({
+      id: 'site.keywords.10Thumbs',
+      defaultMessage: '10Thumbs',
+    }),
+    intl.formatMessage({
+      id: 'site.keywords.tenFinger',
+      defaultMessage: 'tenFinger',
+    }),
+    intl.formatMessage({
+      id: 'site.keywords.lessons',
+      defaultMessage: 'lessons',
+    }),
+    intl.formatMessage({
+      id: 'site.keywords.practices',
+      defaultMessage: 'practices',
+    }),
+    intl.formatMessage({
+      id: 'site.keywords.course',
+      defaultMessage: 'course',
+    }),
   ];
 
   const langCode = getLangCode(lang);
@@ -81,6 +123,7 @@ export default function SEO({
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.name} - ${intl.formatMessage({
         id: 'site.title',
+        defaultMessage: 'Online touch typing application',
       })}`}
       meta={[
         {

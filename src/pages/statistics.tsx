@@ -30,9 +30,17 @@ function StatisticsPage(props: Props) {
 
   return (
     <Layout>
-      <SEO title={intl.formatMessage({ id: 'site.navigation.statistics' })} />
+      <SEO
+        title={intl.formatMessage({
+          id: 'site.navigation.statistics',
+          defaultMessage: 'Statistics',
+        })}
+      />
       <h2>
-        <FormattedMessage id="site.navigation.statistics" />
+        <FormattedMessage
+          id="site.navigation.statistics"
+          defaultMessage="Statistics"
+        />
       </h2>
       <div className="statistics">
         <div>Layout: {layout}</div>

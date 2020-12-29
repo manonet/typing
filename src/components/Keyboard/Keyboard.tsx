@@ -79,6 +79,7 @@ export default function Keyboard(props: Props) {
             ? to
             : intl.formatMessage({
                 id: 'typing.key.unexplored',
+                defaultMessage: 'Unexplored',
               });
 
           switch (rowLetter) {

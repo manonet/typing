@@ -65,7 +65,10 @@ export default function Layout(props: Props) {
           >
             {isTouchDevice && (
               <div className="layout__alert">
-                <FormattedMessage id="site.warning.mobile" />
+                <FormattedMessage
+                  id="site.warning.mobile"
+                  defaultMessage="It seems that you are using a mobile device. This app only works on a desktop device. In order to learn typewriting with ten fingers and to use this app you need a keyboard."
+                />
               </div>
             )}
             {hasHeader && <Header />}

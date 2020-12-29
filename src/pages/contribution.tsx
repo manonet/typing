@@ -8,7 +8,12 @@ export default function ContributionPage() {
 
   return (
     <Layout className="contribution">
-      <SEO title={intl.formatMessage({ id: 'site.contribution' })} />
+      <SEO
+        title={intl.formatMessage({
+          id: 'site.contribution',
+          defaultMessage: 'Contribution',
+        })}
+      />
 
       <section className="contribution__section">
         <div className="container">

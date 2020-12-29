@@ -38,7 +38,10 @@ function Header() {
         <div className="header__siteTitle">
           <span className="header__siteName">
             {'Manonet - '}
-            <FormattedMessage id="site.underDevelopement" />
+            <FormattedMessage
+              id="site.underDevelopement"
+              defaultMessage="Under development"
+            />
           </span>
         </div>
         <menu className="header__menu menu">
@@ -47,7 +50,7 @@ function Header() {
             activeClassName="menu__item--active"
             to="/"
           >
-            <FormattedMessage id="site.navigation.home" />
+            <FormattedMessage id="site.navigation.home" defaultMessage="Home" />
           </Link>
 
           <Link
@@ -55,7 +58,10 @@ function Header() {
             activeClassName="menu__item--active"
             to={ROUTE_PATH_TYPEWRITER}
           >
-            <FormattedMessage id="site.navigation.program" />
+            <FormattedMessage
+              id="site.navigation.program"
+              defaultMessage="Typewriter application"
+            />
           </Link>
 
           <Link
@@ -63,7 +69,10 @@ function Header() {
             activeClassName="menu__item--active"
             to={ROUTE_PATH_STATISTICS}
           >
-            <FormattedMessage id="site.navigation.statistics" />
+            <FormattedMessage
+              id="site.navigation.statistics"
+              defaultMessage="Statistics"
+            />
           </Link>
         </menu>
         <div className="header__userMenu">

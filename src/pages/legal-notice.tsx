@@ -8,12 +8,20 @@ export default function LegalNoticePage() {
 
   return (
     <Layout className="legalNotice">
-      <SEO title={intl.formatMessage({ id: 'site.legalNotice' })} />
+      <SEO
+        title={intl.formatMessage({
+          id: 'site.legalNotice',
+          defaultMessage: 'Legal Notice',
+        })}
+      />
 
       <section className="legalNotice__section">
         <div className="container">
           <h2>
-            <FormattedMessage id="site.legalNotice" />
+            <FormattedMessage
+              id="site.legalNotice"
+              defaultMessage="Legal Notice"
+            />
           </h2>
           <div>
             <p>Service provider: Balázs Szilágyi (private person)</p>

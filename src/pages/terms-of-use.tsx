@@ -20,12 +20,20 @@ export default function TermsOfUsePage() {
       `}
       render={(data) => (
         <Layout className="termsOfUse">
-          <SEO title={intl.formatMessage({ id: 'site.termsOfUse' })} />
+          <SEO
+            title={intl.formatMessage({
+              id: 'site.termsOfUse',
+              defaultMessage: 'Terms of use',
+            })}
+          />
 
           <section className="termsOfUse__section">
             <div className="container">
               <h2>
-                <FormattedMessage id="site.termsOfUse" />
+                <FormattedMessage
+                  id="site.termsOfUse"
+                  defaultMessage="Terms of use"
+                />
               </h2>
               <div>
                 <p>The MIT License (MIT)</p>

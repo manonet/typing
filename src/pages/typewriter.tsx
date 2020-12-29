@@ -67,7 +67,10 @@ export default function TypewriterPage() {
   return (
     <Layout isModalOpen={isModalOpen}>
       <SEO
-        title={intl.formatMessage({ id: 'typewriter.page.title' })}
+        title={intl.formatMessage({
+          id: 'typewriter.page.title',
+          defaultMessage: 'Typewriter application',
+        })}
         isModalOpen={isModalOpen}
       />
       <div className="TypewriterBoard">

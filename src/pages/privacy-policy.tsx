@@ -8,12 +8,20 @@ export default function PrivacyPolicyPage() {
 
   return (
     <Layout className="privacyPolicy">
-      <SEO title={intl.formatMessage({ id: 'site.privacyPolicy' })} />
+      <SEO
+        title={intl.formatMessage({
+          id: 'site.privacyPolicy',
+          defaultMessage: 'Privacy policy',
+        })}
+      />
 
       <section className="privacyPolicy__section">
         <div className="container">
           <h2>
-            <FormattedMessage id="site.privacyPolicy" />
+            <FormattedMessage
+              id="site.privacyPolicy"
+              defaultMessage="Privacy policy"
+            />
           </h2>
 
           <h3>

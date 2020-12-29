@@ -8,12 +8,20 @@ const NotFoundPage = () => {
 
   return (
     <Layout>
-      <SEO title={intl.formatMessage({ id: '404.page.title' })} />
+      <SEO
+        title={intl.formatMessage({
+          id: '404.page.title',
+          defaultMessage: 'Not found',
+        })}
+      />
       <h1>
-        <FormattedMessage id="404.page.title" />
+        <FormattedMessage id="404.page.title" defaultMessage="Not found" />
       </h1>
       <p>
-        <FormattedMessage id="404.page.desc" />
+        <FormattedMessage
+          id="404.page.desc"
+          defaultMessage="The page you are looking for could not be found."
+        />
       </p>
     </Layout>
   );
