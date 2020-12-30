@@ -1,0 +1,13 @@
+# https://stackoverflow.com/questions/17709500/how-to-redirect-all-pages-only-to-index-html-using-htaccess-file-and-not-redirec#answer-52250489
+# Redirect all pages only to index.html using htaccess file
+# A nicer way might be just to ignore existing files. For example:
+
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !^/$
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .* /404 [L,R=302]
+
+# The !-d says to ignore the rewrite if there is an existing directory that meets the match.
+# The !-f says to ignore the rewrite if there is an existing file that meets the match.
+# Everything else will get rewritten.

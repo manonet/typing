@@ -53,4 +53,29 @@ exports.createPages = ({ actions }) => {
     redirectInBrowser: true,
     isPermanent: true,
   });
+  // Temporary redirects
+  createRedirect({
+    fromPath: `/redirect_to_flash/index.html`,
+    toPath: `/hu/`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: `/redirect_to_flash/gepiro_program/ingyenes_gepiras_oktato_program.html`,
+    toPath: `/hu/`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: `/redirect_to_flash/fejlesztes/fejlesztes_menete.html`,
+    toPath: `/hu/`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  });
+  createRedirect({
+    fromPath: `/redirect_to_flash/kapcsolat/szilagyi_balazs.html`,
+    toPath: `/hu/contact/`,
+    redirectInBrowser: true,
+    isPermanent: true,
+  });
 };

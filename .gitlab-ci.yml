@@ -51,7 +51,7 @@ beta:
     - apt-get update -qq && apt-get install -y -qq lftp
     - date
     # Keep in mind that GitLab server has different time settings than the target one.
-    - lftp -c "set ftp:ssl-allow no; open -u $BETA_FTP_USERNAME,$BETA_FTP_PASSWORD $FTP_SERVER; mirror --reverse --delete-first --scan-all-first --depth-first --transfer-all --verbose public / --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/ --exclude .well-known/ --exclude cgi-bin/ --exclude api/"
+    - lftp -c "set ftp:ssl-allow no; open -u $BETA_FTP_USERNAME,$BETA_FTP_PASSWORD $FTP_SERVER; mirror --reverse --delete-first --scan-all-first --depth-first --transfer-all --verbose public / --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/ --exclude .well-known/ --exclude cgi-bin/ --exclude api/ --exclude .htaccess --exclude error_log"
   only:
     - tags
 
@@ -62,6 +62,6 @@ staging:
     - apt-get update -qq && apt-get install -y -qq lftp
     - date
     # Keep in mind that GitLab server has different time settings than the target one.
-    - lftp -c "set ftp:ssl-allow no; open -u $STAGING_FTP_USERNAME,$STAGING_FTP_PASSWORD $FTP_SERVER; mirror --reverse --delete-first --scan-all-first --depth-first --transfer-all --verbose public / --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/ --exclude .well-known/ --exclude cgi-bin/ --exclude api/"
+    - lftp -c "set ftp:ssl-allow no; open -u $STAGING_FTP_USERNAME,$STAGING_FTP_PASSWORD $FTP_SERVER; mirror --reverse --delete-first --scan-all-first --depth-first --transfer-all --verbose public / --ignore-time --parallel=10 --exclude-glob .git* --exclude .git/ --exclude .well-known/ --exclude cgi-bin/ --exclude api/ --exclude .htaccess --exclude error_log"
   only:
     - master
