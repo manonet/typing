@@ -5,7 +5,11 @@ import React, { useState, useEffect } from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 
 import { Layout, SEO } from '@components';
-import { ROUTE_PATH_TYPEWRITER } from '@routes';
+import {
+  ROUTE_PATH_TYPEWRITER,
+  ROUTE_PATH_PRIVACY_POLICY,
+  ROUTE_PATH_TERMS_OF_USE,
+} from '@routes';
 import useFirebase from '@utils/useFirebase';
 
 const LoginPage = () => {
@@ -56,6 +60,8 @@ const LoginPage = () => {
           //   signInSuccessWithAuthResult: () => false,
           // },
           signInSuccessUrl: ROUTE_PATH_TYPEWRITER,
+          tosUrl: ROUTE_PATH_TERMS_OF_USE,
+          privacyPolicyUrl: ROUTE_PATH_PRIVACY_POLICY,
         };
         return (
           <div>
