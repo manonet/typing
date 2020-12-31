@@ -61,11 +61,17 @@ export default function PracticeSummaryModal({ isOpen }: Props) {
 
   function handleKeydown(event: KeyboardEvent) {
     event.preventDefault();
-    if (event.code === 'Enter') {
-      closeSummary();
-    }
-    if (event.code === 'Space') {
-      repeatPractice();
+    if (isPracticeAccomplished) {
+      if (event.code === 'Enter') {
+        closeSummary();
+      }
+      if (event.code === 'Space') {
+        repeatPractice();
+      }
+    } else {
+      if (event.code === 'Enter') {
+        repeatPractice();
+      }
     }
   }
 
