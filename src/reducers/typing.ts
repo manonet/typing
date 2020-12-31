@@ -337,7 +337,8 @@ export default function typingReducer(
 
       // Else, the new character is known but not yet introduced
       if (
-        charsToLearn.sort().toString() !== charsIntroduced.sort().toString()
+        charsToLearn.slice().sort().toString() !==
+        charsIntroduced.slice().sort().toString()
       ) {
         // The character is not yet introduces, so introduce the new character
         return {
