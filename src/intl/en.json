@@ -148,5 +148,9 @@
     "statistics.hits.correct": "Correct hits",
     "statistics.hits.incorrect": "Incorrect hits",
     "statistics.accuracy": "Accuracy",
-    "statistics.requirement": "Requirement"
+    "statistics.requirement": "Requirement",
+    "statistics.lesson.accuracy.requirement": "You succeed {succeedPercent}% percent in lesson, but you need to reach {requirementPercent}% in order to step further.",
+    "statistics.lesson.amount.requirement": "You have to hit the {charToLearn} character {hitsRequired} more times in order to step further.",
+
+    "warning.layout.change": "Do not change your keyboard layout once you started practicing!"
 }

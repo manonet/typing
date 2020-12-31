@@ -67,6 +67,12 @@ export default function ExploreMoreModal({ isOpen }: Props) {
               defaultMessage="It is time to explore your keyboard and discover new characters!\nIt is simple, just press the marked keys."
             />
           </div>
+          <div>
+            <FormattedMessage
+              id="warning.layout.change"
+              defaultMessage="Do not change your keyboard layout once you started practicing!"
+            />
+          </div>
         </div>
         <div className="exploreMoreModal__footer">
           <div className="exploreMoreModal__footerButtons">

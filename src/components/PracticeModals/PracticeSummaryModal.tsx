@@ -8,6 +8,7 @@ import { APP_ELEMENT } from '@';
 import { summaryModalClosed, setUserInputFocus } from '@actions';
 import { getLangCode } from '@intl/languages';
 import { State as ReduxState } from '@reducers';
+import { keyRequirements, keyOrder } from '@utils';
 
 import { modalCustomStyles } from './modalCustomStyles';
 
@@ -27,8 +28,11 @@ export default function PracticeSummaryModal({ isOpen }: Props) {
   const langCode = getLangCode(lang);
 
   const {
+    allChars,
+    charsToLearn,
     complianceRatio,
     isPracticeAccomplished,
+    keyToLearn,
     practiceStatistics,
   } = useSelector((state: ReduxState) => state.typing);
 
@@ -48,6 +52,27 @@ export default function PracticeSummaryModal({ isOpen }: Props) {
       minimumFractionDigits: 0,
     }
   );
+
+  // TODO - refactor it
+  const charToLearn = charsToLearn[charsToLearn.length - 1];
+  const charStats = allChars.find((char) => char.glyph === charToLearn);
+  const correctTotalCharHits = (charStats && charStats.correct) || 0;
+  const miswriteTotalCharHits = (charStats && charStats.miswrite) || 0;
+  const misreadTotalCharHits = (charStats && charStats.misread) || 0;
+  const incorrectTotalCharHits = miswriteTotalCharHits + misreadTotalCharHits;
+  const charComplianceRatio = correctTotalCharHits
+    ? correctTotalCharHits / (incorrectTotalCharHits + correctTotalCharHits)
+    : 0;
+  const lastKeyToLearn = keyOrder[charsToLearn.length - 1];
+  const requiredHits = keyRequirements(lastKeyToLearn);
+
+  const formattedCharCompliancePercentage = (
+    charComplianceRatio * 100
+  ).toLocaleString(langCode, {
+    maximumFractionDigits: 3,
+    minimumFractionDigits: 0,
+  });
+  // ----------------------------------------------------------------
 
   function closeSummary() {
     dispatch(summaryModalClosed({}));
@@ -124,6 +149,36 @@ export default function PracticeSummaryModal({ isOpen }: Props) {
         />
         : {formattedCompliancePercentage}%
       </div>
+
+      {charComplianceRatio !== 0 && charComplianceRatio < complianceRatio && (
+        <div>
+          <FormattedMessage
+            id="statistics.lesson.accuracy.requirement"
+            defaultMessage="You succeed {succeedPercent}% percent in lesson,
+          but you need to reach {requirementPercent}% in order to
+          step further."
+            values={{
+              succeedPercent: formattedCharCompliancePercentage,
+              requirementPercent: formattedCompliancePercentage,
+            }}
+          />
+        </div>
+      )}
+
+      {correctTotalCharHits !== 0 && correctTotalCharHits < requiredHits && (
+        <div>
+          <FormattedMessage
+            id="statistics.lesson.amount.requirement"
+            defaultMessage="You have to hit the {charToLearn} character 
+            {hitsRequired} more times in order to step
+            further."
+            values={{
+              charToLearn,
+              hitsRequired: requiredHits - correctTotalCharHits,
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 

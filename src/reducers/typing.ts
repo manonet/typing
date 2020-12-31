@@ -155,10 +155,13 @@ export default function typingReducer(
       let deadKeys = { ...state.deadKeys };
       let keyMap = { ...state.keyMap };
       const lessonText = generatePracticeText({
+        charToLearn,
         glyphs: [...charsToLearn],
-        practiceLength: charsToLearn.length * 17,
-        wordLength: 3, // TODO use state value and wire it
-        uniqueWordCount: 20,
+        practiceLength: charsToLearn.length * 10,
+        wordLength: Math.floor(
+          Math.random() * (Math.max(3, charsToLearn.length * 0.2) - 3 + 1) + 3
+        ), // TODO use state value and wire it
+        uniqueWordCount: charsToLearn.length,
       });
 
       function practiceTextToArray(text: string): PracticeTextLetterArray {
@@ -323,8 +326,7 @@ export default function typingReducer(
       const correctHits = (charStats && charStats.correct) || 0;
       const mistakenHits = (charStats && charStats.miswrite) || 0;
       const charComplianceRatio = correctHits / mistakenHits;
-      const requiredHits =
-        keyRequirements[keyToLearn] && keyRequirements[keyToLearn].hits;
+      const requiredHits = keyRequirements(keyToLearn);
 
       if (!charToLearn) {
         // the new character to learn is unknown, it has to be discovered
@@ -882,12 +884,15 @@ export default function typingReducer(
           (char) => char.glyph === charToLearn
         );
         const correctTotalCharHits = (charStats && charStats.correct) || 0;
-        const incorrectTotalCharHits = (charStats && charStats.miswrite) || 0;
+        const miswriteTotalCharHits = (charStats && charStats.miswrite) || 0;
+        const misreadTotalCharHits = (charStats && charStats.misread) || 0;
+        const incorrectTotalCharHits =
+          miswriteTotalCharHits + misreadTotalCharHits;
+
         charComplianceRatio =
           correctTotalCharHits /
           (incorrectTotalCharHits + correctTotalCharHits);
-        const requiredHits =
-          keyRequirements[keyToLearn] && keyRequirements[keyToLearn].hits;
+        const requiredHits = keyRequirements(keyToLearn);
 
         if (
           correctTotalCharHits > requiredHits &&

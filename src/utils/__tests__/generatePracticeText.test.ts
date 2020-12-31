@@ -4,7 +4,10 @@ describe('generatePracticeText', () => {
   global.Math.random = () => 0.5;
 
   it('returns randomized string with default params', () => {
-    const lessonText = generatePracticeText({ glyphs: ['a', 'b', 'c'] });
+    const lessonText = generatePracticeText({
+      charToLearn: 'c',
+      glyphs: ['a', 'b', 'c'],
+    });
 
     expect(lessonText).toEqual(
       'aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc aacb aabc'
@@ -13,6 +16,7 @@ describe('generatePracticeText', () => {
 
   it('returns randomized string if practice length given', () => {
     const lessonText = generatePracticeText({
+      charToLearn: 'c',
       glyphs: ['a', 'b', 'c'],
       practiceLength: 20,
     });
@@ -22,6 +26,7 @@ describe('generatePracticeText', () => {
 
   it('returns randomized string if word length given', () => {
     const lessonText = generatePracticeText({
+      charToLearn: 'c',
       glyphs: ['a', 'b', 'c'],
       practiceLength: 20,
       wordLength: 2,
@@ -32,6 +37,7 @@ describe('generatePracticeText', () => {
 
   it('returns randomized string if uniqueWordCount is given', () => {
     const lessonText = generatePracticeText({
+      charToLearn: 'c',
       glyphs: ['a', 'b', 'c'],
       practiceLength: 20,
       uniqueWordCount: 2,
@@ -42,6 +48,7 @@ describe('generatePracticeText', () => {
 
   it('returns randomized string even if the configured practice length is shorter than the generated text', () => {
     const lessonText = generatePracticeText({
+      charToLearn: 'a',
       glyphs: ['a', 'b', 'c', 'd', 'e'],
       practiceLength: 10,
       uniqueWordCount: 4,

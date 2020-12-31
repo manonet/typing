@@ -4,6 +4,7 @@ import { resizeArray } from './resizeArray';
 import { shuffleArray } from './shuffleArray';
 
 type Params = {
+  charToLearn: Glyph;
   glyphs: Glyph[];
   practiceLength?: number;
   wordLength?: number;
@@ -18,6 +19,7 @@ export const DEFAULT_SPEACER = ' ';
 // export const NON_PRACTICE_GLYPHS = ['', DEFAULT_SPEACER, '\n'];
 
 export const generatePracticeText = ({
+  charToLearn,
   glyphs,
   practiceLength = DEFAULT_PRACTICE_LENGTH,
   uniqueWordCount = DEFAULT_UNIQUE_WORD_COUNT,
@@ -50,7 +52,7 @@ export const generatePracticeText = ({
       let wordLetters: Glyph[] = [];
       // create a copy of the array every time, and shuffle it
       const glyphArray = [...glyphs];
-      for (let i = 0; i < wordLength; i++) {
+      for (let i = 0; i < wordLength - 1; i++) {
         // and take random item from it
         const glyph = glyphArray.splice(
           Math.floor(Math.random() * glyphArray.length),
@@ -58,6 +60,9 @@ export const generatePracticeText = ({
         );
         wordLetters.push(glyph[0]);
       }
+      // Ensure that practice contains the character to learn
+      wordLetters.push(charToLearn);
+      shuffleArray(wordLetters);
       const word = wordLetters.join('');
       words.push(word);
     }

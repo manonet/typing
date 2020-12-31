@@ -76,30 +76,8 @@ export type KeyRequirements = {
   };
 };
 
-const DEFAULT_HIT_REQUIREMENT = 100;
-export const keyRequirements: KeyRequirements = {
-  KeyJ: {
-    hits: 3,
-  },
-  KeyF: {
-    hits: 3,
-  },
-  KeyK: {
-    hits: 3,
-  },
-  KeyD: {
-    hits: 3,
-  },
-  KeyL: {
-    hits: 3,
-  },
-  KeyA: {
-    hits: DEFAULT_HIT_REQUIREMENT,
-  },
-  Semicolon: {
-    hits: DEFAULT_HIT_REQUIREMENT,
-  },
-  KeyU: {
-    hits: DEFAULT_HIT_REQUIREMENT,
-  },
+export const keyRequirements = function (key: EventCode) {
+  // this function returns a small number on the beginning and even bigger number while progressing
+  const index = keyOrder.findIndex((e) => e === key) + 1;
+  return Math.pow(index, 2) * 10;
 };
