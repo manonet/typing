@@ -1,7 +1,9 @@
-import { FormattedMessage, Link } from 'gatsby-plugin-intl';
+import { FormattedMessage, Link, useIntl } from 'gatsby-plugin-intl';
+import preval from 'preval.macro';
 import React from 'react';
 
 import { LanguageSwitcher } from '@components';
+import { getLangCode } from '@intl/languages';
 import {
   ROUTE_PATH_CONTACT,
   ROUTE_PATH_FAQ,
@@ -20,6 +22,11 @@ type Props = {
 
 function Footer(props: Props) {
   const { appName, version } = props;
+  const intl = useIntl();
+  const lang = intl.locale;
+  const langCode = getLangCode(lang);
+  const buildTimestamp = preval`module.exports = new Date()`;
+  const formattedBuildTime = new Date(buildTimestamp).toLocaleString(langCode);
 
   return (
     <footer className="footer inverse">
@@ -161,7 +168,14 @@ function Footer(props: Props) {
               id="site.version"
               defaultMessage="version: {version}"
               values={{ version }}
+            />{' '}
+            <FormattedMessage
+              id="site.lastupdate"
+              defaultMessage="Last update"
+              values={{ version }}
             />
+            {': '}
+            {formattedBuildTime}
           </div>
         </div>
       </div>
