@@ -85,16 +85,18 @@ function Header() {
             />
           </Link>
 
-          <Link
-            className="menu__item"
-            activeClassName="menu__item--active"
-            to={ROUTE_PATH_STATISTICS}
-          >
-            <FormattedMessage
-              id="site.navigation.statistics"
-              defaultMessage="Statistics"
-            />
-          </Link>
+          {process.env.NODE_ENV !== 'production' && (
+            <Link
+              className="menu__item"
+              activeClassName="menu__item--active"
+              to={ROUTE_PATH_STATISTICS}
+            >
+              <FormattedMessage
+                id="site.navigation.statistics"
+                defaultMessage="Statistics"
+              />
+            </Link>
+          )}
         </menu>
         <div className="header__userMenu">
           {firebase && isSignedIn ? (
