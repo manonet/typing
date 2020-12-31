@@ -23,6 +23,15 @@ function Header() {
     });
   }, [firebase]);
 
+  // TODO - Delete it after 2020 Jan 30, because old cookies will expire on that day.
+  const cookieValue = document && document.cookie;
+  const cookies = cookieValue && cookieValue.split('; ');
+  const cookieRows =
+    cookies && cookies.find((row) => row.startsWith('mano_typing'));
+  const oldFlashCookieRows = cookieRows && cookieRows.split('=')[1];
+  const oldFlashProps =
+    oldFlashCookieRows && JSON.parse(decodeURIComponent(oldFlashCookieRows));
+
   function userMenu(firebase: any) {
     return (
       <Menu>
@@ -34,6 +43,18 @@ function Header() {
   }
   return (
     <div className="header">
+      {/* TODO - Delete it after 2020 Jan 30, because old cookies will expire on that day. */}
+      {oldFlashCookieRows && (
+        <div className="TEMPORARY-DEPRECATED-WARNING">
+          A régi programot{' '}
+          <a href="http://flash.manonet.org/" target="_blank">
+            itt
+          </a>{' '}
+          találod.
+          {oldFlashProps &&
+            ` Itt tartottál: ${oldFlashProps.lesson}. lecke ${oldFlashProps.practice}. gyakorlat.`}
+        </div>
+      )}
       <div className="container header__container">
         <div className="header__siteTitle">
           <span className="header__siteName">
