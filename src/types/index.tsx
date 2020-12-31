@@ -43,6 +43,11 @@ export type HandsAndFingers = {
   hand: HandSide;
   finger: Fingers;
 };
+export type HandFingerProps = {
+  [key in HandSide]?: {
+    [key in Fingers]?: PossibleKeyStates;
+  };
+};
 
 export type PossibleKeyStates = {
   marker?: 'toPressFirst' | 'toPressSecond' | 'uncovered';

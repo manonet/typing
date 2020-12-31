@@ -113,7 +113,7 @@ export default function PracticeStartModal({ isOpen }: Props) {
                 <Hand
                   className="practiceStart__hand"
                   handSide={key.hand}
-                  fingers={{ [key.finger]: 'toUse' }}
+                  fingers={{ [key.finger]: { marker: 'toPressFirst' } }}
                 />
               </div>
             </div>

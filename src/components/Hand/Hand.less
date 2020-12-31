@@ -1,9 +1,27 @@
 .hand {
-  //
-}
+  .finger {
+    stroke-width: 1;
+    transition: fill @animation-duration-base @ease-out,
+      stroke @animation-duration-base @ease-out;
 
-.finger {
-  &--toUse {
-    fill: @primary-color;
+    &--missed {
+      stroke: @red-4;
+    }
+
+    &--correct {
+      stroke: @green-5;
+    }
+
+    &--error {
+      stroke: @orange-4;
+    }
+
+    &--toPressFirst {
+      fill: @primary-color;
+    }
+
+    &--toPressSecond {
+      fill: @green-3;
+    }
   }
 }

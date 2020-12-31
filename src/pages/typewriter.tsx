@@ -39,6 +39,7 @@ export default function TypewriterPage() {
     displayedLevel,
     explorerMode,
     finishedPractices,
+    handFingers,
     isCharIntroduced,
     isDiscovereyNeeded,
     isPracticeFinished,
@@ -79,7 +80,11 @@ export default function TypewriterPage() {
           № {finishedPractices + 1}, finished: {finishedPractices}
         </div>
         <div className="TypewriterBoard__desk">
-          <Hand className="TypewriterBoard__hand" handSide="left" />
+          <Hand
+            className="TypewriterBoard__hand"
+            handSide="left"
+            fingers={handFingers && handFingers.left}
+          />
           <Keyboard
             className={'TypewriterBoard__keyboard'}
             displayedLevel={displayedLevel}
@@ -87,7 +92,11 @@ export default function TypewriterPage() {
             layout={layout}
             os={os}
           />
-          <Hand className="TypewriterBoard__hand" handSide="right" />
+          <Hand
+            className="TypewriterBoard__hand"
+            handSide="right"
+            fingers={handFingers && handFingers.right}
+          />
         </div>
       </div>
 

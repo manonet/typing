@@ -94,17 +94,18 @@ const KeyboardKey = forwardRef<any, KeyboardKeyProps>(
     const keyBgClass = classNames('key__keyBg');
     const labelClass = classNames('key__label');
 
-    // overwrite color vaues
+    // overwrite color values
     let overwriteColor = color;
-    if (marker === 'toPressFirst') {
-      overwriteColor = '#42c6ff';
-    }
-    if (pressure === 'pressed') {
-      overwriteColor = '#15d1c6';
-    }
-    if (pressure === 'locked') {
-      overwriteColor = '#37efba';
-    }
+    // if (marker === 'toPressFirst') {
+    //   overwriteColor = '#42c6ff';
+    // }
+    // if (pressure === 'pressed') {
+    //   overwriteColor = '#15d1c6';
+    // }
+    // if (pressure === 'locked') {
+    //   overwriteColor = '#37efba';
+    // }
+    // TODO - if key is colored by 'color' prop on keyboard, it overwrites css properties. it can be fixed here
 
     function renderBump() {
       const bumpWidth = (keyWidth - keyPaddingX * 2) / 3;

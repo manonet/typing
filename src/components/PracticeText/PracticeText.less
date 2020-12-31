@@ -23,19 +23,20 @@
 
   &__hand {
     display: flex;
-    max-width: 100px;
+    max-width: 250px;
     max-height: calc(100vh - 160px);
     flex-direction: column;
-    flex: 1;
+    flex: 1 1 250px;
+
+    .finger {
+      fill: @white;
+    }
   }
 
   &__keyboard {
     direction: inherit;
-    display: flex;
     min-height: 200px;
     max-height: calc(100vh - 160px);
-    flex-direction: column;
-    flex: 1;
   }
 }
 // TODO - double-check, moved

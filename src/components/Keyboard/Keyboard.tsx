@@ -48,9 +48,7 @@ export default function Keyboard(props: Props) {
   } = variables;
 
   return (
-    <div
-      className={classNames(className, 'keyboard', os.name, `layout-${layout}`)}
-    >
+    <>
       {/* This is the tippy that gets used as the singleton */}
       <Tippy
         className="keyInfo"
@@ -59,7 +57,12 @@ export default function Keyboard(props: Props) {
         moveTransition={'transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)'}
       />
       <svg
-        className="keyboard__svg"
+        className={classNames(
+          className,
+          'keyboard',
+          os.name,
+          `layout-${layout}`
+        )}
         version="1.1"
         viewBox={`0 0 ${keyboardWidth} ${keyboardHeight}`}
         textAnchor="middle"
@@ -409,6 +412,6 @@ export default function Keyboard(props: Props) {
         })}
         ;
       </svg>
-    </div>
+    </>
   );
 }

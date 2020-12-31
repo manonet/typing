@@ -29,6 +29,7 @@ import {
   functionalKeyCodes,
   PracticeTextLetterArray,
   PracticeStatistics,
+  HandFingerProps,
 } from '@types';
 import {
   markCharOnBoard,
@@ -76,6 +77,7 @@ export type TypingState = {
   practiceTextLetterArray: PracticeTextLetterArray;
   practiceStatistics: PracticeStatistics; // Contains statistic data only for the practice session
   complianceRatio: number; // Treshold of the isPracticeAccomplished
+  handFingers?: HandFingerProps;
 } & Keyboard;
 
 // Calculate initial state based on existing or missing character definition on the first key.
@@ -166,6 +168,7 @@ export default function typingReducer(
       }
 
       let practiceTextLetterArray = practiceTextToArray(lessonText);
+      const firstLetter = practiceTextLetterArray[0].practiceChar;
 
       // mark first letter to active
       practiceTextLetterArray = updatePracticeText({
@@ -174,7 +177,7 @@ export default function typingReducer(
         writtenSign: '',
       });
       const marks: Marks = {
-        [practiceTextLetterArray[0].practiceChar]: {
+        [firstLetter]: {
           marker: 'toPressFirst',
         },
       };
@@ -187,6 +190,23 @@ export default function typingReducer(
         deadKeys,
       });
 
+      const hand =
+        keyMap[firstLetter] &&
+        keyMap[firstLetter].index &&
+        keys[keyMap[firstLetter].index].hand;
+      const finger =
+        keyMap[firstLetter] &&
+        keyMap[firstLetter].index &&
+        keys[keyMap[firstLetter].index].finger;
+
+      const handFingers = {
+        [hand]: {
+          [finger]: {
+            marker: 'toPressFirst',
+          },
+        },
+      };
+
       return {
         lessonText: lessonText,
         practiceLength: lessonText.length,
@@ -196,6 +216,7 @@ export default function typingReducer(
         keys,
         practiceTextLetterArray,
         practiceStatistics: initialPracticeStatistics,
+        handFingers,
       };
     } else {
       return {
@@ -363,6 +384,22 @@ export default function typingReducer(
       const signToWrite = cursorAt >= 1 ? lessonText.charAt(cursorAt - 1) : '';
       const charsSucceed = signToWrite === writtenSign;
       let practiceTextLetterArray = [...state.practiceTextLetterArray];
+      let handFingers: HandFingerProps = {
+        left: {
+          thumb: {},
+          index: {},
+          middle: {},
+          ring: {},
+          little: {},
+        },
+        right: {
+          thumb: {},
+          index: {},
+          middle: {},
+          ring: {},
+          little: {},
+        },
+      };
 
       // change layout if necessary
       // TODO - add props to keys instead and make this check in Keyboard component for performance
@@ -461,6 +498,47 @@ export default function typingReducer(
             allChars[allCharsToWriteIndex].misread += 1;
           }
         }
+
+        // Mark fingers
+        // TODO - extract it
+        function markFingerForCharState(
+          char: Glyph,
+          keyState: string,
+          prop: string
+        ) {
+          if (char) {
+            const hand =
+              keyMap[char] &&
+              keyMap[char].index &&
+              keys[keyMap[char].index].hand;
+            const finger =
+              keyMap[char] &&
+              keyMap[char].index &&
+              keys[keyMap[char].index].finger;
+
+            if (
+              hand &&
+              finger &&
+              handFingers[hand] &&
+              // @ts-ignore
+              handFingers[hand][finger]
+            ) {
+              // @ts-ignore
+              handFingers[hand][finger][keyState] = prop;
+            }
+          }
+        }
+        markFingerForCharState(nextSign, 'marker', 'toPressFirst');
+        markFingerForCharState(
+          signToWrite,
+          'succeedState',
+          charsSucceed ? 'correct' : 'missed'
+        );
+        markFingerForCharState(
+          writtenSign,
+          'succeedState',
+          charsSucceed ? 'correct' : 'error'
+        );
       }
 
       // characters can repeat, but object property keys can not, so assign new props if key exist:
@@ -479,6 +557,7 @@ export default function typingReducer(
           succeedState: charsSucceed ? 'correct' : 'error',
         };
       }
+
       // handle dead keys
       let deadKeys = { ...state.deadKeys };
       keys = markCharOnBoard({
@@ -574,6 +653,7 @@ export default function typingReducer(
         explorerMode,
         practiceTextLetterArray,
         practiceStatistics,
+        handFingers,
       };
     }
 
