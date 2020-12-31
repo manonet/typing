@@ -1,4 +1,5 @@
 import { useIntl } from 'gatsby-plugin-intl';
+import { FormattedMessage } from 'gatsby-plugin-intl';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
@@ -34,36 +35,45 @@ export default function TypewriterPage() {
   const intl = useIntl();
 
   const {
-    charToLearn,
     charsToLearn,
     displayedLevel,
     explorerMode,
-    finishedPractices,
+    finishedLessonPractices,
     handFingers,
     isCharIntroduced,
     isDiscovereyNeeded,
     isPracticeFinished,
-    isPracticing,
-    keyToLearn,
     keys,
-    keysDown,
     layout,
     os,
-    userText,
   } = useSelector((state: ReduxState) => state.typing);
 
-  // console.log({
-  //   isCharIntroduced,
-  //   isPracticeFinished,
-  //   keyToLearn,
-  //   explorerMode,
-  //   isPracticing,
-  //   charToLearn,
-  //   charsToLearn,
-  //   userText,
-  // });
+  // keep it in sync with modals
+  const isModalOpen =
+    isPracticeFinished || !isCharIntroduced || isDiscovereyNeeded;
 
-  const isModalOpen = false; // TODO - check conditions for modaly
+  const title = explorerMode ? (
+    <FormattedMessage
+      id="modal.explore.title"
+      defaultMessage="Discover new areas!"
+    />
+  ) : (
+    <>
+      <FormattedMessage
+        id="lesson.title"
+        defaultMessage="Lesson {numberOfLesson}"
+        values={{ numberOfLesson: charsToLearn.length }}
+      />
+      {': '}
+      {charsToLearn[charsToLearn.length - 1]}
+      {' - '}
+      <FormattedMessage
+        id="practice.title"
+        defaultMessage="{numberOfPractice}. Practice"
+        values={{ numberOfPractice: finishedLessonPractices + 1 }}
+      />
+    </>
+  );
 
   return (
     <Layout isModalOpen={isModalOpen}>
@@ -75,9 +85,9 @@ export default function TypewriterPage() {
         isModalOpen={isModalOpen}
       />
       <div className="TypewriterBoard">
-        <PracticeText />
-        <div className="finishedPractices">
-          № {finishedPractices + 1}, finished: {finishedPractices}
+        <div className="container">
+          <h2>{title}</h2>
+          <PracticeText />
         </div>
         <div className="TypewriterBoard__desk">
           <Hand
@@ -101,18 +111,21 @@ export default function TypewriterPage() {
       </div>
 
       <PracticeSummaryModal
+        // keep it in sync with isModalOpen
         isOpen={isPracticeFinished}
         // @ts-ignore
         closeTimeoutMS={MODAL_CLOSE_TIMEOUT}
       />
 
       <PracticeIntroductionModal
+        // keep it in sync with isModalOpen
         isOpen={!isCharIntroduced}
         // @ts-ignore
         closeTimeoutMS={MODAL_CLOSE_TIMEOUT}
       />
 
       <ExploreMoreModal
+        // keep it in sync with isModalOpen
         isOpen={isDiscovereyNeeded}
         // @ts-ignore
         closeTimeoutMS={MODAL_CLOSE_TIMEOUT}

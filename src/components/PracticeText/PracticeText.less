@@ -18,13 +18,14 @@
     direction: ltr; // right hand should be on right, left on the left side regardless of language
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-evenly;
   }
 
   &__hand {
     display: flex;
     max-width: 250px;
     max-height: calc(100vh - 160px);
+    padding: 25px;
     flex-direction: column;
     flex: 1 1 250px;
 
@@ -34,20 +35,21 @@
   }
 
   &__keyboard {
-    direction: inherit;
+    max-width: 1024px;
     min-height: 200px;
     max-height: calc(100vh - 160px);
+    direction: inherit;
   }
 }
 // TODO - double-check, moved
 
 .PracticeText {
   display: flex;
+  margin: 0 auto;
   color: @gray-5;
   flex-direction: column;
   user-select: none;
   background: @white;
-
   border: @border-width-base @border-style-base @input-border-color;
   border-radius: @border-radius-base;
   outline: none;
@@ -105,7 +107,7 @@
     font-size: @fontSize;
     // stylelint-disable property-disallowed-list
     line-height: @rowHeight;
-    flex: 0 1 800px;
     transition: 1s margin-top ease-in-out;
+    flex: 0 1 auto;
   }
 }

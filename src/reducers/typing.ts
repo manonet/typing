@@ -57,6 +57,7 @@ export type TypingState = {
   cursorAt: number;
   displayedLevel: Level;
   finishedPractices: number;
+  finishedLessonPractices: number;
   inputChanged: boolean;
   isCapsLockOn: boolean;
   isPracticing: boolean;
@@ -107,6 +108,7 @@ const initialState: TypingState = {
   charComplianceRatio: 0,
   cursorAt: 0,
   finishedPractices: 0,
+  finishedLessonPractices: 0,
   inputChanged: false,
   isCapsLockOn: false,
   isPracticing: false,
@@ -813,6 +815,7 @@ export default function typingReducer(
         code === 'CapsLock' ? !state.isCapsLockOn : isCapsLockDown;
       let keys = [...state.keys];
       let finishedPractices = state.finishedPractices;
+      let finishedLessonPractices = state.finishedLessonPractices;
       let isPracticing = state.isPracticing;
       let keyToLearn = state.keyToLearn;
       let explorerMode = state.explorerMode;
@@ -871,6 +874,10 @@ export default function typingReducer(
         isPracticeAccomplished =
           correctHits / (incorrectHits + correctHits) > complianceRatio;
 
+        if (isPracticeAccomplished) {
+          finishedLessonPractices += 1;
+        }
+
         const charStats = state.allChars.find(
           (char) => char.glyph === charToLearn
         );
@@ -888,6 +895,7 @@ export default function typingReducer(
           isPracticeAccomplished
         ) {
           // the given character is "learned", time to move on to the next one
+          finishedLessonPractices = 0;
           keyToLearn =
             keyOrder[keyOrder.findIndex((elem) => elem === keyToLearn) + 1];
           const keyboardKeyToLearn = keys.find(
@@ -983,6 +991,7 @@ export default function typingReducer(
         keyToLearn,
         explorerMode,
         finishedPractices,
+        finishedLessonPractices,
         isPracticing,
         isPracticeFinished,
         charToLearn,
