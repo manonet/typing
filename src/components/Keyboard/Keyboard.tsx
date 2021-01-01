@@ -221,7 +221,7 @@ export default function Keyboard(props: Props) {
 
             case 'A99': // ControlLeft
               title = intl.formatMessage({
-                id: 'keyboard.key.control',
+                id: 'keyboard.key.ctrl',
                 defaultMessage: 'Control',
               });
               calculatedWidth = bRowShift - keyPaddingX * 2;
@@ -285,7 +285,7 @@ export default function Keyboard(props: Props) {
 
             case 'A12': // ControlRight
               title = intl.formatMessage({
-                id: 'keyboard.key.control',
+                id: 'keyboard.key.ctrl',
                 defaultMessage: 'Control',
               });
               calculatedWidth = keyWidth * 3 - bRowShift - keyPaddingX * 2;

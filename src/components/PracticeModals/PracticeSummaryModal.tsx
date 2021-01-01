@@ -32,7 +32,6 @@ export default function PracticeSummaryModal({ isOpen }: Props) {
     charsToLearn,
     complianceRatio,
     isPracticeAccomplished,
-    keyToLearn,
     practiceStatistics,
   } = useSelector((state: ReduxState) => state.typing);
 
